@@ -1,12 +1,89 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      {/* Hero Section */}
+      <section className="bg-primary text-primary-foreground py-20">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-5xl font-bold mb-6">Field Hockey Club Belgium</h1>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">
+            Welcome to our field hockey community. Join us for training, matches, and the passion of hockey.
+          </p>
+          <div className="flex gap-4 justify-center flex-wrap">
+            <Button size="lg" variant="secondary">Join Our Club</Button>
+            <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+              Learn More
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Quick Info Cards */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">What We Offer</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            <Card className="border-accent/20">
+              <CardHeader>
+                <CardTitle className="text-primary">Training Sessions</CardTitle>
+                <CardDescription>Professional coaching for all skill levels</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Weekly training sessions with experienced coaches to improve your technique and game strategy.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="border-secondary/20">
+              <CardHeader>
+                <CardTitle className="text-secondary">Competitive Matches</CardTitle>
+                <CardDescription>Regular league and tournament play</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Participate in local and regional competitions representing our club with pride.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="border-accent/20">
+              <CardHeader>
+                <CardTitle className="text-accent">Community Spirit</CardTitle>
+                <CardDescription>A welcoming hockey family</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Join a supportive community of hockey enthusiasts who share your passion for the sport.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Club Colors Showcase */}
+      <section className="py-16 bg-muted">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-12">Our Club Colors</h2>
+          <div className="flex justify-center gap-4 flex-wrap">
+            <div className="w-20 h-20 bg-primary rounded-lg shadow-lg flex items-center justify-center">
+              <span className="text-primary-foreground font-bold text-xs">Blue</span>
+            </div>
+            <div className="w-20 h-20 bg-secondary rounded-lg shadow-lg flex items-center justify-center">
+              <span className="text-secondary-foreground font-bold text-xs">Red</span>
+            </div>
+            <div className="w-20 h-20 bg-accent rounded-lg shadow-lg flex items-center justify-center">
+              <span className="text-accent-foreground font-bold text-xs">Gold</span>
+            </div>
+            <div className="w-20 h-20 bg-foreground rounded-lg shadow-lg flex items-center justify-center">
+              <span className="text-background font-bold text-xs">Dark</span>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
