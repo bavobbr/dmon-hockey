@@ -25,6 +25,9 @@ const Index = () => {
             <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
               Learn More
             </Button>
+            <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+              <a href="/auth">Member Login</a>
+            </Button>
           </div>
         </div>
       </section>
