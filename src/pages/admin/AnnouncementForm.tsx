@@ -241,6 +241,7 @@ const AnnouncementForm = () => {
               <Label htmlFor="content">Content *</Label>
               <div className="min-h-[300px] w-full">
                 <ReactQuill
+                  key="content-editor"
                   ref={quillRef}
                   value={formData.content}
                   onChange={(value) => handleInputChange('content', value)}
@@ -249,6 +250,7 @@ const AnnouncementForm = () => {
                   placeholder="Write your announcement content here..."
                   theme="snow"
                   className="h-[250px]"
+                  preserveWhitespace
                 />
               </div>
             </div>
