@@ -17,15 +17,45 @@ interface Announcement {
   created_at: string;
 }
 
+interface Team {
+  id: string;
+  name: string;
+  division: string;
+  age_group: string;
+  description: string;
+  season: string;
+}
+
 const Index = () => {
   const { user, isAdmin, isModerator, loading } = useAuth();
   const { toast } = useToast();
   const [announcements, setAnnouncements] = useState<Announcement[]>([]);
+  const [teams, setTeams] = useState<Team[]>([]);
   const [announcementsLoading, setAnnouncementsLoading] = useState(true);
+  const [teamsLoading, setTeamsLoading] = useState(true);
 
   useEffect(() => {
     fetchAnnouncements();
+    fetchTeams();
   }, []);
+
+  const fetchTeams = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('teams')
+        .select('*')
+        .eq('active', true)
+        .order('created_at', { ascending: false })
+        .limit(6);
+
+      if (error) throw error;
+      setTeams(data || []);
+    } catch (error) {
+      console.error('Error fetching teams:', error);
+    } finally {
+      setTeamsLoading(false);
+    }
+  };
 
   const fetchAnnouncements = async () => {
     try {
@@ -226,6 +256,62 @@ const Index = () => {
               {(isAdmin || isModerator) && (
                 <Link to="/admin/announcements/new">
                   <Button>Create First Announcement</Button>
+                </Link>
+              )}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Teams Section */}
+      <section className="py-16 px-4 bg-muted/50">
+        <div className="container mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Our Teams</h2>
+          
+          {teamsLoading ? (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[...Array(6)].map((_, i) => (
+                <Card key={i} className="animate-pulse">
+                  <CardHeader>
+                    <div className="h-4 bg-muted rounded w-3/4"></div>
+                    <div className="h-3 bg-muted rounded w-1/2"></div>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="h-3 bg-muted rounded mb-2"></div>
+                    <div className="h-3 bg-muted rounded w-2/3"></div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          ) : teams.length > 0 ? (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {teams.map((team) => (
+                <Card key={team.id} className="hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <CardTitle className="text-lg">
+                      {team.name}
+                    </CardTitle>
+                    <CardDescription>
+                      {team.division} {team.age_group && `• ${team.age_group}`}
+                      {team.season && ` • ${team.season}`}
+                    </CardDescription>
+                  </CardHeader>
+                  {team.description && (
+                    <CardContent>
+                      <p className="text-muted-foreground line-clamp-3">
+                        {team.description}
+                      </p>
+                    </CardContent>
+                  )}
+                </Card>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground mb-4">No teams available yet.</p>
+              {isAdmin && (
+                <Link to="/admin/teams/new">
+                  <Button>Add First Team</Button>
                 </Link>
               )}
             </div>

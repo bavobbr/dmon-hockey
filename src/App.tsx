@@ -11,6 +11,8 @@ import { ProtectedRoute } from "./components/ProtectedRoute";
 import Dashboard from "./pages/admin/Dashboard";
 import Announcements from "./pages/admin/Announcements";
 import AnnouncementForm from "./pages/admin/AnnouncementForm";
+import Teams from "./pages/admin/Teams";
+import TeamForm from "./pages/admin/TeamForm";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +34,21 @@ const App = () => (
             <Route path="/admin/announcements" element={
               <ProtectedRoute requireModerator>
                 <Announcements />
+              </ProtectedRoute>
+            } />
+            <Route path="/admin/teams" element={
+              <ProtectedRoute requireAdmin>
+                <Teams />
+              </ProtectedRoute>
+            } />
+            <Route path="/admin/teams/new" element={
+              <ProtectedRoute requireAdmin>
+                <TeamForm />
+              </ProtectedRoute>
+            } />
+            <Route path="/admin/teams/edit/:id" element={
+              <ProtectedRoute requireAdmin>
+                <TeamForm />
               </ProtectedRoute>
             } />
             <Route path="/admin/announcements/new" element={
