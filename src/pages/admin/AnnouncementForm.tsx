@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -28,13 +28,11 @@ const AnnouncementForm = () => {
   const quillRef = useRef<ReactQuill>(null);
 
   const [loading, setLoading] = useState(false);
-  const [formData, setFormData] = useState<AnnouncementFormData>({
-    title: '',
-    content: '',
-    excerpt: '',
-    featured: false,
-    published: false,
-  });
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [excerpt, setExcerpt] = useState('');
+  const [featured, setFeatured] = useState(false);
+  const [published, setPublished] = useState(false);
 
   useEffect(() => {
     if (isEditing && id) {
@@ -52,13 +50,11 @@ const AnnouncementForm = () => {
 
       if (error) throw error;
 
-      setFormData({
-        title: data.title,
-        content: data.content,
-        excerpt: data.excerpt || '',
-        featured: data.featured,
-        published: data.published,
-      });
+      setTitle(data.title);
+      setContent(data.content);
+      setExcerpt(data.excerpt || '');
+      setFeatured(data.featured);
+      setPublished(data.published);
     } catch (error) {
       console.error('Error fetching announcement:', error);
       toast({
@@ -78,7 +74,11 @@ const AnnouncementForm = () => {
 
     try {
       const announcementData = {
-        ...formData,
+        title,
+        content,
+        excerpt,
+        featured,
+        published,
         author_id: user.id,
       };
 
@@ -120,15 +120,8 @@ const AnnouncementForm = () => {
     }
   };
 
-  const handleInputChange = (field: keyof AnnouncementFormData, value: string | boolean) => {
-    setFormData(prev => ({
-      ...prev,
-      [field]: value,
-    }));
-  };
-
-  // Image upload handler for React Quill
-  const imageHandler = () => {
+  // Memoized image upload handler to prevent recreation on every render
+  const imageHandler = useCallback(() => {
     const input = document.createElement('input');
     input.setAttribute('type', 'file');
     input.setAttribute('accept', 'image/*');
@@ -173,8 +166,9 @@ const AnnouncementForm = () => {
         });
       }
     };
-  };
+  }, [toast]);
 
+  // Memoized modules to prevent recreation
   const modules = {
     toolbar: {
       container: [
@@ -220,8 +214,8 @@ const AnnouncementForm = () => {
               <Label htmlFor="title">Title *</Label>
               <Input
                 id="title"
-                value={formData.title}
-                onChange={(e) => handleInputChange('title', e.target.value)}
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
                 placeholder="Enter announcement title"
                 required
               />
@@ -231,8 +225,8 @@ const AnnouncementForm = () => {
               <Label htmlFor="excerpt">Excerpt</Label>
               <Input
                 id="excerpt"
-                value={formData.excerpt}
-                onChange={(e) => handleInputChange('excerpt', e.target.value)}
+                value={excerpt}
+                onChange={(e) => setExcerpt(e.target.value)}
                 placeholder="Brief summary of the announcement"
               />
             </div>
@@ -241,16 +235,14 @@ const AnnouncementForm = () => {
               <Label htmlFor="content">Content *</Label>
               <div className="min-h-[300px] w-full">
                 <ReactQuill
-                  key="content-editor"
                   ref={quillRef}
-                  value={formData.content}
-                  onChange={(value) => handleInputChange('content', value)}
+                  value={content}
+                  onChange={setContent}
                   modules={modules}
                   formats={formats}
                   placeholder="Write your announcement content here..."
                   theme="snow"
                   className="h-[250px]"
-                  preserveWhitespace
                 />
               </div>
             </div>
@@ -258,8 +250,8 @@ const AnnouncementForm = () => {
             <div className="flex items-center space-x-2">
               <Switch
                 id="featured"
-                checked={formData.featured}
-                onCheckedChange={(checked) => handleInputChange('featured', checked)}
+                checked={featured}
+                onCheckedChange={setFeatured}
               />
               <Label htmlFor="featured">Featured announcement</Label>
             </div>
@@ -267,8 +259,8 @@ const AnnouncementForm = () => {
             <div className="flex items-center space-x-2">
               <Switch
                 id="published"
-                checked={formData.published}
-                onCheckedChange={(checked) => handleInputChange('published', checked)}
+                checked={published}
+                onCheckedChange={setPublished}
               />
               <Label htmlFor="published">Publish immediately</Label>
             </div>
