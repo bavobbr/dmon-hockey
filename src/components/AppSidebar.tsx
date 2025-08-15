@@ -166,7 +166,7 @@ export function AppSidebar() {
                         className={getNavCls}
                       >
                         <item.icon className="h-4 w-4" />
-                        <span>{item.title}</span>
+                        <span className="group-data-[collapsible=icon]:hidden">{item.title}</span>
                       </NavLink>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
