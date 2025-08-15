@@ -46,6 +46,7 @@ import Training from "./pages/sporting/Training";
 import HowToPlay from "./pages/sporting/HowToPlay";
 import Rules from "./pages/sporting/Rules";
 import StickGuide from "./pages/sporting/StickGuide";
+import CoachesInfo from "./pages/sporting/CoachesInfo";
 
 const queryClient = new QueryClient();
 
@@ -95,6 +96,7 @@ const App = () => (
                     <Route path="/sporting/how-to-play" element={<HowToPlay />} />
                     <Route path="/sporting/rules" element={<Rules />} />
                     <Route path="/sporting/stick-guide" element={<StickGuide />} />
+                    <Route path="/sporting/coaches-info" element={<CoachesInfo />} />
                     
                     {/* Admin routes */}
                     <Route path="/admin" element={
