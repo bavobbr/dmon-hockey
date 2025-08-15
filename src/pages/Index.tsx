@@ -1,13 +1,49 @@
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
+interface Announcement {
+  id: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  featured: boolean;
+  published: boolean;
+  created_at: string;
+}
+
 const Index = () => {
   const { user, isAdmin, isModerator, loading } = useAuth();
   const { toast } = useToast();
+  const [announcements, setAnnouncements] = useState<Announcement[]>([]);
+  const [announcementsLoading, setAnnouncementsLoading] = useState(true);
+
+  useEffect(() => {
+    fetchAnnouncements();
+  }, []);
+
+  const fetchAnnouncements = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('announcements')
+        .select('*')
+        .eq('published', true)
+        .order('created_at', { ascending: false })
+        .limit(3);
+
+      if (error) throw error;
+      setAnnouncements(data || []);
+    } catch (error) {
+      console.error('Error fetching announcements:', error);
+    } finally {
+      setAnnouncementsLoading(false);
+    }
+  };
 
   const handleSignOut = async () => {
     try {
@@ -130,6 +166,70 @@ const Index = () => {
               </CardContent>
             </Card>
           </div>
+        </div>
+      </section>
+
+      {/* Latest Announcements */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Latest News</h2>
+          
+          {announcementsLoading ? (
+            <div className="grid md:grid-cols-3 gap-6">
+              {[...Array(3)].map((_, i) => (
+                <Card key={i} className="animate-pulse">
+                  <CardHeader>
+                    <div className="h-4 bg-muted rounded w-3/4"></div>
+                    <div className="h-3 bg-muted rounded w-1/2"></div>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="h-3 bg-muted rounded mb-2"></div>
+                    <div className="h-3 bg-muted rounded mb-2"></div>
+                    <div className="h-3 bg-muted rounded w-2/3"></div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          ) : announcements.length > 0 ? (
+            <div className="grid md:grid-cols-3 gap-6">
+              {announcements.map((announcement) => (
+                <Card key={announcement.id} className="hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <div className="flex items-start justify-between">
+                      <CardTitle className="text-lg line-clamp-2">
+                        {announcement.title}
+                      </CardTitle>
+                      {announcement.featured && (
+                        <Badge variant="secondary" className="ml-2 shrink-0">
+                          Featured
+                        </Badge>
+                      )}
+                    </div>
+                    <CardDescription className="text-sm text-muted-foreground">
+                      {new Date(announcement.created_at).toLocaleDateString()}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground line-clamp-3 mb-4">
+                      {announcement.excerpt || announcement.content.substring(0, 150) + '...'}
+                    </p>
+                    <Button variant="outline" size="sm">
+                      Read More
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground mb-4">No announcements yet.</p>
+              {(isAdmin || isModerator) && (
+                <Link to="/admin/announcements/new">
+                  <Button>Create First Announcement</Button>
+                </Link>
+              )}
+            </div>
+          )}
         </div>
       </section>
 
