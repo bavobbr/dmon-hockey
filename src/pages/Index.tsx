@@ -1,7 +1,40 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Link } from "react-router-dom";
+import { useAuth } from "@/hooks/useAuth";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const Index = () => {
+  const { user, isAdmin, isModerator, loading } = useAuth();
+  const { toast } = useToast();
+
+  const handleSignOut = async () => {
+    try {
+      const { error } = await supabase.auth.signOut();
+      if (error) throw error;
+      toast({
+        title: "Signed out successfully",
+        description: "You have been logged out of your account.",
+      });
+    } catch (error) {
+      console.error('Error signing out:', error);
+      toast({
+        title: "Error",
+        description: "Failed to sign out. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary"></div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -20,15 +53,39 @@ const Index = () => {
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             Welcome to our field hockey community in Belgium. Join us for training, matches, and the passion of hockey.
           </p>
-          <div className="flex gap-4 justify-center flex-wrap">
-            <Button size="lg" variant="secondary">Join Our Club</Button>
-            <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
-              Learn More
-            </Button>
-            <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
-              <a href="/auth">Member Login</a>
-            </Button>
-          </div>
+          {user ? (
+            <div className="space-y-4">
+              <div className="text-center">
+                <p className="text-lg mb-2">Welcome back, {user.email}!</p>
+                {isAdmin && <span className="text-sm bg-accent text-accent-foreground px-3 py-1 rounded-full mr-2">Admin</span>}
+                {isModerator && !isAdmin && <span className="text-sm bg-secondary text-secondary-foreground px-3 py-1 rounded-full mr-2">Moderator</span>}
+              </div>
+              <div className="flex gap-4 justify-center flex-wrap">
+                {(isAdmin || isModerator) && (
+                  <Link to="/admin">
+                    <Button size="lg" variant="secondary">
+                      Admin Dashboard
+                    </Button>
+                  </Link>
+                )}
+                <Button size="lg" variant="outline" onClick={handleSignOut} className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+                  Sign Out
+                </Button>
+              </div>
+            </div>
+          ) : (
+            <div className="flex gap-4 justify-center flex-wrap">
+              <Button size="lg" variant="secondary">Join Our Club</Button>
+              <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+                Learn More
+              </Button>
+              <Link to="/auth">
+                <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+                  Member Login
+                </Button>
+              </Link>
+            </div>
+          )}
         </div>
       </section>
 
