@@ -131,7 +131,7 @@ export function AppSidebar() {
                         <CollapsibleTrigger asChild>
                           <SidebarMenuButton className="hover:bg-muted/50">
                             <item.icon className="h-4 w-4" />
-                            <span>{item.title}</span>
+                            <span className="group-data-[collapsible=icon]:hidden">{item.title}</span>
                             <ChevronDown className="ml-auto h-4 w-4 transition-transform group-data-[state=open]/collapsible:rotate-180" />
                           </SidebarMenuButton>
                         </CollapsibleTrigger>
