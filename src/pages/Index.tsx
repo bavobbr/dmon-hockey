@@ -8,11 +8,13 @@ const Index = () => {
       <section className="bg-primary text-primary-foreground py-20">
         <div className="container mx-auto px-4 text-center">
           <div className="flex justify-center mb-8">
-            <img 
-              src="/lovable-uploads/03104bbc-f9de-44a2-a8b0-aedb91fd1c6c.png" 
-              alt="D-Man Hockey Club Logo" 
-              className="w-32 h-32 object-contain"
-            />
+            <div className="bg-white rounded-full p-4 shadow-lg">
+              <img 
+                src="/lovable-uploads/03104bbc-f9de-44a2-a8b0-aedb91fd1c6c.png" 
+                alt="D-Man Hockey Club Logo" 
+                className="w-24 h-24 object-contain"
+              />
+            </div>
           </div>
           <h1 className="text-5xl font-bold mb-6">D-Man Hockey Club</h1>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
