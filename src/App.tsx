@@ -60,10 +60,10 @@ const App = () => (
             <div className="min-h-screen flex w-full">
               <AppSidebar />
               <div className="flex-1 flex flex-col">
-                <header className="h-12 flex items-center border-b bg-background px-4">
-                  <SidebarTrigger />
-                  <div className="ml-4">
-                    <h1 className="font-semibold text-foreground">D-mon Hockey Club</h1>
+                <header className="h-14 flex items-center justify-between border-b bg-background px-4 relative z-10">
+                  <div className="flex items-center gap-4">
+                    <SidebarTrigger />
+                    <h1 className="text-lg font-semibold text-foreground">D-mon Hockey Club</h1>
                   </div>
                 </header>
                 <main className="flex-1 overflow-auto">
