@@ -1,36 +1,37 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { History as HistoryIcon, Calendar, Users, Trophy } from "lucide-react";
+import { History as HistoryIcon, Calendar, Users, Trophy, Building } from "lucide-react";
+import historyStoryImage from "@/assets/history-story.png";
 
 const History = () => {
   const milestones = [
     {
-      year: "2020",
-      title: "Club Foundation",
-      description: "D-mon Hockey Club was founded by a group of passionate hockey enthusiasts in Belgium.",
+      year: "2018",
+      title: "Oprichting van de Club",
+      description: "D-MON Hockey Club werd opgericht door een groep gepassioneerde hockeyliefhebbers in Dendermonde.",
       icon: Users
     },
     {
-      year: "2021", 
-      title: "First Official Season",
-      description: "Our first official season with teams competing in local leagues.",
+      year: "2019-2021", 
+      title: "Groei en Ontwikkeling",
+      description: "Uitbreiding van het aantal leden en teams, deelname aan lokale competities.",
       icon: Calendar
     },
     {
-      year: "2022",
-      title: "Youth Program Launch",
-      description: "Expansion into youth hockey with programs for ages 6-18.",
-      icon: Users
+      year: "2021",
+      title: "Zoektocht naar Eigen Terrein",
+      description: "Start van de intensieve zoektocht en planning voor een eigen hockeyterrein.",
+      icon: Building
     },
     {
-      year: "2023",
-      title: "Regional Success",
-      description: "First regional championship win, establishing the club's competitive reputation.",
+      year: "2022",
+      title: "Terrein Gerealiseerd",
+      description: "Na juridische procedures en hard werk werd het nieuwe kunstgrasveld eindelijk geopend.",
       icon: Trophy
     },
     {
-      year: "2024",
-      title: "Facility Expansion",
-      description: "Opening of new training facilities and continued growth of membership.",
+      year: "2023-2024",
+      title: "Verdere Uitbreiding",
+      description: "Voortzetting van de groei met nieuwe jeugdprogramma's en verdere faciliteiten.",
       icon: HistoryIcon
     }
   ];
@@ -38,33 +39,48 @@ const History = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8 text-foreground">Club History</h1>
+        <h1 className="text-4xl font-bold mb-8 text-foreground">Geschiedenis</h1>
         
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <HistoryIcon className="h-5 w-5" />
-              Our Story
+              Ons Verhaal
             </CardTitle>
-            <CardDescription>The journey of D-mon Hockey Club</CardDescription>
+            <CardDescription>De reis van D-MON Hockey Club</CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-muted-foreground leading-relaxed">
-              D-mon Hockey Club was born from a shared passion for field hockey and a vision to create 
-              a welcoming community for players of all ages and skill levels. What started as a small group 
-              of enthusiasts has grown into a thriving club that represents the best of Belgian hockey culture.
-            </p>
-            <br />
-            <p className="text-muted-foreground leading-relaxed">
-              Our club emphasizes not just competitive excellence, but also the values of respect, 
-              fair play, and community spirit. We believe hockey is more than a sport—it's a way to 
-              build lifelong friendships, develop character, and contribute to our local community.
-            </p>
+            <div className="grid lg:grid-cols-2 gap-6 items-center">
+              <div className="space-y-4">
+                <p className="text-muted-foreground leading-relaxed">
+                  D-MON Hockey Club ontstond uit een gedeelde passie voor veldhockey en een visie om een 
+                  gastvrije gemeenschap te creëren voor spelers van alle leeftijden en vaardigheidsniveaus. 
+                  Wat begon als een kleine groep enthousiastelingen is uitgegroeid tot een bloeiende club 
+                  die het beste van de Belgische hockeycultuur vertegenwoordigt.
+                </p>
+                <p className="text-muted-foreground leading-relaxed">
+                  Onze club legt de nadruk op niet alleen competitieve excellentie, maar ook op de waarden 
+                  van respect, fair play en gemeenschapsgevoel. We geloven dat hockey meer is dan een sport—
+                  het is een manier om levenslange vriendschappen op te bouwen, karakter te ontwikkelen en 
+                  bij te dragen aan onze lokale gemeenschap.
+                </p>
+              </div>
+              
+              <div className="flex justify-center">
+                <div className="max-w-sm">
+                  <img 
+                    src={historyStoryImage} 
+                    alt="Verhaal D-MON Hockey - Geschiedenis van de Club" 
+                    className="w-full h-auto rounded-lg shadow-lg border"
+                  />
+                </div>
+              </div>
+            </div>
           </CardContent>
         </Card>
 
         <div className="space-y-6">
-          <h2 className="text-2xl font-semibold text-foreground">Key Milestones</h2>
+          <h2 className="text-2xl font-semibold text-foreground">Belangrijke Mijlpalen</h2>
           
           <div className="space-y-4">
             {milestones.map((milestone, index) => (
@@ -94,7 +110,7 @@ const History = () => {
           <CardContent className="p-6 text-center">
             <HistoryIcon className="h-8 w-8 text-muted-foreground mx-auto mb-3" />
             <p className="text-muted-foreground">
-              Our history continues to unfold with every training session, match, and new member who joins our club family.
+              Onze geschiedenis blijft zich ontvouwen met elke trainingsessie, wedstrijd en nieuw lid dat zich bij onze clubfamilie voegt.
             </p>
           </CardContent>
         </Card>
