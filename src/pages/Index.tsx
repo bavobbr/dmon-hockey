@@ -159,19 +159,21 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="bg-primary text-primary-foreground py-20">
-        <div className="container mx-auto px-4 text-center">
-          <div className="flex justify-center mb-8">
-            <div className="bg-white rounded-full p-4 shadow-lg">
+      <section className="hero-gradient text-primary-foreground py-24 lg:py-32 relative">
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <div className="flex justify-center mb-8 fade-in-up">
+            <div className="bg-white rounded-full p-6 shadow-glow pulse-glow float-animation">
               <img 
                 src="/lovable-uploads/03104bbc-f9de-44a2-a8b0-aedb91fd1c6c.png" 
                 alt="D-mon Hockey Club Logo" 
-                className="w-24 h-24 object-contain"
+                className="w-28 h-28 object-contain"
               />
             </div>
           </div>
-          <h1 className="text-5xl font-bold mb-6">D-mon Hockey Club</h1>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
+          <h1 className="font-display text-5xl lg:text-7xl font-bold mb-6 fade-in-up tracking-tight">
+            D-mon Hockey Club
+          </h1>
+          <p className="text-xl lg:text-2xl mb-10 max-w-3xl mx-auto leading-relaxed fade-in-up opacity-90">
             Welcome to our field hockey community in Belgium. Join us for training, matches, and the passion of hockey.
           </p>
           {user ? (
@@ -195,13 +197,15 @@ const Index = () => {
               </div>
             </div>
           ) : (
-            <div className="flex gap-4 justify-center flex-wrap">
-              <Button size="lg" variant="secondary">Join Our Club</Button>
-              <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+            <div className="flex gap-6 justify-center flex-wrap fade-in-up">
+              <Button size="lg" variant="hero" className="px-8 py-4">
+                Join Our Club
+              </Button>
+              <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 hover:text-white hover:border-white/50 px-8 py-4 backdrop-blur-sm">
                 Learn More
               </Button>
               <Link to="/auth">
-                <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+                <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 hover:text-white hover:border-white/50 px-8 py-4 backdrop-blur-sm">
                   Member Login
                 </Button>
               </Link>
@@ -211,41 +215,50 @@ const Index = () => {
       </section>
 
       {/* Quick Info Cards */}
-      <section className="py-16 px-4">
+      <section className="py-20 px-4 bg-gradient-subtle">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">What We Offer</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            <Card className="border-accent/20">
-              <CardHeader>
-                <CardTitle className="text-primary">Training Sessions</CardTitle>
-                <CardDescription>Professional coaching for all skill levels</CardDescription>
+          <h2 className="font-display text-4xl lg:text-5xl font-bold text-center mb-16 text-foreground">What We Offer</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="border-primary/20 hover:border-primary/40 group fade-in-up">
+              <CardHeader className="pb-4">
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                  <div className="w-6 h-6 bg-primary rounded-sm"></div>
+                </div>
+                <CardTitle className="text-primary text-xl">Training Sessions</CardTitle>
+                <CardDescription className="text-base">Professional coaching for all skill levels</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground leading-relaxed">
                   Weekly training sessions with experienced coaches to improve your technique and game strategy.
                 </p>
               </CardContent>
             </Card>
             
-            <Card className="border-secondary/20">
-              <CardHeader>
-                <CardTitle className="text-secondary">Competitive Matches</CardTitle>
-                <CardDescription>Regular league and tournament play</CardDescription>
+            <Card className="border-secondary/20 hover:border-secondary/40 group fade-in-up">
+              <CardHeader className="pb-4">
+                <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-secondary/20 transition-colors">
+                  <div className="w-6 h-6 bg-secondary rounded-sm"></div>
+                </div>
+                <CardTitle className="text-secondary text-xl">Competitive Matches</CardTitle>
+                <CardDescription className="text-base">Regular league and tournament play</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground leading-relaxed">
                   Participate in local and regional competitions representing our club with pride.
                 </p>
               </CardContent>
             </Card>
             
-            <Card className="border-accent/20">
-              <CardHeader>
-                <CardTitle className="text-accent">Community Spirit</CardTitle>
-                <CardDescription>A welcoming hockey family</CardDescription>
+            <Card className="border-accent/20 hover:border-accent/40 group fade-in-up">
+              <CardHeader className="pb-4">
+                <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
+                  <div className="w-6 h-6 bg-accent rounded-sm"></div>
+                </div>
+                <CardTitle className="text-accent text-xl">Community Spirit</CardTitle>
+                <CardDescription className="text-base">A welcoming hockey family</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground leading-relaxed">
                   Join a supportive community of hockey enthusiasts who share your passion for the sport.
                 </p>
               </CardContent>
@@ -255,9 +268,9 @@ const Index = () => {
       </section>
 
       {/* Latest Announcements */}
-      <section className="py-16 px-4">
+      <section className="py-20 px-4">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Latest News</h2>
+          <h2 className="font-display text-4xl lg:text-5xl font-bold text-center mb-16 text-foreground">Latest News</h2>
           
           {announcementsLoading ? (
             <div className="grid md:grid-cols-3 gap-6">
@@ -276,16 +289,16 @@ const Index = () => {
               ))}
             </div>
           ) : announcements.length > 0 ? (
-            <div className="grid md:grid-cols-3 gap-6">
-              {announcements.map((announcement) => (
-                <Card key={announcement.id} className="hover:shadow-lg transition-shadow">
+            <div className="grid md:grid-cols-3 gap-8">
+              {announcements.map((announcement, index) => (
+                <Card key={announcement.id} className={`group fade-in-up`} style={{animationDelay: `${index * 0.1}s`}}>
                   <CardHeader>
                     <div className="flex items-start justify-between">
-                      <CardTitle className="text-lg line-clamp-2">
+                      <CardTitle className="text-xl line-clamp-2 group-hover:text-primary transition-colors">
                         {announcement.title}
                       </CardTitle>
                       {announcement.featured && (
-                        <Badge variant="secondary" className="ml-2 shrink-0">
+                        <Badge variant="secondary" className="ml-2 shrink-0 bg-accent/10 text-accent border-accent/20">
                           Featured
                         </Badge>
                       )}
@@ -295,10 +308,10 @@ const Index = () => {
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground line-clamp-3 mb-4">
+                    <p className="text-muted-foreground line-clamp-3 mb-6 leading-relaxed">
                       {announcement.excerpt || announcement.content.substring(0, 150) + '...'}
                     </p>
-                    <Button variant="outline" size="sm">
+                    <Button variant="outline" size="sm" className="group-hover:border-primary/50 group-hover:text-primary">
                       Read More
                     </Button>
                   </CardContent>

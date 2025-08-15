@@ -35,9 +35,9 @@ const News = () => {
   ];
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-12">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8 text-foreground">In the News</h1>
+        <h1 className="font-display text-5xl lg:text-6xl font-bold mb-12 text-foreground fade-in-up">In the News</h1>
         
         <div className="mb-6">
           <Card>
@@ -53,34 +53,36 @@ const News = () => {
           </Card>
         </div>
         
-        <div className="space-y-6">
-          {newsArticles.map((article) => (
-            <Card key={article.id} className="hover:shadow-lg transition-shadow">
+        <div className="space-y-8">
+          {newsArticles.map((article, index) => (
+            <Card key={article.id} className={`group fade-in-up`} style={{animationDelay: `${index * 0.1}s`}}>
               <CardHeader>
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1">
-                    <CardTitle className="text-lg mb-2">{article.title}</CardTitle>
-                    <CardDescription className="flex items-center gap-4 text-sm">
-                      <span className="font-medium">{article.publication}</span>
-                      <span className="flex items-center gap-1">
-                        <Calendar className="h-3 w-3" />
+                    <CardTitle className="text-2xl mb-3 group-hover:text-primary transition-colors">{article.title}</CardTitle>
+                    <CardDescription className="flex items-center gap-6 text-base">
+                      <span className="font-medium text-primary">{article.publication}</span>
+                      <span className="flex items-center gap-2 text-muted-foreground">
+                        <Calendar className="h-4 w-4" />
                         {new Date(article.date).toLocaleDateString()}
                       </span>
                     </CardDescription>
                   </div>
-                  <Badge variant="secondary">{article.category}</Badge>
+                  <Badge variant="secondary" className="bg-accent/10 text-accent border-accent/20 text-sm px-3 py-1">
+                    {article.category}
+                  </Badge>
                 </div>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4">{article.excerpt}</p>
+                <p className="text-muted-foreground mb-6 text-lg leading-relaxed">{article.excerpt}</p>
                 <a 
                   href={article.url}
-                  className="inline-flex items-center gap-2 text-primary hover:underline"
+                  className="inline-flex items-center gap-2 text-primary hover:text-primary-light link-underline font-medium"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   Read Full Article
-                  <ExternalLink className="h-3 w-3" />
+                  <ExternalLink className="h-4 w-4" />
                 </a>
               </CardContent>
             </Card>
