@@ -239,7 +239,7 @@ const AnnouncementForm = () => {
 
             <div className="space-y-2">
               <Label htmlFor="content">Content *</Label>
-              <div className="min-h-[200px]">
+              <div className="min-h-[300px] w-full">
                 <ReactQuill
                   ref={quillRef}
                   value={formData.content}
@@ -248,7 +248,7 @@ const AnnouncementForm = () => {
                   formats={formats}
                   placeholder="Write your announcement content here..."
                   theme="snow"
-                  style={{ height: '200px', marginBottom: '50px' }}
+                  className="h-[250px]"
                 />
               </div>
             </div>
