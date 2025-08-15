@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { supabase } from "@/integrations/supabase/client";
 import { UserCheck, Mail, Phone } from "lucide-react";
+import organogramImage from "@/assets/organogram.png";
 
 const Board = () => {
   const { data: boardMembers } = useQuery({
@@ -20,21 +21,32 @@ const Board = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8 text-foreground">Board Members</h1>
+        <h1 className="text-4xl font-bold mb-8 text-foreground">Bestuur</h1>
         
         <div className="mb-8">
           <Card>
             <CardHeader>
-              <CardTitle>Organizational Structure</CardTitle>
+              <CardTitle>Organisatiestructuur</CardTitle>
               <CardDescription>
-                Our club is governed by a dedicated board of volunteers committed to the development of hockey in our community.
+                Onze club wordt geleid door een toegewijd bestuur van vrijwilligers die zich inzetten voor de ontwikkeling van hockey in onze gemeenschap.
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground">
-                The board meets monthly to discuss club operations, strategic planning, and community engagement. 
-                Each member brings unique expertise to help our club grow and thrive.
+              <p className="text-muted-foreground mb-6">
+                Het bestuur komt maandelijks samen om clubactiviteiten, strategische planning en gemeenschapsbetrokkenheid te bespreken. 
+                Elk lid brengt unieke expertise mee om onze club te helpen groeien en bloeien.
               </p>
+              
+              {/* Organogram Image */}
+              <div className="flex justify-center mb-6">
+                <div className="max-w-md">
+                  <img 
+                    src={organogramImage} 
+                    alt="Organogram D-mon Hockey Club Bestuur" 
+                    className="w-full h-auto rounded-lg shadow-lg border"
+                  />
+                </div>
+              </div>
             </CardContent>
           </Card>
         </div>
@@ -52,7 +64,7 @@ const Board = () => {
                     />
                   ) : (
                     <div className="w-24 h-24 bg-muted rounded-full flex items-center justify-center text-muted-foreground text-xl font-semibold">
-                      {member.name.split(' ').map(n => n[0]).join('')}
+                      {member.name?.split(' ').map(n => n[0]).join('') || ''}
                     </div>
                   )}
                   
@@ -73,7 +85,7 @@ const Board = () => {
         {(!boardMembers || boardMembers.length === 0) && (
           <div className="text-center py-12">
             <UserCheck className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-            <p className="text-muted-foreground">Board information will be available soon.</p>
+            <p className="text-muted-foreground">Bestuursinformatie zal binnenkort beschikbaar zijn.</p>
           </div>
         )}
       </div>
