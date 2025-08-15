@@ -1,0 +1,167 @@
+import { 
+  Home, 
+  Users, 
+  UserCheck, 
+  ShoppingBag, 
+  Trophy,
+  ChevronDown,
+  MapPin,
+  Shield,
+  Newspaper,
+  History,
+  HandHeart,
+  FileText,
+  UserPlus,
+  Phone,
+  Calendar,
+  BookOpen,
+  Timer,
+  Zap
+} from "lucide-react";
+import { NavLink, useLocation } from "react-router-dom";
+
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
+  useSidebar,
+} from "@/components/ui/sidebar";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+
+const navigation = [
+  {
+    title: "Home",
+    url: "/",
+    icon: Home,
+  },
+  {
+    title: "The Club",
+    icon: Users,
+    items: [
+      { title: "Hockey Field & Mobility", url: "/club/field", icon: MapPin },
+      { title: "Teams", url: "/club/teams", icon: Trophy },
+      { title: "Board", url: "/club/board", icon: UserCheck },
+      { title: "Club Values", url: "/club/values", icon: Shield },
+      { title: "In the News", url: "/club/news", icon: Newspaper },
+      { title: "History", url: "/club/history", icon: History },
+      { title: "Sponsors", url: "/club/sponsors", icon: HandHeart },
+      { title: "Privacy Policy", url: "/club/privacy", icon: FileText },
+    ],
+  },
+  {
+    title: "Membership",
+    icon: UserPlus,
+    items: [
+      { title: "Join - Information", url: "/membership/info", icon: UserPlus },
+      { title: "Join - Registration", url: "/membership/register", icon: FileText },
+      { title: "Insurance", url: "/membership/insurance", icon: Shield },
+      { title: "Contact", url: "/membership/contact", icon: Phone },
+    ],
+  },
+  {
+    title: "Shop & Clothing",
+    url: "/shop",
+    icon: ShoppingBag,
+  },
+  {
+    title: "Sporting",
+    icon: Trophy,
+    items: [
+      { title: "Training", url: "/sporting/training", icon: Calendar },
+      { title: "How to Play Hockey", url: "/sporting/how-to-play", icon: BookOpen },
+      { title: "Rules & Refereeing", url: "/sporting/rules", icon: Timer },
+      { title: "Choosing the Right Stick", url: "/sporting/stick-guide", icon: Zap },
+    ],
+  },
+];
+
+export function AppSidebar() {
+  const { open, setOpen } = useSidebar();
+  const location = useLocation();
+  const currentPath = location.pathname;
+
+  const isActive = (path: string) => currentPath === path;
+  const isGroupActive = (items: { url: string }[]) => 
+    items.some(item => currentPath.startsWith(item.url));
+
+  const getNavCls = ({ isActive }: { isActive: boolean }) =>
+    isActive ? "bg-primary text-primary-foreground font-medium" : "hover:bg-muted/50";
+
+  return (
+    <Sidebar collapsible="icon">
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupLabel className="text-primary font-semibold">
+            D-Man Hockey Club
+          </SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {navigation.map((item) => {
+                if (item.items) {
+                  const isExpanded = isGroupActive(item.items);
+                  return (
+                    <Collapsible
+                      key={item.title}
+                      defaultOpen={isExpanded}
+                      className="group/collapsible"
+                    >
+                      <SidebarMenuItem>
+                        <CollapsibleTrigger asChild>
+                          <SidebarMenuButton className="hover:bg-muted/50">
+                            <item.icon className="h-4 w-4" />
+                            <span>{item.title}</span>
+                            <ChevronDown className="ml-auto h-4 w-4 transition-transform group-data-[state=open]/collapsible:rotate-180" />
+                          </SidebarMenuButton>
+                        </CollapsibleTrigger>
+                        <CollapsibleContent>
+                          <SidebarMenuSub>
+                            {item.items.map((subItem) => (
+                              <SidebarMenuSubItem key={subItem.title}>
+                                <SidebarMenuSubButton asChild>
+                                  <NavLink
+                                    to={subItem.url}
+                                    className={getNavCls}
+                                  >
+                                    <subItem.icon className="h-3 w-3" />
+                                    <span>{subItem.title}</span>
+                                  </NavLink>
+                                </SidebarMenuSubButton>
+                              </SidebarMenuSubItem>
+                            ))}
+                          </SidebarMenuSub>
+                        </CollapsibleContent>
+                      </SidebarMenuItem>
+                    </Collapsible>
+                  );
+                }
+
+                return (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton asChild>
+                      <NavLink
+                        to={item.url}
+                        end
+                        className={getNavCls}
+                      >
+                        <item.icon className="h-4 w-4" />
+                        <span>{item.title}</span>
+                      </NavLink>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
+    </Sidebar>
+  );
+}
