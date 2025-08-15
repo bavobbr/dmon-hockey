@@ -1,14 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
 import { Switch } from '@/components/ui/switch';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 interface AnnouncementFormData {
   title: string;
@@ -24,6 +25,7 @@ const AnnouncementForm = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const isEditing = Boolean(id);
+  const quillRef = useRef<ReactQuill>(null);
 
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState<AnnouncementFormData>({
@@ -125,6 +127,75 @@ const AnnouncementForm = () => {
     }));
   };
 
+  // Image upload handler for React Quill
+  const imageHandler = () => {
+    const input = document.createElement('input');
+    input.setAttribute('type', 'file');
+    input.setAttribute('accept', 'image/*');
+    input.click();
+
+    input.onchange = async () => {
+      const file = input.files?.[0];
+      if (!file) return;
+
+      try {
+        const fileExt = file.name.split('.').pop();
+        const fileName = `${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`;
+        
+        const { data, error } = await supabase.storage
+          .from('announcement-images')
+          .upload(fileName, file);
+
+        if (error) {
+          toast({
+            title: 'Error',
+            description: 'Failed to upload image',
+            variant: 'destructive',
+          });
+          return;
+        }
+
+        const { data: { publicUrl } } = supabase.storage
+          .from('announcement-images')
+          .getPublicUrl(data.path);
+
+        const quill = quillRef.current?.getEditor();
+        if (quill) {
+          const range = quill.getSelection();
+          quill.insertEmbed(range?.index || 0, 'image', publicUrl);
+        }
+      } catch (error) {
+        console.error('Error uploading image:', error);
+        toast({
+          title: 'Error',
+          description: 'Failed to upload image',
+          variant: 'destructive',
+        });
+      }
+    };
+  };
+
+  const modules = {
+    toolbar: {
+      container: [
+        [{ 'header': [1, 2, 3, false] }],
+        ['bold', 'italic', 'underline', 'strike'],
+        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+        [{ 'color': [] }, { 'background': [] }],
+        ['link', 'image'],
+        ['clean']
+      ],
+      handlers: {
+        image: imageHandler,
+      },
+    },
+  };
+
+  const formats = [
+    'header', 'bold', 'italic', 'underline', 'strike',
+    'list', 'bullet', 'color', 'background', 'link', 'image'
+  ];
+
   return (
     <div className="container mx-auto py-8 px-4">
       <div className="mb-8">
@@ -168,14 +239,18 @@ const AnnouncementForm = () => {
 
             <div className="space-y-2">
               <Label htmlFor="content">Content *</Label>
-              <Textarea
-                id="content"
-                value={formData.content}
-                onChange={(e) => handleInputChange('content', e.target.value)}
-                placeholder="Write your announcement content here..."
-                className="min-h-[200px]"
-                required
-              />
+              <div className="min-h-[200px]">
+                <ReactQuill
+                  ref={quillRef}
+                  value={formData.content}
+                  onChange={(value) => handleInputChange('content', value)}
+                  modules={modules}
+                  formats={formats}
+                  placeholder="Write your announcement content here..."
+                  theme="snow"
+                  style={{ height: '200px', marginBottom: '50px' }}
+                />
+              </div>
             </div>
 
             <div className="flex items-center space-x-2">
