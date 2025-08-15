@@ -247,4 +247,41 @@ All colors MUST be HSL.
   .fade-in-up:nth-child(4) { animation-delay: 0.4s; }
   .fade-in-up:nth-child(5) { animation-delay: 0.5s; }
   .fade-in-up:nth-child(6) { animation-delay: 0.6s; }
+
+  /* React Quill editor styling */
+  .ql-editor {
+    @apply text-foreground;
+    color: hsl(var(--foreground)) !important;
+  }
+
+  .ql-editor p {
+    @apply text-foreground;
+    color: hsl(var(--foreground)) !important;
+  }
+
+  .ql-snow .ql-editor {
+    @apply border-border bg-background text-foreground;
+    color: hsl(var(--foreground)) !important;
+  }
+
+  .ql-snow {
+    @apply border-border;
+  }
+
+  .ql-toolbar {
+    @apply border-border bg-muted/30;
+  }
+
+  .ql-snow .ql-stroke {
+    stroke: hsl(var(--foreground)) !important;
+  }
+
+  .ql-snow .ql-fill {
+    fill: hsl(var(--foreground)) !important;
+  }
+
+  .ql-snow .ql-picker {
+    @apply text-foreground;
+    color: hsl(var(--foreground)) !important;
+  }
 }
