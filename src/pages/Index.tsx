@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Link } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
@@ -311,9 +312,32 @@ const Index = () => {
                     <p className="text-muted-foreground line-clamp-3 mb-6 leading-relaxed">
                       {announcement.excerpt || announcement.content.substring(0, 150) + '...'}
                     </p>
-                    <Button variant="outline" size="sm" className="group-hover:border-primary/50 group-hover:text-primary">
-                      Lees Meer
-                    </Button>
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button variant="outline" size="sm" className="group-hover:border-primary/50 group-hover:text-primary">
+                          Lees Meer
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+                        <DialogHeader>
+                          <DialogTitle className="text-xl font-bold mb-2">
+                            {announcement.title}
+                          </DialogTitle>
+                          <DialogDescription className="text-sm text-muted-foreground">
+                            {new Date(announcement.created_at).toLocaleDateString("nl-BE")}
+                            {announcement.featured && (
+                              <Badge variant="secondary" className="ml-2 bg-accent/10 text-accent border-accent/20">
+                                Uitgelicht
+                              </Badge>
+                            )}
+                          </DialogDescription>
+                        </DialogHeader>
+                        <div 
+                          className="prose prose-sm max-w-none text-foreground mt-4"
+                          dangerouslySetInnerHTML={{ __html: announcement.content }}
+                        />
+                      </DialogContent>
+                    </Dialog>
                   </CardContent>
                 </Card>
               ))}
