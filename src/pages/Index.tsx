@@ -26,18 +26,75 @@ interface Team {
   season: string;
 }
 
+interface Sponsor {
+  id: string;
+  name: string;
+  logo_url: string;
+  website_url: string;
+  tier: string;
+}
+
+interface BoardMember {
+  id: string;
+  name: string;
+  position: string;
+  photo_url: string;
+  order_index: number;
+}
+
 const Index = () => {
   const { user, isAdmin, isModerator, loading } = useAuth();
   const { toast } = useToast();
   const [announcements, setAnnouncements] = useState<Announcement[]>([]);
   const [teams, setTeams] = useState<Team[]>([]);
+  const [sponsors, setSponsors] = useState<Sponsor[]>([]);
+  const [boardMembers, setBoardMembers] = useState<BoardMember[]>([]);
   const [announcementsLoading, setAnnouncementsLoading] = useState(true);
   const [teamsLoading, setTeamsLoading] = useState(true);
+  const [sponsorsLoading, setSponsorsLoading] = useState(true);
+  const [boardLoading, setBoardLoading] = useState(true);
 
   useEffect(() => {
     fetchAnnouncements();
     fetchTeams();
+    fetchSponsors();
+    fetchBoardMembers();
   }, []);
+
+  const fetchSponsors = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('sponsors')
+        .select('id, name, logo_url, website_url, tier')
+        .eq('active', true)
+        .order('tier', { ascending: true });
+
+      if (error) throw error;
+      setSponsors(data || []);
+    } catch (error) {
+      console.error('Error fetching sponsors:', error);
+    } finally {
+      setSponsorsLoading(false);
+    }
+  };
+
+  const fetchBoardMembers = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('board_members')
+        .select('id, name, position, photo_url, order_index')
+        .eq('active', true)
+        .order('order_index', { ascending: true })
+        .limit(6);
+
+      if (error) throw error;
+      setBoardMembers(data || []);
+    } catch (error) {
+      console.error('Error fetching board members:', error);
+    } finally {
+      setBoardLoading(false);
+    }
+  };
 
   const fetchTeams = async () => {
     try {
@@ -312,6 +369,108 @@ const Index = () => {
               {isAdmin && (
                 <Link to="/admin/teams/new">
                   <Button>Add First Team</Button>
+                </Link>
+              )}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Sponsors Section */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Our Sponsors</h2>
+          
+          {sponsorsLoading ? (
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+              {[...Array(6)].map((_, i) => (
+                <div key={i} className="animate-pulse bg-muted rounded-lg h-24"></div>
+              ))}
+            </div>
+          ) : sponsors.length > 0 ? (
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+              {sponsors.map((sponsor) => (
+                <div key={sponsor.id} className="flex items-center justify-center p-4 bg-card rounded-lg border hover:shadow-lg transition-shadow">
+                  {sponsor.logo_url ? (
+                    <img 
+                      src={sponsor.logo_url} 
+                      alt={sponsor.name}
+                      className="max-h-16 max-w-full object-contain"
+                    />
+                  ) : (
+                    <div className="text-center text-sm font-medium text-muted-foreground">
+                      {sponsor.name}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground mb-4">No sponsors yet.</p>
+              {isAdmin && (
+                <Link to="/admin/sponsors/new">
+                  <Button>Add First Sponsor</Button>
+                </Link>
+              )}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Board Members Section */}
+      <section className="py-16 px-4 bg-muted/50">
+        <div className="container mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Our Leadership</h2>
+          
+          {boardLoading ? (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[...Array(6)].map((_, i) => (
+                <Card key={i} className="animate-pulse">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-4">
+                      <div className="w-16 h-16 bg-muted rounded-full"></div>
+                      <div className="flex-1">
+                        <div className="h-4 bg-muted rounded w-3/4 mb-2"></div>
+                        <div className="h-3 bg-muted rounded w-1/2"></div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          ) : boardMembers.length > 0 ? (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {boardMembers.map((member) => (
+                <Card key={member.id} className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-4">
+                      {member.photo_url ? (
+                        <img 
+                          src={member.photo_url} 
+                          alt={member.name}
+                          className="w-16 h-16 object-cover rounded-full border"
+                        />
+                      ) : (
+                        <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center text-muted-foreground">
+                          {member.name.split(' ').map(n => n[0]).join('')}
+                        </div>
+                      )}
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-foreground">{member.name}</h3>
+                        <p className="text-sm text-primary font-medium">{member.position}</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground mb-4">No board members listed yet.</p>
+              {isAdmin && (
+                <Link to="/admin/board-members/new">
+                  <Button>Add First Board Member</Button>
                 </Link>
               )}
             </div>

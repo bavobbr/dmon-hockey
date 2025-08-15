@@ -13,6 +13,10 @@ import Announcements from "./pages/admin/Announcements";
 import AnnouncementForm from "./pages/admin/AnnouncementForm";
 import Teams from "./pages/admin/Teams";
 import TeamForm from "./pages/admin/TeamForm";
+import Sponsors from "./pages/admin/Sponsors";
+import SponsorForm from "./pages/admin/SponsorForm";
+import BoardMembers from "./pages/admin/BoardMembers";
+import BoardMemberForm from "./pages/admin/BoardMemberForm";
 
 const queryClient = new QueryClient();
 
@@ -39,6 +43,36 @@ const App = () => (
             <Route path="/admin/teams" element={
               <ProtectedRoute requireAdmin>
                 <Teams />
+              </ProtectedRoute>
+            } />
+            <Route path="/admin/sponsors" element={
+              <ProtectedRoute requireAdmin>
+                <Sponsors />
+              </ProtectedRoute>
+            } />
+            <Route path="/admin/sponsors/new" element={
+              <ProtectedRoute requireAdmin>
+                <SponsorForm />
+              </ProtectedRoute>
+            } />
+            <Route path="/admin/sponsors/edit/:id" element={
+              <ProtectedRoute requireAdmin>
+                <SponsorForm />
+              </ProtectedRoute>
+            } />
+            <Route path="/admin/board-members" element={
+              <ProtectedRoute requireAdmin>
+                <BoardMembers />
+              </ProtectedRoute>
+            } />
+            <Route path="/admin/board-members/new" element={
+              <ProtectedRoute requireAdmin>
+                <BoardMemberForm />
+              </ProtectedRoute>
+            } />
+            <Route path="/admin/board-members/edit/:id" element={
+              <ProtectedRoute requireAdmin>
+                <BoardMemberForm />
               </ProtectedRoute>
             } />
             <Route path="/admin/teams/new" element={
