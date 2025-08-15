@@ -43,42 +43,42 @@ const navigation = [
     icon: Home,
   },
   {
-    title: "The Club",
+    title: "De Club",
     icon: Users,
     items: [
-      { title: "Hockey Field & Mobility", url: "/club/field", icon: MapPin },
+      { title: "Hockeyterrein & Mobiliteit", url: "/club/field", icon: MapPin },
       { title: "Teams", url: "/club/teams", icon: Trophy },
-      { title: "Board", url: "/club/board", icon: UserCheck },
-      { title: "Club Values", url: "/club/values", icon: Shield },
-      { title: "In the News", url: "/club/news", icon: Newspaper },
-      { title: "History", url: "/club/history", icon: History },
+      { title: "Bestuur", url: "/club/board", icon: UserCheck },
+      { title: "Clubwaarden", url: "/club/values", icon: Shield },
+      { title: "In het Nieuws", url: "/club/news", icon: Newspaper },
+      { title: "Geschiedenis", url: "/club/history", icon: History },
       { title: "Sponsors", url: "/club/sponsors", icon: HandHeart },
-      { title: "Privacy Policy", url: "/club/privacy", icon: FileText },
+      { title: "Privacybeleid", url: "/club/privacy", icon: FileText },
     ],
   },
   {
-    title: "Membership",
+    title: "Lidmaatschap",
     icon: UserPlus,
     items: [
-      { title: "Join - Information", url: "/membership/info", icon: UserPlus },
-      { title: "Join - Registration", url: "/membership/register", icon: FileText },
-      { title: "Insurance", url: "/membership/insurance", icon: Shield },
+      { title: "Lid Worden - Informatie", url: "/membership/info", icon: UserPlus },
+      { title: "Lid Worden - Registratie", url: "/membership/register", icon: FileText },
+      { title: "Verzekering", url: "/membership/insurance", icon: Shield },
       { title: "Contact", url: "/membership/contact", icon: Phone },
     ],
   },
   {
-    title: "Shop & Clothing",
+    title: "Shop & Kleding",
     url: "/shop",
     icon: ShoppingBag,
   },
   {
-    title: "Sporting",
+    title: "Sportief",
     icon: Trophy,
     items: [
       { title: "Training", url: "/sporting/training", icon: Calendar },
-      { title: "How to Play Hockey", url: "/sporting/how-to-play", icon: BookOpen },
-      { title: "Rules & Refereeing", url: "/sporting/rules", icon: Timer },
-      { title: "Choosing the Right Stick", url: "/sporting/stick-guide", icon: Zap },
+      { title: "Hoe Hockey Spelen", url: "/sporting/how-to-play", icon: BookOpen },
+      { title: "Regels & Scheidsrechten", url: "/sporting/rules", icon: Timer },
+      { title: "De Juiste Stick Kiezen", url: "/sporting/stick-guide", icon: Zap },
     ],
   },
 ];
@@ -110,7 +110,7 @@ export function AppSidebar() {
             </div>
             <div className="group-data-[collapsible=icon]:hidden">
               <div className="text-sm font-semibold text-sidebar-foreground">D-mon Hockey</div>
-              <div className="text-xs text-sidebar-foreground/60">Club Belgium</div>
+              <div className="text-xs text-sidebar-foreground/60">Club België</div>
             </div>
           </div>
         </div>
