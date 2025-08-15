@@ -81,10 +81,8 @@ const Index = () => {
   const fetchBoardMembers = async () => {
     try {
       const { data, error } = await supabase
-        .from('board_members')
+        .from('board_members_public')
         .select('id, name, position, photo_url, order_index')
-        .eq('active', true)
-        .order('order_index', { ascending: true })
         .limit(6);
 
       if (error) throw error;
