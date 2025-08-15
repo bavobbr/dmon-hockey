@@ -8,40 +8,40 @@ const HockeyField = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8 text-foreground">Hockey Field & Mobility</h1>
+        <h1 className="text-4xl font-bold mb-8 text-foreground">Hockeyterrein & Mobiliteit</h1>
         
         <div className="grid gap-6">
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <MapPin className="h-5 w-5" />
-                Field Location
+                Locatie Terrein
               </CardTitle>
-              <CardDescription>Find our hockey field in Grembergen</CardDescription>
+              <CardDescription>Vind ons hockeyterrein in Grembergen</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
                 <div>
-                  <h3 className="font-semibold mb-2">Address</h3>
+                  <h3 className="font-semibold mb-2">Adres</h3>
                   <p className="text-muted-foreground">
                     Oud Kerkhofstraat 20<br />
                     Grembergen<br />
-                    Belgium
+                    België
                   </p>
                 </div>
                 
                 <Alert className="border-amber-200 bg-amber-50 dark:bg-amber-950/20">
                   <AlertTriangle className="h-4 w-4 text-amber-600" />
                   <AlertDescription className="text-amber-800 dark:text-amber-200">
-                    <strong>Construction Notice:</strong> The intersection of Mechelsesteenweg/Martelarenlaan (Scheldebrug)/Noordlaan/Leopoldlaan is under construction, affecting accessibility for pedestrians, cyclists and motorized traffic.{" "}
+                    <strong>Opgelet:</strong> De herinrichting van het kruispunt Mechelsesteenweg/Martelarenlaan (Scheldebrug)/Noordlaan/Leopoldlaan is gestart met impact op de toegankelijkheid voor voetgangers, fietsers en gemotoriseerd verkeer.{" "}
                     <a 
                       href="https://www.dendermonde.be/werkenmechelsepoort" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="underline hover:no-underline"
                     >
-                      Check the city website for the latest information
-                    </a> and allow extra travel time.
+                      Bekijk de website van stad Dendermonde voor de meest recente informatie
+                    </a> en vertrek op tijd.
                   </AlertDescription>
                 </Alert>
               </div>
@@ -52,22 +52,22 @@ const HockeyField = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Car className="h-5 w-5" />
-                Parking & Mobility
+                Parkeren & Mobiliteit
               </CardTitle>
-              <CardDescription>Important information about getting to our field</CardDescription>
+              <CardDescription>Belangrijke informatie over hoe je ons terrein bereikt</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
                 <p className="text-sm text-muted-foreground">
-                  Parking spaces are limited. To maintain peace and quiet in the area, we encourage using sustainable transport alternatives like cycling. If you come by car, please try to carpool and use the designated parking locations shown in the map below.
+                  Het aantal parkeerplaatsen is beperkt. Om de rust te bewaren, vragen we om zo veel mogelijk gebruik te maken van duurzame alternatieven zoals de fiets. Kom je met de wagen, tracht te carpoolen en maak gebruik van de parkeerlocaties zoals aangegeven op onderstaande kaart.
                 </p>
                 
                 <div className="space-y-3">
-                  <h4 className="font-medium">Parking Map & Guidelines</h4>
+                  <h4 className="font-medium">Parkeerkaart & Richtlijnen</h4>
                   <div className="border rounded-lg overflow-hidden">
                     <img 
                       src={mobilityMap} 
-                      alt="Mobility and parking map for D-mon Hockey Club" 
+                      alt="Mobiliteits- en parkeerkaart voor D-mon Hockey Club" 
                       className="w-full h-auto"
                     />
                   </div>
@@ -80,7 +80,7 @@ const HockeyField = () => {
                         className="flex items-center gap-2"
                       >
                         <FileText className="h-4 w-4" />
-                        Download Parking Map PDF
+                        Download Parkeerkaart PDF
                       </a>
                     </Button>
                   </div>
@@ -93,31 +93,31 @@ const HockeyField = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Bus className="h-5 w-5" />
-                Sustainable Transport Options
+                Duurzame Vervoersopties
               </CardTitle>
-              <CardDescription>Eco-friendly ways to reach our field</CardDescription>
+              <CardDescription>Milieuvriendelijke manieren om ons terrein te bereiken</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="grid md:grid-cols-3 gap-4">
                 <div className="flex items-start gap-3">
                   <Bike className="h-5 w-5 text-primary mt-1" />
                   <div>
-                    <h4 className="font-medium">Cycling (Preferred)</h4>
-                    <p className="text-sm text-muted-foreground">Bike racks available on-site. Help us maintain a peaceful environment.</p>
+                    <h4 className="font-medium">Fietsen (Aanbevolen)</h4>
+                    <p className="text-sm text-muted-foreground">Fietsrekken beschikbaar ter plaatse. Help ons een rustige omgeving te behouden.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Car className="h-5 w-5 text-primary mt-1" />
                   <div>
-                    <h4 className="font-medium">Carpooling</h4>
-                    <p className="text-sm text-muted-foreground">Share rides with teammates to reduce parking pressure.</p>
+                    <h4 className="font-medium">Carpoolen</h4>
+                    <p className="text-sm text-muted-foreground">Deel ritten met teamgenoten om de parkeerdruk te verminderen.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Bus className="h-5 w-5 text-primary mt-1" />
                   <div>
-                    <h4 className="font-medium">Public Transport</h4>
-                    <p className="text-sm text-muted-foreground">Contact us for the best public transport routes.</p>
+                    <h4 className="font-medium">Openbaar Vervoer</h4>
+                    <p className="text-sm text-muted-foreground">Contacteer ons voor de beste openbaar vervoer routes.</p>
                   </div>
                 </div>
               </div>
@@ -126,31 +126,31 @@ const HockeyField = () => {
 
           <Card>
             <CardHeader>
-              <CardTitle>Field Usage Agreements</CardTitle>
-              <CardDescription>Guidelines for using our hockey field responsibly</CardDescription>
+              <CardTitle>Afspraken Gebruik Hockeyterrein</CardTitle>
+              <CardDescription>Richtlijnen voor verantwoordelijk gebruik van ons hockeyterrein</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
                 <p className="text-sm text-muted-foreground">
-                  We want to enjoy our new field together with all our players for a long time. We're confident this will work if everyone respects these agreements:
+                  We willen graag samen met onze spelers veel en lang kunnen genieten van ons nieuwe terrein. We zijn ervan overtuigd dat dit zal lukken als iedereen deze afspraken respecteert:
                 </p>
                 
                 <div className="space-y-3">
                   <div className="flex items-start gap-2">
                     <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
-                    <p className="text-sm">Respect the field surface - proper hockey shoes required</p>
+                    <p className="text-sm">Respecteer het terreinoppervlak - juiste hockeyschoenen verplicht</p>
                   </div>
                   <div className="flex items-start gap-2">
                     <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
-                    <p className="text-sm">Keep the field clean - clean up after use and return equipment properly</p>
+                    <p className="text-sm">Houd het terrein schoon - ruim op na gebruik en berg materiaal goed op</p>
                   </div>
                   <div className="flex items-start gap-2">
                     <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
-                    <p className="text-sm">Follow scheduled usage times and respect other users</p>
+                    <p className="text-sm">Volg de geplande gebruikstijden en respecteer andere gebruikers</p>
                   </div>
                   <div className="flex items-start gap-2">
                     <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
-                    <p className="text-sm">Report any maintenance issues to field management immediately</p>
+                    <p className="text-sm">Meld onderhoudsproblemen onmiddellijk aan het terreinbeheer</p>
                   </div>
                 </div>
 
@@ -163,7 +163,7 @@ const HockeyField = () => {
                       className="flex items-center gap-2"
                     >
                       <FileText className="h-4 w-4" />
-                      Download Complete Field Agreements (PDF)
+                      Download Volledige Terreinafspraken (PDF)
                     </a>
                   </Button>
                 </div>
