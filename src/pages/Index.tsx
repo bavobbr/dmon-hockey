@@ -135,14 +135,14 @@ const Index = () => {
       const { error } = await supabase.auth.signOut();
       if (error) throw error;
       toast({
-        title: "Signed out successfully",
-        description: "You have been logged out of your account.",
+        title: "Succesvol afgemeld",
+        description: "Je bent uitgelogd van je account.",
       });
     } catch (error) {
       console.error('Error signing out:', error);
       toast({
-        title: "Error",
-        description: "Failed to sign out. Please try again.",
+        title: "Fout",
+        description: "Afmelden mislukt. Probeer opnieuw.",
         variant: "destructive",
       });
     }
@@ -174,12 +174,12 @@ const Index = () => {
             D-mon Hockey Club
           </h1>
           <p className="text-xl lg:text-2xl mb-10 max-w-3xl mx-auto leading-relaxed fade-in-up opacity-90">
-            Welcome to our field hockey community in Belgium. Join us for training, matches, and the passion of hockey.
+            Welkom bij onze veldhockey gemeenschap in België. Sluit je aan voor trainingen, wedstrijden, en de passie voor hockey.
           </p>
           {user ? (
             <div className="space-y-4">
               <div className="text-center">
-                <p className="text-lg mb-2">Welcome back, {user.email}!</p>
+                <p className="text-lg mb-2">Welkom terug, {user.email}!</p>
                 {isAdmin && <span className="text-sm bg-accent text-accent-foreground px-3 py-1 rounded-full mr-2">Admin</span>}
                 {isModerator && !isAdmin && <span className="text-sm bg-secondary text-secondary-foreground px-3 py-1 rounded-full mr-2">Moderator</span>}
               </div>
@@ -192,21 +192,21 @@ const Index = () => {
                   </Link>
                 )}
                 <Button size="lg" variant="outline" onClick={handleSignOut} className="border-white/50 text-white bg-white/10 hover:bg-white/20 hover:text-white hover:border-white/70 px-8 py-4 backdrop-blur-sm">
-                  Sign Out
+                  Afmelden
                 </Button>
               </div>
             </div>
           ) : (
             <div className="flex gap-6 justify-center flex-wrap fade-in-up">
               <Button size="lg" variant="hero" className="px-8 py-4">
-                Join Our Club
+                Word Lid van Onze Club
               </Button>
               <Button size="lg" variant="outline" className="border-white/50 text-white bg-white/10 hover:bg-white/20 hover:text-white hover:border-white/70 px-8 py-4 backdrop-blur-sm">
-                Learn More
+                Leer Meer
               </Button>
               <Link to="/auth">
                 <Button size="lg" variant="outline" className="border-white/50 text-white bg-white/10 hover:bg-white/20 hover:text-white hover:border-white/70 px-8 py-4 backdrop-blur-sm">
-                  Member Login
+                  Leden Login
                 </Button>
               </Link>
             </div>
@@ -217,19 +217,19 @@ const Index = () => {
       {/* Quick Info Cards */}
       <section className="py-20 px-4 bg-gradient-subtle">
         <div className="container mx-auto">
-          <h2 className="font-display text-4xl lg:text-5xl font-bold text-center mb-16 text-foreground">What We Offer</h2>
+          <h2 className="font-display text-4xl lg:text-5xl font-bold text-center mb-16 text-foreground">Wat We Bieden</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="border-primary/20 hover:border-primary/40 group fade-in-up">
               <CardHeader className="pb-4">
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                   <div className="w-6 h-6 bg-primary rounded-sm"></div>
                 </div>
-                <CardTitle className="text-primary text-xl">Training Sessions</CardTitle>
-                <CardDescription className="text-base">Professional coaching for all skill levels</CardDescription>
+                <CardTitle className="text-primary text-xl">Trainingen</CardTitle>
+                <CardDescription className="text-base">Professionele coaching voor alle niveaus</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground leading-relaxed">
-                  Weekly training sessions with experienced coaches to improve your technique and game strategy.
+                  Wekelijkse trainingen met ervaren coaches om je techniek en spelstrategie te verbeteren.
                 </p>
               </CardContent>
             </Card>
@@ -239,12 +239,12 @@ const Index = () => {
                 <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-secondary/20 transition-colors">
                   <div className="w-6 h-6 bg-secondary rounded-sm"></div>
                 </div>
-                <CardTitle className="text-secondary text-xl">Competitive Matches</CardTitle>
-                <CardDescription className="text-base">Regular league and tournament play</CardDescription>
+                <CardTitle className="text-secondary text-xl">Competitieve Wedstrijden</CardTitle>
+                <CardDescription className="text-base">Regelmatige competitie en toernooien</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground leading-relaxed">
-                  Participate in local and regional competitions representing our club with pride.
+                  Deelnemen aan lokale en regionale competities om onze club met trots te vertegenwoordigen.
                 </p>
               </CardContent>
             </Card>
@@ -254,12 +254,12 @@ const Index = () => {
                 <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
                   <div className="w-6 h-6 bg-accent rounded-sm"></div>
                 </div>
-                <CardTitle className="text-accent text-xl">Community Spirit</CardTitle>
-                <CardDescription className="text-base">A welcoming hockey family</CardDescription>
+                <CardTitle className="text-accent text-xl">Gemeenschapsgevoel</CardTitle>
+                <CardDescription className="text-base">Een gastvrije hockeyfamilie</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground leading-relaxed">
-                  Join a supportive community of hockey enthusiasts who share your passion for the sport.
+                  Sluit je aan bij een ondersteunende gemeenschap van hockeyliefhebbers die je passie voor de sport delen.
                 </p>
               </CardContent>
             </Card>
@@ -270,7 +270,7 @@ const Index = () => {
       {/* Latest Announcements */}
       <section className="py-20 px-4">
         <div className="container mx-auto">
-          <h2 className="font-display text-4xl lg:text-5xl font-bold text-center mb-16 text-foreground">Latest News</h2>
+          <h2 className="font-display text-4xl lg:text-5xl font-bold text-center mb-16 text-foreground">Laatste Nieuws</h2>
           
           {announcementsLoading ? (
             <div className="grid md:grid-cols-3 gap-6">
@@ -299,12 +299,12 @@ const Index = () => {
                       </CardTitle>
                       {announcement.featured && (
                         <Badge variant="secondary" className="ml-2 shrink-0 bg-accent/10 text-accent border-accent/20">
-                          Featured
+                          Uitgelicht
                         </Badge>
                       )}
                     </div>
                     <CardDescription className="text-sm text-muted-foreground">
-                      {new Date(announcement.created_at).toLocaleDateString()}
+                      {new Date(announcement.created_at).toLocaleDateString("nl-BE")}
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
@@ -312,7 +312,7 @@ const Index = () => {
                       {announcement.excerpt || announcement.content.substring(0, 150) + '...'}
                     </p>
                     <Button variant="outline" size="sm" className="group-hover:border-primary/50 group-hover:text-primary">
-                      Read More
+                      Lees Meer
                     </Button>
                   </CardContent>
                 </Card>
@@ -320,10 +320,10 @@ const Index = () => {
             </div>
           ) : (
             <div className="text-center py-12">
-              <p className="text-muted-foreground mb-4">No announcements yet.</p>
+              <p className="text-muted-foreground mb-4">Nog geen aankondigingen.</p>
               {(isAdmin || isModerator) && (
                 <Link to="/admin/announcements/new">
-                  <Button>Create First Announcement</Button>
+                  <Button>Eerste Aankondiging Maken</Button>
                 </Link>
               )}
             </div>
@@ -334,7 +334,7 @@ const Index = () => {
       {/* Teams Section */}
       <section className="py-16 px-4 bg-muted/50">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Our Teams</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Onze Teams</h2>
           
           {teamsLoading ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -376,10 +376,10 @@ const Index = () => {
             </div>
           ) : (
             <div className="text-center py-12">
-              <p className="text-muted-foreground mb-4">No teams available yet.</p>
+              <p className="text-muted-foreground mb-4">Nog geen teams beschikbaar.</p>
               {isAdmin && (
                 <Link to="/admin/teams/new">
-                  <Button>Add First Team</Button>
+                  <Button>Eerste Team Toevoegen</Button>
                 </Link>
               )}
             </div>
@@ -390,7 +390,7 @@ const Index = () => {
       {/* Sponsors Section */}
       <section className="py-16 px-4">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Our Sponsors</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Onze Sponsors</h2>
           
           {sponsorsLoading ? (
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
@@ -418,10 +418,10 @@ const Index = () => {
             </div>
           ) : (
             <div className="text-center py-12">
-              <p className="text-muted-foreground mb-4">No sponsors yet.</p>
+              <p className="text-muted-foreground mb-4">Nog geen sponsors.</p>
               {isAdmin && (
                 <Link to="/admin/sponsors/new">
-                  <Button>Add First Sponsor</Button>
+                  <Button>Eerste Sponsor Toevoegen</Button>
                 </Link>
               )}
             </div>
@@ -432,7 +432,7 @@ const Index = () => {
       {/* Board Members Section */}
       <section className="py-16 px-4 bg-muted/50">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Our Leadership</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Ons Bestuur</h2>
           
           {boardLoading ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -478,10 +478,10 @@ const Index = () => {
             </div>
           ) : (
             <div className="text-center py-12">
-              <p className="text-muted-foreground mb-4">No board members listed yet.</p>
+              <p className="text-muted-foreground mb-4">Nog geen bestuursleden vermeld.</p>
               {isAdmin && (
                 <Link to="/admin/board-members/new">
-                  <Button>Add First Board Member</Button>
+                  <Button>Eerste Bestuurslid Toevoegen</Button>
                 </Link>
               )}
             </div>
@@ -492,19 +492,19 @@ const Index = () => {
       {/* Club Colors Showcase */}
       <section className="py-16 bg-muted">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-12">Our Club Colors</h2>
+          <h2 className="text-3xl font-bold mb-12">Onze Clubkleuren</h2>
           <div className="flex justify-center gap-4 flex-wrap">
             <div className="w-20 h-20 bg-primary rounded-lg shadow-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-xs">Blue</span>
+              <span className="text-primary-foreground font-bold text-xs">Blauw</span>
             </div>
             <div className="w-20 h-20 bg-secondary rounded-lg shadow-lg flex items-center justify-center">
-              <span className="text-secondary-foreground font-bold text-xs">Red</span>
+              <span className="text-secondary-foreground font-bold text-xs">Rood</span>
             </div>
             <div className="w-20 h-20 bg-accent rounded-lg shadow-lg flex items-center justify-center">
-              <span className="text-accent-foreground font-bold text-xs">Gold</span>
+              <span className="text-accent-foreground font-bold text-xs">Goud</span>
             </div>
             <div className="w-20 h-20 bg-foreground rounded-lg shadow-lg flex items-center justify-center">
-              <span className="text-background font-bold text-xs">Dark</span>
+              <span className="text-background font-bold text-xs">Donker</span>
             </div>
           </div>
         </div>
