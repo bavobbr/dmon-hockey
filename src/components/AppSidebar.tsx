@@ -98,10 +98,24 @@ export function AppSidebar() {
   return (
     <Sidebar collapsible="icon">
       <SidebarContent>
+        {/* Logo Header */}
+        <div className="border-b border-sidebar-border p-4">
+          <div className="flex items-center gap-3">
+            <div className="bg-white rounded-lg p-2 shadow-sm flex-shrink-0">
+              <img 
+                src="/lovable-uploads/03104bbc-f9de-44a2-a8b0-aedb91fd1c6c.png" 
+                alt="D-mon Hockey Club Logo" 
+                className="w-8 h-8 object-contain"
+              />
+            </div>
+            <div className="group-data-[collapsible=icon]:hidden">
+              <div className="text-sm font-semibold text-sidebar-foreground">D-mon Hockey</div>
+              <div className="text-xs text-sidebar-foreground/60">Club Belgium</div>
+            </div>
+          </div>
+        </div>
+        
         <SidebarGroup>
-          <SidebarGroupLabel className="text-primary font-semibold">
-            D-mon Hockey Club
-          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {navigation.map((item) => {
