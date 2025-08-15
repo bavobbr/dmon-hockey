@@ -4,6 +4,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { Menu } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { AppSidebar } from "@/components/AppSidebar";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
@@ -61,10 +63,32 @@ const App = () => (
             <div className="min-h-screen flex w-full">
               <AppSidebar />
               <div className="flex-1 flex flex-col">
-                <header className="h-14 flex items-center justify-between border-b bg-background px-4 relative z-10">
-                  <div className="flex items-center gap-4">
-                    <SidebarTrigger />
+                <header className="h-14 flex items-center justify-between border-b bg-background px-4 relative z-10 md:px-6">
+                  <div className="flex items-center gap-3">
+                    {/* Mobile-optimized menu button */}
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="lg:hidden flex items-center gap-2 px-3 py-2 text-primary bg-primary/5 hover:bg-primary/10 border border-primary/20 rounded-lg"
+                      asChild
+                    >
+                      <SidebarTrigger>
+                        <Menu className="h-5 w-5" />
+                        <span className="text-sm font-medium">Menu</span>
+                      </SidebarTrigger>
+                    </Button>
+                    
+                    {/* Desktop sidebar trigger - subtle */}
+                    <div className="hidden lg:block">
+                      <SidebarTrigger />
+                    </div>
+                    
                     <h1 className="text-lg font-semibold text-foreground">D-mon Hockey Club</h1>
+                  </div>
+                  
+                  {/* Mobile hint text */}
+                  <div className="lg:hidden text-xs text-muted-foreground">
+                    Tik op Menu
                   </div>
                 </header>
                 <main className="flex-1 overflow-auto">
