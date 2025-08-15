@@ -93,13 +93,15 @@ export function AppSidebar() {
     items.some(item => currentPath.startsWith(item.url));
 
   const getNavCls = ({ isActive }: { isActive: boolean }) =>
-    isActive ? "bg-primary text-primary-foreground font-medium" : "text-foreground hover:bg-muted hover:text-foreground";
+    isActive 
+      ? "bg-primary text-white font-semibold shadow-sm" 
+      : "text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white transition-colors";
 
   return (
-    <Sidebar collapsible="icon">
-      <SidebarContent>
+    <Sidebar collapsible="icon" className="bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800">
+      <SidebarContent className="bg-white dark:bg-gray-900">
         {/* Logo Header */}
-        <div className="border-b border-sidebar-border p-4">
+        <div className="border-b border-gray-200 dark:border-gray-800 p-4 bg-white dark:bg-gray-900">
           <div className="flex items-center gap-3">
             <div className="bg-white rounded-lg p-2 shadow-sm flex-shrink-0">
               <img 
@@ -109,15 +111,15 @@ export function AppSidebar() {
               />
             </div>
             <div className="group-data-[collapsible=icon]:hidden">
-              <div className="text-sm font-semibold text-sidebar-foreground">D-mon Hockey</div>
-              <div className="text-xs text-sidebar-foreground/60">Club België</div>
+              <div className="text-sm font-semibold text-gray-900 dark:text-white">D-mon Hockey</div>
+              <div className="text-xs text-gray-600 dark:text-gray-400">Club België</div>
             </div>
           </div>
         </div>
         
-        <SidebarGroup>
+        <SidebarGroup className="px-3 py-2">
           <SidebarGroupContent>
-            <SidebarMenu>
+            <SidebarMenu className="space-y-1">
               {navigation.map((item) => {
                 if (item.items) {
                   const isExpanded = isGroupActive(item.items);
@@ -129,23 +131,31 @@ export function AppSidebar() {
                     >
                       <SidebarMenuItem>
                         <CollapsibleTrigger asChild>
-                          <SidebarMenuButton className="hover:bg-muted/50">
-                            <item.icon className="h-4 w-4" />
-                            <span>{item.title}</span>
-                            <ChevronDown className="ml-auto h-4 w-4 transition-transform group-data-[state=open]/collapsible:rotate-180" />
+                          <SidebarMenuButton className="w-full justify-between rounded-lg px-3 py-2 text-left text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white transition-colors">
+                            <div className="flex items-center gap-3">
+                              <item.icon className="h-4 w-4 flex-shrink-0" />
+                              <span className="group-data-[collapsible=icon]:hidden">{item.title}</span>
+                            </div>
+                            <ChevronDown className="h-4 w-4 transition-transform group-data-[state=open]/collapsible:rotate-180 group-data-[collapsible=icon]:hidden" />
                           </SidebarMenuButton>
                         </CollapsibleTrigger>
                         <CollapsibleContent>
-                          <SidebarMenuSub>
+                          <SidebarMenuSub className="ml-6 mt-1 space-y-1 border-l border-gray-200 dark:border-gray-700 pl-3">
                             {item.items.map((subItem) => (
                               <SidebarMenuSubItem key={subItem.title}>
                                 <SidebarMenuSubButton asChild>
                                   <NavLink
                                     to={subItem.url}
-                                    className={getNavCls}
+                                    className={({ isActive }) => 
+                                      `flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors ${
+                                        isActive 
+                                          ? "bg-primary text-white font-semibold shadow-sm" 
+                                          : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white"
+                                      }`
+                                    }
                                   >
-                                    <subItem.icon className="h-3 w-3" />
-                                    <span>{subItem.title}</span>
+                                    <subItem.icon className="h-3 w-3 flex-shrink-0" />
+                                    <span className="group-data-[collapsible=icon]:hidden">{subItem.title}</span>
                                   </NavLink>
                                 </SidebarMenuSubButton>
                               </SidebarMenuSubItem>
@@ -163,10 +173,16 @@ export function AppSidebar() {
                       <NavLink
                         to={item.url}
                         end
-                        className={getNavCls}
+                        className={({ isActive }) => 
+                          `flex items-center gap-3 rounded-lg px-3 py-2 transition-colors ${
+                            isActive 
+                              ? "bg-primary text-white font-semibold shadow-sm" 
+                              : "text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white"
+                          }`
+                        }
                       >
-                        <item.icon className="h-4 w-4" />
-                        <span>{item.title}</span>
+                        <item.icon className="h-4 w-4 flex-shrink-0" />
+                        <span className="group-data-[collapsible=icon]:hidden">{item.title}</span>
                       </NavLink>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
