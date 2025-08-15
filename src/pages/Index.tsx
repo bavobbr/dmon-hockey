@@ -201,11 +201,11 @@ const Index = () => {
               <Button size="lg" variant="hero" className="px-8 py-4">
                 Join Our Club
               </Button>
-              <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 hover:text-white hover:border-white/50 px-8 py-4 backdrop-blur-sm">
+              <Button size="lg" variant="outline" className="border-white/50 text-white bg-white/10 hover:bg-white/20 hover:text-white hover:border-white/70 px-8 py-4 backdrop-blur-sm">
                 Learn More
               </Button>
               <Link to="/auth">
-                <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 hover:text-white hover:border-white/50 px-8 py-4 backdrop-blur-sm">
+                <Button size="lg" variant="outline" className="border-white/50 text-white bg-white/10 hover:bg-white/20 hover:text-white hover:border-white/70 px-8 py-4 backdrop-blur-sm">
                   Member Login
                 </Button>
               </Link>
