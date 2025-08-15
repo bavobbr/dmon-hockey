@@ -191,7 +191,7 @@ const Index = () => {
                     </Button>
                   </Link>
                 )}
-                <Button size="lg" variant="outline" onClick={handleSignOut} className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+                <Button size="lg" variant="outline" onClick={handleSignOut} className="border-white/50 text-white bg-white/10 hover:bg-white/20 hover:text-white hover:border-white/70 px-8 py-4 backdrop-blur-sm">
                   Sign Out
                 </Button>
               </div>
