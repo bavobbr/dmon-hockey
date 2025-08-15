@@ -220,7 +220,39 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      board_members_public: {
+        Row: {
+          bio: string | null
+          created_at: string | null
+          id: string | null
+          name: string | null
+          order_index: number | null
+          photo_url: string | null
+          position: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          bio?: string | null
+          created_at?: string | null
+          id?: string | null
+          name?: string | null
+          order_index?: number | null
+          photo_url?: string | null
+          position?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          bio?: string | null
+          created_at?: string | null
+          id?: string | null
+          name?: string | null
+          order_index?: number | null
+          photo_url?: string | null
+          position?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       get_current_user_role: {
