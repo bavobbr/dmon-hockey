@@ -10,6 +10,7 @@ import { AuthProvider } from "./hooks/useAuth";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import Dashboard from "./pages/admin/Dashboard";
 import Announcements from "./pages/admin/Announcements";
+import AnnouncementForm from "./pages/admin/AnnouncementForm";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,16 @@ const App = () => (
             <Route path="/admin/announcements" element={
               <ProtectedRoute requireModerator>
                 <Announcements />
+              </ProtectedRoute>
+            } />
+            <Route path="/admin/announcements/new" element={
+              <ProtectedRoute requireModerator>
+                <AnnouncementForm />
+              </ProtectedRoute>
+            } />
+            <Route path="/admin/announcements/edit/:id" element={
+              <ProtectedRoute requireModerator>
+                <AnnouncementForm />
               </ProtectedRoute>
             } />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
