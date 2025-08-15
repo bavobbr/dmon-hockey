@@ -6,7 +6,7 @@ const History = () => {
     {
       year: "2020",
       title: "Club Foundation",
-      description: "D-Man Hockey Club was founded by a group of passionate hockey enthusiasts in Belgium.",
+      description: "D-mon Hockey Club was founded by a group of passionate hockey enthusiasts in Belgium.",
       icon: Users
     },
     {
@@ -46,11 +46,11 @@ const History = () => {
               <HistoryIcon className="h-5 w-5" />
               Our Story
             </CardTitle>
-            <CardDescription>The journey of D-Man Hockey Club</CardDescription>
+            <CardDescription>The journey of D-mon Hockey Club</CardDescription>
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground leading-relaxed">
-              D-Man Hockey Club was born from a shared passion for field hockey and a vision to create 
+              D-mon Hockey Club was born from a shared passion for field hockey and a vision to create 
               a welcoming community for players of all ages and skill levels. What started as a small group 
               of enthusiasts has grown into a thriving club that represents the best of Belgian hockey culture.
             </p>

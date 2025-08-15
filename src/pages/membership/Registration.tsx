@@ -72,7 +72,7 @@ const Registration = () => {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <UserPlus className="h-5 w-5" />
-              Join D-Man Hockey Club
+              Join D-mon Hockey Club
             </CardTitle>
             <CardDescription>
               Complete this form to begin your membership registration process

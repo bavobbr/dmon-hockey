@@ -100,7 +100,7 @@ export function AppSidebar() {
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel className="text-primary font-semibold">
-            D-Man Hockey Club
+            D-mon Hockey Club
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>

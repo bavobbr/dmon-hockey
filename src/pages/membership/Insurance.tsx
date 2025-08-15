@@ -20,7 +20,7 @@ const Insurance = () => {
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground">
-              All D-Man Hockey Club members are covered by comprehensive sports insurance through 
+              All D-mon Hockey Club members are covered by comprehensive sports insurance through 
               our affiliation with the Belgian Hockey Federation. This coverage protects you during 
               all official club activities.
             </p>

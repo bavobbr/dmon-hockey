@@ -19,7 +19,7 @@ const Shop = () => {
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground mb-4">
-              Visit our external shop to browse and purchase official D-Man Hockey Club uniforms, 
+              Visit our external shop to browse and purchase official D-mon Hockey Club uniforms, 
               training gear, and accessories.
             </p>
             <a 

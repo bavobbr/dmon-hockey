@@ -10,7 +10,7 @@ const News = () => {
       title: "Local Hockey Club Wins Regional Championship",
       publication: "Belgium Sports Daily",
       date: "2024-03-15",
-      excerpt: "D-Man Hockey Club's senior team claimed victory in the regional championship, marking their third consecutive win.",
+      excerpt: "D-mon Hockey Club's senior team claimed victory in the regional championship, marking their third consecutive win.",
       url: "#",
       category: "Tournament"
     },

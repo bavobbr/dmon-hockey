@@ -82,7 +82,7 @@ const ClubValues = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button variant="outline" className="border-orange-300 text-orange-700 hover:bg-orange-100">
                   <Mail className="h-4 w-4 mr-2" />
-                  integrity@dmanhockey.be
+                  integrity@dmonhockey.be
                 </Button>
                 <Button variant="outline" className="border-orange-300 text-orange-700 hover:bg-orange-100">
                   Anonymous Report Form

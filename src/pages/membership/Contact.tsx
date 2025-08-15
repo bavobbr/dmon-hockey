@@ -17,7 +17,7 @@ const Contact = () => {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground mb-2">Phone: +32 [Club Phone]</p>
-              <p className="text-muted-foreground">Email: info@dmanhockey.be</p>
+              <p className="text-muted-foreground">Email: info@dmonhockey.be</p>
             </CardContent>
           </Card>
 

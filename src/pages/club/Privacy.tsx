@@ -17,7 +17,7 @@ const Privacy = () => {
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground">
-              D-Man Hockey Club is committed to protecting your personal data and respecting your privacy. 
+              D-mon Hockey Club is committed to protecting your personal data and respecting your privacy. 
               This policy explains how we collect, use, and protect your information.
             </p>
           </CardContent>
@@ -156,8 +156,8 @@ const Privacy = () => {
                 If you have questions about this privacy policy or want to exercise your rights, contact us:
               </p>
               <div className="space-y-2 text-sm">
-                <p><strong>Email:</strong> privacy@dmanhockey.be</p>
-                <p><strong>Mail:</strong> D-Man Hockey Club Privacy Officer, [Address]</p>
+                <p><strong>Email:</strong> privacy@dmonhockey.be</p>
+                <p><strong>Mail:</strong> D-mon Hockey Club Privacy Officer, [Address]</p>
                 <p><strong>Phone:</strong> [Phone Number]</p>
               </div>
             </CardContent>

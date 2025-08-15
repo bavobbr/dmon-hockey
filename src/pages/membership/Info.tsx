@@ -49,7 +49,7 @@ const MembershipInfo = () => {
         
         <Card className="mb-8">
           <CardHeader>
-            <CardTitle>Welcome to D-Man Hockey</CardTitle>
+            <CardTitle>Welcome to D-mon Hockey</CardTitle>
             <CardDescription>
               Discover our programs for players of all ages and skill levels
             </CardDescription>

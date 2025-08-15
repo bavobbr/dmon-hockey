@@ -63,7 +63,7 @@ const App = () => (
                 <header className="h-12 flex items-center border-b bg-background px-4">
                   <SidebarTrigger />
                   <div className="ml-4">
-                    <h1 className="font-semibold text-foreground">D-Man Hockey Club</h1>
+                    <h1 className="font-semibold text-foreground">D-mon Hockey Club</h1>
                   </div>
                 </header>
                 <main className="flex-1 overflow-auto">
