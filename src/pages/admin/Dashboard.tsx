@@ -2,6 +2,8 @@ import { useAuth } from '@/hooks/useAuth';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { supabase } from '@/integrations/supabase/client';
 import { 
   Users, 
   FileText, 
@@ -13,6 +15,43 @@ import {
 
 const Dashboard = () => {
   const { user, isAdmin, isModerator } = useAuth();
+  
+  const [counts, setCounts] = useState({
+    announcements: 0,
+    teams: 0,
+    sponsors: 0,
+    boardMembers: 0,
+    users: 0
+  });
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchCounts = async () => {
+      try {
+        const [announcementsRes, teamsRes, sponsorsRes, boardMembersRes] = await Promise.all([
+          supabase.from('announcements').select('id', { count: 'exact', head: true }),
+          supabase.from('teams').select('id', { count: 'exact', head: true }).eq('active', true),
+          supabase.from('sponsors').select('id', { count: 'exact', head: true }).eq('active', true),
+          supabase.from('board_members').select('id', { count: 'exact', head: true }).eq('active', true)
+        ]);
+
+        setCounts({
+          announcements: announcementsRes.count || 0,
+          teams: teamsRes.count || 0,
+          sponsors: sponsorsRes.count || 0,
+          boardMembers: boardMembersRes.count || 0,
+          users: 0 // This would need a custom query or function to count profiles
+        });
+      } catch (error) {
+        console.error('Error fetching counts:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCounts();
+  }, []);
 
   const adminCards = [
     {
@@ -20,28 +59,28 @@ const Dashboard = () => {
       description: 'Manage club news and events',
       icon: FileText,
       href: '/admin/announcements',
-      count: '5 published',
+      count: loading ? 'Loading...' : `${counts.announcements} total`,
     },
     {
       title: 'Teams',
       description: 'Manage team information',
       icon: Trophy,
       href: '/admin/teams',
-      count: '8 active teams',
+      count: loading ? 'Loading...' : `${counts.teams} active`,
     },
     {
       title: 'Sponsors',
       description: 'Manage club sponsors',
       icon: Handshake,
       href: '/admin/sponsors',
-      count: '12 sponsors',
+      count: loading ? 'Loading...' : `${counts.sponsors} active`,
     },
     {
       title: 'Board Members',
       description: 'Manage executive board',
       icon: UserCheck,
       href: '/admin/board-members',
-      count: '7 members',
+      count: loading ? 'Loading...' : `${counts.boardMembers} active`,
     },
   ];
 
@@ -51,7 +90,7 @@ const Dashboard = () => {
       description: 'Manage user roles and permissions',
       icon: Users,
       href: '/admin/users',
-      count: '45 members',
+      count: loading ? 'Loading...' : `${counts.users} members`,
     });
   }
 
