@@ -7,9 +7,16 @@ const Index = () => {
       {/* Hero Section */}
       <section className="bg-primary text-primary-foreground py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-6">Field Hockey Club Belgium</h1>
+          <div className="flex justify-center mb-8">
+            <img 
+              src="/lovable-uploads/03104bbc-f9de-44a2-a8b0-aedb91fd1c6c.png" 
+              alt="D-Man Hockey Club Logo" 
+              className="w-32 h-32 object-contain"
+            />
+          </div>
+          <h1 className="text-5xl font-bold mb-6">D-Man Hockey Club</h1>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Welcome to our field hockey community. Join us for training, matches, and the passion of hockey.
+            Welcome to our field hockey community in Belgium. Join us for training, matches, and the passion of hockey.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <Button size="lg" variant="secondary">Join Our Club</Button>
