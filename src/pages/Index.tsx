@@ -35,13 +35,6 @@ interface Sponsor {
   tier: string;
 }
 
-interface BoardMember {
-  id: string;
-  name: string;
-  position: string;
-  photo_url: string;
-  order_index: number;
-}
 
 const Index = () => {
   const { user, isAdmin, isModerator, loading } = useAuth();
@@ -49,17 +42,14 @@ const Index = () => {
   const [announcements, setAnnouncements] = useState<Announcement[]>([]);
   const [teams, setTeams] = useState<Team[]>([]);
   const [sponsors, setSponsors] = useState<Sponsor[]>([]);
-  const [boardMembers, setBoardMembers] = useState<BoardMember[]>([]);
   const [announcementsLoading, setAnnouncementsLoading] = useState(true);
   const [teamsLoading, setTeamsLoading] = useState(true);
   const [sponsorsLoading, setSponsorsLoading] = useState(true);
-  const [boardLoading, setBoardLoading] = useState(true);
 
   useEffect(() => {
     fetchAnnouncements();
     fetchTeams();
     fetchSponsors();
-    fetchBoardMembers();
   }, []);
 
   const fetchSponsors = async () => {
@@ -79,21 +69,6 @@ const Index = () => {
     }
   };
 
-  const fetchBoardMembers = async () => {
-    try {
-      const { data, error } = await supabase
-        .from('board_members_public')
-        .select('id, name, position, photo_url, order_index')
-        .limit(6);
-
-      if (error) throw error;
-      setBoardMembers(data || []);
-    } catch (error) {
-      console.error('Error fetching board members:', error);
-    } finally {
-      setBoardLoading(false);
-    }
-  };
 
   const fetchTeams = async () => {
     try {
@@ -453,65 +428,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Board Members Section */}
-      <section className="py-16 px-4 bg-muted/50">
-        <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Ons Bestuur</h2>
-          
-          {boardLoading ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[...Array(6)].map((_, i) => (
-                <Card key={i} className="animate-pulse">
-                  <CardContent className="p-6">
-                    <div className="flex items-center gap-4">
-                      <div className="w-16 h-16 bg-muted rounded-full"></div>
-                      <div className="flex-1">
-                        <div className="h-4 bg-muted rounded w-3/4 mb-2"></div>
-                        <div className="h-3 bg-muted rounded w-1/2"></div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          ) : boardMembers.length > 0 ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {boardMembers.map((member) => (
-                <Card key={member.id} className="hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <div className="flex items-center gap-4">
-                      {member.photo_url ? (
-                        <img 
-                          src={member.photo_url} 
-                          alt={member.name}
-                          className="w-16 h-16 object-cover rounded-full border"
-                        />
-                      ) : (
-                        <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center text-muted-foreground">
-                          {member.name.split(' ').map(n => n[0]).join('')}
-                        </div>
-                      )}
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-foreground">{member.name}</h3>
-                        <p className="text-sm text-primary font-medium">{member.position}</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-12">
-              <p className="text-muted-foreground mb-4">Nog geen bestuursleden vermeld.</p>
-              {isAdmin && (
-                <Link to="/admin/board-members/new">
-                  <Button>Eerste Bestuurslid Toevoegen</Button>
-                </Link>
-              )}
-            </div>
-          )}
-        </div>
-      </section>
 
       {/* Club Colors Showcase */}
       <section className="py-16 bg-muted">
