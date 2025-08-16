@@ -147,13 +147,13 @@ export function AppSidebar() {
                                     <TooltipTrigger asChild>
                                       <NavLink
                                         to={subItem.url}
-                                        className={getNavCls}
+                                        className={`${getNavCls} flex items-center gap-2 w-full min-h-[2rem]`}
                                       >
                                         <subItem.icon className="h-3 w-3 flex-shrink-0" />
-                                        <span className="truncate">{subItem.title}</span>
+                                        <span className="truncate whitespace-nowrap overflow-hidden">{subItem.title}</span>
                                       </NavLink>
                                     </TooltipTrigger>
-                                    <TooltipContent side="right" className="max-w-xs">
+                                    <TooltipContent side="right" className="z-50 max-w-xs ml-2">
                                       <p>{subItem.title}</p>
                                     </TooltipContent>
                                   </Tooltip>
@@ -175,13 +175,13 @@ export function AppSidebar() {
                           <NavLink
                             to={item.url}
                             end
-                            className={getNavCls}
+                            className={`${getNavCls} flex items-center gap-2 w-full min-h-[2.5rem]`}
                           >
                             <item.icon className="h-4 w-4 flex-shrink-0" />
-                            <span className="truncate">{item.title}</span>
+                            <span className="truncate whitespace-nowrap overflow-hidden">{item.title}</span>
                           </NavLink>
                         </TooltipTrigger>
-                        <TooltipContent side="right" className="max-w-xs">
+                        <TooltipContent side="right" className="z-50 max-w-xs ml-2">
                           <p>{item.title}</p>
                         </TooltipContent>
                       </Tooltip>
