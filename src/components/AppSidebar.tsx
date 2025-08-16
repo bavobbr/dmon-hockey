@@ -131,13 +131,20 @@ export function AppSidebar() {
                       className="group/collapsible"
                     >
                       <SidebarMenuItem>
-                        <CollapsibleTrigger asChild>
-                          <SidebarMenuButton className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground">
-                            <item.icon className="h-4 w-4" />
-                            <span>{item.title}</span>
-                            <ChevronDown className="ml-auto h-4 w-4 transition-transform group-data-[state=open]/collapsible:rotate-180" />
-                          </SidebarMenuButton>
-                        </CollapsibleTrigger>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <CollapsibleTrigger asChild>
+                              <SidebarMenuButton className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground w-full">
+                                <item.icon className="h-4 w-4 flex-shrink-0" />
+                                <span className="truncate whitespace-nowrap overflow-hidden">{item.title}</span>
+                                <ChevronDown className="ml-auto h-4 w-4 transition-transform group-data-[state=open]/collapsible:rotate-180 flex-shrink-0" />
+                              </SidebarMenuButton>
+                            </CollapsibleTrigger>
+                          </TooltipTrigger>
+                          <TooltipContent side="right" className="z-[9999] max-w-xs ml-2 bg-popover border shadow-lg">
+                            <p>{item.title}</p>
+                          </TooltipContent>
+                        </Tooltip>
                         <CollapsibleContent>
                           <SidebarMenuSub>
                             {item.items.map((subItem) => (
