@@ -153,7 +153,7 @@ export function AppSidebar() {
                                         <span className="truncate whitespace-nowrap overflow-hidden">{subItem.title}</span>
                                       </NavLink>
                                     </TooltipTrigger>
-                                    <TooltipContent side="right" className="z-50 max-w-xs ml-2">
+                                    <TooltipContent side="right" className="z-[9999] max-w-xs ml-2 bg-popover border shadow-lg">
                                       <p>{subItem.title}</p>
                                     </TooltipContent>
                                   </Tooltip>
@@ -181,7 +181,7 @@ export function AppSidebar() {
                             <span className="truncate whitespace-nowrap overflow-hidden">{item.title}</span>
                           </NavLink>
                         </TooltipTrigger>
-                        <TooltipContent side="right" className="z-50 max-w-xs ml-2">
+                        <TooltipContent side="right" className="z-[9999] max-w-xs ml-2 bg-popover border shadow-lg">
                           <p>{item.title}</p>
                         </TooltipContent>
                       </Tooltip>
