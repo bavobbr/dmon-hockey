@@ -35,7 +35,6 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 const navigation = [
   {
@@ -131,40 +130,26 @@ export function AppSidebar() {
                       className="group/collapsible"
                     >
                       <SidebarMenuItem>
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            <CollapsibleTrigger asChild>
-                              <SidebarMenuButton className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground w-full">
-                                <item.icon className="h-4 w-4 flex-shrink-0" />
-                                <span className="truncate whitespace-nowrap overflow-hidden">{item.title}</span>
-                                <ChevronDown className="ml-auto h-4 w-4 transition-transform group-data-[state=open]/collapsible:rotate-180 flex-shrink-0" />
-                              </SidebarMenuButton>
-                            </CollapsibleTrigger>
-                          </TooltipTrigger>
-                          <TooltipContent side="right" className="z-[9999] max-w-xs ml-2 bg-popover border shadow-lg">
-                            <p>{item.title}</p>
-                          </TooltipContent>
-                        </Tooltip>
+                        <CollapsibleTrigger asChild>
+                          <SidebarMenuButton className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground w-full">
+                            <item.icon className="h-4 w-4 flex-shrink-0" />
+                            <span className="truncate whitespace-nowrap overflow-hidden">{item.title}</span>
+                            <ChevronDown className="ml-auto h-4 w-4 transition-transform group-data-[state=open]/collapsible:rotate-180 flex-shrink-0" />
+                          </SidebarMenuButton>
+                        </CollapsibleTrigger>
                         <CollapsibleContent>
-                          <SidebarMenuSub className="relative">
+                          <SidebarMenuSub>
                             {item.items.map((subItem) => (
-                              <SidebarMenuSubItem key={subItem.title} className="relative">
-                                <Tooltip>
-                                  <TooltipTrigger asChild>
-                                    <SidebarMenuSubButton asChild>
-                                      <NavLink
-                                        to={subItem.url}
-                                        className={`${getNavCls} flex items-center gap-2 w-full min-h-[2rem] relative`}
-                                      >
-                                        <subItem.icon className="h-3 w-3 flex-shrink-0" />
-                                        <span className="truncate whitespace-nowrap overflow-hidden">{subItem.title}</span>
-                                      </NavLink>
-                                    </SidebarMenuSubButton>
-                                  </TooltipTrigger>
-                                  <TooltipContent side="right" className="z-[99999] max-w-xs ml-2 bg-popover border shadow-lg fixed">
-                                    <p>{subItem.title}</p>
-                                  </TooltipContent>
-                                </Tooltip>
+                              <SidebarMenuSubItem key={subItem.title}>
+                                <SidebarMenuSubButton asChild>
+                                  <NavLink
+                                    to={subItem.url}
+                                    className={`${getNavCls} flex items-center gap-2 w-full min-h-[2rem]`}
+                                  >
+                                    <subItem.icon className="h-3 w-3 flex-shrink-0" />
+                                    <span className="truncate whitespace-nowrap overflow-hidden">{subItem.title}</span>
+                                  </NavLink>
+                                </SidebarMenuSubButton>
                               </SidebarMenuSubItem>
                             ))}
                           </SidebarMenuSub>
@@ -177,21 +162,14 @@ export function AppSidebar() {
                 return (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton asChild>
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <NavLink
-                            to={item.url}
-                            end
-                            className={`${getNavCls} flex items-center gap-2 w-full min-h-[2.5rem]`}
-                          >
-                            <item.icon className="h-4 w-4 flex-shrink-0" />
-                            <span className="truncate whitespace-nowrap overflow-hidden">{item.title}</span>
-                          </NavLink>
-                        </TooltipTrigger>
-                        <TooltipContent side="right" className="z-[9999] max-w-xs ml-2 bg-popover border shadow-lg">
-                          <p>{item.title}</p>
-                        </TooltipContent>
-                      </Tooltip>
+                      <NavLink
+                        to={item.url}
+                        end
+                        className={`${getNavCls} flex items-center gap-2 w-full min-h-[2.5rem]`}
+                      >
+                        <item.icon className="h-4 w-4 flex-shrink-0" />
+                        <span className="truncate whitespace-nowrap overflow-hidden">{item.title}</span>
+                      </NavLink>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 );
