@@ -35,6 +35,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 const navigation = [
   {
@@ -142,13 +143,20 @@ export function AppSidebar() {
                             {item.items.map((subItem) => (
                               <SidebarMenuSubItem key={subItem.title}>
                                 <SidebarMenuSubButton asChild>
-                                  <NavLink
-                                    to={subItem.url}
-                                    className={getNavCls}
-                                  >
-                                    <subItem.icon className="h-3 w-3" />
-                                    <span>{subItem.title}</span>
-                                  </NavLink>
+                                  <Tooltip>
+                                    <TooltipTrigger asChild>
+                                      <NavLink
+                                        to={subItem.url}
+                                        className={getNavCls}
+                                      >
+                                        <subItem.icon className="h-3 w-3 flex-shrink-0" />
+                                        <span className="truncate">{subItem.title}</span>
+                                      </NavLink>
+                                    </TooltipTrigger>
+                                    <TooltipContent side="right" className="max-w-xs">
+                                      <p>{subItem.title}</p>
+                                    </TooltipContent>
+                                  </Tooltip>
                                 </SidebarMenuSubButton>
                               </SidebarMenuSubItem>
                             ))}
@@ -162,14 +170,21 @@ export function AppSidebar() {
                 return (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton asChild>
-                      <NavLink
-                        to={item.url}
-                        end
-                        className={getNavCls}
-                      >
-                        <item.icon className="h-4 w-4" />
-                        <span>{item.title}</span>
-                      </NavLink>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <NavLink
+                            to={item.url}
+                            end
+                            className={getNavCls}
+                          >
+                            <item.icon className="h-4 w-4 flex-shrink-0" />
+                            <span className="truncate">{item.title}</span>
+                          </NavLink>
+                        </TooltipTrigger>
+                        <TooltipContent side="right" className="max-w-xs">
+                          <p>{item.title}</p>
+                        </TooltipContent>
+                      </Tooltip>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 );
