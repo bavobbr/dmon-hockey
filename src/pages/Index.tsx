@@ -174,12 +174,11 @@ const Index = () => {
             </div>
           ) : (
             <div className="flex gap-6 justify-center flex-wrap fade-in-up">
-              <Button size="lg" variant="hero" className="px-8 py-4">
-                Word Lid van Onze Club
-              </Button>
-              <Button size="lg" variant="outline" className="border-white/50 text-white bg-white/10 hover:bg-white/20 hover:text-white hover:border-white/70 px-8 py-4 backdrop-blur-sm">
-                Leer Meer
-              </Button>
+              <Link to="/membership/info">
+                <Button size="lg" variant="hero" className="px-8 py-4">
+                  Word Lid van Onze Club
+                </Button>
+              </Link>
               <Link to="/auth">
                 <Button size="lg" variant="outline" className="border-white/50 text-white bg-white/10 hover:bg-white/20 hover:text-white hover:border-white/70 px-8 py-4 backdrop-blur-sm">
                   Leden Login
