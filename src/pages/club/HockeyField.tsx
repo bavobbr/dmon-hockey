@@ -3,6 +3,7 @@ import { MapPin, Bus, Car, Bike, AlertTriangle, FileText } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import mobilityMap from "@/assets/mobility-map.png";
+import ClubLocationMap from "@/components/ClubLocationMap";
 
 const HockeyField = () => {
   return (
@@ -11,6 +12,9 @@ const HockeyField = () => {
         <h1 className="text-4xl font-bold mb-8 text-foreground">Hockeyterrein & Mobiliteit</h1>
         
         <div className="grid gap-6">
+          {/* Interactive Map */}
+          <ClubLocationMap />
+          
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
