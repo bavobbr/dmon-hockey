@@ -89,13 +89,13 @@ export function AppSidebar() {
   const currentPath = location.pathname;
 
   const isActive = (path: string) => currentPath === path;
-  const isGroupActive = (items: { url: string }[]) => 
+  const isGroupActive = (items: { url: string }[]) =>
     items.some(item => currentPath.startsWith(item.url));
 
   const getNavCls = ({ isActive }: { isActive: boolean }) =>
-    isActive 
-      ? "bg-primary text-primary-foreground font-medium" 
-      : "text-foreground hover:bg-accent hover:text-accent-foreground";
+    isActive
+      ? "bg-primary text-primary-foreground font-medium"
+      : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground";
 
   return (
     <Sidebar collapsible="icon">
@@ -131,7 +131,7 @@ export function AppSidebar() {
                     >
                       <SidebarMenuItem>
                         <CollapsibleTrigger asChild>
-                          <SidebarMenuButton className="text-foreground hover:bg-accent hover:text-accent-foreground">
+                          <SidebarMenuButton className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground">
                             <item.icon className="h-4 w-4" />
                             <span>{item.title}</span>
                             <ChevronDown className="ml-auto h-4 w-4 transition-transform group-data-[state=open]/collapsible:rotate-180" />
