@@ -33,7 +33,7 @@ const ClubLocationMap = () => {
         mapboxgl.accessToken = data.token;
         
         // D-mon Hockey Club location in Dendermonde, Belgium
-        const clubLocation: [number, number] = [4.1016, 51.0283]; // Longitude, Latitude for Dendermonde
+        const clubLocation: [number, number] = [4.104237, 51.0398272467]; // Longitude, Latitude for Dendermonde , 4.104237130352323
 
         map.current = new mapboxgl.Map({
           container: mapContainer.current,
