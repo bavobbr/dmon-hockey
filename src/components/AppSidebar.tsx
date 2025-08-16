@@ -146,25 +146,25 @@ export function AppSidebar() {
                           </TooltipContent>
                         </Tooltip>
                         <CollapsibleContent>
-                          <SidebarMenuSub>
+                          <SidebarMenuSub className="relative">
                             {item.items.map((subItem) => (
-                              <SidebarMenuSubItem key={subItem.title}>
-                                <SidebarMenuSubButton asChild>
-                                  <Tooltip>
-                                    <TooltipTrigger asChild>
+                              <SidebarMenuSubItem key={subItem.title} className="relative">
+                                <Tooltip>
+                                  <TooltipTrigger asChild>
+                                    <SidebarMenuSubButton asChild>
                                       <NavLink
                                         to={subItem.url}
-                                        className={`${getNavCls} flex items-center gap-2 w-full min-h-[2rem]`}
+                                        className={`${getNavCls} flex items-center gap-2 w-full min-h-[2rem] relative`}
                                       >
                                         <subItem.icon className="h-3 w-3 flex-shrink-0" />
                                         <span className="truncate whitespace-nowrap overflow-hidden">{subItem.title}</span>
                                       </NavLink>
-                                    </TooltipTrigger>
-                                    <TooltipContent side="right" className="z-[9999] max-w-xs ml-2 bg-popover border shadow-lg">
-                                      <p>{subItem.title}</p>
-                                    </TooltipContent>
-                                  </Tooltip>
-                                </SidebarMenuSubButton>
+                                    </SidebarMenuSubButton>
+                                  </TooltipTrigger>
+                                  <TooltipContent side="right" className="z-[99999] max-w-xs ml-2 bg-popover border shadow-lg fixed">
+                                    <p>{subItem.title}</p>
+                                  </TooltipContent>
+                                </Tooltip>
                               </SidebarMenuSubItem>
                             ))}
                           </SidebarMenuSub>
