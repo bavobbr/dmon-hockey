@@ -59,7 +59,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <SidebarProvider defaultOpen style={{"--sidebar-width-icon": "80px"} as React.CSSProperties}>
+          <SidebarProvider defaultOpen style={{"--sidebar-width": "280px", "--sidebar-width-icon": "80px"} as React.CSSProperties}>
             <div className="min-h-screen flex w-full">
               <AppSidebar />
               <div className="flex-1 flex flex-col">
