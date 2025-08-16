@@ -98,7 +98,7 @@ export function AppSidebar() {
       : "text-sidebar-accent-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground";
 
   return (
-    <Sidebar collapsible="icon">
+    <Sidebar collapsible="icon" className="data-[state=collapsed]:w-16">
       <SidebarContent>
         {/* Logo Header */}
         <div className="border-b border-sidebar-border p-4">
