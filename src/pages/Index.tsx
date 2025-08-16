@@ -432,19 +432,14 @@ const Index = () => {
       {/* Club Colors Showcase */}
       <section className="py-16 bg-muted">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-12">Onze Clubkleuren</h2>
           <div className="flex justify-center gap-4 flex-wrap">
             <div className="w-20 h-20 bg-primary rounded-lg shadow-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-xs">Blauw</span>
             </div>
             <div className="w-20 h-20 bg-secondary rounded-lg shadow-lg flex items-center justify-center">
-              <span className="text-secondary-foreground font-bold text-xs">Rood</span>
             </div>
             <div className="w-20 h-20 bg-accent rounded-lg shadow-lg flex items-center justify-center">
-              <span className="text-accent-foreground font-bold text-xs">Goud</span>
             </div>
             <div className="w-20 h-20 bg-foreground rounded-lg shadow-lg flex items-center justify-center">
-              <span className="text-background font-bold text-xs">Donker</span>
             </div>
           </div>
         </div>
