@@ -11,7 +11,7 @@ import { useToast } from '@/hooks/use-toast';
 interface Sponsor {
   id: string;
   name: string;
-  logo_url: string;
+  logo_path: string;
   website_url: string;
   description: string;
   tier: 'title' | 'gold' | 'silver' | 'bronze';
@@ -162,9 +162,9 @@ const Sponsors = () => {
               <CardHeader>
                 <div className="flex justify-between items-start">
                   <div className="flex items-center gap-4 flex-1">
-                    {sponsor.logo_url && (
+                    {sponsor.logo_path && (
                       <img 
-                        src={sponsor.logo_url} 
+                        src={supabase.storage.from('sponsor-logos').getPublicUrl(sponsor.logo_path).data.publicUrl}
                         alt={sponsor.name}
                         className="w-16 h-16 object-contain rounded border"
                       />

@@ -74,9 +74,9 @@ const ClubSponsors = () => {
                   >
                     <CardContent className="p-6">
                       <div className="flex flex-col items-center text-center gap-4">
-                        {sponsor.logo_url ? (
+                        {sponsor.logo_path ? (
                           <img 
-                            src={sponsor.logo_url} 
+                            src={supabase.storage.from('sponsor-logos').getPublicUrl(sponsor.logo_path).data.publicUrl}
                             alt={sponsor.name}
                             className="max-h-16 max-w-full object-contain"
                           />

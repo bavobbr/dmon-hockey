@@ -12,7 +12,7 @@ import { supabase } from '@/integrations/supabase/client';
 
 interface SponsorFormData {
   name: string;
-  logo_url: string;
+  logo_path: string;
   website_url: string;
   description: string;
   tier: 'title' | 'gold' | 'silver' | 'bronze';
@@ -26,9 +26,11 @@ const SponsorForm = () => {
   const isEditing = Boolean(id);
 
   const [loading, setLoading] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [logoFile, setLogoFile] = useState<File | null>(null);
   const [formData, setFormData] = useState<SponsorFormData>({
     name: '',
-    logo_url: '',
+    logo_path: '',
     website_url: '',
     description: '',
     tier: 'bronze',
@@ -53,7 +55,7 @@ const SponsorForm = () => {
 
       setFormData({
         name: data.name,
-        logo_url: data.logo_url || '',
+        logo_path: data.logo_path || '',
         website_url: data.website_url || '',
         description: data.description || '',
         tier: data.tier as 'title' | 'gold' | 'silver' | 'bronze',
@@ -70,15 +72,42 @@ const SponsorForm = () => {
     }
   };
 
+  const uploadLogo = async (): Promise<string | null> => {
+    if (!logoFile) return formData.logo_path;
+    
+    setUploading(true);
+    try {
+      const fileExt = logoFile.name.split('.').pop();
+      const fileName = `${Date.now()}_${Math.random()}.${fileExt}`;
+      const filePath = `${fileName}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from('sponsor-logos')
+        .upload(filePath, logoFile);
+
+      if (uploadError) throw uploadError;
+
+      return filePath;
+    } catch (error) {
+      console.error('Error uploading logo:', error);
+      throw error;
+    } finally {
+      setUploading(false);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
     try {
+      const logoPath = await uploadLogo();
+      const submitData = { ...formData, logo_path: logoPath };
+
       if (isEditing && id) {
         const { error } = await supabase
           .from('sponsors')
-          .update(formData)
+          .update(submitData)
           .eq('id', id);
 
         if (error) throw error;
@@ -90,7 +119,7 @@ const SponsorForm = () => {
       } else {
         const { error } = await supabase
           .from('sponsors')
-          .insert([formData]);
+          .insert([submitData]);
 
         if (error) throw error;
 
@@ -167,14 +196,28 @@ const SponsorForm = () => {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="logo_url">Logo URL</Label>
+              <Label htmlFor="logo">Logo Upload</Label>
               <Input
-                id="logo_url"
-                type="url"
-                value={formData.logo_url}
-                onChange={(e) => handleInputChange('logo_url', e.target.value)}
-                placeholder="https://example.com/logo.png"
+                id="logo"
+                type="file"
+                accept="image/*"
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  if (file) {
+                    setLogoFile(file);
+                  }
+                }}
               />
+              {formData.logo_path && (
+                <div className="mt-2">
+                  <p className="text-sm text-muted-foreground">Current logo: {formData.logo_path}</p>
+                  <img 
+                    src={`${supabase.storage.from('sponsor-logos').getPublicUrl(formData.logo_path).data.publicUrl}`}
+                    alt="Current logo"
+                    className="mt-2 h-16 object-contain rounded border"
+                  />
+                </div>
+              )}
             </div>
 
             <div className="space-y-2">
@@ -209,8 +252,8 @@ const SponsorForm = () => {
             </div>
 
             <div className="flex gap-4 pt-4">
-              <Button type="submit" disabled={loading}>
-                {loading ? (isEditing ? 'Updating...' : 'Creating...') : (isEditing ? 'Update Sponsor' : 'Add Sponsor')}
+              <Button type="submit" disabled={loading || uploading}>
+                {(loading || uploading) ? (isEditing ? 'Updating...' : 'Creating...') : (isEditing ? 'Update Sponsor' : 'Add Sponsor')}
               </Button>
               <Button
                 type="button"

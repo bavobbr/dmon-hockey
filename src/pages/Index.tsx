@@ -30,7 +30,7 @@ interface Team {
 interface Sponsor {
   id: string;
   name: string;
-  logo_url: string;
+  logo_path: string;
   website_url: string;
   tier: string;
 }
@@ -56,7 +56,7 @@ const Index = () => {
     try {
       const { data, error } = await supabase
         .from('sponsors')
-        .select('id, name, logo_url, website_url, tier')
+        .select('id, name, logo_path, website_url, tier')
         .eq('active', true)
         .order('tier', { ascending: true });
 
@@ -400,9 +400,9 @@ const Index = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
               {sponsors.map((sponsor) => (
                 <div key={sponsor.id} className="flex items-center justify-center p-4 bg-card rounded-lg border hover:shadow-lg transition-shadow">
-                  {sponsor.logo_url ? (
+                  {sponsor.logo_path ? (
                     <img 
-                      src={sponsor.logo_url} 
+                      src={supabase.storage.from('sponsor-logos').getPublicUrl(sponsor.logo_path).data.publicUrl}
                       alt={sponsor.name}
                       className="max-h-16 max-w-full object-contain"
                     />
