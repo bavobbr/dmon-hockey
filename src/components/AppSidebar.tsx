@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 import {
   Sidebar,
@@ -85,7 +86,8 @@ const navigation = [
 ];
 
 export function AppSidebar() {
-  const { open, setOpen, isMobile } = useSidebar();
+  const { open, setOpen } = useSidebar();
+  const isMobile = useIsMobile();
   const location = useLocation();
   const currentPath = location.pathname;
 
