@@ -44,11 +44,11 @@ const ClubTeams = () => {
                 <div className="space-y-2">
                   <div className="flex items-center gap-2 text-sm">
                     <Users className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-muted-foreground">Coach: [To be assigned]</span>
+                    <span className="text-muted-foreground">Coach: {team.coach || '[To be assigned]'}</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <Mail className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-muted-foreground">Team Manager: [To be assigned]</span>
+                    <span className="text-muted-foreground">Team Manager: {team.team_manager || '[To be assigned]'}</span>
                   </div>
                 </div>
               </CardContent>

@@ -165,34 +165,40 @@ export type Database = {
         Row: {
           active: boolean | null
           age_group: string | null
+          coach: string | null
           created_at: string
           description: string | null
           division: string | null
           id: string
           name: string
           season: string | null
+          team_manager: string | null
           updated_at: string
         }
         Insert: {
           active?: boolean | null
           age_group?: string | null
+          coach?: string | null
           created_at?: string
           description?: string | null
           division?: string | null
           id?: string
           name: string
           season?: string | null
+          team_manager?: string | null
           updated_at?: string
         }
         Update: {
           active?: boolean | null
           age_group?: string | null
+          coach?: string | null
           created_at?: string
           description?: string | null
           division?: string | null
           id?: string
           name?: string
           season?: string | null
+          team_manager?: string | null
           updated_at?: string
         }
         Relationships: []

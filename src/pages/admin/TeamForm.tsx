@@ -17,6 +17,8 @@ interface TeamFormData {
   age_group: string;
   description: string;
   season: string;
+  coach: string;
+  team_manager: string;
   active: boolean;
 }
 
@@ -33,6 +35,8 @@ const TeamForm = () => {
     age_group: '',
     description: '',
     season: '',
+    coach: '',
+    team_manager: '',
     active: true,
   });
 
@@ -58,6 +62,8 @@ const TeamForm = () => {
         age_group: data.age_group || '',
         description: data.description || '',
         season: data.season || '',
+        coach: data.coach || '',
+        team_manager: data.team_manager || '',
         active: data.active,
       });
     } catch (error) {
@@ -182,6 +188,28 @@ const TeamForm = () => {
                 onChange={(e) => handleInputChange('season', e.target.value)}
                 placeholder="e.g. 2024-2025"
               />
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="coach">Coach</Label>
+                <Input
+                  id="coach"
+                  value={formData.coach}
+                  onChange={(e) => handleInputChange('coach', e.target.value)}
+                  placeholder="Enter coach name"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="team_manager">Team Manager</Label>
+                <Input
+                  id="team_manager"
+                  value={formData.team_manager}
+                  onChange={(e) => handleInputChange('team_manager', e.target.value)}
+                  placeholder="Enter team manager name"
+                />
+              </div>
             </div>
 
             <div className="space-y-2">
