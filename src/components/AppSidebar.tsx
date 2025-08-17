@@ -19,6 +19,7 @@ import {
   Zap
 } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 import {
   Sidebar,
@@ -84,9 +85,16 @@ const navigation = [
 ];
 
 export function AppSidebar() {
-  const { open, setOpen } = useSidebar();
+  const { open, setOpen, isMobile } = useSidebar();
   const location = useLocation();
   const currentPath = location.pathname;
+
+  // Close sidebar on mobile when route changes
+  useEffect(() => {
+    if (isMobile && open) {
+      setOpen(false);
+    }
+  }, [currentPath, isMobile, open, setOpen]);
 
   const isActive = (path: string) => currentPath === path;
   const isGroupActive = (items: { url: string }[]) =>
