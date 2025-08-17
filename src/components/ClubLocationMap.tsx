@@ -94,7 +94,7 @@ const ClubLocationMap = () => {
       </CardHeader>
       <CardContent>
         {error ? (
-          <div className="w-full h-96 rounded-lg border flex items-center justify-center bg-muted">
+          <div className="w-full h-64 md:h-96 rounded-lg border flex items-center justify-center bg-muted">
             <div className="text-center">
               <p className="text-muted-foreground">Error loading map</p>
               <p className="text-sm text-muted-foreground mt-1">{error}</p>
@@ -103,8 +103,8 @@ const ClubLocationMap = () => {
         ) : (
           <div 
             ref={mapContainer} 
-            className="w-full h-96 rounded-lg overflow-hidden border"
-            style={{ minHeight: '384px' }}
+            className="w-full h-64 md:h-96 rounded-lg overflow-hidden border"
+            style={{ minHeight: '256px' }}
           >
             {isLoading && (
               <div className="w-full h-full flex items-center justify-center bg-muted">
