@@ -1,73 +1,172 @@
-# Welcome to your Lovable project
+# D-mon Hockey Club Website
+
+A modern, responsive website for D-mon Hockey Club built with React and TypeScript.
 
 ## Project info
 
 **URL**: https://lovable.dev/projects/e2aabc45-8df6-4198-b516-5ee2c510f680
 
-## How can I edit this code?
+## Technology Stack
 
-There are several ways of editing your application.
+This project is built with modern web technologies:
 
-**Use Lovable**
+### Frontend
+- **React 18** - Component-based UI framework
+- **TypeScript** - Type-safe JavaScript
+- **Vite** - Fast build tool and development server
+- **Tailwind CSS** - Utility-first CSS framework
+- **shadcn/ui** - Beautiful, accessible component library
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/e2aabc45-8df6-4198-b516-5ee2c510f680) and start prompting.
+### Backend & Database
+- **Supabase** - PostgreSQL database, authentication, and real-time subscriptions
+- **Supabase Edge Functions** - Serverless functions for API endpoints
 
-Changes made via Lovable will be committed automatically to this repo.
+### UI Components & Libraries
+- **Radix UI** - Accessible, unstyled UI primitives
+- **Lucide React** - Beautiful icon library
+- **React Router** - Client-side routing
+- **React Hook Form** - Form state management
+- **TanStack Query** - Data fetching and caching
+- **Mapbox GL JS** - Interactive maps
+- **Recharts** - Chart visualization library
 
-**Use your preferred IDE**
+### Development Tools
+- **ESLint** - Code linting
+- **PostCSS** - CSS processing
+- **Bun** - Fast package manager and runtime
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Local Development Setup
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Prerequisites
+- Node.js 18+ or Bun
+- Git
 
-Follow these steps:
+### Quick Start
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+1. **Clone the repository**
+   ```bash
+   git clone <YOUR_GIT_URL>
+   cd <YOUR_PROJECT_NAME>
+   ```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+2. **Install dependencies**
+   ```bash
+   # Using npm
+   npm install
+   
+   # Or using bun (recommended)
+   bun install
+   ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+3. **Environment Setup**
+   - The project uses Supabase for backend services
+   - Environment variables are managed through Supabase Edge Functions
+   - No local `.env` file is needed for basic development
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+4. **Start development server**
+   ```bash
+   # Using npm
+   npm run dev
+   
+   # Or using bun
+   bun dev
+   ```
+
+5. **Open your browser**
+   - Navigate to `http://localhost:5173`
+   - The app will automatically reload when you make changes
+
+### Development Commands
+
+```bash
+# Start development server
 npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+
+# Run linting
+npm run lint
 ```
 
-**Edit a file directly in GitHub**
+## Project Structure
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```
+src/
+├── components/          # Reusable UI components
+│   ├── ui/             # shadcn/ui components
+│   └── ...             # Custom components
+├── pages/              # Route components
+│   ├── admin/          # Admin dashboard pages
+│   ├── club/           # Club information pages
+│   ├── membership/     # Membership-related pages
+│   └── sporting/       # Sports-related pages
+├── hooks/              # Custom React hooks
+├── lib/                # Utility functions
+├── integrations/       # External service integrations
+│   └── supabase/       # Supabase client and types
+└── assets/             # Static assets
+```
 
-**Use GitHub Codespaces**
+## Key Features
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- **Responsive Design** - Mobile-first approach with Tailwind CSS
+- **Authentication** - User registration and login via Supabase Auth
+- **Admin Dashboard** - Content management for teams, announcements, sponsors
+- **Interactive Map** - Club location with Mapbox integration
+- **Modern UI** - Beautiful, accessible components with dark/light mode
+- **SEO Optimized** - Semantic HTML and proper meta tags
 
-## What technologies are used for this project?
+## How can I edit this code?
 
-This project is built with:
+### Use Lovable (Recommended)
+Simply visit the [Lovable Project](https://lovable.dev/projects/e2aabc45-8df6-4198-b516-5ee2c510f680) and start prompting. Changes made via Lovable will be committed automatically to this repo.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Use your preferred IDE
+Clone this repo and push changes. Pushed changes will also be reflected in Lovable.
 
-## How can I deploy this project?
+### Edit directly in GitHub
+Navigate to files and use the "Edit" button (pencil icon) to make changes.
 
-Simply open [Lovable](https://lovable.dev/projects/e2aabc45-8df6-4198-b516-5ee2c510f680) and click on Share -> Publish.
+### Use GitHub Codespaces
+Click the "Code" button → "Codespaces" tab → "New codespace" for a cloud development environment.
 
-## Can I connect a custom domain to my Lovable project?
+## Deployment
 
-Yes, you can!
+### Lovable Hosting (Recommended)
+1. Open [Lovable](https://lovable.dev/projects/e2aabc45-8df6-4198-b516-5ee2c510f680)
+2. Click Share → Publish
+3. Your app will be live instantly
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Custom Domain
+To connect a custom domain:
+1. Navigate to Project > Settings > Domains
+2. Click Connect Domain
+3. Follow the setup instructions
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Read more: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain)
+
+### Self-Hosting
+The project generates standard web app code that can be deployed anywhere:
+
+1. Build the project: `npm run build`
+2. Deploy the `dist` folder to any static hosting service
+3. Configure environment variables for Supabase in your hosting environment
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature-name`
+3. Make your changes
+4. Test thoroughly
+5. Commit and push to your fork
+6. Create a pull request
+
+## Support
+
+For questions about the D-mon Hockey Club website, please contact the club administration.
+
+For technical issues with Lovable, visit [Lovable Documentation](https://docs.lovable.dev/).
