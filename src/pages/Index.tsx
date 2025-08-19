@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import DOMPurify from 'dompurify';
 
 interface Announcement {
   id: string;
@@ -308,7 +309,7 @@ const Index = () => {
                         </DialogHeader>
                         <div 
                           className="prose prose-sm max-w-none text-foreground mt-4"
-                          dangerouslySetInnerHTML={{ __html: announcement.content }}
+                          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(announcement.content) }}
                         />
                       </DialogContent>
                     </Dialog>
