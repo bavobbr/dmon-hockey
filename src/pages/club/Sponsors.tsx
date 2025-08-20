@@ -35,23 +35,23 @@ const ClubSponsors = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8 text-foreground">Our Sponsors</h1>
+        <h1 className="text-4xl font-bold mb-8 text-foreground">Onze Sponsors</h1>
         
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <HandHeart className="h-5 w-5" />
-              Thank You to Our Partners
+              Dank aan Onze Partners
             </CardTitle>
             <CardDescription>
-              We are grateful for the support of our sponsors who make our club's activities possible.
+              We zijn dankbaar voor de steun van onze sponsors die onze clubactiviteiten mogelijk maken.
             </CardDescription>
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground">
-              Our sponsors help us provide quality training, equipment, and facilities for all our members. 
-              Their support enables us to grow the sport of hockey in our community and maintain 
-              affordable membership for players of all backgrounds.
+              Onze sponsors helpen ons om kwaliteitsvolle training, uitrusting en faciliteiten te bieden aan al onze leden. 
+              Hun steun stelt ons in staat om de hockeysport in onze gemeenschap te laten groeien en 
+              betaalbaar lidmaatschap te behouden voor spelers van alle achtergronden.
             </p>
           </CardContent>
         </Card>
@@ -64,7 +64,7 @@ const ClubSponsors = () => {
           return (
             <div key={tier} className="mb-8">
               <h2 className="text-2xl font-semibold mb-4 text-foreground capitalize">
-                {tier} Sponsors
+                {tier === 'gold' ? 'Goud' : tier === 'silver' ? 'Zilver' : 'Brons'} Sponsors
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {tierSponsors.map((sponsor) => (
@@ -99,7 +99,7 @@ const ClubSponsors = () => {
                               rel="noopener noreferrer"
                               className="inline-flex items-center gap-2 text-primary hover:underline text-sm"
                             >
-                              Visit Website
+                              Bezoek Website
                               <ExternalLink className="h-3 w-3" />
                             </a>
                           )}
@@ -116,32 +116,32 @@ const ClubSponsors = () => {
         {(!sponsors || sponsors.length === 0) && (
           <div className="text-center py-12">
             <HandHeart className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-            <p className="text-muted-foreground mb-4">No sponsors to display yet.</p>
+            <p className="text-muted-foreground mb-4">Nog geen sponsors om weer te geven.</p>
           </div>
         )}
 
         {/* Sponsorship invitation */}
         <Card className="bg-primary/5 border-primary/20">
           <CardHeader>
-            <CardTitle className="text-primary">Become a Sponsor</CardTitle>
+            <CardTitle className="text-primary">Word Sponsor</CardTitle>
             <CardDescription>
-              Support local hockey and gain visibility in our community
+              Steun lokale hockey en krijg zichtbaarheid in onze gemeenschap
             </CardDescription>
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground mb-4">
-              We offer various sponsorship packages to suit different business needs and budgets. 
-              By partnering with us, you'll be supporting youth sports development while gaining 
-              exposure to our growing hockey community.
+              We bieden verschillende sponsorpakketten om aan verschillende bedrijfsbehoeften en budgetten te voldoen. 
+              Door een partnerschap met ons aan te gaan, steunt u de ontwikkeling van jeugdsport terwijl u 
+              exposure krijgt bij onze groeiende hockeygemeenschap.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
               <Button>
                 <Mail className="h-4 w-4 mr-2" />
-                Contact Us About Sponsorship
+                Contacteer Ons Over Sponsoring
               </Button>
               <Button variant="outline">
-                Download Sponsorship Package
+                Download Sponsorpakket
               </Button>
             </div>
           </CardContent>

@@ -55,42 +55,42 @@ const Dashboard = () => {
 
   const adminCards = [
     {
-      title: 'Announcements',
-      description: 'Manage club news and events',
+      title: 'Aankondigingen',
+      description: 'Beheer clubnieuws en evenementen',
       icon: FileText,
       href: '/admin/announcements',
-      count: loading ? 'Loading...' : `${counts.announcements} total`,
+      count: loading ? 'Laden...' : `${counts.announcements} totaal`,
     },
     {
       title: 'Teams',
-      description: 'Manage team information',
+      description: 'Beheer teaminformatie',
       icon: Trophy,
       href: '/admin/teams',
-      count: loading ? 'Loading...' : `${counts.teams} active`,
+      count: loading ? 'Laden...' : `${counts.teams} actief`,
     },
     {
       title: 'Sponsors',
-      description: 'Manage club sponsors',
+      description: 'Beheer clubsponsors',
       icon: Handshake,
       href: '/admin/sponsors',
-      count: loading ? 'Loading...' : `${counts.sponsors} active`,
+      count: loading ? 'Laden...' : `${counts.sponsors} actief`,
     },
     {
-      title: 'Board Members',
-      description: 'Manage executive board',
+      title: 'Bestuursleden',
+      description: 'Beheer bestuur',
       icon: UserCheck,
       href: '/admin/board-members',
-      count: loading ? 'Loading...' : `${counts.boardMembers} active`,
+      count: loading ? 'Laden...' : `${counts.boardMembers} actief`,
     },
   ];
 
   if (isAdmin) {
     adminCards.push({
-      title: 'User Management',
-      description: 'Manage user roles and permissions',
+      title: 'Gebruikersbeheer',
+      description: 'Beheer gebruikersrollen en toestemmingen',
       icon: Users,
       href: '/admin/users',
-      count: loading ? 'Loading...' : `${counts.users} members`,
+      count: loading ? 'Laden...' : `${counts.users} leden`,
     });
   }
 
@@ -98,10 +98,10 @@ const Dashboard = () => {
     <div className="container mx-auto py-8 px-4">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-foreground mb-2">
-          Admin Dashboard
+          Beheer Dashboard
         </h1>
         <p className="text-muted-foreground">
-          Welcome back, {user?.email}. You have {isAdmin ? 'administrator' : 'moderator'} access.
+          Welkom terug, {user?.email}. Je hebt {isAdmin ? 'beheerder' : 'moderator'} toegang.
         </p>
       </div>
 
@@ -126,7 +126,7 @@ const Dashboard = () => {
                 <Link to={card.href}>
                   <Button className="w-full" size="sm">
                     <Plus className="h-4 w-4 mr-2" />
-                    Manage {card.title}
+                    Beheer {card.title}
                   </Button>
                 </Link>
               </CardContent>
@@ -138,29 +138,29 @@ const Dashboard = () => {
       <div className="mt-8">
         <Card>
           <CardHeader>
-            <CardTitle>Quick Actions</CardTitle>
+            <CardTitle>Snelle Acties</CardTitle>
             <CardDescription>
-              Common tasks and shortcuts
+              Veelgebruikte taken en snelkoppelingen
             </CardDescription>
           </CardHeader>
           <CardContent className="flex gap-4 flex-wrap">
             <Link to="/admin/announcements/new">
               <Button variant="outline">
                 <Plus className="h-4 w-4 mr-2" />
-                New Announcement
+                Nieuwe Aankondiging
               </Button>
             </Link>
             {isAdmin && (
               <Link to="/admin/users">
                 <Button variant="outline">
                   <Users className="h-4 w-4 mr-2" />
-                  Manage Users
+                  Beheer Gebruikers
                 </Button>
               </Link>
             )}
             <Link to="/">
               <Button variant="outline">
-                View Public Site
+                Bekijk Publieke Site
               </Button>
             </Link>
           </CardContent>
