@@ -8,7 +8,6 @@ import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import DOMPurify from 'dompurify';
-
 interface Announcement {
   id: string;
   title: string;
@@ -18,7 +17,6 @@ interface Announcement {
   published: boolean;
   created_at: string;
 }
-
 interface Team {
   id: string;
   name: string;
@@ -27,7 +25,6 @@ interface Team {
   description: string;
   season: string;
 }
-
 interface Sponsor {
   id: string;
   name: string;
@@ -35,32 +32,35 @@ interface Sponsor {
   website_url: string;
   tier: string;
 }
-
-
 const Index = () => {
-  const { user, isAdmin, isModerator, loading } = useAuth();
-  const { toast } = useToast();
+  const {
+    user,
+    isAdmin,
+    isModerator,
+    loading
+  } = useAuth();
+  const {
+    toast
+  } = useToast();
   const [announcements, setAnnouncements] = useState<Announcement[]>([]);
   const [teams, setTeams] = useState<Team[]>([]);
   const [sponsors, setSponsors] = useState<Sponsor[]>([]);
   const [announcementsLoading, setAnnouncementsLoading] = useState(true);
   const [teamsLoading, setTeamsLoading] = useState(true);
   const [sponsorsLoading, setSponsorsLoading] = useState(true);
-
   useEffect(() => {
     fetchAnnouncements();
     fetchTeams();
     fetchSponsors();
   }, []);
-
   const fetchSponsors = async () => {
     try {
-      const { data, error } = await supabase
-        .from('sponsors')
-        .select('id, name, logo_path, website_url, tier')
-        .eq('active', true)
-        .order('tier', { ascending: true });
-
+      const {
+        data,
+        error
+      } = await supabase.from('sponsors').select('id, name, logo_path, website_url, tier').eq('active', true).order('tier', {
+        ascending: true
+      });
       if (error) throw error;
       setSponsors(data || []);
     } catch (error) {
@@ -69,17 +69,14 @@ const Index = () => {
       setSponsorsLoading(false);
     }
   };
-
-
   const fetchTeams = async () => {
     try {
-      const { data, error } = await supabase
-        .from('teams')
-        .select('*')
-        .eq('active', true)
-        .order('created_at', { ascending: false })
-        .limit(6);
-
+      const {
+        data,
+        error
+      } = await supabase.from('teams').select('*').eq('active', true).order('created_at', {
+        ascending: false
+      }).limit(6);
       if (error) throw error;
       setTeams(data || []);
     } catch (error) {
@@ -88,16 +85,14 @@ const Index = () => {
       setTeamsLoading(false);
     }
   };
-
   const fetchAnnouncements = async () => {
     try {
-      const { data, error } = await supabase
-        .from('announcements')
-        .select('*')
-        .eq('published', true)
-        .order('created_at', { ascending: false })
-        .limit(3);
-
+      const {
+        data,
+        error
+      } = await supabase.from('announcements').select('*').eq('published', true).order('created_at', {
+        ascending: false
+      }).limit(3);
       if (error) throw error;
       setAnnouncements(data || []);
     } catch (error) {
@@ -106,45 +101,37 @@ const Index = () => {
       setAnnouncementsLoading(false);
     }
   };
-
   const handleSignOut = async () => {
     try {
-      const { error } = await supabase.auth.signOut();
+      const {
+        error
+      } = await supabase.auth.signOut();
       if (error) throw error;
       toast({
         title: "Succesvol afgemeld",
-        description: "Je bent uitgelogd van je account.",
+        description: "Je bent uitgelogd van je account."
       });
     } catch (error) {
       console.error('Error signing out:', error);
       toast({
         title: "Fout",
         description: "Afmelden mislukt. Probeer opnieuw.",
-        variant: "destructive",
+        variant: "destructive"
       });
     }
   };
-
   if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
+    return <div className="min-h-screen flex items-center justify-center">
         <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary"></div>
-      </div>
-    );
+      </div>;
   }
-
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="hero-gradient text-primary-foreground py-24 lg:py-32 relative">
         <div className="container mx-auto px-4 text-center relative z-10">
           <div className="flex justify-center mb-8 fade-in-up">
             <div className="bg-white rounded-full p-6 shadow-glow pulse-glow float-animation">
-              <img 
-                src="/lovable-uploads/03104bbc-f9de-44a2-a8b0-aedb91fd1c6c.png" 
-                alt="D-mon Hockey Club Logo" 
-                className="w-28 h-28 object-contain"
-              />
+              <img src="/lovable-uploads/03104bbc-f9de-44a2-a8b0-aedb91fd1c6c.png" alt="D-mon Hockey Club Logo" className="w-28 h-28 object-contain" />
             </div>
           </div>
           <h1 className="font-display text-5xl lg:text-7xl font-bold mb-6 fade-in-up tracking-tight">
@@ -153,28 +140,23 @@ const Index = () => {
           <p className="text-xl lg:text-2xl mb-10 max-w-3xl mx-auto leading-relaxed fade-in-up opacity-90">
             Welkom bij onze veldhockey gemeenschap in België. Sluit je aan voor trainingen, wedstrijden, en de passie voor hockey.
           </p>
-          {user ? (
-            <div className="space-y-4">
+          {user ? <div className="space-y-4">
               <div className="text-center">
                 <p className="text-lg mb-2">Welkom terug, {user.email}!</p>
                 {isAdmin && <span className="text-sm bg-accent text-accent-foreground px-3 py-1 rounded-full mr-2">Admin</span>}
                 {isModerator && !isAdmin && <span className="text-sm bg-secondary text-secondary-foreground px-3 py-1 rounded-full mr-2">Moderator</span>}
               </div>
               <div className="flex gap-4 justify-center flex-wrap">
-                {(isAdmin || isModerator) && (
-                  <Link to="/admin">
+                {(isAdmin || isModerator) && <Link to="/admin">
                     <Button size="lg" variant="secondary">
                       Admin Dashboard
                     </Button>
-                  </Link>
-                )}
+                  </Link>}
                 <Button size="lg" variant="outline" onClick={handleSignOut} className="border-white/50 text-white bg-white/10 hover:bg-white/20 hover:text-white hover:border-white/70 px-8 py-4 backdrop-blur-sm">
                   Afmelden
                 </Button>
               </div>
-            </div>
-          ) : (
-            <div className="flex gap-6 justify-center flex-wrap fade-in-up">
+            </div> : <div className="flex gap-6 justify-center flex-wrap fade-in-up">
               <Link to="/membership/info">
                 <Button size="lg" variant="hero" className="px-8 py-4">
                   Word Lid van Onze Club
@@ -185,8 +167,7 @@ const Index = () => {
                   Leden Login
                 </Button>
               </Link>
-            </div>
-          )}
+            </div>}
         </div>
       </section>
 
@@ -248,10 +229,8 @@ const Index = () => {
         <div className="container mx-auto">
           <h2 className="font-display text-4xl lg:text-5xl font-bold text-center mb-16 text-foreground">Laatste Nieuws</h2>
           
-          {announcementsLoading ? (
-            <div className="grid md:grid-cols-3 gap-6">
-              {[...Array(3)].map((_, i) => (
-                <Card key={i} className="animate-pulse">
+          {announcementsLoading ? <div className="grid md:grid-cols-3 gap-6">
+              {[...Array(3)].map((_, i) => <Card key={i} className="animate-pulse">
                   <CardHeader>
                     <div className="h-4 bg-muted rounded w-3/4"></div>
                     <div className="h-3 bg-muted rounded w-1/2"></div>
@@ -261,23 +240,19 @@ const Index = () => {
                     <div className="h-3 bg-muted rounded mb-2"></div>
                     <div className="h-3 bg-muted rounded w-2/3"></div>
                   </CardContent>
-                </Card>
-              ))}
-            </div>
-          ) : announcements.length > 0 ? (
-            <div className="grid md:grid-cols-3 gap-8">
-              {announcements.map((announcement, index) => (
-                <Card key={announcement.id} className={`group fade-in-up`} style={{animationDelay: `${index * 0.1}s`}}>
+                </Card>)}
+            </div> : announcements.length > 0 ? <div className="grid md:grid-cols-3 gap-8">
+              {announcements.map((announcement, index) => <Card key={announcement.id} className={`group fade-in-up`} style={{
+            animationDelay: `${index * 0.1}s`
+          }}>
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <CardTitle className="text-xl line-clamp-2 group-hover:text-primary transition-colors">
                         {announcement.title}
                       </CardTitle>
-                      {announcement.featured && (
-                        <Badge variant="secondary" className="ml-2 shrink-0 bg-accent/10 text-accent border-accent/20">
+                      {announcement.featured && <Badge variant="secondary" className="ml-2 shrink-0 bg-accent/10 text-accent border-accent/20">
                           Uitgelicht
-                        </Badge>
-                      )}
+                        </Badge>}
                     </div>
                     <CardDescription className="text-sm text-muted-foreground">
                       {new Date(announcement.created_at).toLocaleDateString("nl-BE")}
@@ -300,33 +275,24 @@ const Index = () => {
                           </DialogTitle>
                           <DialogDescription className="text-sm text-muted-foreground">
                             {new Date(announcement.created_at).toLocaleDateString("nl-BE")}
-                            {announcement.featured && (
-                              <Badge variant="secondary" className="ml-2 bg-accent/10 text-accent border-accent/20">
+                            {announcement.featured && <Badge variant="secondary" className="ml-2 bg-accent/10 text-accent border-accent/20">
                                 Uitgelicht
-                              </Badge>
-                            )}
+                              </Badge>}
                           </DialogDescription>
                         </DialogHeader>
-                        <div 
-                          className="prose prose-sm max-w-none text-foreground mt-4"
-                          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(announcement.content) }}
-                        />
+                        <div className="prose prose-sm max-w-none text-foreground mt-4" dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(announcement.content)
+                  }} />
                       </DialogContent>
                     </Dialog>
                   </CardContent>
-                </Card>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-12">
+                </Card>)}
+            </div> : <div className="text-center py-12">
               <p className="text-muted-foreground mb-4">Nog geen aankondigingen.</p>
-              {(isAdmin || isModerator) && (
-                <Link to="/admin/announcements/new">
+              {(isAdmin || isModerator) && <Link to="/admin/announcements/new">
                   <Button>Eerste Aankondiging Maken</Button>
-                </Link>
-              )}
-            </div>
-          )}
+                </Link>}
+            </div>}
         </div>
       </section>
 
@@ -335,10 +301,8 @@ const Index = () => {
         <div className="container mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Onze Teams</h2>
           
-          {teamsLoading ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[...Array(6)].map((_, i) => (
-                <Card key={i} className="animate-pulse">
+          {teamsLoading ? <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[...Array(6)].map((_, i) => <Card key={i} className="animate-pulse">
                   <CardHeader>
                     <div className="h-4 bg-muted rounded w-3/4"></div>
                     <div className="h-3 bg-muted rounded w-1/2"></div>
@@ -347,13 +311,9 @@ const Index = () => {
                     <div className="h-3 bg-muted rounded mb-2"></div>
                     <div className="h-3 bg-muted rounded w-2/3"></div>
                   </CardContent>
-                </Card>
-              ))}
-            </div>
-          ) : teams.length > 0 ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {teams.map((team) => (
-                <Card key={team.id} className="hover:shadow-lg transition-shadow">
+                </Card>)}
+            </div> : teams.length > 0 ? <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {teams.map(team => <Card key={team.id} className="hover:shadow-lg transition-shadow">
                   <CardHeader>
                     <CardTitle className="text-lg">
                       {team.name}
@@ -363,26 +323,18 @@ const Index = () => {
                       {team.season && ` • ${team.season}`}
                     </CardDescription>
                   </CardHeader>
-                  {team.description && (
-                    <CardContent>
+                  {team.description && <CardContent>
                       <p className="text-muted-foreground line-clamp-3">
                         {team.description}
                       </p>
-                    </CardContent>
-                  )}
-                </Card>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-12">
+                    </CardContent>}
+                </Card>)}
+            </div> : <div className="text-center py-12">
               <p className="text-muted-foreground mb-4">Nog geen teams beschikbaar.</p>
-              {isAdmin && (
-                <Link to="/admin/teams/new">
+              {isAdmin && <Link to="/admin/teams/new">
                   <Button>Eerste Team Toevoegen</Button>
-                </Link>
-              )}
-            </div>
-          )}
+                </Link>}
+            </div>}
         </div>
       </section>
 
@@ -391,46 +343,26 @@ const Index = () => {
         <div className="container mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Onze Sponsors</h2>
           
-          {sponsorsLoading ? (
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-              {[...Array(6)].map((_, i) => (
-                <div key={i} className="animate-pulse bg-muted rounded-lg h-24"></div>
-              ))}
-            </div>
-          ) : sponsors.length > 0 ? (
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-              {sponsors.map((sponsor) => (
-                <div key={sponsor.id} className="flex items-center justify-center p-4 bg-card rounded-lg border hover:shadow-lg transition-shadow">
-                  {sponsor.logo_path ? (
-                    <img 
-                      src={supabase.storage.from('sponsor-logos').getPublicUrl(sponsor.logo_path).data.publicUrl}
-                      alt={sponsor.name}
-                      className="max-h-16 max-w-full object-contain"
-                    />
-                  ) : (
-                    <div className="text-center text-sm font-medium text-muted-foreground">
+          {sponsorsLoading ? <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+              {[...Array(6)].map((_, i) => <div key={i} className="animate-pulse bg-muted rounded-lg h-24"></div>)}
+            </div> : sponsors.length > 0 ? <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+              {sponsors.map(sponsor => <div key={sponsor.id} className="flex items-center justify-center p-4 bg-card rounded-lg border hover:shadow-lg transition-shadow">
+                  {sponsor.logo_path ? <img src={supabase.storage.from('sponsor-logos').getPublicUrl(sponsor.logo_path).data.publicUrl} alt={sponsor.name} className="max-h-16 max-w-full object-contain" /> : <div className="text-center text-sm font-medium text-muted-foreground">
                       {sponsor.name}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-12">
+                    </div>}
+                </div>)}
+            </div> : <div className="text-center py-12">
               <p className="text-muted-foreground mb-4">Nog geen sponsors.</p>
-              {isAdmin && (
-                <Link to="/admin/sponsors/new">
+              {isAdmin && <Link to="/admin/sponsors/new">
                   <Button>Eerste Sponsor Toevoegen</Button>
-                </Link>
-              )}
-            </div>
-          )}
+                </Link>}
+            </div>}
         </div>
       </section>
 
 
       {/* Club Colors Showcase */}
-      <section className="py-16 bg-muted">
+      <section className="bg-muted py-[14px]">
         <div className="container mx-auto px-4 text-center">
           <div className="flex justify-center gap-4 flex-wrap">
             <div className="w-20 h-20 bg-primary rounded-lg shadow-lg flex items-center justify-center">
@@ -444,8 +376,6 @@ const Index = () => {
           </div>
         </div>
       </section>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
