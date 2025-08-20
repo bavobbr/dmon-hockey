@@ -60,7 +60,7 @@ const Auth = () => {
     if (!email || !password) {
       toast({
         title: "Error",
-        description: "Please fill in all fields",
+        description: "Gelieve alle velden in te vullen",
         variant: "destructive",
       });
       setLoading(false);
@@ -85,8 +85,8 @@ const Auth = () => {
         });
       } else {
         toast({
-          title: "Welcome back!",
-          description: "Successfully signed in",
+          title: "Welkom terug!",
+          description: "Succesvol ingelogd",
         });
       }
     } catch (error) {
@@ -115,42 +115,42 @@ const Auth = () => {
 
         <Card>
           <CardHeader>
-            <CardTitle>Authentication</CardTitle>
+            <CardTitle>Authenticatie</CardTitle>
             <CardDescription>
-              Sign in to your account or create a new one
+              Log in op uw account of maak een nieuwe aan
             </CardDescription>
           </CardHeader>
           <CardContent>
             <Tabs defaultValue="signin" className="w-full">
               <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="signin">Sign In</TabsTrigger>
-                <TabsTrigger value="signup">Sign Up</TabsTrigger>
+                <TabsTrigger value="signin">Inloggen</TabsTrigger>
+                <TabsTrigger value="signup">Registreren</TabsTrigger>
               </TabsList>
               
               <TabsContent value="signin" className="space-y-4">
                 <form onSubmit={(e) => handleAuth(e, false)} className="space-y-4">
                   <div className="space-y-2">
-                    <Label htmlFor="signin-email">Email</Label>
+                    <Label htmlFor="signin-email">E-mail</Label>
                     <Input
                       id="signin-email"
                       name="email"
                       type="email"
-                      placeholder="your.email@example.com"
+                      placeholder="uw.email@voorbeeld.nl"
                       required
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="signin-password">Password</Label>
+                    <Label htmlFor="signin-password">Wachtwoord</Label>
                     <Input
                       id="signin-password"
                       name="password"
                       type="password"
-                      placeholder="Enter your password"
+                      placeholder="Voer uw wachtwoord in"
                       required
                     />
                   </div>
                   <Button type="submit" className="w-full" disabled={loading}>
-                    {loading ? "Signing in..." : "Sign In"}
+                    {loading ? "Inloggen..." : "Inloggen"}
                   </Button>
                 </form>
               </TabsContent>
@@ -158,27 +158,27 @@ const Auth = () => {
               <TabsContent value="signup" className="space-y-4">
                 <form onSubmit={(e) => handleAuth(e, true)} className="space-y-4">
                   <div className="space-y-2">
-                    <Label htmlFor="signup-email">Email</Label>
+                    <Label htmlFor="signup-email">E-mail</Label>
                     <Input
                       id="signup-email"
                       name="email"
                       type="email"
-                      placeholder="your.email@example.com"
+                      placeholder="uw.email@voorbeeld.nl"
                       required
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="signup-password">Password</Label>
+                    <Label htmlFor="signup-password">Wachtwoord</Label>
                     <Input
                       id="signup-password"
                       name="password"
                       type="password"
-                      placeholder="Create a password"
+                      placeholder="Maak een wachtwoord aan"
                       required
                     />
                   </div>
                   <Button type="submit" className="w-full" disabled={loading}>
-                    {loading ? "Creating account..." : "Create Account"}
+                    {loading ? "Account aanmaken..." : "Account aanmaken"}
                   </Button>
                 </form>
               </TabsContent>

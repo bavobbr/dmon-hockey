@@ -90,7 +90,7 @@ const BoardMemberForm = () => {
 
         toast({
           title: 'Success',
-          description: 'Board member updated successfully',
+          description: 'Bestuurslid succesvol bijgewerkt',
         });
       } else {
         const { error } = await supabase
@@ -101,7 +101,7 @@ const BoardMemberForm = () => {
 
         toast({
           title: 'Success',
-          description: 'Board member added successfully',
+          description: 'Bestuurslid succesvol toegevoegd',
         });
       }
 
@@ -129,10 +129,10 @@ const BoardMemberForm = () => {
     <div className="container mx-auto py-8 px-4">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-foreground mb-2">
-          {isEditing ? 'Edit Board Member' : 'Add New Board Member'}
+          {isEditing ? 'Bestuurslid bewerken' : 'Nieuw bestuurslid toevoegen'}
         </h1>
         <p className="text-muted-foreground">
-          {isEditing ? 'Update board member information' : 'Add a new member to your executive board'}
+          {isEditing ? 'Bestuurslid informatie bijwerken' : 'Voeg een nieuw lid toe aan uw bestuur'}
         </p>
       </div>
 
@@ -239,14 +239,14 @@ const BoardMemberForm = () => {
 
             <div className="flex gap-4 pt-4">
               <Button type="submit" disabled={loading}>
-                {loading ? (isEditing ? 'Updating...' : 'Adding...') : (isEditing ? 'Update Member' : 'Add Member')}
+                {loading ? (isEditing ? 'Bijwerken...' : 'Toevoegen...') : (isEditing ? 'Bestuurslid bijwerken' : 'Bestuurslid toevoegen')}
               </Button>
               <Button
                 type="button"
                 variant="outline"
                 onClick={() => navigate('/admin/board-members')}
               >
-                Cancel
+                Annuleren
               </Button>
             </div>
           </form>

@@ -114,7 +114,7 @@ const SponsorForm = () => {
 
         toast({
           title: 'Success',
-          description: 'Sponsor updated successfully',
+          description: 'Sponsor succesvol bijgewerkt',
         });
       } else {
         const { error } = await supabase
@@ -125,7 +125,7 @@ const SponsorForm = () => {
 
         toast({
           title: 'Success',
-          description: 'Sponsor created successfully',
+          description: 'Sponsor succesvol aangemaakt',
         });
       }
 
@@ -153,10 +153,10 @@ const SponsorForm = () => {
     <div className="container mx-auto py-8 px-4">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-foreground mb-2">
-          {isEditing ? 'Edit Sponsor' : 'Add New Sponsor'}
+          {isEditing ? 'Sponsor bewerken' : 'Nieuwe sponsor toevoegen'}
         </h1>
         <p className="text-muted-foreground">
-          {isEditing ? 'Update sponsor information' : 'Add a new sponsor to your club'}
+          {isEditing ? 'Sponsor informatie bijwerken' : 'Voeg een nieuwe sponsor toe aan uw club'}
         </p>
       </div>
 
@@ -253,14 +253,14 @@ const SponsorForm = () => {
 
             <div className="flex gap-4 pt-4">
               <Button type="submit" disabled={loading || uploading}>
-                {(loading || uploading) ? (isEditing ? 'Updating...' : 'Creating...') : (isEditing ? 'Update Sponsor' : 'Add Sponsor')}
+                {(loading || uploading) ? (isEditing ? 'Bijwerken...' : 'Aanmaken...') : (isEditing ? 'Sponsor bijwerken' : 'Sponsor toevoegen')}
               </Button>
               <Button
                 type="button"
                 variant="outline"
                 onClick={() => navigate('/admin/sponsors')}
               >
-                Cancel
+                Annuleren
               </Button>
             </div>
           </form>

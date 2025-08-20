@@ -92,7 +92,7 @@ const AnnouncementForm = () => {
 
         toast({
           title: 'Success',
-          description: 'Announcement updated successfully',
+          description: 'Aankondiging succesvol bijgewerkt',
         });
       } else {
         const { error } = await supabase
@@ -103,7 +103,7 @@ const AnnouncementForm = () => {
 
         toast({
           title: 'Success',
-          description: 'Announcement created successfully',
+          description: 'Aankondiging succesvol aangemaakt',
         });
       }
 
@@ -194,10 +194,10 @@ const AnnouncementForm = () => {
     <div className="container mx-auto py-8 px-4">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-foreground mb-2">
-          {isEditing ? 'Edit Announcement' : 'Create New Announcement'}
+          {isEditing ? 'Aankondiging bewerken' : 'Nieuwe aankondiging aanmaken'}
         </h1>
         <p className="text-muted-foreground">
-          {isEditing ? 'Update your announcement details' : 'Create a new announcement for the club'}
+          {isEditing ? 'Pas de details van uw aankondiging aan' : 'Maak een nieuwe aankondiging voor de club'}
         </p>
       </div>
 
@@ -267,14 +267,14 @@ const AnnouncementForm = () => {
 
             <div className="flex gap-4 pt-4">
               <Button type="submit" disabled={loading}>
-                {loading ? (isEditing ? 'Updating...' : 'Creating...') : (isEditing ? 'Update Announcement' : 'Create Announcement')}
+                {loading ? (isEditing ? 'Bijwerken...' : 'Aanmaken...') : (isEditing ? 'Aankondiging bijwerken' : 'Aankondiging aanmaken')}
               </Button>
               <Button
                 type="button"
                 variant="outline"
                 onClick={() => navigate('/admin/announcements')}
               >
-                Cancel
+                Annuleren
               </Button>
             </div>
           </form>

@@ -92,7 +92,7 @@ const TeamForm = () => {
 
         toast({
           title: 'Success',
-          description: 'Team updated successfully',
+          description: 'Team succesvol bijgewerkt',
         });
       } else {
         const { error } = await supabase
@@ -103,7 +103,7 @@ const TeamForm = () => {
 
         toast({
           title: 'Success',
-          description: 'Team created successfully',
+          description: 'Team succesvol aangemaakt',
         });
       }
 
@@ -131,10 +131,10 @@ const TeamForm = () => {
     <div className="container mx-auto py-8 px-4">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-foreground mb-2">
-          {isEditing ? 'Edit Team' : 'Create New Team'}
+          {isEditing ? 'Team bewerken' : 'Nieuw team aanmaken'}
         </h1>
         <p className="text-muted-foreground">
-          {isEditing ? 'Update team information' : 'Add a new team to your club'}
+          {isEditing ? 'Team informatie bijwerken' : 'Voeg een nieuw team toe aan uw club'}
         </p>
       </div>
 
@@ -234,14 +234,14 @@ const TeamForm = () => {
 
             <div className="flex gap-4 pt-4">
               <Button type="submit" disabled={loading}>
-                {loading ? (isEditing ? 'Updating...' : 'Creating...') : (isEditing ? 'Update Team' : 'Create Team')}
+                {loading ? (isEditing ? 'Bijwerken...' : 'Aanmaken...') : (isEditing ? 'Team bijwerken' : 'Team aanmaken')}
               </Button>
               <Button
                 type="button"
                 variant="outline"
                 onClick={() => navigate('/admin/teams')}
               >
-                Cancel
+                Annuleren
               </Button>
             </div>
           </form>
