@@ -16,7 +16,8 @@ import {
   Calendar,
   BookOpen,
   Timer,
-  Zap
+  Zap,
+  MessageCircle
 } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useEffect } from "react";
@@ -43,6 +44,11 @@ const navigation = [
     title: "Home",
     url: "/",
     icon: Home,
+  },
+  {
+    title: "Socials",
+    url: "/socials",
+    icon: MessageCircle,
   },
   {
     title: "De Club",

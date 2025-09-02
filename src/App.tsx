@@ -49,6 +49,7 @@ import HowToPlay from "./pages/sporting/HowToPlay";
 import Rules from "./pages/sporting/Rules";
 import StickGuide from "./pages/sporting/StickGuide";
 import CoachesInfo from "./pages/sporting/CoachesInfo";
+import Socials from "./pages/Socials";
 
 const queryClient = new QueryClient();
 
@@ -92,9 +93,10 @@ const App = () => (
                   </div>
                 </header>
                 <main className="flex-1 overflow-auto">
-                  <Routes>
-                    <Route path="/" element={<Index />} />
-                    <Route path="/auth" element={<Auth />} />
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/auth" element={<Auth />} />
+              <Route path="/socials" element={<Socials />} />
                     
                     {/* Club routes */}
                     <Route path="/club/field" element={<HockeyField />} />
