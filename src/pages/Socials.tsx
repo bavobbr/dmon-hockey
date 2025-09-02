@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Heart, MessageCircle, Share2 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 interface InstagramPost {
   id: string;
@@ -18,8 +19,6 @@ export default function Socials() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // For now, we'll show placeholder data
-    // This can be connected to Instagram API later
     const mockPosts: InstagramPost[] = [
       {
         id: "1",
@@ -63,11 +62,27 @@ export default function Socials() {
       }
     ];
 
-    // Simulate loading
-    setTimeout(() => {
-      setPosts(mockPosts);
-      setLoading(false);
-    }, 1000);
+    const fetchInstagramPosts = async () => {
+      try {
+        const { data, error } = await supabase.functions.invoke('fetch-instagram-posts');
+        
+        if (error) {
+          console.error('Error fetching Instagram posts:', error);
+          // Fallback to mock data on error
+          setPosts(mockPosts);
+        } else {
+          setPosts(data.posts || []);
+        }
+      } catch (error) {
+        console.error('Error calling Instagram function:', error);
+        // Fallback to mock data on error
+        setPosts(mockPosts);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchInstagramPosts();
   }, []);
 
   const formatDate = (timestamp: string) => {
@@ -187,9 +202,8 @@ export default function Socials() {
         <div className="bg-muted/50 rounded-lg p-6 mt-8">
           <h2 className="text-lg font-semibold mb-2">Instagram Integratie</h2>
           <p className="text-muted-foreground text-sm">
-            Deze pagina toont momenteel voorbeeldcontent. Om echte Instagram posts te tonen, 
-            moet er een verbinding gemaakt worden met de Instagram API. Neem contact op met 
-            de beheerder voor meer informatie.
+            Deze pagina probeert automatisch de nieuwste posts van @dmon_hockey op te halen. 
+            Als er geen posts worden getoond, controleer dan of de Instagram API tokens correct zijn geconfigureerd.
           </p>
         </div>
       </div>
