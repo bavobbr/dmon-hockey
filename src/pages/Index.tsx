@@ -32,6 +32,15 @@ interface Sponsor {
   website_url: string;
   tier: string;
 }
+
+interface InstagramPost {
+  id: string;
+  caption: string;
+  media_url: string;
+  media_type: string;
+  timestamp: string;
+  permalink: string;
+}
 const Index = () => {
   const {
     user,
