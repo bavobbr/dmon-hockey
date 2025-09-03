@@ -54,9 +54,11 @@ const Index = () => {
   const [announcements, setAnnouncements] = useState<Announcement[]>([]);
   const [teams, setTeams] = useState<Team[]>([]);
   const [sponsors, setSponsors] = useState<Sponsor[]>([]);
+  const [instagramPosts, setInstagramPosts] = useState<InstagramPost[]>([]);
   const [announcementsLoading, setAnnouncementsLoading] = useState(true);
   const [teamsLoading, setTeamsLoading] = useState(true);
   const [sponsorsLoading, setSponsorsLoading] = useState(true);
+  const [instagramLoading, setInstagramLoading] = useState(true);
   useEffect(() => {
     fetchAnnouncements();
     fetchTeams();
