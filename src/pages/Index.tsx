@@ -349,6 +349,71 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Instagram Posts Section */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto">
+          <div className="flex items-center justify-between mb-12">
+            <h2 className="text-3xl font-bold text-foreground">Van Onze Instagram</h2>
+            <Link to="/socials">
+              <Button variant="outline" size="sm">
+                Bekijk Meer
+              </Button>
+            </Link>
+          </div>
+          
+          {instagramLoading ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[...Array(4)].map((_, i) => (
+                <Card key={i} className="animate-pulse">
+                  <div className="aspect-square bg-muted rounded-t-lg"></div>
+                  <CardContent className="p-4">
+                    <div className="h-3 bg-muted rounded mb-2"></div>
+                    <div className="h-3 bg-muted rounded w-2/3"></div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          ) : instagramPosts.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {instagramPosts.map((post) => (
+                <Card key={post.id} className="group cursor-pointer hover:shadow-lg transition-all duration-300 relative overflow-hidden">
+                  <div className="aspect-square overflow-hidden rounded-t-lg">
+                    <img 
+                      src={post.media_url} 
+                      alt={post.caption || "Instagram post"} 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <CardContent className="p-4">
+                    <p className="text-sm text-muted-foreground line-clamp-2 mb-2">
+                      {post.caption}
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      {new Date(post.timestamp).toLocaleDateString("nl-BE")}
+                    </p>
+                  </CardContent>
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 rounded-lg">
+                    <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <Button size="sm" variant="secondary" asChild>
+                        <a href={post.permalink} target="_blank" rel="noopener noreferrer">
+                          Bekijk op Instagram
+                        </a>
+                      </Button>
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground">
+                Volg ons op Instagram voor de nieuwste updates!
+              </p>
+            </div>
+          )}
+        </div>
+      </section>
+
       {/* Sponsors Section */}
       <section className="py-16 px-4">
         <div className="container mx-auto">
