@@ -63,6 +63,7 @@ const Index = () => {
     fetchAnnouncements();
     fetchTeams();
     fetchSponsors();
+    fetchInstagramPosts();
   }, []);
   const fetchSponsors = async () => {
     try {
@@ -78,6 +79,23 @@ const Index = () => {
       console.error('Error fetching sponsors:', error);
     } finally {
       setSponsorsLoading(false);
+    }
+  };
+
+  const fetchInstagramPosts = async () => {
+    try {
+      const { data, error } = await supabase.functions.invoke('fetch-instagram-posts');
+      
+      if (error) {
+        console.error('Error fetching Instagram posts:', error);
+        return;
+      }
+
+      setInstagramPosts(data?.posts?.slice(0, 4) || []);
+    } catch (error) {
+      console.error('Error fetching Instagram posts:', error);
+    } finally {
+      setInstagramLoading(false);
     }
   };
   const fetchTeams = async () => {
