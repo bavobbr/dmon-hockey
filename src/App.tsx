@@ -3,7 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarProvider, SidebarTrigger, useSidebar } from "@/components/ui/sidebar";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AppSidebar } from "@/components/AppSidebar";
@@ -53,6 +53,46 @@ import Socials from "./pages/Socials";
 
 const queryClient = new QueryClient();
 
+const AppHeader = () => {
+  const { toggleSidebar } = useSidebar();
+  
+  return (
+    <header className="h-14 flex items-center justify-between border-b bg-background px-4 relative z-10 md:px-6">
+      <div className="flex items-center gap-3">
+        {/* Mobile-optimized menu button */}
+        <Button
+          variant="ghost"
+          size="sm"
+          className="lg:hidden flex items-center gap-2 px-3 py-2 text-primary bg-primary/5 hover:bg-primary/10 border border-primary/20 rounded-lg"
+          asChild
+        >
+          <SidebarTrigger>
+            <Menu className="h-5 w-5" />
+            <span className="text-sm font-medium">Menu</span>
+          </SidebarTrigger>
+        </Button>
+        
+        {/* Desktop sidebar trigger - subtle */}
+        <div className="hidden lg:block">
+          <SidebarTrigger />
+        </div>
+        
+        <h1 className="text-lg font-semibold text-foreground">D-mon Hockey Club</h1>
+      </div>
+      
+      {/* Mobile hint text - clickable */}
+      <div className="lg:hidden">
+        <button 
+          onClick={toggleSidebar}
+          className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+        >
+          Tik op Menu
+        </button>
+      </div>
+    </header>
+  );
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <AuthProvider>
@@ -64,42 +104,7 @@ const App = () => (
             <div className="min-h-screen flex w-full">
               <AppSidebar />
               <div className="flex-1 flex flex-col">
-                <header className="h-14 flex items-center justify-between border-b bg-background px-4 relative z-10 md:px-6">
-                  <div className="flex items-center gap-3">
-                    {/* Mobile-optimized menu button */}
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="lg:hidden flex items-center gap-2 px-3 py-2 text-primary bg-primary/5 hover:bg-primary/10 border border-primary/20 rounded-lg"
-                      asChild
-                    >
-                      <SidebarTrigger>
-                        <Menu className="h-5 w-5" />
-                        <span className="text-sm font-medium">Menu</span>
-                      </SidebarTrigger>
-                    </Button>
-                    
-                    {/* Desktop sidebar trigger - subtle */}
-                    <div className="hidden lg:block">
-                      <SidebarTrigger />
-                    </div>
-                    
-                    <h1 className="text-lg font-semibold text-foreground">D-mon Hockey Club</h1>
-                  </div>
-                  
-                  {/* Mobile hint text - clickable */}
-                  <div className="lg:hidden">
-                    <button 
-                      onClick={() => {
-                        const menuButton = document.querySelector('[data-sidebar-trigger]') as HTMLElement;
-                        menuButton?.click();
-                      }}
-                      className="text-xs text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      Tik op Menu
-                    </button>
-                  </div>
-                </header>
+                <AppHeader />
                 <main className="flex-1 overflow-auto">
             <Routes>
               <Route path="/" element={<Index />} />
