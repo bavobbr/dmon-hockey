@@ -89,9 +89,15 @@ const App = () => (
                   
                   {/* Mobile hint text - clickable */}
                   <div className="lg:hidden">
-                    <SidebarTrigger className="text-xs text-muted-foreground hover:text-foreground transition-colors">
+                    <button 
+                      onClick={() => {
+                        const menuButton = document.querySelector('[data-sidebar-trigger]') as HTMLElement;
+                        menuButton?.click();
+                      }}
+                      className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+                    >
                       Tik op Menu
-                    </SidebarTrigger>
+                    </button>
                   </div>
                 </header>
                 <main className="flex-1 overflow-auto">
