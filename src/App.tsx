@@ -87,9 +87,11 @@ const App = () => (
                     <h1 className="text-lg font-semibold text-foreground">D-mon Hockey Club</h1>
                   </div>
                   
-                  {/* Mobile hint text */}
-                  <div className="lg:hidden text-xs text-muted-foreground">
-                    Tik op Menu
+                  {/* Mobile hint text - clickable */}
+                  <div className="lg:hidden">
+                    <SidebarTrigger className="text-xs text-muted-foreground hover:text-foreground transition-colors">
+                      Tik op Menu
+                    </SidebarTrigger>
                   </div>
                 </header>
                 <main className="flex-1 overflow-auto">
