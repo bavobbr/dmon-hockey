@@ -71,7 +71,7 @@ const HockeyField = () => {
                   <div className="border rounded-lg overflow-hidden">
                     <img 
                       src={mobilityMap} 
-                      alt="Mobiliteits- en parkeerkaart voor D-mon Hockey Club" 
+                      alt="Mobiliteits- en parkeerkaart voor D-mon Hockey Club"
                       className="w-full h-auto"
                     />
                   </div>
