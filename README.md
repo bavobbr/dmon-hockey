@@ -156,6 +156,21 @@ The project generates standard web app code that can be deployed anywhere:
 2. Deploy the `dist` folder to any static hosting service
 3. Configure environment variables for Supabase in your hosting environment
 
+### Twizzit Events Sync
+
+To keep the `twizzit_events` table up to date, deploy and schedule the `sync-twizzit-events` edge function:
+
+```bash
+supabase functions deploy sync-twizzit-events --no-verify-jwt
+supabase cron schedule twizzit-sync "0 2 * * *" sync-twizzit-events
+```
+
+Ensure the following secrets are configured in each environment:
+
+- `TWIZZIT_USERNAME`
+- `TWIZZIT_PASSWORD`
+- `TWIZZIT_ORG_ID`
+
 ## Contributing
 
 1. Fork the repository
