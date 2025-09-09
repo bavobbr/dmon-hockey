@@ -203,67 +203,6 @@ export type Database = {
         }
         Relationships: []
       }
-
-      twizzit_events: {
-        Row: {
-          id: string
-          twizzit_id: number
-          name: string
-          start_at: string
-          end_at: string
-          meeting_time: string | null
-          description: string | null
-          address: string | null
-          score: string | null
-          score_details: string | null
-          series: number | null
-          groups: Json | null
-          contacts: Json | null
-          resources: Json | null
-          raw: Json | null
-          created_at: string
-          updated_at: string
-        }
-        Insert: {
-          id?: string
-          twizzit_id: number
-          name: string
-          start_at: string
-          end_at: string
-          meeting_time?: string | null
-          description?: string | null
-          address?: string | null
-          score?: string | null
-          score_details?: string | null
-          series?: number | null
-          groups?: Json | null
-          contacts?: Json | null
-          resources?: Json | null
-          raw?: Json | null
-          created_at?: string
-          updated_at?: string
-        }
-        Update: {
-          id?: string
-          twizzit_id?: number
-          name?: string
-          start_at?: string
-          end_at?: string
-          meeting_time?: string | null
-          description?: string | null
-          address?: string | null
-          score?: string | null
-          score_details?: string | null
-          series?: number | null
-          groups?: Json | null
-          contacts?: Json | null
-          resources?: Json | null
-          raw?: Json | null
-          created_at?: string
-          updated_at?: string
-        }
-        Relationships: []
-      }
       user_roles: {
         Row: {
           created_at: string
