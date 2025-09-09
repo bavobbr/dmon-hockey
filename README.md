@@ -183,6 +183,7 @@ supabase secrets set \
 
 Repeat for other environments (e.g., `--env dev`, `--env prod`) as needed.
 
+
 ## Contributing
 
 1. Fork the repository
