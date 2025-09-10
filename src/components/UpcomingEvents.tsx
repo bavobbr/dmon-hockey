@@ -53,27 +53,16 @@ const UpcomingEvents = () => {
         ) : events.length === 0 ? (
           <p className="text-muted-foreground">No upcoming events.</p>
         ) : (
-          <ul className="space-y-4">
+          <div className="space-y-3">
             {events.map((event) => (
-              <li key={event.id}>
-                <h3 className="font-medium">{event.name}</h3>
+              <div key={event.id} className="p-4 rounded-lg border bg-card hover:bg-accent/50 transition-colors">
+                <h3 className="font-medium text-foreground">{event.name}</h3>
                 <p className="text-sm text-muted-foreground">
                   {new Date(event.start_at).toLocaleString("nl-BE")}
                 </p>
-                {event.address && (
-                  <p className="text-sm text-muted-foreground">{event.address}</p>
-                )}
-                {event.description && (
-                  <div
-                    className="text-sm mt-2"
-                    dangerouslySetInnerHTML={{
-                      __html: DOMPurify.sanitize(event.description),
-                    }}
-                  />
-                )}
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
         )}
       </CardContent>
     </Card>
