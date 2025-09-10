@@ -8,6 +8,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import DOMPurify from 'dompurify';
+import UpcomingEvents from "@/components/UpcomingEvents";
 interface Announcement {
   id: string;
   title: string;
@@ -322,6 +323,16 @@ const Index = () => {
                   <Button>Eerste Aankondiging Maken</Button>
                 </Link>}
             </div>}
+        </div>
+      </section>
+
+      {/* Upcoming Events */}
+      <section className="py-20 px-4 bg-gradient-subtle">
+        <div className="container mx-auto">
+          <h2 className="font-display text-4xl lg:text-5xl font-bold text-center mb-16 text-foreground">Aankomende Evenementen</h2>
+          <div className="max-w-4xl mx-auto">
+            <UpcomingEvents />
+          </div>
         </div>
       </section>
 
