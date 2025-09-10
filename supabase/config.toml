@@ -1,1 +1,4 @@
 project_id = "rtvcsywkkcgakfzsuxgz"
+
+[functions.sync-twizzit-events]
+verify_jwt = false
