@@ -56,7 +56,7 @@ const UpcomingEvents = () => {
           <div className="space-y-3">
             {events.map((event) => (
               <div key={event.id} className="p-4 rounded-lg border bg-card hover:bg-accent/50 transition-colors">
-                <h4 className="font-medium text-foreground">{event.name}</h3>
+                <h4 className="font-medium text-foreground">{event.name}</h4>
                 <p className="text-sm text-muted-foreground">
                   {new Date(event.start_at).toLocaleString("nl-BE")}
                 </p>
