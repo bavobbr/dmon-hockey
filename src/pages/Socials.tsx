@@ -198,14 +198,6 @@ export default function Socials() {
             Bekijk meer op Instagram
           </Button>
         </div>
-
-        <div className="bg-muted/50 rounded-lg p-6 mt-8">
-          <h2 className="text-lg font-semibold mb-2">Instagram Integratie</h2>
-          <p className="text-muted-foreground text-sm">
-            Deze pagina probeert automatisch de nieuwste posts van @dmon_hockey op te halen. 
-            Als er geen posts worden getoond, controleer dan of de Instagram API tokens correct zijn geconfigureerd.
-          </p>
-        </div>
       </div>
     </div>
   );
