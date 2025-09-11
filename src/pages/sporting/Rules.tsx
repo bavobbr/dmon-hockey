@@ -11,16 +11,15 @@ const Rules = () => {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Timer className="h-5 w-5" />
-              Become a Referee
+              In aanmaak
             </CardTitle>
             <CardDescription>
-              Rules progression by age group and referee training opportunities
+              deze sectie is in verwerking
             </CardDescription>
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground">
-              Learn about the rules for different age groups from U6 to adult levels, 
-              and discover how to become a certified referee.
+              TBD
             </p>
           </CardContent>
         </Card>
