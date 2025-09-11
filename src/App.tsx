@@ -50,6 +50,7 @@ import Rules from "./pages/sporting/Rules";
 import StickGuide from "./pages/sporting/StickGuide";
 import CoachesInfo from "./pages/sporting/CoachesInfo";
 import Socials from "./pages/Socials";
+import Events from "./pages/Events";
 
 const queryClient = new QueryClient();
 
@@ -109,6 +110,7 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/auth" element={<Auth />} />
+              <Route path="/events" element={<Events />} />
               <Route path="/socials" element={<Socials />} />
                     
                     {/* Club routes */}
