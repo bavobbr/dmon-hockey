@@ -58,9 +58,11 @@ supabase login
 
 1. **Clone the repository**
    ```bash
-   git clone <YOUR_GIT_URL>
-   cd <YOUR_PROJECT_NAME>
+   git clone https://github.com/<owner>/dmon-hockey.git
+   cd dmon-hockey
    ```
+   Replace `<owner>` with the GitHub username or organization that owns the
+   repository. You can also substitute your fork's owner or URL for `<owner>`.
 
 2. **Install dependencies**
    ```bash
