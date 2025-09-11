@@ -105,6 +105,12 @@ npm run preview
 npm run lint
 ```
 
+## Custom Supabase Project
+
+To connect this codebase to your own Supabase project, update the client configuration.
+Edit `src/integrations/supabase/client.ts` and replace the `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY` constants with values from your Supabase project's dashboard.
+These values can be found under **Project Settings → API** in the Supabase dashboard.
+
 ## Project Structure
 
 ```
