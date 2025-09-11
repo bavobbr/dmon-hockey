@@ -43,13 +43,22 @@ serve(async (req) => {
       );
     }
 
-    const data = await response.json();
+    const data: {
+      data?: Array<{
+        id: string;
+        caption?: string;
+        media_url: string;
+        media_type: string;
+        timestamp: string;
+        permalink: string;
+      }>;
+    } = await response.json();
     console.log('Instagram API response:', data);
 
     // Transform the data to match our interface
-    const posts = data.data?.map((post: any) => ({
+    const posts = data.data?.map((post) => ({
       id: post.id,
-      caption: post.caption || '',
+      caption: post.caption ?? '',
       media_url: post.media_url,
       media_type: post.media_type,
       timestamp: post.timestamp,

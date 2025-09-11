@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -38,18 +38,13 @@ const BoardMemberForm = () => {
     active: true,
   });
 
-  useEffect(() => {
-    if (isEditing && id) {
-      fetchBoardMember(id);
-    }
-  }, [isEditing, id]);
-
-  const fetchBoardMember = async (memberId: string) => {
+  const fetchBoardMember = useCallback(async () => {
+    if (!id) return;
     try {
       const { data, error } = await supabase
         .from('board_members')
         .select('*')
-        .eq('id', memberId)
+        .eq('id', id)
         .single();
 
       if (error) throw error;
@@ -73,7 +68,13 @@ const BoardMemberForm = () => {
       });
       navigate('/admin/board-members');
     }
-  };
+  }, [id, navigate, toast]);
+
+  useEffect(() => {
+    if (isEditing) {
+      fetchBoardMember();
+    }
+  }, [isEditing, fetchBoardMember]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
