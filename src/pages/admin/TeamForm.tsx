@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import { useAuth } from '@/hooks/useAuth';
+import { useState, useEffect, useCallback } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -40,18 +39,13 @@ const TeamForm = () => {
     active: true,
   });
 
-  useEffect(() => {
-    if (isEditing && id) {
-      fetchTeam(id);
-    }
-  }, [isEditing, id]);
-
-  const fetchTeam = async (teamId: string) => {
+  const fetchTeam = useCallback(async () => {
+    if (!id) return;
     try {
       const { data, error } = await supabase
         .from('teams')
         .select('*')
-        .eq('id', teamId)
+        .eq('id', id)
         .single();
 
       if (error) throw error;
@@ -75,7 +69,13 @@ const TeamForm = () => {
       });
       navigate('/admin/teams');
     }
-  };
+  }, [id, navigate, toast]);
+
+  useEffect(() => {
+    if (isEditing) {
+      fetchTeam();
+    }
+  }, [isEditing, fetchTeam]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

@@ -34,18 +34,13 @@ const AnnouncementForm = () => {
   const [featured, setFeatured] = useState(false);
   const [published, setPublished] = useState(false);
 
-  useEffect(() => {
-    if (isEditing && id) {
-      fetchAnnouncement(id);
-    }
-  }, [isEditing, id]);
-
-  const fetchAnnouncement = async (announcementId: string) => {
+  const fetchAnnouncement = useCallback(async () => {
+    if (!id) return;
     try {
       const { data, error } = await supabase
         .from('announcements')
         .select('*')
-        .eq('id', announcementId)
+        .eq('id', id)
         .single();
 
       if (error) throw error;
@@ -64,7 +59,13 @@ const AnnouncementForm = () => {
       });
       navigate('/admin/announcements');
     }
-  };
+  }, [id, navigate, toast]);
+
+  useEffect(() => {
+    if (isEditing) {
+      fetchAnnouncement();
+    }
+  }, [isEditing, fetchAnnouncement]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

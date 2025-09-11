@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -37,18 +37,13 @@ const SponsorForm = () => {
     active: true,
   });
 
-  useEffect(() => {
-    if (isEditing && id) {
-      fetchSponsor(id);
-    }
-  }, [isEditing, id]);
-
-  const fetchSponsor = async (sponsorId: string) => {
+  const fetchSponsor = useCallback(async () => {
+    if (!id) return;
     try {
       const { data, error } = await supabase
         .from('sponsors')
         .select('*')
-        .eq('id', sponsorId)
+        .eq('id', id)
         .single();
 
       if (error) throw error;
@@ -70,7 +65,13 @@ const SponsorForm = () => {
       });
       navigate('/admin/sponsors');
     }
-  };
+  }, [id, navigate, toast]);
+
+  useEffect(() => {
+    if (isEditing) {
+      fetchSponsor();
+    }
+  }, [isEditing, fetchSponsor]);
 
   const uploadLogo = async (): Promise<string | null> => {
     if (!logoFile) return formData.logo_path;

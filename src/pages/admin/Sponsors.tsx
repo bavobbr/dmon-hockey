@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import { useAuth } from '@/hooks/useAuth';
+import { useState, useEffect, useCallback } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -24,11 +23,7 @@ const Sponsors = () => {
   const [sponsors, setSponsors] = useState<Sponsor[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetchSponsors();
-  }, []);
-
-  const fetchSponsors = async () => {
+  const fetchSponsors = useCallback(async () => {
     try {
       const { data, error } = await supabase
         .from('sponsors')
@@ -47,7 +42,11 @@ const Sponsors = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [toast]);
+
+  useEffect(() => {
+    fetchSponsors();
+  }, [fetchSponsors]);
 
   const deleteSponsor = async (id: string) => {
     if (!confirm('Are you sure you want to delete this sponsor?')) return;
