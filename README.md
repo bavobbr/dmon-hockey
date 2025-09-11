@@ -167,9 +167,15 @@ supabase cron schedule twizzit-sync "0 2 * * *" sync-twizzit-events
 
 Ensure the following secrets are configured in each environment:
 
-- `TWIZZIT_USERNAME`
-- `TWIZZIT_PASSWORD`
-- `TWIZZIT_ORG_ID`
+The Supabase Edge Functions in this project rely on the following secrets. Each item notes the feature that uses it. Configure them for every environment and set them locally when developing Edge Functions:
+
+- `TWIZZIT_USERNAME` – Twizzit account used by `sync-twizzit-events`
+- `TWIZZIT_PASSWORD` – Twizzit password for `sync-twizzit-events`
+- `TWIZZIT_ORG_ID` – Twizzit organization ID for `sync-twizzit-events`
+- `INSTAGRAM_ACCESS_TOKEN` – Instagram feed via `fetch-instagram-posts`
+- `MAPBOX_PUBLIC_TOKEN` – Interactive map via `get-mapbox-token`
+- `SUPABASE_URL` – Supabase project URL for database access in Edge Functions (e.g., `sync-twizzit-events`)
+- `SUPABASE_SERVICE_ROLE_KEY` – Supabase service role key for Edge Functions that write to the database
 
 Set them using the Supabase CLI (example for local development):
 
@@ -178,6 +184,10 @@ supabase secrets set \
   TWIZZIT_USERNAME="your-username" \
   TWIZZIT_PASSWORD="your-password" \
   TWIZZIT_ORG_ID="your-org-id" \
+  INSTAGRAM_ACCESS_TOKEN="your-instagram-token" \
+  MAPBOX_PUBLIC_TOKEN="your-mapbox-token" \
+  SUPABASE_URL="your-supabase-url" \
+  SUPABASE_SERVICE_ROLE_KEY="your-service-role-key" \
   --env local
 ```
 
