@@ -41,6 +41,19 @@ This project is built with modern web technologies:
 - Node.js 18+ or Bun
 - Git
 
+#### Supabase CLI
+Install the [Supabase CLI](https://supabase.com/docs/guides/cli) to manage Edge Functions and secrets.
+
+```bash
+npm i -g supabase
+```
+
+Authenticate your local environment before running deploy or cron commands:
+
+```bash
+supabase login
+```
+
 ### Quick Start
 
 1. **Clone the repository**
@@ -158,9 +171,10 @@ The project generates standard web app code that can be deployed anywhere:
 
 ### Twizzit Events Sync
 
-To keep the `twizzit_events` table up to date, deploy and schedule the `sync-twizzit-events` edge function:
+To keep the `twizzit_events` table up to date, deploy and schedule the `sync-twizzit-events` edge function. Make sure you're authenticated with Supabase CLI before running these commands:
 
 ```bash
+supabase login
 supabase functions deploy sync-twizzit-events --no-verify-jwt
 supabase cron schedule twizzit-sync "0 2 * * *" sync-twizzit-events
 ```
