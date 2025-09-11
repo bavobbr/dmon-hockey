@@ -59,14 +59,13 @@ const navigation = [
     title: "De Club",
     icon: Users,
     items: [
-      { title: "Hockeyterrein & Mobiliteit", url: "/club/field", icon: MapPin },
+      { title: "Locatie", url: "/club/field", icon: MapPin },
       { title: "Teams", url: "/club/teams", icon: Trophy },
       { title: "Bestuur", url: "/club/board", icon: UserCheck },
       { title: "Clubwaarden", url: "/club/values", icon: Shield },
       { title: "In het Nieuws", url: "/club/news", icon: Newspaper },
       { title: "Geschiedenis", url: "/club/history", icon: History },
       { title: "Sponsors", url: "/club/sponsors", icon: HandHeart },
-      { title: "Privacybeleid", url: "/club/privacy", icon: FileText },
     ],
   },
   {
@@ -77,12 +76,8 @@ const navigation = [
       { title: "Lid Worden - Registratie", url: "/membership/register", icon: FileText },
       { title: "Verzekering", url: "/membership/insurance", icon: Shield },
       { title: "Contact", url: "/membership/contact", icon: Phone },
+      { title: "Privacybeleid", url: "/club/privacy", icon: FileText },
     ],
-  },
-  {
-    title: "Shop & Kleding",
-    url: "/shop",
-    icon: ShoppingBag,
   },
   {
     title: "Sportief",
@@ -93,6 +88,11 @@ const navigation = [
       { title: "Regels & Scheidsrechten", url: "/sporting/rules", icon: Timer },
       { title: "De Juiste Stick Kiezen", url: "/sporting/stick-guide", icon: Zap },
     ],
+  },
+  {
+    title: "Shop & Kleding",
+    url: "/shop",
+    icon: ShoppingBag,
   },
 ];
 
