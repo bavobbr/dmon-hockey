@@ -105,9 +105,20 @@ export function AppSidebar() {
   // Close sidebar on mobile when route changes
   useEffect(() => {
     if (isMobile && open) {
-      setOpen(false);
+      // Small delay to ensure navigation completes
+      const timer = setTimeout(() => {
+        setOpen(false);
+      }, 100);
+      return () => clearTimeout(timer);
     }
   }, [currentPath, isMobile, open, setOpen]);
+
+  // Handle mobile navigation click
+  const handleMobileNavClick = () => {
+    if (isMobile && open) {
+      setOpen(false);
+    }
+  };
 
   const isActive = (path: string) => currentPath === path;
   const isGroupActive = (items: { url: string }[]) =>
@@ -163,10 +174,11 @@ export function AppSidebar() {
                             {item.items.map((subItem) => (
                               <SidebarMenuSubItem key={subItem.title}>
                                 <SidebarMenuSubButton asChild>
-                                  <NavLink
-                                    to={subItem.url}
-                                    className={`${getNavCls} flex items-center gap-2 w-full min-h-[2rem]`}
-                                  >
+                                   <NavLink
+                                     to={subItem.url}
+                                     onClick={handleMobileNavClick}
+                                     className={`${getNavCls} flex items-center gap-2 w-full min-h-[2rem]`}
+                                   >
                                     <subItem.icon className="h-3 w-3 flex-shrink-0" />
                                     <span className="truncate whitespace-nowrap overflow-hidden">{subItem.title}</span>
                                   </NavLink>
@@ -183,11 +195,12 @@ export function AppSidebar() {
                 return (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton asChild>
-                      <NavLink
-                        to={item.url}
-                        end
-                        className={`${getNavCls} flex items-center gap-2 w-full min-h-[2.5rem]`}
-                      >
+                       <NavLink
+                         to={item.url}
+                         end
+                         onClick={handleMobileNavClick}
+                         className={`${getNavCls} flex items-center gap-2 w-full min-h-[2.5rem]`}
+                       >
                         <item.icon className="h-4 w-4 flex-shrink-0" />
                         <span className="truncate whitespace-nowrap overflow-hidden">{item.title}</span>
                       </NavLink>
