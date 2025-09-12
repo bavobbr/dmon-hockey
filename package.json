@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test:gui": "playwright test",
-    "test:gui:headed": "playwright test --headed"
+    "test:gui:headed": "playwright test --headed",
+    "test:gui:home": "playwright test tests/gui/home.spec.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
