@@ -27,8 +27,11 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Build and serve
-        run: npm run build && npx http-server dist &
-
+        run: |
+          npm run build
+          npx http-server dist &
+          npx wait-on http://localhost:8080
+          
       - name: Run GUI tests
         run: npm run test:gui
 
