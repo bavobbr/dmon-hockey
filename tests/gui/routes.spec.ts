@@ -24,19 +24,6 @@ const paths: string[] = [
   '/sporting/rules',
   '/sporting/stick-guide',
   '/sporting/coaches-info',
-  '/admin',
-  '/admin/announcements',
-  '/admin/teams',
-  '/admin/sponsors',
-  '/admin/sponsors/new',
-  '/admin/sponsors/edit/1',
-  '/admin/board-members',
-  '/admin/board-members/new',
-  '/admin/board-members/edit/1',
-  '/admin/teams/new',
-  '/admin/teams/edit/1',
-  '/admin/announcements/new',
-  '/admin/announcements/edit/1',
 ];
 
 const edgeFunctionPaths: string[] = ['/', '/socials', '/club/field'];

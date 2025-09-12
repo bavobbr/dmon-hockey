@@ -6,6 +6,6 @@ dotenv.config({ path: '.env.test' });
 export default defineConfig({
   testDir: 'tests/gui',
   use: {
-    baseURL: 'http://localhost:5173',
+    baseURL: 'http://localhost:8080',
   },
 });
