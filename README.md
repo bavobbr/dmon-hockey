@@ -1,257 +1,93 @@
 # D-mon Hockey Club Website
 
-A modern, responsive website for D-mon Hockey Club built with React and TypeScript.
+Modern, responsive website for D-mon Hockey Club built with React and TypeScript.
 
-## Project info
+## Key Features
+- Announcements, teams and sponsor listings backed by Supabase
+- Twizzit event sync and Instagram feed via scheduled edge functions
+- Interactive maps and charts with Mapbox GL and Recharts
+- Role-based admin area for managing club content
 
-**URL**: https://lovable.dev/projects/e2aabc45-8df6-4198-b516-5ee2c510f680
+## Tech Stack
+### Core
+- React 18 + Vite
+- TypeScript
+- Tailwind CSS with shadcn/ui (Radix UI primitives, Lucide icons)
+- Supabase for database, authentication, storage and edge functions
 
-## Technology Stack
+### Libraries
+- React Router for routing
+- React Hook Form + Zod for forms and validation
+- TanStack Query for data fetching and caching
+- Mapbox GL for maps
+- Recharts for charts
 
-This project is built with modern web technologies:
+### Tooling
+- ESLint and PostCSS
+- Playwright end-to-end tests
+- Bun or Node.js runtime
 
-### Frontend
-- **React 18** - Component-based UI framework
-- **TypeScript** - Type-safe JavaScript
-- **Vite** - Fast build tool and development server
-- **Tailwind CSS** - Utility-first CSS framework
-- **shadcn/ui** - Beautiful, accessible component library
-
-### Backend & Database
-- **Supabase** - PostgreSQL database, authentication, and real-time subscriptions
-- **Supabase Edge Functions** - Serverless functions for API endpoints
-
-### UI Components & Libraries
-- **Radix UI** - Accessible, unstyled UI primitives
-- **Lucide React** - Beautiful icon library
-- **React Router** - Client-side routing
-- **React Hook Form** - Form state management
-- **TanStack Query** - Data fetching and caching
-- **Mapbox GL JS** - Interactive maps
-- **Recharts** - Chart visualization library
-
-### Development Tools
-- **ESLint** - Code linting
-- **PostCSS** - CSS processing
-- **Bun** - Fast package manager and runtime
-
-## Local Development Setup
-
-### Prerequisites
+## Requirements
 - Node.js 18+ or Bun
 - Git
+- (Optional) [Supabase CLI](https://supabase.com/docs/guides/cli) for edge functions
 
-#### Supabase CLI
-Install the [Supabase CLI](https://supabase.com/docs/guides/cli) to manage Edge Functions and secrets.
-
-```bash
-npm i -g supabase
+## Project Structure
+```text
+├── src
+│   ├── components    # reusable UI components
+│   ├── pages         # route components
+│   ├── hooks         # custom hooks
+│   ├── integrations  # API clients (Supabase, etc.)
+│   └── lib           # utilities and helpers
+├── supabase          # edge functions and database migrations
+├── public            # static assets
+├── tests             # Playwright tests
+└── ...
 ```
 
-Authenticate your local environment before running deploy or cron commands:
-
-```bash
-supabase login
-```
-
-### Quick Start
-
-1. **Clone the repository**
+## Setup
+1. **Clone and install**
    ```bash
    git clone https://github.com/<owner>/dmon-hockey.git
    cd dmon-hockey
+   npm install # or bun install
    ```
-   Replace `<owner>` with the GitHub username or organization that owns the
-   repository. You can also substitute your fork's owner or URL for `<owner>`.
-
-2. **Install dependencies**
+2. **Start the dev server**
    ```bash
-   # Using npm
-   npm install
-   
-   # Or using bun (recommended)
-   bun install
+   npm run dev # or bun dev
    ```
+   Open http://localhost:5173 in your browser.
 
-3. **Environment Setup**
-   - The project uses Supabase for backend services
-   - Environment variables are managed through Supabase Edge Functions
-   - No local `.env` file is needed for basic development
+## Supabase Configuration
+The repository is preconfigured with a Supabase project. To use your own project, edit `src/integrations/supabase/client.ts` and replace `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY`.
 
-4. **Start development server**
-   ```bash
-   # Using npm
-   npm run dev
-   
-   # Or using bun
-   bun dev
-   ```
-
-5. **Open your browser**
-   - Navigate to `http://localhost:5173`
-   - The app will automatically reload when you make changes
-
-### Development Commands
-
-```bash
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
-
-# Run linting
-npm run lint
-```
-
-## Custom Supabase Project
-
-To connect this codebase to your own Supabase project, update the client configuration.
-Edit `src/integrations/supabase/client.ts` and replace the `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY` constants with values from your Supabase project's dashboard.
-These values can be found under **Project Settings → API** in the Supabase dashboard.
-
-## Project Structure
-
-```
-src/
-├── components/          # Reusable UI components
-│   ├── ui/             # shadcn/ui components
-│   └── ...             # Custom components
-├── pages/              # Route components
-│   ├── admin/          # Admin dashboard pages
-│   ├── club/           # Club information pages
-│   ├── membership/     # Membership-related pages
-│   └── sporting/       # Sports-related pages
-├── hooks/              # Custom React hooks
-├── lib/                # Utility functions
-├── integrations/       # External service integrations
-│   └── supabase/       # Supabase client and types
-└── assets/             # Static assets
-```
-
-## Key Features
-
-- **Responsive Design** - Mobile-first approach with Tailwind CSS
-- **Authentication** - User registration and login via Supabase Auth
-- **Admin Dashboard** - Content management for teams, announcements, sponsors
-- **Interactive Map** - Club location with Mapbox integration
-- **Modern UI** - Beautiful, accessible components with dark/light mode
-- **SEO Optimized** - Semantic HTML and proper meta tags
-
-## How can I edit this code?
-
-### Use Lovable (Recommended)
-Simply visit the [Lovable Project](https://lovable.dev/projects/e2aabc45-8df6-4198-b516-5ee2c510f680) and start prompting. Changes made via Lovable will be committed automatically to this repo.
-
-### Use your preferred IDE
-Clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-### Edit directly in GitHub
-Navigate to files and use the "Edit" button (pencil icon) to make changes.
-
-### Use GitHub Codespaces
-Click the "Code" button → "Codespaces" tab → "New codespace" for a cloud development environment.
-
-## Deployment
-
-### Lovable Hosting (Recommended)
-1. Open [Lovable](https://lovable.dev/projects/e2aabc45-8df6-4198-b516-5ee2c510f680)
-2. Click Share → Publish
-3. Your app will be live instantly
-
-### Custom Domain
-To connect a custom domain:
-1. Navigate to Project > Settings > Domains
-2. Click Connect Domain
-3. Follow the setup instructions
-
-Read more: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain)
-
-### Self-Hosting
-The project generates standard web app code that can be deployed anywhere:
-
-1. Build the project: `npm run build`
-2. Deploy the `dist` folder to any static hosting service
-3. Configure environment variables for Supabase in your hosting environment
-
-### Twizzit Events Sync
-
-To keep the `twizzit_events` table up to date, deploy and schedule the `sync-twizzit-events` edge function. Make sure you're authenticated with Supabase CLI before running these commands:
-
+Edge functions require the Supabase CLI and secrets. Example:
 ```bash
 supabase login
+supabase secrets set TWIZZIT_USERNAME=... TWIZZIT_PASSWORD=... TWIZZIT_ORG_ID=... \
+  INSTAGRAM_ACCESS_TOKEN=... MAPBOX_PUBLIC_TOKEN=... SUPABASE_URL=... \
+  SUPABASE_SERVICE_ROLE_KEY=... --env local
+```
+Schedule the Twizzit sync:
+```bash
 supabase functions deploy sync-twizzit-events --no-verify-jwt
 supabase cron schedule twizzit-sync "0 2 * * *" sync-twizzit-events
 ```
 
-Ensure the following secrets are configured in each environment:
-
-The Supabase Edge Functions in this project rely on the following secrets. Each item notes the feature that uses it. Configure them for every environment and set them locally when developing Edge Functions:
-
-- `TWIZZIT_USERNAME` – Twizzit account used by `sync-twizzit-events`
-- `TWIZZIT_PASSWORD` – Twizzit password for `sync-twizzit-events`
-- `TWIZZIT_ORG_ID` – Twizzit organization ID for `sync-twizzit-events`
-- `INSTAGRAM_ACCESS_TOKEN` – Instagram feed via `fetch-instagram-posts`
-- `MAPBOX_PUBLIC_TOKEN` – Interactive map via `get-mapbox-token`
-- `SUPABASE_URL` – Supabase project URL for database access in Edge Functions (e.g., `sync-twizzit-events`)
-- `SUPABASE_SERVICE_ROLE_KEY` – Supabase service role key for Edge Functions that write to the database
-
-Set them using the Supabase CLI (example for local development):
-
+## Scripts
 ```bash
-supabase secrets set \
-  TWIZZIT_USERNAME="your-username" \
-  TWIZZIT_PASSWORD="your-password" \
-  TWIZZIT_ORG_ID="your-org-id" \
-  INSTAGRAM_ACCESS_TOKEN="your-instagram-token" \
-  MAPBOX_PUBLIC_TOKEN="your-mapbox-token" \
-  SUPABASE_URL="your-supabase-url" \
-  SUPABASE_SERVICE_ROLE_KEY="your-service-role-key" \
-  --env local
+npm run dev        # start dev server
+npm run build      # production build
+npm run preview    # preview build
+npm run lint       # lint code
+npm run test:gui   # run Playwright tests (dev server must be running)
 ```
 
-Repeat for other environments (e.g., `--env dev`, `--env prod`) as needed.
-
-
-## GUI testing
-
-### Setup
-
-1. Start the development server in one terminal:
-   ```bash
-   npm run dev
-   ```
-2. In another terminal, run the Playwright suite:
-   ```bash
-   npm run test:gui
-   ```
-
-### Adding new route tests
-
-- Add the new path to the `paths` array in [`tests/gui/routes.spec.ts`](tests/gui/routes.spec.ts).
-- If the route triggers Supabase Edge Functions, also add it to `edgeFunctionPaths`.
-- Add the path to `mockedEdgeFunctionPaths` after implementing mocks so the test runs against stubbed data.
-
-### Edge functions and read-only policy
-
-- Edge function calls are stubbed via [`mockEdgeFunctions`](tests/gui/fixtures/edge-functions.ts) to avoid hitting real services.
-- Tests run with the [`read-only-supabase`](tests/gui/fixtures/read-only-supabase.ts) fixture, which blocks any non-GET Supabase requests and fails the test if a write is attempted.
-
+## Deployment
+Build the project and deploy the `dist` folder to any static host or publish via Lovable.
 
 ## Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature-name`
-3. Make your changes
-4. Test thoroughly
-5. Commit and push to your fork
-6. Create a pull request
-
-## Support
-
-For questions about the D-mon Hockey Club website, please contact the club administration.
-
-For technical issues with Lovable, visit [Lovable Documentation](https://docs.lovable.dev/).
+1. Fork the repo and create a branch.
+2. Make and test your changes.
+3. Commit, push, and open a pull request.
