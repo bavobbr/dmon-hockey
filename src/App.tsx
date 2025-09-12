@@ -47,6 +47,10 @@ import Shop from "./pages/Shop";
 import Training from "./pages/sporting/Training";
 import HowToPlay from "./pages/sporting/HowToPlay";
 import Rules from "./pages/sporting/Rules";
+import U6U8Rules from "./pages/sporting/rules/U6U8";
+import U9Rules from "./pages/sporting/rules/U9";
+import U10U12Rules from "./pages/sporting/rules/U10U12";
+import U14PlusRules from "./pages/sporting/rules/U14Plus";
 import StickGuide from "./pages/sporting/StickGuide";
 import CoachesInfo from "./pages/sporting/CoachesInfo";
 import Socials from "./pages/Socials";
@@ -136,6 +140,10 @@ const App = () => (
                     <Route path="/sporting/training" element={<Training />} />
                     <Route path="/sporting/how-to-play" element={<HowToPlay />} />
                     <Route path="/sporting/rules" element={<Rules />} />
+                    <Route path="/sporting/rules/u6-u8" element={<U6U8Rules />} />
+                    <Route path="/sporting/rules/u9" element={<U9Rules />} />
+                    <Route path="/sporting/rules/u10-u12" element={<U10U12Rules />} />
+                    <Route path="/sporting/rules/u14-plus" element={<U14PlusRules />} />
                     <Route path="/sporting/stick-guide" element={<StickGuide />} />
                     <Route path="/sporting/coaches-info" element={<CoachesInfo />} />
                     
