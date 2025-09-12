@@ -216,6 +216,31 @@ supabase secrets set \
 Repeat for other environments (e.g., `--env dev`, `--env prod`) as needed.
 
 
+## GUI testing
+
+### Setup
+
+1. Start the development server in one terminal:
+   ```bash
+   npm run dev
+   ```
+2. In another terminal, run the Playwright suite:
+   ```bash
+   npm run test:gui
+   ```
+
+### Adding new route tests
+
+- Add the new path to the `paths` array in [`tests/gui/routes.spec.ts`](tests/gui/routes.spec.ts).
+- If the route triggers Supabase Edge Functions, also add it to `edgeFunctionPaths`.
+- Add the path to `mockedEdgeFunctionPaths` after implementing mocks so the test runs against stubbed data.
+
+### Edge functions and read-only policy
+
+- Edge function calls are stubbed via [`mockEdgeFunctions`](tests/gui/fixtures/edge-functions.ts) to avoid hitting real services.
+- Tests run with the [`read-only-supabase`](tests/gui/fixtures/read-only-supabase.ts) fixture, which blocks any non-GET Supabase requests and fails the test if a write is attempted.
+
+
 ## Contributing
 
 1. Fork the repository
