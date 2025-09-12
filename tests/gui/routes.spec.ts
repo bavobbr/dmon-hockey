@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { mockEdgeFunctions } from './fixtures/edge-functions';
 
 const paths: string[] = [
   '/',
@@ -38,10 +39,23 @@ const paths: string[] = [
   '/admin/announcements/edit/1',
 ];
 
+const edgeFunctionPaths: string[] = ['/', '/socials', '/club/field'];
+// Add new edge-function pages to edgeFunctionPaths and mockedEdgeFunctionPaths.
+// Tests for pages present in edgeFunctionPaths but not in mockedEdgeFunctionPaths
+// will be skipped to avoid hitting real endpoints.
+const mockedEdgeFunctionPaths: string[] = ['/', '/socials', '/club/field'];
+const unmockedEdgeFunctionPaths = edgeFunctionPaths.filter(
+  (p) => !mockedEdgeFunctionPaths.includes(p)
+);
+
 for (const path of paths) {
-  test(`loads ${path}`, async ({ page }) => {
+  const run = unmockedEdgeFunctionPaths.includes(path) ? test.skip : test;
+  run(`loads ${path}`, async ({ page }) => {
+    if (mockedEdgeFunctionPaths.includes(path)) {
+      await mockEdgeFunctions(page);
+    }
     const errors: string[] = [];
-    page.on('pageerror', err => errors.push(err.message));
+    page.on('pageerror', (err) => errors.push(err.message));
     await page.goto(path);
     expect(errors).toHaveLength(0);
   });
