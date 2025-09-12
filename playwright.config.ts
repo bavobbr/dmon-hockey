@@ -5,7 +5,6 @@ dotenv.config({ path: '.env.test' });
 
 export default defineConfig({
   testDir: 'tests/gui',
-  use: {
-    baseURL: 'http://localhost:8080',
-  },
+  use: { baseURL: 'http://localhost:8080' },
+  reporter: [['html', { outputFolder: 'playwright-report', open: 'never' }]],
 });
