@@ -1,6 +1,8 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Timer, Users, Award, Lightbulb, ExternalLink, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import scheidsrechterPad from "@/assets/scheidsrechter-pad.png";
+import stappen from "@/assets/stappen.png";
 
 const Rules = () => {
   return (
@@ -74,6 +76,33 @@ const Rules = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <BookOpen className="h-5 w-5" />
+                  Welke types scheidsrechter kennen we?
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="mb-4">
+                  De regels worden ingedeeld per leeftijdscategorie tot U14. Nadien zijn er dan drie verschillende competitieniveau's die elk hun specifiek type scheidsrechter hebben.
+                </p>
+                
+                <div className="flex justify-center my-8">
+                  <img 
+                    src={scheidsrechterPad} 
+                    alt="Scheidsrechter pad overzicht per leeftijdscategorie" 
+                    className="max-w-md w-full h-auto rounded-lg shadow-lg"
+                  />
+                </div>
+                
+                <p className="text-sm text-muted-foreground">
+                  Een scheidsrechter bij een U8 ploeg hoeft dus geen hockey-technische regels aan te leren die pas van toepassing zijn vanaf U9, 
+                  en een scheidsrechter U10 wordt helemaal niet verwacht alle regels te kennen voor groot veld vanaf U14; de basisfouten herkennen voldoet helemaal!
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <BookOpen className="h-5 w-5" />
                   Geleidelijke opbouw
                 </CardTitle>
               </CardHeader>
@@ -127,6 +156,22 @@ const Rules = () => {
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Ook op groot veld geldt dat op regionaal niveau het voldoende is theoretische regelkennis te hebben aangetoond, 
+                    en er geen vereiste is van praktische examens. Dat komt pas later in nationale competitie!
+                  </p>
+
+                  <div className="flex flex-col items-center my-8">
+                    <img 
+                      src={stappen} 
+                      alt="Aangeraden materiaal per categorie" 
+                      className="max-w-2xl w-full h-auto rounded-lg shadow-lg"
+                    />
+                    <p className="text-sm text-muted-foreground mt-2 italic">
+                      Aangeraden materiaal per categorie
+                    </p>
+                  </div>
+
                   <p className="text-sm text-muted-foreground mb-4">
                     Hierboven zie je wat je best kan bekijken vooraleer je een match gaat fluiten. Alles hangt dus af van het niveau, 
                     en of je iemand bij je hebt staan die helpt (je bent in rol van <em>assistent</em>), of dat je zelf iemand gaat 

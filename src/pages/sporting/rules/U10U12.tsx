@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Timer, ExternalLink, BookOpen, Users, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import stappen from "@/assets/stappen.png";
 
 const U10U12Rules = () => {
   return (
@@ -12,6 +13,17 @@ const U10U12Rules = () => {
           <div className="mb-8 p-6 bg-primary/5 rounded-lg border border-primary/20">
             <p className="text-lg mb-4">
               Je bent vaak op hockey-wedstrijden aanwezig en wilt de club graag meehelpen? Dan is scheidsrechter een van de meest zinvolle, interessante én leuke taken die je kan opnemen!
+            </p>
+          </div>
+
+          <div className="flex flex-col items-center my-8">
+            <img 
+              src={stappen} 
+              alt="Aangeraden materiaal per categorie" 
+              className="max-w-2xl w-full h-auto rounded-lg shadow-lg"
+            />
+            <p className="text-sm text-muted-foreground mt-2 italic">
+              Aangeraden materiaal per categorie
             </p>
           </div>
 
