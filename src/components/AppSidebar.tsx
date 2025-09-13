@@ -192,13 +192,23 @@ export function AppSidebar() {
                                      className="group/subcollapsible"
                                    >
                                      <SidebarMenuSubItem>
-                                       <CollapsibleTrigger asChild>
-                                         <SidebarMenuSubButton className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground w-full">
-                                           <subItem.icon className="h-3 w-3 flex-shrink-0" />
-                                           <span className="truncate whitespace-nowrap overflow-hidden">{subItem.title}</span>
-                                           <ChevronDown className="ml-auto h-3 w-3 transition-transform group-data-[state=open]/subcollapsible:rotate-180 flex-shrink-0" />
+                                       <div className="flex items-center">
+                                         <SidebarMenuSubButton asChild className="flex-1">
+                                           <NavLink
+                                             to={subItem.url}
+                                             onClick={handleMobileNavClick}
+                                             className={`${getNavCls({ isActive: isActive(subItem.url) })} flex items-center gap-2 w-full min-h-[2rem]`}
+                                           >
+                                             <subItem.icon className="h-3 w-3 flex-shrink-0" />
+                                             <span className="truncate whitespace-nowrap overflow-hidden">{subItem.title}</span>
+                                           </NavLink>
                                          </SidebarMenuSubButton>
-                                       </CollapsibleTrigger>
+                                         <CollapsibleTrigger asChild>
+                                           <button className="p-1 hover:bg-sidebar-accent rounded-sm">
+                                             <ChevronDown className="h-3 w-3 transition-transform group-data-[state=open]/subcollapsible:rotate-180" />
+                                           </button>
+                                         </CollapsibleTrigger>
+                                       </div>
                                        <CollapsibleContent>
                                          <div className="ml-4 mt-1">
                                            {subItem.items.map((nestedItem) => (
