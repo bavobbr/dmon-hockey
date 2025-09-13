@@ -85,11 +85,17 @@ const navigation = [
     items: [
       { title: "Training", url: "/sporting/training", icon: Calendar },
       { title: "Hoe Hockey Spelen", url: "/sporting/how-to-play", icon: BookOpen },
-      { title: "Regels & Scheidsrechten", url: "/sporting/rules", icon: Timer },
-      { title: "U6 tot U8", url: "/sporting/rules/u6-u8", icon: Users },
-      { title: "U9", url: "/sporting/rules/u9", icon: Users },
-      { title: "U10 tot U12", url: "/sporting/rules/u10-u12", icon: Users },
-      { title: "U14 en hoger", url: "/sporting/rules/u14-plus", icon: Users },
+      { 
+        title: "Regels & Scheidsrechters", 
+        url: "/sporting/rules", 
+        icon: Timer,
+        items: [
+          { title: "U6 tot U8", url: "/sporting/rules/u6-u8", icon: Users },
+          { title: "U9", url: "/sporting/rules/u9", icon: Users },
+          { title: "U10 tot U12", url: "/sporting/rules/u10-u12", icon: Users },
+          { title: "U14 en hoger", url: "/sporting/rules/u14-plus", icon: Users },
+        ]
+      },
       { title: "De Juiste Stick Kiezen", url: "/sporting/stick-guide", icon: Zap },
     ],
   },
@@ -173,24 +179,64 @@ export function AppSidebar() {
                             <ChevronDown className="ml-auto h-4 w-4 transition-transform group-data-[state=open]/collapsible:rotate-180 flex-shrink-0" />
                           </SidebarMenuButton>
                         </CollapsibleTrigger>
-                        <CollapsibleContent>
-                          <SidebarMenuSub>
-                            {item.items.map((subItem) => (
-                              <SidebarMenuSubItem key={subItem.title}>
-                                <SidebarMenuSubButton asChild>
-                                   <NavLink
-                                     to={subItem.url}
-                                     onClick={handleMobileNavClick}
-                                     className={`${getNavCls} flex items-center gap-2 w-full min-h-[2rem]`}
+                         <CollapsibleContent>
+                           <SidebarMenuSub>
+                             {item.items.map((subItem) => {
+                               if (subItem.items) {
+                                 // Handle nested items (like Rules with age groups)
+                                 const isSubExpanded = isGroupActive(subItem.items);
+                                 return (
+                                   <Collapsible
+                                     key={subItem.title}
+                                     defaultOpen={isSubExpanded}
+                                     className="group/subcollapsible"
                                    >
-                                    <subItem.icon className="h-3 w-3 flex-shrink-0" />
-                                    <span className="truncate whitespace-nowrap overflow-hidden">{subItem.title}</span>
-                                  </NavLink>
-                                </SidebarMenuSubButton>
-                              </SidebarMenuSubItem>
-                            ))}
-                          </SidebarMenuSub>
-                        </CollapsibleContent>
+                                     <SidebarMenuSubItem>
+                                       <CollapsibleTrigger asChild>
+                                         <SidebarMenuSubButton className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground w-full">
+                                           <subItem.icon className="h-3 w-3 flex-shrink-0" />
+                                           <span className="truncate whitespace-nowrap overflow-hidden">{subItem.title}</span>
+                                           <ChevronDown className="ml-auto h-3 w-3 transition-transform group-data-[state=open]/subcollapsible:rotate-180 flex-shrink-0" />
+                                         </SidebarMenuSubButton>
+                                       </CollapsibleTrigger>
+                                       <CollapsibleContent>
+                                         <div className="ml-4 mt-1">
+                                           {subItem.items.map((nestedItem) => (
+                                             <div key={nestedItem.title} className="py-1">
+                                               <NavLink
+                                                 to={nestedItem.url}
+                                                 onClick={handleMobileNavClick}
+                                                 className={`${getNavCls({ isActive: isActive(nestedItem.url) })} flex items-center gap-2 w-full min-h-[1.75rem] text-xs pl-2 rounded-sm`}
+                                               >
+                                                 <nestedItem.icon className="h-3 w-3 flex-shrink-0" />
+                                                 <span className="truncate whitespace-nowrap overflow-hidden">{nestedItem.title}</span>
+                                               </NavLink>
+                                             </div>
+                                           ))}
+                                         </div>
+                                       </CollapsibleContent>
+                                     </SidebarMenuSubItem>
+                                   </Collapsible>
+                                 );
+                               }
+                               
+                               return (
+                                 <SidebarMenuSubItem key={subItem.title}>
+                                   <SidebarMenuSubButton asChild>
+                                      <NavLink
+                                        to={subItem.url}
+                                        onClick={handleMobileNavClick}
+                                        className={`${getNavCls({ isActive: isActive(subItem.url) })} flex items-center gap-2 w-full min-h-[2rem]`}
+                                      >
+                                       <subItem.icon className="h-3 w-3 flex-shrink-0" />
+                                       <span className="truncate whitespace-nowrap overflow-hidden">{subItem.title}</span>
+                                     </NavLink>
+                                   </SidebarMenuSubButton>
+                                 </SidebarMenuSubItem>
+                               );
+                             })}
+                           </SidebarMenuSub>
+                         </CollapsibleContent>
                       </SidebarMenuItem>
                     </Collapsible>
                   );
