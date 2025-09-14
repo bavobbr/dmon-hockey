@@ -2,16 +2,28 @@
 import { createClient } from '@supabase/supabase-js';
 import type { Database } from './types';
 
-const SUPABASE_URL = "https://rtvcsywkkcgakfzsuxgz.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ0dmNzeXdra2NnYWtmenN1eGd6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUyNjM5OTcsImV4cCI6MjA3MDgzOTk5N30.qYNlvhXeUI0IVEu2XMbAPVVcdpHCMSugiS-fhEFkHlk";
+// Read from Vite env vars to support local dev and Vercel deployments.
+// Falls back to the repo's current Supabase project so no extra setup is required.
+const SUPABASE_URL = (
+  (import.meta.env.VITE_SUPABASE_URL as string | undefined) ??
+  'https://rtvcsywkkcgakfzsuxgz.supabase.co'
+);
+const SUPABASE_PUBLISHABLE_KEY = (
+  (import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string | undefined) ??
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ0dmNzeXdra2NnYWtmenN1eGd6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUyNjM5OTcsImV4cCI6MjA3MDgzOTk5N30.qYNlvhXeUI0IVEu2XMbAPVVcdpHCMSugiS-fhEFkHlk'
+);
 
 // Import the supabase client like this:
 // import { supabase } from "@/integrations/supabase/client";
 
-export const supabase = createClient<Database>(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
-  auth: {
-    storage: localStorage,
-    persistSession: true,
-    autoRefreshToken: true,
+export const supabase = createClient<Database>(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY,
+  {
+    auth: {
+      storage: localStorage,
+      persistSession: true,
+      autoRefreshToken: true,
+    },
   }
-});
+);
