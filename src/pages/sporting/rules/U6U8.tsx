@@ -2,7 +2,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Users, CheckCircle, AlertTriangle, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import stappenImage from "@/assets/stappen.png";
-import scheidsrechterPadImage from "@/assets/scheidsrechter-pad.png";
+import u7u8Image from "@/assets/u7u8_2023.png";
+import u7u8BackImage from "@/assets/u7u8_2023_back.png";
 
 const U6U8Rules = () => {
   return (
@@ -130,20 +131,20 @@ const U6U8Rules = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
                   <div className="text-center">
                     <img 
-                      src={scheidsrechterPadImage} 
-                      alt="Scheidsrechter signalen en pad" 
+                      src={u7u8Image} 
+                      alt="U6-U8 spelregels voorkant" 
                       className="w-full max-w-md mx-auto rounded-lg shadow-md"
                     />
-                    <p className="text-sm text-muted-foreground mt-2">Scheidsrechter signalen</p>
+                    <p className="text-sm text-muted-foreground mt-2">U6-U8 Spelregels</p>
                   </div>
                   
                   <div className="text-center">
                     <img 
-                      src={stappenImage} 
-                      alt="Stappen in scheidsrechteren" 
+                      src={u7u8BackImage} 
+                      alt="U6-U8 spelregels achterkant" 
                       className="w-full max-w-md mx-auto rounded-lg shadow-md"
                     />
-                    <p className="text-sm text-muted-foreground mt-2">Stappen voor beginners</p>
+                    <p className="text-sm text-muted-foreground mt-2">Achterkant spelregels</p>
                   </div>
                 </div>
               </div>
