@@ -60,7 +60,17 @@ Modern, responsive website for D-mon Hockey Club built with React and TypeScript
    Open http://localhost:5173 in your browser.
 
 ## Supabase Configuration
-The repository is preconfigured with a Supabase project. To use your own project, edit `src/integrations/supabase/client.ts` and replace `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY`.
+The repository is preconfigured with a Supabase project. The app works out‑of‑the‑box using those defaults.
+
+If you want to point to a different Supabase project, set these Vite env variables (used by `src/integrations/supabase/client.ts`):
+
+```bash
+# .env
+VITE_SUPABASE_URL="https://<project-ref>.supabase.co"
+VITE_SUPABASE_PUBLISHABLE_KEY="<anon-or-public-key>"
+```
+
+Env vars are optional because the client falls back to the repo’s current Supabase URL and anon key.
 
 Edge functions require the Supabase CLI and secrets. Example:
 ```bash
@@ -85,7 +95,20 @@ npm run test:gui   # run Playwright tests (dev server must be running)
 ```
 
 ## Deployment
-Build the project and deploy the `dist` folder to any static host or publish via Lovable.
+
+### Vercel
+- Framework preset: `Vite`
+- Build command: `npm run build`
+- Output directory: `dist`
+- SPA routing: handled via `vercel.json` rewrite to `index.html`
+- Environment variables (Project Settings → Environment Variables):
+  - `VITE_SUPABASE_URL`
+  - `VITE_SUPABASE_PUBLISHABLE_KEY`
+
+After setting env vars, trigger a new deployment. Ensure your Supabase project allows your Vercel domain in Auth redirect URLs and any Edge Function CORS as applicable.
+
+### Static hosts
+Build the project and deploy the `dist` folder to any static host.
 
 ## Contributing
 1. Fork the repo and create a branch.
