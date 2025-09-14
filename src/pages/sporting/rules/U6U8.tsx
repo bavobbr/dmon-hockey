@@ -1,6 +1,8 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users, CheckCircle, AlertTriangle, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import stappenImage from "@/assets/stappen.png";
+import scheidsrechterPadImage from "@/assets/scheidsrechter-pad.png";
 
 const U6U8Rules = () => {
   return (
@@ -123,6 +125,26 @@ const U6U8Rules = () => {
                     naar de juiste opvolg-actie. Vanaf half veld gebruiken we signalen. De eerste stap is duidelijk fluiten, 
                     verbaal aangeven en dan de speelrichting wijzen. De andere signalen kan je rustig aanleren.
                   </p>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                  <div className="text-center">
+                    <img 
+                      src={scheidsrechterPadImage} 
+                      alt="Scheidsrechter signalen en pad" 
+                      className="w-full max-w-md mx-auto rounded-lg shadow-md"
+                    />
+                    <p className="text-sm text-muted-foreground mt-2">Scheidsrechter signalen</p>
+                  </div>
+                  
+                  <div className="text-center">
+                    <img 
+                      src={stappenImage} 
+                      alt="Stappen in scheidsrechteren" 
+                      className="w-full max-w-md mx-auto rounded-lg shadow-md"
+                    />
+                    <p className="text-sm text-muted-foreground mt-2">Stappen voor beginners</p>
+                  </div>
                 </div>
               </div>
             </CardContent>
