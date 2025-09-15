@@ -1,162 +1,253 @@
-import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+/* eslint-env deno */ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
-const log = (message: string, data?: any) => {
-  console.log(`[sync-twizzit-teams] ${message}`, data ? JSON.stringify(data) : '');
-};
+const log = (msg, obj) => console.log(JSON.stringify({
+  level: "info",
+  msg,
+  ...obj ? { data: obj } : {}
+}));
 
-const err = (message: string, error?: any) => {
-  console.error(`[sync-twizzit-teams] ERROR: ${message}`, error);
-};
+const err = (msg, e) => console.error(JSON.stringify({
+  level: "error",
+  msg,
+  error: e instanceof Error ? {
+    message: e.message,
+    stack: e.stack
+  } : e
+}));
 
 const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type"
 };
 
+const supabaseUrl = Deno.env.get("SUPABASE_URL");
+const supabaseKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+
+if (!supabaseUrl || !supabaseKey) {
+  console.error("Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY environment variables");
+}
+
+const supabase = createClient(supabaseUrl, supabaseKey);
+
+const twizzitUsername = Deno.env.get("TWIZZIT_USERNAME");
+const twizzitPassword = Deno.env.get("TWIZZIT_PASSWORD");
+const twizzitOrgId = Deno.env.get("TWIZZIT_ORG_ID");
+
+if (!twizzitUsername || !twizzitPassword || !twizzitOrgId) {
+  console.error("Missing Twizzit environment variables");
+}
+
+const TWIZZIT_API_BASE = "https://app.twizzit.com/v2/api";
+
 serve(async (req) => {
-  // Handle CORS preflight requests
-  if (req.method === 'OPTIONS') {
-    return new Response(null, { headers: corsHeaders });
+  const rid = crypto.randomUUID();
+  const t0 = performance.now();
+
+  log("invoke.start", {
+    rid,
+    method: req.method,
+    url: new URL(req.url).pathname,
+    env_check: {
+      has_SUPABASE_URL: !!supabaseUrl,
+      has_SUPABASE_SERVICE_ROLE_KEY: !!supabaseKey,
+      has_TWIZZIT_USERNAME: !!twizzitUsername,
+      has_TWIZZIT_PASSWORD: !!twizzitPassword,
+      has_TWIZZIT_ORG_ID: !!twizzitOrgId
+    }
+  });
+
+  if (req.method === "OPTIONS") {
+    log("invoke.cors_preflight", { rid });
+    return new Response("ok", { headers: corsHeaders });
   }
 
-  log('Starting Twizzit teams sync process');
-
   try {
-    // Initialize Supabase client
-    const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
-    const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
-    const supabase = createClient(supabaseUrl, supabaseServiceKey);
-
-    // Get Twizzit credentials
-    const twizzitUsername = Deno.env.get('TWIZZIT_USERNAME');
-    const twizzitPassword = Deno.env.get('TWIZZIT_PASSWORD');
-    const twizzitOrgId = Deno.env.get('TWIZZIT_ORG_ID');
-
     if (!twizzitUsername || !twizzitPassword || !twizzitOrgId) {
-      err('Missing Twizzit credentials');
-      return new Response(
-        JSON.stringify({ error: 'Missing Twizzit credentials' }),
-        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
+      throw new Error("Missing Twizzit configuration");
     }
 
-    log('Authenticating with Twizzit API');
+    // AUTHENTICATE
+    const authUrl = `${TWIZZIT_API_BASE}/authenticate`;
+    log("auth.request", {
+      rid,
+      url: authUrl
+    });
 
-    // Authenticate with Twizzit
-    const authResponse = await fetch('https://app.twizzit.com/v2/api/auth', {
-      method: 'POST',
+    const authRes = await fetch(authUrl, {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({
         username: twizzitUsername,
-        password: twizzitPassword,
-      }),
+        password: twizzitPassword
+      })
     });
 
-    if (!authResponse.ok) {
-      err('Twizzit authentication failed', await authResponse.text());
-      return new Response(
-        JSON.stringify({ error: 'Twizzit authentication failed' }),
-        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
-    }
-
-    const authData = await authResponse.json();
-    const token = authData.token;
-    log('Twizzit authentication successful');
-
-    // Fetch teams data
-    log('Fetching teams from Twizzit API');
-    const teamsUrl = `https://app.twizzit.com/v2/api/groups?organization-ids%5B%5D=${twizzitOrgId}&season-id=51270&group-type=1`;
-    
-    const teamsResponse = await fetch(teamsUrl, {
-      method: 'GET',
+    log("auth.response", {
+      rid,
+      status: authRes.status,
+      ok: authRes.ok,
       headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
+        "x-ratelimit-remaining": authRes.headers.get("x-ratelimit-remaining"),
+        "x-ratelimit-limit": authRes.headers.get("x-ratelimit-limit")
+      }
     });
 
-    if (!teamsResponse.ok) {
-      err('Failed to fetch teams from Twizzit', await teamsResponse.text());
-      return new Response(
-        JSON.stringify({ error: 'Failed to fetch teams from Twizzit' }),
-        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
+    if (!authRes.ok) {
+      const bodyPreview = await authRes.text().catch(() => "<unreadable>");
+      err("auth.failed", {
+        rid,
+        status: authRes.status,
+        bodyPreview: bodyPreview?.slice(0, 500)
+      });
+      throw new Error(`Authentication failed: ${authRes.status}`);
     }
 
-    const teamsData = await teamsResponse.json();
-    log(`Fetched ${teamsData.length} teams from Twizzit`);
+    const { token } = await authRes.json();
+    log("auth.token_parsed", {
+      rid,
+      hasToken: !!token
+    });
+
+    if (!token) {
+      throw new Error("No authentication token returned");
+    }
+
+    // FETCH TEAMS
+    const teamsUrl = `${TWIZZIT_API_BASE}/groups?organization-ids[]=${twizzitOrgId}&season-id=51270&group-type=1`;
+    log("teams.request", {
+      rid,
+      url: teamsUrl
+    });
+
+    const teamsRes = await fetch(teamsUrl, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    log("teams.response", {
+      rid,
+      status: teamsRes.status,
+      ok: teamsRes.ok,
+      headers: {
+        "x-ratelimit-remaining": teamsRes.headers.get("x-ratelimit-remaining"),
+        "x-ratelimit-limit": teamsRes.headers.get("x-ratelimit-limit")
+      }
+    });
+
+    if (!teamsRes.ok) {
+      const bodyPreview = await teamsRes.text().catch(() => "<unreadable>");
+      err("teams.failed", {
+        rid,
+        status: teamsRes.status,
+        bodyPreview: bodyPreview?.slice(0, 1000)
+      });
+      throw new Error(`Failed to fetch teams: ${teamsRes.status}`);
+    }
+
+    const teamsData = await teamsRes.json();
+    const teams = Array.isArray(teamsData) ? teamsData : teamsData.teams || [];
+    
+    log("teams.parsed", {
+      rid,
+      count: teams.length,
+      sample_ids: teams.slice(0, 5).map((t) => t?.id ?? null)
+    });
 
     // Helper function to extract age group from team name
-    const extractAgeGroup = (teamName: string): string | null => {
+    const extractAgeGroup = (teamName) => {
       const ageGroupMatch = teamName.match(/U(\d+)/i);
       return ageGroupMatch ? `U${ageGroupMatch[1]}` : null;
     };
 
-    // Transform and upsert teams
-    const transformedTeams = teamsData.map((team: any) => {
-      const ageGroup = extractAgeGroup(team.name);
-      
-      return {
-        twizzit_id: team.id,
-        name: team.name,
-        description: team['short-name'] ? `Short name: ${team['short-name']}` : null,
-        age_group: ageGroup,
-        season: team.season?.name || null,
-        image_url: team.image,
-        active: true,
-        raw: team,
-      };
+    // MAP ROWS
+    const now = new Date().toISOString();
+    const rows = teams.map((team) => ({
+      twizzit_id: team.id,
+      name: team.name,
+      description: team['short-name'] ? `Short name: ${team['short-name']}` : null,
+      age_group: extractAgeGroup(team.name),
+      season: team.season?.name || null,
+      image_url: team.image,
+      active: true,
+      raw: team,
+      updated_at: now
+    }));
+
+    log("rows.mapped", {
+      rid,
+      count: rows.length,
+      sample_names: rows.slice(0, 5).map((r) => r.name)
     });
 
-    log(`Transformed ${transformedTeams.length} teams for database insertion`);
+    // UPSERT
+    log("db.upsert.begin", {
+      rid,
+      table: "teams",
+      onConflict: "twizzit_id",
+      count: rows.length
+    });
 
-    // Upsert teams into database
-    for (const team of transformedTeams) {
-      log(`Upserting team: ${team.name} (Twizzit ID: ${team.twizzit_id})`);
-      
-      const { error: upsertError } = await supabase
-        .from('teams')
-        .upsert(team, {
-          onConflict: 'twizzit_id',
-          ignoreDuplicates: false,
-        });
+    const { error } = await supabase
+      .from("teams")
+      .upsert(rows, {
+        onConflict: "twizzit_id"
+      });
 
-      if (upsertError) {
-        err(`Failed to upsert team ${team.name}`, upsertError);
-      } else {
-        log(`Successfully upserted team: ${team.name}`);
-      }
+    if (error) {
+      err("db.upsert.error", {
+        rid,
+        code: error.code,
+        message: error.message,
+        details: error.details
+      });
+      throw error;
     }
 
-    log('Teams sync completed successfully');
+    log("db.upsert.success", {
+      rid,
+      count: rows.length
+    });
 
-    return new Response(
-      JSON.stringify({
-        success: true,
-        message: `Successfully synced ${transformedTeams.length} teams`,
-        teamsProcessed: transformedTeams.length,
-      }),
-      {
-        status: 200,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    const t1 = performance.now();
+    log("invoke.success", {
+      rid,
+      ms: Math.round(t1 - t0)
+    });
+
+    return new Response(JSON.stringify({
+      success: true,
+      count: rows.length,
+      message: `Successfully synced ${rows.length} teams`
+    }), {
+      headers: {
+        ...corsHeaders,
+        "Content-Type": "application/json"
       }
-    );
+    });
 
   } catch (error) {
-    err('Unexpected error during teams sync', error);
-    return new Response(
-      JSON.stringify({ 
-        error: 'Internal server error',
-        details: error.message,
-      }),
-      {
-        status: 500,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    err("invoke.error", {
+      rid,
+      error: error instanceof Error ? error.message : String(error)
+    });
+    return new Response(JSON.stringify({
+      error: error.message
+    }), {
+      status: 500,
+      headers: {
+        ...corsHeaders,
+        "Content-Type": "application/json"
       }
-    );
+    });
+  } finally {
+    const t2 = performance.now();
+    log("invoke.end", {
+      rid,
+      ms: Math.round(t2 - t0)
+    });
   }
 });
