@@ -339,7 +339,14 @@ const Index = () => {
       {/* Teams Section */}
       <section className="py-16 px-4 bg-muted/50">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Onze Teams</h2>
+          <div className="flex items-center justify-between mb-12">
+            <h2 className="text-3xl font-bold text-center text-foreground">Onze Teams</h2>
+            <Link to="/club/teams">
+              <Button variant="outline" size="sm">
+                Bekijk Meer
+              </Button>
+            </Link>
+          </div>
           
           {teamsLoading ? <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[...Array(6)].map((_, i) => <Card key={i} className="animate-pulse">
