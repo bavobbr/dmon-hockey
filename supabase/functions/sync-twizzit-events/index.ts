@@ -116,7 +116,7 @@ serve(async (req)=>{
     const ids = [
       Number(twizzitOrgId)
     ];
-    const eventsUrl = `${TWIZZIT_API_BASE}/events?` + `organization-ids[]=${twizzitOrgId}` + `&start-date=${startDate}&end-date=${endDate}`;
+    const eventsUrl = `${TWIZZIT_API_BASE}/events?` + `organization-ids[]=${twizzitOrgId}` + `&start-date=${startDate}&end-date=${endDate}&limit=50`;
     log("events.request", {
       rid,
       url: eventsUrl
