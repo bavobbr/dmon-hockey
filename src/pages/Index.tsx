@@ -329,7 +329,14 @@ const Index = () => {
       {/* Upcoming Events */}
       <section className="py-20 px-4 bg-gradient-subtle">
         <div className="container mx-auto">
-          <h2 className="font-display text-4xl lg:text-5xl font-bold text-center mb-16 text-foreground">Aankomende Evenementen</h2>
+          <div className="flex items-center justify-between mb-16">
+            <h2 className="font-display text-4xl lg:text-5xl font-bold text-center text-foreground">Aankomende Evenementen</h2>
+            <Link to="/events">
+              <Button variant="outline" size="sm">
+                Bekijk Meer
+              </Button>
+            </Link>
+          </div>
           <div className="max-w-4xl mx-auto">
             <UpcomingEvents />
           </div>
