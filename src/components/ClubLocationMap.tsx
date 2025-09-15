@@ -59,7 +59,7 @@ const ClubLocationMap = () => {
                 <div class="p-3">
                   <h3 class="font-semibold text-lg">D-mon Hockey Club</h3>
                   <p class="text-sm text-muted-foreground">Dendermonde, Belgium</p>
-                  <p class="text-sm mt-2">Premier field hockey club in Belgium</p>
+                  <p class="text-sm mt-2">Premier hockeyclub in België</p>
                 </div>
               `)
           )
@@ -86,17 +86,17 @@ const ClubLocationMap = () => {
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <MapPin className="h-5 w-5" />
-          Find Our Club
+          Vind Onze Club
         </CardTitle>
         <CardDescription>
-          Located in the heart of Dendermonde, Belgium
+          Gelegen in het hart van Dendermonde, België
         </CardDescription>
       </CardHeader>
       <CardContent>
         {error ? (
           <div className="w-full h-64 md:h-96 rounded-lg border flex items-center justify-center bg-muted">
             <div className="text-center">
-              <p className="text-muted-foreground">Error loading map</p>
+              <p className="text-muted-foreground">Fout bij laden van kaart</p>
               <p className="text-sm text-muted-foreground mt-1">{error}</p>
             </div>
           </div>
@@ -108,16 +108,16 @@ const ClubLocationMap = () => {
           >
             {isLoading && (
               <div className="w-full h-full flex items-center justify-center bg-muted">
-                <p className="text-muted-foreground">Loading map...</p>
+                <p className="text-muted-foreground">Kaart laden...</p>
               </div>
             )}
           </div>
         )}
         <div className="mt-4 p-4 bg-muted rounded-lg">
-          <h4 className="font-semibold mb-2">Getting Here</h4>
+          <h4 className="font-semibold mb-2">Hier Komen</h4>
           <p className="text-sm text-muted-foreground">
-            Our hockey field is easily accessible by car, bike, or public transport. 
-            Free parking is available on-site for members and visitors.
+            Ons hockeyveld is gemakkelijk bereikbaar met de auto, fiets of openbaar vervoer. 
+            Gratis parking is beschikbaar voor leden en bezoekers.
           </p>
         </div>
       </CardContent>
