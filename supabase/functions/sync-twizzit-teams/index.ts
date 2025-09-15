@@ -115,8 +115,8 @@ serve(async (req) => {
       throw new Error("No authentication token returned");
     }
 
-    // FETCH TEAMS
-    const teamsUrl = `${TWIZZIT_API_BASE}/groups?organization-ids[]=${twizzitOrgId}&season-id=51270&group-type=1`;
+    // FETCH TEAMS - Add pagination parameters to ensure we get all teams
+    const teamsUrl = `${TWIZZIT_API_BASE}/groups?organization-ids[]=${twizzitOrgId}&season-id=51270&group-type=1&limit=100&page=1`;
     log("teams.request", {
       rid,
       url: teamsUrl
