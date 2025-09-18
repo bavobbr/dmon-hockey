@@ -344,9 +344,7 @@ const Index = () => {
               </Button>
             </Link>
           </div>
-          <div className="max-w-4xl mx-auto">
-            <UpcomingEvents />
-          </div>
+          <UpcomingEvents />
         </div>
       </section>
 
