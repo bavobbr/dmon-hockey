@@ -63,7 +63,7 @@ const navigation = [
       { title: "Teams", url: "/club/teams", icon: Trophy },
       { title: "Bestuur", url: "/club/board", icon: UserCheck },
       { title: "Clubwaarden", url: "/club/values", icon: Shield },
-      { title: "In het Nieuws", url: "/club/news", icon: Newspaper },
+      { title: "In de media", url: "/club/news", icon: Newspaper },
       { title: "Geschiedenis", url: "/club/history", icon: History },
       { title: "Sponsors", url: "/club/sponsors", icon: HandHeart },
     ],
@@ -93,10 +93,10 @@ const navigation = [
           { title: "U6 tot U8", url: "/sporting/rules/u6-u8", icon: Users },
           { title: "U9", url: "/sporting/rules/u9", icon: Users },
           { title: "U10 tot U12", url: "/sporting/rules/u10-u12", icon: Users },
-          { title: "U14 en hoger", url: "/sporting/rules/u14-plus", icon: Users },
+          { title: "U14 tot senior", url: "/sporting/rules/u14-plus", icon: Users },
         ]
       },
-      { title: "De Juiste Stick Kiezen", url: "/sporting/stick-guide", icon: Zap },
+      { title: "De Juiste Stick", url: "/sporting/stick-guide", icon: Zap },
     ],
   },
   {
