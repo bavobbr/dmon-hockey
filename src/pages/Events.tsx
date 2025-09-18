@@ -52,7 +52,7 @@ const Events = () => {
       return <Badge variant="secondary">Morgen</Badge>;
     }
     if (isThisWeek(startDate)) {
-      return <Badge variant="outline">Deze week</Badge>;
+      return <Badge variant="default" className="bg-primary text-primary-foreground">Deze week</Badge>;
     }
     return null;
   };
