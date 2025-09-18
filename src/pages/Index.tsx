@@ -216,7 +216,7 @@ const Index = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground leading-relaxed">
-                  Wekelijkse trainingen met ervaren coaches om je techniek en spelstrategie te verbeteren.
+                  Wekelijkse trainingen met ervaren coaches om je techniek en strategie te verbeteren.
                 </p>
               </CardContent>
             </Card>
@@ -227,11 +227,11 @@ const Index = () => {
                   <div className="w-6 h-6 bg-secondary rounded-sm"></div>
                 </div>
                 <CardTitle className="text-secondary text-xl">Competitieve Wedstrijden</CardTitle>
-                <CardDescription className="text-base">Regelmatige competitie en toernooien</CardDescription>
+                <CardDescription className="text-base">Competitie en toernooien</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground leading-relaxed">
-                  Deelnemen aan lokale en regionale competities om onze club met trots te vertegenwoordigen.
+                  Deelnemen aan regionale en nationale competities om onze club met trots te vertegenwoordigen.
                 </p>
               </CardContent>
             </Card>
@@ -241,7 +241,7 @@ const Index = () => {
                 <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
                   <div className="w-6 h-6 bg-accent rounded-sm"></div>
                 </div>
-                <CardTitle className="text-accent text-xl">Gemeenschapsgevoel</CardTitle>
+                <CardTitle className="text-accent text-xl">Familieclub</CardTitle>
                 <CardDescription className="text-base">Een gastvrije hockeyfamilie</CardDescription>
               </CardHeader>
               <CardContent>
