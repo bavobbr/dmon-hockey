@@ -28,7 +28,7 @@ const HowToPlay = () => {
                 </p>
               </div>
               <div className="bg-primary/10 p-4 rounded-lg">
-                <h3 className="font-semibold mb-2 text-primary">Bij D'Mon Hockey staat centraal:</h3>
+                <h3 className="font-semibold mb-2 text-primary">Bij D-mon Hockey staat centraal:</h3>
                 <ul className="space-y-1 text-sm">
                   <li>✓ <strong>Plezier</strong></li>
                   <li>✓ <strong>Teamgevoel</strong></li>
@@ -111,7 +111,7 @@ const HowToPlay = () => {
                 <iframe 
                   width="100%" 
                   height="100%" 
-                  src="https://www.youtube.com/embed/Jf_3NfKfLkA" 
+                  src="https://www.youtube.com/embed/mYYCfWJZySo" 
                   frameBorder="0" 
                   allowFullScreen
                   className="w-full h-full"
@@ -133,7 +133,7 @@ const HowToPlay = () => {
                 <iframe 
                   width="100%" 
                   height="100%" 
-                  src="https://www.youtube.com/embed/L8eH1u1lt2o" 
+                  src="https://www.youtube.com/embed/p8OF9JyiBC0" 
                   frameBorder="0" 
                   allowFullScreen
                   className="w-full h-full"
@@ -151,7 +151,7 @@ const HowToPlay = () => {
               🛡️ Uitrusting & veiligheid
             </CardTitle>
             <CardDescription>
-              Bij D'Mon Hockey vinden we dat veiligheid en plezier hand in hand gaan
+              Bij D-mon Hockey vinden we dat veiligheid en plezier hand in hand gaan
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -292,20 +292,6 @@ const HowToPlay = () => {
               </ul>
             </div>
             
-            <div className="mt-6">
-              <h4 className="font-medium mb-3">📹 Hoe ziet een jeugdtraining eruit?</h4>
-              <div className="aspect-video rounded-lg overflow-hidden">
-                <iframe 
-                  width="100%" 
-                  height="100%" 
-                  src="https://www.youtube.com/embed/7vh6VkZwh7Q" 
-                  frameBorder="0" 
-                  allowFullScreen
-                  className="w-full h-full"
-                />
-              </div>
-              <p className="text-sm text-muted-foreground mt-2">Hockey Belgium</p>
-            </div>
           </CardContent>
         </Card>
 
@@ -363,19 +349,6 @@ const HowToPlay = () => {
               </div>
             </div>
             
-            <div>
-              <h4 className="font-medium mb-3">📹 Waarom kiezen voor hockey?</h4>
-              <div className="aspect-video rounded-lg overflow-hidden">
-                <iframe 
-                  width="100%" 
-                  height="100%" 
-                  src="https://www.youtube.com/embed/lUKu-jJQJ-0" 
-                  frameBorder="0" 
-                  allowFullScreen
-                  className="w-full h-full"
-                />
-              </div>
-            </div>
           </CardContent>
         </Card>
 
