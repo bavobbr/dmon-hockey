@@ -155,10 +155,10 @@ const Index = () => {
         <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary"></div>
       </div>;
   }
-  return <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background overflow-x-hidden max-w-full">
       {/* Hero Section */}
-      <section className="hero-gradient text-primary-foreground py-24 lg:py-32 relative">
-        <div className="container mx-auto px-4 text-center relative z-10">
+      <section className="hero-gradient text-primary-foreground py-24 lg:py-32 relative overflow-x-hidden">
+        <div className="container mx-auto px-4 text-center relative z-10 max-w-full">
           <div className="flex justify-center mb-8 fade-in-up">
             <div className="bg-white rounded-full p-6 shadow-glow pulse-glow float-animation">
               <img src="/lovable-uploads/03104bbc-f9de-44a2-a8b0-aedb91fd1c6c.png" alt="D-mon Hockey Club Logo" className="w-28 h-28 object-contain" />
@@ -202,8 +202,8 @@ const Index = () => {
       </section>
 
       {/* Quick Info Cards */}
-      <section className="py-20 px-4 bg-gradient-subtle">
-        <div className="container mx-auto">
+      <section className="py-20 px-4 bg-gradient-subtle overflow-x-hidden">
+        <div className="container mx-auto max-w-full">
           <h2 className="font-display text-4xl lg:text-5xl font-bold text-center mb-16 text-foreground">Wat We Bieden</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="border-primary/20 hover:border-primary/40 group fade-in-up">
@@ -255,8 +255,8 @@ const Index = () => {
       </section>
 
       {/* Latest Announcements */}
-      <section className="py-20 px-4">
-        <div className="container mx-auto">
+      <section className="py-20 px-4 overflow-x-hidden">
+        <div className="container mx-auto max-w-full">
           <div className="flex items-center justify-between mb-16">
             <h2 className="font-display text-4xl lg:text-5xl font-bold text-center text-foreground">Laatste Nieuws</h2>
             <Link to="/nieuws">

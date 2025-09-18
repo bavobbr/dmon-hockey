@@ -107,11 +107,11 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <SidebarProvider defaultOpen style={{"--sidebar-width": "280px", "--sidebar-width-icon": "80px"} as React.CSSProperties}>
-            <div className="min-h-screen flex w-full">
+            <div className="min-h-screen flex w-full max-w-full overflow-x-hidden">
               <AppSidebar />
-              <div className="flex-1 flex flex-col">
+              <div className="flex-1 flex flex-col min-w-0">
                 <AppHeader />
-                <main className="flex-1 overflow-auto">
+                <main className="flex-1 overflow-auto overflow-x-hidden px-4 md:px-6">
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/auth" element={<Auth />} />
