@@ -145,7 +145,7 @@ export function AppSidebar() {
       : "text-sidebar-accent-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground";
 
   return (
-    <Sidebar collapsible="icon" className="md:w-auto w-[50vw] max-w-[280px]">
+    <Sidebar collapsible="icon" className="max-w-[min(50vw,280px)]">
       <SidebarContent>
         {/* Logo Header */}
         <div className="border-b border-sidebar-border p-4">
