@@ -91,7 +91,7 @@ const navigation = [
       { title: "Training", url: "/sporting/training", icon: Calendar },
       { title: "Hoe Hockey Spelen", url: "/sporting/how-to-play", icon: BookOpen },
       { 
-        title: "Regels & Scheidsrechters", 
+        title: "Regels & Scheids", 
         url: "/sporting/rules", 
         icon: Timer,
         items: [
