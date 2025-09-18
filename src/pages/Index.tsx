@@ -257,7 +257,14 @@ const Index = () => {
       {/* Latest Announcements */}
       <section className="py-20 px-4">
         <div className="container mx-auto">
-          <h2 className="font-display text-4xl lg:text-5xl font-bold text-center mb-16 text-foreground">Laatste Nieuws</h2>
+          <div className="flex items-center justify-between mb-16">
+            <h2 className="font-display text-4xl lg:text-5xl font-bold text-center text-foreground">Laatste Nieuws</h2>
+            <Link to="/nieuws">
+              <Button variant="outline" size="sm">
+                Bekijk Meer
+              </Button>
+            </Link>
+          </div>
           
           {announcementsLoading ? <div className="grid md:grid-cols-3 gap-6">
               {[...Array(3)].map((_, i) => <Card key={i} className="animate-pulse">

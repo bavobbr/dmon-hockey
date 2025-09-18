@@ -51,6 +51,11 @@ const navigation = [
     icon: Calendar,
   },
   {
+    title: "Nieuws",
+    url: "/nieuws",
+    icon: Newspaper,
+  },
+  {
     title: "Socials",
     url: "/socials",
     icon: MessageCircle,
