@@ -460,7 +460,14 @@ const Index = () => {
       {/* Sponsors Section */}
       <section className="py-16 px-4">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Onze Sponsors</h2>
+          <div className="flex items-center justify-between mb-12">
+            <h2 className="text-3xl font-bold text-center text-foreground">Onze Sponsors</h2>
+            <Link to="/club/sponsors">
+              <Button variant="outline" size="sm">
+                Bekijk Meer
+              </Button>
+            </Link>
+          </div>
           
           {sponsorsLoading ? <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
               {[...Array(6)].map((_, i) => <div key={i} className="animate-pulse bg-muted rounded-lg h-24"></div>)}
