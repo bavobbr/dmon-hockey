@@ -177,7 +177,7 @@ const MembershipInfo = () => {
                 Lees meer uitgebreide informatie in onze onthaalbrochure voor nieuwe leden:
               </p>
               <Button variant="outline" size="sm" asChild>
-                <a href="https://dmon.be/wp-content/uploads/2024/09/Onthaalbrochure-D-MON-Hockey.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                <a href="https://drive.google.com/file/d/16o-P8Lf5ulHMuVvUnD3BLlYw8IMH_ste/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                   <FileText className="h-4 w-4" />
                   Download Onthaalbrochure (PDF)
                   <ExternalLink className="h-3 w-3" />
