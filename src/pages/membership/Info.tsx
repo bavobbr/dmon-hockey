@@ -61,7 +61,7 @@ const MembershipInfo = () => {
               </p>
               <Button variant="outline" size="sm" asChild>
                 <a 
-                  href="https://static.twizzit.com/public/v2/media/5847/664f67a04a43c.pdf"
+                  href="https://static.twizzit.com/public/v2/chat/message/attachment/3210422/f72e69c96d253fcdc03611b7dc769262d0fd5f8b.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2"
