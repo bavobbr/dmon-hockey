@@ -147,7 +147,7 @@ const CoachesInfo = () => {
           <CardContent>
             <Button variant="outline" className="h-auto p-4 justify-start" asChild>
               <a 
-                href="https://drive.google.com/uc?export=download&id=1uEv33elgKIcvWxUacWOiC--54yWBRBEB" 
+                href="https://drive.google.com/file/d/1waf1fmcjh2xnzHgKT-Uy4ZgAOnyhrM9E/view?usp=sharing" 
                 target="_blank" 
                 rel="noopener noreferrer"
               >
