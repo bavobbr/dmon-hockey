@@ -119,14 +119,14 @@ export function AppSidebar() {
 
   // Close sidebar on mobile when route changes
   useEffect(() => {
-    if (isMobile && openMobile) {
-      // Small delay to ensure navigation completes
+    if (isMobile) {
+      // Close after navigation completes on mobile
       const timer = setTimeout(() => {
         setOpenMobile(false);
       }, 100);
       return () => clearTimeout(timer);
     }
-  }, [currentPath, isMobile, openMobile, setOpenMobile]);
+  }, [currentPath, isMobile, setOpenMobile]);
 
   // Handle mobile navigation click - let useEffect handle closing on route change
   const handleMobileNavClick = () => {
