@@ -128,11 +128,9 @@ export function AppSidebar() {
     }
   }, [currentPath, isMobile, openMobile, setOpenMobile]);
 
-  // Handle mobile navigation click
+  // Handle mobile navigation click - let useEffect handle closing on route change
   const handleMobileNavClick = () => {
-    if (isMobile && openMobile) {
-      setOpenMobile(false);
-    }
+    // Don't close immediately, let the route change useEffect handle it
   };
 
   const isActive = (path: string) => currentPath === path;
