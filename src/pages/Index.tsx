@@ -495,14 +495,14 @@ const Index = () => {
       {/* Club Colors Showcase */}
       <section className="bg-muted py-[14px]">
         <div className="container mx-auto px-4 text-center">
-          <div className="flex justify-center gap-4 flex-wrap">
-            <div className="w-20 h-20 bg-primary rounded-lg shadow-lg flex items-center justify-center">
+          <div className="flex justify-center gap-2 sm:gap-4 flex-wrap">
+            <div className="w-12 h-12 sm:w-20 sm:h-20 bg-primary rounded-lg shadow-lg flex items-center justify-center">
             </div>
-            <div className="w-20 h-20 bg-secondary rounded-lg shadow-lg flex items-center justify-center">
+            <div className="w-12 h-12 sm:w-20 sm:h-20 bg-secondary rounded-lg shadow-lg flex items-center justify-center">
             </div>
-            <div className="w-20 h-20 bg-accent rounded-lg shadow-lg flex items-center justify-center">
+            <div className="w-12 h-12 sm:w-20 sm:h-20 bg-accent rounded-lg shadow-lg flex items-center justify-center">
             </div>
-            <div className="w-20 h-20 bg-foreground rounded-lg shadow-lg flex items-center justify-center">
+            <div className="w-12 h-12 sm:w-20 sm:h-20 bg-foreground rounded-lg shadow-lg flex items-center justify-center">
             </div>
           </div>
         </div>
