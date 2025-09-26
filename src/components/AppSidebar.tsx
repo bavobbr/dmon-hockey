@@ -112,7 +112,7 @@ const navigation = [
 ];
 
 export function AppSidebar() {
-  const { open, setOpen, openMobile, setOpenMobile } = useSidebar();
+  const { open, setOpen, openMobile, setOpenMobile, state } = useSidebar();
   const isMobile = useIsMobile();
   const location = useLocation();
   const currentPath = location.pathname;
@@ -131,6 +131,13 @@ export function AppSidebar() {
   // Handle mobile navigation click - let useEffect handle closing on route change
   const handleMobileNavClick = () => {
     // Don't close immediately, let the route change useEffect handle it
+  };
+
+  // Handle expanding sidebar when collapsed and group is clicked
+  const handleGroupClick = () => {
+    if (state === "collapsed" && !isMobile) {
+      setOpen(true);
+    }
   };
 
   const isActive = (path: string) => currentPath === path;
@@ -176,7 +183,10 @@ export function AppSidebar() {
                     >
                       <SidebarMenuItem>
                         <CollapsibleTrigger asChild>
-                          <SidebarMenuButton className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground w-full">
+                          <SidebarMenuButton 
+                            className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground w-full"
+                            onClick={handleGroupClick}
+                          >
                             <item.icon className="h-4 w-4 flex-shrink-0" />
                             <span className="truncate whitespace-nowrap overflow-hidden">{item.title}</span>
                             <ChevronDown className="ml-auto h-4 w-4 transition-transform group-data-[state=open]/collapsible:rotate-180 flex-shrink-0" />
