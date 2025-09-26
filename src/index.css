@@ -129,15 +129,15 @@ All colors MUST be HSL.
   }
 
   h1 {
-    @apply text-4xl lg:text-6xl leading-tight;
+    @apply text-2xl lg:text-6xl leading-tight;
   }
 
   h2 {
-    @apply text-3xl lg:text-4xl leading-tight;
+    @apply text-xl lg:text-4xl leading-tight;
   }
 
   h3 {
-    @apply text-2xl lg:text-3xl leading-snug;
+    @apply text-lg lg:text-3xl leading-snug;
   }
 }
 
