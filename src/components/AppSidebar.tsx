@@ -112,26 +112,26 @@ const navigation = [
 ];
 
 export function AppSidebar() {
-  const { open, setOpen } = useSidebar();
+  const { open, setOpen, openMobile, setOpenMobile } = useSidebar();
   const isMobile = useIsMobile();
   const location = useLocation();
   const currentPath = location.pathname;
 
   // Close sidebar on mobile when route changes
   useEffect(() => {
-    if (isMobile && open) {
+    if (isMobile && openMobile) {
       // Small delay to ensure navigation completes
       const timer = setTimeout(() => {
-        setOpen(false);
+        setOpenMobile(false);
       }, 100);
       return () => clearTimeout(timer);
     }
-  }, [currentPath, isMobile, open, setOpen]);
+  }, [currentPath, isMobile, openMobile, setOpenMobile]);
 
   // Handle mobile navigation click
   const handleMobileNavClick = () => {
-    if (isMobile && open) {
-      setOpen(false);
+    if (isMobile && openMobile) {
+      setOpenMobile(false);
     }
   };
 
