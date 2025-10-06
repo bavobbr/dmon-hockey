@@ -9,7 +9,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import DOMPurify from 'dompurify';
 import UpcomingEvents from "@/components/UpcomingEvents";
-import { Target, Trophy, Users } from "lucide-react";
+import { Target, Trophy, Users, Newspaper } from "lucide-react";
 interface Announcement {
   id: string;
   title: string;
@@ -290,11 +290,16 @@ const Index = () => {
             animationDelay: `${index * 0.1}s`
           }}>
                   <CardHeader>
-                    <div className="flex items-start justify-between">
-                      <CardTitle className="text-xl line-clamp-2 group-hover:text-primary transition-colors">
-                        {announcement.title}
-                      </CardTitle>
-                      {announcement.featured && <Badge variant="secondary" className="ml-2 shrink-0 bg-accent/10 text-accent border-accent/20">
+                    <div className="flex items-start gap-3 mb-2">
+                      <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
+                        <Newspaper className="w-5 h-5 text-primary" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <CardTitle className="text-xl line-clamp-2 group-hover:text-primary transition-colors">
+                          {announcement.title}
+                        </CardTitle>
+                      </div>
+                      {announcement.featured && <Badge variant="secondary" className="shrink-0 bg-accent/10 text-accent border-accent/20">
                           Uitgelicht
                         </Badge>}
                     </div>
