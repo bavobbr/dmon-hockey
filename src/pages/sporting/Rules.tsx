@@ -27,7 +27,7 @@ const Rules = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
-                <Link to="/sporting/rules/u6u8" className="block">
+                <Link to="/sporting/rules/u6-u8" className="block">
                   <div className="p-3 bg-muted rounded-lg hover:bg-muted/80 transition-colors group cursor-pointer">
                     <div className="flex items-center justify-between">
                       <div>
@@ -49,7 +49,7 @@ const Rules = () => {
                     </div>
                   </div>
                 </Link>
-                <Link to="/sporting/rules/u10u12" className="block">
+                <Link to="/sporting/rules/u10-u12" className="block">
                   <div className="p-3 bg-muted rounded-lg hover:bg-muted/80 transition-colors group cursor-pointer">
                     <div className="flex items-center justify-between">
                       <div>
@@ -60,7 +60,7 @@ const Rules = () => {
                     </div>
                   </div>
                 </Link>
-                <Link to="/sporting/rules/u14plus" className="block">
+                <Link to="/sporting/rules/u14-plus" className="block">
                   <div className="p-3 bg-muted rounded-lg hover:bg-muted/80 transition-colors group cursor-pointer">
                     <div className="flex items-center justify-between">
                       <div>
