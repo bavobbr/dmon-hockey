@@ -209,10 +209,12 @@ const Index = () => {
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="border-primary/20 hover:border-primary/40 group fade-in-up">
               <CardHeader className="pb-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                  <Target className="w-6 h-6 text-primary" />
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors shrink-0">
+                    <Target className="w-6 h-6 text-primary" />
+                  </div>
+                  <CardTitle className="text-primary text-xl">Trainingen</CardTitle>
                 </div>
-                <CardTitle className="text-primary text-xl">Trainingen</CardTitle>
                 <CardDescription className="text-base">Professionele coaching voor alle niveaus</CardDescription>
               </CardHeader>
               <CardContent>
@@ -224,10 +226,12 @@ const Index = () => {
             
             <Card className="border-secondary/20 hover:border-secondary/40 group fade-in-up">
               <CardHeader className="pb-4">
-                <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-secondary/20 transition-colors">
-                  <Trophy className="w-6 h-6 text-secondary" />
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center group-hover:bg-secondary/20 transition-colors shrink-0">
+                    <Trophy className="w-6 h-6 text-secondary" />
+                  </div>
+                  <CardTitle className="text-secondary text-xl">Competitieve Wedstrijden</CardTitle>
                 </div>
-                <CardTitle className="text-secondary text-xl">Competitieve Wedstrijden</CardTitle>
                 <CardDescription className="text-base">Competitie en toernooien</CardDescription>
               </CardHeader>
               <CardContent>
@@ -239,10 +243,12 @@ const Index = () => {
             
             <Card className="border-accent/20 hover:border-accent/40 group fade-in-up">
               <CardHeader className="pb-4">
-                <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
-                  <Users className="w-6 h-6 text-accent" />
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center group-hover:bg-accent/20 transition-colors shrink-0">
+                    <Users className="w-6 h-6 text-accent" />
+                  </div>
+                  <CardTitle className="text-accent text-xl">Familieclub</CardTitle>
                 </div>
-                <CardTitle className="text-accent text-xl">Familieclub</CardTitle>
                 <CardDescription className="text-base">Een gastvrije hockeyfamilie</CardDescription>
               </CardHeader>
               <CardContent>
