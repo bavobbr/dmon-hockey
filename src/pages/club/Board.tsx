@@ -3,8 +3,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { supabase } from "@/integrations/supabase/client";
 import { UserCheck, Mail, Phone } from "lucide-react";
 import organogramImage from "@/assets/organogram.png";
+import clubOrganizationImage from "@/assets/club-organization.png";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { useState } from "react";
 
 const Board = () => {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
   const { data: boardMembers } = useQuery({
     queryKey: ['board-members-full'],
     queryFn: async () => {
@@ -88,6 +93,40 @@ const Board = () => {
             <p className="text-muted-foreground">Bestuursinformatie zal binnenkort beschikbaar zijn.</p>
           </div>
         )}
+
+        {/* Medewerkers Section */}
+        <div className="mt-12">
+          <Card>
+            <CardHeader>
+              <CardTitle>Medewerkers</CardTitle>
+              <CardDescription>
+                Klik op de afbeelding om te vergroten
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                <DialogTrigger asChild>
+                  <div className="cursor-pointer hover:opacity-90 transition-opacity">
+                    <img 
+                      src={clubOrganizationImage} 
+                      alt="Club Organisatie - Medewerkers" 
+                      className="w-full h-auto rounded-lg shadow-lg border max-h-[600px] object-contain"
+                    />
+                  </div>
+                </DialogTrigger>
+                <DialogContent className="max-w-7xl max-h-[90vh] p-2">
+                  <div className="overflow-auto">
+                    <img 
+                      src={clubOrganizationImage} 
+                      alt="Club Organisatie - Medewerkers (Vergroot)" 
+                      className="w-full h-auto"
+                    />
+                  </div>
+                </DialogContent>
+              </Dialog>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </div>
   );
