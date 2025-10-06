@@ -29,7 +29,7 @@ import HockeyField from "./pages/club/HockeyField";
 import ClubTeams from "./pages/club/Teams";
 import Board from "./pages/club/Board";
 import ClubValues from "./pages/club/Values";
-import News from "./pages/club/News";
+import Media from "./pages/club/Media";
 import History from "./pages/club/History";
 import ClubSponsors from "./pages/club/Sponsors";
 import Privacy from "./pages/club/Privacy";
@@ -124,7 +124,7 @@ const App = () => (
                     <Route path="/club/teams" element={<ClubTeams />} />
                     <Route path="/club/board" element={<Board />} />
                     <Route path="/club/values" element={<ClubValues />} />
-                    <Route path="/club/news" element={<News />} />
+                    <Route path="/club/media" element={<Media />} />
                     <Route path="/club/history" element={<History />} />
                     <Route path="/club/sponsors" element={<ClubSponsors />} />
                     <Route path="/club/privacy" element={<Privacy />} />

@@ -68,7 +68,7 @@ const navigation = [
       { title: "Teams", url: "/club/teams", icon: Trophy },
       { title: "Bestuur", url: "/club/board", icon: UserCheck },
       { title: "Clubwaarden", url: "/club/values", icon: Shield },
-      { title: "In de media", url: "/club/news", icon: Newspaper },
+      { title: "In de media", url: "/club/media", icon: Newspaper },
       { title: "Geschiedenis", url: "/club/history", icon: History },
       { title: "Sponsors", url: "/club/sponsors", icon: HandHeart },
     ],
