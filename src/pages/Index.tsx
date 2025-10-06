@@ -192,11 +192,11 @@ const Index = () => {
                   Word Lid van Onze Club
                 </Button>
               </Link>
-              <Link to="/auth">
+              <a href="https://app.twizzit.com/v2/home" target="_blank" rel="noopener noreferrer">
                 <Button size="lg" variant="outline" className="border-white/50 text-white bg-white/10 hover:bg-white/20 hover:text-white hover:border-white/70 px-8 py-4 backdrop-blur-sm">
                   Leden Login
                 </Button>
-              </Link>
+              </a>
             </div>}
         </div>
       </section>
