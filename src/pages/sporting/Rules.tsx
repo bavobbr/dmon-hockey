@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Timer, Users, Award, Lightbulb, ExternalLink, BookOpen } from "lucide-react";
+import { Timer, Users, Award, Lightbulb, ExternalLink, BookOpen, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import scheidsrechterPad from "@/assets/scheidsrechter-pad.png";
 import stappen from "@/assets/stappen.png";
 
@@ -26,22 +27,50 @@ const Rules = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
-                <div className="p-3 bg-muted rounded-lg">
-                  <h4 className="font-semibold text-sm mb-1">U6 tot U8</h4>
-                  <p className="text-sm text-muted-foreground">Pictogrammen (zie spelregels U6 tot U8)</p>
-                </div>
-                <div className="p-3 bg-muted rounded-lg">
-                  <h4 className="font-semibold text-sm mb-1">U9</h4>
-                  <p className="text-sm text-muted-foreground">Pictogrammen en Start TO Umpire videos</p>
-                </div>
-                <div className="p-3 bg-muted rounded-lg">
-                  <h4 className="font-semibold text-sm mb-1">U10 tot U12</h4>
-                  <p className="text-sm text-muted-foreground">Half veld met cirkel (penalty corners)</p>
-                </div>
-                <div className="p-3 bg-muted rounded-lg">
-                  <h4 className="font-semibold text-sm mb-1">U14 en hoger</h4>
-                  <p className="text-sm text-muted-foreground">Volledige regels groot veld</p>
-                </div>
+                <Link to="/sporting/rules/u6u8" className="block">
+                  <div className="p-3 bg-muted rounded-lg hover:bg-muted/80 transition-colors group cursor-pointer">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h4 className="font-semibold text-sm mb-1">U6 tot U8</h4>
+                        <p className="text-sm text-muted-foreground">Pictogrammen (zie spelregels U6 tot U8)</p>
+                      </div>
+                      <ChevronRight className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors" />
+                    </div>
+                  </div>
+                </Link>
+                <Link to="/sporting/rules/u9" className="block">
+                  <div className="p-3 bg-muted rounded-lg hover:bg-muted/80 transition-colors group cursor-pointer">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h4 className="font-semibold text-sm mb-1">U9</h4>
+                        <p className="text-sm text-muted-foreground">Pictogrammen en Start TO Umpire videos</p>
+                      </div>
+                      <ChevronRight className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors" />
+                    </div>
+                  </div>
+                </Link>
+                <Link to="/sporting/rules/u10u12" className="block">
+                  <div className="p-3 bg-muted rounded-lg hover:bg-muted/80 transition-colors group cursor-pointer">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h4 className="font-semibold text-sm mb-1">U10 tot U12</h4>
+                        <p className="text-sm text-muted-foreground">Half veld met cirkel (penalty corners)</p>
+                      </div>
+                      <ChevronRight className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors" />
+                    </div>
+                  </div>
+                </Link>
+                <Link to="/sporting/rules/u14plus" className="block">
+                  <div className="p-3 bg-muted rounded-lg hover:bg-muted/80 transition-colors group cursor-pointer">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h4 className="font-semibold text-sm mb-1">U14 en hoger</h4>
+                        <p className="text-sm text-muted-foreground">Volledige regels groot veld</p>
+                      </div>
+                      <ChevronRight className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors" />
+                    </div>
+                  </div>
+                </Link>
               </CardContent>
             </Card>
 
