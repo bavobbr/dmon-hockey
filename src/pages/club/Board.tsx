@@ -35,19 +35,21 @@ const Board = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground mb-6">
-                Het bestuur komt maandelijks samen om clubactiviteiten, strategische planning en
-                gemeenschapsbetrokkenheid te bespreken. Elk lid brengt unieke expertise mee om onze club te helpen
-                groeien en bloeien.
-              </p>
-
-              {/* Organogram Image */}
-              <div className="flex justify-center mb-6">
-                <div className="max-w-md">
+              <div className="grid md:grid-cols-2 gap-6 items-start">
+                <div>
+                  <p className="text-muted-foreground mb-4">
+                    Het bestuur komt maandelijks samen om clubactiviteiten, strategische planning en
+                    gemeenschapsbetrokkenheid te bespreken. Elk lid brengt unieke expertise mee om onze club te helpen
+                    groeien en bloeien.
+                  </p>
+                </div>
+                
+                {/* Organogram Image */}
+                <div className="flex justify-center">
                   <img
                     src={organogramImage}
                     alt="Organogram D-mon Hockey Club Bestuur"
-                    className="w-full h-auto rounded-lg shadow-lg border"
+                    className="w-full h-auto rounded-lg shadow-lg border max-w-sm"
                   />
                 </div>
               </div>
