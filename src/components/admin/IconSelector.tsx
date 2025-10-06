@@ -15,7 +15,7 @@ interface IconSelectorProps {
   onChange: (iconName: string) => void;
 }
 
-// Popular icons for announcements
+// Popular 50 icons for announcements
 const popularIcons = [
   "Newspaper",
   "Trophy",
@@ -37,6 +37,36 @@ const popularIcons = [
   "Medal",
   "Crown",
   "Rocket",
+  "Flame",
+  "CheckCircle",
+  "AlertCircle",
+  "Info",
+  "TrendingUp",
+  "ThumbsUp",
+  "Music",
+  "Video",
+  "Image",
+  "MapPin",
+  "Home",
+  "Shield",
+  "Lightbulb",
+  "Cake",
+  "Coffee",
+  "Smile",
+  "Hand",
+  "Siren",
+  "BadgeCheck",
+  "CircleDot",
+  "Gamepad2",
+  "GraduationCap",
+  "Handshake",
+  "HeartHandshake",
+  "Landmark",
+  "PartyPopper",
+  "Pencil",
+  "Phone",
+  "Send",
+  "Settings",
 ];
 
 export function IconSelector({ value, onChange }: IconSelectorProps) {
