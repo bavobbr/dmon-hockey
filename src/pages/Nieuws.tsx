@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
+import * as Icons from "lucide-react";
 import DOMPurify from 'dompurify';
 
 interface Announcement {
@@ -14,6 +15,7 @@ interface Announcement {
   featured: boolean;
   published: boolean;
   created_at: string;
+  icon: string;
 }
 
 const Nieuws = () => {
@@ -110,31 +112,41 @@ const Nieuws = () => {
         </Card>
       ) : (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {announcements.map((announcement, index) => (
-            <Card 
-              key={announcement.id} 
-              className="group fade-in-up hover:shadow-lg transition-shadow duration-200" 
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <CardHeader>
-                <div className="flex items-start justify-between">
-                  <CardTitle className="text-xl line-clamp-2 group-hover:text-primary transition-colors">
-                    {announcement.title}
-                  </CardTitle>
-                  {announcement.featured && (
-                    <Badge variant="secondary" className="ml-2 shrink-0 bg-accent/10 text-accent border-accent/20">
-                      Uitgelicht
-                    </Badge>
-                  )}
-                </div>
-                <CardDescription className="text-sm text-muted-foreground">
-                  {new Date(announcement.created_at).toLocaleDateString("nl-BE", {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                  })}
-                </CardDescription>
-              </CardHeader>
+          {announcements.map((announcement, index) => {
+            const IconComponent = (Icons as any)[announcement.icon || 'Newspaper'] || Icons.Newspaper;
+            
+            return (
+              <Card 
+                key={announcement.id} 
+                className="group fade-in-up hover:shadow-lg transition-shadow duration-200" 
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <CardHeader>
+                  <div className="flex items-start gap-3">
+                    <div className="mt-1 p-2 rounded-lg bg-primary/10 shrink-0">
+                      <IconComponent className="h-5 w-5 text-primary" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-start justify-between gap-2">
+                        <CardTitle className="text-xl line-clamp-2 group-hover:text-primary transition-colors">
+                          {announcement.title}
+                        </CardTitle>
+                        {announcement.featured && (
+                          <Badge variant="secondary" className="shrink-0 bg-accent/10 text-accent border-accent/20">
+                            Uitgelicht
+                          </Badge>
+                        )}
+                      </div>
+                      <CardDescription className="text-sm text-muted-foreground mt-2">
+                        {new Date(announcement.created_at).toLocaleDateString("nl-BE", {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric'
+                        })}
+                      </CardDescription>
+                    </div>
+                  </div>
+                </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground line-clamp-3 mb-6 leading-relaxed">
                   {announcement.excerpt || announcement.content.substring(0, 150) + '...'}
@@ -173,7 +185,8 @@ const Nieuws = () => {
                 </Dialog>
               </CardContent>
             </Card>
-          ))}
+            );
+          })}
         </div>
       )}
     </div>

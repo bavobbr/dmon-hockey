@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
+import { IconSelector } from '@/components/admin/IconSelector';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
 import ReactQuill from 'react-quill';
@@ -17,6 +18,7 @@ interface AnnouncementFormData {
   excerpt: string;
   featured: boolean;
   published: boolean;
+  icon: string;
 }
 
 const AnnouncementForm = () => {
@@ -33,6 +35,7 @@ const AnnouncementForm = () => {
   const [excerpt, setExcerpt] = useState('');
   const [featured, setFeatured] = useState(false);
   const [published, setPublished] = useState(false);
+  const [icon, setIcon] = useState('Newspaper');
 
   const fetchAnnouncement = useCallback(async () => {
     if (!id) return;
@@ -50,6 +53,7 @@ const AnnouncementForm = () => {
       setExcerpt(data.excerpt || '');
       setFeatured(data.featured);
       setPublished(data.published);
+      setIcon(data.icon || 'Newspaper');
     } catch (error) {
       console.error('Error fetching announcement:', error);
       toast({
@@ -80,6 +84,7 @@ const AnnouncementForm = () => {
         excerpt,
         featured,
         published,
+        icon,
         author_id: user.id,
       };
 
@@ -231,6 +236,8 @@ const AnnouncementForm = () => {
                 placeholder="Brief summary of the announcement"
               />
             </div>
+
+            <IconSelector value={icon} onChange={setIcon} />
 
             <div className="space-y-2">
               <Label htmlFor="content">Content *</Label>
