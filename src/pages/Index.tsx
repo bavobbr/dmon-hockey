@@ -9,6 +9,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import DOMPurify from 'dompurify';
 import UpcomingEvents from "@/components/UpcomingEvents";
+import { Target, Trophy, Users } from "lucide-react";
 interface Announcement {
   id: string;
   title: string;
@@ -209,7 +210,7 @@ const Index = () => {
             <Card className="border-primary/20 hover:border-primary/40 group fade-in-up">
               <CardHeader className="pb-4">
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                  <div className="w-6 h-6 bg-primary rounded-sm"></div>
+                  <Target className="w-6 h-6 text-primary" />
                 </div>
                 <CardTitle className="text-primary text-xl">Trainingen</CardTitle>
                 <CardDescription className="text-base">Professionele coaching voor alle niveaus</CardDescription>
@@ -224,7 +225,7 @@ const Index = () => {
             <Card className="border-secondary/20 hover:border-secondary/40 group fade-in-up">
               <CardHeader className="pb-4">
                 <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-secondary/20 transition-colors">
-                  <div className="w-6 h-6 bg-secondary rounded-sm"></div>
+                  <Trophy className="w-6 h-6 text-secondary" />
                 </div>
                 <CardTitle className="text-secondary text-xl">Competitieve Wedstrijden</CardTitle>
                 <CardDescription className="text-base">Competitie en toernooien</CardDescription>
@@ -239,7 +240,7 @@ const Index = () => {
             <Card className="border-accent/20 hover:border-accent/40 group fade-in-up">
               <CardHeader className="pb-4">
                 <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
-                  <div className="w-6 h-6 bg-accent rounded-sm"></div>
+                  <Users className="w-6 h-6 text-accent" />
                 </div>
                 <CardTitle className="text-accent text-xl">Familieclub</CardTitle>
                 <CardDescription className="text-base">Een gastvrije hockeyfamilie</CardDescription>
