@@ -20,6 +20,7 @@ const ClubSponsors = () => {
   });
 
   const tierColors = {
+    diamond: "border-blue-300 bg-blue-50/50",
     gold: "border-yellow-300 bg-yellow-50/50",
     silver: "border-gray-300 bg-gray-50/50", 
     bronze: "border-amber-300 bg-amber-50/50"
@@ -57,14 +58,14 @@ const ClubSponsors = () => {
         </Card>
 
         {/* Display sponsors by tier */}
-        {['gold', 'silver', 'bronze'].map((tier) => {
+        {['diamond', 'gold', 'silver', 'bronze'].map((tier) => {
           const tierSponsors = groupedSponsors?.[tier];
           if (!tierSponsors || tierSponsors.length === 0) return null;
           
           return (
             <div key={tier} className="mb-8">
               <h2 className="text-2xl font-semibold mb-4 text-foreground capitalize">
-                {tier === 'gold' ? 'Goud' : tier === 'silver' ? 'Zilver' : 'Brons'} Sponsors
+                {tier === 'diamond' ? 'Diamant' : tier === 'gold' ? 'Goud' : tier === 'silver' ? 'Zilver' : 'Brons'} Sponsors
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {tierSponsors.map((sponsor) => (
