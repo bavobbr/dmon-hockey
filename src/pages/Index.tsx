@@ -178,8 +178,7 @@ const Index = () => {
             D-mon Hockey Club
           </h1>
           <p className="text-xl lg:text-2xl mb-10 max-w-3xl mx-auto leading-relaxed fade-in-up opacity-90">
-            Welkom bij onze hockeyclub in Dendermonde. Zin in een super teamsport met focus op snelheid? Dan is hockey
-            misschien wel iets voor jou!.
+            Welkom bij onze hockeyclub in Dendermonde
           </p>
           {user ? (
             <div className="space-y-4">
