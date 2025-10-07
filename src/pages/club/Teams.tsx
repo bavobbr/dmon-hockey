@@ -1,9 +1,14 @@
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { supabase } from "@/integrations/supabase/client";
-import { Trophy, Users, Mail, Phone } from "lucide-react";
+import { Trophy, Users, Mail } from "lucide-react";
+import logoImage from "/dman-hockey-logo.png";
 
 const ClubTeams = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  
   const { data: teams } = useQuery({
     queryKey: ['teams'],
     queryFn: async () => {
@@ -27,6 +32,17 @@ const ClubTeams = () => {
           {teams?.map((team) => (
             <Card key={team.id} className="hover:shadow-lg transition-shadow">
               <CardHeader>
+                <div 
+                  className="mb-4 cursor-pointer rounded-lg overflow-hidden bg-muted flex items-center justify-center"
+                  onClick={() => setSelectedImage(team.image_url || logoImage)}
+                  style={{ height: '200px' }}
+                >
+                  <img 
+                    src={team.image_url || logoImage}
+                    alt={team.name}
+                    className="w-full h-full object-contain hover:scale-105 transition-transform"
+                  />
+                </div>
                 <CardTitle className="flex items-center gap-2">
                   <Trophy className="h-5 w-5 text-primary" />
                   {team.name}
@@ -63,6 +79,18 @@ const ClubTeams = () => {
           </div>
         )}
       </div>
+
+      <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
+        <DialogContent className="max-w-4xl">
+          {selectedImage && (
+            <img 
+              src={selectedImage}
+              alt="Team image"
+              className="w-full h-auto rounded-lg"
+            />
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
