@@ -4,7 +4,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { supabase } from "@/integrations/supabase/client";
 import { Trophy, Users, Mail } from "lucide-react";
-import logoImage from "/dman-hockey-logo.png";
 
 const ClubTeams = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -32,37 +31,42 @@ const ClubTeams = () => {
           {teams?.map((team) => (
             <Card key={team.id} className="hover:shadow-lg transition-shadow">
               <CardHeader>
-                <div 
-                  className="mb-4 cursor-pointer rounded-lg overflow-hidden bg-muted flex items-center justify-center"
-                  onClick={() => setSelectedImage(team.image_url || logoImage)}
-                  style={{ height: '200px' }}
-                >
-                  <img 
-                    src={team.image_url || logoImage}
-                    alt={team.name}
-                    className="w-full h-full object-contain hover:scale-105 transition-transform"
-                  />
-                </div>
                 <CardTitle className="flex items-center gap-2">
                   <Trophy className="h-5 w-5 text-primary" />
                   {team.name}
                 </CardTitle>
                 <CardDescription>
-                  {team.division} {team.age_group && `• ${team.age_group}`}
-                  {team.season && ` • ${team.season}`}
+                  {team.season}
                 </CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="space-y-4">
+                <div 
+                  className="cursor-pointer rounded-lg overflow-hidden bg-muted flex items-center justify-center"
+                  onClick={() => setSelectedImage(team.image_url || "/lovable-uploads/03104bbc-f9de-44a2-a8b0-aedb91fd1c6c.png")}
+                  style={{ height: '200px' }}
+                >
+                  <img 
+                    src={team.image_url || "/lovable-uploads/03104bbc-f9de-44a2-a8b0-aedb91fd1c6c.png"}
+                    alt={team.name}
+                    className="w-full h-full object-contain hover:scale-105 transition-transform"
+                  />
+                </div>
+
                 {team.description && (
-                  <p className="text-muted-foreground mb-4">{team.description}</p>
+                  <p className="text-muted-foreground text-sm">{team.description}</p>
                 )}
                 
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2 text-sm">
+                <div className="space-y-2 text-sm">
+                  {team.division && team.age_group && (
+                    <p className="text-muted-foreground">
+                      {team.division} • {team.age_group}
+                    </p>
+                  )}
+                  <div className="flex items-center gap-2">
                     <Users className="h-4 w-4 text-muted-foreground" />
                     <span className="text-muted-foreground">Coach: {team.coach || '[To be assigned]'}</span>
                   </div>
-                  <div className="flex items-center gap-2 text-sm">
+                  <div className="flex items-center gap-2">
                     <Mail className="h-4 w-4 text-muted-foreground" />
                     <span className="text-muted-foreground">Team Manager: {team.team_manager || '[To be assigned]'}</span>
                   </div>
