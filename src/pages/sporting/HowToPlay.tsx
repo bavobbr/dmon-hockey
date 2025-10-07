@@ -7,7 +7,7 @@ const HowToPlay = () => {
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold mb-4 text-foreground">🏑 Start met hockey bij D-mon Hockey</h1>
+          <h1 className="text-4xl font-bold mb-4 text-foreground">Start met hockey bij D-mon Hockey</h1>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Hockey is een snelle, technische en vooral ontzettend leuke teamsport die je buiten speelt op kunstgras.
             Twee ploegen proberen de bal in elkaars doel te krijgen door te passen, dribbelen en slim samen te spelen.
@@ -28,7 +28,7 @@ const HowToPlay = () => {
                 </p>
               </div>
               <div className="bg-primary/10 p-4 rounded-lg">
-                <h3 className="font-semibold mb-2 text-primary">Bij D-mon Hockey staat centraal:</h3>
+                <h3 className="font-semibold mb-2 text-primary">Bij D-mon staat centraal:</h3>
                 <ul className="space-y-1 text-sm">
                   <li>
                     ✓ <strong>Plezier</strong>
