@@ -79,6 +79,7 @@ serve(async (req)=>{
       rid,
       status: authRes.status,
       ok: authRes.ok,
+      // helpful debugging: show notable headers if present
       headers: {
         "x-ratelimit-remaining": authRes.headers.get("x-ratelimit-remaining"),
         "x-ratelimit-limit": authRes.headers.get("x-ratelimit-limit")
@@ -101,73 +102,94 @@ serve(async (req)=>{
     if (!token) {
       throw new Error("No authentication token returned");
     }
-    // FETCH TEAMS - Add pagination parameters to ensure we get all teams
-    const teamsUrl = `${TWIZZIT_API_BASE}/groups?organization-ids[]=${twizzitOrgId}&season-id=51270&group-type=1&limit=100&page=1`;
-    log("teams.request", {
+    // DATES
+    const today = new Date();
+    const startDate = today.toISOString().split("T")[0];
+    const endDate = new Date(today.getTime() + 28 * 24 * 60 * 60 * 1000).toISOString().split("T")[0];
+    log("events.date_window", {
       rid,
-      url: teamsUrl
+      startDate,
+      endDate
     });
-    const teamsRes = await fetch(teamsUrl, {
+    // FETCH EVENTS
+    // safest if API expects a single JSON array param
+    const ids = [
+      Number(twizzitOrgId)
+    ];
+    const eventsUrl = `${TWIZZIT_API_BASE}/events?` + `organization-ids[]=${twizzitOrgId}` + `&start-date=${startDate}&end-date=${endDate}&limit=50`;
+    log("events.request", {
+      rid,
+      url: eventsUrl
+    });
+    const eventsRes = await fetch(eventsUrl, {
       headers: {
         Authorization: `Bearer ${token}`
       }
     });
-    log("teams.response", {
+    log("events.response", {
       rid,
-      status: teamsRes.status,
-      ok: teamsRes.ok,
+      status: eventsRes.status,
+      ok: eventsRes.ok,
       headers: {
-        "x-ratelimit-remaining": teamsRes.headers.get("x-ratelimit-remaining"),
-        "x-ratelimit-limit": teamsRes.headers.get("x-ratelimit-limit")
+        "x-ratelimit-remaining": eventsRes.headers.get("x-ratelimit-remaining"),
+        "x-ratelimit-limit": eventsRes.headers.get("x-ratelimit-limit")
       }
     });
-    if (!teamsRes.ok) {
-      const bodyPreview = await teamsRes.text().catch(()=>"<unreadable>");
-      err("teams.failed", {
+    if (!eventsRes.ok) {
+      const bodyPreview = await eventsRes.text().catch(()=>"<unreadable>");
+      err("events.failed", {
         rid,
-        status: teamsRes.status,
+        status: eventsRes.status,
         bodyPreview: bodyPreview?.slice(0, 1000)
       });
-      throw new Error(`Failed to fetch teams: ${teamsRes.status}`);
+      throw new Error(`Failed to fetch events: ${eventsRes.status}`);
     }
-    const teamsData = await teamsRes.json();
-    const teams = Array.isArray(teamsData) ? teamsData : teamsData.teams || [];
-    log("teams.parsed", {
+    const eventsData = await eventsRes.json();
+    const events = Array.isArray(eventsData) ? eventsData : eventsData.events || [];
+    log("events.parsed", {
       rid,
-      count: teams.length,
-      sample_ids: teams.slice(0, 5).map((t)=>t?.id ?? null)
+      count: events.length,
+      sample_ids: events.slice(0, 5).map((e)=>e?.id ?? null)
     });
-    // Helper function to extract age group from team name
-    const extractAgeGroup = (teamName)=>{
-      const ageGroupMatch = teamName.match(/U(\d+)/i);
-      return ageGroupMatch ? `U${ageGroupMatch[1]}` : null;
-    };
     // MAP ROWS
     const now = new Date().toISOString();
-    const rows = teams.map((team)=>({
-        twizzit_id: team.id,
-        name: team.name,
-        description: team['short-name'] ? `Short name: ${team['short-name']}` : null,
-        age_group: extractAgeGroup(team.name),
-        season: team.season?.name || null,
-        image_url: team.image,
-        active: true,
-        raw: team,
+    const rows = events.filter((event)=>event.name && event.name.trim() !== "") // skip events without a name
+    .map((event)=>({
+        twizzit_id: event.id,
+        name: event.name,
+        start_at: event.start ? new Date(event.start).toISOString() : null,
+        end_at: event.end ? new Date(event.end).toISOString() : null,
+        meeting_time: event["meeting-time"] ? new Date(`1970-01-01T${event["meeting-time"]}Z`).toISOString().slice(11, 19) : null,
+        description: event.description ?? null,
+        address: event.address ?? null,
+        score: event.score ?? null,
+        score_details: event["score-details"] ?? null,
+        series: event.series ?? null,
+        groups: event["event-groups"] ?? null,
+        contacts: event["event-contacts"] ?? null,
+        resources: event["event-resources"] ?? null,
+        raw: event,
         updated_at: now
       }));
+    // quick data-quality counters
+    const dq = {
+      null_start_at: rows.filter((r)=>r.start_at === null).length,
+      null_end_at: rows.filter((r)=>r.end_at === null).length,
+      null_meeting_time: rows.filter((r)=>r.meeting_time === null).length
+    };
     log("rows.mapped", {
       rid,
       count: rows.length,
-      sample_names: rows.slice(0, 5).map((r)=>r.name)
+      dq
     });
     // UPSERT
     log("db.upsert.begin", {
       rid,
-      table: "teams",
+      table: "twizzit_events",
       onConflict: "twizzit_id",
       count: rows.length
     });
-    const { error } = await supabase.from("teams").upsert(rows, {
+    const { error } = await supabase.from("twizzit_events").upsert(rows, {
       onConflict: "twizzit_id"
     });
     if (error) {
@@ -190,8 +212,7 @@ serve(async (req)=>{
     });
     return new Response(JSON.stringify({
       success: true,
-      count: rows.length,
-      message: `Successfully synced ${rows.length} teams`
+      count: rows.length
     }), {
       headers: {
         ...corsHeaders,
