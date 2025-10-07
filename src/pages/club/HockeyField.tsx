@@ -4,10 +4,8 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import mobilityMap from "@/assets/mobility-map.png";
 import ClubLocationMap from "@/components/ClubLocationMap";
-
 const HockeyField = () => {
-  return (
-    <div className="container mx-auto px-4 py-8">
+  return <div className="container mx-auto px-4 py-8">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold mb-8 text-foreground">Hockeyterrein & Mobiliteit</h1>
         
@@ -26,7 +24,7 @@ const HockeyField = () => {
             <CardContent>
               <div className="space-y-4">
                 <div>
-                  <h3 className="font-semibold mb-2">Adres</h3>
+                  
                   <p className="text-muted-foreground">
                     Oud Kerkhofstraat 20<br />
                     Grembergen<br />
@@ -38,12 +36,7 @@ const HockeyField = () => {
                   <AlertTriangle className="h-4 w-4 text-amber-600" />
                   <AlertDescription className="text-amber-800 dark:text-amber-200">
                     <strong>Opgelet:</strong> De herinrichting van het kruispunt Mechelsesteenweg/Martelarenlaan (Scheldebrug)/Noordlaan/Leopoldlaan is gestart met impact op de toegankelijkheid voor voetgangers, fietsers en gemotoriseerd verkeer.{" "}
-                    <a 
-                      href="https://www.dendermonde.be/werkenmechelsepoort" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="underline hover:no-underline"
-                    >
+                    <a href="https://www.dendermonde.be/werkenmechelsepoort" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">
                       Bekijk de website van stad Dendermonde voor de meest recente informatie
                     </a> en vertrek op tijd.
                   </AlertDescription>
@@ -69,20 +62,11 @@ const HockeyField = () => {
                 <div className="space-y-3">
                   <h4 className="font-medium">Parkeerkaart & Richtlijnen</h4>
                   <div className="border rounded-lg overflow-hidden">
-                    <img 
-                      src={mobilityMap} 
-                      alt="Mobiliteits- en parkeerkaart voor D-mon Hockey Club"
-                      className="w-full h-auto"
-                    />
+                    <img src={mobilityMap} alt="Mobiliteits- en parkeerkaart voor D-mon Hockey Club" className="w-full h-auto" />
                   </div>
                   <div className="flex gap-2">
                     <Button variant="outline" size="sm" asChild>
-                      <a 
-                        href="https://dmon.be/wp-content/uploads/2022/11/Mobiliteit-1.pdf"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2"
-                      >
+                      <a href="https://dmon.be/wp-content/uploads/2022/11/Mobiliteit-1.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                         <FileText className="h-4 w-4" />
                         Download Parkeerkaart PDF
                       </a>
@@ -160,12 +144,7 @@ const HockeyField = () => {
 
                 <div className="mt-4 pt-4 border-t">
                   <Button variant="outline" size="sm" asChild>
-                    <a 
-                      href="https://dmon.be/wp-content/uploads/2024/01/Afspraken-hockeyterrein-uitgebreid-A4-document.pdf"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2"
-                    >
+                    <a href="https://dmon.be/wp-content/uploads/2024/01/Afspraken-hockeyterrein-uitgebreid-A4-document.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                       <FileText className="h-4 w-4" />
                       Download Volledige Terreinafspraken (PDF)
                     </a>
@@ -176,8 +155,6 @@ const HockeyField = () => {
           </Card>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default HockeyField;
