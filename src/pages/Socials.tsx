@@ -64,7 +64,9 @@ export default function Socials() {
 
     const fetchInstagramPosts = async () => {
       try {
-        const { data, error } = await supabase.functions.invoke('fetch-instagram-posts');
+        const { data, error } = await supabase.functions.invoke('fetch-instagram-posts', {
+          body: { limit: 9 }
+        });
         
         if (error) {
           console.error('Error fetching Instagram posts:', error);
@@ -136,7 +138,7 @@ export default function Socials() {
             </a>
           </p>
           <Badge variant="secondary" className="mb-6">
-            Laatste 5 posts
+            Laatste 9 posts
           </Badge>
         </div>
 

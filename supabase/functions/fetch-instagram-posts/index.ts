@@ -11,6 +11,9 @@ serve(async (req)=>{
     });
   }
   try {
+    // Get limit from request body, default to 5
+    const { limit = 5 } = await req.json().catch(() => ({ limit: 5 }));
+    
     const accessToken = Deno.env.get('INSTAGRAM_ACCESS_TOKEN');
     if (!accessToken) {
       console.error('Instagram access token not found');
@@ -24,9 +27,9 @@ serve(async (req)=>{
         }
       });
     }
-    console.log('Fetching Instagram posts...');
+    console.log(`Fetching ${limit} Instagram posts...`);
     // Fetch media from Instagram Basic Display API
-    const response = await fetch(`https://graph.instagram.com/me/media?fields=id,caption,media_url,media_type,timestamp,permalink&limit=5&access_token=${accessToken}`);
+    const response = await fetch(`https://graph.instagram.com/me/media?fields=id,caption,media_url,media_type,timestamp,permalink&limit=${limit}&access_token=${accessToken}`);
     if (!response.ok) {
       console.error('Instagram API error:', response.status, await response.text());
       return new Response(JSON.stringify({
