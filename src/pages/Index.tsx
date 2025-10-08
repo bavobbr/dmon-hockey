@@ -411,7 +411,7 @@ const Index = () => {
 
       {/* Instagram Posts Section */}
       <section className="py-16 px-4 bg-muted/50">
-        <div className="container mx-auto">
+        <div className="container mx-auto max-w-full">
           <div className="flex items-center justify-between mb-12">
             <h2 className="text-3xl font-bold text-center text-foreground">Van Onze Instagram</h2>
             <Link to="/socials">
@@ -476,7 +476,7 @@ const Index = () => {
 
       {/* Sponsors Section */}
       <section className="py-16 px-4">
-        <div className="container mx-auto">
+        <div className="container mx-auto max-w-full">
           <div className="flex items-center justify-between mb-12">
             <h2 className="text-3xl font-bold text-center text-foreground">Onze Sponsors</h2>
             <Link to="/club/sponsors">
