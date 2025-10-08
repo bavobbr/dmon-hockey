@@ -347,7 +347,7 @@ const Index = () => {
 
       {/* Upcoming Events */}
       <section className="py-20 px-4 bg-gradient-subtle">
-        <div className="container mx-auto">
+        <div className="container mx-auto max-w-full">
           <div className="flex items-center justify-between mb-16">
             <h2 className="font-display text-4xl lg:text-5xl font-bold text-center text-foreground">Aankomende Evenementen</h2>
             <Link to="/events">
@@ -362,7 +362,7 @@ const Index = () => {
 
       {/* Teams Section */}
       <section className="py-16 px-4 bg-muted/50">
-        <div className="container mx-auto">
+        <div className="container mx-auto max-w-full">
           <div className="flex items-center justify-between mb-12">
             <h2 className="text-3xl font-bold text-center text-foreground">Onze Teams</h2>
             <Link to="/club/teams">
