@@ -32,6 +32,7 @@ import ClubValues from "./pages/club/Values";
 import Media from "./pages/club/Media";
 import History from "./pages/club/History";
 import ClubSponsors from "./pages/club/Sponsors";
+import Sfeer from "./pages/club/Sfeer";
 import Privacy from "./pages/club/Privacy";
 
 // Membership pages
@@ -127,6 +128,7 @@ const App = () => (
                     <Route path="/club/media" element={<Media />} />
                     <Route path="/club/history" element={<History />} />
                     <Route path="/club/sponsors" element={<ClubSponsors />} />
+                    <Route path="/club/sfeer" element={<Sfeer />} />
                     <Route path="/club/privacy" element={<Privacy />} />
                     
                     {/* Membership routes */}

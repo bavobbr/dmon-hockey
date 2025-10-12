@@ -13,6 +13,7 @@ const paths: string[] = [
   '/club/news',
   '/club/history',
   '/club/sponsors',
+  '/club/sfeer',
   '/club/privacy',
   '/membership/info',
   '/membership/register',

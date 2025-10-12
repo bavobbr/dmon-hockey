@@ -17,7 +17,8 @@ import {
   BookOpen,
   Timer,
   Zap,
-  MessageCircle
+  MessageCircle,
+  Camera
 } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useEffect } from "react";
@@ -71,6 +72,7 @@ const navigation = [
       { title: "In de media", url: "/club/media", icon: Newspaper },
       { title: "Geschiedenis", url: "/club/history", icon: History },
       { title: "Sponsors", url: "/club/sponsors", icon: HandHeart },
+      { title: "Sfeer", url: "/club/sfeer", icon: Camera },
     ],
   },
   {
