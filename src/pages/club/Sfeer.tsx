@@ -38,10 +38,6 @@ import girlsSticksUp from "@/assets/gallery/girls-sticks-up.png";
 import girlsGoalkeeperTeam from "@/assets/gallery/girls-goalkeeper-team.png";
 import girlsOrangeGuards from "@/assets/gallery/girls-orange-guards.png";
 import girlsStickCircle from "@/assets/gallery/girls-stick-circle.png";
-import gameplayDiagram1 from "@/assets/gallery/gameplay-diagram-1.png";
-import gameplayDiagram2 from "@/assets/gallery/gameplay-diagram-2.png";
-import gameplayDiagram3 from "@/assets/gallery/gameplay-diagram-3.png";
-import gameplayDiagram4 from "@/assets/gallery/gameplay-diagram-4.png";
 
 const galleryImages = [
   { src: teamNight, alt: "Team bijeenkomst 's avonds" },
@@ -80,10 +76,6 @@ const galleryImages = [
   { src: girlsGoalkeeperTeam, alt: "Meisjesteam met doelverdediger" },
   { src: girlsOrangeGuards, alt: "Meisjes met oranje mondkapjes" },
   { src: girlsStickCircle, alt: "Meisjes in cirkel met sticks" },
-  { src: gameplayDiagram1, alt: "Training oefening diagram" },
-  { src: gameplayDiagram2, alt: "Battle Arena oefening" },
-  { src: gameplayDiagram3, alt: "Sideline Surge oefening" },
-  { src: gameplayDiagram4, alt: "3v3v3 oefening" },
 ];
 
 const Sfeer = () => {
