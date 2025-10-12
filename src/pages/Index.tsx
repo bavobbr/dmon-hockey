@@ -217,7 +217,7 @@ const Index = () => {
                   alt="Training sessie" 
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-90 contrast-100 saturate-90"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-card/90 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent"></div>
               </div>
               <CardHeader className="pb-4 relative -mt-6">
                 <div className="flex items-center gap-3 mb-3">
@@ -242,7 +242,7 @@ const Index = () => {
                   alt="Competitieve wedstrijd" 
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-90 contrast-100 saturate-90"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-card/90 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent"></div>
               </div>
               <CardHeader className="pb-4 relative -mt-6">
                 <div className="flex items-center gap-3 mb-3">
@@ -267,7 +267,7 @@ const Index = () => {
                   alt="Club familie" 
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-90 contrast-100 saturate-90"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-card/90 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent"></div>
               </div>
               <CardHeader className="pb-4 relative -mt-6">
                 <div className="flex items-center gap-3 mb-3">
