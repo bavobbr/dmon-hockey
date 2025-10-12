@@ -10,6 +10,9 @@ import { useToast } from "@/hooks/use-toast";
 import DOMPurify from 'dompurify';
 import UpcomingEvents from "@/components/UpcomingEvents";
 import { Target, Trophy, Users, Newspaper } from "lucide-react";
+import trainingImage from "@/assets/training-card.png";
+import competitiveImage from "@/assets/competitive-card.png";
+import familyImage from "@/assets/family-card.png";
 interface Announcement {
   id: string;
   title: string;
@@ -207,10 +210,18 @@ const Index = () => {
         <div className="container mx-auto max-w-full">
           <h2 className="text-3xl font-bold text-center mb-16 text-foreground">Wat We Bieden</h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="border-primary/20 hover:border-primary/40 group fade-in-up">
-              <CardHeader className="pb-4">
+            <Card className="border-primary/20 hover:border-primary/40 group fade-in-up overflow-hidden">
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src={trainingImage} 
+                  alt="Training sessie" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-90 contrast-100 saturate-90"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-card/90 to-transparent"></div>
+              </div>
+              <CardHeader className="pb-4 relative -mt-6">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors shrink-0">
+                  <div className="w-12 h-12 bg-primary/10 backdrop-blur-sm rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors shrink-0 border border-primary/20">
                     <Target className="w-6 h-6 text-primary" />
                   </div>
                   <CardTitle className="text-primary text-xl">Trainingen</CardTitle>
@@ -224,10 +235,18 @@ const Index = () => {
               </CardContent>
             </Card>
             
-            <Card className="border-secondary/20 hover:border-secondary/40 group fade-in-up">
-              <CardHeader className="pb-4">
+            <Card className="border-secondary/20 hover:border-secondary/40 group fade-in-up overflow-hidden">
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src={competitiveImage} 
+                  alt="Competitieve wedstrijd" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-90 contrast-100 saturate-90"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-card/90 to-transparent"></div>
+              </div>
+              <CardHeader className="pb-4 relative -mt-6">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center group-hover:bg-secondary/20 transition-colors shrink-0">
+                  <div className="w-12 h-12 bg-secondary/10 backdrop-blur-sm rounded-lg flex items-center justify-center group-hover:bg-secondary/20 transition-colors shrink-0 border border-secondary/20">
                     <Trophy className="w-6 h-6 text-secondary" />
                   </div>
                   <CardTitle className="text-secondary text-xl">Competitieve Wedstrijden</CardTitle>
@@ -241,10 +260,18 @@ const Index = () => {
               </CardContent>
             </Card>
             
-            <Card className="border-accent/20 hover:border-accent/40 group fade-in-up">
-              <CardHeader className="pb-4">
+            <Card className="border-accent/20 hover:border-accent/40 group fade-in-up overflow-hidden">
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src={familyImage} 
+                  alt="Club familie" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-90 contrast-100 saturate-90"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-card/90 to-transparent"></div>
+              </div>
+              <CardHeader className="pb-4 relative -mt-6">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center group-hover:bg-accent/20 transition-colors shrink-0">
+                  <div className="w-12 h-12 bg-accent/10 backdrop-blur-sm rounded-lg flex items-center justify-center group-hover:bg-accent/20 transition-colors shrink-0 border border-accent/20">
                     <Users className="w-6 h-6 text-accent" />
                   </div>
                   <CardTitle className="text-accent text-xl">Familieclub</CardTitle>
