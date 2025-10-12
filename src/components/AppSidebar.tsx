@@ -68,11 +68,11 @@ const navigation = [
       { title: "Locatie", url: "/club/field", icon: MapPin },
       { title: "Teams", url: "/club/teams", icon: Trophy },
       { title: "Bestuur", url: "/club/board", icon: UserCheck },
+      { title: "Sfeer", url: "/club/sfeer", icon: Camera },
       { title: "Clubwaarden", url: "/club/values", icon: Shield },
       { title: "In de media", url: "/club/media", icon: Newspaper },
       { title: "Geschiedenis", url: "/club/history", icon: History },
       { title: "Sponsors", url: "/club/sponsors", icon: HandHeart },
-      { title: "Sfeer", url: "/club/sfeer", icon: Camera },
     ],
   },
   {
