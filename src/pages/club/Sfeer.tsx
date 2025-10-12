@@ -12,6 +12,16 @@ import hockquiz from "@/assets/gallery/hockquiz.png";
 import cakeSale from "@/assets/gallery/cake-sale.png";
 import youthGoalkeeper from "@/assets/gallery/youth-goalkeeper.png";
 import youthTeamFun from "@/assets/gallery/youth-team-fun.png";
+import girlsTeamTrophy from "@/assets/gallery/girls-team-trophy.png";
+import girlsSelfie from "@/assets/gallery/girls-selfie.png";
+import kidsCircle from "@/assets/gallery/kids-circle.png";
+import boysTeam from "@/assets/gallery/boys-team.png";
+import youngBoysTeam from "@/assets/gallery/young-boys-team.png";
+import girlsTeamHuddle from "@/assets/gallery/girls-team-huddle.png";
+import clubFamilyPhoto from "@/assets/gallery/club-family-photo.png";
+import kidsMouthguards from "@/assets/gallery/kids-mouthguards.png";
+import youthActionShots from "@/assets/gallery/youth-action-shots.png";
+import waterFun from "@/assets/gallery/water-fun.png";
 
 const galleryImages = [
   { src: teamNight, alt: "Team bijeenkomst 's avonds" },
@@ -24,6 +34,16 @@ const galleryImages = [
   { src: cakeSale, alt: "Cake verkoop" },
   { src: youthGoalkeeper, alt: "Jeugd doelverdediger" },
   { src: youthTeamFun, alt: "Jeugdteam plezier" },
+  { src: girlsTeamTrophy, alt: "Meisjesteam met trofee" },
+  { src: girlsSelfie, alt: "Meisjes selfie" },
+  { src: kidsCircle, alt: "Kinderen in cirkel" },
+  { src: boysTeam, alt: "Jongensteam" },
+  { src: youngBoysTeam, alt: "Jong jongensteam" },
+  { src: girlsTeamHuddle, alt: "Meisjesteam overleg" },
+  { src: clubFamilyPhoto, alt: "Club familiefoto" },
+  { src: kidsMouthguards, alt: "Kinderen met mondkapjes" },
+  { src: youthActionShots, alt: "Jeugd actie foto's" },
+  { src: waterFun, alt: "Waterpret" },
 ];
 
 const Sfeer = () => {
