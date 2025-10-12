@@ -208,7 +208,14 @@ const Index = () => {
       {/* Quick Info Cards */}
       <section className="py-20 px-4 bg-gradient-subtle overflow-x-hidden">
         <div className="container mx-auto max-w-full">
-          <h2 className="text-3xl font-bold text-center mb-16 text-foreground">Wat We Bieden</h2>
+          <div className="flex items-center justify-between mb-16">
+            <h2 className="text-3xl font-bold text-foreground">Wat We Bieden</h2>
+            <Link to="/club/sfeer">
+              <Button variant="outline" size="sm">
+                Bekijk Meer
+              </Button>
+            </Link>
+          </div>
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="border-primary/20 hover:border-primary/40 group fade-in-up overflow-hidden">
               <CardHeader className="pb-4">
