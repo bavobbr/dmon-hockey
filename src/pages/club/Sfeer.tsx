@@ -22,6 +22,16 @@ import clubFamilyPhoto from "@/assets/gallery/club-family-photo.png";
 import kidsMouthguards from "@/assets/gallery/kids-mouthguards.png";
 import youthActionShots from "@/assets/gallery/youth-action-shots.png";
 import waterFun from "@/assets/gallery/water-fun.png";
+import teamCelebration from "@/assets/gallery/team-celebration.png";
+import groupPhoto from "@/assets/gallery/group-photo.png";
+import youthTraining from "@/assets/gallery/youth-training.png";
+import teamGathering from "@/assets/gallery/team-gathering.png";
+import kidsPractice from "@/assets/gallery/kids-practice.png";
+import fieldAction from "@/assets/gallery/field-action.png";
+import teamSpirit from "@/assets/gallery/team-spirit.png";
+import clubEvent from "@/assets/gallery/club-event.png";
+import youthMatch from "@/assets/gallery/youth-match.png";
+import teamPhoto from "@/assets/gallery/team-photo.png";
 
 const galleryImages = [
   { src: teamNight, alt: "Team bijeenkomst 's avonds" },
@@ -44,6 +54,16 @@ const galleryImages = [
   { src: kidsMouthguards, alt: "Kinderen met mondkapjes" },
   { src: youthActionShots, alt: "Jeugd actie foto's" },
   { src: waterFun, alt: "Waterpret" },
+  { src: teamCelebration, alt: "Team viering" },
+  { src: groupPhoto, alt: "Groepsfoto" },
+  { src: youthTraining, alt: "Jeugdtraining" },
+  { src: teamGathering, alt: "Team samenkomen" },
+  { src: kidsPractice, alt: "Kinderen oefenen" },
+  { src: fieldAction, alt: "Veldactie" },
+  { src: teamSpirit, alt: "Teamgeest" },
+  { src: clubEvent, alt: "Club evenement" },
+  { src: youthMatch, alt: "Jeugdwedstrijd" },
+  { src: teamPhoto, alt: "Teamfoto" },
 ];
 
 const Sfeer = () => {
