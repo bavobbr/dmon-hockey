@@ -240,12 +240,25 @@ serve(async (req)=>{
         });
       }
 
-      const trainerContact = groupContacts.find((contact)=>contact.contactFunctionId === TRAINER_FUNCTION_ID);
-      const coachContact = groupContacts.find((contact)=>contact.contactFunctionId === COACH_FUNCTION_ID);
+      const getContactNamesByFunction = async (functionId: number)=>{
+        const contacts = groupContacts.filter((contact)=>contact.contactFunctionId === functionId);
+        if (contacts.length === 0) {
+          return null;
+        }
+
+        const names = await Promise.all(contacts.map((contact)=>resolveContactName(contact.contactId)));
+        const filteredNames = names.filter((name): name is string=>typeof name === "string" && name.trim().length > 0);
+
+        if (filteredNames.length === 0) {
+          return null;
+        }
+
+        return filteredNames.join(", ");
+      };
 
       const [trainerName, coachName] = await Promise.all([
-        resolveContactName(trainerContact?.contactId),
-        resolveContactName(coachContact?.contactId)
+        getContactNamesByFunction(TRAINER_FUNCTION_ID),
+        getContactNamesByFunction(COACH_FUNCTION_ID)
       ]);
 
       const now = new Date().toISOString();
