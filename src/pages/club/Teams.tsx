@@ -62,14 +62,18 @@ const ClubTeams = () => {
                       {team.division} • {team.age_group}
                     </p>
                   )}
-                  <div className="flex items-center gap-2">
-                    <Users className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-muted-foreground">Coach: {team.coach || '[To be assigned]'}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Mail className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-muted-foreground">Team Manager: {team.team_manager || '[To be assigned]'}</span>
-                  </div>
+                  {team.coach && (
+                    <div className="flex items-center gap-2">
+                      <Users className="h-4 w-4 text-muted-foreground" />
+                      <span className="text-muted-foreground">Coach: {team.coach}</span>
+                    </div>
+                  )}
+                  {team.team_manager && (
+                    <div className="flex items-center gap-2">
+                      <Mail className="h-4 w-4 text-muted-foreground" />
+                      <span className="text-muted-foreground">Team Manager: {team.team_manager}</span>
+                    </div>
+                  )}
                 </div>
               </CardContent>
             </Card>
