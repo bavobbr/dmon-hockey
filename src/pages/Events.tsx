@@ -7,6 +7,7 @@ import { format, isToday, isTomorrow, isThisWeek } from "date-fns";
 import { nl } from "date-fns/locale";
 import { formatInTimeZone } from "date-fns-tz/formatInTimeZone";
 import { toZonedTime } from "date-fns-tz/toZonedTime";
+import { fromZonedTime } from "date-fns-tz/fromZonedTime";
 import DOMPurify from "dompurify";
 
 interface TwizzitEvent {
@@ -154,8 +155,9 @@ const Events = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {events.map((event) => {
-          const utcDate = new Date(event.start_at);
-          const badgeDate = toZonedTime(utcDate, 'Europe/Brussels');
+          const naive = event.start_at.replace(/Z|[+-]\d{2}:?\d{2}$/, '');
+          const eventUtc = fromZonedTime(naive, 'Europe/Brussels');
+          const badgeDate = toZonedTime(eventUtc, 'Europe/Brussels');
           const badge = getEventBadge(badgeDate);
           
           return (
@@ -167,7 +169,7 @@ const Events = () => {
                 </div>
                 <CardDescription className="flex items-center gap-2 text-sm">
                   <Calendar className="h-4 w-4 flex-shrink-0" />
-                  {formatInTimeZone(utcDate, "Europe/Brussels", "EEEE d MMMM yyyy", { locale: nl })}
+                  {formatInTimeZone(eventUtc, "Europe/Brussels", "EEEE d MMMM yyyy", { locale: nl })}
                 </CardDescription>
               </CardHeader>
               <CardContent className="pt-0">
@@ -175,7 +177,7 @@ const Events = () => {
                   <div className="flex items-center gap-2 text-sm">
                     <Clock className="h-4 w-4 flex-shrink-0 text-muted-foreground" />
                     <span className="font-medium">
-                      {formatInTimeZone(utcDate, "Europe/Brussels", "HH:mm", { locale: nl })}
+                      {formatInTimeZone(eventUtc, "Europe/Brussels", "HH:mm", { locale: nl })}
                     </span>
                   </div>
                   

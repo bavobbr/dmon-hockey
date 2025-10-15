@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { supabase } from "@/integrations/supabase/client";
 import { nl } from "date-fns/locale";
 import { formatInTimeZone } from "date-fns-tz/formatInTimeZone";
+import { fromZonedTime } from "date-fns-tz/fromZonedTime";
 import DOMPurify from "dompurify";
 
 interface TwizzitEvent {
@@ -57,14 +58,15 @@ const UpcomingEvents = () => {
         ) : (
           <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
             {events.map((event) => {
-              const utcDate = new Date(event.start_at);
+              const naive = event.start_at.replace(/Z|[+-]\d{2}:?\d{2}$/, '');
+              const eventUtc = fromZonedTime(naive, 'Europe/Brussels');
               return (
                 <div key={event.id} className="break-inside-avoid mb-4 group">
                   <h4 className="font-medium text-foreground group-hover:text-primary transition-colors">
                     {event.name}
                   </h4>
                   <p className="text-sm text-muted-foreground">
-                    {formatInTimeZone(utcDate, 'Europe/Brussels', 'Pp', { locale: nl })}
+                    {formatInTimeZone(eventUtc, 'Europe/Brussels', 'Pp', { locale: nl })}
                   </p>
                 </div>
               );
