@@ -29,6 +29,7 @@ interface Team {
   age_group: string;
   description: string;
   season: string;
+  image_url: string | null;
 }
 interface Sponsor {
   id: string;
@@ -108,7 +109,7 @@ const Index = () => {
       const {
         data,
         error
-      } = await supabase.from('teams').select('*').eq('active', true).order('created_at', {
+      } = await supabase.from('teams').select('*').eq('active', true).order('image_url', { ascending: false, nullsFirst: false }).order('created_at', {
         ascending: false
       }).limit(6);
       if (error) throw error;
@@ -415,7 +416,16 @@ const Index = () => {
                   </CardContent>
                 </Card>)}
             </div> : teams.length > 0 ? <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {teams.map(team => <Card key={team.id} className="hover:shadow-lg transition-shadow">
+              {teams.map(team => <Card key={team.id} className="hover:shadow-lg transition-shadow overflow-hidden">
+                  {team.image_url && (
+                    <div className="relative h-48 overflow-hidden">
+                      <img 
+                        src={team.image_url} 
+                        alt={team.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                  )}
                   <CardHeader>
                     <CardTitle className="text-lg">
                       {team.name}
@@ -425,11 +435,6 @@ const Index = () => {
                       {team.season && ` • ${team.season}`}
                     </CardDescription>
                   </CardHeader>
-                  {team.description && <CardContent>
-                      <p className="text-muted-foreground line-clamp-3">
-                        {team.description}
-                      </p>
-                    </CardContent>}
                 </Card>)}
             </div> : <div className="text-center py-12">
               <p className="text-muted-foreground mb-4">Nog geen teams beschikbaar.</p>
