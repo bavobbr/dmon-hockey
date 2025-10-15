@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { supabase } from "@/integrations/supabase/client";
-import { parseISO } from "date-fns";
+import { nl } from "date-fns/locale";
+import { formatInTimeZone } from "date-fns-tz/formatInTimeZone";
 import DOMPurify from "dompurify";
 
 interface TwizzitEvent {
@@ -56,15 +57,14 @@ const UpcomingEvents = () => {
         ) : (
           <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
             {events.map((event) => {
-              // Parse the timestamp as-is (already in CET) without timezone conversion
-              const startDate = parseISO(event.start_at.replace('Z', ''));
+              const utcDate = new Date(event.start_at);
               return (
                 <div key={event.id} className="break-inside-avoid mb-4 group">
                   <h4 className="font-medium text-foreground group-hover:text-primary transition-colors">
                     {event.name}
                   </h4>
                   <p className="text-sm text-muted-foreground">
-                    {startDate.toLocaleString("nl-BE")}
+                    {formatInTimeZone(utcDate, 'Europe/Brussels', 'Pp', { locale: nl })}
                   </p>
                 </div>
               );

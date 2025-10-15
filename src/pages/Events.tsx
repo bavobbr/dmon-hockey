@@ -3,8 +3,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { supabase } from "@/integrations/supabase/client";
 import { Calendar, Clock, MapPin, ExternalLink } from "lucide-react";
-import { format, isToday, isTomorrow, isThisWeek, parseISO } from "date-fns";
+import { format, isToday, isTomorrow, isThisWeek } from "date-fns";
 import { nl } from "date-fns/locale";
+import { formatInTimeZone } from "date-fns-tz/formatInTimeZone";
+import { toZonedTime } from "date-fns-tz/toZonedTime";
 import DOMPurify from "dompurify";
 
 interface TwizzitEvent {
@@ -152,9 +154,9 @@ const Events = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {events.map((event) => {
-          // Parse the timestamp as-is (already in CET) without timezone conversion
-          const startDate = parseISO(event.start_at.replace('Z', ''));
-          const badge = getEventBadge(startDate);
+          const utcDate = new Date(event.start_at);
+          const badgeDate = toZonedTime(utcDate, 'Europe/Brussels');
+          const badge = getEventBadge(badgeDate);
           
           return (
             <Card key={event.id} className="hover:shadow-lg transition-shadow duration-200">
@@ -165,7 +167,7 @@ const Events = () => {
                 </div>
                 <CardDescription className="flex items-center gap-2 text-sm">
                   <Calendar className="h-4 w-4 flex-shrink-0" />
-                  {format(startDate, "EEEE d MMMM yyyy", { locale: nl })}
+                  {formatInTimeZone(utcDate, "Europe/Brussels", "EEEE d MMMM yyyy", { locale: nl })}
                 </CardDescription>
               </CardHeader>
               <CardContent className="pt-0">
@@ -173,7 +175,7 @@ const Events = () => {
                   <div className="flex items-center gap-2 text-sm">
                     <Clock className="h-4 w-4 flex-shrink-0 text-muted-foreground" />
                     <span className="font-medium">
-                      {format(startDate, "HH:mm", { locale: nl })}
+                      {formatInTimeZone(utcDate, "Europe/Brussels", "HH:mm", { locale: nl })}
                     </span>
                   </div>
                   
