@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { supabase } from "@/integrations/supabase/client";
+import { parseISO } from "date-fns";
 import DOMPurify from "dompurify";
 
 interface TwizzitEvent {
@@ -54,16 +55,20 @@ const UpcomingEvents = () => {
           <p className="text-muted-foreground">No upcoming events.</p>
         ) : (
           <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
-            {events.map((event) => (
-              <div key={event.id} className="break-inside-avoid mb-4 group">
-                <h4 className="font-medium text-foreground group-hover:text-primary transition-colors">
-                  {event.name}
-                </h4>
-                <p className="text-sm text-muted-foreground">
-                  {new Date(event.start_at).toLocaleString("nl-BE")}
-                </p>
-              </div>
-            ))}
+            {events.map((event) => {
+              // Parse the timestamp as-is (already in CET) without timezone conversion
+              const startDate = parseISO(event.start_at.replace('Z', ''));
+              return (
+                <div key={event.id} className="break-inside-avoid mb-4 group">
+                  <h4 className="font-medium text-foreground group-hover:text-primary transition-colors">
+                    {event.name}
+                  </h4>
+                  <p className="text-sm text-muted-foreground">
+                    {startDate.toLocaleString("nl-BE")}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         )}
       </CardContent>

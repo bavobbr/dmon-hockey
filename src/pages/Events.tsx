@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { supabase } from "@/integrations/supabase/client";
 import { Calendar, Clock, MapPin, ExternalLink } from "lucide-react";
-import { format, isToday, isTomorrow, isThisWeek } from "date-fns";
+import { format, isToday, isTomorrow, isThisWeek, parseISO } from "date-fns";
 import { nl } from "date-fns/locale";
 import DOMPurify from "dompurify";
 
@@ -152,7 +152,8 @@ const Events = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {events.map((event) => {
-          const startDate = new Date(event.start_at);
+          // Parse the timestamp as-is (already in CET) without timezone conversion
+          const startDate = parseISO(event.start_at.replace('Z', ''));
           const badge = getEventBadge(startDate);
           
           return (
