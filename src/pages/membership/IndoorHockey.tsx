@@ -309,19 +309,7 @@ const IndoorHockey = () => {
         {/* Contact */}
         <Card className="bg-primary/5 border-primary/20">
           
-          <CardContent>
-            <p className="text-muted-foreground mb-4">
-              De ploegencommunicatie zal via jullie team managers gebeuren. 
-              Indien je specifieke vragen hebt, mag je altijd mailen naar{" "}
-              <a href="mailto:pieter.bruylandc@gmail.com" className="text-primary hover:underline font-medium">
-                pieter.bruylandc@gmail.com
-              </a>
-            </p>
-            <p className="text-sm text-muted-foreground italic">
-              Met sportieve groeten,<br />
-              Indoor Hockey Team 2025–2026
-            </p>
-          </CardContent>
+          
         </Card>
       </div>
     </div>;
