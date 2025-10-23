@@ -1,57 +1,72 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, MapPin, Users, ShoppingBag, Euro, CheckCircle2, AlertCircle } from "lucide-react";
-
 const IndoorHockey = () => {
-  const competitionTeams = [
-    "U9G", "U10G", "U10B", "U12B", "U14G", "U14B1", "U14B2", "U16G1", "U16G2"
-  ];
-
-  const trainingSchedule = [
-    {
-      day: "Woensdag",
-      time: "14u15 - 17u15",
-      sessions: [
-        { time: "14u15 - 15u15", groups: "U16G + U19B" },
-        { time: "15u15 - 16u15", groups: "U9G, U10G, U10B" },
-        { time: "16u15 - 17u15", groups: "U11B, U11G, U12B" }
-      ]
-    },
-    {
-      day: "Vrijdag",
-      time: "17u - 19u",
-      note: "Geen training op 26/12 en 02/01",
-      sessions: [
-        { time: "17u - 18u", groups: "U7G, U7B, U8G, U8B" },
-        { time: "18u - 19u", groups: "U14B, U14G" }
-      ]
-    },
-    {
-      day: "Zondag",
+  const competitionTeams = ["U9G", "U10G", "U10B", "U12B", "U14G", "U14B1", "U14B2", "U16G1", "U16G2"];
+  const trainingSchedule = [{
+    day: "Woensdag",
+    time: "14u15 - 17u15",
+    sessions: [{
+      time: "14u15 - 15u15",
+      groups: "U16G + U19B"
+    }, {
+      time: "15u15 - 16u15",
+      groups: "U9G, U10G, U10B"
+    }, {
+      time: "16u15 - 17u15",
+      groups: "U11B, U11G, U12B"
+    }]
+  }, {
+    day: "Vrijdag",
+    time: "17u - 19u",
+    note: "Geen training op 26/12 en 02/01",
+    sessions: [{
+      time: "17u - 18u",
+      groups: "U7G, U7B, U8G, U8B"
+    }, {
+      time: "18u - 19u",
+      groups: "U14B, U14G"
+    }]
+  }, {
+    day: "Zondag",
+    time: "14u - 16u",
+    note: "Geen training op 14/12, 28/12 en 08/02",
+    sessions: [{
       time: "14u - 16u",
-      note: "Geen training op 14/12, 28/12 en 08/02",
-      sessions: [
-        { time: "14u - 16u", groups: "Trimmers, Ladies, Heren, Gents (verdeling volgt)" }
-      ]
-    }
-  ];
-
-  const equipment = [
-    { item: "Indoor stick", note: "In het algemeen goedkoper dan outdoor sticks", required: true },
-    { item: "Indoor handschoen", note: "Dit is een specifieke indoor handschoen - verplicht!", required: true },
-    { item: "Zaalschoenen", note: "Geen zwarte zool", required: true },
-    { item: "Wedstrijdtenue, bit en scheenbeschermers", note: "Blijven dezelfde als outdoor", required: false }
-  ];
-
-  const pricing = [
-    { category: "Training onderbouw (U7, U8)", price: "€80" },
-    { category: "Training onderbouw (≥ U9) en bovenbouw (≥ U14) en volwassenen", price: "€90" },
-    { category: "Training + competitie (≤ U14)", price: "€127,50" },
-    { category: "Training + competitie (≥ U14)", price: "€140" }
-  ];
-
-  return (
-    <div className="container mx-auto px-4 py-8">
+      groups: "Trimmers, Ladies, Heren, Gents (verdeling volgt)"
+    }]
+  }];
+  const equipment = [{
+    item: "Indoor stick",
+    note: "In het algemeen goedkoper dan outdoor sticks",
+    required: true
+  }, {
+    item: "Indoor handschoen",
+    note: "Dit is een specifieke indoor handschoen - verplicht!",
+    required: true
+  }, {
+    item: "Zaalschoenen",
+    note: "Geen zwarte zool",
+    required: true
+  }, {
+    item: "Wedstrijdtenue, bit en scheenbeschermers",
+    note: "Blijven dezelfde als outdoor",
+    required: false
+  }];
+  const pricing = [{
+    category: "Training onderbouw (U7, U8)",
+    price: "€80"
+  }, {
+    category: "Training onderbouw (≥ U9) en bovenbouw (≥ U14) en volwassenen",
+    price: "€90"
+  }, {
+    category: "Training + competitie (≤ U14)",
+    price: "€127,50"
+  }, {
+    category: "Training + competitie (≥ U14)",
+    price: "€140"
+  }];
+  return <div className="container mx-auto px-4 py-8">
       <div className="max-w-6xl mx-auto">
         <h1 className="text-4xl font-bold mb-8 text-foreground">Indoor Hockey</h1>
         
@@ -115,11 +130,9 @@ const IndoorHockey = () => {
           </CardHeader>
           <CardContent>
             <div className="flex flex-wrap gap-2">
-              {competitionTeams.map((team) => (
-                <Badge key={team} variant="secondary" className="text-sm px-3 py-1">
+              {competitionTeams.map(team => <Badge key={team} variant="secondary" className="text-sm px-3 py-1">
                   {team}
-                </Badge>
-              ))}
+                </Badge>)}
             </div>
           </CardContent>
         </Card>
@@ -191,27 +204,21 @@ const IndoorHockey = () => {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              {trainingSchedule.map((schedule) => (
-                <div key={schedule.day} className="border rounded-lg p-4">
+              {trainingSchedule.map(schedule => <div key={schedule.day} className="border rounded-lg p-4">
                   <div className="flex justify-between items-start mb-3">
                     <div>
                       <h4 className="font-semibold">{schedule.day}</h4>
                       <p className="text-sm text-muted-foreground">{schedule.time}</p>
-                      {schedule.note && (
-                        <p className="text-xs text-amber-600 dark:text-amber-400 mt-1">{schedule.note}</p>
-                      )}
+                      {schedule.note && <p className="text-xs text-amber-600 dark:text-amber-400 mt-1">{schedule.note}</p>}
                     </div>
                   </div>
                   <div className="space-y-2">
-                    {schedule.sessions.map((session, idx) => (
-                      <div key={idx} className="flex items-center gap-3 text-sm">
+                    {schedule.sessions.map((session, idx) => <div key={idx} className="flex items-center gap-3 text-sm">
                         <Badge variant="outline" className="font-mono">{session.time}</Badge>
                         <span className="text-muted-foreground">{session.groups}</span>
-                      </div>
-                    ))}
+                      </div>)}
                   </div>
-                </div>
-              ))}
+                </div>)}
             </div>
             <div className="mt-4 p-4 bg-blue-50 dark:bg-blue-950/20 rounded-lg border border-blue-200 dark:border-blue-800">
               <p className="text-blue-800 dark:text-blue-200 text-sm">
@@ -231,24 +238,16 @@ const IndoorHockey = () => {
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              {equipment.map((item) => (
-                <div key={item.item} className="flex items-start gap-3 p-3 border rounded-lg">
-                  {item.required ? (
-                    <AlertCircle className="h-5 w-5 text-red-500 mt-0.5 flex-shrink-0" />
-                  ) : (
-                    <CheckCircle2 className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
-                  )}
+              {equipment.map(item => <div key={item.item} className="flex items-start gap-3 p-3 border rounded-lg">
+                  {item.required ? <AlertCircle className="h-5 w-5 text-red-500 mt-0.5 flex-shrink-0" /> : <CheckCircle2 className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />}
                   <div>
                     <div className="flex items-center gap-2">
                       <h4 className="font-medium">{item.item}</h4>
-                      {item.required && (
-                        <Badge variant="destructive" className="text-xs">Verplicht</Badge>
-                      )}
+                      {item.required && <Badge variant="destructive" className="text-xs">Verplicht</Badge>}
                     </div>
                     <p className="text-sm text-muted-foreground">{item.note}</p>
                   </div>
-                </div>
-              ))}
+                </div>)}
             </div>
           </CardContent>
         </Card>
@@ -295,33 +294,26 @@ const IndoorHockey = () => {
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-2 gap-4">
-              {pricing.map((item) => (
-                <div key={item.category} className="border rounded-lg p-4">
+              {pricing.map(item => <div key={item.category} className="border rounded-lg p-4">
                   <div className="flex justify-between items-start gap-3">
                     <h4 className="font-medium text-sm">{item.category}</h4>
                     <Badge variant="secondary" className="text-lg font-bold">
                       {item.price}
                     </Badge>
                   </div>
-                </div>
-              ))}
+                </div>)}
             </div>
           </CardContent>
         </Card>
 
         {/* Contact */}
         <Card className="bg-primary/5 border-primary/20">
-          <CardHeader>
-            <CardTitle className="text-primary">Vragen of Inschrijven?</CardTitle>
-          </CardHeader>
+          
           <CardContent>
             <p className="text-muted-foreground mb-4">
               De ploegencommunicatie zal via jullie team managers gebeuren. 
               Indien je specifieke vragen hebt, mag je altijd mailen naar{" "}
-              <a 
-                href="mailto:pieter.bruylandc@gmail.com" 
-                className="text-primary hover:underline font-medium"
-              >
+              <a href="mailto:pieter.bruylandc@gmail.com" className="text-primary hover:underline font-medium">
                 pieter.bruylandc@gmail.com
               </a>
             </p>
@@ -332,8 +324,6 @@ const IndoorHockey = () => {
           </CardContent>
         </Card>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default IndoorHockey;
