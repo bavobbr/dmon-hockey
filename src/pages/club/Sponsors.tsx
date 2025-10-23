@@ -20,11 +20,11 @@ const ClubSponsors = () => {
   });
 
   const tierColors = {
-    diamond: "border-blue-300 bg-blue-50/50",
-    gold: "border-yellow-300 bg-yellow-50/50",
-    silver: "border-gray-300 bg-gray-50/50", 
-    bronze: "border-amber-300 bg-amber-50/50",
-    woodstick: "border-green-300 bg-green-50/50"
+    diamond: "border-[hsl(var(--sponsor-diamond))] bg-[hsl(var(--sponsor-diamond-bg))]",
+    gold: "border-[hsl(var(--sponsor-gold))] bg-[hsl(var(--sponsor-gold-bg))]",
+    silver: "border-[hsl(var(--sponsor-silver))] bg-[hsl(var(--sponsor-silver-bg))]", 
+    bronze: "border-[hsl(var(--sponsor-bronze))] bg-[hsl(var(--sponsor-bronze-bg))]",
+    woodstick: "border-[hsl(var(--sponsor-woodstick))] bg-[hsl(var(--sponsor-woodstick-bg))]"
   };
 
   const groupedSponsors = sponsors?.reduce((acc, sponsor) => {
