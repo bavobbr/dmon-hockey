@@ -81,6 +81,7 @@ const navigation = [
     items: [
       { title: "Lid Worden - Informatie", url: "/membership/info", icon: UserPlus },
       { title: "Lid Worden - Registratie", url: "/membership/register", icon: FileText },
+      { title: "Indoor Hockey", url: "/membership/indoor-hockey", icon: Trophy },
       { title: "Verzekering", url: "/membership/insurance", icon: Shield },
       { title: "Contact", url: "/membership/contact", icon: Phone },
       { title: "Privacybeleid", url: "/club/privacy", icon: FileText },
