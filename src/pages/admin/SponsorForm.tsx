@@ -15,7 +15,7 @@ interface SponsorFormData {
   logo_path: string;
   website_url: string;
   description: string;
-  tier: 'diamond' | 'gold' | 'silver' | 'bronze';
+  tier: 'diamond' | 'gold' | 'silver' | 'bronze' | 'woodstick';
   active: boolean;
 }
 
@@ -183,7 +183,7 @@ const SponsorForm = () => {
 
             <div className="space-y-2">
               <Label htmlFor="tier">Sponsorship Tier *</Label>
-              <Select value={formData.tier} onValueChange={(value: 'diamond' | 'gold' | 'silver' | 'bronze') => handleInputChange('tier', value)}>
+              <Select value={formData.tier} onValueChange={(value: 'diamond' | 'gold' | 'silver' | 'bronze' | 'woodstick') => handleInputChange('tier', value)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select tier" />
                 </SelectTrigger>
@@ -192,6 +192,7 @@ const SponsorForm = () => {
                   <SelectItem value="gold">Gold Sponsor</SelectItem>
                   <SelectItem value="silver">Silver Sponsor</SelectItem>
                   <SelectItem value="bronze">Bronze Sponsor</SelectItem>
+                  <SelectItem value="woodstick">Woodstick Sponsor</SelectItem>
                 </SelectContent>
               </Select>
             </div>

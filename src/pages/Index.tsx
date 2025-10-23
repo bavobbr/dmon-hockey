@@ -75,7 +75,7 @@ const Index = () => {
       const {
         data,
         error
-      } = await supabase.from('sponsors').select('id, name, logo_path, website_url, tier').eq('active', true).order('tier', {
+      } = await supabase.from('sponsors').select('id, name, logo_path, website_url, tier').eq('active', true).in('tier', ['diamond', 'gold', 'silver', 'bronze']).order('tier', {
         ascending: true
       });
       if (error) throw error;
