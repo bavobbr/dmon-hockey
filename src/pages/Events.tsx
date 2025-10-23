@@ -54,7 +54,7 @@ const Events = () => {
     if (isTomorrow(startDate)) {
       return <Badge variant="secondary">Morgen</Badge>;
     }
-    if (isThisWeek(startDate)) {
+    if (isThisWeek(startDate, { weekStartsOn: 1 })) {
       return <Badge variant="default" className="bg-primary text-primary-foreground">Deze week</Badge>;
     }
     return null;
