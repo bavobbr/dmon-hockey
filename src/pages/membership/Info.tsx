@@ -111,6 +111,39 @@ const MembershipInfo = () => {
           </CardContent>
         </Card>
 
+        {/* New Members */}
+        <Card className="mb-8 border-primary/20 bg-primary/5">
+          <CardHeader>
+            <CardTitle className="text-primary">Nieuwe Leden</CardTitle>
+            <CardDescription>
+              Interesse om lid te worden? Hier vind je alle stappen
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              <div className="flex items-start gap-3">
+                <div className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold mt-1">1</div>
+                <div>
+                  <h4 className="font-medium">Interesse?</h4>
+                  <p className="text-sm text-muted-foreground mb-3">
+                    Vul het registratieformulier in. We geven een seintje om te laten weten of er nog plaats is.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="flex items-start gap-3">
+                <div className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold mt-1">2</div>
+                <div>
+                  <h4 className="font-medium">Start je met competitie?</h4>
+                  <p className="text-sm text-muted-foreground mb-3">
+                    Vraag de hoofdtrainer (Pierre Samyn – 0477 49 11 89), team manager/coach/trainer gerust om meer informatie.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Discounts */}
         <Card className="mb-8">
           <CardHeader>
@@ -246,39 +279,6 @@ const MembershipInfo = () => {
                     Bezoek Club Shop
                   </Button>
                 </RouterLink>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* New Members */}
-        <Card className="mb-8 border-primary/20 bg-primary/5">
-          <CardHeader>
-            <CardTitle className="text-primary">Nieuwe Leden</CardTitle>
-            <CardDescription>
-              Interesse om lid te worden? Hier vind je alle stappen
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <div className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold mt-1">1</div>
-                <div>
-                  <h4 className="font-medium">Interesse?</h4>
-                  <p className="text-sm text-muted-foreground mb-3">
-                    Vul het registratieformulier in. We geven een seintje om te laten weten of er nog plaats is.
-                  </p>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-3">
-                <div className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold mt-1">2</div>
-                <div>
-                  <h4 className="font-medium">Start je met competitie?</h4>
-                  <p className="text-sm text-muted-foreground mb-3">
-                    Vraag de hoofdtrainer (Pierre Samyn – 0477 49 11 89), team manager/coach/trainer gerust om meer informatie.
-                  </p>
-                </div>
               </div>
             </div>
           </CardContent>
