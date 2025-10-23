@@ -1,10 +1,8 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { BookOpen, Users, Trophy, Play, Shield, Target, Heart, ExternalLink } from "lucide-react";
-
 const HowToPlay = () => {
-  return (
-    <div className="container mx-auto px-4 py-8">
+  return <div className="container mx-auto px-4 py-8">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold mb-4 text-foreground">Start met hockey bij D-mon Hockey</h1>
@@ -114,14 +112,7 @@ const HowToPlay = () => {
             </CardHeader>
             <CardContent>
               <div className="aspect-video rounded-lg overflow-hidden">
-                <iframe
-                  width="100%"
-                  height="100%"
-                  src="https://www.youtube.com/embed/mYYCfWJZySo"
-                  frameBorder="0"
-                  allowFullScreen
-                  className="w-full h-full"
-                />
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/mYYCfWJZySo" frameBorder="0" allowFullScreen className="w-full h-full" />
               </div>
               <p className="text-sm text-muted-foreground mt-2">KNHB</p>
             </CardContent>
@@ -136,14 +127,7 @@ const HowToPlay = () => {
             </CardHeader>
             <CardContent>
               <div className="aspect-video rounded-lg overflow-hidden">
-                <iframe
-                  width="100%"
-                  height="100%"
-                  src="https://www.youtube.com/embed/p8OF9JyiBC0"
-                  frameBorder="0"
-                  allowFullScreen
-                  className="w-full h-full"
-                />
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/p8OF9JyiBC0" frameBorder="0" allowFullScreen className="w-full h-full" />
               </div>
               <p className="text-sm text-muted-foreground mt-2">Hockey Belgium</p>
             </CardContent>
@@ -248,14 +232,7 @@ const HowToPlay = () => {
             </CardHeader>
             <CardContent>
               <div className="aspect-video rounded-lg overflow-hidden">
-                <iframe
-                  width="100%"
-                  height="100%"
-                  src="https://www.youtube.com/embed/v5mTP1R_jqQ"
-                  frameBorder="0"
-                  allowFullScreen
-                  className="w-full h-full"
-                />
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/v5mTP1R_jqQ" frameBorder="0" allowFullScreen className="w-full h-full" />
               </div>
             </CardContent>
           </Card>
@@ -273,18 +250,18 @@ const HowToPlay = () => {
               <div className="space-y-3">
                 <div className="border-l-4 border-primary pl-4">
                   <h4 className="font-medium">U7–U8</h4>
-                  <p className="text-sm text-muted-foreground">3v3 of 4v4, kwart veld, zonder keeper</p>
+                  <p className="text-sm text-muted-foreground">3v3, 1/8ste veld, zonder keeper</p>
                 </div>
 
                 <div className="border-l-4 border-secondary pl-4">
-                  <h4 className="font-medium">U9–U10</h4>
-                  <p className="text-sm text-muted-foreground">6v6, half veld, vaak met keeper</p>
+                  <h4 className="font-medium">U9</h4>
+                  <p className="text-sm text-muted-foreground">6v6, 1/4de veld, vaak met keeper</p>
                 </div>
               </div>
 
               <div className="space-y-3">
                 <div className="border-l-4 border-accent pl-4">
-                  <h4 className="font-medium">U11–U12</h4>
+                  <h4 className="font-medium">U10–U12</h4>
                   <p className="text-sm text-muted-foreground">8v8, groter veld, meer posities</p>
                 </div>
 
@@ -381,8 +358,6 @@ const HowToPlay = () => {
           </CardContent>
         </Card>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default HowToPlay;
