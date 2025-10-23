@@ -227,7 +227,7 @@ const MembershipInfo = () => {
               </div>
 
               <div>
-                <h4 className="font-medium mb-3">💰 Kortingen bij Sportgeslachten</h4>
+                <h4 className="font-medium mb-3">💰 Kortingen bij winkels</h4>
                 <div className="grid md:grid-cols-2 gap-4">
                   {storeDiscounts.map(store => <div key={store.store} className="border rounded-lg p-4">
                       <div className="flex justify-between items-center mb-2">
