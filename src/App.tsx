@@ -41,7 +41,7 @@ import MembershipInfo from "./pages/membership/Info";
 import Registration from "./pages/membership/Registration";
 import Insurance from "./pages/membership/Insurance";
 import Contact from "./pages/membership/Contact";
-import IndoorHockey from "./pages/membership/IndoorHockey";
+import IndoorHockey from "./pages/sporting/IndoorHockey";
 
 // Shop page
 import Shop from "./pages/Shop";
