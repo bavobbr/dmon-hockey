@@ -25,23 +25,32 @@ const IndoorRegistration = () => {
           </AlertDescription>
         </Alert>
 
-        {/* Embedded Shop */}
+        {/* Registration Link */}
         <Card>
           <CardHeader>
             <CardTitle>Inschrijvingsformulier</CardTitle>
             <CardDescription>
-              Kies hieronder je categorie en vul je gegevens in om je in te schrijven voor indoor hockey
+              Kies je categorie en vul je gegevens in om je in te schrijven voor indoor hockey
             </CardDescription>
           </CardHeader>
-          <CardContent className="p-0">
-            <div className="w-full" style={{ height: "800px" }}>
-              <iframe
-                src="https://dmon.odoo.com/shop/category/indoor-5"
-                className="w-full h-full border-0"
-                title="Indoor Hockey Registratie"
-                loading="lazy"
-              />
-            </div>
+          <CardContent className="space-y-4">
+            <p className="text-muted-foreground">
+              Klik op de knop hieronder om naar ons inschrijvingsformulier te gaan. 
+              Je wordt doorgestuurd naar een nieuwe pagina waar je je categorie kan kiezen 
+              en je inschrijving kan voltooien.
+            </p>
+            <a
+              href="https://dmon.odoo.com/shop/category/indoor-5"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-8 py-4 text-base font-medium text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            >
+              Open inschrijvingsformulier
+              <ExternalLink className="h-5 w-5" />
+            </a>
+            <p className="text-sm text-muted-foreground">
+              Het formulier opent in een nieuwe tab
+            </p>
           </CardContent>
         </Card>
 
