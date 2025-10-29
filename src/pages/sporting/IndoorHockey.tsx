@@ -306,10 +306,30 @@ const IndoorHockey = () => {
           </CardContent>
         </Card>
 
-        {/* Contact */}
+        {/* Registration CTA */}
         <Card className="bg-primary/5 border-primary/20">
-          
-          
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <CheckCircle2 className="h-5 w-5 text-primary" />
+              Inschrijven voor Indoor Hockey
+            </CardTitle>
+            <CardDescription>
+              Klaar om deel te nemen? Schrijf je nu in!
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="text-muted-foreground mb-4">
+              Ben je overtuigd en wil je deelnemen aan indoor hockey? Klik op de knop hieronder 
+              om naar het inschrijvingsformulier te gaan en je plek te reserveren.
+            </p>
+            <a 
+              href="/membership/indoor-registration"
+              className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+            >
+              Naar inschrijvingsformulier
+              <CheckCircle2 className="h-4 w-4" />
+            </a>
+          </CardContent>
         </Card>
       </div>
     </div>;
