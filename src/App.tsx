@@ -39,6 +39,7 @@ import Privacy from "./pages/club/Privacy";
 // Membership pages
 import MembershipInfo from "./pages/membership/Info";
 import Registration from "./pages/membership/Registration";
+import IndoorRegistration from "./pages/membership/IndoorRegistration";
 import Insurance from "./pages/membership/Insurance";
 import Contact from "./pages/membership/Contact";
 import IndoorHockey from "./pages/sporting/IndoorHockey";
@@ -137,6 +138,7 @@ const App = () => (
                     {/* Membership routes */}
                     <Route path="/membership/info" element={<MembershipInfo />} />
                     <Route path="/membership/register" element={<Registration />} />
+                    <Route path="/membership/indoor-registration" element={<IndoorRegistration />} />
                     <Route path="/membership/insurance" element={<Insurance />} />
                     <Route path="/membership/contact" element={<Contact />} />
                     <Route path="/membership/indoor-hockey" element={<IndoorHockey />} />

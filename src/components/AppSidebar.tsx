@@ -81,6 +81,7 @@ const navigation = [
     items: [
       { title: "Lid Worden - Informatie", url: "/membership/info", icon: UserPlus },
       { title: "Lid Worden - Registratie", url: "/membership/register", icon: FileText },
+      { title: "Indoor - Registratie", url: "/membership/indoor-registration", icon: Trophy },
       { title: "Verzekering", url: "/membership/insurance", icon: Shield },
       { title: "Contact", url: "/membership/contact", icon: Phone },
       { title: "Privacybeleid", url: "/club/privacy", icon: FileText },
@@ -104,7 +105,7 @@ const navigation = [
         ]
       },
       { title: "De Juiste Stick", url: "/sporting/stick-guide", icon: Zap },
-      { title: "Indoor Hockey", url: "/membership/indoor-hockey", icon: Trophy },
+      { title: "Indoor Hockey", url: "/sporting/indoor-hockey", icon: Trophy },
     ],
   },
   {
