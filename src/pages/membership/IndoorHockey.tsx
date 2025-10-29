@@ -8,7 +8,7 @@ const IndoorHockey = () => {
     time: "14u15 - 17u15",
     sessions: [{
       time: "14u15 - 15u15",
-      groups: "U16G + U19B"
+      groups: "U16G"
     }, {
       time: "15u15 - 16u15",
       groups: "U9G, U10G, U10B"
@@ -29,11 +29,11 @@ const IndoorHockey = () => {
     }]
   }, {
     day: "Zondag",
-    time: "14u - 16u",
+    time: "16u30 - 18u",
     note: "Geen training op 14/12, 28/12 en 08/02",
     sessions: [{
-      time: "14u - 16u",
-      groups: "Trimmers, Ladies, Heren, Gents (verdeling volgt)"
+      time: "16u30 - 18u",
+      groups: "U19, Trimmers, Ladies, Heren, Gents (verdeling volgt)"
     }]
   }];
   const equipment = [{
@@ -61,7 +61,7 @@ const IndoorHockey = () => {
     price: "€90"
   }, {
     category: "Training + competitie (≤ U14)",
-    price: "€127,50"
+    price: "€130"
   }, {
     category: "Training + competitie (≥ U14)",
     price: "€140"
@@ -199,7 +199,7 @@ const IndoorHockey = () => {
               Trainingsschema
             </CardTitle>
             <CardDescription>
-              Periode: 19 november – 11 februari | Locatie: Sporthal Hamme-Meulenbroek
+              Periode: 26 november – 15 februari | Locatie: Sporthal Hamme-Meulenbroek
             </CardDescription>
           </CardHeader>
           <CardContent>
