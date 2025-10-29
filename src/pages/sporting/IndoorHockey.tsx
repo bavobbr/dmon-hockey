@@ -11,10 +11,10 @@ const IndoorHockey = () => {
       groups: "U16G"
     }, {
       time: "15u15 - 16u15",
-      groups: "U9G, U10G, U10B"
+      groups: "U10G, U10B"
     }, {
       time: "16u15 - 17u15",
-      groups: "U11B, U11G, U12B"
+      groups: "U9G, U12B"
     }]
   }, {
     day: "Vrijdag",
