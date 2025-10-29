@@ -141,7 +141,6 @@ const App = () => (
                     <Route path="/membership/indoor-registration" element={<IndoorRegistration />} />
                     <Route path="/membership/insurance" element={<Insurance />} />
                     <Route path="/membership/contact" element={<Contact />} />
-                    <Route path="/membership/indoor-hockey" element={<IndoorHockey />} />
                     
                     {/* Shop route */}
                     <Route path="/shop" element={<Shop />} />
@@ -156,6 +155,7 @@ const App = () => (
                     <Route path="/sporting/rules/u14-plus" element={<U14PlusRules />} />
                     <Route path="/sporting/stick-guide" element={<StickGuide />} />
                     <Route path="/sporting/coaches-info" element={<CoachesInfo />} />
+                    <Route path="/sporting/indoor-hockey" element={<IndoorHockey />} />
                     
                     {/* Admin routes */}
                     <Route path="/admin" element={
