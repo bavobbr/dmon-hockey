@@ -11,7 +11,7 @@ const IndoorHockey = () => {
       groups: "U16G"
     }, {
       time: "15u15 - 16u15",
-      groups: "U10G, U10B"
+      groups: "U9B, U10G, U10B"
     }, {
       time: "16u15 - 17u15",
       groups: "U9G, U12B"
@@ -22,7 +22,7 @@ const IndoorHockey = () => {
     note: "Geen training op 26/12 en 02/01",
     sessions: [{
       time: "17u - 18u",
-      groups: "U7G, U7B, U8G, U8B"
+      groups: "U6, U7G, U7B, U8G, U8B"
     }, {
       time: "18u - 19u",
       groups: "U14B, U14G"
@@ -33,7 +33,7 @@ const IndoorHockey = () => {
     note: "Geen training op 14/12, 28/12 en 08/02",
     sessions: [{
       time: "16u30 - 18u",
-      groups: "U19, Trimmers, Ladies, Heren, Gents (verdeling volgt)"
+      groups: "U19G, U19B, Trimmers, Dames, Heren, Gents"
     }]
   }];
   const equipment = [{
