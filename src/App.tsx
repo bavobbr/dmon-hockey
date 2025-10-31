@@ -7,6 +7,7 @@ import { SidebarProvider, SidebarTrigger, useSidebar } from "@/components/ui/sid
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AppSidebar } from "@/components/AppSidebar";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
@@ -29,16 +30,19 @@ import HockeyField from "./pages/club/HockeyField";
 import ClubTeams from "./pages/club/Teams";
 import Board from "./pages/club/Board";
 import ClubValues from "./pages/club/Values";
-import News from "./pages/club/News";
+import Media from "./pages/club/Media";
 import History from "./pages/club/History";
 import ClubSponsors from "./pages/club/Sponsors";
+import Sfeer from "./pages/club/Sfeer";
 import Privacy from "./pages/club/Privacy";
 
 // Membership pages
 import MembershipInfo from "./pages/membership/Info";
 import Registration from "./pages/membership/Registration";
+import IndoorRegistration from "./pages/membership/IndoorRegistration";
 import Insurance from "./pages/membership/Insurance";
 import Contact from "./pages/membership/Contact";
+import IndoorHockey from "./pages/sporting/IndoorHockey";
 
 // Shop page
 import Shop from "./pages/Shop";
@@ -56,6 +60,7 @@ import CoachesInfo from "./pages/sporting/CoachesInfo";
 import Socials from "./pages/Socials";
 import Events from "./pages/Events";
 import { Analytics } from "@vercel/analytics/react";
+import Nieuws from "./pages/Nieuws";
 
 const queryClient = new QueryClient();
 
@@ -106,16 +111,18 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <ScrollToTop />
           <SidebarProvider defaultOpen style={{"--sidebar-width": "280px", "--sidebar-width-icon": "80px"} as React.CSSProperties}>
-            <div className="min-h-screen flex w-full">
+            <div className="min-h-screen flex w-full max-w-full overflow-x-hidden">
               <AppSidebar />
-              <div className="flex-1 flex flex-col">
+              <div className="flex-1 flex flex-col min-w-0">
                 <AppHeader />
-                <main className="flex-1 overflow-auto">
+                <main className="flex-1 overflow-auto overflow-x-hidden">
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/events" element={<Events />} />
+              <Route path="/nieuws" element={<Nieuws />} />
               <Route path="/socials" element={<Socials />} />
                     
                     {/* Club routes */}
@@ -123,14 +130,16 @@ const App = () => (
                     <Route path="/club/teams" element={<ClubTeams />} />
                     <Route path="/club/board" element={<Board />} />
                     <Route path="/club/values" element={<ClubValues />} />
-                    <Route path="/club/news" element={<News />} />
+                    <Route path="/club/media" element={<Media />} />
                     <Route path="/club/history" element={<History />} />
                     <Route path="/club/sponsors" element={<ClubSponsors />} />
+                    <Route path="/club/sfeer" element={<Sfeer />} />
                     <Route path="/club/privacy" element={<Privacy />} />
                     
                     {/* Membership routes */}
                     <Route path="/membership/info" element={<MembershipInfo />} />
                     <Route path="/membership/register" element={<Registration />} />
+                    <Route path="/membership/indoor-registration" element={<IndoorRegistration />} />
                     <Route path="/membership/insurance" element={<Insurance />} />
                     <Route path="/membership/contact" element={<Contact />} />
                     
@@ -147,6 +156,7 @@ const App = () => (
                     <Route path="/sporting/rules/u14-plus" element={<U14PlusRules />} />
                     <Route path="/sporting/stick-guide" element={<StickGuide />} />
                     <Route path="/sporting/coaches-info" element={<CoachesInfo />} />
+                    <Route path="/sporting/indoor-hockey" element={<IndoorHockey />} />
                     
                     {/* Admin routes */}
                     <Route path="/admin" element={

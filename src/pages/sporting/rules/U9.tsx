@@ -83,8 +83,8 @@ const U9Rules = () => {
               <div className="space-y-4">
                 <Button asChild>
                   <a 
-                    href="https://hockey.be/nl/competitie/outdoor-hockey/spelregels-1/" 
-                    target="_blank" 
+                    href="https://hockey.be/wp-content/uploads/2025/09/19.-Pictos-U9-RBHA-NL.pdf" 
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2"
                   >

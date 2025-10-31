@@ -10,7 +10,7 @@ export type Database = {
   // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
-    PostgrestVersion: "13.0.4"
+    PostgrestVersion: "13.0.5"
   }
   public: {
     Tables: {
@@ -21,6 +21,7 @@ export type Database = {
           created_at: string
           excerpt: string | null
           featured: boolean | null
+          icon: string | null
           id: string
           published: boolean | null
           title: string
@@ -32,6 +33,7 @@ export type Database = {
           created_at?: string
           excerpt?: string | null
           featured?: boolean | null
+          icon?: string | null
           id?: string
           published?: boolean | null
           title: string
@@ -43,6 +45,7 @@ export type Database = {
           created_at?: string
           excerpt?: string | null
           featured?: boolean | null
+          icon?: string | null
           id?: string
           published?: boolean | null
           title?: string
@@ -170,9 +173,12 @@ export type Database = {
           description: string | null
           division: string | null
           id: string
+          image_url: string | null
           name: string
+          raw: Json | null
           season: string | null
           team_manager: string | null
+          twizzit_id: number | null
           updated_at: string
         }
         Insert: {
@@ -183,9 +189,12 @@ export type Database = {
           description?: string | null
           division?: string | null
           id?: string
+          image_url?: string | null
           name: string
+          raw?: Json | null
           season?: string | null
           team_manager?: string | null
+          twizzit_id?: number | null
           updated_at?: string
         }
         Update: {
@@ -196,9 +205,12 @@ export type Database = {
           description?: string | null
           division?: string | null
           id?: string
+          image_url?: string | null
           name?: string
+          raw?: Json | null
           season?: string | null
           team_manager?: string | null
+          twizzit_id?: number | null
           updated_at?: string
         }
         Relationships: []
@@ -322,7 +334,7 @@ export type Database = {
     }
     Functions: {
       get_current_user_role: {
-        Args: Record<PropertyKey, never>
+        Args: never
         Returns: Database["public"]["Enums"]["app_role"]
       }
       has_role: {

@@ -1,9 +1,13 @@
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { supabase } from "@/integrations/supabase/client";
-import { Trophy, Users, Mail, Phone } from "lucide-react";
+import { Trophy, Users, Mail } from "lucide-react";
 
 const ClubTeams = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  
   const { data: teams } = useQuery({
     queryKey: ['teams'],
     queryFn: async () => {
@@ -11,7 +15,7 @@ const ClubTeams = () => {
         .from('teams')
         .select('*')
         .eq('active', true)
-        .order('created_at', { ascending: false });
+        .order('name', { ascending: true });
       
       if (error) throw error;
       return data || [];
@@ -21,7 +25,7 @@ const ClubTeams = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8 text-foreground">Our Teams</h1>
+        <h1 className="text-4xl font-bold mb-8 text-foreground">Onze Teams</h1>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {teams?.map((team) => (
@@ -32,24 +36,44 @@ const ClubTeams = () => {
                   {team.name}
                 </CardTitle>
                 <CardDescription>
-                  {team.division} {team.age_group && `• ${team.age_group}`}
-                  {team.season && ` • ${team.season}`}
+                  {team.season}
                 </CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="space-y-4">
+                <div 
+                  className="cursor-pointer rounded-lg overflow-hidden bg-muted flex items-center justify-center"
+                  onClick={() => setSelectedImage(team.image_url || "/lovable-uploads/03104bbc-f9de-44a2-a8b0-aedb91fd1c6c.png")}
+                  style={{ height: '200px' }}
+                >
+                  <img 
+                    src={team.image_url || "/lovable-uploads/03104bbc-f9de-44a2-a8b0-aedb91fd1c6c.png"}
+                    alt={team.name}
+                    className={`w-full h-full object-contain hover:scale-105 transition-transform ${!team.image_url ? 'opacity-40 grayscale' : ''}`}
+                  />
+                </div>
+
                 {team.description && (
-                  <p className="text-muted-foreground mb-4">{team.description}</p>
+                  <p className="text-muted-foreground text-sm">{team.description}</p>
                 )}
                 
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2 text-sm">
-                    <Users className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-muted-foreground">Coach: {team.coach || '[To be assigned]'}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <Mail className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-muted-foreground">Team Manager: {team.team_manager || '[To be assigned]'}</span>
-                  </div>
+                <div className="space-y-2 text-sm">
+                  {team.division && team.age_group && (
+                    <p className="text-muted-foreground">
+                      {team.division} • {team.age_group}
+                    </p>
+                  )}
+                  {team.coach && (
+                    <div className="flex items-center gap-2">
+                      <Users className="h-4 w-4 text-muted-foreground" />
+                      <span className="text-muted-foreground">Coach: {team.coach}</span>
+                    </div>
+                  )}
+                  {team.team_manager && (
+                    <div className="flex items-center gap-2">
+                      <Mail className="h-4 w-4 text-muted-foreground" />
+                      <span className="text-muted-foreground">Team Manager: {team.team_manager}</span>
+                    </div>
+                  )}
                 </div>
               </CardContent>
             </Card>
@@ -63,6 +87,18 @@ const ClubTeams = () => {
           </div>
         )}
       </div>
+
+      <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
+        <DialogContent className="max-w-4xl">
+          {selectedImage && (
+            <img 
+              src={selectedImage}
+              alt="Team image"
+              className="w-full h-auto rounded-lg"
+            />
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

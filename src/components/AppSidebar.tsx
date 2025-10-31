@@ -17,7 +17,8 @@ import {
   BookOpen,
   Timer,
   Zap,
-  MessageCircle
+  MessageCircle,
+  Camera
 } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useEffect } from "react";
@@ -51,6 +52,11 @@ const navigation = [
     icon: Calendar,
   },
   {
+    title: "Nieuws",
+    url: "/nieuws",
+    icon: Newspaper,
+  },
+  {
     title: "Socials",
     url: "/socials",
     icon: MessageCircle,
@@ -62,8 +68,9 @@ const navigation = [
       { title: "Locatie", url: "/club/field", icon: MapPin },
       { title: "Teams", url: "/club/teams", icon: Trophy },
       { title: "Bestuur", url: "/club/board", icon: UserCheck },
+      { title: "Sfeer", url: "/club/sfeer", icon: Camera },
       { title: "Clubwaarden", url: "/club/values", icon: Shield },
-      { title: "In het Nieuws", url: "/club/news", icon: Newspaper },
+      { title: "In de media", url: "/club/media", icon: Newspaper },
       { title: "Geschiedenis", url: "/club/history", icon: History },
       { title: "Sponsors", url: "/club/sponsors", icon: HandHeart },
     ],
@@ -74,6 +81,7 @@ const navigation = [
     items: [
       { title: "Lid Worden - Informatie", url: "/membership/info", icon: UserPlus },
       { title: "Lid Worden - Registratie", url: "/membership/register", icon: FileText },
+      { title: "Indoor - Registratie", url: "/membership/indoor-registration", icon: Trophy },
       { title: "Verzekering", url: "/membership/insurance", icon: Shield },
       { title: "Contact", url: "/membership/contact", icon: Phone },
       { title: "Privacybeleid", url: "/club/privacy", icon: FileText },
@@ -86,17 +94,18 @@ const navigation = [
       { title: "Training", url: "/sporting/training", icon: Calendar },
       { title: "Hoe Hockey Spelen", url: "/sporting/how-to-play", icon: BookOpen },
       { 
-        title: "Regels & Scheidsrechters", 
+        title: "Regels & Scheids", 
         url: "/sporting/rules", 
         icon: Timer,
         items: [
           { title: "U6 tot U8", url: "/sporting/rules/u6-u8", icon: Users },
           { title: "U9", url: "/sporting/rules/u9", icon: Users },
           { title: "U10 tot U12", url: "/sporting/rules/u10-u12", icon: Users },
-          { title: "U14 en hoger", url: "/sporting/rules/u14-plus", icon: Users },
+          { title: "U14 tot senior", url: "/sporting/rules/u14-plus", icon: Users },
         ]
       },
-      { title: "De Juiste Stick Kiezen", url: "/sporting/stick-guide", icon: Zap },
+      { title: "De Juiste Stick", url: "/sporting/stick-guide", icon: Zap },
+      { title: "Indoor Hockey", url: "/sporting/indoor-hockey", icon: Trophy },
     ],
   },
   {
@@ -107,26 +116,31 @@ const navigation = [
 ];
 
 export function AppSidebar() {
-  const { open, setOpen } = useSidebar();
+  const { open, setOpen, openMobile, setOpenMobile, state } = useSidebar();
   const isMobile = useIsMobile();
   const location = useLocation();
   const currentPath = location.pathname;
 
   // Close sidebar on mobile when route changes
   useEffect(() => {
-    if (isMobile && open) {
-      // Small delay to ensure navigation completes
+    if (isMobile) {
+      // Close after navigation completes on mobile
       const timer = setTimeout(() => {
-        setOpen(false);
+        setOpenMobile(false);
       }, 100);
       return () => clearTimeout(timer);
     }
-  }, [currentPath, isMobile, open, setOpen]);
+  }, [currentPath, isMobile, setOpenMobile]);
 
-  // Handle mobile navigation click
+  // Handle mobile navigation click - let useEffect handle closing on route change
   const handleMobileNavClick = () => {
-    if (isMobile && open) {
-      setOpen(false);
+    // Don't close immediately, let the route change useEffect handle it
+  };
+
+  // Handle expanding sidebar when collapsed and group is clicked
+  const handleGroupClick = () => {
+    if (state === "collapsed" && !isMobile) {
+      setOpen(true);
     }
   };
 
@@ -140,7 +154,7 @@ export function AppSidebar() {
       : "text-sidebar-accent-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground";
 
   return (
-    <Sidebar collapsible="icon">
+    <Sidebar collapsible="icon" className="max-w-[min(50vw,280px)]">
       <SidebarContent>
         {/* Logo Header */}
         <div className="border-b border-sidebar-border p-4">
@@ -173,7 +187,10 @@ export function AppSidebar() {
                     >
                       <SidebarMenuItem>
                         <CollapsibleTrigger asChild>
-                          <SidebarMenuButton className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground w-full">
+                          <SidebarMenuButton 
+                            className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground w-full"
+                            onClick={handleGroupClick}
+                          >
                             <item.icon className="h-4 w-4 flex-shrink-0" />
                             <span className="truncate whitespace-nowrap overflow-hidden">{item.title}</span>
                             <ChevronDown className="ml-auto h-4 w-4 transition-transform group-data-[state=open]/collapsible:rotate-180 flex-shrink-0" />

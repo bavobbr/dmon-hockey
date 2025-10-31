@@ -13,7 +13,7 @@ interface Sponsor {
   logo_path: string;
   website_url: string;
   description: string;
-  tier: 'title' | 'gold' | 'silver' | 'bronze';
+  tier: 'diamond' | 'gold' | 'silver' | 'bronze' | 'woodstick';
   active: boolean;
   created_at: string;
 }
@@ -103,10 +103,11 @@ const Sponsors = () => {
 
   const getTierColor = (tier: string) => {
     switch (tier) {
-      case 'title': return 'bg-accent text-accent-foreground';
+      case 'diamond': return 'bg-blue-500 text-white';
       case 'gold': return 'bg-yellow-500 text-white';
       case 'silver': return 'bg-gray-400 text-white';
       case 'bronze': return 'bg-orange-600 text-white';
+      case 'woodstick': return 'bg-green-600 text-white';
       default: return 'bg-muted text-muted-foreground';
     }
   };

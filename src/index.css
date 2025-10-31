@@ -58,6 +58,18 @@ All colors MUST be HSL.
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
+    /* Sponsor Tier Colors */
+    --sponsor-diamond: 193 95% 68%; /* Light cyan - diamond sparkle */
+    --sponsor-diamond-bg: 193 95% 97%;
+    --sponsor-gold: 43 90% 60%; /* Warm gold */
+    --sponsor-gold-bg: 43 90% 97%;
+    --sponsor-silver: 210 10% 70%; /* Cool silver gray */
+    --sponsor-silver-bg: 210 10% 97%;
+    --sponsor-bronze: 28 60% 55%; /* Copper bronze */
+    --sponsor-bronze-bg: 28 60% 97%;
+    --sponsor-woodstick: 30 45% 50%; /* Warm brown wood */
+    --sponsor-woodstick-bg: 30 45% 97%;
+
     --sidebar-background: 0 0% 98%;
 
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -104,6 +116,19 @@ All colors MUST be HSL.
     --border: 210 34% 35%;
     --input: 210 34% 30%;
     --ring: 210 93% 40%;
+
+    /* Sponsor Tier Colors - Dark Mode */
+    --sponsor-diamond: 193 75% 55%;
+    --sponsor-diamond-bg: 193 75% 15%;
+    --sponsor-gold: 43 75% 50%;
+    --sponsor-gold-bg: 43 75% 15%;
+    --sponsor-silver: 210 10% 60%;
+    --sponsor-silver-bg: 210 10% 20%;
+    --sponsor-bronze: 28 50% 45%;
+    --sponsor-bronze-bg: 28 50% 15%;
+    --sponsor-woodstick: 30 40% 40%;
+    --sponsor-woodstick-bg: 30 40% 15%;
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -129,15 +154,15 @@ All colors MUST be HSL.
   }
 
   h1 {
-    @apply text-4xl lg:text-6xl leading-tight;
+    @apply text-2xl lg:text-6xl leading-tight;
   }
 
   h2 {
-    @apply text-3xl lg:text-4xl leading-tight;
+    @apply text-xl lg:text-4xl leading-tight;
   }
 
   h3 {
-    @apply text-2xl lg:text-3xl leading-snug;
+    @apply text-lg lg:text-3xl leading-snug;
   }
 }
 

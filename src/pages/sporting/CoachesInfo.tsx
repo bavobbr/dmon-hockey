@@ -141,20 +141,20 @@ const CoachesInfo = () => {
               Principes
             </CardTitle>
             <CardDescription>
-              Hockey basisprincipes en spelconcepten
+              Hockey principes en spelconcepten
             </CardDescription>
           </CardHeader>
           <CardContent>
             <Button variant="outline" className="h-auto p-4 justify-start" asChild>
               <a 
-                href="https://drive.google.com/uc?export=download&id=1uEv33elgKIcvWxUacWOiC--54yWBRBEB" 
+                href="https://drive.google.com/file/d/1waf1fmcjh2xnzHgKT-Uy4ZgAOnyhrM9E/view?usp=sharing" 
                 target="_blank" 
                 rel="noopener noreferrer"
               >
                 <div className="text-left">
                   <div className="flex items-center gap-2 mb-1">
                     <Download className="h-4 w-4" />
-                    <span className="font-medium">Hockey basisprincipes</span>
+                    <span className="font-medium">Hockey principes</span>
                   </div>
                   <p className="text-xs text-muted-foreground">Fundamentele spelconcepten</p>
                 </div>
@@ -170,13 +170,13 @@ const CoachesInfo = () => {
               Formaties
             </CardTitle>
             <CardDescription>
-              Tactische opstellingen en spelprincipes
+              Tactische opstellingen en strategie
             </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-6">
               <div>
-                <h3 className="font-semibold mb-3">Basisprincipes</h3>
+                <h3 className="font-semibold mb-3">Algemeen</h3>
                 <div className="grid md:grid-cols-2 gap-3">
                   <Button variant="outline" size="sm" asChild>
                     <a href="https://docs.google.com/presentation/d/1_5bnHr6FoyXdjdHPJzXlfq-mylNiTlWO/export/pptx" target="_blank" rel="noopener noreferrer">

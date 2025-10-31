@@ -2,7 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Newspaper, ExternalLink, Calendar, Tv } from "lucide-react";
 
-const News = () => {
+const Media = () => {
   // Real news articles from the D-mon Hockey website
   const newsArticles = [
     {
@@ -135,14 +135,14 @@ const News = () => {
   return (
     <div className="container mx-auto px-4 py-12">
       <div className="max-w-4xl mx-auto">
-        <h1 className="font-display text-5xl lg:text-6xl font-bold mb-12 text-foreground fade-in-up">In het Nieuws</h1>
+        <h1 className="font-display text-5xl lg:text-6xl font-bold mb-12 text-foreground fade-in-up">Hockey Dendermonde in de media!</h1>
         
         <div className="mb-6">
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Newspaper className="h-5 w-5" />
-                Hockey Dendermonde in het Nieuws!
+                Hockey Dendermonde in de media!
               </CardTitle>
               <CardDescription>
                 Blijf op de hoogte van het laatste nieuws en artikelen over onze club in lokale en regionale media.
@@ -210,4 +210,4 @@ const News = () => {
   );
 };
 
-export default News;
+export default Media;

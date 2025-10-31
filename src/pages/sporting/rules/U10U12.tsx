@@ -1,7 +1,9 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Timer, ExternalLink, BookOpen, Users, Target } from "lucide-react";
+import { Timer, ExternalLink, BookOpen, Users, Target, PlayCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import stappen from "@/assets/stappen.png";
+import u10u12Rules1 from "@/assets/u10u12-rules-1.png";
+import u10u12Rules2 from "@/assets/u10u12-rules-2.png";
 
 const U10U12Rules = () => {
   return (
@@ -114,18 +116,39 @@ const U10U12Rules = () => {
                 Voor de allerkleinsten op klein veld is dit niet relevant (je hebt genoeg aan de <em>pictogrammen</em>), 
                 al is het zeker goed om weten waar we uiteindelijk naartoe werken!
               </p>
+              
+              <div className="mt-6">
+                <h4 className="font-semibold mb-4">Start To Hockey - Spelregels</h4>
+                <div className="bg-muted rounded-lg p-4 mb-4">
+                  <iframe
+                    src="https://www.slideshare.net/slideshow/embed_code/key/4N3oTp9LQrJj3K"
+                    width="100%"
+                    height="355"
+                    frameBorder="0"
+                    allow="autoplay; fullscreen; encrypted-media"
+                    title="Start To Hockey - Spelregels"
+                    className="rounded"
+                  ></iframe>
+                </div>
+                <p className="text-sm text-muted-foreground mb-2">
+                  We hebben zelf ook een handig overzicht gemaakt van de basisregels groot veld. Blader zeker eens door de slides van DMON Start To Hockey waar alles mooi gevisualiseerd wordt!
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  Meer info kan je vinden op <a href="https://www.knhb.nl/spelregels-hockey" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">https://www.knhb.nl/spelregels-hockey</a>
+                </p>
+              </div>
             </CardContent>
           </Card>
 
           <Card className="mb-6">
             <CardHeader>
-              <CardTitle>Half veld met cirkel</CardTitle>
+              <CardTitle>Spelregels U10 tot U12 (half veld)</CardTitle>
               <CardDescription>
                 U10 tot U12 spelen half veld met penalty corners
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <div className="p-4 bg-green-50 dark:bg-green-950/20 rounded-lg border border-green-200 dark:border-green-800">
                   <h4 className="font-semibold text-green-900 dark:text-green-100 mb-2">
                     Aangeraden materiaal per categorie
@@ -150,6 +173,61 @@ const U10U12Rules = () => {
                   <p className="text-blue-800 dark:text-blue-200 text-sm">
                     Als je start, wees niet bang in overleg te gaan. Je kan altijd de tijd stilleggen. 
                     Overleg is altijd de juiste keuze bij twijfel.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold mb-4">Start to Umpire - Belangrijkste fouten (half veld)</h4>
+                  <p className="text-sm mb-4 text-muted-foreground">
+                    De Belgische hockeybond heeft een handig overzicht van de belangrijkste fouten die gemaakt worden door spelers in een match vanaf U9 (half veld). Als je in die categorie fluit, is dat waar je extra aandachtig voor wilt zijn!
+                  </p>
+                  
+                  <div className="bg-muted rounded-lg p-4 mb-4">
+                    <div className="flex items-center gap-2 mb-3">
+                      <PlayCircle className="h-5 w-5" />
+                      <span className="font-medium">Start to Umpire - Kick (Fr)</span>
+                    </div>
+                    <iframe
+                      width="100%"
+                      height="315"
+                      src="https://www.youtube.com/embed/saPV678-3Ik?list=PLag9_tWawv3Q6uOVToLVgb8UixIsBgin2"
+                      title="Start to umpire - Kick (Fr)"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="rounded"
+                    ></iframe>
+                  </div>
+                  
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Meer filmpjes vind je op: <a href="https://hockey.be/nl/competitie/outdoor-hockey/starttoumpire/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">https://hockey.be/nl/competitie/outdoor-hockey/starttoumpire/</a>
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold mb-4">Pictogrammen U10/U12</h4>
+                  <p className="text-sm mb-4 text-muted-foreground">
+                    Ook de Belgische hockeybond heeft pictogrammen voor U10/U12:
+                  </p>
+                  
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="text-center">
+                      <img 
+                        src={u10u12Rules1} 
+                        alt="U10/U12 spelregels - deel 1" 
+                        className="w-full h-auto rounded-lg shadow-lg border"
+                      />
+                    </div>
+                    <div className="text-center">
+                      <img 
+                        src={u10u12Rules2} 
+                        alt="U10/U12 spelregels - deel 2" 
+                        className="w-full h-auto rounded-lg shadow-lg border"
+                      />
+                    </div>
+                  </div>
+                  <p className="text-sm text-muted-foreground mt-2 text-center">
+                    Alle spelregels voor U10/U12
                   </p>
                 </div>
               </div>

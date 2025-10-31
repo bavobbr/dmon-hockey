@@ -2,3 +2,9 @@ project_id = "rtvcsywkkcgakfzsuxgz"
 
 [functions.sync-twizzit-events]
 verify_jwt = false
+
+[functions.sync-twizzit-teams]
+verify_jwt = false
+
+[functions.bulk-insert-sponsors]
+verify_jwt = false
