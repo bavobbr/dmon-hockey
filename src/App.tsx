@@ -55,6 +55,7 @@ import StickGuide from "./pages/sporting/StickGuide";
 import CoachesInfo from "./pages/sporting/CoachesInfo";
 import Socials from "./pages/Socials";
 import Events from "./pages/Events";
+import { Analytics } from "@vercel/analytics/react";
 
 const queryClient = new QueryClient();
 
@@ -222,6 +223,7 @@ const App = () => (
             </div>
           </SidebarProvider>
         </BrowserRouter>
+        <Analytics />
       </TooltipProvider>
     </AuthProvider>
   </QueryClientProvider>
