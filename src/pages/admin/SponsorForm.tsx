@@ -53,7 +53,7 @@ const SponsorForm = () => {
         logo_path: data.logo_path || '',
         website_url: data.website_url || '',
         description: data.description || '',
-        tier: data.tier as 'diamond' | 'gold' | 'silver' | 'bronze',
+        tier: data.tier as 'diamond' | 'gold' | 'silver' | 'bronze' | 'materiaal_kledij' | 'woodstick' | 'sympathie',
         active: data.active,
       });
     } catch (error) {
