@@ -175,22 +175,22 @@ const App = () => (
                       </ProtectedRoute>
                     } />
                     <Route path="/admin/teams" element={
-                      <ProtectedRoute requireAdmin>
+                      <ProtectedRoute requireModerator>
                         <Teams />
                       </ProtectedRoute>
                     } />
                     <Route path="/admin/sponsors" element={
-                      <ProtectedRoute requireAdmin>
+                      <ProtectedRoute requireModerator>
                         <Sponsors />
                       </ProtectedRoute>
                     } />
                     <Route path="/admin/sponsors/new" element={
-                      <ProtectedRoute requireAdmin>
+                      <ProtectedRoute requireModerator>
                         <SponsorForm />
                       </ProtectedRoute>
                     } />
                     <Route path="/admin/sponsors/edit/:id" element={
-                      <ProtectedRoute requireAdmin>
+                      <ProtectedRoute requireModerator>
                         <SponsorForm />
                       </ProtectedRoute>
                     } />
@@ -210,12 +210,12 @@ const App = () => (
                       </ProtectedRoute>
                     } />
                     <Route path="/admin/teams/new" element={
-                      <ProtectedRoute requireAdmin>
+                      <ProtectedRoute requireModerator>
                         <TeamForm />
                       </ProtectedRoute>
                     } />
                     <Route path="/admin/teams/edit/:id" element={
-                      <ProtectedRoute requireAdmin>
+                      <ProtectedRoute requireModerator>
                         <TeamForm />
                       </ProtectedRoute>
                     } />
@@ -230,17 +230,17 @@ const App = () => (
                       </ProtectedRoute>
                     } />
                     <Route path="/admin/field-closures" element={
-                      <ProtectedRoute requireAdmin>
+                      <ProtectedRoute requireModerator>
                         <FieldClosures />
                       </ProtectedRoute>
                     } />
                     <Route path="/admin/field-closures/new" element={
-                      <ProtectedRoute requireAdmin>
+                      <ProtectedRoute requireModerator>
                         <FieldClosureForm />
                       </ProtectedRoute>
                     } />
                     <Route path="/admin/field-closures/edit/:id" element={
-                      <ProtectedRoute requireAdmin>
+                      <ProtectedRoute requireModerator>
                         <FieldClosureForm />
                       </ProtectedRoute>
                     } />
