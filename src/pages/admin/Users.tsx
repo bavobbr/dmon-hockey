@@ -13,7 +13,14 @@ import {
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
-import { Shield, ShieldOff, Loader2 } from 'lucide-react';
+import { Shield, ShieldOff, Loader2, UserCog } from 'lucide-react';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 import { Navigate } from 'react-router-dom';
 
 interface UserProfile {
@@ -74,17 +81,15 @@ const Users = () => {
     }
   };
 
-  const toggleAdminRole = async (userId: string, currentRole: string) => {
+  const updateUserRole = async (userId: string, newRole: string) => {
     setUpdatingUserId(userId);
     try {
-      const newRole = currentRole === 'admin' ? 'member' : 'admin';
-
       const { error } = await supabase
         .from('user_roles')
-        .upsert({ 
+        .upsert([{ 
           user_id: userId, 
-          role: newRole 
-        }, {
+          role: newRole as 'admin' | 'moderator' | 'member'
+        }], {
           onConflict: 'user_id'
         });
 
@@ -92,7 +97,10 @@ const Users = () => {
 
       toast({
         title: 'Succes',
-        description: `Gebruiker is nu ${newRole === 'admin' ? 'beheerder' : 'lid'}`,
+        description: `Gebruiker is nu ${
+          newRole === 'admin' ? 'beheerder' : 
+          newRole === 'moderator' ? 'moderator' : 'lid'
+        }`,
       });
 
       await fetchUsers();
@@ -164,26 +172,39 @@ const Users = () => {
                       {new Date(user.created_at).toLocaleDateString('nl-BE')}
                     </TableCell>
                     <TableCell className="text-right">
-                      <Button
-                        variant={user.role === 'admin' ? 'destructive' : 'default'}
-                        size="sm"
-                        onClick={() => toggleAdminRole(user.user_id, user.role || 'member')}
+                      <Select
+                        value={user.role || 'member'}
+                        onValueChange={(value) => updateUserRole(user.user_id, value)}
                         disabled={updatingUserId === user.user_id}
                       >
-                        {updatingUserId === user.user_id ? (
-                          <Loader2 className="h-4 w-4 animate-spin" />
-                        ) : user.role === 'admin' ? (
-                          <>
-                            <ShieldOff className="h-4 w-4 mr-2" />
-                            Verwijder beheerder
-                          </>
-                        ) : (
-                          <>
-                            <Shield className="h-4 w-4 mr-2" />
-                            Maak beheerder
-                          </>
-                        )}
-                      </Button>
+                        <SelectTrigger className="w-[180px]">
+                          {updatingUserId === user.user_id ? (
+                            <Loader2 className="h-4 w-4 animate-spin" />
+                          ) : (
+                            <SelectValue />
+                          )}
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="member">
+                            <div className="flex items-center">
+                              <UserCog className="h-4 w-4 mr-2" />
+                              Lid
+                            </div>
+                          </SelectItem>
+                          <SelectItem value="moderator">
+                            <div className="flex items-center">
+                              <Shield className="h-4 w-4 mr-2" />
+                              Moderator
+                            </div>
+                          </SelectItem>
+                          <SelectItem value="admin">
+                            <div className="flex items-center">
+                              <Shield className="h-4 w-4 mr-2" />
+                              Beheerder
+                            </div>
+                          </SelectItem>
+                        </SelectContent>
+                      </Select>
                     </TableCell>
                   </TableRow>
                 ))}
