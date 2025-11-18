@@ -73,7 +73,6 @@ const navigation = [
       { title: "In de media", url: "/club/media", icon: Newspaper },
       { title: "Geschiedenis", url: "/club/history", icon: History },
       { title: "Sponsors", url: "/club/sponsors", icon: HandHeart },
-      { title: "Terrein Status", url: "/club/field-status", icon: Calendar },
     ],
   },
   {
@@ -113,6 +112,11 @@ const navigation = [
     title: "Shop & Kleding",
     url: "/shop",
     icon: ShoppingBag,
+  },
+  {
+    title: "Terrein Status",
+    url: "/club/field-status",
+    icon: Calendar,
   },
 ];
 
