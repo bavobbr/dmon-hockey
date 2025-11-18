@@ -26,6 +26,7 @@ import BoardMembers from "./pages/admin/BoardMembers";
 import BoardMemberForm from "./pages/admin/BoardMemberForm";
 import FieldClosures from "./pages/admin/FieldClosures";
 import FieldClosureForm from "./pages/admin/FieldClosureForm";
+import Users from "./pages/admin/Users";
 
 // Club pages
 import HockeyField from "./pages/club/HockeyField";
@@ -241,6 +242,11 @@ const App = () => (
                     <Route path="/admin/field-closures/edit/:id" element={
                       <ProtectedRoute requireAdmin>
                         <FieldClosureForm />
+                      </ProtectedRoute>
+                    } />
+                    <Route path="/admin/users" element={
+                      <ProtectedRoute requireAdmin>
+                        <Users />
                       </ProtectedRoute>
                     } />
                     
