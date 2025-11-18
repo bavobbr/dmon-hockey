@@ -95,6 +95,39 @@ export type Database = {
         }
         Relationships: []
       }
+      field_closures: {
+        Row: {
+          closure_date: string
+          created_at: string
+          created_by: string
+          end_time: string
+          id: string
+          reason: string
+          start_time: string
+          updated_at: string
+        }
+        Insert: {
+          closure_date: string
+          created_at?: string
+          created_by: string
+          end_time: string
+          id?: string
+          reason: string
+          start_time: string
+          updated_at?: string
+        }
+        Update: {
+          closure_date?: string
+          created_at?: string
+          created_by?: string
+          end_time?: string
+          id?: string
+          reason?: string
+          start_time?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null

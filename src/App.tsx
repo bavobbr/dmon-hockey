@@ -24,6 +24,8 @@ import Sponsors from "./pages/admin/Sponsors";
 import SponsorForm from "./pages/admin/SponsorForm";
 import BoardMembers from "./pages/admin/BoardMembers";
 import BoardMemberForm from "./pages/admin/BoardMemberForm";
+import FieldClosures from "./pages/admin/FieldClosures";
+import FieldClosureForm from "./pages/admin/FieldClosureForm";
 
 // Club pages
 import HockeyField from "./pages/club/HockeyField";
@@ -35,6 +37,7 @@ import History from "./pages/club/History";
 import ClubSponsors from "./pages/club/Sponsors";
 import Sfeer from "./pages/club/Sfeer";
 import Privacy from "./pages/club/Privacy";
+import FieldStatus from "./pages/club/FieldStatus";
 
 // Membership pages
 import MembershipInfo from "./pages/membership/Info";
@@ -135,6 +138,7 @@ const App = () => (
                     <Route path="/club/sponsors" element={<ClubSponsors />} />
                     <Route path="/club/sfeer" element={<Sfeer />} />
                     <Route path="/club/privacy" element={<Privacy />} />
+                    <Route path="/club/field-status" element={<FieldStatus />} />
                     
                     {/* Membership routes */}
                     <Route path="/membership/info" element={<MembershipInfo />} />
@@ -222,6 +226,21 @@ const App = () => (
                     <Route path="/admin/announcements/edit/:id" element={
                       <ProtectedRoute requireModerator>
                         <AnnouncementForm />
+                      </ProtectedRoute>
+                    } />
+                    <Route path="/admin/field-closures" element={
+                      <ProtectedRoute requireAdmin>
+                        <FieldClosures />
+                      </ProtectedRoute>
+                    } />
+                    <Route path="/admin/field-closures/new" element={
+                      <ProtectedRoute requireAdmin>
+                        <FieldClosureForm />
+                      </ProtectedRoute>
+                    } />
+                    <Route path="/admin/field-closures/edit/:id" element={
+                      <ProtectedRoute requireAdmin>
+                        <FieldClosureForm />
                       </ProtectedRoute>
                     } />
                     

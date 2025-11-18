@@ -10,7 +10,8 @@ import {
   Trophy, 
   Handshake, 
   UserCheck,
-  Plus 
+  Plus,
+  Calendar
 } from 'lucide-react';
 
 const Dashboard = () => {
@@ -81,6 +82,13 @@ const Dashboard = () => {
       icon: UserCheck,
       href: '/admin/board-members',
       count: loading ? 'Laden...' : `${counts.boardMembers} actief`,
+    },
+    {
+      title: 'Terreinsluitingen',
+      description: 'Beheer terreinsluitingen',
+      icon: Calendar,
+      href: '/admin/field-closures',
+      count: '',
     },
   ];
 
