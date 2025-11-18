@@ -107,7 +107,9 @@ const Sponsors = () => {
       case 'gold': return 'bg-yellow-500 text-white';
       case 'silver': return 'bg-gray-400 text-white';
       case 'bronze': return 'bg-orange-600 text-white';
+      case 'materiaal_kledij': return 'bg-teal-600 text-white';
       case 'woodstick': return 'bg-green-600 text-white';
+      case 'sympathie': return 'bg-pink-500 text-white';
       default: return 'bg-muted text-muted-foreground';
     }
   };

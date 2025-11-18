@@ -70,6 +70,22 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				sponsor: {
+					diamond: 'hsl(var(--sponsor-diamond))',
+					'diamond-bg': 'hsl(var(--sponsor-diamond-bg))',
+					gold: 'hsl(var(--sponsor-gold))',
+					'gold-bg': 'hsl(var(--sponsor-gold-bg))',
+					silver: 'hsl(var(--sponsor-silver))',
+					'silver-bg': 'hsl(var(--sponsor-silver-bg))',
+					bronze: 'hsl(var(--sponsor-bronze))',
+					'bronze-bg': 'hsl(var(--sponsor-bronze-bg))',
+					'materiaal-kledij': 'hsl(var(--sponsor-materiaal-kledij))',
+					'materiaal-kledij-bg': 'hsl(var(--sponsor-materiaal-kledij-bg))',
+					woodstick: 'hsl(var(--sponsor-woodstick))',
+					'woodstick-bg': 'hsl(var(--sponsor-woodstick-bg))',
+					sympathie: 'hsl(var(--sponsor-sympathie))',
+					'sympathie-bg': 'hsl(var(--sponsor-sympathie-bg))'
 				}
 			},
 			backgroundImage: {

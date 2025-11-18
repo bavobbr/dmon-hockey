@@ -67,8 +67,12 @@ All colors MUST be HSL.
     --sponsor-silver-bg: 210 10% 97%;
     --sponsor-bronze: 28 60% 55%; /* Copper bronze */
     --sponsor-bronze-bg: 28 60% 97%;
+    --sponsor-materiaal-kledij: 170 50% 55%; /* Teal green - practical materials */
+    --sponsor-materiaal-kledij-bg: 170 50% 97%;
     --sponsor-woodstick: 30 45% 50%; /* Warm brown wood */
     --sponsor-woodstick-bg: 30 45% 97%;
+    --sponsor-sympathie: 350 60% 70%; /* Soft pink - sympathy */
+    --sponsor-sympathie-bg: 350 60% 97%;
 
     --sidebar-background: 0 0% 98%;
 
@@ -126,8 +130,12 @@ All colors MUST be HSL.
     --sponsor-silver-bg: 210 10% 20%;
     --sponsor-bronze: 28 50% 45%;
     --sponsor-bronze-bg: 28 50% 15%;
+    --sponsor-materiaal-kledij: 170 45% 45%;
+    --sponsor-materiaal-kledij-bg: 170 45% 15%;
     --sponsor-woodstick: 30 40% 40%;
     --sponsor-woodstick-bg: 30 40% 15%;
+    --sponsor-sympathie: 350 55% 55%;
+    --sponsor-sympathie-bg: 350 55% 15%;
 
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;

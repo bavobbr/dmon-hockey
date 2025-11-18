@@ -24,7 +24,9 @@ const ClubSponsors = () => {
     gold: "border-[hsl(var(--sponsor-gold))] bg-[hsl(var(--sponsor-gold-bg))]",
     silver: "border-[hsl(var(--sponsor-silver))] bg-[hsl(var(--sponsor-silver-bg))]", 
     bronze: "border-[hsl(var(--sponsor-bronze))] bg-[hsl(var(--sponsor-bronze-bg))]",
-    woodstick: "border-[hsl(var(--sponsor-woodstick))] bg-[hsl(var(--sponsor-woodstick-bg))]"
+    materiaal_kledij: "border-[hsl(var(--sponsor-materiaal-kledij))] bg-[hsl(var(--sponsor-materiaal-kledij-bg))]",
+    woodstick: "border-[hsl(var(--sponsor-woodstick))] bg-[hsl(var(--sponsor-woodstick-bg))]",
+    sympathie: "border-[hsl(var(--sponsor-sympathie))] bg-[hsl(var(--sponsor-sympathie-bg))]"
   };
 
   const groupedSponsors = sponsors?.reduce((acc, sponsor) => {
@@ -59,14 +61,24 @@ const ClubSponsors = () => {
         </Card>
 
         {/* Display sponsors by tier */}
-        {['diamond', 'gold', 'silver', 'bronze', 'woodstick'].map((tier) => {
+        {['diamond', 'gold', 'silver', 'bronze', 'materiaal_kledij', 'woodstick', 'sympathie'].map((tier) => {
           const tierSponsors = groupedSponsors?.[tier];
           if (!tierSponsors || tierSponsors.length === 0) return null;
+          
+          const tierNames: Record<string, string> = {
+            diamond: 'Diamant',
+            gold: 'Goud',
+            silver: 'Zilver',
+            bronze: 'Brons',
+            materiaal_kledij: 'Materiaal & Kledij',
+            woodstick: 'Woodstick',
+            sympathie: 'Sympathie'
+          };
           
           return (
             <div key={tier} className="mb-8">
               <h2 className="text-2xl font-semibold mb-4 text-foreground capitalize">
-                {tier === 'diamond' ? 'Diamant' : tier === 'gold' ? 'Goud' : tier === 'silver' ? 'Zilver' : tier === 'bronze' ? 'Brons' : 'Woodstick'} Sponsors
+                {tierNames[tier]} Sponsors
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {tierSponsors.map((sponsor) => (
