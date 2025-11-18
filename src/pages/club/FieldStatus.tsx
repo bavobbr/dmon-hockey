@@ -54,7 +54,10 @@ const FieldStatus = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-2">Terrein Status</h1>
-      <p className="text-muted-foreground mb-6">Bespeelbaarheid van het veld</p>
+      <p className="text-muted-foreground mb-4">Bespeelbaarheid van het veld</p>
+      <p className="text-sm text-muted-foreground mb-6 p-4 bg-muted/50 rounded-lg border">
+        Aangekondigde sluitingen van het veld. Indien er twijfel is, stuur een rechtstreeks bericht naar de betreffende team manager, of neem contact op met ons via de contact pagina.
+      </p>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {days.map((day) => {
