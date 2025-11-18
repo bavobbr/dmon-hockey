@@ -25,6 +25,7 @@ interface FieldClosure {
   start_time: string;
   end_time: string;
   reason: string;
+  status: "closure" | "pending";
 }
 
 const FieldClosures = () => {
@@ -129,6 +130,11 @@ const FieldClosures = () => {
                   Tijd: {closure.start_time.substring(0, 5)} - {closure.end_time.substring(0, 5)}
                 </p>
                 <p className="text-sm mt-1">Reden: {closure.reason}</p>
+                <p className="text-sm mt-1">
+                  Status: <span className={closure.status === "closure" ? "text-destructive" : "text-orange-600"}>
+                    {closure.status === "closure" ? "Gesloten" : "In afwachting"}
+                  </span>
+                </p>
               </CardContent>
             </Card>
           ))}

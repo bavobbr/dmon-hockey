@@ -12,6 +12,7 @@ interface FieldClosure {
   start_time: string;
   end_time: string;
   reason: string;
+  status: "closure" | "pending";
 }
 
 const FieldStatus = () => {
@@ -59,6 +60,8 @@ const FieldStatus = () => {
         {days.map((day) => {
           const dayClosures = getDayStatus(day);
           const isPlayable = dayClosures.length === 0;
+          const hasClosure = dayClosures.some(c => c.status === "closure");
+          const hasPending = dayClosures.some(c => c.status === "pending");
 
           return (
             <Card key={day.toISOString()}>
@@ -67,8 +70,10 @@ const FieldStatus = () => {
                   <span>{format(day, "EEEE d MMMM", { locale: nl })}</span>
                   {isPlayable ? (
                     <CheckCircle className="h-5 w-5 text-green-600" />
-                  ) : (
+                  ) : hasClosure ? (
                     <AlertCircle className="h-5 w-5 text-destructive" />
+                  ) : (
+                    <AlertCircle className="h-5 w-5 text-orange-500" />
                   )}
                 </CardTitle>
               </CardHeader>
@@ -80,12 +85,22 @@ const FieldStatus = () => {
                 ) : (
                   <div className="space-y-2">
                     {dayClosures.map((closure) => (
-                      <div key={closure.id} className="border-l-4 border-destructive pl-3 py-2">
+                      <div 
+                        key={closure.id} 
+                        className={`border-l-4 pl-3 py-2 ${
+                          closure.status === "closure" 
+                            ? "border-destructive" 
+                            : "border-orange-500"
+                        }`}
+                      >
                         <div className="font-medium text-sm">
                           {closure.start_time.substring(0, 5)} - {closure.end_time.substring(0, 5)}
                         </div>
-                        <Badge variant="destructive" className="mt-1">
-                          {closure.reason}
+                        <Badge 
+                          variant={closure.status === "closure" ? "destructive" : "outline"}
+                          className={closure.status === "pending" ? "bg-orange-50 text-orange-700 border-orange-300" : ""}
+                        >
+                          {closure.status === "closure" ? closure.reason : `In afwachting: ${closure.reason}`}
                         </Badge>
                       </div>
                     ))}
