@@ -30,11 +30,12 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchCounts = async () => {
       try {
-        const [announcementsRes, teamsRes, sponsorsRes, boardMembersRes] = await Promise.all([
+        const [announcementsRes, teamsRes, sponsorsRes, boardMembersRes, profilesRes] = await Promise.all([
           supabase.from('announcements').select('id', { count: 'exact', head: true }),
           supabase.from('teams').select('id', { count: 'exact', head: true }).eq('active', true),
           supabase.from('sponsors').select('id', { count: 'exact', head: true }).eq('active', true),
-          supabase.from('board_members').select('id', { count: 'exact', head: true }).eq('active', true)
+          supabase.from('board_members').select('id', { count: 'exact', head: true }).eq('active', true),
+          supabase.from('profiles').select('id', { count: 'exact', head: true })
         ]);
 
         setCounts({
@@ -42,7 +43,7 @@ const Dashboard = () => {
           teams: teamsRes.count || 0,
           sponsors: sponsorsRes.count || 0,
           boardMembers: boardMembersRes.count || 0,
-          users: 0 // This would need a custom query or function to count profiles
+          users: profilesRes.count || 0
         });
       } catch (error) {
         console.error('Error fetching counts:', error);
