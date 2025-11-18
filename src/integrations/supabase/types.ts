@@ -104,6 +104,7 @@ export type Database = {
           id: string
           reason: string
           start_time: string
+          status: Database["public"]["Enums"]["field_closure_status"]
           updated_at: string
         }
         Insert: {
@@ -114,6 +115,7 @@ export type Database = {
           id?: string
           reason: string
           start_time: string
+          status?: Database["public"]["Enums"]["field_closure_status"]
           updated_at?: string
         }
         Update: {
@@ -124,6 +126,7 @@ export type Database = {
           id?: string
           reason?: string
           start_time?: string
+          status?: Database["public"]["Enums"]["field_closure_status"]
           updated_at?: string
         }
         Relationships: []
@@ -380,6 +383,7 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "moderator" | "member"
+      field_closure_status: "closure" | "pending"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -508,6 +512,7 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "moderator", "member"],
+      field_closure_status: ["closure", "pending"],
     },
   },
 } as const

@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
 import { useForm } from "react-hook-form";
 import { useAuth } from "@/hooks/useAuth";
@@ -15,6 +16,7 @@ interface FormData {
   start_time: string;
   end_time: string;
   reason: string;
+  status: "closure" | "pending";
 }
 
 const FieldClosureForm = () => {
@@ -23,7 +25,13 @@ const FieldClosureForm = () => {
   const { user } = useAuth();
   const isEditing = !!id;
 
-  const { register, handleSubmit, reset } = useForm<FormData>();
+  const { register, handleSubmit, reset, setValue, watch } = useForm<FormData>({
+    defaultValues: {
+      status: "closure"
+    }
+  });
+  
+  const statusValue = watch("status");
 
   const { isLoading } = useQuery({
     queryKey: ["field-closure", id],
@@ -43,6 +51,7 @@ const FieldClosureForm = () => {
         start_time: data.start_time.substring(0, 5),
         end_time: data.end_time.substring(0, 5),
         reason: data.reason,
+        status: data.status as "closure" | "pending",
       });
       
       return data;
@@ -136,6 +145,22 @@ const FieldClosureForm = () => {
                 {...register("reason", { required: true })}
                 placeholder="bijv. vorst, onderhoud, evenement"
               />
+            </div>
+
+            <div>
+              <Label htmlFor="status">Status</Label>
+              <Select
+                value={statusValue}
+                onValueChange={(value) => setValue("status", value as "closure" | "pending")}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Selecteer status" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="closure">Gesloten</SelectItem>
+                  <SelectItem value="pending">In afwachting</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
 
             <div className="flex gap-2">
