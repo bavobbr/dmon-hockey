@@ -35,6 +35,21 @@ const FieldStatus = () => {
     },
   });
 
+  const { data: lastUpdate } = useQuery({
+    queryKey: ["field-closures-last-update"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("field_closures")
+        .select("updated_at")
+        .order("updated_at", { ascending: false })
+        .limit(1)
+        .maybeSingle();
+
+      if (error) throw error;
+      return data?.updated_at;
+    },
+  });
+
   const getDayStatus = (date: Date) => {
     const dateStr = format(date, "yyyy-MM-dd");
     return closures?.filter((c) => c.closure_date === dateStr) || [];
@@ -58,6 +73,11 @@ const FieldStatus = () => {
       <p className="text-sm text-muted-foreground mb-6 p-4 bg-muted/50 rounded-lg border">
         Aangekondigde sluitingen van het veld. Indien er twijfel is, stuur een rechtstreeks bericht naar de betreffende team manager, of neem contact op met ons via de contact pagina.
       </p>
+      {lastUpdate && (
+        <p className="text-xs text-muted-foreground mb-4">
+          Laatste update op {format(new Date(lastUpdate), "EEEE d MMMM yyyy 'om' HH:mm", { locale: nl })}
+        </p>
+      )}
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {days.map((day) => {
