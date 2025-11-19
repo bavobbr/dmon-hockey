@@ -78,13 +78,6 @@ const Dashboard = () => {
       count: loading ? 'Laden...' : `${counts.sponsors} actief`,
     },
     {
-      title: 'Bestuursleden',
-      description: 'Beheer bestuur',
-      icon: UserCheck,
-      href: '/admin/board-members',
-      count: loading ? 'Laden...' : `${counts.boardMembers} actief`,
-    },
-    {
       title: 'Terreinsluitingen',
       description: 'Beheer terreinsluitingen',
       icon: Calendar,
@@ -94,13 +87,22 @@ const Dashboard = () => {
   ];
 
   if (isAdmin) {
-    adminCards.push({
-      title: 'Gebruikersbeheer',
-      description: 'Beheer gebruikersrollen en toestemmingen',
-      icon: Users,
-      href: '/admin/users',
-      count: loading ? 'Laden...' : `${counts.users} leden`,
-    });
+    adminCards.push(
+      {
+        title: 'Bestuursleden',
+        description: 'Beheer bestuur',
+        icon: UserCheck,
+        href: '/admin/board-members',
+        count: loading ? 'Laden...' : `${counts.boardMembers} actief`,
+      },
+      {
+        title: 'Gebruikersbeheer',
+        description: 'Beheer gebruikersrollen en toestemmingen',
+        icon: Users,
+        href: '/admin/users',
+        count: loading ? 'Laden...' : `${counts.users} leden`,
+      }
+    );
   }
 
   return (
