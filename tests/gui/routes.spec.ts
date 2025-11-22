@@ -23,6 +23,7 @@ const paths: string[] = [
   '/sporting/training',
   '/sporting/how-to-play',
   '/sporting/rules',
+  '/sporting/rules/indoor',
   '/sporting/stick-guide',
   '/sporting/coaches-info',
 ];
