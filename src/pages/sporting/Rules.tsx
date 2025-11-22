@@ -71,6 +71,17 @@ const Rules = () => {
                     </div>
                   </div>
                 </Link>
+                <Link to="/sporting/rules/indoor" className="block">
+                  <div className="p-3 bg-muted rounded-lg hover:bg-muted/80 transition-colors group cursor-pointer">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h4 className="font-semibold text-sm mb-1">Indoor</h4>
+                        <p className="text-sm text-muted-foreground">Regels voor indoor hockey</p>
+                      </div>
+                      <ChevronRight className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors" />
+                    </div>
+                  </div>
+                </Link>
               </CardContent>
             </Card>
 
