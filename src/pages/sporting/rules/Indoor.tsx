@@ -3,10 +3,8 @@ import { Users, Shield, Flag, AlertCircle, ExternalLink, UserCheck } from "lucid
 import { Button } from "@/components/ui/button";
 import indoorRulesTable1 from "@/assets/indoor-rules-table-1.png";
 import indoorRulesTable2 from "@/assets/indoor-rules-table-2.png";
-
 const IndoorRules = () => {
-  return (
-    <div className="container mx-auto px-4 py-8">
+  return <div className="container mx-auto px-4 py-8">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold mb-8 text-foreground">Indoor Hockey: Een Gids voor Beginners</h1>
         
@@ -28,16 +26,10 @@ const IndoorRules = () => {
             </CardHeader>
             <CardContent>
               <p className="text-base mb-4">
-                Wil je jezelf al registreren bij ons, zodat we je meteen toegang kunnen voorzien tot onder andere Drillster én je mee op het wedstrijdblad kunnen zetten?
+                Wil je jezelf als scheidsrechter registreren bij ons, zodat we je meteen toegang kunnen voorzien tot onder andere Drillster én je mee op het wedstrijdblad kunnen zetten?
               </p>
               <Button asChild size="lg" className="w-full sm:w-auto">
-                <a 
-                  href="https://app.twizzit.com/v2/public/form/cea9e8831bead08352918535621cd399" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2"
-                >
-                  <ExternalLink className="h-4 w-4" />
+                <a href="https://app.twizzit.com/v2/public/form/cea9e8831bead08352918535621cd399" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">Registreer als scheidrechter via Twizzit<ExternalLink className="h-4 w-4" />
                   Registreer via Twizzit
                 </a>
               </Button>
@@ -92,11 +84,7 @@ const IndoorRules = () => {
             </CardHeader>
             <CardContent>
               <div className="text-center mb-4">
-                <img 
-                  src={indoorRulesTable1} 
-                  alt="Indoor hockey spelregels overzicht" 
-                  className="w-full max-w-3xl mx-auto rounded-lg shadow-md"
-                />
+                <img src={indoorRulesTable1} alt="Indoor hockey spelregels overzicht" className="w-full max-w-3xl mx-auto rounded-lg shadow-md" />
               </div>
               
               <div className="space-y-4 mt-6">
@@ -403,11 +391,7 @@ const IndoorRules = () => {
             </CardHeader>
             <CardContent>
               <div className="text-center mb-6">
-                <img 
-                  src={indoorRulesTable2} 
-                  alt="Indoor hockey verschillen per leeftijdscategorie" 
-                  className="w-full max-w-3xl mx-auto rounded-lg shadow-md"
-                />
+                <img src={indoorRulesTable2} alt="Indoor hockey verschillen per leeftijdscategorie" className="w-full max-w-3xl mx-auto rounded-lg shadow-md" />
               </div>
               
               <div className="space-y-4 mt-6">
@@ -497,34 +481,19 @@ const IndoorRules = () => {
             <CardContent>
               <div className="space-y-2">
                 <Button asChild variant="outline" className="w-full justify-start">
-                  <a 
-                    href="https://hockey.be/nl/competitie/indoor-hockey/spelregels/" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2"
-                  >
+                  <a href="https://hockey.be/nl/competitie/indoor-hockey/spelregels/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                     <ExternalLink className="h-4 w-4" />
                     BEL-Indoor-Rules-NL.pdf
                   </a>
                 </Button>
                 <Button asChild variant="outline" className="w-full justify-start">
-                  <a 
-                    href="https://hockey.be/nl/competitie/indoor-hockey/spelregels/" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2"
-                  >
+                  <a href="https://hockey.be/nl/competitie/indoor-hockey/spelregels/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                     <ExternalLink className="h-4 w-4" />
                     Indoor-Spelregels-U8-U12.pdf
                   </a>
                 </Button>
                 <Button asChild variant="outline" className="w-full justify-start">
-                  <a 
-                    href="https://hockey.be/nl/competitie/indoor-hockey/spelregels/" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2"
-                  >
+                  <a href="https://hockey.be/nl/competitie/indoor-hockey/spelregels/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                     <ExternalLink className="h-4 w-4" />
                     Indoor-Spelregels-U14-U19.pdf
                   </a>
@@ -534,8 +503,6 @@ const IndoorRules = () => {
           </Card>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default IndoorRules;
