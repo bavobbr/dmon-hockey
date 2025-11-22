@@ -103,6 +103,7 @@ const navigation = [
           { title: "U9", url: "/sporting/rules/u9", icon: Users },
           { title: "U10 tot U12", url: "/sporting/rules/u10-u12", icon: Users },
           { title: "U14 tot senior", url: "/sporting/rules/u14-plus", icon: Users },
+          { title: "Indoor", url: "/sporting/rules/indoor", icon: Users },
         ]
       },
       { title: "De Juiste Stick", url: "/sporting/stick-guide", icon: Zap },
