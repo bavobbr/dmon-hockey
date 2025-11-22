@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, MapPin, Users, ShoppingBag, Euro, CheckCircle2, AlertCircle } from "lucide-react";
+import { Calendar, MapPin, Users, ShoppingBag, Euro, CheckCircle2, AlertCircle, BookOpen } from "lucide-react";
 const IndoorHockey = () => {
   const competitionTeams = ["U9G", "U10G", "U10B", "U12B", "U14G", "U14B1", "U14B2", "U16G1", "U16G2"];
   const trainingSchedule = [{
@@ -116,6 +116,33 @@ const IndoorHockey = () => {
                 </div>
               </div>
             </div>
+          </CardContent>
+        </Card>
+
+        {/* Rules Link */}
+        <Card className="mb-8 border-primary/20 bg-primary/5">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <BookOpen className="h-5 w-5" />
+              Spelregels Indoor Hockey
+            </CardTitle>
+            <CardDescription>
+              Ontdek alle regels en richtlijnen voor indoor hockey
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="text-muted-foreground mb-4">
+              Wil je meer weten over de spelregels van indoor hockey? We hebben een uitgebreide gids 
+              samengesteld voor beginners en gevorderden met alle informatie over het speelveld, 
+              uitrusting, straffen en de verschillen per leeftijdscategorie.
+            </p>
+            <a 
+              href="/sporting/rules/indoor"
+              className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+            >
+              Bekijk de spelregels
+              <BookOpen className="h-4 w-4" />
+            </a>
           </CardContent>
         </Card>
 
