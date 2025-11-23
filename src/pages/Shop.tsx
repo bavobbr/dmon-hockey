@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ShoppingBag, ExternalLink } from "lucide-react";
+import { Shirt, ShoppingCart, ExternalLink } from "lucide-react";
 
 const Shop = () => {
   return (
@@ -13,7 +13,7 @@ const Shop = () => {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <ShoppingBag className="h-5 w-5" />
+                <Shirt className="h-5 w-5" />
                 Topsport Kledijwinkel
               </CardTitle>
               <CardDescription>
@@ -32,7 +32,7 @@ const Shop = () => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2"
                 >
-                  <ShoppingBag className="h-5 w-5" />
+                  <Shirt className="h-5 w-5" />
                   Bezoek Topsport Kledijwinkel
                   <ExternalLink className="h-4 w-4" />
                 </a>
@@ -54,7 +54,7 @@ const Shop = () => {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <ShoppingBag className="h-5 w-5" />
+                <ShoppingCart className="h-5 w-5" />
                 Clubshop
               </CardTitle>
               <CardDescription>
@@ -72,7 +72,7 @@ const Shop = () => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2"
                 >
-                  <ShoppingBag className="h-5 w-5" />
+                  <ShoppingCart className="h-5 w-5" />
                   Bezoek Clubshop
                   <ExternalLink className="h-4 w-4" />
                 </a>
