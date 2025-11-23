@@ -26,6 +26,7 @@ const paths: string[] = [
   '/sporting/rules/indoor',
   '/sporting/stick-guide',
   '/sporting/coaches-info',
+  '/sporting/hockey-principles',
 ];
 
 const edgeFunctionPaths: string[] = ['/', '/socials', '/club/field'];
