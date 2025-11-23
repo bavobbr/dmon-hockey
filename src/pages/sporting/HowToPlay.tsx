@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { BookOpen, Users, Trophy, Play, Shield, Target, Heart, ExternalLink, ArrowRight } from "lucide-react";
+import { BookOpen, Users, Trophy, Play, Shield, Target, Heart, ExternalLink, ArrowRight, PlayCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 const HowToPlay = () => {
   return <div className="container mx-auto px-4 py-8">
@@ -247,6 +247,53 @@ const HowToPlay = () => {
               </CardContent>
             </Card>
           </Link>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Target className="h-5 w-5" />
+                Technieken
+              </CardTitle>
+              <CardDescription>
+                Technische vaardigheden en oefeningen
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid md:grid-cols-2 gap-4">
+                <Button variant="outline" className="h-auto p-4 justify-start" asChild>
+                  <a 
+                    href="https://docs.google.com/presentation/d/1EHJzdGfRRBGcnwlDCafCR-YrQ1HAUviS/edit?usp=drive_link&ouid=115910454372893949468&rtpof=true&sd=true" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
+                    <div className="text-left">
+                      <div className="flex items-center gap-2 mb-1">
+                        <PlayCircle className="h-4 w-4" />
+                        <span className="font-medium">Basistechnieken: tackling and dribbling</span>
+                      </div>
+                      <p className="text-xs text-muted-foreground">Verdediging en balcontrole</p>
+                    </div>
+                  </a>
+                </Button>
+                
+                <Button variant="outline" className="h-auto p-4 justify-start" asChild>
+                  <a 
+                    href="https://docs.google.com/presentation/d/1cioswx4jL4AMpXzzaSs6Y-okl302Twm6/edit?usp=sharing&ouid=115910454372893949468&rtpof=true&sd=true" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
+                    <div className="text-left">
+                      <div className="flex items-center gap-2 mb-1">
+                        <PlayCircle className="h-4 w-4" />
+                        <span className="font-medium">Basistechnieken: passing, receiving and scoring</span>
+                      </div>
+                      <p className="text-xs text-muted-foreground">Aanvallende technieken</p>
+                    </div>
+                  </a>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
         </div>
 
         <Card className="mb-8">
