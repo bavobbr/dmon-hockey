@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { BookOpen, Users, Trophy, Play, Shield, Target, Heart, ExternalLink } from "lucide-react";
+import { BookOpen, Users, Trophy, Play, Shield, Target, Heart, ExternalLink, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 const HowToPlay = () => {
   return <div className="container mx-auto px-4 py-8">
       <div className="max-w-4xl mx-auto">
@@ -226,16 +227,26 @@ const HowToPlay = () => {
             </CardContent>
           </Card>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>Uitleg hockeyveld & posities</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="aspect-video rounded-lg overflow-hidden">
-                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/v5mTP1R_jqQ" frameBorder="0" allowFullScreen className="w-full h-full" />
-              </div>
-            </CardContent>
-          </Card>
+          <Link to="/sporting/hockey-principles">
+            <Card className="hover:shadow-lg transition-shadow cursor-pointer border-primary/20">
+              <CardContent className="pt-6">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 bg-primary/10 rounded-lg">
+                      <Target className="h-6 w-6 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold mb-1">Hockey Principes</h3>
+                      <p className="text-muted-foreground text-sm">
+                        Ontdek de vier fasen van het spel: Offense, Defensive Transition, Defense en Offensive Transition
+                      </p>
+                    </div>
+                  </div>
+                  <ArrowRight className="h-6 w-6 text-muted-foreground flex-shrink-0" />
+                </div>
+              </CardContent>
+            </Card>
+          </Link>
         </div>
 
         <Card className="mb-8">
