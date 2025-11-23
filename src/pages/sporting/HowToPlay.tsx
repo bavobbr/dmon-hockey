@@ -1,9 +1,21 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { BookOpen, Users, Trophy, Play, Shield, Target, Heart, ExternalLink, ArrowRight, PlayCircle } from "lucide-react";
+import {
+  BookOpen,
+  Users,
+  Trophy,
+  Play,
+  Shield,
+  Target,
+  Heart,
+  ExternalLink,
+  ArrowRight,
+  PlayCircle,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 const HowToPlay = () => {
-  return <div className="container mx-auto px-4 py-8">
+  return (
+    <div className="container mx-auto px-4 py-8">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold mb-4 text-foreground">Start met hockey bij D-mon Hockey</h1>
@@ -113,9 +125,16 @@ const HowToPlay = () => {
             </CardHeader>
             <CardContent>
               <div className="aspect-video rounded-lg overflow-hidden">
-                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/mYYCfWJZySo" frameBorder="0" allowFullScreen className="w-full h-full" />
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/NPnrKxFwInc"
+                  frameBorder="0"
+                  allowFullScreen
+                  className="w-full h-full"
+                />
               </div>
-              <p className="text-sm text-muted-foreground mt-2">KNHB</p>
+              <p className="text-sm text-muted-foreground mt-2">FIH</p>
             </CardContent>
           </Card>
 
@@ -128,7 +147,14 @@ const HowToPlay = () => {
             </CardHeader>
             <CardContent>
               <div className="aspect-video rounded-lg overflow-hidden">
-                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/p8OF9JyiBC0" frameBorder="0" allowFullScreen className="w-full h-full" />
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/p8OF9JyiBC0"
+                  frameBorder="0"
+                  allowFullScreen
+                  className="w-full h-full"
+                />
               </div>
               <p className="text-sm text-muted-foreground mt-2">Hockey Belgium</p>
             </CardContent>
@@ -253,16 +279,14 @@ const HowToPlay = () => {
               <Target className="h-5 w-5" />
               Technieken
             </CardTitle>
-            <CardDescription>
-              Technische vaardigheden en oefeningen
-            </CardDescription>
+            <CardDescription>Technische vaardigheden en oefeningen</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-2 gap-4">
               <Button variant="outline" className="h-auto p-4 justify-start" asChild>
-                <a 
-                  href="https://docs.google.com/presentation/d/1EHJzdGfRRBGcnwlDCafCR-YrQ1HAUviS/edit?usp=drive_link&ouid=115910454372893949468&rtpof=true&sd=true" 
-                  target="_blank" 
+                <a
+                  href="https://docs.google.com/presentation/d/1EHJzdGfRRBGcnwlDCafCR-YrQ1HAUviS/edit?usp=drive_link&ouid=115910454372893949468&rtpof=true&sd=true"
+                  target="_blank"
                   rel="noopener noreferrer"
                 >
                   <div className="text-left">
@@ -274,11 +298,11 @@ const HowToPlay = () => {
                   </div>
                 </a>
               </Button>
-              
+
               <Button variant="outline" className="h-auto p-4 justify-start" asChild>
-                <a 
-                  href="https://docs.google.com/presentation/d/1cioswx4jL4AMpXzzaSs6Y-okl302Twm6/edit?usp=sharing&ouid=115910454372893949468&rtpof=true&sd=true" 
-                  target="_blank" 
+                <a
+                  href="https://docs.google.com/presentation/d/1cioswx4jL4AMpXzzaSs6Y-okl302Twm6/edit?usp=sharing&ouid=115910454372893949468&rtpof=true&sd=true"
+                  target="_blank"
                   rel="noopener noreferrer"
                 >
                   <div className="text-left">
@@ -414,6 +438,7 @@ const HowToPlay = () => {
           </CardContent>
         </Card>
       </div>
-    </div>;
+    </div>
+  );
 };
 export default HowToPlay;
