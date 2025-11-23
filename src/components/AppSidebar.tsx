@@ -19,7 +19,8 @@ import {
   Zap,
   MessageCircle,
   Camera,
-  ThermometerSnowflake
+  ThermometerSnowflake,
+  HousePlus
 } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useEffect } from "react";
@@ -107,7 +108,7 @@ const navigation = [
         ]
       },
       { title: "De Juiste Stick", url: "/sporting/stick-guide", icon: Zap },
-      { title: "Indoor Hockey", url: "/sporting/indoor-hockey", icon: Trophy },
+      { title: "Indoor Hockey", url: "/sporting/indoor-hockey", icon: HousePlus },
     ],
   },
   {
