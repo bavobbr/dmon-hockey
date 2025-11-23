@@ -1,5 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import principlesDiagram from "@/assets/hockey-principles.png";
 
 const HockeyPrinciples = () => {
@@ -19,13 +20,27 @@ const HockeyPrinciples = () => {
         <Card>
           <CardHeader>
             <CardTitle>Overzicht Vier Fasen van het Spel</CardTitle>
+            <CardDescription>Klik op de afbeelding om te vergroten</CardDescription>
           </CardHeader>
           <CardContent>
-            <img 
-              src={principlesDiagram} 
-              alt="Hockey Principles Diagram" 
-              className="w-full h-auto rounded-lg"
-            />
+            <Dialog>
+              <DialogTrigger asChild>
+                <img 
+                  src={principlesDiagram} 
+                  alt="Hockey Principles Diagram" 
+                  className="max-w-2xl w-full h-auto rounded-lg cursor-pointer hover:opacity-90 transition-opacity mx-auto"
+                />
+              </DialogTrigger>
+              <DialogContent className="max-w-7xl w-[95vw] h-[95vh] p-0">
+                <div className="w-full h-full flex items-center justify-center p-4 overflow-auto">
+                  <img 
+                    src={principlesDiagram} 
+                    alt="Hockey Principles Diagram - Full Size" 
+                    className="w-full h-auto rounded-lg"
+                  />
+                </div>
+              </DialogContent>
+            </Dialog>
           </CardContent>
         </Card>
 
