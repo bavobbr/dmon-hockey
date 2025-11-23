@@ -2,7 +2,7 @@ import {
   Home, 
   Users, 
   UserCheck, 
-  ShoppingBag, 
+  Shirt, 
   Trophy,
   ChevronDown,
   MapPin,
@@ -113,7 +113,7 @@ const navigation = [
   {
     title: "Shop & Kleding",
     url: "/shop",
-    icon: ShoppingBag,
+    icon: Shirt,
   },
   {
     title: "Terrein Status",
