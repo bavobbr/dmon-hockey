@@ -189,112 +189,110 @@ const HowToPlay = () => {
           </CardContent>
         </Card>
 
-        <div className="grid lg:grid-cols-2 gap-6 mb-8">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Target className="h-5 w-5" />
-                Het veld & de posities
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                <div>
-                  <h4 className="font-medium mb-2">Veldafmetingen</h4>
-                  <ul className="text-sm text-muted-foreground space-y-1">
-                    <li>
-                      • <strong>Afmetingen:</strong> 91,4 m × 55 m
-                    </li>
-                    <li>
-                      • <strong>Cirkel:</strong> Halfronde lijn voor het doel – alleen van hieruit scoren
-                    </li>
-                    <li>
-                      • <strong>23-meterlijnen:</strong> Belangrijk bij spelhervattingen
-                    </li>
-                  </ul>
-                </div>
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Target className="h-5 w-5" />
+              Het veld & de posities
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              <div>
+                <h4 className="font-medium mb-2">Veldafmetingen</h4>
+                <ul className="text-sm text-muted-foreground space-y-1">
+                  <li>
+                    • <strong>Afmetingen:</strong> 91,4 m × 55 m
+                  </li>
+                  <li>
+                    • <strong>Cirkel:</strong> Halfronde lijn voor het doel – alleen van hieruit scoren
+                  </li>
+                  <li>
+                    • <strong>23-meterlijnen:</strong> Belangrijk bij spelhervattingen
+                  </li>
+                </ul>
+              </div>
 
-                <div>
-                  <h4 className="font-medium mb-2">Posities</h4>
-                  <div className="grid grid-cols-2 gap-2 text-sm">
-                    <div className="bg-muted/50 p-2 rounded">Keeper</div>
-                    <div className="bg-muted/50 p-2 rounded">Verdedigers</div>
-                    <div className="bg-muted/50 p-2 rounded">Middenvelders</div>
-                    <div className="bg-muted/50 p-2 rounded">Aanvallers</div>
+              <div>
+                <h4 className="font-medium mb-2">Posities</h4>
+                <div className="grid grid-cols-2 gap-2 text-sm">
+                  <div className="bg-muted/50 p-2 rounded">Keeper</div>
+                  <div className="bg-muted/50 p-2 rounded">Verdedigers</div>
+                  <div className="bg-muted/50 p-2 rounded">Middenvelders</div>
+                  <div className="bg-muted/50 p-2 rounded">Aanvallers</div>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Link to="/sporting/hockey-principles" className="block mb-8">
+          <Card className="hover:shadow-lg transition-shadow cursor-pointer border-primary/20">
+            <CardContent className="pt-6">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <div className="p-3 bg-primary/10 rounded-lg">
+                    <Target className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-1">Hockey Principes</h3>
+                    <p className="text-muted-foreground text-sm">
+                      Ontdek de vier fasen van het spel: Offense, Defensive Transition, Defense en Offensive Transition
+                    </p>
                   </div>
                 </div>
+                <ArrowRight className="h-6 w-6 text-muted-foreground flex-shrink-0" />
               </div>
             </CardContent>
           </Card>
+        </Link>
 
-          <Link to="/sporting/hockey-principles">
-            <Card className="hover:shadow-lg transition-shadow cursor-pointer border-primary/20">
-              <CardContent className="pt-6">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 bg-primary/10 rounded-lg">
-                      <Target className="h-6 w-6 text-primary" />
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Target className="h-5 w-5" />
+              Technieken
+            </CardTitle>
+            <CardDescription>
+              Technische vaardigheden en oefeningen
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid md:grid-cols-2 gap-4">
+              <Button variant="outline" className="h-auto p-4 justify-start" asChild>
+                <a 
+                  href="https://docs.google.com/presentation/d/1EHJzdGfRRBGcnwlDCafCR-YrQ1HAUviS/edit?usp=drive_link&ouid=115910454372893949468&rtpof=true&sd=true" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
+                  <div className="text-left">
+                    <div className="flex items-center gap-2 mb-1">
+                      <PlayCircle className="h-4 w-4" />
+                      <span className="font-medium">Basistechnieken: tackling and dribbling</span>
                     </div>
-                    <div>
-                      <h3 className="text-xl font-semibold mb-1">Hockey Principes</h3>
-                      <p className="text-muted-foreground text-sm">
-                        Ontdek de vier fasen van het spel: Offense, Defensive Transition, Defense en Offensive Transition
-                      </p>
-                    </div>
+                    <p className="text-xs text-muted-foreground">Verdediging en balcontrole</p>
                   </div>
-                  <ArrowRight className="h-6 w-6 text-muted-foreground flex-shrink-0" />
-                </div>
-              </CardContent>
-            </Card>
-          </Link>
-
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Target className="h-5 w-5" />
-                Technieken
-              </CardTitle>
-              <CardDescription>
-                Technische vaardigheden en oefeningen
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-2 gap-4">
-                <Button variant="outline" className="h-auto p-4 justify-start" asChild>
-                  <a 
-                    href="https://docs.google.com/presentation/d/1EHJzdGfRRBGcnwlDCafCR-YrQ1HAUviS/edit?usp=drive_link&ouid=115910454372893949468&rtpof=true&sd=true" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                  >
-                    <div className="text-left">
-                      <div className="flex items-center gap-2 mb-1">
-                        <PlayCircle className="h-4 w-4" />
-                        <span className="font-medium">Basistechnieken: tackling and dribbling</span>
-                      </div>
-                      <p className="text-xs text-muted-foreground">Verdediging en balcontrole</p>
+                </a>
+              </Button>
+              
+              <Button variant="outline" className="h-auto p-4 justify-start" asChild>
+                <a 
+                  href="https://docs.google.com/presentation/d/1cioswx4jL4AMpXzzaSs6Y-okl302Twm6/edit?usp=sharing&ouid=115910454372893949468&rtpof=true&sd=true" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
+                  <div className="text-left">
+                    <div className="flex items-center gap-2 mb-1">
+                      <PlayCircle className="h-4 w-4" />
+                      <span className="font-medium">Basistechnieken: passing, receiving and scoring</span>
                     </div>
-                  </a>
-                </Button>
-                
-                <Button variant="outline" className="h-auto p-4 justify-start" asChild>
-                  <a 
-                    href="https://docs.google.com/presentation/d/1cioswx4jL4AMpXzzaSs6Y-okl302Twm6/edit?usp=sharing&ouid=115910454372893949468&rtpof=true&sd=true" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                  >
-                    <div className="text-left">
-                      <div className="flex items-center gap-2 mb-1">
-                        <PlayCircle className="h-4 w-4" />
-                        <span className="font-medium">Basistechnieken: passing, receiving and scoring</span>
-                      </div>
-                      <p className="text-xs text-muted-foreground">Aanvallende technieken</p>
-                    </div>
-                  </a>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+                    <p className="text-xs text-muted-foreground">Aanvallende technieken</p>
+                  </div>
+                </a>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
 
         <Card className="mb-8">
           <CardHeader>
