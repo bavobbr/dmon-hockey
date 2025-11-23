@@ -62,6 +62,7 @@ import U14PlusRules from "./pages/sporting/rules/U14Plus";
 import IndoorRules from "./pages/sporting/rules/Indoor";
 import StickGuide from "./pages/sporting/StickGuide";
 import CoachesInfo from "./pages/sporting/CoachesInfo";
+import HockeyPrinciples from "./pages/sporting/HockeyPrinciples";
 import Socials from "./pages/Socials";
 import Events from "./pages/Events";
 import { Analytics } from "@vercel/analytics/react";
@@ -163,6 +164,7 @@ const App = () => (
             <Route path="/sporting/rules/indoor" element={<IndoorRules />} />
                     <Route path="/sporting/stick-guide" element={<StickGuide />} />
                     <Route path="/sporting/coaches-info" element={<CoachesInfo />} />
+                    <Route path="/sporting/hockey-principles" element={<HockeyPrinciples />} />
                     <Route path="/sporting/indoor-hockey" element={<IndoorHockey />} />
                     
                     {/* Admin routes */}

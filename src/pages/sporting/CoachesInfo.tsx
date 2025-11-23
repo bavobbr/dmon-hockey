@@ -1,12 +1,35 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Download, BookOpen, Users, Target, Zap, PlayCircle } from "lucide-react";
+import { Download, BookOpen, Users, Target, Zap, PlayCircle, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const CoachesInfo = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold mb-8 text-foreground">Informatie voor Coaches</h1>
+        
+        {/* Hockey Principles Link */}
+        <Link to="/sporting/hockey-principles">
+          <Card className="mb-8 hover:shadow-lg transition-shadow cursor-pointer border-primary/20">
+            <CardContent className="pt-6">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <div className="p-3 bg-primary/10 rounded-lg">
+                    <Target className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-1">Hockey Principes</h3>
+                    <p className="text-muted-foreground text-sm">
+                      Uitgebreide gids over de vier fasen van het spel: Offense, Defensive Transition, Defense en Offensive Transition
+                    </p>
+                  </div>
+                </div>
+                <ArrowRight className="h-6 w-6 text-muted-foreground flex-shrink-0" />
+              </div>
+            </CardContent>
+          </Card>
+        </Link>
         
         <Card className="mb-8">
           <CardHeader>
