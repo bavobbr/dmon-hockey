@@ -19,7 +19,7 @@ import {
   Zap,
   MessageCircle,
   Camera,
-  Sun
+  ThermometerSnowflake
 } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useEffect } from "react";
@@ -118,7 +118,7 @@ const navigation = [
   {
     title: "Terrein Status",
     url: "/club/field-status",
-    icon: Sun,
+    icon: ThermometerSnowflake,
   },
 ];
 
