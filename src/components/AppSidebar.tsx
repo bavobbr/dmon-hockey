@@ -23,8 +23,9 @@ import {
   HousePlus
 } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useWindowHeight } from "@/hooks/use-window-height";
 
 import {
   Sidebar,
@@ -123,11 +124,60 @@ const navigation = [
   },
 ];
 
+// Group titles in priority order for auto-expansion
+const GROUP_PRIORITY = ["De Club", "Sportief", "Lidmaatschap"];
+
+// Calculate how many groups to auto-expand based on viewport height
+const getAutoExpandCount = (height: number): number => {
+  if (height >= 1100) return 3; // all groups
+  if (height >= 950) return 2;
+  if (height >= 800) return 1;
+  return 0; // no auto-expand on small screens
+};
+
 export function AppSidebar() {
   const { open, setOpen, openMobile, setOpenMobile, state } = useSidebar();
   const isMobile = useIsMobile();
   const location = useLocation();
   const currentPath = location.pathname;
+  const windowHeight = useWindowHeight();
+
+  // Track which groups are manually toggled by user
+  const [manualOverrides, setManualOverrides] = useState<Record<string, boolean>>({});
+
+  // Calculate which groups should be expanded
+  const expandedGroups = useMemo(() => {
+    const autoExpandCount = getAutoExpandCount(windowHeight);
+    const result: Record<string, boolean> = {};
+
+    // Get collapsible groups from navigation
+    const collapsibleGroups = navigation.filter(item => item.items);
+
+    collapsibleGroups.forEach((group, index) => {
+      const isActiveRoute = group.items!.some(item => currentPath.startsWith(item.url));
+      const priorityIndex = GROUP_PRIORITY.indexOf(group.title);
+      const shouldAutoExpand = priorityIndex !== -1 && priorityIndex < autoExpandCount;
+
+      // Priority: manual override > active route > auto-expand
+      if (manualOverrides[group.title] !== undefined) {
+        result[group.title] = manualOverrides[group.title];
+      } else if (isActiveRoute) {
+        result[group.title] = true;
+      } else {
+        result[group.title] = shouldAutoExpand;
+      }
+    });
+
+    return result;
+  }, [windowHeight, currentPath, manualOverrides]);
+
+  // Handle manual toggle of groups
+  const handleGroupToggle = (groupTitle: string, isOpen: boolean) => {
+    setManualOverrides(prev => ({
+      ...prev,
+      [groupTitle]: isOpen,
+    }));
+  };
 
   // Close sidebar on mobile when route changes
   useEffect(() => {
@@ -139,6 +189,11 @@ export function AppSidebar() {
       return () => clearTimeout(timer);
     }
   }, [currentPath, isMobile, setOpenMobile]);
+
+  // Reset manual overrides when route changes (user navigates to new section)
+  useEffect(() => {
+    setManualOverrides({});
+  }, [currentPath]);
 
   // Handle mobile navigation click - let useEffect handle closing on route change
   const handleMobileNavClick = () => {
@@ -186,11 +241,12 @@ export function AppSidebar() {
             <SidebarMenu>
               {navigation.map((item) => {
                 if (item.items) {
-                  const isExpanded = isGroupActive(item.items);
+                  const isExpanded = expandedGroups[item.title] ?? false;
                   return (
                     <Collapsible
                       key={item.title}
-                      defaultOpen={isExpanded}
+                      open={isExpanded}
+                      onOpenChange={(open) => handleGroupToggle(item.title, open)}
                       className="group/collapsible"
                     >
                       <SidebarMenuItem>
