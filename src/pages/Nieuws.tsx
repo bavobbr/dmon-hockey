@@ -176,7 +176,7 @@ const Nieuws = () => {
                       </DialogDescription>
                     </DialogHeader>
                     <div 
-                      className="prose prose-sm max-w-none text-foreground mt-4" 
+                      className="prose prose-sm max-w-none text-foreground mt-4 prose-a:text-primary prose-a:underline prose-a:underline-offset-2 hover:prose-a:text-primary/80" 
                       dangerouslySetInnerHTML={{ 
                         __html: DOMPurify.sanitize(announcement.content) 
                       }} 
