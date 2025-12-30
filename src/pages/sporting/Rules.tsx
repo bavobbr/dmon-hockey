@@ -1,5 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Timer, Users, Award, Lightbulb, ExternalLink, BookOpen, ChevronRight } from "lucide-react";
+import { Timer, Users, Award, Lightbulb, ExternalLink, BookOpen, ChevronRight, Bot } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import scheidsrechterPad from "@/assets/scheidsrechter-pad.png";
@@ -12,6 +12,24 @@ const Rules = () => {
         <h1 className="text-4xl font-bold mb-8 text-foreground">Regels & Scheidsrechters</h1>
         
         <div className="prose prose-gray dark:prose-invert max-w-none">
+          {/* Rules Agent CTA */}
+          <Link to="/sporting/rules-agent" className="block mb-8">
+            <div className="p-4 bg-primary/10 rounded-lg border border-primary/30 hover:bg-primary/20 transition-colors group">
+              <div className="flex items-center gap-3">
+                <div className="p-2 rounded-full bg-primary/20 group-hover:bg-primary/30 transition-colors">
+                  <Bot className="h-5 w-5 text-primary" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-foreground mb-0.5">Heb je een vraag over de regels?</h3>
+                  <p className="text-sm text-muted-foreground m-0">
+                    Stel je vraag aan onze Regels Assistent en krijg direct antwoord op basis van de officiële FIH regelgeving.
+                  </p>
+                </div>
+                <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+              </div>
+            </div>
+          </Link>
+
           <div className="mb-8 p-6 bg-primary/5 rounded-lg border border-primary/20">
             <p className="text-lg mb-4">
               Je bent vaak op hockey-wedstrijden aanwezig en wilt de club graag meehelpen? Dan is scheidsrechter een van de meest zinvolle, interessante én leuke taken die je kan opnemen!
