@@ -62,6 +62,7 @@ import U14PlusRules from "./pages/sporting/rules/U14Plus";
 import IndoorRules from "./pages/sporting/rules/Indoor";
 import StickGuide from "./pages/sporting/StickGuide";
 import CoachesInfo from "./pages/sporting/CoachesInfo";
+import RulesAgent from "./pages/sporting/RulesAgent";
 import HockeyPrinciples from "./pages/sporting/HockeyPrinciples";
 import Socials from "./pages/Socials";
 import Events from "./pages/Events";
@@ -166,6 +167,7 @@ const App = () => (
                     <Route path="/sporting/coaches-info" element={<CoachesInfo />} />
                     <Route path="/sporting/hockey-principles" element={<HockeyPrinciples />} />
                     <Route path="/sporting/indoor-hockey" element={<IndoorHockey />} />
+                    <Route path="/sporting/rules-agent" element={<RulesAgent />} />
                     
                     {/* Admin routes */}
                     <Route path="/admin" element={
