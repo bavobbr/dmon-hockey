@@ -7,7 +7,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Bot, Send, User, ExternalLink, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
-const API_URL = "https://fih-rag-public-881796397796.europe-west1.run.app/chat";
+const API_URL = "https://fih-rag-api-282549120912.europe-west1.run.app/chat";
 const API_KEY = "some_secret_key";
 
 interface Message {
