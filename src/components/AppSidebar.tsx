@@ -107,11 +107,11 @@ const navigation = [
           { title: "U10 tot U12", url: "/sporting/rules/u10-u12", icon: Users },
           { title: "U14 tot senior", url: "/sporting/rules/u14-plus", icon: Users },
           { title: "Indoor", url: "/sporting/rules/indoor", icon: Users },
+          { title: "Regels Assistent", url: "/sporting/rules-agent", icon: Bot },
         ]
       },
       { title: "De Juiste Stick", url: "/sporting/stick-guide", icon: Zap },
       { title: "Indoor Hockey", url: "/sporting/indoor-hockey", icon: HousePlus },
-      { title: "Regels Assistent", url: "/sporting/rules-agent", icon: Bot },
     ],
   },
   {
