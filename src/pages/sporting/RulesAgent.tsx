@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Bot, Send, User, ExternalLink, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import ReactMarkdown from "react-markdown";
 
 const API_URL = "https://fih-rag-api-282549120912.europe-west1.run.app/chat";
 const API_KEY = "some_secret_key";
@@ -197,7 +198,13 @@ export default function RulesAgent() {
                           : "bg-muted"
                       }`}
                     >
-                      <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                      {message.role === "assistant" ? (
+                        <div className="text-sm prose prose-sm dark:prose-invert max-w-none prose-p:my-1 prose-ul:my-1 prose-li:my-0">
+                          <ReactMarkdown>{message.content}</ReactMarkdown>
+                        </div>
+                      ) : (
+                        <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                      )}
                       {message.variant && (
                         <Badge 
                           className={`mt-2 text-xs ${getVariantColor(message.variant)} text-white`}
