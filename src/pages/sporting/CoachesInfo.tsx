@@ -226,13 +226,13 @@ const CoachesInfo = () => {
                     </a>
                   </Button>
                   <Button variant="outline" size="sm" asChild>
-                    <a href="https://drive.google.com/uc?export=download&id=1cL9ZvAZra83yIXVeDc1OF2uDIBYkMm8J" target="_blank" rel="noopener noreferrer">
+                    <a href="/docs/PC_defense_-_principes.pdf" target="_blank" rel="noopener noreferrer">
                       <Download className="h-4 w-4 mr-2" />
                       PC defense
                     </a>
                   </Button>
                   <Button variant="outline" size="sm" asChild>
-                    <a href="https://drive.google.com/uc?export=download&id=1_ECycpOOTNK2mnf5lqrURcjysjaEgObM" target="_blank" rel="noopener noreferrer">
+                    <a href="/docs/PC_aanval_-_varianten_en_option_select.pdf" target="_blank" rel="noopener noreferrer">
                       <Download className="h-4 w-4 mr-2" />
                       PC aanval
                     </a>
