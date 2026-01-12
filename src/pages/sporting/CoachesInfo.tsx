@@ -339,6 +339,18 @@ const CoachesInfo = () => {
                       Lange corners
                     </a>
                   </Button>
+                  <Button variant="outline" size="sm" asChild>
+                    <a href="/docs/433_aanval.pdf" target="_blank" rel="noopener noreferrer">
+                      <Download className="h-4 w-4 mr-2" />
+                      Aanval
+                    </a>
+                  </Button>
+                  <Button variant="outline" size="sm" asChild>
+                    <a href="/docs/433_sideline_w-press.pdf" target="_blank" rel="noopener noreferrer">
+                      <Download className="h-4 w-4 mr-2" />
+                      Sideline W-press
+                    </a>
+                  </Button>
                 </div>
               </div>
 
