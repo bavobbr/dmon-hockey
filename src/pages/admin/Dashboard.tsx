@@ -11,8 +11,20 @@ import {
   Handshake, 
   UserCheck,
   Plus,
-  Calendar
+  Calendar,
+  Instagram,
+  RefreshCw,
+  CheckCircle,
+  AlertTriangle,
+  XCircle
 } from 'lucide-react';
+import { toast } from 'sonner';
+
+interface InstagramTokenStatus {
+  expires_at: string | null;
+  daysUntilExpiry: number | null;
+  status: 'valid' | 'warning' | 'expired' | 'unknown';
+}
 
 const Dashboard = () => {
   const { user, isAdmin, isModerator } = useAuth();
@@ -26,6 +38,67 @@ const Dashboard = () => {
   });
 
   const [loading, setLoading] = useState(true);
+  const [tokenStatus, setTokenStatus] = useState<InstagramTokenStatus>({
+    expires_at: null,
+    daysUntilExpiry: null,
+    status: 'unknown'
+  });
+  const [refreshingToken, setRefreshingToken] = useState(false);
+
+  const fetchTokenStatus = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('instagram_tokens')
+        .select('expires_at')
+        .order('created_at', { ascending: false })
+        .limit(1)
+        .maybeSingle();
+
+      if (error || !data) {
+        setTokenStatus({ expires_at: null, daysUntilExpiry: null, status: 'unknown' });
+        return;
+      }
+
+      const expiresAt = new Date(data.expires_at);
+      const now = new Date();
+      const daysUntilExpiry = Math.floor((expiresAt.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
+
+      let status: 'valid' | 'warning' | 'expired' = 'valid';
+      if (daysUntilExpiry <= 0) {
+        status = 'expired';
+      } else if (daysUntilExpiry <= 7) {
+        status = 'warning';
+      }
+
+      setTokenStatus({
+        expires_at: data.expires_at,
+        daysUntilExpiry,
+        status
+      });
+    } catch (error) {
+      console.error('Error fetching token status:', error);
+    }
+  };
+
+  const handleRefreshToken = async () => {
+    setRefreshingToken(true);
+    try {
+      const { data, error } = await supabase.functions.invoke('refresh-instagram-token');
+      
+      if (error) {
+        toast.error('Token refresh mislukt');
+        console.error('Refresh error:', error);
+      } else {
+        toast.success('Instagram token vernieuwd');
+        await fetchTokenStatus();
+      }
+    } catch (error) {
+      toast.error('Token refresh mislukt');
+      console.error('Refresh error:', error);
+    } finally {
+      setRefreshingToken(false);
+    }
+  };
 
   useEffect(() => {
     const fetchCounts = async () => {
@@ -53,6 +126,7 @@ const Dashboard = () => {
     };
 
     fetchCounts();
+    fetchTokenStatus();
   }, []);
 
   const adminCards = [
@@ -145,6 +219,68 @@ const Dashboard = () => {
           );
         })}
       </div>
+
+      {/* Instagram Token Status */}
+      {isAdmin && (
+        <div className="mt-8">
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between">
+              <div>
+                <CardTitle className="flex items-center gap-2">
+                  <Instagram className="h-5 w-5" />
+                  Instagram Integratie
+                </CardTitle>
+                <CardDescription>
+                  Status van de Instagram API token
+                </CardDescription>
+              </div>
+              {tokenStatus.status === 'valid' && (
+                <CheckCircle className="h-6 w-6 text-green-500" />
+              )}
+              {tokenStatus.status === 'warning' && (
+                <AlertTriangle className="h-6 w-6 text-yellow-500" />
+              )}
+              {tokenStatus.status === 'expired' && (
+                <XCircle className="h-6 w-6 text-red-500" />
+              )}
+            </CardHeader>
+            <CardContent>
+              <div className="flex items-center justify-between">
+                <div>
+                  {tokenStatus.status === 'unknown' ? (
+                    <p className="text-muted-foreground">Geen token gevonden</p>
+                  ) : tokenStatus.status === 'expired' ? (
+                    <p className="text-red-500 font-medium">Token is verlopen!</p>
+                  ) : (
+                    <>
+                      <p className="text-sm text-muted-foreground">
+                        Verloopt op: {tokenStatus.expires_at ? new Date(tokenStatus.expires_at).toLocaleDateString('nl-BE', {
+                          day: 'numeric',
+                          month: 'long',
+                          year: 'numeric'
+                        }) : 'Onbekend'}
+                      </p>
+                      <p className={`text-lg font-semibold ${
+                        tokenStatus.status === 'warning' ? 'text-yellow-500' : 'text-green-500'
+                      }`}>
+                        {tokenStatus.daysUntilExpiry} dagen resterend
+                      </p>
+                    </>
+                  )}
+                </div>
+                <Button 
+                  variant="outline" 
+                  onClick={handleRefreshToken}
+                  disabled={refreshingToken}
+                >
+                  <RefreshCw className={`h-4 w-4 mr-2 ${refreshingToken ? 'animate-spin' : ''}`} />
+                  {refreshingToken ? 'Vernieuwen...' : 'Token Vernieuwen'}
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
 
       <div className="mt-8">
         <Card>
