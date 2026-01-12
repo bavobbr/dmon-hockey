@@ -244,33 +244,57 @@ const CoachesInfo = () => {
                 <h3 className="font-semibold mb-3">3-2-3-2 Formatie</h3>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
                   <Button variant="outline" size="sm" asChild>
-                    <a href="https://drive.google.com/uc?export=download&id=1iP-qoEzDQqSHbaKoxH7FUIbrICUxFQDS" target="_blank" rel="noopener noreferrer">
+                    <a href="/docs/3232_formatie_-_principes_en_overzicht.pdf" target="_blank" rel="noopener noreferrer">
                       <Download className="h-4 w-4 mr-2" />
-                      3232 versus 433
+                      Principes en overzicht
                     </a>
                   </Button>
                   <Button variant="outline" size="sm" asChild>
-                    <a href="https://drive.google.com/uc?export=download&id=1xnSoOvf5P9HkdFmr0aedRMJLe_vvdv9N" target="_blank" rel="noopener noreferrer">
+                    <a href="/docs/3232_formatie_-_opbouw_met_back3.pdf" target="_blank" rel="noopener noreferrer">
                       <Download className="h-4 w-4 mr-2" />
-                      3232 pressing
+                      Opbouw met back-3
                     </a>
                   </Button>
                   <Button variant="outline" size="sm" asChild>
-                    <a href="https://drive.google.com/uc?export=download&id=1Yw0PwHNNZgFaun7bBZuMoThwy_aYu92l" target="_blank" rel="noopener noreferrer">
+                    <a href="/docs/3232_formatie_-_pressing_opties.pdf" target="_blank" rel="noopener noreferrer">
                       <Download className="h-4 w-4 mr-2" />
-                      3232 opbouw
+                      Pressing opties
                     </a>
                   </Button>
                   <Button variant="outline" size="sm" asChild>
-                    <a href="https://drive.google.com/uc?export=download&id=16E4jzU7_3xbt563kI5N2261pLwA2R4vb" target="_blank" rel="noopener noreferrer">
+                    <a href="/docs/3232_formatie_-_low-block_m2mpress.pdf" target="_blank" rel="noopener noreferrer">
                       <Download className="h-4 w-4 mr-2" />
-                      3232 lange corners
+                      Low-block M2M press
                     </a>
                   </Button>
                   <Button variant="outline" size="sm" asChild>
-                    <a href="https://drive.google.com/uc?export=download&id=1nAK5heu5Dbz083VRMKgyZrgrqw0RPoP0" target="_blank" rel="noopener noreferrer">
+                    <a href="/docs/3232_formatie_-_lange_corners.pdf" target="_blank" rel="noopener noreferrer">
                       <Download className="h-4 w-4 mr-2" />
-                      3232 principes
+                      Lange corners
+                    </a>
+                  </Button>
+                  <Button variant="outline" size="sm" asChild>
+                    <a href="/docs/3232_formatie_-_rol_van_CCB_en_CB.pdf" target="_blank" rel="noopener noreferrer">
+                      <Download className="h-4 w-4 mr-2" />
+                      Rol van CCB en CB
+                    </a>
+                  </Button>
+                  <Button variant="outline" size="sm" asChild>
+                    <a href="/docs/3232_formatie_-_rol_van_CDM.pdf" target="_blank" rel="noopener noreferrer">
+                      <Download className="h-4 w-4 mr-2" />
+                      Rol van CDM
+                    </a>
+                  </Button>
+                  <Button variant="outline" size="sm" asChild>
+                    <a href="/docs/3232_formatie_-_strategie_vs_433-diamond.pdf" target="_blank" rel="noopener noreferrer">
+                      <Download className="h-4 w-4 mr-2" />
+                      Strategie vs 4-3-3 diamond
+                    </a>
+                  </Button>
+                  <Button variant="outline" size="sm" asChild>
+                    <a href="/docs/3232_formatie_-_strategie_vs_433-flat.pdf" target="_blank" rel="noopener noreferrer">
+                      <Download className="h-4 w-4 mr-2" />
+                      Strategie vs 4-3-3 flat
                     </a>
                   </Button>
                 </div>
