@@ -170,7 +170,7 @@ const CoachesInfo = () => {
           <CardContent>
             <Button variant="outline" className="h-auto p-4 justify-start" asChild>
               <a 
-                href="https://drive.google.com/file/d/1waf1fmcjh2xnzHgKT-Uy4ZgAOnyhrM9E/view?usp=sharing" 
+                href="/docs/Hockey_Principles_Dmon_-_gids.pdf" 
                 target="_blank" 
                 rel="noopener noreferrer"
               >
