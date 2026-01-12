@@ -358,15 +358,15 @@ const CoachesInfo = () => {
                 <h3 className="font-semibold mb-3">Andere Formaties</h3>
                 <div className="grid md:grid-cols-2 gap-3">
                   <Button variant="outline" size="sm" asChild>
-                    <a href="https://drive.google.com/uc?export=download&id=1C8COzd3qxwjshbIwflzkshzVDeun1Iuv" target="_blank" rel="noopener noreferrer">
+                    <a href="/docs/343_formatie.pdf" target="_blank" rel="noopener noreferrer">
                       <Download className="h-4 w-4 mr-2" />
-                      343 transitie
+                      3-4-3 formatie
                     </a>
                   </Button>
                   <Button variant="outline" size="sm" asChild>
-                    <a href="https://drive.google.com/uc?export=download&id=18OY1kfjkDc6qXQJ_KdcpKOsJR2PtVAqe" target="_blank" rel="noopener noreferrer">
+                    <a href="/docs/4231_formatie.pdf" target="_blank" rel="noopener noreferrer">
                       <Download className="h-4 w-4 mr-2" />
-                      4231 transitie
+                      4-2-3-1 formatie
                     </a>
                   </Button>
                 </div>
