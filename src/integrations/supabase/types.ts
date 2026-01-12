@@ -393,6 +393,7 @@ export type Database = {
       }
     }
     Functions: {
+      call_sync_twizzit_events: { Args: never; Returns: undefined }
       get_current_user_role: {
         Args: never
         Returns: Database["public"]["Enums"]["app_role"]
