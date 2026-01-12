@@ -16,14 +16,24 @@ import {
   RefreshCw,
   CheckCircle,
   AlertTriangle,
-  XCircle
+  XCircle,
+  Clock,
+  Play
 } from 'lucide-react';
 import { toast } from 'sonner';
+import { Badge } from '@/components/ui/badge';
 
 interface InstagramTokenStatus {
   expires_at: string | null;
   daysUntilExpiry: number | null;
   status: 'valid' | 'warning' | 'expired' | 'unknown';
+}
+
+interface CronJob {
+  jobid: number;
+  jobname: string;
+  schedule: string;
+  active: boolean;
 }
 
 const Dashboard = () => {
@@ -44,6 +54,8 @@ const Dashboard = () => {
     status: 'unknown'
   });
   const [refreshingToken, setRefreshingToken] = useState(false);
+  const [cronJobs, setCronJobs] = useState<CronJob[]>([]);
+  const [triggeringJob, setTriggeringJob] = useState<string | null>(null);
 
   const fetchTokenStatus = async () => {
     try {
@@ -100,6 +112,62 @@ const Dashboard = () => {
     }
   };
 
+  const fetchCronJobs = async () => {
+    try {
+      const { data, error } = await supabase.functions.invoke('get-cron-status');
+      
+      if (error) {
+        console.error('Error fetching cron jobs:', error);
+        return;
+      }
+      
+      setCronJobs(data?.jobs || []);
+    } catch (error) {
+      console.error('Error fetching cron jobs:', error);
+    }
+  };
+
+  const triggerJob = async (jobName: string) => {
+    setTriggeringJob(jobName);
+    try {
+      let functionName = '';
+      let body = {};
+      
+      if (jobName.includes('twizzit-events')) {
+        functionName = 'sync-twizzit-events';
+        body = { name: 'Functions' };
+      } else if (jobName.includes('instagram-token')) {
+        functionName = 'refresh-instagram-token';
+      }
+      
+      if (!functionName) {
+        toast.error('Onbekende job');
+        return;
+      }
+      
+      const { error } = await supabase.functions.invoke(functionName, { body });
+      
+      if (error) {
+        toast.error(`Job ${jobName} mislukt`);
+        console.error('Job error:', error);
+      } else {
+        toast.success(`Job ${jobName} gestart`);
+      }
+    } catch (error) {
+      toast.error(`Job ${jobName} mislukt`);
+      console.error('Job error:', error);
+    } finally {
+      setTriggeringJob(null);
+    }
+  };
+
+  const formatSchedule = (schedule: string): string => {
+    // Convert cron expression to human readable
+    if (schedule === '0 6 * * 0') return 'Elke zondag om 07:00';
+    if (schedule === '0 3 1 * *') return 'Elke 1e van de maand om 04:00';
+    return schedule;
+  };
+
   useEffect(() => {
     const fetchCounts = async () => {
       try {
@@ -127,6 +195,7 @@ const Dashboard = () => {
 
     fetchCounts();
     fetchTokenStatus();
+    fetchCronJobs();
   }, []);
 
   const adminCards = [
@@ -276,6 +345,53 @@ const Dashboard = () => {
                   <RefreshCw className={`h-4 w-4 mr-2 ${refreshingToken ? 'animate-spin' : ''}`} />
                   {refreshingToken ? 'Vernieuwen...' : 'Token Vernieuwen'}
                 </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
+
+      {/* Cron Jobs Status */}
+      {isAdmin && cronJobs.length > 0 && (
+        <div className="mt-8">
+          <Card>
+            <CardHeader>
+              <div>
+                <CardTitle className="flex items-center gap-2">
+                  <Clock className="h-5 w-5" />
+                  Geplande Taken
+                </CardTitle>
+                <CardDescription>
+                  Automatische achtergrondtaken
+                </CardDescription>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                {cronJobs.map((job) => (
+                  <div key={job.jobid} className="flex items-center justify-between p-3 border rounded-lg">
+                    <div className="flex items-center gap-3">
+                      <Badge variant={job.active ? "default" : "secondary"}>
+                        {job.active ? 'Actief' : 'Inactief'}
+                      </Badge>
+                      <div>
+                        <p className="font-medium">{job.jobname}</p>
+                        <p className="text-sm text-muted-foreground">
+                          {formatSchedule(job.schedule)}
+                        </p>
+                      </div>
+                    </div>
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      onClick={() => triggerJob(job.jobname)}
+                      disabled={triggeringJob === job.jobname}
+                    >
+                      <Play className={`h-4 w-4 mr-2 ${triggeringJob === job.jobname ? 'animate-pulse' : ''}`} />
+                      {triggeringJob === job.jobname ? 'Bezig...' : 'Nu Uitvoeren'}
+                    </Button>
+                  </div>
+                ))}
               </div>
             </CardContent>
           </Card>

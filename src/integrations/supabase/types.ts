@@ -394,6 +394,15 @@ export type Database = {
     }
     Functions: {
       call_sync_twizzit_events: { Args: never; Returns: undefined }
+      get_cron_jobs: {
+        Args: never
+        Returns: {
+          active: boolean
+          jobid: number
+          jobname: string
+          schedule: string
+        }[]
+      }
       get_current_user_role: {
         Args: never
         Returns: Database["public"]["Enums"]["app_role"]
