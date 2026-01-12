@@ -304,51 +304,39 @@ const CoachesInfo = () => {
                 <h3 className="font-semibold mb-3">4-3-3 Formatie</h3>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
                   <Button variant="outline" size="sm" asChild>
-                    <a href="https://drive.google.com/uc?export=download&id=1IoE1zrDfdJBxZ-_pM3jZdX5cNnqhbd5R" target="_blank" rel="noopener noreferrer">
+                    <a href="/docs/433_-_principes_en_overzicht.pdf" target="_blank" rel="noopener noreferrer">
                       <Download className="h-4 w-4 mr-2" />
-                      433 verdediging
+                      Principes en overzicht
                     </a>
                   </Button>
                   <Button variant="outline" size="sm" asChild>
-                    <a href="https://drive.google.com/uc?export=download&id=1OcwWdJLE68xrGemOJMYDKxJBdmH9w4ou" target="_blank" rel="noopener noreferrer">
+                    <a href="/docs/433_uitspelen_met_back_4.pdf" target="_blank" rel="noopener noreferrer">
                       <Download className="h-4 w-4 mr-2" />
-                      433 opbouw met back-4
+                      Uitspelen met back-4
                     </a>
                   </Button>
                   <Button variant="outline" size="sm" asChild>
-                    <a href="https://drive.google.com/uc?export=download&id=1euvUkqna9pNJUnMAPORjl3fQApBgv7vp" target="_blank" rel="noopener noreferrer">
+                    <a href="/docs/433_verdediging.pdf" target="_blank" rel="noopener noreferrer">
                       <Download className="h-4 w-4 mr-2" />
-                      433 sideline w-press
+                      Verdediging
                     </a>
                   </Button>
                   <Button variant="outline" size="sm" asChild>
-                    <a href="https://drive.google.com/file/d/1IcHQ8gyFrhxmxQmxF9NDAuWmmOpg0Mrd/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-                      <PlayCircle className="h-4 w-4 mr-2" />
-                      433 principes
+                    <a href="/docs/433_high_press.pdf" target="_blank" rel="noopener noreferrer">
+                      <Download className="h-4 w-4 mr-2" />
+                      High press
                     </a>
                   </Button>
                   <Button variant="outline" size="sm" asChild>
-                    <a href="https://drive.google.com/uc?export=download&id=1nQ7K0W3OGB0S3wLMjKpnYWPtvxFGzAp-" target="_blank" rel="noopener noreferrer">
+                    <a href="/docs/433_low_block_press.pdf" target="_blank" rel="noopener noreferrer">
                       <Download className="h-4 w-4 mr-2" />
-                      433 low block
+                      Low block press
                     </a>
                   </Button>
                   <Button variant="outline" size="sm" asChild>
-                    <a href="https://drive.google.com/uc?export=download&id=1gsqlkO2lPZoqmdwrgtKe4nT96qL_L91l" target="_blank" rel="noopener noreferrer">
+                    <a href="/docs/433_lange_corners.pdf" target="_blank" rel="noopener noreferrer">
                       <Download className="h-4 w-4 mr-2" />
-                      433 long corners
-                    </a>
-                  </Button>
-                  <Button variant="outline" size="sm" asChild>
-                    <a href="https://drive.google.com/uc?export=download&id=1h5onFZif_ENeWzNUKGT9EEoQQAR3jB1u" target="_blank" rel="noopener noreferrer">
-                      <Download className="h-4 w-4 mr-2" />
-                      433 high press man to man
-                    </a>
-                  </Button>
-                  <Button variant="outline" size="sm" asChild>
-                    <a href="https://drive.google.com/uc?export=download&id=1Y9C-zmd_hXk-qM1FtII64cnBK6cnB_Ks" target="_blank" rel="noopener noreferrer">
-                      <Download className="h-4 w-4 mr-2" />
-                      433 aanval
+                      Lange corners
                     </a>
                   </Button>
                 </div>
