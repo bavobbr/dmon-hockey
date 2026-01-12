@@ -45,7 +45,7 @@ const CoachesInfo = () => {
             <div className="grid md:grid-cols-2 gap-4">
               <Button variant="outline" className="h-auto p-4 justify-start" asChild>
                 <a 
-                  href="https://docs.google.com/uc?export=download&id=17Z4mXNJY4WIxH3UCVvToNX-gJ29uzxP-" 
+                  href="/docs/Sportief_beleid_DMON_Hockey.docx" 
                   target="_blank" 
                   rel="noopener noreferrer"
                 >
@@ -61,7 +61,7 @@ const CoachesInfo = () => {
               
               <Button variant="outline" className="h-auto p-4 justify-start" asChild>
                 <a 
-                  href="https://docs.google.com/uc?export=download&id=1tqB_qY2Pz-AOhgzOeKT0L7YPZZrv71qN" 
+                  href="/docs/Hockey_is_geen_voetbal_is_geen_hockey_v2_1.docx" 
                   target="_blank" 
                   rel="noopener noreferrer"
                 >
