@@ -8,3 +8,9 @@ verify_jwt = false
 
 [functions.bulk-insert-sponsors]
 verify_jwt = false
+
+[functions.fetch-instagram-posts]
+verify_jwt = false
+
+[functions.refresh-instagram-token]
+verify_jwt = false
