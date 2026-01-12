@@ -14,3 +14,6 @@ verify_jwt = false
 
 [functions.refresh-instagram-token]
 verify_jwt = false
+
+[functions.get-cron-status]
+verify_jwt = false
