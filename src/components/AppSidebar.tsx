@@ -96,14 +96,7 @@ const navigation = [
     icon: Trophy,
     items: [
       { title: "Training", url: "/sporting/training", icon: Calendar },
-      { 
-        title: "Hoe Hockey Spelen", 
-        url: "/sporting/how-to-play", 
-        icon: BookOpen,
-        items: [
-          { title: "Coaches Info", url: "/sporting/coaches-info", icon: Users },
-        ]
-      },
+      { title: "Hoe Hockey Spelen", url: "/sporting/how-to-play", icon: BookOpen },
       { 
         title: "Regels & Scheids", 
         url: "/sporting/rules", 
