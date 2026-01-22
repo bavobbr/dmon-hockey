@@ -280,9 +280,27 @@ const CoachesInfo = () => {
                     </a>
                   </Button>
                   <Button variant="outline" size="sm" asChild>
-                    <a href="/docs/3232_formatie_-_rol_van_CDM.pdf" target="_blank" rel="noopener noreferrer">
+                    <a href="/docs/3232___rol_van_CDM.pdf" target="_blank" rel="noopener noreferrer">
                       <Download className="h-4 w-4 mr-2" />
                       Rol van CDM
+                    </a>
+                  </Button>
+                  <Button variant="outline" size="sm" asChild>
+                    <a href="/docs/3232_formatie___rol_van_CAM.pdf" target="_blank" rel="noopener noreferrer">
+                      <Download className="h-4 w-4 mr-2" />
+                      Rol van CAM
+                    </a>
+                  </Button>
+                  <Button variant="outline" size="sm" asChild>
+                    <a href="/docs/3232_formatie___rol_van_striker.pdf" target="_blank" rel="noopener noreferrer">
+                      <Download className="h-4 w-4 mr-2" />
+                      Rol van Striker
+                    </a>
+                  </Button>
+                  <Button variant="outline" size="sm" asChild>
+                    <a href="/docs/3232_formatie___rol_van_winger.pdf" target="_blank" rel="noopener noreferrer">
+                      <Download className="h-4 w-4 mr-2" />
+                      Rol van Winger
                     </a>
                   </Button>
                   <Button variant="outline" size="sm" asChild>
