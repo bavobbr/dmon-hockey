@@ -68,7 +68,8 @@ export default function RulesAgent() {
         },
         body: JSON.stringify({
           query: userMessage,
-          history: history
+          history: history,
+          country: "BEL"
         })
       });
 
