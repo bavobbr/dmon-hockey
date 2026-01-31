@@ -294,12 +294,12 @@ const MembershipInfo = () => {
           </CardHeader>
           <CardContent>
             <div className="flex flex-col sm:flex-row gap-4">
-              <RouterLink to="/membership/register">
+              <RouterLink to="/lidmaatschap/registratie">
                 <Button size="lg">
                   Vul Registratieformulier In
                 </Button>
               </RouterLink>
-              <RouterLink to="/membership/contact">
+              <RouterLink to="/lidmaatschap/contact">
                 <Button variant="outline" size="lg">
                   Heb je Vragen? Neem Contact Op
                 </Button>

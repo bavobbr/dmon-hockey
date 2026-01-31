@@ -136,8 +136,8 @@ const IndoorHockey = () => {
               samengesteld voor beginners en gevorderden met alle informatie over het speelveld, 
               uitrusting, straffen en de verschillen per leeftijdscategorie.
             </p>
-            <a 
-              href="/sporting/rules/indoor"
+            <a
+              href="/sportief/regels/indoor"
               className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
             >
               Bekijk de spelregels
@@ -349,8 +349,8 @@ const IndoorHockey = () => {
               Ben je overtuigd en wil je deelnemen aan indoor hockey? Klik op de knop hieronder 
               om naar het inschrijvingsformulier te gaan en je plek te reserveren.
             </p>
-            <a 
-              href="/membership/indoor-registration"
+            <a
+              href="/lidmaatschap/indoor-registratie"
               className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
             >
               Naar inschrijvingsformulier

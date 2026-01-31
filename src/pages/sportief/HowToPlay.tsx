@@ -252,7 +252,7 @@ const HowToPlay = () => {
           </CardContent>
         </Card>
 
-        <Link to="/sporting/hockey-principles" className="block mb-8">
+        <Link to="/sportief/hockey-principes" className="block mb-8">
           <Card className="hover:shadow-lg transition-shadow cursor-pointer border-primary/20">
             <CardContent className="pt-6">
               <div className="flex items-center justify-between">
@@ -430,7 +430,7 @@ const HowToPlay = () => {
               Voor coaches en trainers hebben we aanvullende informatie beschikbaar:
             </p>
             <Button variant="outline" asChild>
-              <a href="/sporting/coaches-info">
+              <a href="/sportief/coaches-info">
                 <ExternalLink className="h-4 w-4 mr-2" />
                 Informatie voor coaches
               </a>

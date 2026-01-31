@@ -35,16 +35,37 @@ Modern, responsive website for D-mon Hockey Club built with React and TypeScript
 ## Project Structure
 ```text
 ├── src
-│   ├── components    # reusable UI components
-│   ├── pages         # route components
-│   ├── hooks         # custom hooks
-│   ├── integrations  # API clients (Supabase, etc.)
-│   └── lib           # utilities and helpers
-├── supabase          # edge functions and database migrations
-├── public            # static assets
-├── tests             # Playwright tests
+│   ├── components       # reusable UI components (shadcn/ui)
+│   ├── pages            # route components
+│   │   ├── lidmaatschap # membership pages (Dutch URLs)
+│   │   ├── sportief     # sporting pages (Dutch URLs)
+│   │   ├── club         # club pages
+│   │   └── admin        # admin dashboard (protected routes)
+│   ├── hooks            # custom hooks (useAuth, etc.)
+│   ├── config           # app configuration (route mappings)
+│   ├── integrations     # API clients (Supabase)
+│   └── lib              # utilities and helpers
+├── supabase             # edge functions and database migrations
+├── public               # static assets
+├── tests                # Playwright end-to-end tests
 └── ...
 ```
+
+### Routing
+
+The app uses **Dutch URLs** as the primary routes with automatic redirects from legacy English URLs:
+
+**Dutch URLs** (primary):
+- `/lidmaatschap/*` - Membership pages
+- `/sportief/*` - Sporting pages
+- `/club/*` - Club pages
+
+**English URLs** (redirect to Dutch):
+- `/membership/*` → `/lidmaatschap/*`
+- `/sporting/*` → `/sportief/*`
+- Old club URLs redirect to new Dutch versions
+
+Route mappings are defined in `src/config/routeMappings.ts` for SEO-friendly 301-style redirects.
 
 ## Setup
 1. **Clone and install**
@@ -85,14 +106,64 @@ supabase functions deploy sync-twizzit-events --no-verify-jwt
 supabase cron schedule twizzit-sync "0 2 * * *" sync-twizzit-events
 ```
 
-## Scripts
+## Development
+
+### Running the Development Server
+
 ```bash
-npm run dev        # start dev server
-npm run build      # production build
-npm run preview    # preview build
-npm run lint       # lint code
-npm run test:gui   # run Playwright tests (dev server must be running)
+npm run dev
+# or
+bun dev
 ```
+
+This starts the Vite development server at **http://localhost:5173** with:
+- Hot Module Replacement (HMR) for instant updates
+- Fast refresh on file changes
+- TypeScript type checking
+
+### Building for Production
+
+```bash
+# Production build (optimized and minified)
+npm run build
+
+# Development build (faster, includes source maps)
+npm run build:dev
+
+# Preview the production build locally
+npm run preview
+```
+
+The build output is placed in the `dist/` directory and is ready for deployment.
+
+**Build verification**: After building, check that there are no TypeScript errors or missing imports.
+
+### Code Quality
+
+```bash
+# Run ESLint to check code quality
+npm run lint
+```
+
+### Testing
+
+The project uses **Playwright** for end-to-end testing.
+
+**⚠️ Important**: The dev server must be running before you can run tests.
+
+```bash
+# Terminal 1: Start the dev server
+npm run dev
+
+# Terminal 2: Run tests
+npm run test:gui              # Run all tests (headless mode)
+npm run test:gui:headed       # Run tests with visible browser window
+npm run test:gui:home         # Run specific test file (home page)
+```
+
+**Test locations**: All tests are in the `tests/gui/` directory.
+
+**Before deploying**: Ensure all tests pass to avoid breaking production.
 
 ## Deployment
 

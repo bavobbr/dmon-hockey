@@ -6,33 +6,96 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 D-mon Hockey Club website - a React SPA for managing club content, events, teams, sponsors, and member information. Built with Vite + React 18 + TypeScript, using Supabase as the backend.
 
-## Development Commands
+## Getting Started
+
+### Prerequisites
+- Node.js 18+ or Bun
+- npm or Bun package manager
+- Git
+
+### Installation
 
 ```bash
-# Start dev server (http://localhost:5173)
-npm run dev
+# Install dependencies
+npm install
+# or
+bun install
+```
 
-# Build for production
+This installs all required packages including React, Vite, Supabase client, TanStack Query, shadcn/ui components, and development tools.
+
+### Environment Variables (Optional)
+
+The app uses Supabase and works out-of-the-box with preconfigured credentials. To use your own Supabase project, create a `.env` file:
+
+```bash
+VITE_SUPABASE_URL="https://<project-ref>.supabase.co"
+VITE_SUPABASE_PUBLISHABLE_KEY="<your-anon-key>"
+```
+
+## Development Commands
+
+### Running the Development Server
+
+```bash
+# Start dev server at http://localhost:5173
+npm run dev
+# or
+bun dev
+```
+
+The dev server features:
+- Hot Module Replacement (HMR) - changes appear instantly
+- Fast startup (~10-20 seconds on first run)
+- Auto-reload on file changes
+
+### Building the Application
+
+```bash
+# Production build (optimized, minified)
 npm run build
 
-# Build for development mode
+# Development build (faster, includes source maps)
 npm run build:dev
 
-# Preview production build
+# Preview the production build locally
 npm run preview
-
-# Lint code
-npm run lint
-
-# Run all Playwright tests (dev server must be running)
-npm run test:gui
-
-# Run tests in headed mode (shows browser)
-npm run test:gui:headed
-
-# Run a specific test file
-npm run test:gui:home
 ```
+
+**Build output**: `dist/` directory (ready for deployment)
+
+### Code Quality
+
+```bash
+# Run ESLint
+npm run lint
+```
+
+### Testing
+
+**IMPORTANT**: The dev server must be running before executing tests.
+
+```bash
+# In terminal 1: Start dev server
+npm run dev
+
+# In terminal 2: Run tests
+npm run test:gui              # Run all Playwright tests (headless)
+npm run test:gui:headed       # Run tests with visible browser
+npm run test:gui:home         # Run specific test file (home page only)
+```
+
+**Test Structure**:
+- Tests are located in `tests/gui/`
+- Tests use Playwright for end-to-end testing
+- All tests must pass before deploying
+
+**Common Test Scenarios**:
+- Navigation between routes (including Dutch URL routes)
+- Menu functionality and sidebar navigation
+- Page content rendering
+- Form submissions
+- Authentication flows
 
 ## Architecture
 

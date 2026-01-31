@@ -13,10 +13,10 @@ const IndoorRegistration = () => {
         <Alert className="mb-8 border-primary/20 bg-primary/5">
           <Info className="h-4 w-4" />
           <AlertDescription className="text-muted-foreground">
-            Hier kan je je inschrijven voor indoor hockey. Voor meer informatie over indoor hockey, 
+            Hier kan je je inschrijven voor indoor hockey. Voor meer informatie over indoor hockey,
             trainingsschema's, prijzen en benodigdheden, bekijk de{" "}
-            <Link 
-              to="/sporting/indoor-hockey" 
+            <Link
+              to="/sportief/indoor-hockey"
               className="text-primary hover:underline inline-flex items-center gap-1"
             >
               Indoor Hockey informatiepagina
@@ -58,7 +58,7 @@ const IndoorRegistration = () => {
         <div className="mt-6 text-center text-sm text-muted-foreground">
           <p>
             Vragen over de inschrijving? Neem contact op via onze{" "}
-            <Link to="/membership/contact" className="text-primary hover:underline">
+            <Link to="/lidmaatschap/contact" className="text-primary hover:underline">
               contactpagina
             </Link>
           </p>

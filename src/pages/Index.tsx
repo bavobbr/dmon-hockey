@@ -194,7 +194,7 @@ const Index = () => {
                 </Button>
               </div>
             </div> : <div className="flex gap-6 justify-center flex-wrap fade-in-up">
-              <Link to="/membership/info">
+              <Link to="/lidmaatschap/info">
                 <Button size="lg" variant="hero" className="px-8 py-4">
                   Word Lid van Onze Club
                 </Button>

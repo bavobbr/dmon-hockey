@@ -157,7 +157,7 @@ const Training = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <Button variant="outline" asChild>
-                <a href="/membership/info">
+                <a href="/lidmaatschap/info">
                   Lid worden informatie
                 </a>
               </Button>

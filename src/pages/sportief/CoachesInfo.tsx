@@ -10,7 +10,7 @@ const CoachesInfo = () => {
         <h1 className="text-4xl font-bold mb-8 text-foreground">Informatie voor Coaches</h1>
         
         {/* Hockey Principles Link */}
-        <Link to="/sporting/hockey-principles">
+        <Link to="/sportief/hockey-principes">
           <Card className="mb-8 hover:shadow-lg transition-shadow cursor-pointer border-primary/20">
             <CardContent className="pt-6">
               <div className="flex items-center justify-between">

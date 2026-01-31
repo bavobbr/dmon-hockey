@@ -13,7 +13,7 @@ const Rules = () => {
         
         <div className="prose prose-gray dark:prose-invert max-w-none">
           {/* Rules Agent CTA */}
-          <Link to="/sporting/rules-agent" className="block mb-8">
+          <Link to="/sportief/regels-assistent" className="block mb-8">
             <div className="p-4 bg-primary/10 rounded-lg border border-primary/30 hover:bg-primary/20 transition-colors group">
               <div className="flex items-center gap-3">
                 <div className="p-2 rounded-full bg-primary/20 group-hover:bg-primary/30 transition-colors">
@@ -45,7 +45,7 @@ const Rules = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
-                <Link to="/sporting/rules/u6-u8" className="block">
+                <Link to="/sportief/regels/u6-u8" className="block">
                   <div className="p-3 bg-muted rounded-lg hover:bg-muted/80 transition-colors group cursor-pointer">
                     <div className="flex items-center justify-between">
                       <div>
@@ -56,7 +56,7 @@ const Rules = () => {
                     </div>
                   </div>
                 </Link>
-                <Link to="/sporting/rules/u9" className="block">
+                <Link to="/sportief/regels/u9" className="block">
                   <div className="p-3 bg-muted rounded-lg hover:bg-muted/80 transition-colors group cursor-pointer">
                     <div className="flex items-center justify-between">
                       <div>
@@ -67,7 +67,7 @@ const Rules = () => {
                     </div>
                   </div>
                 </Link>
-                <Link to="/sporting/rules/u10-u12" className="block">
+                <Link to="/sportief/regels/u10-u12" className="block">
                   <div className="p-3 bg-muted rounded-lg hover:bg-muted/80 transition-colors group cursor-pointer">
                     <div className="flex items-center justify-between">
                       <div>
@@ -78,7 +78,7 @@ const Rules = () => {
                     </div>
                   </div>
                 </Link>
-                <Link to="/sporting/rules/u14-plus" className="block">
+                <Link to="/sportief/regels/u14-plus" className="block">
                   <div className="p-3 bg-muted rounded-lg hover:bg-muted/80 transition-colors group cursor-pointer">
                     <div className="flex items-center justify-between">
                       <div>
@@ -89,7 +89,7 @@ const Rules = () => {
                     </div>
                   </div>
                 </Link>
-                <Link to="/sporting/rules/indoor" className="block">
+                <Link to="/sportief/regels/indoor" className="block">
                   <div className="p-3 bg-muted rounded-lg hover:bg-muted/80 transition-colors group cursor-pointer">
                     <div className="flex items-center justify-between">
                       <div>

@@ -22,12 +22,12 @@ const Contact = () => {
               </p>
               <div className="space-y-2">
                 <Button variant="outline" className="w-full" asChild>
-                  <a href="/membership/info">
+                  <a href="/lidmaatschap/info">
                     Lidmaatschap Informatie
                   </a>
                 </Button>
                 <Button variant="outline" className="w-full" asChild>
-                  <a href="/membership/registration">
+                  <a href="/lidmaatschap/registratie">
                     Inschrijvingsformulier
                   </a>
                 </Button>
