@@ -1,6 +1,15 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
+interface TwizzitEventGroup {
+  id: number;
+  groupId: number;
+  groupName: string;
+  groupShortName: string;
+  isHomeTeam: boolean;
+  eventId: number;
+}
+
 interface TwizzitEvent {
   id: number;
   name: string;
@@ -12,7 +21,7 @@ interface TwizzitEvent {
   score?: string | null;
   "score-details"?: string | null;
   series?: string | null;
-  "event-groups"?: unknown | null;
+  "event-groups"?: TwizzitEventGroup[] | null;
   "event-contacts"?: unknown | null;
   "event-resources"?: unknown | null;
 }
@@ -28,6 +37,9 @@ interface EventRow {
   score: string | null;
   score_details: string | null;
   series: string | null;
+  home_team_name: string | null;
+  away_team_name: string | null;
+  is_home_game: boolean | null;
   groups: unknown | null;
   contacts: unknown | null;
   resources: unknown | null;
@@ -82,6 +94,39 @@ if (!twizzitUsername || !twizzitPassword || !twizzitOrgId) {
 }
 
 const TWIZZIT_API_BASE = "https://app.twizzit.com/v2/api";
+
+// Helper function to extract team info from event name and groups
+const extractTeamInfo = (
+  eventName: string,
+  groups: TwizzitEventGroup[] | null | undefined
+) => {
+  // Default return value
+  const result = {
+    homeTeamName: null as string | null,
+    awayTeamName: null as string | null,
+    isHomeGame: null as boolean | null,
+  };
+
+  // Check if we have event-groups to determine home/away status
+  if (groups && Array.isArray(groups) && groups.length > 0) {
+    const ourTeam = groups[0]; // First group is our team
+    result.isHomeGame = ourTeam.isHomeTeam ?? null;
+  }
+
+  // Parse team names from event name (format: "Home Team - Away Team")
+  // In Twizzit, home team is ALWAYS first, away team is ALWAYS second
+  const dashIndex = eventName.indexOf(" - ");
+  if (dashIndex > 0) {
+    const team1 = eventName.substring(0, dashIndex).trim();
+    const team2 = eventName.substring(dashIndex + 3).trim();
+
+    // Team1 is always home, Team2 is always away (Twizzit convention)
+    result.homeTeamName = team1;
+    result.awayTeamName = team2;
+  }
+
+  return result;
+};
 
 serve(async (req) => {
   const rid = crypto.randomUUID();
@@ -150,20 +195,30 @@ serve(async (req) => {
       throw new Error("No authentication token returned");
     }
 
-    // DATES
+    // DATES - Fetch from 1 week ago to 4 weeks ahead
     const today = new Date();
-    const startDate = today.toISOString().split("T")[0];
+    const startDate = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000)
+      .toISOString()
+      .split("T")[0];
     const endDate = new Date(today.getTime() + 28 * 24 * 60 * 60 * 1000)
       .toISOString()
       .split("T")[0];
 
     log("events.date_window", { rid, startDate, endDate });
 
-    // FETCH EVENTS
+    // FETCH EVENTS (with event-groups included)
+    // Include all relevant event types:
+    // Type 1 = Events (meetings, club events)
+    // Type 3 = Trainings (training, stage, keeper training)
+    // Type 4 = Games (matches, friendly games)
+    // Type 5 = Work shifts (wintercriterium, volunteer shifts)
     const eventsUrl =
       `${TWIZZIT_API_BASE}/events?` +
       `organization-ids[]=${twizzitOrgId}` +
-      `&start-date=${startDate}&end-date=${endDate}&limit=50`;
+      `&start-date=${startDate}&end-date=${endDate}` +
+      `&event-types[]=1&event-types[]=3&event-types[]=4&event-types[]=5` +
+      `&limit=100` +
+      `&includes[]=event-groups`;
 
     log("events.request", { rid, url: eventsUrl });
 
@@ -206,27 +261,34 @@ serve(async (req) => {
     const now = new Date().toISOString();
     const rows: EventRow[] = events
       .filter((event) => event.name && event.name.trim() !== "")
-      .map((event) => ({
-        twizzit_id: event.id,
-        name: event.name,
-        start_at: event.start ? new Date(event.start).toISOString() : null,
-        end_at: event.end ? new Date(event.end).toISOString() : null,
-        meeting_time: event["meeting-time"]
-          ? new Date(`1970-01-01T${event["meeting-time"]}Z`)
-              .toISOString()
-              .slice(11, 19)
-          : null,
-        description: event.description ?? null,
-        address: event.address ?? null,
-        score: event.score ?? null,
-        score_details: event["score-details"] ?? null,
-        series: event.series ?? null,
-        groups: event["event-groups"] ?? null,
-        contacts: event["event-contacts"] ?? null,
-        resources: event["event-resources"] ?? null,
-        raw: event,
-        updated_at: now,
-      }));
+      .map((event) => {
+        const teamInfo = extractTeamInfo(event.name, event["event-groups"]);
+
+        return {
+          twizzit_id: event.id,
+          name: event.name,
+          start_at: event.start ? new Date(event.start).toISOString() : null,
+          end_at: event.end ? new Date(event.end).toISOString() : null,
+          meeting_time: event["meeting-time"]
+            ? new Date(`1970-01-01T${event["meeting-time"]}Z`)
+                .toISOString()
+                .slice(11, 19)
+            : null,
+          description: event.description ?? null,
+          address: event.address ?? null,
+          score: event.score ?? null,
+          score_details: event["score-details"] ?? null,
+          series: event.series ?? null,
+          home_team_name: teamInfo.homeTeamName,
+          away_team_name: teamInfo.awayTeamName,
+          is_home_game: teamInfo.isHomeGame,
+          groups: event["event-groups"] ?? null,
+          contacts: event["event-contacts"] ?? null,
+          resources: event["event-resources"] ?? null,
+          raw: event,
+          updated_at: now,
+        };
+      });
 
     // Quick data-quality counters
     const dq = {
