@@ -22,7 +22,7 @@ interface TwizzitEvent {
   home_team_name: string | null;
   away_team_name: string | null;
   is_home_game: boolean | null;
-  groups: Array<{ groupName?: string }> | null;
+  groups?: Array<{ groupName?: string }> | null;
 }
 
 type EventType = 'match' | 'training' | 'event';
@@ -77,6 +77,8 @@ const Events = () => {
   };
 
   const getEventType = (event: TwizzitEvent): EventType => {
+    if (!event || !event.name) return 'event';
+
     const nameLower = event.name.toLowerCase();
 
     // 1. Check for training keywords in name (most specific)
@@ -90,15 +92,19 @@ const Events = () => {
     }
 
     // 2. Check if it's a match (most reliable indicators)
-    if (event.is_home_game !== null) {
+    if (event.is_home_game !== null && event.is_home_game !== undefined) {
       return 'match';
     }
 
     // 3. Check groups for "match" in groupName
     if (event.groups && Array.isArray(event.groups) && event.groups.length > 0) {
-      const groupName = event.groups[0]?.groupName || '';
-      if (groupName.toLowerCase().includes('match')) {
-        return 'match';
+      try {
+        const groupName = event.groups[0]?.groupName || '';
+        if (typeof groupName === 'string' && groupName.toLowerCase().includes('match')) {
+          return 'match';
+        }
+      } catch (e) {
+        console.warn('Error parsing groups:', e);
       }
     }
 
@@ -157,27 +163,33 @@ const Events = () => {
     const nextWeekEnd = endOfWeek(nextWeekStart, { weekStartsOn: 1 });
 
     events.forEach(event => {
-      const naive = event.start_at.replace(/Z|[+-]\d{2}:?\d{2}$/, '');
-      const eventUtc = fromZonedTime(naive, 'Europe/Brussels');
-      const eventDate = toZonedTime(eventUtc, 'Europe/Brussels');
+      if (!event || !event.start_at) return;
 
-      if (isToday(eventDate)) {
-        grouped.today.push(event);
-      } else if (isTomorrow(eventDate)) {
-        grouped.tomorrow.push(event);
-      } else if (isBefore(eventDate, startOfToday)) {
-        // Past events (before today)
-        grouped.pastWeek.push(event);
-      } else if (isAfter(eventDate, now) && isBefore(eventDate, thisWeekEnd)) {
-        grouped.thisWeek.push(event);
-      } else if (isAfter(eventDate, thisWeekEnd) && isBefore(eventDate, nextWeekEnd)) {
-        grouped.nextWeek.push(event);
-      } else {
-        const monthKey = format(eventDate, 'MMMM yyyy', { locale: nl });
-        if (!grouped.byMonth[monthKey]) {
-          grouped.byMonth[monthKey] = [];
+      try {
+        const naive = event.start_at.replace(/Z|[+-]\d{2}:?\d{2}$/, '');
+        const eventUtc = fromZonedTime(naive, 'Europe/Brussels');
+        const eventDate = toZonedTime(eventUtc, 'Europe/Brussels');
+
+        if (isToday(eventDate)) {
+          grouped.today.push(event);
+        } else if (isTomorrow(eventDate)) {
+          grouped.tomorrow.push(event);
+        } else if (isBefore(eventDate, startOfToday)) {
+          // Past events (before today)
+          grouped.pastWeek.push(event);
+        } else if (isAfter(eventDate, now) && isBefore(eventDate, thisWeekEnd)) {
+          grouped.thisWeek.push(event);
+        } else if (isAfter(eventDate, thisWeekEnd) && isBefore(eventDate, nextWeekEnd)) {
+          grouped.nextWeek.push(event);
+        } else {
+          const monthKey = format(eventDate, 'MMMM yyyy', { locale: nl });
+          if (!grouped.byMonth[monthKey]) {
+            grouped.byMonth[monthKey] = [];
+          }
+          grouped.byMonth[monthKey].push(event);
         }
-        grouped.byMonth[monthKey].push(event);
+      } catch (error) {
+        console.warn('Error processing event:', event.name, error);
       }
     });
 
