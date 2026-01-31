@@ -292,12 +292,27 @@ serve(async (req) => {
       sample_ids: events.slice(0, 5).map((e) => e?.id ?? null),
     });
 
+    // Helper to clean text from HTML entities and special characters
+    const cleanText = (text: string): string => {
+      return text
+        .replace(/&nbsp;/gi, " ")
+        .replace(/&amp;/gi, "&")
+        .replace(/&lt;/gi, "<")
+        .replace(/&gt;/gi, ">")
+        .replace(/&quot;/gi, '"')
+        .replace(/&#\d+;/g, " ")
+        .replace(/<[^>]*>/g, "") // Remove HTML tags
+        .replace(/\r\n|\r|\n/g, " ") // Replace newlines with space
+        .replace(/\s+/g, " ") // Collapse multiple spaces
+        .trim();
+    };
+
     // Helper to generate event name from groups if name is null (for trainings)
     const generateEventName = (
       event: TwizzitEvent
     ): string => {
       if (event.name && event.name.trim() !== "") {
-        return event.name;
+        return cleanText(event.name);
       }
 
       // Generate name from event-groups (e.g., "U16G1, U16G2 - Training")
@@ -338,8 +353,7 @@ serve(async (req) => {
 
       // Fallback: use description or generic name
       if (event.description) {
-        // Strip HTML tags from description
-        const cleanDesc = event.description.replace(/<[^>]*>/g, "").trim();
+        const cleanDesc = cleanText(event.description);
         if (cleanDesc) return cleanDesc.slice(0, 100);
       }
 
