@@ -66,29 +66,13 @@ const navigation = [
     icon: MessageCircle,
   },
   {
-    title: "De Club",
-    icon: Users,
-    items: [
-      { title: "Locatie", url: "/club/veld", icon: MapPin },
-      { title: "Teams", url: "/club/teams", icon: Trophy },
-      { title: "Bestuur", url: "/club/bestuur", icon: UserCheck },
-      { title: "Sfeer", url: "/club/sfeer", icon: Camera },
-      { title: "Clubwaarden", url: "/club/waarden", icon: Shield },
-      { title: "In de media", url: "/club/media", icon: Newspaper },
-      { title: "Geschiedenis", url: "/club/geschiedenis", icon: History },
-      { title: "Sponsors", url: "/club/sponsors", icon: HandHeart },
-    ],
-  },
-  {
     title: "Lidmaatschap",
     icon: UserPlus,
     items: [
-      { title: "Lid Worden - Informatie", url: "/lidmaatschap/info", icon: UserPlus },
-      { title: "Lid Worden - Registratie", url: "/lidmaatschap/registratie", icon: FileText },
-      { title: "Indoor - Registratie", url: "/lidmaatschap/indoor-registratie", icon: Trophy },
+      { title: "Informatie", url: "/lidmaatschap/info", icon: UserPlus },
+      { title: "Registratie", url: "/lidmaatschap/registratie", icon: FileText },
       { title: "Verzekering", url: "/lidmaatschap/verzekering", icon: Shield },
       { title: "Contact", url: "/lidmaatschap/contact", icon: Phone },
-      { title: "Privacybeleid", url: "/club/privacy", icon: FileText },
     ],
   },
   {
@@ -106,12 +90,36 @@ const navigation = [
           { title: "U9", url: "/sportief/regels/u9", icon: Users },
           { title: "U10 tot U12", url: "/sportief/regels/u10-u12", icon: Users },
           { title: "U14 tot senior", url: "/sportief/regels/u14-plus", icon: Users },
-          { title: "Indoor", url: "/sportief/regels/indoor", icon: Users },
           { title: "Regels Assistent", url: "/sportief/regels-assistent", icon: Bot },
         ]
       },
       { title: "De Juiste Stick", url: "/sportief/stick-gids", icon: Zap },
-      { title: "Indoor Hockey", url: "/sportief/indoor-hockey", icon: HousePlus },
+      {
+        title: "Indoor Hockey",
+        url: "/sportief/indoor-hockey",
+        icon: HousePlus,
+        items: [
+          { title: "Info & Planning", url: "/sportief/indoor-hockey", icon: BookOpen },
+          { title: "Spelregels", url: "/sportief/regels/indoor", icon: Timer },
+          { title: "Inschrijven", url: "/lidmaatschap/indoor-registratie", icon: UserPlus },
+        ]
+      },
+    ],
+  },
+  {
+    title: "De Club",
+    icon: Users,
+    items: [
+      { title: "Locatie", url: "/club/veld", icon: MapPin },
+      { title: "Terrein Status", url: "/club/veld-status", icon: ThermometerSnowflake },
+      { title: "Teams", url: "/club/teams", icon: Trophy },
+      { title: "Bestuur", url: "/club/bestuur", icon: UserCheck },
+      { title: "Sfeer", url: "/club/sfeer", icon: Camera },
+      { title: "Clubwaarden", url: "/club/waarden", icon: Shield },
+      { title: "In de media", url: "/club/media", icon: Newspaper },
+      { title: "Geschiedenis", url: "/club/geschiedenis", icon: History },
+      { title: "Sponsors", url: "/club/sponsors", icon: HandHeart },
+      { title: "Privacybeleid", url: "/club/privacy", icon: FileText },
     ],
   },
   {
@@ -119,15 +127,10 @@ const navigation = [
     url: "/shop",
     icon: Shirt,
   },
-  {
-    title: "Terrein Status",
-    url: "/club/veld-status",
-    icon: ThermometerSnowflake,
-  },
 ];
 
 // Group titles in priority order for auto-expansion
-const GROUP_PRIORITY = ["De Club", "Sportief", "Lidmaatschap"];
+const GROUP_PRIORITY = ["Lidmaatschap", "Sportief", "De Club"];
 
 // Calculate how many groups to auto-expand based on viewport height
 const getAutoExpandCount = (height: number): number => {
