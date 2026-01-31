@@ -206,12 +206,8 @@ serve(async (req) => {
 
     log("events.date_window", { rid, startDate, endDate });
 
-    // FETCH EVENTS (with event-groups included)
-    // Include all relevant event types:
-    // Type 1 = Events (meetings, club events)
-    // Type 3 = Trainings (training, stage, keeper training)
-    // Type 4 = Games (matches, friendly games)
-    // Type 5 = Work shifts (wintercriterium, volunteer shifts)
+    // FETCH EVENTS - Two separate calls to ensure we get both regular events and trainings
+    // Call 1: Regular events (types 1, 3, 4, 5)
     const eventsUrl =
       `${TWIZZIT_API_BASE}/events?` +
       `organization-ids[]=${twizzitOrgId}` +
@@ -220,25 +216,21 @@ serve(async (req) => {
       `&limit=100` +
       `&includes[]=event-groups`;
 
-    log("events.request", { rid, url: eventsUrl });
+    log("events.request.regular", { rid, url: eventsUrl });
 
     const eventsRes = await fetch(eventsUrl, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    log("events.response", {
+    log("events.response.regular", {
       rid,
       status: eventsRes.status,
       ok: eventsRes.ok,
-      headers: {
-        "x-ratelimit-remaining": eventsRes.headers.get("x-ratelimit-remaining"),
-        "x-ratelimit-limit": eventsRes.headers.get("x-ratelimit-limit"),
-      },
     });
 
     if (!eventsRes.ok) {
       const bodyPreview = await eventsRes.text().catch(() => "<unreadable>");
-      err("events.failed", {
+      err("events.failed.regular", {
         rid,
         status: eventsRes.status,
         bodyPreview: bodyPreview?.slice(0, 1000),
@@ -247,26 +239,124 @@ serve(async (req) => {
     }
 
     const eventsData = await eventsRes.json();
-    const events: TwizzitEvent[] = Array.isArray(eventsData)
+    const regularEvents: TwizzitEvent[] = Array.isArray(eventsData)
       ? eventsData
       : eventsData.events || [];
 
+    // Call 2: Training events specifically (sub-types 102913, 103608, 103609)
+    // These often have name=null and need special handling
+    const trainingsUrl =
+      `${TWIZZIT_API_BASE}/events?` +
+      `organization-ids[]=${twizzitOrgId}` +
+      `&start-date=${startDate}&end-date=${endDate}` +
+      `&event-sub-types[]=102913&event-sub-types[]=103608&event-sub-types[]=103609` +
+      `&limit=100` +
+      `&includes[]=event-groups`;
+
+    log("events.request.trainings", { rid, url: trainingsUrl });
+
+    const trainingsRes = await fetch(trainingsUrl, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    log("events.response.trainings", {
+      rid,
+      status: trainingsRes.status,
+      ok: trainingsRes.ok,
+    });
+
+    let trainingEvents: TwizzitEvent[] = [];
+    if (trainingsRes.ok) {
+      const trainingsData = await trainingsRes.json();
+      trainingEvents = Array.isArray(trainingsData)
+        ? trainingsData
+        : trainingsData.events || [];
+    } else {
+      log("events.trainings.skipped", { rid, reason: "API call failed" });
+    }
+
+    // Combine and deduplicate events by ID
+    const eventMap = new Map<number, TwizzitEvent>();
+    [...regularEvents, ...trainingEvents].forEach((event) => {
+      if (event?.id) {
+        eventMap.set(event.id, event);
+      }
+    });
+    const events: TwizzitEvent[] = Array.from(eventMap.values());
+
     log("events.parsed", {
       rid,
-      count: events.length,
+      regularCount: regularEvents.length,
+      trainingCount: trainingEvents.length,
+      totalCount: events.length,
       sample_ids: events.slice(0, 5).map((e) => e?.id ?? null),
     });
+
+    // Helper to generate event name from groups if name is null (for trainings)
+    const generateEventName = (
+      event: TwizzitEvent
+    ): string => {
+      if (event.name && event.name.trim() !== "") {
+        return event.name;
+      }
+
+      // Generate name from event-groups (e.g., "U16G1, U16G2 - Training")
+      const groups = event["event-groups"];
+      if (groups && Array.isArray(groups) && groups.length > 0) {
+        // Extract clean team names (e.g., "U16G1" from "Indoor-U16G1-Match")
+        const cleanGroupName = (name: string): string => {
+          // Remove "Indoor-", "-Match", "-Training" prefixes/suffixes
+          return name
+            .replace(/^Indoor[-\s]*/i, "")
+            .replace(/[-\s]*Match$/i, "")
+            .replace(/[-\s]*Training\d*$/i, "")
+            .trim();
+        };
+
+        // Get unique clean group names
+        const groupNames = [...new Set(
+          groups
+            .map((g) => {
+              const shortName = g.groupShortName || g.groupName || "";
+              return cleanGroupName(shortName);
+            })
+            .filter((name) => name && name.length > 0)
+        )];
+
+        // Check if any group indicates it's a training
+        const isTraining = groups.some(
+          (g) =>
+            (g.groupName || "").toLowerCase().includes("training") ||
+            (g.groupShortName || "").toLowerCase().includes("training")
+        );
+
+        if (groupNames.length > 0) {
+          const teamList = groupNames.slice(0, 4).join(", "); // Max 4 teams
+          return isTraining ? `${teamList} - Training` : teamList;
+        }
+      }
+
+      // Fallback: use description or generic name
+      if (event.description) {
+        // Strip HTML tags from description
+        const cleanDesc = event.description.replace(/<[^>]*>/g, "").trim();
+        if (cleanDesc) return cleanDesc.slice(0, 100);
+      }
+
+      return "Event zonder naam";
+    };
 
     // MAP ROWS
     const now = new Date().toISOString();
     const rows: EventRow[] = events
-      .filter((event) => event.name && event.name.trim() !== "")
+      .filter((event) => event.id) // Only filter out events without ID
       .map((event) => {
-        const teamInfo = extractTeamInfo(event.name, event["event-groups"]);
+        const eventName = generateEventName(event);
+        const teamInfo = extractTeamInfo(eventName, event["event-groups"]);
 
         return {
           twizzit_id: event.id,
-          name: event.name,
+          name: eventName,
           start_at: event.start ? new Date(event.start).toISOString() : null,
           end_at: event.end ? new Date(event.end).toISOString() : null,
           meeting_time: event["meeting-time"]
