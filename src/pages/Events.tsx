@@ -60,7 +60,7 @@ const Events = () => {
 
         if (error) throw error;
 
-        setEvents(data || []);
+        setEvents((data as TwizzitEvent[]) || []);
       } catch (err) {
         console.error("Error fetching events:", err);
         setError("Kon evenementen niet laden");

@@ -278,12 +278,17 @@ export type Database = {
       twizzit_events: {
         Row: {
           address: string | null
+          away_team_name: string | null
           contacts: Json | null
           created_at: string
           description: string | null
           end_at: string
+          event_subtype_id: number | null
+          event_type_id: number | null
           groups: Json | null
+          home_team_name: string | null
           id: string
+          is_home_game: boolean | null
           meeting_time: string | null
           name: string
           raw: Json | null
@@ -297,12 +302,17 @@ export type Database = {
         }
         Insert: {
           address?: string | null
+          away_team_name?: string | null
           contacts?: Json | null
           created_at?: string
           description?: string | null
           end_at: string
+          event_subtype_id?: number | null
+          event_type_id?: number | null
           groups?: Json | null
+          home_team_name?: string | null
           id?: string
+          is_home_game?: boolean | null
           meeting_time?: string | null
           name: string
           raw?: Json | null
@@ -316,12 +326,17 @@ export type Database = {
         }
         Update: {
           address?: string | null
+          away_team_name?: string | null
           contacts?: Json | null
           created_at?: string
           description?: string | null
           end_at?: string
+          event_subtype_id?: number | null
+          event_type_id?: number | null
           groups?: Json | null
+          home_team_name?: string | null
           id?: string
+          is_home_game?: boolean | null
           meeting_time?: string | null
           name?: string
           raw?: Json | null
