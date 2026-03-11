@@ -115,12 +115,23 @@ const Nieuws = () => {
           {announcements.map((announcement, index) => {
             const IconComponent = (Icons as any)[announcement.icon || 'Newspaper'] || Icons.Newspaper;
             
+            // Extract first image from HTML content
+            const imgMatch = announcement.content.match(/<img[^>]+src=["']([^"']+)["']/i);
+            const backgroundImage = imgMatch ? imgMatch[1] : null;
+            
             return (
               <Card 
                 key={announcement.id} 
-                className="group fade-in-up hover:shadow-lg transition-shadow duration-200" 
+                className="group fade-in-up hover:shadow-lg transition-shadow duration-200 relative overflow-hidden" 
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
+                {backgroundImage && (
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center opacity-[0.07] group-hover:opacity-[0.12] transition-opacity duration-500 pointer-events-none"
+                    style={{ backgroundImage: `url(${backgroundImage})` }}
+                  />
+                )}
+                <div className="relative z-10">
                 <CardHeader>
                   <div className="flex items-start gap-3">
                     <div className="mt-1 p-2 rounded-lg bg-primary/10 shrink-0">
@@ -184,6 +195,7 @@ const Nieuws = () => {
                   </DialogContent>
                 </Dialog>
               </CardContent>
+                </div>
             </Card>
             );
           })}
