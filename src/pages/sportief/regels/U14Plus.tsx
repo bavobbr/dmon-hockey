@@ -66,6 +66,7 @@ const U14PlusRules = () => {
                 <img 
                   src={stappenImage} 
                   alt="Aangeraden materiaal per categorie" 
+                  loading="lazy"
                   className="w-full max-w-lg mx-auto rounded-lg shadow-md"
                 />
                 <p className="text-sm text-muted-foreground mt-2">Aangeraden materiaal per categorie</p>
