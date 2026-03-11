@@ -95,7 +95,7 @@ const ClubTeams = () => {
           {selectedImage && (
             <img 
               src={selectedImage}
-              alt="Team image"
+              alt="Vergroot teamfoto van D-mon Hockey Club"
               className="w-full h-auto rounded-lg"
             />
           )}

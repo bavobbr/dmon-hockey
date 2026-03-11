@@ -35,7 +35,7 @@ const HockeyPrinciples = () => {
                 <div className="w-full h-full flex items-center justify-center p-4 overflow-auto">
                   <img 
                     src={principlesDiagram} 
-                    alt="Hockey Principles Diagram - Full Size" 
+                    alt="Overzicht hockey principes - volledig formaat" 
                     className="w-full h-auto rounded-lg"
                   />
                 </div>
