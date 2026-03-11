@@ -229,11 +229,14 @@ const Events = () => {
           <div className="flex gap-4">
             {/* Time */}
             <div className="flex-shrink-0 w-16 text-center">
-              <div className="text-2xl font-bold text-primary">
-                {formatInTimeZone(eventUtc, "Europe/Brussels", "HH:mm", { locale: nl })}
-              </div>
-              <div className="text-xs text-muted-foreground">
+              <div className="text-xs font-medium text-muted-foreground uppercase">
                 {formatInTimeZone(eventUtc, "Europe/Brussels", "EEE", { locale: nl })}
+              </div>
+              <div className="text-lg font-bold text-foreground leading-tight">
+                {formatInTimeZone(eventUtc, "Europe/Brussels", "d MMM", { locale: nl })}
+              </div>
+              <div className="text-sm font-semibold text-primary">
+                {formatInTimeZone(eventUtc, "Europe/Brussels", "HH:mm", { locale: nl })}
               </div>
             </div>
 
