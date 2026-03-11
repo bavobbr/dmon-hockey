@@ -27,7 +27,7 @@ const HockeyPrinciples = () => {
               <DialogTrigger asChild>
                 <img 
                   src={principlesDiagram} 
-                  alt="Hockey Principles Diagram" 
+                  alt="Overzicht van de hockey principes en speelstijl van D-mon Hockey Club" 
                   className="max-w-2xl w-full h-auto rounded-lg cursor-pointer hover:opacity-90 transition-opacity mx-auto"
                 />
               </DialogTrigger>
