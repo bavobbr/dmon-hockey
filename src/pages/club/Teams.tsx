@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { supabase } from "@/integrations/supabase/client";
 import { Trophy, Users, Mail } from "lucide-react";
+import { TeamsPageJsonLd } from "@/components/JsonLd";
 
 const ClubTeams = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -24,6 +25,7 @@ const ClubTeams = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <TeamsPageJsonLd teams={teams || []} />
       <div className="max-w-6xl mx-auto">
         <h1 className="text-4xl font-bold mb-8 text-foreground">Onze Teams</h1>
         

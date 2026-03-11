@@ -4,8 +4,10 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import mobilityMap from "@/assets/mobility-map.png";
 import ClubLocationMap from "@/components/ClubLocationMap";
+import { HockeyFieldJsonLd } from "@/components/JsonLd";
 const HockeyField = () => {
   return <div className="container mx-auto px-4 py-8">
+      <HockeyFieldJsonLd />
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold mb-8 text-foreground">Hockeyterrein & Mobiliteit</h1>
         
