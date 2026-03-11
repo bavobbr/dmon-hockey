@@ -121,6 +121,7 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <ScrollToTop />
+          <AutoPageMeta />
           <SidebarProvider defaultOpen style={{"--sidebar-width": "280px", "--sidebar-width-icon": "80px"} as React.CSSProperties}>
             <div className="min-h-screen flex w-full max-w-full overflow-x-hidden">
               <AppSidebar />
