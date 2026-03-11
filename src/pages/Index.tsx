@@ -276,7 +276,7 @@ const Index = () => {
                 </p>
               </CardContent>
               <div className="relative h-48 overflow-hidden">
-                <img src={familyImage} alt="Club familie" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-90 contrast-100 saturate-90" />
+                <img src={familyImage} alt="Club familie" loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-90 contrast-100 saturate-90" />
               </div>
             </Card>
           </div>
