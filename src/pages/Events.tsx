@@ -10,6 +10,7 @@ import { formatInTimeZone } from "date-fns-tz/formatInTimeZone";
 import { toZonedTime } from "date-fns-tz/toZonedTime";
 import { fromZonedTime } from "date-fns-tz/fromZonedTime";
 import DOMPurify from "dompurify";
+import { EventsPageJsonLd } from "@/components/JsonLd";
 
 interface TwizzitEvent {
   id: string;
@@ -401,6 +402,7 @@ const Events = () => {
 
   return (
     <div className="container mx-auto p-6 max-w-4xl">
+      <EventsPageJsonLd events={events} />
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-start justify-between gap-4 mb-4">
