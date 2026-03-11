@@ -163,6 +163,7 @@ const Index = () => {
       </div>;
   }
   return <div className="min-h-screen bg-background overflow-x-hidden max-w-full">
+      <HomepageJsonLd />
       {/* Hero Section */}
       <section className="hero-gradient text-primary-foreground py-24 lg:py-32 relative overflow-x-hidden">
         <div className="container mx-auto px-4 text-center relative z-10 max-w-full">
