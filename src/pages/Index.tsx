@@ -236,7 +236,7 @@ const Index = () => {
                 <p className="text-muted-foreground leading-relaxed mb-4">Wekelijkse trainingen met ervaren trainers om je techniek en strategie te verbeteren.</p>
               </CardContent>
               <div className="relative h-48 overflow-hidden">
-                <img src={trainingImage} alt="Training sessie" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-90 contrast-100 saturate-90" />
+                <img src={trainingImage} alt="Training sessie" loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-90 contrast-100 saturate-90" />
               </div>
             </Card>
             
@@ -256,7 +256,7 @@ const Index = () => {
                 </p>
               </CardContent>
               <div className="relative h-48 overflow-hidden">
-                <img src={competitiveImage} alt="Competitieve wedstrijd" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-90 contrast-100 saturate-90" />
+                <img src={competitiveImage} alt="Competitieve wedstrijd" loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-90 contrast-100 saturate-90" />
               </div>
             </Card>
             
@@ -276,7 +276,7 @@ const Index = () => {
                 </p>
               </CardContent>
               <div className="relative h-48 overflow-hidden">
-                <img src={familyImage} alt="Club familie" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-90 contrast-100 saturate-90" />
+                <img src={familyImage} alt="Club familie" loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-90 contrast-100 saturate-90" />
               </div>
             </Card>
           </div>
@@ -408,7 +408,7 @@ const Index = () => {
             </div> : teams.length > 0 ? <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {teams.map(team => <Card key={team.id} className="hover:shadow-lg transition-shadow overflow-hidden">
                   {team.image_url && <div className="relative h-48 overflow-hidden">
-                      <img src={team.image_url} alt={team.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                      <img src={team.image_url} alt={team.name} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     </div>}
                   <CardHeader>
                     <CardTitle className="text-lg">
@@ -452,7 +452,7 @@ const Index = () => {
             </div> : instagramPosts.length > 0 ? <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {instagramPosts.map(post => <Card key={post.id} className="group cursor-pointer hover:shadow-lg transition-all duration-300 relative overflow-hidden">
                   <div className="aspect-square overflow-hidden rounded-t-lg">
-                    <img src={post.media_url} alt={post.caption || "Instagram post"} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                    <img src={post.media_url} alt={post.caption || "Instagram post"} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                   </div>
                   <CardContent className="p-4">
                     <p className="text-sm text-muted-foreground line-clamp-2 mb-2">

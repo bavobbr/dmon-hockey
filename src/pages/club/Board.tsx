@@ -53,6 +53,7 @@ const Board = () => {
                   <img
                     src={organogramImage}
                     alt="Organogram D-mon Hockey Club Bestuur"
+                    loading="lazy"
                     className="w-full h-auto rounded-lg shadow-lg border"
                   />
                 </div>
@@ -70,6 +71,7 @@ const Board = () => {
                     <img
                       src={member.photo_url}
                       alt={member.name}
+                      loading="lazy"
                       className="w-24 h-24 object-cover rounded-full border"
                     />
                   ) : (

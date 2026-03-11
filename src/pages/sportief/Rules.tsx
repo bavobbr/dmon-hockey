@@ -146,6 +146,7 @@ const Rules = () => {
                   <img 
                     src={scheidsrechterPad} 
                     alt="Scheidsrechter pad overzicht per leeftijdscategorie" 
+                    loading="lazy"
                     className="max-w-md w-full h-auto rounded-lg shadow-lg"
                   />
                 </div>
@@ -223,6 +224,7 @@ const Rules = () => {
                     <img 
                       src={stappen} 
                       alt="Aangeraden materiaal per categorie" 
+                      loading="lazy"
                       className="max-w-2xl w-full h-auto rounded-lg shadow-lg"
                     />
                     <p className="text-sm text-muted-foreground mt-2 italic">

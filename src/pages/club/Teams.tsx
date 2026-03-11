@@ -50,6 +50,7 @@ const ClubTeams = () => {
                   <img 
                     src={team.image_url || "/lovable-uploads/03104bbc-f9de-44a2-a8b0-aedb91fd1c6c.png"}
                     alt={team.name}
+                    loading="lazy"
                     className={`w-full h-full object-contain hover:scale-105 transition-transform ${!team.image_url ? 'opacity-40 grayscale' : ''}`}
                   />
                 </div>

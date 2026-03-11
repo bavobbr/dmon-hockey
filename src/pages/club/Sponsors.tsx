@@ -92,6 +92,7 @@ const ClubSponsors = () => {
                           <img 
                             src={supabase.storage.from('sponsor-logos').getPublicUrl(sponsor.logo_path).data.publicUrl}
                             alt={sponsor.name}
+                            loading="lazy"
                             className="max-h-16 max-w-full object-contain"
                           />
                         ) : (

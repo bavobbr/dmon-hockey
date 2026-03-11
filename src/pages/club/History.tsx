@@ -71,6 +71,7 @@ const History = () => {
                   <img 
                     src={historyStoryImage} 
                     alt="Verhaal D-MON Hockey - Geschiedenis van de Club" 
+                    loading="lazy"
                     className="w-full h-auto rounded-lg shadow-lg border"
                   />
                 </div>

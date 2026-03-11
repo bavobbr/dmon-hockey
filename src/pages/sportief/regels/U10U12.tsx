@@ -22,6 +22,7 @@ const U10U12Rules = () => {
             <img 
               src={stappen} 
               alt="Aangeraden materiaal per categorie" 
+              loading="lazy"
               className="max-w-2xl w-full h-auto rounded-lg shadow-lg"
             />
             <p className="text-sm text-muted-foreground mt-2 italic">
@@ -215,13 +216,15 @@ const U10U12Rules = () => {
                       <img 
                         src={u10u12Rules1} 
                         alt="U10/U12 spelregels - deel 1" 
+                        loading="lazy"
                         className="w-full h-auto rounded-lg shadow-lg border"
                       />
                     </div>
                     <div className="text-center">
                       <img 
                         src={u10u12Rules2} 
-                        alt="U10/U12 spelregels - deel 2" 
+                        alt="U10/U12 spelregels - deel 2"
+                        loading="lazy"
                         className="w-full h-auto rounded-lg shadow-lg border"
                       />
                     </div>
