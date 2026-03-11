@@ -18,6 +18,8 @@ export default function PageMeta({ title, description, path }: PageMetaProps) {
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+      <html lang="nl-BE" />
+      <link rel="alternate" hrefLang="nl-BE" href={canonicalUrl || BASE_URL} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content="website" />

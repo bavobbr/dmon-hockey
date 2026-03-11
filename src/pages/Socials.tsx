@@ -148,7 +148,7 @@ export default function Socials() {
               <div className="relative">
                 <img 
                   src={post.media_url} 
-                  alt="Instagram post"
+                  alt={post.caption ? post.caption.substring(0, 120) : `Instagram post van D-mon Hockey Club`}
                   className="w-full h-64 object-cover"
                 />
                 <Badge 
