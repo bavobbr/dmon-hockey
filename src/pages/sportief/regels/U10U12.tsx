@@ -223,7 +223,8 @@ const U10U12Rules = () => {
                     <div className="text-center">
                       <img 
                         src={u10u12Rules2} 
-                        alt="U10/U12 spelregels - deel 2" 
+                        alt="U10/U12 spelregels - deel 2"
+                        loading="lazy"
                         className="w-full h-auto rounded-lg shadow-lg border"
                       />
                     </div>

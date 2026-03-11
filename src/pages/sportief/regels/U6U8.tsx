@@ -143,6 +143,7 @@ const U6U8Rules = () => {
                     <img 
                       src={u7u8BackImage} 
                       alt="U6-U8 spelregels achterkant" 
+                      loading="lazy"
                       className="w-full max-w-md mx-auto rounded-lg shadow-md"
                     />
                     <p className="text-sm text-muted-foreground mt-2">Achterkant spelregels</p>
