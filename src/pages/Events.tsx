@@ -182,15 +182,13 @@ const Events = () => {
             </>
           ) : (
             <div className="space-y-3">
-              {filteredEvents.length > 0 ? (
-                filteredEvents.map((event) => (
-                  <EventGroup
-                    key="selected-date"
-                    title={format(selectedDate!, "EEEE d MMMM", { locale: nl })}
-                    events={filteredEvents}
-                    variant="today"
-                  />
-                ))
+            {filteredEvents.length > 0 ? (
+                <EventGroup
+                  key="selected-date"
+                  title={format(selectedDate!, "EEEE d MMMM", { locale: nl })}
+                  events={filteredEvents}
+                  variant="today"
+                />
               ) : (
                 <Card>
                   <CardContent className="pt-6 pb-6">
