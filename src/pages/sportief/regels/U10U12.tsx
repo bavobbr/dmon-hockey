@@ -216,6 +216,7 @@ const U10U12Rules = () => {
                       <img 
                         src={u10u12Rules1} 
                         alt="U10/U12 spelregels - deel 1" 
+                        loading="lazy"
                         className="w-full h-auto rounded-lg shadow-lg border"
                       />
                     </div>
