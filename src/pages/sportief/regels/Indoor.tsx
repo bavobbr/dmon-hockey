@@ -84,7 +84,7 @@ const IndoorRules = () => {
             </CardHeader>
             <CardContent>
               <div className="text-center mb-4">
-                <img src={indoorRulesTable1} alt="Indoor hockey spelregels overzicht" className="w-full max-w-3xl mx-auto rounded-lg shadow-md" />
+                <img src={indoorRulesTable1} alt="Indoor hockey spelregels overzicht" loading="lazy" className="w-full max-w-3xl mx-auto rounded-lg shadow-md" />
               </div>
               
               <div className="space-y-4 mt-6">
