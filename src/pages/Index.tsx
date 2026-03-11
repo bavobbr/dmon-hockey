@@ -408,7 +408,7 @@ const Index = () => {
             </div> : teams.length > 0 ? <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {teams.map(team => <Card key={team.id} className="hover:shadow-lg transition-shadow overflow-hidden">
                   {team.image_url && <div className="relative h-48 overflow-hidden">
-                      <img src={team.image_url} alt={team.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                      <img src={team.image_url} alt={team.name} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     </div>}
                   <CardHeader>
                     <CardTitle className="text-lg">
