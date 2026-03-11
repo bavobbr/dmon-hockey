@@ -149,6 +149,7 @@ export default function Socials() {
                 <img 
                   src={post.media_url} 
                   alt={post.caption ? post.caption.substring(0, 120) : `Instagram post van D-mon Hockey Club`}
+                  loading="lazy"
                   className="w-full h-64 object-cover"
                 />
                 <Badge 

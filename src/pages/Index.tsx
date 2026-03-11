@@ -452,7 +452,7 @@ const Index = () => {
             </div> : instagramPosts.length > 0 ? <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {instagramPosts.map(post => <Card key={post.id} className="group cursor-pointer hover:shadow-lg transition-all duration-300 relative overflow-hidden">
                   <div className="aspect-square overflow-hidden rounded-t-lg">
-                    <img src={post.media_url} alt={post.caption || "Instagram post"} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                    <img src={post.media_url} alt={post.caption || "Instagram post"} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                   </div>
                   <CardContent className="p-4">
                     <p className="text-sm text-muted-foreground line-clamp-2 mb-2">

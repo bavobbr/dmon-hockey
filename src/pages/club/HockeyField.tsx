@@ -64,7 +64,7 @@ const HockeyField = () => {
                 <div className="space-y-3">
                   <h4 className="font-medium">Parkeerkaart & Richtlijnen</h4>
                   <div className="border rounded-lg overflow-hidden">
-                    <img src={mobilityMap} alt="Mobiliteits- en parkeerkaart voor D-mon Hockey Club" className="w-full h-auto" />
+                    <img src={mobilityMap} alt="Mobiliteits- en parkeerkaart voor D-mon Hockey Club" loading="lazy" className="w-full h-auto" />
                   </div>
                   <div className="flex gap-2">
                     <Button variant="outline" size="sm" asChild>

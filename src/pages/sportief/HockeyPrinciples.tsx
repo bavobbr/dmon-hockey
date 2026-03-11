@@ -28,6 +28,7 @@ const HockeyPrinciples = () => {
                 <img 
                   src={principlesDiagram} 
                   alt="Overzicht van de hockey principes en speelstijl van D-mon Hockey Club" 
+                  loading="lazy"
                   className="max-w-2xl w-full h-auto rounded-lg cursor-pointer hover:opacity-90 transition-opacity mx-auto"
                 />
               </DialogTrigger>
