@@ -10,6 +10,7 @@ import { formatInTimeZone } from "date-fns-tz/formatInTimeZone";
 import { toZonedTime } from "date-fns-tz/toZonedTime";
 import { fromZonedTime } from "date-fns-tz/fromZonedTime";
 import DOMPurify from "dompurify";
+import { EventsPageJsonLd } from "@/components/JsonLd";
 
 interface TwizzitEvent {
   id: string;
