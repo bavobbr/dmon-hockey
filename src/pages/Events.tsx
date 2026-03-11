@@ -73,6 +73,13 @@ const Events = () => {
     fetchEvents();
   }, []);
 
+  // Auto-scroll to today on load
+  useEffect(() => {
+    if (!loading && todayRef.current) {
+      todayRef.current.scrollIntoView({ behavior: 'instant', block: 'start' });
+    }
+  }, [loading]);
+
   const scrollToToday = () => {
     todayRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
