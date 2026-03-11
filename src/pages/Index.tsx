@@ -236,7 +236,7 @@ const Index = () => {
                 <p className="text-muted-foreground leading-relaxed mb-4">Wekelijkse trainingen met ervaren trainers om je techniek en strategie te verbeteren.</p>
               </CardContent>
               <div className="relative h-48 overflow-hidden">
-                <img src={trainingImage} alt="Training sessie" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-90 contrast-100 saturate-90" />
+                <img src={trainingImage} alt="Training sessie" loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-90 contrast-100 saturate-90" />
               </div>
             </Card>
             
