@@ -6,6 +6,7 @@ import organogramImage from "@/assets/organogram.png";
 import clubOrganizationImage from "@/assets/club-organization.png";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { useState } from "react";
+import { BoardPageJsonLd } from "@/components/JsonLd";
 
 const Board = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -22,6 +23,7 @@ const Board = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <BoardPageJsonLd members={boardMembers || []} />
       <div className="max-w-6xl mx-auto">
         <h1 className="text-4xl font-bold mb-8 text-foreground">Bestuur, Sportieve cel en medewerkers</h1>
 

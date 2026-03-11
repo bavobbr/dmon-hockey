@@ -1,10 +1,12 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin, Users, ExternalLink, Shield } from "lucide-react";
+import { ContactPageJsonLd } from "@/components/JsonLd";
 
 const Contact = () => {
   return (
     <div className="container mx-auto px-4 py-8">
+      <ContactPageJsonLd />
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold mb-8 text-foreground">Contact</h1>
         
