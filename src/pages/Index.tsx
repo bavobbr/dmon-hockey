@@ -308,9 +308,19 @@ const Index = () => {
                   </CardContent>
                 </Card>)}
             </div> : announcements.length > 0 ? <div className="grid md:grid-cols-3 gap-8">
-              {announcements.map((announcement, index) => <Card key={announcement.id} className={`group fade-in-up`} style={{
-            animationDelay: `${index * 0.1}s`
-          }}>
+              {announcements.map((announcement, index) => {
+                const imgMatch = announcement.content.match(/<img[^>]+src=["']([^"']+)["']/i);
+                const backgroundImage = imgMatch ? imgMatch[1] : null;
+                return <Card key={announcement.id} className={`group fade-in-up relative overflow-hidden`} style={{
+                  animationDelay: `${index * 0.1}s`
+                }}>
+                  {backgroundImage && (
+                    <div 
+                      className="absolute inset-0 bg-cover bg-center opacity-[0.07] group-hover:opacity-[0.12] transition-opacity duration-500 pointer-events-none"
+                      style={{ backgroundImage: `url(${backgroundImage})` }}
+                    />
+                  )}
+                  <div className="relative z-10">
                   <CardHeader>
                     <div className="flex items-start gap-3 mb-2">
                       <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
@@ -357,7 +367,9 @@ const Index = () => {
                       </DialogContent>
                     </Dialog>
                   </CardContent>
-                </Card>)}
+                  </div>
+                </Card>;
+              })}
             </div> : <div className="text-center py-12">
               <p className="text-muted-foreground mb-4">Nog geen aankondigingen.</p>
               {(isAdmin || isModerator) && <Link to="/admin/announcements/new">
