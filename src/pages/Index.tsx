@@ -13,6 +13,7 @@ import { Target, Trophy, Users, Newspaper } from "lucide-react";
 import trainingImage from "@/assets/training-card.png";
 import competitiveImage from "@/assets/competitive-card.png";
 import familyImage from "@/assets/family-card.png";
+import { HomepageJsonLd } from "@/components/JsonLd";
 interface Announcement {
   id: string;
   title: string;
