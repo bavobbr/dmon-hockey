@@ -18,33 +18,176 @@ interface Announcement {
   icon: string;
 }
 
+function extractFirstImage(html: string): string | null {
+  const match = html.match(/<img[^>]+src=["']([^"']+)["']/i);
+  return match ? match[1] : null;
+}
+
+const HeroCard = ({ announcement }: { announcement: Announcement }) => {
+  const IconComponent = (Icons as any)[announcement.icon || 'Newspaper'] || Icons.Newspaper;
+  const backgroundImage = extractFirstImage(announcement.content);
+
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Card className="group cursor-pointer fade-in-up overflow-hidden border-0 shadow-[var(--shadow-elegant)] hover:shadow-[var(--shadow-glow)] transition-all duration-500">
+          <div className="grid md:grid-cols-2 min-h-[320px]">
+            {/* Image side */}
+            <div className="relative overflow-hidden bg-muted">
+              {backgroundImage ? (
+                <img
+                  src={backgroundImage}
+                  alt={announcement.title}
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+              ) : (
+                <div className="absolute inset-0 bg-[image:var(--gradient-hero)] flex items-center justify-center">
+                  <IconComponent className="h-20 w-20 text-primary-foreground/30" />
+                </div>
+              )}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card/20" />
+            </div>
+            {/* Content side */}
+            <div className="p-8 flex flex-col justify-center">
+              <div className="flex items-center gap-3 mb-4">
+                <Badge variant="secondary" className="bg-accent/10 text-accent border-accent/20">
+                  Uitgelicht
+                </Badge>
+                <span className="text-sm text-muted-foreground">
+                  {new Date(announcement.created_at).toLocaleDateString("nl-BE", {
+                    year: 'numeric', month: 'long', day: 'numeric'
+                  })}
+                </span>
+              </div>
+              <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors leading-tight">
+                {announcement.title}
+              </h2>
+              <p className="text-muted-foreground leading-relaxed line-clamp-3 mb-6">
+                {announcement.excerpt || announcement.content.replace(/<[^>]*>/g, '').substring(0, 200) + '...'}
+              </p>
+              <span className="inline-flex items-center gap-2 text-primary font-medium group-hover:gap-3 transition-all">
+                Lees meer <Icons.ArrowRight className="h-4 w-4" />
+              </span>
+            </div>
+          </div>
+        </Card>
+      </DialogTrigger>
+      <AnnouncementDialog announcement={announcement} />
+    </Dialog>
+  );
+};
+
+const NewsCard = ({ announcement, index }: { announcement: Announcement; index: number }) => {
+  const IconComponent = (Icons as any)[announcement.icon || 'Newspaper'] || Icons.Newspaper;
+  const backgroundImage = extractFirstImage(announcement.content);
+
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Card
+          className="group cursor-pointer fade-in-up overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col"
+          style={{ animationDelay: `${index * 0.08}s` }}
+        >
+          {/* Image thumbnail */}
+          <div className="relative h-48 overflow-hidden bg-muted">
+            {backgroundImage ? (
+              <img
+                src={backgroundImage}
+                alt={announcement.title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            ) : (
+              <div className="w-full h-full bg-[image:var(--gradient-primary)] flex items-center justify-center">
+                <IconComponent className="h-12 w-12 text-primary-foreground/30" />
+              </div>
+            )}
+            {announcement.featured && (
+              <Badge variant="secondary" className="absolute top-3 right-3 bg-accent/90 text-accent-foreground border-0 backdrop-blur-sm">
+                Uitgelicht
+              </Badge>
+            )}
+          </div>
+          {/* Content */}
+          <div className="flex flex-col flex-1 p-5">
+            <div className="flex items-center gap-2 mb-3">
+              <div className="p-1.5 rounded-md bg-primary/10">
+                <IconComponent className="h-4 w-4 text-primary" />
+              </div>
+              <span className="text-xs text-muted-foreground">
+                {new Date(announcement.created_at).toLocaleDateString("nl-BE", {
+                  year: 'numeric', month: 'long', day: 'numeric'
+                })}
+              </span>
+            </div>
+            <h3 className="text-lg font-semibold text-foreground mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+              {announcement.title}
+            </h3>
+            <p className="text-sm text-muted-foreground line-clamp-3 flex-1 leading-relaxed">
+              {announcement.excerpt || announcement.content.replace(/<[^>]*>/g, '').substring(0, 120) + '...'}
+            </p>
+            <span className="inline-flex items-center gap-1.5 text-sm text-primary font-medium mt-4 group-hover:gap-2.5 transition-all">
+              Lees meer <Icons.ArrowRight className="h-3.5 w-3.5" />
+            </span>
+          </div>
+        </Card>
+      </DialogTrigger>
+      <AnnouncementDialog announcement={announcement} />
+    </Dialog>
+  );
+};
+
+const AnnouncementDialog = ({ announcement }: { announcement: Announcement }) => (
+  <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+    <DialogHeader>
+      <DialogTitle className="text-xl font-bold mb-2">
+        {announcement.title}
+      </DialogTitle>
+      <DialogDescription className="text-sm text-muted-foreground">
+        {new Date(announcement.created_at).toLocaleDateString("nl-BE", {
+          year: 'numeric', month: 'long', day: 'numeric'
+        })}
+        {announcement.featured && (
+          <Badge variant="secondary" className="ml-2 bg-accent/10 text-accent border-accent/20">
+            Uitgelicht
+          </Badge>
+        )}
+      </DialogDescription>
+    </DialogHeader>
+    <div
+      className="prose prose-sm max-w-none text-foreground mt-4 prose-a:text-primary prose-a:underline prose-a:underline-offset-2 hover:prose-a:text-primary/80"
+      dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(announcement.content) }}
+    />
+  </DialogContent>
+);
+
 const Nieuws = () => {
   const [announcements, setAnnouncements] = useState<Announcement[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    const fetchAnnouncements = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('announcements')
+          .select('*')
+          .eq('published', true)
+          .order('created_at', { ascending: false });
+        if (error) throw error;
+        setAnnouncements(data || []);
+      } catch (err) {
+        console.error('Error fetching announcements:', err);
+        setError('Failed to load announcements');
+      } finally {
+        setLoading(false);
+      }
+    };
     fetchAnnouncements();
   }, []);
 
-  const fetchAnnouncements = async () => {
-    try {
-      const { data, error } = await supabase
-        .from('announcements')
-        .select('*')
-        .eq('published', true)
-        .order('created_at', { ascending: false });
-
-      if (error) throw error;
-
-      setAnnouncements(data || []);
-    } catch (err) {
-      console.error('Error fetching announcements:', err);
-      setError('Failed to load announcements');
-    } finally {
-      setLoading(false);
-    }
-  };
+  // Split featured hero from rest
+  const featuredAnnouncement = announcements.find(a => a.featured);
+  const otherAnnouncements = announcements.filter(a => a !== featuredAnnouncement);
 
   if (loading) {
     return (
@@ -55,20 +198,11 @@ const Nieuws = () => {
             Alle aankondigingen en nieuws van D-mon Hockey Club
           </p>
         </div>
+        {/* Hero skeleton */}
+        <div className="animate-pulse rounded-xl bg-muted h-[320px] mb-8" />
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {Array.from({ length: 6 }).map((_, i) => (
-            <Card key={i} className="animate-pulse">
-              <CardHeader>
-                <div className="h-4 bg-muted rounded w-3/4"></div>
-                <div className="h-3 bg-muted rounded w-1/2"></div>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-2">
-                  <div className="h-3 bg-muted rounded w-full"></div>
-                  <div className="h-3 bg-muted rounded w-2/3"></div>
-                </div>
-              </CardContent>
-            </Card>
+            <div key={i} className="animate-pulse rounded-xl bg-muted h-[340px]" />
           ))}
         </div>
       </div>
@@ -80,9 +214,6 @@ const Nieuws = () => {
       <div className="container mx-auto p-6">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-foreground">Nieuws</h1>
-          <p className="text-lg text-muted-foreground mt-2">
-            Alle aankondigingen en nieuws van D-mon Hockey Club
-          </p>
         </div>
         <Card>
           <CardContent className="pt-6">
@@ -105,100 +236,24 @@ const Nieuws = () => {
       {announcements.length === 0 ? (
         <Card>
           <CardContent className="pt-6">
-            <p className="text-center text-muted-foreground">
-              Geen nieuws gevonden.
-            </p>
+            <p className="text-center text-muted-foreground">Geen nieuws gevonden.</p>
           </CardContent>
         </Card>
       ) : (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {announcements.map((announcement, index) => {
-            const IconComponent = (Icons as any)[announcement.icon || 'Newspaper'] || Icons.Newspaper;
-            
-            // Extract first image from HTML content
-            const imgMatch = announcement.content.match(/<img[^>]+src=["']([^"']+)["']/i);
-            const backgroundImage = imgMatch ? imgMatch[1] : null;
-            
-            return (
-              <Card 
-                key={announcement.id} 
-                className="group fade-in-up hover:shadow-lg transition-shadow duration-200 relative overflow-hidden" 
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                {backgroundImage && (
-                  <div 
-                    className="absolute inset-0 bg-cover bg-center opacity-[0.07] group-hover:opacity-[0.12] transition-opacity duration-500 pointer-events-none"
-                    style={{ backgroundImage: `url(${backgroundImage})` }}
-                  />
-                )}
-                <div className="relative z-10">
-                <CardHeader>
-                  <div className="flex items-start gap-3">
-                    <div className="mt-1 p-2 rounded-lg bg-primary/10 shrink-0">
-                      <IconComponent className="h-5 w-5 text-primary" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-start justify-between gap-2">
-                        <CardTitle className="text-xl line-clamp-2 group-hover:text-primary transition-colors">
-                          {announcement.title}
-                        </CardTitle>
-                        {announcement.featured && (
-                          <Badge variant="secondary" className="shrink-0 bg-accent/10 text-accent border-accent/20">
-                            Uitgelicht
-                          </Badge>
-                        )}
-                      </div>
-                      <CardDescription className="text-sm text-muted-foreground mt-2">
-                        {new Date(announcement.created_at).toLocaleDateString("nl-BE", {
-                          year: 'numeric',
-                          month: 'long',
-                          day: 'numeric'
-                        })}
-                      </CardDescription>
-                    </div>
-                  </div>
-                </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground line-clamp-3 mb-6 leading-relaxed">
-                  {announcement.excerpt || announcement.content.substring(0, 150) + '...'}
-                </p>
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button variant="outline" size="sm" className="group-hover:border-primary/50 group-hover:text-primary">
-                      Lees Meer
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
-                    <DialogHeader>
-                      <DialogTitle className="text-xl font-bold mb-2">
-                        {announcement.title}
-                      </DialogTitle>
-                      <DialogDescription className="text-sm text-muted-foreground">
-                        {new Date(announcement.created_at).toLocaleDateString("nl-BE", {
-                          year: 'numeric',
-                          month: 'long',
-                          day: 'numeric'
-                        })}
-                        {announcement.featured && (
-                          <Badge variant="secondary" className="ml-2 bg-accent/10 text-accent border-accent/20">
-                            Uitgelicht
-                          </Badge>
-                        )}
-                      </DialogDescription>
-                    </DialogHeader>
-                    <div 
-                      className="prose prose-sm max-w-none text-foreground mt-4 prose-a:text-primary prose-a:underline prose-a:underline-offset-2 hover:prose-a:text-primary/80" 
-                      dangerouslySetInnerHTML={{ 
-                        __html: DOMPurify.sanitize(announcement.content) 
-                      }} 
-                    />
-                  </DialogContent>
-                </Dialog>
-              </CardContent>
-                </div>
-            </Card>
-            );
-          })}
+        <div className="space-y-8">
+          {/* Hero featured article */}
+          {featuredAnnouncement && (
+            <HeroCard announcement={featuredAnnouncement} />
+          )}
+
+          {/* Grid of remaining articles */}
+          {otherAnnouncements.length > 0 && (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {otherAnnouncements.map((announcement, index) => (
+                <NewsCard key={announcement.id} announcement={announcement} index={index} />
+              ))}
+            </div>
+          )}
         </div>
       )}
     </div>
