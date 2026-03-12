@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { Card } from "@/components/ui/card";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
 import teamNight from "@/assets/gallery/team-night.png";
 import partyGroup from "@/assets/gallery/party-group.png";
@@ -78,45 +79,142 @@ const galleryImages = [
   { src: kidsMouthguards, alt: "Kinderen met mondkapjes" },
 ];
 
+// Distribute images across columns for masonry layout
+function distributeToColumns(images: typeof galleryImages, columnCount: number) {
+  const columns: (typeof galleryImages)[] = Array.from({ length: columnCount }, () => []);
+  images.forEach((img, i) => {
+    columns[i % columnCount].push(img);
+  });
+  return columns;
+}
+
 const Sfeer = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const [columnCount, setColumnCount] = useState(4);
+
+  // Responsive column count
+  useEffect(() => {
+    const update = () => {
+      const w = window.innerWidth;
+      if (w < 640) setColumnCount(2);
+      else if (w < 1024) setColumnCount(3);
+      else setColumnCount(4);
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  const columns = useMemo(
+    () => distributeToColumns(galleryImages, columnCount),
+    [columnCount]
+  );
+
+  // Map column/row position back to flat index for lightbox
+  const getOriginalIndex = (colIdx: number, rowIdx: number) => {
+    return rowIdx * columnCount + colIdx;
+  };
+
+  const navigate = (dir: -1 | 1) => {
+    if (selectedImage === null) return;
+    const next = selectedImage + dir;
+    if (next >= 0 && next < galleryImages.length) setSelectedImage(next);
+  };
+
+  // Keyboard nav
+  useEffect(() => {
+    if (selectedImage === null) return;
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") navigate(-1);
+      if (e.key === "ArrowRight") navigate(1);
+      if (e.key === "Escape") setSelectedImage(null);
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [selectedImage]);
 
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold mb-4 text-foreground">Sfeer</h1>
-        <p className="text-muted-foreground mb-8">
-          Beleef de sfeer en gezelligheid van D-Mon Hockey door onze fotogalerij
-        </p>
+        {/* Header */}
+        <div className="mb-10 fade-in-up">
+          <h1 className="font-display text-5xl lg:text-6xl font-bold text-foreground mb-3">
+            Sfeer
+          </h1>
+          <p className="text-lg text-muted-foreground max-w-xl">
+            Beleef de familiale en speelse sfeer van D-Mon Hockey — op en naast het veld!
+          </p>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {galleryImages.map((image, index) => (
-            <Card
-              key={index}
-              className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow group"
-              onClick={() => setSelectedImage(index)}
-            >
-              <div className="relative aspect-[4/3] overflow-hidden">
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-            </Card>
+        {/* Masonry grid */}
+        <div className="flex gap-3 sm:gap-4">
+          {columns.map((col, colIdx) => (
+            <div key={colIdx} className="flex-1 flex flex-col gap-3 sm:gap-4">
+              {col.map((image, rowIdx) => {
+                const flatIdx = getOriginalIndex(colIdx, rowIdx);
+                return (
+                  <div
+                    key={flatIdx}
+                    className="group relative overflow-hidden rounded-xl cursor-pointer fade-in-up"
+                    style={{ animationDelay: `${flatIdx * 0.03}s` }}
+                    onClick={() => setSelectedImage(flatIdx)}
+                  >
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      loading="lazy"
+                      className="w-full h-auto block group-hover:scale-[1.03] transition-transform duration-500"
+                    />
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/10 transition-colors duration-300" />
+                  </div>
+                );
+              })}
+            </div>
           ))}
         </div>
       </div>
 
+      {/* Lightbox with navigation */}
       <Dialog open={selectedImage !== null} onOpenChange={() => setSelectedImage(null)}>
-        <DialogContent className="max-w-5xl w-full p-0">
+        <DialogContent className="max-w-6xl w-full p-0 bg-background/95 backdrop-blur-md border-0 overflow-hidden">
           {selectedImage !== null && (
-            <img
-              src={galleryImages[selectedImage].src}
-              alt={galleryImages[selectedImage].alt}
-              className="w-full h-auto"
-            />
+            <div className="relative flex items-center justify-center min-h-[50vh]">
+              {/* Previous */}
+              {selectedImage > 0 && (
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="absolute left-2 z-10 h-10 w-10 rounded-full bg-background/80 hover:bg-background text-foreground"
+                  onClick={(e) => { e.stopPropagation(); navigate(-1); }}
+                >
+                  <ChevronLeft className="h-6 w-6" />
+                </Button>
+              )}
+
+              <img
+                src={galleryImages[selectedImage].src}
+                alt={galleryImages[selectedImage].alt}
+                className="w-full h-auto max-h-[85vh] object-contain"
+              />
+
+              {/* Next */}
+              {selectedImage < galleryImages.length - 1 && (
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="absolute right-2 z-10 h-10 w-10 rounded-full bg-background/80 hover:bg-background text-foreground"
+                  onClick={(e) => { e.stopPropagation(); navigate(1); }}
+                >
+                  <ChevronRight className="h-6 w-6" />
+                </Button>
+              )}
+
+              {/* Counter */}
+              <span className="absolute bottom-3 left-1/2 -translate-x-1/2 text-sm text-muted-foreground bg-background/80 px-3 py-1 rounded-full">
+                {selectedImage + 1} / {galleryImages.length}
+              </span>
+            </div>
           )}
         </DialogContent>
       </Dialog>
