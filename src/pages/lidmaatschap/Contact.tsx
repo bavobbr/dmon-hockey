@@ -65,7 +65,34 @@ const Contact = () => {
           </Card>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-6 mb-8">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Shield className="h-5 w-5" />
+                Scheidsrechter/begeleider worden?
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground mb-4">
+                Interesse om als begeleider (U7/U8/U9) of scheidsrechter (U10 tot U19) te helpen bij D-MON Hockey?
+              </p>
+              <p className="text-muted-foreground mb-4">
+                Vul hieronder het registratieformulier in en we voorzien een VHL/Twizzit account en verdere begeleiding voor jou.
+              </p>
+              <Button className="w-full" asChild>
+                <a 
+                  href="https://app.twizzit.com/v2/public/form/cea9e8831bead08352918535621cd399" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
+                  <ExternalLink className="h-4 w-4 mr-2" />
+                  Registreer als scheidsrechter/begeleider
+                </a>
+              </Button>
+            </CardContent>
+          </Card>
+
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
