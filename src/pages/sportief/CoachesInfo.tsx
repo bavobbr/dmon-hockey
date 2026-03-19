@@ -141,9 +141,10 @@ const CoachesInfo = () => {
               
               <Button variant="outline" className="h-auto p-4 justify-start" asChild>
                 <a 
-                  href="https://docs.google.com/presentation/d/1cioswx4jL4AMpXzzaSs6Y-okl302Twm6/edit?usp=sharing&ouid=115910454372893949468&rtpof=true&sd=true" 
+                  href="https://pub-5b8aee7e2e414ce7b4916802c52b86f6.r2.dev/basistechnieken%20-%20passen%20stopping%20en%20scoren%20v2.pptx" 
                   target="_blank" 
                   rel="noopener noreferrer"
+                  download
                 >
                   <div className="text-left">
                     <div className="flex items-center gap-2 mb-1">
