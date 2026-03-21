@@ -94,9 +94,10 @@ const CoachesInfo = () => {
               
               <Button variant="outline" className="h-auto p-4 justify-start" asChild>
                 <a 
-                  href="https://docs.google.com/presentation/d/1wMCV4aotmIu8bA-bSJc11ypPHwOzjIGk/export/pptx" 
+                  href="https://pub-5b8aee7e2e414ce7b4916802c52b86f6.r2.dev/DMON%20coach%20fundamentals%20bovenbouw%20v5.pptx" 
                   target="_blank" 
                   rel="noopener noreferrer"
+                  download
                 >
                   <div className="text-left">
                     <div className="flex items-center gap-2 mb-1">
