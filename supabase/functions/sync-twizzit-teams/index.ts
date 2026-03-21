@@ -120,11 +120,11 @@ serve(async (req) => {
 
     const authRes = await fetch(authUrl, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
         username: twizzitUsername,
         password: twizzitPassword,
-      }),
+      }).toString(),
     });
 
     log("auth.response", {
