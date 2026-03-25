@@ -239,9 +239,9 @@ serve(async (req) => {
     };
 
     const [gameEvents, trainingEvents, otherEvents] = await Promise.all([
-      fetchByTypeIds("games", [4], 4),
-      fetchByTypeIds("trainings", [2, 3], 3),
-      fetchByTypeIds("other", [1, 5, 6], 1),
+      fetchByTypeIds("games", [3], 3),       // Type 3 = competition matches at D-Mon
+      fetchByTypeIds("trainings", [2], 2),   // Type 2 = group training sessions
+      fetchByTypeIds("other", [1, 4, 5, 6], 1),
     ]);
 
     // Deduplicate by ID — games take priority over trainings over other

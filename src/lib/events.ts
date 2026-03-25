@@ -47,8 +47,8 @@ export function getEventType(event: TwizzitEvent): EventType {
   // Use the authoritative type from Twizzit API when available.
   // Type 4 = Games, Types 2+3 = Trainings, Types 1/5/6 = Other events.
   if (event.event_type_id !== null && event.event_type_id !== undefined) {
-    if (event.event_type_id === 4) return "match";
-    if (event.event_type_id === 2 || event.event_type_id === 3) return "training";
+    if (event.event_type_id === 3) return "match";   // Type 3 = competition matches at D-Mon
+    if (event.event_type_id === 2) return "training"; // Type 2 = group training sessions
     return "event";
   }
 
