@@ -332,60 +332,22 @@ serve(async (req) => {
         coach: coachName,
       };
 
-      const { data: existingTeam, error: selectError } = await supabase
+      log("db.upsert.begin", { rid, teamName: row.name, twizzitId: row.twizzit_id });
+      const { error: upsertError } = await supabase
         .from("teams")
-        .select("id")
-        .eq("name", row.name)
-        .maybeSingle();
+        .upsert(row, { onConflict: "twizzit_id" });
 
-      if (selectError) {
-        err("db.select.error", {
+      if (upsertError) {
+        err("db.upsert.error", {
           rid,
           teamName: row.name,
-          code: selectError.code,
-          message: selectError.message,
-          details: selectError.details,
+          code: upsertError.code,
+          message: upsertError.message,
+          details: upsertError.details,
         });
-        throw selectError;
+        throw upsertError;
       }
-
-      if (existingTeam) {
-        log("db.update.begin", { rid, teamName: row.name, teamId: existingTeam.id });
-        const { error: updateError } = await supabase
-          .from("teams")
-          .update(row)
-          .eq("id", existingTeam.id);
-
-        if (updateError) {
-          err("db.update.error", {
-            rid,
-            teamName: row.name,
-            code: updateError.code,
-            message: updateError.message,
-            details: updateError.details,
-          });
-          throw updateError;
-        }
-        log("db.update.success", { rid, teamName: row.name });
-      } else {
-        log("db.insert.begin", { rid, teamName: row.name });
-        const insertRow = { ...row, created_at: now };
-        const { error: insertError } = await supabase
-          .from("teams")
-          .insert(insertRow);
-
-        if (insertError) {
-          err("db.insert.error", {
-            rid,
-            teamName: row.name,
-            code: insertError.code,
-            message: insertError.message,
-            details: insertError.details,
-          });
-          throw insertError;
-        }
-        log("db.insert.success", { rid, teamName: row.name });
-      }
+      log("db.upsert.success", { rid, teamName: row.name });
 
       mappedRows.push(row);
     }
