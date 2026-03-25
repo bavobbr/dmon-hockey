@@ -36,7 +36,7 @@ const Events = () => {
 
         const { data, error } = await supabase
           .from("twizzit_events")
-          .select("id, name, start_at, address, description, score, series, home_team_name, away_team_name, is_home_game, groups")
+          .select("id, name, start_at, address, description, score, series, home_team_name, away_team_name, is_home_game, event_type_id, groups")
           .gte("start_at", oneWeekAgo.toISOString())
           .order("start_at", { ascending: true })
           .limit(200);

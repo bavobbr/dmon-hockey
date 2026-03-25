@@ -24,6 +24,7 @@ interface TwizzitEvent {
   "event-groups"?: TwizzitEventGroup[] | null;
   "event-contacts"?: unknown | null;
   "event-resources"?: unknown | null;
+  _typeId?: number; // local tag set during fetch, not from API
 }
 
 interface EventRow {
@@ -40,6 +41,7 @@ interface EventRow {
   home_team_name: string | null;
   away_team_name: string | null;
   is_home_game: boolean | null;
+  event_type_id: number | null;
   groups: unknown | null;
   contacts: unknown | null;
   resources: unknown | null;
@@ -206,88 +208,54 @@ serve(async (req) => {
 
     log("events.date_window", { rid, startDate, endDate });
 
-    // FETCH EVENTS - Two separate calls to ensure we get both regular events and trainings
-    // Call 1: Regular events (types 1, 3, 4, 5)
-    const eventsUrl =
-      `${TWIZZIT_API_BASE}/events?` +
+    // FETCH EVENTS - Three calls, one per type group, so we can tag event_type_id reliably.
+    // The Twizzit API does not return event-type in the response, so we must infer it from
+    // which query returned the event.
+    //   Type 4 = Games (competition matches + friendlies)
+    //   Types 2+3 = Group sessions + Trainings  → stored as type_id 3
+    //   Types 1+5+6 = Club events, work shifts, varia → stored as type_id 1
+    const baseParams =
       `organization-ids[]=${twizzitOrgId}` +
       `&start-date=${startDate}&end-date=${endDate}` +
-      `&event-types[]=1&event-types[]=3&event-types[]=4&event-types[]=5` +
-      `&limit=100` +
-      `&includes[]=event-groups`;
+      `&limit=250&includes[]=event-groups`;
 
-    log("events.request.regular", { rid, url: eventsUrl });
-
-    const eventsRes = await fetch(eventsUrl, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-
-    log("events.response.regular", {
-      rid,
-      status: eventsRes.status,
-      ok: eventsRes.ok,
-    });
-
-    if (!eventsRes.ok) {
-      const bodyPreview = await eventsRes.text().catch(() => "<unreadable>");
-      err("events.failed.regular", {
-        rid,
-        status: eventsRes.status,
-        bodyPreview: bodyPreview?.slice(0, 1000),
-      });
-      throw new Error(`Failed to fetch events: ${eventsRes.status}`);
-    }
-
-    const eventsData = await eventsRes.json();
-    const regularEvents: TwizzitEvent[] = Array.isArray(eventsData)
-      ? eventsData
-      : eventsData.events || [];
-
-    // Call 2: Training events specifically (sub-types 102913, 103608, 103609)
-    // These often have name=null and need special handling
-    const trainingsUrl =
-      `${TWIZZIT_API_BASE}/events?` +
-      `organization-ids[]=${twizzitOrgId}` +
-      `&start-date=${startDate}&end-date=${endDate}` +
-      `&event-sub-types[]=102913&event-sub-types[]=103608&event-sub-types[]=103609` +
-      `&limit=100` +
-      `&includes[]=event-groups`;
-
-    log("events.request.trainings", { rid, url: trainingsUrl });
-
-    const trainingsRes = await fetch(trainingsUrl, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-
-    log("events.response.trainings", {
-      rid,
-      status: trainingsRes.status,
-      ok: trainingsRes.ok,
-    });
-
-    let trainingEvents: TwizzitEvent[] = [];
-    if (trainingsRes.ok) {
-      const trainingsData = await trainingsRes.json();
-      trainingEvents = Array.isArray(trainingsData)
-        ? trainingsData
-        : trainingsData.events || [];
-    } else {
-      log("events.trainings.skipped", { rid, reason: "API call failed" });
-    }
-
-    // Combine and deduplicate events by ID
-    const eventMap = new Map<number, TwizzitEvent>();
-    [...regularEvents, ...trainingEvents].forEach((event) => {
-      if (event?.id) {
-        eventMap.set(event.id, event);
+    const fetchByTypeIds = async (
+      label: string,
+      typeIds: number[],
+      canonicalTypeId: number
+    ): Promise<Array<TwizzitEvent & { _typeId: number }>> => {
+      const typeParams = typeIds.map((t) => `event-types[]=${t}`).join("&");
+      const url = `${TWIZZIT_API_BASE}/events?${baseParams}&${typeParams}`;
+      log(`events.request.${label}`, { rid, url });
+      const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
+      log(`events.response.${label}`, { rid, status: res.status, ok: res.ok });
+      if (!res.ok) {
+        err(`events.failed.${label}`, { rid, status: res.status });
+        return [];
       }
+      const data = await res.json();
+      const list: TwizzitEvent[] = Array.isArray(data) ? data : data.events || [];
+      return list.map((e) => ({ ...e, _typeId: canonicalTypeId }));
+    };
+
+    const [gameEvents, trainingEvents, otherEvents] = await Promise.all([
+      fetchByTypeIds("games", [4], 4),
+      fetchByTypeIds("trainings", [2, 3], 3),
+      fetchByTypeIds("other", [1, 5, 6], 1),
+    ]);
+
+    // Deduplicate by ID — games take priority over trainings over other
+    const eventMap = new Map<number, TwizzitEvent & { _typeId: number }>();
+    [...otherEvents, ...trainingEvents, ...gameEvents].forEach((event) => {
+      if (event?.id) eventMap.set(event.id, event);
     });
-    const events: TwizzitEvent[] = Array.from(eventMap.values());
+    const events = Array.from(eventMap.values());
 
     log("events.parsed", {
       rid,
-      regularCount: regularEvents.length,
+      gameCount: gameEvents.length,
       trainingCount: trainingEvents.length,
+      otherCount: otherEvents.length,
       totalCount: events.length,
       sample_ids: events.slice(0, 5).map((e) => e?.id ?? null),
     });
@@ -371,6 +339,7 @@ serve(async (req) => {
         return {
           twizzit_id: event.id,
           name: eventName,
+          event_type_id: event._typeId ?? null,
           start_at: event.start ? new Date(event.start).toISOString() : null,
           end_at: event.end ? new Date(event.end).toISOString() : null,
           meeting_time: event["meeting-time"]

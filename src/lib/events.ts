@@ -16,6 +16,7 @@ export interface TwizzitEvent {
   home_team_name: string | null;
   away_team_name: string | null;
   is_home_game: boolean | null;
+  event_type_id: number | null;
   groups?: Array<{ groupName?: string }> | null;
 }
 
@@ -43,30 +44,22 @@ export function parseEventDateZoned(start_at: string): Date {
 }
 
 export function getEventType(event: TwizzitEvent): EventType {
-  if (!event || !event.name) return "event";
+  // Use the authoritative type from Twizzit API when available.
+  // Type 4 = Games, Types 2+3 = Trainings, Types 1/5/6 = Other events.
+  if (event.event_type_id !== null && event.event_type_id !== undefined) {
+    if (event.event_type_id === 4) return "match";
+    if (event.event_type_id === 2 || event.event_type_id === 3) return "training";
+    return "event";
+  }
+
+  // Fallback heuristic for older records without event_type_id
+  if (!event.name) return "event";
   const nameLower = event.name.toLowerCase();
-
-  if (
-    nameLower.includes("training") ||
-    nameLower.includes("oefening") ||
-    nameLower.includes("stage") ||
-    nameLower.includes("clinic")
-  ) {
-    return "training";
-  }
-
+  if (nameLower.includes("training") || nameLower.includes("oefening") ||
+      nameLower.includes("stage") || nameLower.includes("clinic")) return "training";
   if (event.is_home_game !== null && event.is_home_game !== undefined) return "match";
-
-  if (event.groups && Array.isArray(event.groups) && event.groups.length > 0) {
-    try {
-      const groupName = event.groups[0]?.groupName || "";
-      if (typeof groupName === "string" && groupName.toLowerCase().includes("match")) return "match";
-    } catch {}
-  }
-
   if (event.score !== null || event.series !== null) return "match";
   if (nameLower.includes(" - ") || nameLower.includes(" vs ")) return "match";
-
   return "event";
 }
 
