@@ -200,6 +200,15 @@ serve(async (req) => {
       sample_ids: teams.slice(0, 5).map((t) => t?.id ?? null),
     });
 
+    // Wipe existing teams before inserting fresh data
+    log("db.delete.begin", { rid });
+    const { error: deleteError } = await supabase.from("teams").delete().neq("id", "00000000-0000-0000-0000-000000000000");
+    if (deleteError) {
+      err("db.delete.error", { rid, code: deleteError.code, message: deleteError.message });
+      throw deleteError;
+    }
+    log("db.delete.done", { rid });
+
     // Contact name cache
     const contactNameCache = new Map<number, string | null>();
 
@@ -332,22 +341,11 @@ serve(async (req) => {
         coach: coachName,
       };
 
-      log("db.upsert.begin", { rid, teamName: row.name, twizzitId: row.twizzit_id });
-      const { error: upsertError } = await supabase
-        .from("teams")
-        .upsert(row, { onConflict: "twizzit_id" });
-
-      if (upsertError) {
-        err("db.upsert.error", {
-          rid,
-          teamName: row.name,
-          code: upsertError.code,
-          message: upsertError.message,
-          details: upsertError.details,
-        });
-        throw upsertError;
+      const { error: insertError } = await supabase.from("teams").insert(row);
+      if (insertError) {
+        err("db.insert.error", { rid, teamName: row.name, code: insertError.code, message: insertError.message });
+        throw insertError;
       }
-      log("db.upsert.success", { rid, teamName: row.name });
 
       mappedRows.push(row);
     }
