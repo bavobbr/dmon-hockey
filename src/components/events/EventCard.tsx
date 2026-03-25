@@ -102,7 +102,6 @@ const EventCard = ({ event }: EventCardProps) => {
               </div>
             )}
 
-            {event.description && formatDescription(event.description)}
           </div>
         </div>
       </CardContent>
