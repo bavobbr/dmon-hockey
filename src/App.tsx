@@ -97,7 +97,7 @@ const AppHeader = () => {
           <SidebarTrigger />
         </div>
         
-        <h1 className="text-lg font-semibold text-foreground">D-mon Hockey Club</h1>
+        <div className="text-lg font-semibold text-foreground">D-mon Hockey Club</div>
       </div>
       
       {/* Mobile hint text - clickable */}

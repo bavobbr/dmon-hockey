@@ -1,7 +1,11 @@
 export const PAGE_META: Record<string, { title: string; description: string }> = {
   "/": {
-    title: "Home",
+    title: "Veldhockey in Dendermonde",
     description: "D-mon Hockey Club Dendermonde - Veldhockeyclub in België. Sluit je aan bij onze community voor training, wedstrijden en de passie voor hockey.",
+  },
+  "/auth": {
+    title: "Inloggen",
+    description: "Log in bij D-mon Hockey Club om toegang te krijgen tot je ledenaccount.",
   },
   "/events": {
     title: "Evenementen",
