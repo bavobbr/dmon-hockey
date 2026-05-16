@@ -1,0 +1,50 @@
+# D-mon Hockey Club
+
+> Veldhockeyclub in Dendermonde (Grembergen), België. Trainingen, wedstrijden, jeugdwerking en clubinfo voor leden, ouders, coaches en bezoekers.
+
+D-mon Hockey is een Belgische veldhockeyclub met spelers van U6 tot senioren. De website biedt info over lidmaatschap, teams, trainingen, spelregels, evenementen en bestuur.
+
+## Pages
+
+- [Home](/): Overzicht van de club, laatste nieuws en aankomende evenementen.
+- [Agenda](/events): Komende wedstrijden, trainingen en clubactiviteiten.
+- [Nieuws](/nieuws): Aankondigingen en clubnieuws.
+- [Socials](/socials): Recente Instagram posts van de club.
+- [Shop](/shop): Officiële D-mon kledij en uitrusting.
+
+## Lidmaatschap
+
+- [Informatie](/lidmaatschap/info): Tarieven, voorwaarden en voordelen van lidmaatschap.
+- [Registratie](/lidmaatschap/registratie): Online inschrijvingsformulier.
+- [Indoor registratie](/lidmaatschap/indoor-registratie): Inschrijven voor indoor hockey.
+- [Verzekering](/lidmaatschap/verzekering): Sportverzekering voor leden.
+- [Contact](/lidmaatschap/contact): Contactgegevens van de club.
+
+## Club
+
+- [Veld](/club/veld): Locatie en faciliteiten in Grembergen, Dendermonde.
+- [Veldstatus](/club/veld-status): Actuele status (open/gesloten) van het hockeyveld.
+- [Teams](/club/teams): Overzicht van alle teams van jeugd tot senioren.
+- [Bestuur](/club/bestuur): Bestuursleden en functies.
+- [Sfeer](/club/sfeer): Foto's en impressies van clubactiviteiten.
+- [Waarden](/club/waarden): Kernwaarden en visie van de club.
+- [Media](/club/media): D-mon in de pers.
+- [Geschiedenis](/club/geschiedenis): Het verhaal van de club.
+- [Sponsors](/club/sponsors): Partners die de club steunen.
+- [Privacy](/club/privacy): Privacybeleid.
+
+## Sportief
+
+- [Training](/sportief/training): Trainingsschema's en info.
+- [Hoe te spelen](/sportief/hoe-te-spelen): Basis van veldhockey voor beginners.
+- [Spelregels](/sportief/regels): Hockeyregels per leeftijdscategorie.
+- [Regels U6-U8](/sportief/regels/u6-u8): Aangepaste regels voor de jongste spelers.
+- [Regels U9](/sportief/regels/u9): Regels voor U9.
+- [Regels U10-U12](/sportief/regels/u10-u12): Overgang naar het grote veld.
+- [Regels U14+](/sportief/regels/u14-plus): Volledige hockeyregels voor U14 en ouder.
+- [Indoor regels](/sportief/regels/indoor): Specifieke regels voor indoor hockey.
+- [Stick gids](/sportief/stick-gids): Gids voor het kiezen van de juiste hockeystick.
+- [Coaches info](/sportief/coaches-info): Hulpmiddelen en presentaties voor coaches.
+- [Hockey principes](/sportief/hockey-principes): Sportieve principes en speelstijl.
+- [Indoor hockey](/sportief/indoor-hockey): Alles over indoor hockey bij D-mon.
+- [Regels assistent](/sportief/regels-assistent): AI-assistent voor FIH hockeyregels.

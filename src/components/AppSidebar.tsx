@@ -259,6 +259,7 @@ export function AppSidebar() {
                           <SidebarMenuButton 
                             className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground w-full"
                             onClick={handleGroupClick}
+                            aria-label={`${isExpanded ? "Sluit" : "Open"} ${item.title} submenu`}
                           >
                             <item.icon className="h-4 w-4 flex-shrink-0" />
                             <span className="truncate whitespace-nowrap overflow-hidden">{item.title}</span>
@@ -290,7 +291,7 @@ export function AppSidebar() {
                                            </NavLink>
                                          </SidebarMenuSubButton>
                                          <CollapsibleTrigger asChild>
-                                           <button className="p-1 hover:bg-sidebar-accent rounded-sm">
+                                           <button className="p-1 hover:bg-sidebar-accent rounded-sm" aria-label={`Open ${subItem.title} submenu`}>
                                              <ChevronDown className="h-3 w-3 transition-transform group-data-[state=open]/subcollapsible:rotate-180" />
                                            </button>
                                          </CollapsibleTrigger>
