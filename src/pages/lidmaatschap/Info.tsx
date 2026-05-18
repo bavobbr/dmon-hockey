@@ -134,11 +134,6 @@ const MembershipInfo = () => {
 
             <div className="mt-10 flex flex-wrap gap-6 text-sm text-primary-foreground/85">
               <div className="flex items-center gap-2">
-                <Euro className="h-4 w-4" />
-                <span className="font-semibold text-primary-foreground">vanaf 195 €</span>
-                <span>lidgeld per seizoen</span>
-              </div>
-              <div className="flex items-center gap-2">
                 <Users className="h-4 w-4" />
                 <span className="font-semibold text-primary-foreground">5</span>
                 <span>tariefcategorieën</span>
