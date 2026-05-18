@@ -14,6 +14,7 @@ import trainingImage from "@/assets/training-card.png";
 import competitiveImage from "@/assets/competitive-card.png";
 import familyImage from "@/assets/family-card.png";
 import { HomepageJsonLd } from "@/components/JsonLd";
+import heroAction from "@/assets/hero-action.jpg";
 interface Announcement {
   id: string;
   title: string;
@@ -165,48 +166,120 @@ const Index = () => {
   }
   return <div className="min-h-screen bg-background overflow-x-hidden max-w-full">
       <HomepageJsonLd />
-      {/* Hero Section */}
-      <section className="hero-gradient text-primary-foreground py-24 lg:py-32 relative overflow-x-hidden">
-        <div className="container mx-auto px-4 text-center relative z-10 max-w-full">
-          <div className="flex justify-center mb-8 fade-in-up">
-            <div className="bg-white rounded-full p-6 shadow-glow pulse-glow float-animation">
-              <img src="/lovable-uploads/03104bbc-f9de-44a2-a8b0-aedb91fd1c6c.png" alt="D-mon Hockey Club Logo" className="w-28 h-28 object-contain" />
+      {/* Hero Section — Dynamic Editorial */}
+      <section className="relative w-full px-0 lg:px-6 lg:pt-6">
+        <div className="relative w-full overflow-hidden bg-primary text-primary-foreground min-h-[560px] md:min-h-[640px] lg:min-h-[680px] lg:rounded-3xl shadow-elegant flex items-center">
+          {/* Layer 1: action photography */}
+          <img
+            src={heroAction}
+            alt="Veldhockey actie — D-mon Hockey Club"
+            width={1920}
+            height={1080}
+            className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-luminosity pointer-events-none select-none"
+          />
+          {/* Layer 2: navy wash + radial highlight */}
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/70 to-primary/95 pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,hsl(var(--primary-glow)/0.35),transparent_60%)] pointer-events-none" />
+
+          {/* Layer 3: hockey pitch lines */}
+          <svg
+            className="absolute inset-0 w-full h-full opacity-[0.10] pointer-events-none"
+            viewBox="0 0 1000 1000"
+            fill="none"
+            preserveAspectRatio="xMidYMid slice"
+            aria-hidden="true"
+          >
+            <circle cx="500" cy="500" r="250" stroke="white" strokeWidth="2" />
+            <rect x="0" y="250" width="150" height="500" stroke="white" strokeWidth="2" />
+            <rect x="850" y="250" width="150" height="500" stroke="white" strokeWidth="2" />
+            <line x1="500" y1="0" x2="500" y2="1000" stroke="white" strokeWidth="2" />
+          </svg>
+
+          {/* Layer 4: content */}
+          <div className="relative z-10 grid lg:grid-cols-12 w-full px-6 md:px-12 lg:px-16 py-16 lg:py-20 gap-8 items-center">
+            <div className="lg:col-span-9 flex flex-col items-start">
+              <div className="mb-8 p-1.5 bg-white rounded-full shadow-2xl inline-block fade-in-up">
+                <img
+                  src="/lovable-uploads/03104bbc-f9de-44a2-a8b0-aedb91fd1c6c.png"
+                  alt="D-mon Hockey Club logo"
+                  className="w-20 h-20 md:w-24 md:h-24 object-contain rounded-full"
+                />
+              </div>
+
+              <span className="text-accent font-display font-bold tracking-[0.3em] text-xs md:text-sm uppercase mb-3 fade-in-up">
+                Welkom bij de Club
+              </span>
+
+              <h1 className="font-display font-black italic uppercase text-white leading-[0.9] tracking-tighter text-5xl md:text-7xl lg:text-8xl fade-in-up">
+                D-mon<br />
+                <span className="text-secondary">Hockey Club</span>
+              </h1>
+
+              <p className="mt-6 text-primary-foreground/80 text-base md:text-xl max-w-xl font-medium leading-relaxed fade-in-up">
+                Welkom bij onze veldhockey gemeenschap in België. Sluit je aan voor trainingen, wedstrijden, en de passie voor hockey.
+              </p>
+
+              {user ? (
+                <div className="mt-8 space-y-4 fade-in-up">
+                  <div>
+                    <p className="text-base md:text-lg mb-2">Welkom terug, {user.email}!</p>
+                    {isAdmin && <span className="text-sm bg-accent text-accent-foreground px-3 py-1 rounded-full mr-2">Admin</span>}
+                    {isModerator && !isAdmin && <span className="text-sm bg-secondary text-secondary-foreground px-3 py-1 rounded-full mr-2">Moderator</span>}
+                  </div>
+                  <div className="flex gap-4 flex-wrap">
+                    {(isAdmin || isModerator) && (
+                      <Link to="/admin">
+                        <Button size="lg" variant="secondary">Admin Dashboard</Button>
+                      </Link>
+                    )}
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      onClick={handleSignOut}
+                      className="border-white/40 text-white bg-white/10 hover:bg-white/20 hover:text-white hover:border-white/60 backdrop-blur-sm"
+                    >
+                      Afmelden
+                    </Button>
+                  </div>
+                </div>
+              ) : (
+                <div className="mt-10 flex flex-wrap gap-4 fade-in-up">
+                  <Link to="/lidmaatschap/info">
+                    <Button
+                      size="lg"
+                      className="rounded-full px-8 py-4 bg-secondary text-secondary-foreground hover:bg-secondary-light shadow-lg shadow-secondary/30 hover:-translate-y-0.5 transition-all"
+                    >
+                      Word Lid van Onze Club
+                    </Button>
+                  </Link>
+                  <a href="https://app.twizzit.com/v2/home" target="_blank" rel="noopener noreferrer">
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="rounded-full px-8 py-4 bg-transparent border-2 border-accent/60 text-accent hover:bg-accent hover:text-accent-foreground hover:border-accent backdrop-blur-sm"
+                    >
+                      Leden Login
+                    </Button>
+                  </a>
+                </div>
+              )}
+            </div>
+
+            {/* Vertical watermark */}
+            <div className="hidden lg:flex lg:col-span-3 justify-end items-center overflow-hidden">
+              <div className="rotate-90 origin-right translate-x-8 whitespace-nowrap">
+                <span className="font-display font-black uppercase tracking-tighter text-white/[0.05] select-none text-[10rem] leading-none">
+                  Sinds 2023
+                </span>
+              </div>
             </div>
           </div>
-          <h1 className="font-display text-5xl lg:text-7xl font-bold mb-6 fade-in-up tracking-tight">
-            D-mon Hockey Club
-          </h1>
-          <p className="text-xl lg:text-2xl mb-10 max-w-3xl mx-auto leading-relaxed fade-in-up opacity-90">
-            Welkom bij onze veldhockey gemeenschap in België. Sluit je aan voor trainingen, wedstrijden, en de passie voor hockey.
-          </p>
-          {user ? <div className="space-y-4">
-              <div className="text-center">
-                <p className="text-lg mb-2">Welkom terug, {user.email}!</p>
-                {isAdmin && <span className="text-sm bg-accent text-accent-foreground px-3 py-1 rounded-full mr-2">Admin</span>}
-                {isModerator && !isAdmin && <span className="text-sm bg-secondary text-secondary-foreground px-3 py-1 rounded-full mr-2">Moderator</span>}
-              </div>
-              <div className="flex gap-4 justify-center flex-wrap">
-                {(isAdmin || isModerator) && <Link to="/admin">
-                    <Button size="lg" variant="secondary">
-                      Admin Dashboard
-                    </Button>
-                  </Link>}
-                <Button size="lg" variant="outline" onClick={handleSignOut} className="border-white/50 text-white bg-white/10 hover:bg-white/20 hover:text-white hover:border-white/70 px-8 py-4 backdrop-blur-sm">
-                  Afmelden
-                </Button>
-              </div>
-            </div> : <div className="flex gap-6 justify-center flex-wrap fade-in-up">
-              <Link to="/lidmaatschap/info">
-                <Button size="lg" variant="hero" className="px-8 py-4">
-                  Word Lid van Onze Club
-                </Button>
-              </Link>
-              <a href="https://app.twizzit.com/v2/home" target="_blank" rel="noopener noreferrer">
-                <Button size="lg" variant="outline" className="border-white/50 text-white bg-white/10 hover:bg-white/20 hover:text-white hover:border-white/70 px-8 py-4 backdrop-blur-sm">
-                  Leden Login
-                </Button>
-              </a>
-            </div>}
+
+          {/* Bottom accent strip */}
+          <div className="absolute bottom-0 right-0 w-1/2 h-1.5 flex pointer-events-none">
+            <div className="h-full flex-1 bg-accent" />
+            <div className="h-full flex-1 bg-secondary" />
+          </div>
         </div>
       </section>
 
