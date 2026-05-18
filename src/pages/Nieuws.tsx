@@ -155,15 +155,15 @@ const NewsCard = ({ announcement, index, eager }: { announcement: Announcement; 
           {/* Content */}
           <div className="flex flex-col flex-1 p-5">
             <div className="flex items-center gap-2 mb-3">
-              <div className="p-1.5 rounded-md bg-primary/10">
-                <IconComponent className="h-4 w-4 text-primary" />
+              <div className="p-1.5 rounded-md bg-muted">
+                <IconComponent className="h-4 w-4 text-muted-foreground" />
               </div>
               <span className="text-xs text-muted-foreground">
                 {formatDate(announcement.created_at)}
               </span>
             </div>
             <h3 className={cn(
-              "font-semibold text-foreground mb-2 line-clamp-2 group-hover:text-primary transition-colors",
+              "font-semibold text-foreground mb-2 line-clamp-2 group-hover:text-foreground/80 transition-colors",
               isWide || isTall ? "text-xl lg:text-2xl" : "text-lg"
             )}>
               {announcement.title}
@@ -174,7 +174,7 @@ const NewsCard = ({ announcement, index, eager }: { announcement: Announcement; 
             )}>
               {announcement.excerpt || announcement.content.replace(/<[^>]*>/g, '').substring(0, 160) + '...'}
             </p>
-            <span className="inline-flex items-center gap-1.5 text-sm text-primary font-medium mt-4 group-hover:gap-2.5 transition-all">
+            <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground font-medium mt-4 group-hover:gap-2.5 transition-all group-hover:text-foreground">
               Lees meer <Icons.ArrowRight className="h-3.5 w-3.5" />
             </span>
           </div>
