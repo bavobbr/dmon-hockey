@@ -113,18 +113,32 @@ const NewsCard = ({ announcement, index, eager }: { announcement: Announcement; 
           )}
           style={{ animationDelay: `${Math.min(index * 0.06, 0.4)}s` }}
         >
+          {/* Top accent bar in clubkleur */}
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-primary/70 to-accent z-10" />
+
           {/* Image */}
           <div className={cn(
             "relative overflow-hidden bg-muted",
             isWide ? "h-52 md:h-60" : "h-52"
           )}>
             {backgroundImage ? (
-              <img
-                src={backgroundImage}
-                alt={announcement.title}
-                loading={eager ? "eager" : "lazy"}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-              />
+              <>
+                <img
+                  src={backgroundImage}
+                  alt={announcement.title}
+                  loading={eager ? "eager" : "lazy"}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
+                {/* Duotone tint: subtiele clubblauw-overlay voor visuele samenhang, fade-t weg op hover */}
+                <div
+                  aria-hidden
+                  className="absolute inset-0 bg-primary/30 mix-blend-multiply opacity-100 group-hover:opacity-0 transition-opacity duration-500"
+                />
+                <div
+                  aria-hidden
+                  className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-500"
+                />
+              </>
             ) : (
               <div className="w-full h-full bg-[image:var(--gradient-primary)] flex items-center justify-center relative">
                 <IconComponent className="h-16 w-16 text-primary-foreground/25" />
@@ -132,11 +146,10 @@ const NewsCard = ({ announcement, index, eager }: { announcement: Announcement; 
               </div>
             )}
             {announcement.featured && (
-              <Badge className="absolute top-3 right-3 bg-accent text-accent-foreground border-0 backdrop-blur-sm uppercase tracking-wider text-[10px] font-bold">
+              <Badge className="absolute top-3 right-3 bg-accent text-accent-foreground border-0 backdrop-blur-sm uppercase tracking-wider text-[10px] font-bold z-10">
                 Uitgelicht
               </Badge>
             )}
-            <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </div>
 
           {/* Content */}
