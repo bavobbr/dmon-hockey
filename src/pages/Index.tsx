@@ -167,7 +167,7 @@ const Index = () => {
   return <div className="min-h-screen bg-background overflow-x-hidden max-w-full">
       <HomepageJsonLd />
       {/* Hero Section — Dynamic Editorial */}
-      <section className="relative w-full px-0 lg:px-6 lg:pt-6">
+      <section className="relative w-full px-0 pt-4 lg:px-6 lg:pt-8">
         <div className="relative w-full overflow-hidden bg-primary text-primary-foreground min-h-[560px] md:min-h-[640px] lg:min-h-[680px] lg:rounded-3xl shadow-elegant flex items-center">
           {/* Layer 1: action photography */}
           <img
