@@ -113,8 +113,8 @@ const Media = () => {
                 <div className="absolute left-4 -translate-x-1/2 lg:left-1/2">
                   <div className="h-4 w-4 rounded-full bg-primary ring-4 ring-background" />
                 </div>
-                <div className="ml-12 lg:ml-0 lg:rounded-full lg:bg-primary lg:px-6 lg:py-2 lg:text-primary-foreground">
-                  <span className="font-display text-3xl font-bold text-primary lg:text-xl lg:text-primary-foreground">
+                <div className="ml-12 lg:ml-0 lg:rounded-full lg:bg-primary lg:px-6 lg:py-2">
+                  <span className="font-display text-3xl font-bold text-foreground max-lg:text-primary lg:text-xl lg:text-primary-foreground">
                     {year}
                   </span>
                 </div>
