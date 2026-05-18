@@ -565,12 +565,12 @@ const Index = () => {
                 <div className="text-xs md:text-sm uppercase tracking-wider text-primary-foreground/70 mt-2">Opgericht</div>
               </div>
               <div className="text-center p-4 md:p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
-                <div className="font-display text-4xl md:text-5xl text-accent">10+</div>
+                <div className="font-display text-4xl md:text-5xl text-accent">30+</div>
                 <div className="text-xs md:text-sm uppercase tracking-wider text-primary-foreground/70 mt-2">Teams</div>
               </div>
               <div className="text-center p-4 md:p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
-                <div className="font-display text-4xl md:text-5xl text-accent">1</div>
-                <div className="text-xs md:text-sm uppercase tracking-wider text-primary-foreground/70 mt-2">Familie</div>
+                <div className="font-display text-4xl md:text-5xl text-accent">350+</div>
+                <div className="text-xs md:text-sm uppercase tracking-wider text-primary-foreground/70 mt-2">Spelende leden</div>
               </div>
             </div>
           </div>
