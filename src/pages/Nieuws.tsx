@@ -108,7 +108,7 @@ const NewsCard = ({ announcement, index, eager }: { announcement: Announcement; 
       <DialogTrigger asChild>
         <Card
           className={cn(
-            "group cursor-pointer fade-in-up overflow-hidden hover:shadow-[var(--shadow-elegant)] transition-all duration-500 flex flex-col relative border-border/60",
+            "group cursor-pointer fade-in-up overflow-hidden hover:shadow-[var(--shadow-elegant)] transition-all duration-500 flex flex-col relative border-border/60 h-full",
             span,
           )}
           style={{ animationDelay: `${Math.min(index * 0.06, 0.4)}s` }}
