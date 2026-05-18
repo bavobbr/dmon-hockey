@@ -210,7 +210,7 @@ const Index = () => {
                 Welkom bij de Club
               </span>
 
-              <h1 className="font-display font-black italic uppercase text-white leading-[0.9] tracking-tighter text-5xl md:text-7xl lg:text-8xl fade-in-up">
+              <h1 className="font-display uppercase text-white leading-[0.9]  text-5xl md:text-7xl lg:text-8xl fade-in-up">
                 D-mon<br />
                 <span className="relative inline-block">
                   Hockey Club
@@ -271,7 +271,7 @@ const Index = () => {
             {/* Vertical watermark */}
             <div className="hidden lg:flex lg:col-span-3 justify-end items-center overflow-hidden">
               <div className="rotate-90 origin-right translate-x-8 whitespace-nowrap">
-                <span className="font-display font-black uppercase tracking-tighter text-white/[0.05] select-none text-[10rem] leading-none">
+                <span className="font-display uppercase  text-white/[0.05] select-none text-[10rem] leading-none">
                   Sinds 2023
                 </span>
               </div>
@@ -294,7 +294,7 @@ const Index = () => {
               <span className="text-primary font-display font-bold tracking-[0.25em] text-xs uppercase mb-3 block">
                 Wat we bieden
               </span>
-              <h2 className="text-4xl md:text-5xl font-display font-black italic uppercase text-foreground tracking-tight leading-[0.95]">
+              <h2 className="text-4xl md:text-5xl font-display uppercase text-foreground tracking-tight leading-[0.95]">
                 Hockey op<br />jouw niveau
               </h2>
             </div>
@@ -374,7 +374,7 @@ const Index = () => {
               <span className="text-secondary font-display font-bold tracking-[0.25em] text-xs uppercase mb-3 block">
                 Nieuws
               </span>
-              <h2 className="text-4xl md:text-5xl font-display font-black italic uppercase text-foreground tracking-tight">Laatste Nieuws</h2>
+              <h2 className="text-4xl md:text-5xl font-display uppercase text-foreground tracking-tight">Laatste Nieuws</h2>
             </div>
             <Link to="/nieuws">
               <Button variant="outline" size="sm">
@@ -489,7 +489,7 @@ const Index = () => {
               <span className="text-accent font-display font-bold tracking-[0.3em] text-xs uppercase mb-4 block">
                 Onze passie
               </span>
-              <h2 className="font-display font-black italic uppercase leading-[0.95] tracking-tight text-4xl md:text-6xl lg:text-7xl">
+              <h2 className="font-display uppercase leading-[0.95] tracking-tight text-4xl md:text-6xl lg:text-7xl">
                 Meer dan een<br />
                 <span className="relative inline-block">
                   hockeyclub
@@ -502,15 +502,15 @@ const Index = () => {
             </div>
             <div className="lg:col-span-5 grid grid-cols-3 gap-4 md:gap-6">
               <div className="text-center p-4 md:p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
-                <div className="font-display font-black text-4xl md:text-5xl text-accent">2023</div>
+                <div className="font-display text-4xl md:text-5xl text-accent">2023</div>
                 <div className="text-xs md:text-sm uppercase tracking-wider text-primary-foreground/70 mt-2">Opgericht</div>
               </div>
               <div className="text-center p-4 md:p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
-                <div className="font-display font-black text-4xl md:text-5xl text-accent">10+</div>
+                <div className="font-display text-4xl md:text-5xl text-accent">10+</div>
                 <div className="text-xs md:text-sm uppercase tracking-wider text-primary-foreground/70 mt-2">Teams</div>
               </div>
               <div className="text-center p-4 md:p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
-                <div className="font-display font-black text-4xl md:text-5xl text-accent">1</div>
+                <div className="font-display text-4xl md:text-5xl text-accent">1</div>
                 <div className="text-xs md:text-sm uppercase tracking-wider text-primary-foreground/70 mt-2">Familie</div>
               </div>
             </div>
@@ -531,7 +531,7 @@ const Index = () => {
               <span className="text-secondary font-display font-bold tracking-[0.25em] text-xs uppercase mb-3 block">
                 Agenda
               </span>
-              <h2 className="text-4xl md:text-5xl font-display font-black italic uppercase text-foreground tracking-tight">Aankomende Evenementen</h2>
+              <h2 className="text-4xl md:text-5xl font-display uppercase text-foreground tracking-tight">Aankomende Evenementen</h2>
             </div>
             <Link to="/events">
               <Button variant="outline" size="sm">
@@ -552,7 +552,7 @@ const Index = () => {
               <span className="text-accent font-display font-bold tracking-[0.25em] text-xs uppercase mb-3 block">
                 Onze teams
               </span>
-              <h2 className="text-4xl md:text-5xl font-display font-black italic uppercase text-background tracking-tight">Spelend op het veld</h2>
+              <h2 className="text-4xl md:text-5xl font-display uppercase text-background tracking-tight">Spelend op het veld</h2>
             </div>
             <Link to="/club/teams">
               <Button variant="outline" size="sm" className="border-background/40 text-background bg-background/10 hover:bg-background/20 hover:text-background">
@@ -604,7 +604,7 @@ const Index = () => {
               <span className="text-accent font-display font-bold tracking-[0.25em] text-xs uppercase mb-3 block">
                 Socials
               </span>
-              <h2 className="text-4xl md:text-5xl font-display font-black italic uppercase text-foreground tracking-tight">Van Onze Instagram</h2>
+              <h2 className="text-4xl md:text-5xl font-display uppercase text-foreground tracking-tight">Van Onze Instagram</h2>
             </div>
             <Link to="/socials">
               <Button variant="outline" size="sm">
@@ -659,7 +659,7 @@ const Index = () => {
             <span className="text-primary font-display font-bold tracking-[0.25em] text-xs uppercase mb-3 block">
               Met de steun van
             </span>
-            <h2 className="text-4xl md:text-5xl font-display font-black italic uppercase text-foreground tracking-tight">Onze Sponsors</h2>
+            <h2 className="text-4xl md:text-5xl font-display uppercase text-foreground tracking-tight">Onze Sponsors</h2>
           </div>
           
           {sponsorsLoading ? <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
