@@ -1,175 +1,307 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Calendar, Clock, MapPin, Download, Users, Trophy, Mail } from "lucide-react";
+import {
+  Calendar,
+  Clock,
+  Download,
+  Users,
+  Trophy,
+  Mail,
+  Sparkles,
+  ArrowRight,
+  FileText,
+  ExternalLink,
+  GraduationCap,
+  Dumbbell,
+  CalendarDays,
+} from "lucide-react";
+import { Link as RouterLink } from "react-router-dom";
 
 const Training = () => {
+  const trainingGroups = [
+    {
+      title: "Jongste spelers & G-hockey",
+      description: "Onze jongste spelers (U6) en G-hockeyspelers",
+      frequency: "1 training per week",
+      focus: "Spelplezier en kennismaking met hockey",
+      icon: Users,
+    },
+    {
+      title: "Andere jeugdteams",
+      description: "Alle andere jeugdcategorieën",
+      frequency: "2 trainingen per week",
+      focus: "Techniek, spelinzicht en fysiek",
+      icon: GraduationCap,
+    },
+    {
+      title: "Senioren",
+      description: "Dames & Heren competitieteams",
+      frequency: "2 trainingen per week",
+      focus: "Techniek, spelinzicht en fysiek",
+      icon: Trophy,
+    },
+    {
+      title: "Trimmers / Gents",
+      description: "Startende volwassenen en 35+ spelers",
+      frequency: "1 langere training per week",
+      focus: "Recreatief en sociaal hockey",
+      icon: Dumbbell,
+    },
+  ];
+
+  const matchSchedule = [
+    {
+      group: "Jeugd",
+      day: "Zaterdag",
+      note: "Eén week thuis, één week op verplaatsing",
+    },
+    {
+      group: "Volwassenen",
+      day: "Zondag",
+      note: "Heren en Dames teams",
+    },
+    {
+      group: "Gents",
+      day: "Maandag",
+      note: "35+ categorie",
+    },
+  ];
+
+  const sections = [
+    { id: "schema", label: "Schema" },
+    { id: "groepen", label: "Trainingsgroepen" },
+    { id: "wedstrijden", label: "Wedstrijden" },
+    { id: "contact", label: "Contact" },
+  ];
+
   return (
-    <div className="container mx-auto px-4 py-12 lg:py-16">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8 text-foreground">Trainingen</h1>
-        
-        <Card className="mb-6">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Calendar className="h-5 w-5" />
-              Trainingsschema 2025-2026
-            </CardTitle>
-            <CardDescription>
-              Download het volledige trainingsschema voor het huidige seizoen
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Button asChild>
-              <a 
-                href="https://static.twizzit.com/public/v2/chat/message/attachment/3210422/f72e69c96d253fcdc03611b7dc769262d0fd5f8b.pdf" 
-                target="_blank" 
+    <div>
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-gradient-hero text-primary-foreground">
+        <div
+          className="absolute inset-0 opacity-30"
+          aria-hidden
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 20% 30%, hsl(var(--primary-glow) / 0.6) 0%, transparent 50%), radial-gradient(circle at 80% 70%, hsl(var(--accent) / 0.4) 0%, transparent 50%)",
+          }}
+        />
+        <div className="container mx-auto px-4 py-16 lg:py-24 relative">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-sm">
+              <Sparkles className="h-3.5 w-3.5" />
+              Seizoen 2025–2026
+            </div>
+            <h1 className="mt-6 font-display text-4xl font-bold leading-tight lg:text-6xl">
+              Trainingen
+            </h1>
+            <p className="mt-4 max-w-2xl text-base lg:text-lg text-primary-foreground/85">
+              Van U6 tot Gents — elk team traint op zijn eigen niveau en ritme. Ontdek de
+              trainingsmomenten, wedstrijddagen en download het volledige schema.
+            </p>
+            <div className="mt-8 h-1 w-24 rounded-full bg-accent" />
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button size="lg" variant="secondary" className="font-semibold" asChild>
+                <a
+                  href="https://static.twizzit.com/public/v2/chat/message/attachment/3210422/f72e69c96d253fcdc03611b7dc769262d0fd5f8b.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Download className="mr-2 h-4 w-4" />
+                  Download trainingsschema
+                </a>
+              </Button>
+              <RouterLink to="/lidmaatschap/info">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-primary-foreground/40 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+                >
+                  Lid worden
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </RouterLink>
+            </div>
+
+            <div className="mt-10 flex flex-wrap gap-6 text-sm text-primary-foreground/85">
+              <div className="flex items-center gap-2">
+                <Users className="h-4 w-4" />
+                <span className="font-semibold text-primary-foreground">4</span>
+                <span>trainingsgroepen</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Calendar className="h-4 w-4" />
+                <span className="font-semibold text-primary-foreground">Za, zo & ma</span>
+                <span>wedstrijddagen</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sticky sub-nav */}
+      <div className="sticky top-0 z-20 border-b border-border/60 bg-background/85 backdrop-blur">
+        <div className="container mx-auto flex gap-2 overflow-x-auto px-4 py-3">
+          {sections.map((s) => (
+            <a
+              key={s.id}
+              href={`#${s.id}`}
+              className="whitespace-nowrap rounded-full border border-border/60 bg-background px-4 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:bg-primary/5 hover:text-foreground"
+            >
+              {s.label}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <div className="container mx-auto max-w-6xl space-y-16 px-4 py-12 lg:space-y-24 lg:py-16">
+        {/* Schema download */}
+        <section id="schema" className="scroll-mt-20">
+          <div className="grid items-center gap-6 rounded-2xl border border-border/60 bg-primary/5 p-6 lg:grid-cols-[1fr_auto] lg:p-8">
+            <div className="flex items-start gap-4">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground">
+                <CalendarDays className="h-6 w-6" />
+              </div>
+              <div>
+                <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary">
+                  <FileText className="h-3.5 w-3.5" />
+                  Trainingsschema 2025–2026
+                </div>
+                <h2 className="mt-2 font-display text-2xl font-bold text-foreground lg:text-3xl">
+                  Volledig schema in één PDF
+                </h2>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Tijden, velden en groepen — alles overzichtelijk per team.
+                </p>
+              </div>
+            </div>
+            <Button asChild className="shrink-0">
+              <a
+                href="https://static.twizzit.com/public/v2/chat/message/attachment/3210422/f72e69c96d253fcdc03611b7dc769262d0fd5f8b.pdf"
+                target="_blank"
                 rel="noopener noreferrer"
+                className="flex items-center gap-2"
               >
-                <Download className="h-4 w-4 mr-2" />
-                Download Trainingsschema 2025-2026
+                <Download className="h-4 w-4" />
+                Download PDF
+                <ExternalLink className="h-3 w-3" />
               </a>
             </Button>
-          </CardContent>
-        </Card>
+          </div>
+        </section>
 
-        <div className="grid lg:grid-cols-2 gap-6 mb-8">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Users className="h-5 w-5" />
-                Jeugdtrainingen
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                <div className="border-l-4 border-primary pl-4">
-                  <h4 className="font-medium mb-2">Jongste spelers & G-hockey</h4>
-                  <p className="text-sm text-muted-foreground mb-2">Onze jongste spelers (U6) en G-hockeyspelers</p>
-                  <div className="flex items-center gap-2 text-sm">
-                    <Clock className="h-4 w-4" />
-                    <span>1 training per week</span>
-                  </div>
-                </div>
-                
-                <div className="border-l-4 border-secondary pl-4">
-                  <h4 className="font-medium mb-2">Andere jeugdteams</h4>
-                  <p className="text-sm text-muted-foreground mb-2">Alle andere jeugdcategorieën</p>
-                  <div className="flex items-center gap-2 text-sm mb-2">
-                    <Clock className="h-4 w-4" />
-                    <span>2 trainingen per week</span>
-                  </div>
-                  <p className="text-xs text-muted-foreground">Focus op techniek, spelinzicht en fysiek</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Users className="h-5 w-5" />
-                Volwassentrainingen
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                <div className="border-l-4 border-primary pl-4">
-                  <h4 className="font-medium mb-2">Senioren</h4>
-                  <p className="text-sm text-muted-foreground mb-2">Competitieteams</p>
-                  <div className="flex items-center gap-2 text-sm mb-2">
-                    <Clock className="h-4 w-4" />
-                    <span>2 trainingen per week</span>
-                  </div>
-                  <p className="text-xs text-muted-foreground">Focus op techniek, spelinzicht en fysiek</p>
-                </div>
-                
-                <div className="border-l-4 border-secondary pl-4">
-                  <h4 className="font-medium mb-2">Trimmers / Gents</h4>
-                  <p className="text-sm text-muted-foreground mb-2">Startende volwassenen en 35+ spelers</p>
-                  <div className="flex items-center gap-2 text-sm">
-                    <Clock className="h-4 w-4" />
-                    <span>1 langere training per week</span>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-
-        <Card className="mb-6">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Trophy className="h-5 w-5" />
-              Wedstrijden
-            </CardTitle>
-            <CardDescription>
-              Wanneer spelen de verschillende teams hun wedstrijden?
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="text-center p-4 border rounded-lg">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Calendar className="h-6 w-6 text-primary" />
-                </div>
-                <h4 className="font-medium mb-2">Jeugd</h4>
-                <p className="text-sm text-muted-foreground mb-2">Zaterdag</p>
-                <p className="text-xs text-muted-foreground">
-                  Eén week thuis, één week op verplaatsing
-                </p>
-              </div>
-              
-              <div className="text-center p-4 border rounded-lg">
-                <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Calendar className="h-6 w-6 text-secondary" />
-                </div>
-                <h4 className="font-medium mb-2">Volwassenen</h4>
-                <p className="text-sm text-muted-foreground mb-2">Zondag</p>
-                <p className="text-xs text-muted-foreground">
-                  Heren en Dames teams
-                </p>
-              </div>
-              
-              <div className="text-center p-4 border rounded-lg">
-                <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Calendar className="h-6 w-6 text-accent" />
-                </div>
-                <h4 className="font-medium mb-2">Gents</h4>
-                <p className="text-sm text-muted-foreground mb-2">Maandag</p>
-                <p className="text-xs text-muted-foreground">
-                  35+ categorie
-                </p>
-              </div>
+        {/* Trainingsgroepen */}
+        <section id="groepen" className="scroll-mt-20">
+          <div className="mb-8">
+            <div className="mb-2 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary">
+              <Users className="h-3.5 w-3.5" />
+              Trainingsgroepen
             </div>
-          </CardContent>
-        </Card>
-
-        <Card className="bg-muted/50">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Mail className="h-5 w-5" />
-              Interesse in trainen bij D-MON Hockey?
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted-foreground mb-4">
-              Lees meer onder 'lid worden' en contacteer ons gerust voor meer info.
+            <h2 className="font-display text-3xl font-bold text-foreground lg:text-4xl">
+              Voor elk niveau een aanpak
+            </h2>
+            <p className="mt-2 text-muted-foreground">
+              Onze jeugd- en volwassenenwerking is opgesplitst in vier groepen, elk met eigen
+              trainingsmomenten en doelstellingen.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Button variant="outline" asChild>
-                <a href="/lidmaatschap/info">
-                  Lid worden informatie
-                </a>
-              </Button>
-              <Button variant="outline" asChild>
-                <a href="mailto:info@dmon.be">
-                  <Mail className="h-4 w-4 mr-2" />
-                  info@dmon.be
-                </a>
-              </Button>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2">
+            {trainingGroups.map((group) => (
+              <div
+                key={group.title}
+                className="group rounded-2xl border border-border/60 bg-card p-6 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md"
+              >
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                  <group.icon className="h-6 w-6" />
+                </div>
+                <h3 className="mt-4 font-semibold text-foreground">{group.title}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">{group.description}</p>
+                <div className="mt-4 flex items-center gap-2 text-sm font-medium text-foreground">
+                  <Clock className="h-4 w-4 text-primary" />
+                  {group.frequency}
+                </div>
+                <p className="mt-2 text-xs text-muted-foreground">{group.focus}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Wedstrijden */}
+        <section id="wedstrijden" className="scroll-mt-20">
+          <div className="mb-8">
+            <div className="mb-2 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary">
+              <Trophy className="h-3.5 w-3.5" />
+              Wedstrijden
             </div>
-          </CardContent>
-        </Card>
+            <h2 className="font-display text-3xl font-bold text-foreground lg:text-4xl">
+              Wanneer wordt er gespeeld?
+            </h2>
+            <p className="mt-2 text-muted-foreground">
+              Een overzicht van de vaste wedstrijddagen per categorie.
+            </p>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-3">
+            {matchSchedule.map((match) => (
+              <div
+                key={match.group}
+                className="rounded-2xl border border-border/60 bg-card p-6 text-center transition-all hover:-translate-y-0.5 hover:shadow-md"
+              >
+                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary">
+                  <Calendar className="h-7 w-7" />
+                </div>
+                <h3 className="mt-4 font-semibold text-foreground">{match.group}</h3>
+                <p className="mt-2 font-display text-2xl font-bold text-primary">{match.day}</p>
+                <p className="mt-2 text-xs text-muted-foreground">{match.note}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Contact CTA */}
+        <section id="contact" className="scroll-mt-20">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-hero p-8 text-primary-foreground lg:p-12">
+            <div
+              className="absolute inset-0 opacity-30"
+              aria-hidden
+              style={{
+                backgroundImage:
+                  "radial-gradient(circle at 80% 20%, hsl(var(--primary-glow) / 0.6) 0%, transparent 50%)",
+              }}
+            />
+            <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+              <div className="max-w-2xl">
+                <h2 className="font-display text-2xl font-bold lg:text-3xl">
+                  Zin om mee te trainen?
+                </h2>
+                <p className="mt-3 text-primary-foreground/85">
+                  Lees meer over lid worden of stuur ons gerust een mailtje — we helpen je graag op
+                  weg.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                <RouterLink to="/lidmaatschap/info">
+                  <Button size="lg" variant="secondary" className="font-semibold">
+                    Lid worden
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </RouterLink>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-primary-foreground/40 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+                  asChild
+                >
+                  <a href="mailto:info@dmon.be">
+                    <Mail className="mr-2 h-4 w-4" />
+                    info@dmon.be
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );
