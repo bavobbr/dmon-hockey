@@ -367,10 +367,15 @@ const Index = () => {
       </section>
 
       {/* Latest Announcements */}
-      <section className="py-20 px-4 overflow-x-hidden">
-        <div className="container mx-auto max-w-full">
-          <div className="flex items-center justify-between mb-16">
-            <h2 className="text-3xl font-bold text-center text-foreground">Laatste Nieuws</h2>
+      <section className="py-24 md:py-32 px-4 overflow-x-hidden">
+        <div className="container mx-auto max-w-6xl">
+          <div className="flex items-end justify-between mb-16 flex-wrap gap-4">
+            <div>
+              <span className="text-secondary font-display font-bold tracking-[0.25em] text-xs uppercase mb-3 block">
+                Nieuws
+              </span>
+              <h2 className="text-4xl md:text-5xl font-display font-black italic uppercase text-foreground tracking-tight">Laatste Nieuws</h2>
+            </div>
             <Link to="/nieuws">
               <Button variant="outline" size="sm">
                 Bekijk Meer
