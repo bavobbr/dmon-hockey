@@ -115,51 +115,27 @@ const HowToPlay = () => {
           </CardContent>
         </Card>
 
-        <div className="grid md:grid-cols-2 gap-6 mb-8">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Play className="h-5 w-5" />
-                Hockey in 3 minuten
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="aspect-video rounded-lg overflow-hidden">
-                <iframe
-                  width="100%"
-                  height="100%"
-                  src="https://www.youtube.com/embed/NPnrKxFwInc"
-                  frameBorder="0"
-                  allowFullScreen
-                  className="w-full h-full"
-                />
-              </div>
-              <p className="text-sm text-muted-foreground mt-2">FIH</p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Play className="h-5 w-5" />
-                Basisregels hockey
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="aspect-video rounded-lg overflow-hidden">
-                <iframe
-                  width="100%"
-                  height="100%"
-                  src="https://www.youtube.com/embed/p8OF9JyiBC0"
-                  frameBorder="0"
-                  allowFullScreen
-                  className="w-full h-full"
-                />
-              </div>
-              <p className="text-sm text-muted-foreground mt-2">Hockey Belgium</p>
-            </CardContent>
-          </Card>
-        </div>
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Play className="h-5 w-5" />
+              Basisregels hockey
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="aspect-video rounded-lg overflow-hidden max-w-3xl mx-auto">
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/p8OF9JyiBC0"
+                frameBorder="0"
+                allowFullScreen
+                className="w-full h-full"
+              />
+            </div>
+            <p className="text-sm text-muted-foreground mt-2">Hockey Belgium</p>
+          </CardContent>
+        </Card>
 
         <Card className="mb-8">
           <CardHeader>
