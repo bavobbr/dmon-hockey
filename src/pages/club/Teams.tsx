@@ -57,41 +57,40 @@ const ClubTeams = () => {
       <TeamsPageJsonLd teams={teams || []} />
 
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-border/60">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-secondary/5" aria-hidden />
+      <section className="relative overflow-hidden bg-gradient-hero text-primary-foreground">
         <div
-          className="absolute inset-0 opacity-60"
+          className="absolute inset-0 opacity-30"
           aria-hidden
           style={{
-            background:
-              "radial-gradient(60% 60% at 15% 20%, hsl(var(--primary)/0.18), transparent 70%), radial-gradient(50% 60% at 85% 10%, hsl(var(--secondary)/0.15), transparent 70%)",
+            backgroundImage:
+              "radial-gradient(circle at 20% 30%, hsl(var(--primary-glow) / 0.6) 0%, transparent 50%), radial-gradient(circle at 80% 70%, hsl(var(--accent) / 0.4) 0%, transparent 50%)",
           }}
         />
         <div className="container mx-auto px-4 py-16 lg:py-24 relative">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/70 backdrop-blur px-3 py-1 text-xs font-medium text-muted-foreground mb-6">
-              <Sparkles className="h-3.5 w-3.5 text-secondary" />
+            <div className="inline-flex items-center gap-2 rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-sm">
+              <Sparkles className="h-3.5 w-3.5" />
               Seizoen {teams?.[0]?.season ?? "2025–2026"}
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground mb-5">
-              Onze <span className="text-primary">teams</span>
+            <h1 className="mt-6 font-display text-4xl font-bold leading-tight lg:text-6xl">
+              Onze teams
             </h1>
-            <div className="h-1 w-24 bg-secondary rounded-full mb-6" />
-            <p className="text-lg text-muted-foreground max-w-2xl">
+            <p className="mt-4 max-w-2xl text-base lg:text-lg text-primary-foreground/85">
               Van onze jongste U6-spelertjes tot Heren en Dames — ontdek alle teams van D-mon Hockey,
               hun coaches en team managers.
             </p>
+            <div className="mt-8 h-1 w-24 rounded-full bg-accent" />
 
-            <div className="mt-8 flex flex-wrap gap-6 text-sm">
+            <div className="mt-8 flex flex-wrap gap-6 text-sm text-primary-foreground/85">
               <div className="flex items-center gap-2">
-                <Trophy className="h-4 w-4 text-primary" />
-                <span className="font-semibold text-foreground">{teams?.length ?? 0}</span>
-                <span className="text-muted-foreground">teams actief</span>
+                <Trophy className="h-4 w-4" />
+                <span className="font-semibold text-primary-foreground">{teams?.length ?? 0}</span>
+                <span>teams actief</span>
               </div>
               <div className="flex items-center gap-2">
-                <ImageIcon className="h-4 w-4 text-secondary" />
-                <span className="font-semibold text-foreground">{withPhoto}</span>
-                <span className="text-muted-foreground">met teamfoto</span>
+                <ImageIcon className="h-4 w-4" />
+                <span className="font-semibold text-primary-foreground">{withPhoto}</span>
+                <span>met teamfoto</span>
               </div>
               <div className="flex items-center gap-2">
                 <Users className="h-4 w-4 text-accent" />
