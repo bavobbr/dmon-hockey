@@ -174,7 +174,7 @@ const Index = () => {
             </div>
           </div>
           <h1 className="font-display text-5xl lg:text-7xl font-bold mb-6 fade-in-up tracking-tight">
-            D-mon Hockey Club — Veldhockey in Dendermonde
+            D-mon Hockey Club
           </h1>
           <p className="text-xl lg:text-2xl mb-10 max-w-3xl mx-auto leading-relaxed fade-in-up opacity-90">
             Welkom bij onze veldhockey gemeenschap in België. Sluit je aan voor trainingen, wedstrijden, en de passie voor hockey.
