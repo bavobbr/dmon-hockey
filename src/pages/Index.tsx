@@ -287,10 +287,17 @@ const Index = () => {
       </section>
 
       {/* Quick Info Cards */}
-      <section className="py-20 px-4 bg-gradient-subtle overflow-x-hidden">
-        <div className="container mx-auto max-w-full">
-          <div className="flex items-center justify-between mb-16">
-            <h2 className="text-3xl font-bold text-foreground">Wat We Bieden</h2>
+      <section className="py-24 md:py-32 px-4 bg-gradient-subtle overflow-x-hidden">
+        <div className="container mx-auto max-w-6xl">
+          <div className="flex items-end justify-between mb-16 flex-wrap gap-4">
+            <div className="max-w-xl">
+              <span className="text-primary font-display font-bold tracking-[0.25em] text-xs uppercase mb-3 block">
+                Wat we bieden
+              </span>
+              <h2 className="text-4xl md:text-5xl font-display font-black italic uppercase text-foreground tracking-tight leading-[0.95]">
+                Hockey op<br />jouw niveau
+              </h2>
+            </div>
             <Link to="/club/sfeer">
               <Button variant="outline" size="sm">
                 Bekijk Meer
