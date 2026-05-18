@@ -93,9 +93,9 @@ const ClubTeams = () => {
                 <span>met teamfoto</span>
               </div>
               <div className="flex items-center gap-2">
-                <Users className="h-4 w-4 text-accent" />
-                <span className="font-semibold text-foreground">{categories.length}</span>
-                <span className="text-muted-foreground">categorieën</span>
+                <Users className="h-4 w-4" />
+                <span className="font-semibold text-primary-foreground">{categories.length}</span>
+                <span>categorieën</span>
               </div>
             </div>
           </div>
