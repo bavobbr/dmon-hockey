@@ -366,104 +366,163 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Latest Announcements */}
-      <section className="py-24 md:py-32 px-4 overflow-x-hidden">
-        <div className="container mx-auto max-w-6xl">
-          <div className="flex items-end justify-between mb-16 flex-wrap gap-4">
-            <div>
-              <span className="text-secondary font-display font-bold tracking-[0.25em] text-xs uppercase mb-3 block">
-                Nieuws
+      {/* Latest Announcements - Editorial Grid */}
+      <section className="py-24 md:py-32 px-4 bg-muted/30 overflow-x-hidden">
+        <div className="container mx-auto max-w-7xl">
+          {/* Section Header */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 border-l-4 border-primary pl-6 md:pl-8">
+            <div className="space-y-2">
+              <span className="text-xs font-bold tracking-[0.2em] text-primary uppercase block">
+                Blijf op de hoogte
               </span>
-              <h2 className="text-4xl md:text-5xl font-display uppercase text-foreground tracking-tight">Laatste Nieuws</h2>
+              <h2 className="text-5xl md:text-6xl font-display font-extrabold text-foreground uppercase tracking-tight leading-none">
+                Laatste Nieuws
+              </h2>
             </div>
-            <Link to="/nieuws">
-              <Button variant="outline" size="sm">
-                Bekijk Meer
-              </Button>
+            <Link to="/nieuws" className="group inline-flex items-center gap-3 px-8 py-4 bg-primary text-primary-foreground font-bold hover:bg-primary/90 transition-all uppercase tracking-wide text-sm">
+              Alle berichten
+              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
             </Link>
           </div>
-          
-          {announcementsLoading ? <div className="grid md:grid-cols-3 gap-6">
-              {[...Array(3)].map((_, i) => <Card key={i} className="animate-pulse">
-                  <CardHeader>
-                    <div className="h-4 bg-muted rounded w-3/4"></div>
-                    <div className="h-3 bg-muted rounded w-1/2"></div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="h-3 bg-muted rounded mb-2"></div>
-                    <div className="h-3 bg-muted rounded mb-2"></div>
-                    <div className="h-3 bg-muted rounded w-2/3"></div>
-                  </CardContent>
-                </Card>)}
-            </div> : announcements.length > 0 ? <div className="grid md:grid-cols-3 gap-8">
-              {announcements.map((announcement, index) => {
-                const imgMatch = announcement.content.match(/<img[^>]+src=["']([^"']+)["']/i);
-                const backgroundImage = imgMatch ? imgMatch[1] : null;
-                return <Card key={announcement.id} className={`group fade-in-up relative overflow-hidden`} style={{
-                  animationDelay: `${index * 0.1}s`
-                }}>
-                  {backgroundImage && (
-                    <div 
-                      className="absolute inset-0 bg-cover bg-center opacity-[0.07] group-hover:opacity-[0.12] transition-opacity duration-500 pointer-events-none"
-                      style={{ backgroundImage: `url(${backgroundImage})` }}
-                    />
-                  )}
-                  <div className="relative z-10">
-                  <CardHeader>
-                    <div className="flex items-start gap-3 mb-2">
-                      <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
-                        <Newspaper className="w-5 h-5 text-primary" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <CardTitle className="text-xl line-clamp-2 group-hover:text-primary transition-colors">
-                          {announcement.title}
-                        </CardTitle>
-                      </div>
-                      {announcement.featured && <Badge variant="secondary" className="shrink-0 bg-accent/10 text-accent border-accent/20">
-                          Uitgelicht
-                        </Badge>}
-                    </div>
-                    <CardDescription className="text-sm text-muted-foreground">
-                      {new Date(announcement.created_at).toLocaleDateString("nl-BE")}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground line-clamp-3 mb-6 leading-relaxed">
-                      {announcement.excerpt || announcement.content.substring(0, 150) + '...'}
-                    </p>
-                    <Dialog>
+
+          {announcementsLoading ? (
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+              <div className="lg:col-span-8 animate-pulse">
+                <div className="aspect-[16/9] bg-muted rounded-lg mb-6" />
+                <div className="h-4 bg-muted rounded w-1/3 mb-4" />
+                <div className="h-8 bg-muted rounded w-3/4 mb-3" />
+                <div className="h-4 bg-muted rounded w-full" />
+              </div>
+              <div className="lg:col-span-4 flex flex-col gap-10 lg:border-l border-border lg:pl-10">
+                {[...Array(2)].map((_, i) => (
+                  <div key={i} className="animate-pulse">
+                    <div className="aspect-video bg-muted rounded-lg mb-4" />
+                    <div className="h-3 bg-muted rounded w-1/3 mb-2" />
+                    <div className="h-5 bg-muted rounded w-3/4" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : announcements.length > 0 ? (
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+              {/* Featured Article */}
+              {(() => {
+                const featured = announcements[0];
+                const imgMatch = featured.content.match(/<img[^>]+src=["']([^"']+)["']/i);
+                const featuredImage = imgMatch ? imgMatch[1] : null;
+                return (
+                  <Dialog key={featured.id}>
+                    <DialogTrigger asChild>
+                      <article className="lg:col-span-8 group cursor-pointer fade-in-up">
+                        <div className="relative overflow-hidden bg-muted aspect-[16/9] mb-6 rounded-lg">
+                          {featuredImage ? (
+                            <img
+                              src={featuredImage}
+                              alt={featured.title}
+                              loading="lazy"
+                              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                            />
+                          ) : (
+                            <div className="w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+                              <Newspaper className="w-16 h-16 text-primary/40" />
+                            </div>
+                          )}
+                          <div className="absolute top-6 left-6">
+                            <span className="bg-primary text-primary-foreground px-5 py-2 text-xs font-bold uppercase tracking-wider shadow-lg">
+                              {featured.featured ? "Uitgelicht" : "Hoofdartikel"}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="max-w-3xl">
+                          <div className="flex items-center gap-4 mb-4">
+                            <span className="text-sm font-bold text-muted-foreground uppercase tracking-widest">
+                              {new Date(featured.created_at).toLocaleDateString("nl-BE", { day: "numeric", month: "long", year: "numeric" })}
+                            </span>
+                            <span className="h-px w-8 bg-border" />
+                            <span className="text-sm font-bold text-primary uppercase">Nieuws</span>
+                          </div>
+                          <h3 className="text-3xl md:text-4xl font-display font-extrabold text-foreground mb-4 group-hover:text-primary transition-colors leading-tight">
+                            {featured.title}
+                          </h3>
+                          <p className="text-muted-foreground text-lg leading-relaxed">
+                            {featured.excerpt || featured.content.replace(/<[^>]+>/g, "").substring(0, 200) + "..."}
+                          </p>
+                        </div>
+                      </article>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+                      <DialogHeader>
+                        <DialogTitle className="text-xl font-bold mb-2">{featured.title}</DialogTitle>
+                        <DialogDescription className="text-sm text-muted-foreground">
+                          {new Date(featured.created_at).toLocaleDateString("nl-BE")}
+                        </DialogDescription>
+                      </DialogHeader>
+                      <div className="prose prose-sm max-w-none text-foreground mt-4" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(featured.content) }} />
+                    </DialogContent>
+                  </Dialog>
+                );
+              })()}
+
+              {/* Sidebar Articles */}
+              <div className="lg:col-span-4 flex flex-col gap-10 border-t lg:border-t-0 lg:border-l border-border lg:pl-10 pt-10 lg:pt-0">
+                {announcements.slice(1, 3).map((announcement) => {
+                  const imgMatch = announcement.content.match(/<img[^>]+src=["']([^"']+)["']/i);
+                  const sideImage = imgMatch ? imgMatch[1] : null;
+                  return (
+                    <Dialog key={announcement.id}>
                       <DialogTrigger asChild>
-                        <Button variant="outline" size="sm" className="group-hover:border-primary/50 group-hover:text-primary">
-                          Lees Meer
-                        </Button>
+                        <article className="group cursor-pointer fade-in-up">
+                          <div className="relative overflow-hidden bg-muted aspect-video mb-4 rounded-lg">
+                            {sideImage ? (
+                              <img
+                                src={sideImage}
+                                alt={announcement.title}
+                                loading="lazy"
+                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                              />
+                            ) : (
+                              <div className="w-full h-full bg-gradient-to-br from-secondary/20 to-primary/20 flex items-center justify-center">
+                                <Newspaper className="w-10 h-10 text-primary/40" />
+                              </div>
+                            )}
+                          </div>
+                          <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-2 block">
+                            {new Date(announcement.created_at).toLocaleDateString("nl-BE", { day: "numeric", month: "long", year: "numeric" })}
+                          </span>
+                          <h4 className="text-xl font-display font-bold text-foreground group-hover:text-primary transition-colors mb-2 leading-snug">
+                            {announcement.title}
+                          </h4>
+                          <p className="text-muted-foreground text-sm line-clamp-2 leading-relaxed">
+                            {announcement.excerpt || announcement.content.replace(/<[^>]+>/g, "").substring(0, 120) + "..."}
+                          </p>
+                        </article>
                       </DialogTrigger>
                       <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
                         <DialogHeader>
-                          <DialogTitle className="text-xl font-bold mb-2">
-                            {announcement.title}
-                          </DialogTitle>
+                          <DialogTitle className="text-xl font-bold mb-2">{announcement.title}</DialogTitle>
                           <DialogDescription className="text-sm text-muted-foreground">
                             {new Date(announcement.created_at).toLocaleDateString("nl-BE")}
-                            {announcement.featured && <Badge variant="secondary" className="ml-2 bg-accent/10 text-accent border-accent/20">
-                                Uitgelicht
-                              </Badge>}
                           </DialogDescription>
                         </DialogHeader>
-                        <div className="prose prose-sm max-w-none text-foreground mt-4" dangerouslySetInnerHTML={{
-                    __html: DOMPurify.sanitize(announcement.content)
-                  }} />
+                        <div className="prose prose-sm max-w-none text-foreground mt-4" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(announcement.content) }} />
                       </DialogContent>
                     </Dialog>
-                  </CardContent>
-                  </div>
-                </Card>;
-              })}
-            </div> : <div className="text-center py-12">
+                  );
+                })}
+              </div>
+            </div>
+          ) : (
+            <div className="text-center py-12">
               <p className="text-muted-foreground mb-4">Nog geen aankondigingen.</p>
-              {(isAdmin || isModerator) && <Link to="/admin/announcements/new">
+              {(isAdmin || isModerator) && (
+                <Link to="/admin/announcements/new">
                   <Button>Eerste Aankondiging Maken</Button>
-                </Link>}
-            </div>}
+                </Link>
+              )}
+            </div>
+          )}
         </div>
       </section>
 
