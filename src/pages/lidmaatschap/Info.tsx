@@ -1,313 +1,513 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Users, Euro, Gift, ShoppingBag, Shirt, FileText, Phone, ExternalLink } from "lucide-react";
+import {
+  Users,
+  Euro,
+  Gift,
+  ShoppingBag,
+  Shirt,
+  FileText,
+  ExternalLink,
+  Sparkles,
+  CalendarDays,
+  HeartHandshake,
+  Phone,
+  ClipboardCheck,
+  CheckCircle2,
+  Activity,
+  ShieldCheck,
+  Footprints,
+  Smile,
+  Mail,
+  ArrowRight,
+  Tag,
+} from "lucide-react";
 import { Link as RouterLink } from "react-router-dom";
+
 const MembershipInfo = () => {
-  const membershipFees = [{
-    category: "Basistarief",
-    description: "2 trainingen + match",
-    fee: "320 euro"
-  }, {
-    category: "U6",
-    description: "1 training + match vanaf februari",
-    fee: "220 euro"
-  }, {
-    category: "Dames en heren",
-    description: "Volwassen teams",
-    fee: "320 euro"
-  }, {
-    category: "Trimmers en Gents",
-    description: "Oudere teams",
-    fee: "285 euro"
-  }, {
-    category: "G-hockey",
-    description: "Hockey voor jongeren met een beperking",
-    fee: "195 euro"
-  }];
-  const discounts = [{
-    type: "Gezinskorting",
-    description: "Vanaf elke bijkomende inschrijving binnen een gezin wordt een korting van 25 euro voorzien.",
-    icon: Gift
-  }, {
-    type: "Sociaal tarief",
-    description: "Bij moeilijkheden kan een beroep gedaan worden op een sociaal tarief via de Uitpas Kansentarief.",
-    icon: Gift
-  }];
-  const requiredEquipment = [{
-    item: "Hockeystick",
-    required: true,
-    note: "Geschikt voor leeftijd en niveau"
-  }, {
-    item: "Beenbeschermers",
-    required: true,
-    note: "Goed passend voor bescherming"
-  }, {
-    item: "Bitje",
-    required: true,
-    note: "Verplicht voor alle spelers"
-  }, {
-    item: "Hockeyschoenen",
-    required: true,
-    note: "Antislip zolen voor kunstgras"
-  }];
-  const storeDiscounts = [{
-    store: "Topsport Dendermonde",
-    discount: "20%",
-    note: "Mogelijk dien je je lidmaatschap aan te tonen"
-  }, {
-    store: "DNA Boom",
-    discount: "10%",
-    note: "Voor de aankoop van hockeymateriaal"
-  }];
-  return <div className="container mx-auto px-4 py-12 lg:py-16">
-      <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8 text-foreground">Lid Worden - Informatie</h1>
-        
-        <Card className="mb-8">
-          <CardHeader>
-            <CardTitle>Welkom bij D-MON Hockey</CardTitle>
-            <CardDescription>
-              Ontdek onze programma's voor spelers van alle leeftijden en niveaus
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <p className="text-muted-foreground">
-              We hebben zowel een jeugd- als volwassenenwerking. Ook jongeren met een beperking zijn welkom.
+  const membershipFees = [
+    { category: "Basistarief", description: "2 trainingen + match", fee: "320", featured: true },
+    { category: "U6", description: "1 training + match vanaf februari", fee: "220" },
+    { category: "Dames en heren", description: "Volwassen teams", fee: "320" },
+    { category: "Trimmers en Gents", description: "Oudere teams", fee: "285" },
+    { category: "G-hockey", description: "Hockey voor jongeren met een beperking", fee: "195" },
+  ];
+
+  const discounts = [
+    {
+      type: "Gezinskorting",
+      description:
+        "Vanaf elke bijkomende inschrijving binnen een gezin krijg je 25 euro korting op het lidgeld.",
+      icon: HeartHandshake,
+    },
+    {
+      type: "Sociaal tarief",
+      description:
+        "Bij financiële moeilijkheden kan je een beroep doen op een sociaal tarief via de Uitpas Kansentarief.",
+      icon: Gift,
+    },
+  ];
+
+  const requiredEquipment = [
+    { item: "Hockeystick", icon: Activity, note: "Geschikt voor leeftijd en niveau" },
+    { item: "Beenbeschermers", icon: ShieldCheck, note: "Goed passend voor optimale bescherming" },
+    { item: "Bitje", icon: Smile, note: "Verplicht voor alle spelers tijdens trainingen en matches" },
+    { item: "Hockeyschoenen", icon: Footprints, note: "Antislip zolen, geschikt voor kunstgras" },
+  ];
+
+  const storeDiscounts = [
+    { store: "Topsport Dendermonde", discount: "20%", note: "Mogelijk dien je je lidmaatschap aan te tonen" },
+    { store: "DNA Boom", discount: "10%", note: "Voor de aankoop van hockeymateriaal" },
+  ];
+
+  const steps = [
+    {
+      title: "Interesse?",
+      description:
+        "Vul het registratieformulier in. We laten je weten of er nog plaats is in jouw categorie.",
+    },
+    {
+      title: "Vragen of advies?",
+      description:
+        "Contacteer hoofdtrainer Pierre Samyn, je team manager of coach voor meer info over competitie en niveau.",
+      phone: "0477 49 11 89",
+    },
+    {
+      title: "Bevestig en betaal",
+      description:
+        "De penningmeester stuurt in september/oktober een uitnodiging tot betaling, samen met een mutualiteitsattest.",
+    },
+  ];
+
+  const sections = [
+    { id: "lidgeld", label: "Lidgeld" },
+    { id: "nieuwe-leden", label: "Nieuwe leden" },
+    { id: "kortingen", label: "Kortingen" },
+    { id: "uitrusting", label: "Uitrusting" },
+    { id: "kledij", label: "Kledij" },
+  ];
+
+  return (
+    <div>
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-gradient-hero text-primary-foreground">
+        <div
+          className="absolute inset-0 opacity-30"
+          aria-hidden
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 20% 30%, hsl(var(--primary-glow) / 0.6) 0%, transparent 50%), radial-gradient(circle at 80% 70%, hsl(var(--accent) / 0.4) 0%, transparent 50%)",
+          }}
+        />
+        <div className="container mx-auto px-4 py-16 lg:py-24 relative">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-sm">
+              <Sparkles className="h-3.5 w-3.5" />
+              Seizoen 2025–2026
+            </div>
+            <h1 className="mt-6 font-display text-4xl font-bold leading-tight lg:text-6xl">
+              Word lid van D-mon
+            </h1>
+            <p className="mt-4 max-w-2xl text-base lg:text-lg text-primary-foreground/85">
+              Van jeugd tot Gents, van eerste training tot competitie — bij D-mon Hockey vind je een plek
+              op het veld. Ontdek hieronder hoe je je aansluit en wat het kost.
             </p>
-            
-            <div className="bg-blue-50 dark:bg-blue-950/20 p-4 rounded-lg border border-blue-200 dark:border-blue-800">
-              <p className="text-blue-800 dark:text-blue-200 mb-3 font-medium">📅 Trainingsrooster 2025-2026</p>
-              <Button variant="outline" size="sm" asChild>
-                <a href="https://static.twizzit.com/public/v2/chat/message/attachment/3210422/f72e69c96d253fcdc03611b7dc769262d0fd5f8b.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                  <FileText className="h-4 w-4" />
-                  Download Trainingsrooster (PDF)
-                  <ExternalLink className="h-3 w-3" />
-                </a>
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
+            <div className="mt-8 h-1 w-24 rounded-full bg-accent" />
 
-        {/* Membership Fees */}
-        <Card className="mb-8">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Euro className="h-5 w-5" />
-              Lidgeld
-            </CardTitle>
-            <CardDescription>Overzicht van de lidgelden voor het seizoen 2024-2025</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {membershipFees.map(fee => <div key={fee.category} className="border rounded-lg p-4">
-                  <div className="flex justify-between items-start mb-2">
-                    <h4 className="font-semibold">{fee.category}</h4>
-                    <Badge variant="secondary" className="text-lg font-bold">{fee.fee}</Badge>
-                  </div>
-                  <p className="text-sm text-muted-foreground">{fee.description}</p>
-                </div>)}
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* New Members */}
-        <Card className="mb-8 border-primary/20 bg-primary/5">
-          <CardHeader>
-            <CardTitle className="text-primary">Nieuwe Leden</CardTitle>
-            <CardDescription>
-              Interesse om lid te worden? Hier vind je alle stappen
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <div className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold mt-1">1</div>
-                <div>
-                  <h4 className="font-medium">Interesse?</h4>
-                  <p className="text-sm text-muted-foreground mb-3">
-                    Vul het registratieformulier in. We geven een seintje om te laten weten of er nog plaats is.
-                  </p>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-3">
-                <div className="w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold mt-1">2</div>
-                <div>
-                  <h4 className="font-medium">Start je met competitie?</h4>
-                  <p className="text-sm text-muted-foreground mb-3">
-                    Vraag de hoofdtrainer (Pierre Samyn – 0477 49 11 89), team manager/coach/trainer gerust om meer informatie.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Discounts */}
-        <Card className="mb-8">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Gift className="h-5 w-5" />
-              Korting
-            </CardTitle>
-            <CardDescription>We doen extra inspanningen om de toegankelijkheid te borgen</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              {discounts.map(discount => <div key={discount.type} className="flex items-start gap-3 p-4 border rounded-lg">
-                  <discount.icon className="h-5 w-5 text-green-500 mt-1" />
-                  <div>
-                    <h4 className="font-medium">{discount.type}</h4>
-                    <p className="text-sm text-muted-foreground">{discount.description}</p>
-                  </div>
-                </div>)}
-              
-              <div className="bg-amber-50 dark:bg-amber-950/20 p-4 rounded-lg border border-amber-200 dark:border-amber-800">
-                <p className="text-amber-800 dark:text-amber-200 text-sm">
-                  <strong>Betalingsinformatie:</strong> Uitnodiging tot betaling volgt via de penningmeester in september/oktober. 
-                  Er wordt ook een attest bezorgd voor het ziekenfonds. Vragen over betaling of attesten? Neem contact met{" "}
-                  <a href="mailto:penningmeester@dmon.be" className="underline hover:no-underline">
-                    penningmeester@dmon.be
-                  </a>
-                </p>
-                <p className="text-amber-800 dark:text-amber-200 text-sm mt-2">
-                  Voor vragen over sociaal tarief: <a href="mailto:info@dmon.be" className="underline hover:no-underline">info@dmon.be</a>
-                </p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Required Equipment */}
-        <Card className="mb-8">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <ShoppingBag className="h-5 w-5" />
-              Benodigde Uitrusting
-            </CardTitle>
-            <CardDescription>Wat je zeker nodig hebt om te beginnen</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="grid md:grid-cols-2 gap-4">
-              {requiredEquipment.map(item => <div key={item.item} className="flex items-start gap-3 p-3 border rounded-lg">
-                  <div className={`w-3 h-3 rounded-full mt-2 ${item.required ? 'bg-red-500' : 'bg-green-500'}`}></div>
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <h4 className="font-medium">{item.item}</h4>
-                      <Badge variant={item.required ? "destructive" : "secondary"} className="text-xs">
-                        {item.required ? "Verplicht" : "Optioneel"}
-                      </Badge>
-                    </div>
-                    <p className="text-sm text-muted-foreground">{item.note}</p>
-                  </div>
-                </div>)}
-            </div>
-            
-            <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-950/20 rounded-lg border border-blue-200 dark:border-blue-800">
-              <h4 className="font-medium text-blue-800 dark:text-blue-200 mb-2">💡 Tip voor nieuwe leden</h4>
-              <p className="text-blue-700 dark:text-blue-300 text-sm mb-3">
-                Lees meer uitgebreide informatie in onze onthaalbrochure voor nieuwe leden:
-              </p>
-              <Button variant="outline" size="sm" asChild>
-                <a href="https://drive.google.com/file/d/16o-P8Lf5ulHMuVvUnD3BLlYw8IMH_ste/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                  <FileText className="h-4 w-4" />
-                  Download Onthaalbrochure (PDF)
-                  <ExternalLink className="h-3 w-3" />
-                </a>
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Club Clothing */}
-        <Card className="mb-8">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Shirt className="h-5 w-5" />
-              Wedstrijdoutfit en Clubkledij
-            </CardTitle>
-            <CardDescription>Officiële clubuitrusting en uniformen</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-6">
-              <div>
-                <h4 className="font-medium mb-3">🏑 Wedstrijdoutfit</h4>
-                <div className="bg-green-50 dark:bg-green-950/20 p-4 rounded-lg border border-green-200 dark:border-green-800">
-                  <p className="text-green-800 dark:text-green-200 text-sm mb-3">
-                    De outfit bestaat uit een T-shirt met je naam (+ rugnummer vanaf U14), rokje/short, kousen.
-                  </p>
-                  <ul className="text-green-700 dark:text-green-300 text-sm space-y-1 mb-3">
-                    <li>• Te bestellen via de rubriek Shop (kleding Topsport)</li>
-                    <li>• We spelen nog tot juni 2025 in deze outfit, daarna verrassen we jullie met iets nieuws</li>
-                    <li>• <strong>Opgelet:</strong> je kan niet in de winkel zelf bestellen</li>
-                  </ul>
-                  <Button variant="outline" size="sm" asChild>
-                    <a href="https://topsport-clubs.be/collections/d-mon-hockey" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                      <ShoppingBag className="h-4 w-4" />
-                      Bestellen via Topsport
-                      <ExternalLink className="h-3 w-3" />
-                    </a>
-                  </Button>
-                </div>
-              </div>
-
-              <div>
-                <h4 className="font-medium mb-3">👕 Andere Clubkledij (optioneel)</h4>
-                <p className="text-sm text-muted-foreground mb-3">
-                  Hoodie, regenjas en andere clubkledij zijn optioneel en te bestellen via dezelfde link.
-                </p>
-              </div>
-
-              <div>
-                <h4 className="font-medium mb-3">💰 Kortingen bij winkels</h4>
-                <div className="grid md:grid-cols-2 gap-4">
-                  {storeDiscounts.map(store => <div key={store.store} className="border rounded-lg p-4">
-                      <div className="flex justify-between items-center mb-2">
-                        <h5 className="font-medium">{store.store}</h5>
-                        <Badge variant="outline" className="text-green-600 border-green-600">{store.discount} korting</Badge>
-                      </div>
-                      <p className="text-sm text-muted-foreground">{store.note}</p>
-                    </div>)}
-                </div>
-              </div>
-              
-              <div className="flex gap-4">
-                <RouterLink to="/shop">
-                  <Button>
-                    <ShoppingBag className="h-4 w-4 mr-2" />
-                    Bezoek Club Shop
-                  </Button>
-                </RouterLink>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Ready to Join */}
-        <Card className="bg-primary/5 border-primary/20">
-          <CardHeader>
-            <CardTitle className="text-primary">Klaar om Lid te Worden?</CardTitle>
-            <CardDescription>
-              Start je hockeyavontuur vandaag nog bij ons
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="mt-8 flex flex-wrap gap-3">
               <RouterLink to="/lidmaatschap/registratie">
-                <Button size="lg">
-                  Vul Registratieformulier In
+                <Button size="lg" variant="secondary" className="font-semibold">
+                  Vul registratieformulier in
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </RouterLink>
               <RouterLink to="/lidmaatschap/contact">
-                <Button variant="outline" size="lg">
-                  Heb je Vragen? Neem Contact Op
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-primary-foreground/40 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+                >
+                  Heb je een vraag?
                 </Button>
               </RouterLink>
             </div>
-          </CardContent>
-        </Card>
+
+            <div className="mt-10 flex flex-wrap gap-6 text-sm text-primary-foreground/85">
+              <div className="flex items-center gap-2">
+                <Euro className="h-4 w-4" />
+                <span className="font-semibold text-primary-foreground">vanaf 195 €</span>
+                <span>lidgeld per seizoen</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Users className="h-4 w-4" />
+                <span className="font-semibold text-primary-foreground">5</span>
+                <span>tariefcategorieën</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Gift className="h-4 w-4" />
+                <span className="font-semibold text-primary-foreground">Gezins-</span>
+                <span>& sociaal tarief mogelijk</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sticky sub-nav */}
+      <div className="sticky top-0 z-20 border-b border-border/60 bg-background/85 backdrop-blur">
+        <div className="container mx-auto px-4 py-3 flex gap-2 overflow-x-auto">
+          {sections.map((s) => (
+            <a
+              key={s.id}
+              href={`#${s.id}`}
+              className="rounded-full whitespace-nowrap border border-border/60 bg-background px-4 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:bg-primary/5 hover:text-foreground"
+            >
+              {s.label}
+            </a>
+          ))}
+        </div>
       </div>
-    </div>;
+
+      <div className="container mx-auto px-4 py-12 lg:py-16 max-w-6xl space-y-16 lg:space-y-24">
+        {/* Welkom + Trainingsrooster */}
+        <section className="grid gap-6 lg:grid-cols-[2fr_1fr] items-start">
+          <div>
+            <h2 className="font-display text-2xl lg:text-3xl font-bold text-foreground">
+              Welkom bij D-mon Hockey
+            </h2>
+            <p className="mt-4 text-muted-foreground leading-relaxed">
+              We hebben zowel een jeugd- als volwassenenwerking. Ook jongeren met een beperking zijn welkom
+              in onze G-hockey-werking. Of je nu voor het eerst een stick vasthoudt of al jaren competitie
+              speelt, je vindt bij ons je niveau.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-border/60 bg-primary/5 p-6">
+            <div className="flex items-center gap-2 text-sm font-semibold text-primary">
+              <CalendarDays className="h-4 w-4" />
+              Trainingsrooster
+            </div>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Download het volledige rooster voor seizoen 2025–2026.
+            </p>
+            <Button variant="outline" size="sm" asChild className="mt-4">
+              <a
+                href="https://static.twizzit.com/public/v2/chat/message/attachment/3210422/f72e69c96d253fcdc03611b7dc769262d0fd5f8b.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2"
+              >
+                <FileText className="h-4 w-4" />
+                Download PDF
+                <ExternalLink className="h-3 w-3" />
+              </a>
+            </Button>
+          </div>
+        </section>
+
+        {/* Lidgeld */}
+        <section id="lidgeld" className="scroll-mt-20">
+          <div className="flex items-end justify-between gap-4 mb-8">
+            <div>
+              <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary mb-2">
+                <Tag className="h-3.5 w-3.5" />
+                Tarieven
+              </div>
+              <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground">Lidgeld</h2>
+              <p className="mt-2 text-muted-foreground">
+                Eén tarief per seizoen — alles inbegrepen: training, competitie en clubactiviteiten.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {membershipFees.map((fee) => (
+              <div
+                key={fee.category}
+                className={`relative rounded-2xl border p-6 transition-all hover:-translate-y-0.5 hover:shadow-lg ${
+                  fee.featured
+                    ? "border-primary/40 bg-gradient-to-br from-primary/10 to-transparent shadow-md"
+                    : "border-border/60 bg-card"
+                }`}
+              >
+                {fee.featured && (
+                  <Badge className="absolute -top-2.5 left-6 bg-primary text-primary-foreground">
+                    Meest gekozen
+                  </Badge>
+                )}
+                <h3 className="font-semibold text-foreground">{fee.category}</h3>
+                <p className="mt-1 text-sm text-muted-foreground min-h-[2.5rem]">{fee.description}</p>
+                <div className="mt-6 flex items-baseline gap-1">
+                  <span className="font-display text-4xl font-bold text-foreground">{fee.fee}</span>
+                  <span className="text-lg font-semibold text-muted-foreground">€</span>
+                  <span className="ml-1 text-sm text-muted-foreground">/ seizoen</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Nieuwe leden */}
+        <section id="nieuwe-leden" className="scroll-mt-20">
+          <div className="mb-8">
+            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary mb-2">
+              <ClipboardCheck className="h-3.5 w-3.5" />
+              Stappenplan
+            </div>
+            <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground">
+              Nieuw bij D-mon? Zo werkt het
+            </h2>
+          </div>
+
+          <div className="relative grid gap-6 md:grid-cols-3">
+            <div
+              className="hidden md:block absolute top-6 left-[16.67%] right-[16.67%] h-px bg-gradient-to-r from-primary/40 via-primary/40 to-primary/40"
+              aria-hidden
+            />
+            {steps.map((step, i) => (
+              <div
+                key={step.title}
+                className="relative rounded-2xl border border-border/60 bg-card p-6"
+              >
+                <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground font-display text-xl font-bold shadow-md">
+                  {i + 1}
+                </div>
+                <h3 className="mt-4 font-semibold text-foreground">{step.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{step.description}</p>
+                {step.phone && (
+                  <a
+                    href={`tel:${step.phone.replace(/\s/g, "")}`}
+                    className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+                  >
+                    <Phone className="h-3.5 w-3.5" />
+                    {step.phone}
+                  </a>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Kortingen */}
+        <section id="kortingen" className="scroll-mt-20">
+          <div className="mb-8">
+            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary mb-2">
+              <Gift className="h-3.5 w-3.5" />
+              Toegankelijkheid
+            </div>
+            <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground">
+              Kortingen op het lidgeld
+            </h2>
+            <p className="mt-2 text-muted-foreground">
+              We doen extra inspanningen zodat hockey voor iedereen bereikbaar blijft.
+            </p>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2">
+            {discounts.map((discount) => (
+              <div
+                key={discount.type}
+                className="rounded-2xl border border-border/60 bg-card p-6 transition-all hover:border-primary/40 hover:shadow-md"
+              >
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                  <discount.icon className="h-6 w-6" />
+                </div>
+                <h3 className="mt-4 font-semibold text-foreground">{discount.type}</h3>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{discount.description}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-6 rounded-2xl border-l-4 border-primary bg-muted/50 p-5">
+            <p className="text-sm text-foreground">
+              <strong className="font-semibold">Betalingsinformatie.</strong>{" "}
+              De uitnodiging tot betaling volgt via de penningmeester in september/oktober, samen met een
+              attest voor het ziekenfonds. Vragen over betaling of attesten?{" "}
+              <a
+                href="mailto:penningmeester@dmon.be"
+                className="font-medium text-primary underline hover:no-underline"
+              >
+                penningmeester@dmon.be
+              </a>
+              .
+            </p>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Voor vragen over het sociaal tarief:{" "}
+              <a href="mailto:info@dmon.be" className="font-medium text-primary underline hover:no-underline">
+                info@dmon.be
+              </a>
+              .
+            </p>
+          </div>
+        </section>
+
+        {/* Uitrusting */}
+        <section id="uitrusting" className="scroll-mt-20">
+          <div className="mb-8">
+            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary mb-2">
+              <ShoppingBag className="h-3.5 w-3.5" />
+              Checklist
+            </div>
+            <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground">
+              Wat heb je nodig om te starten?
+            </h2>
+            <p className="mt-2 text-muted-foreground">
+              Vier essentiële zaken om veilig en comfortabel te kunnen trainen.
+            </p>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {requiredEquipment.map((item) => (
+              <div
+                key={item.item}
+                className="group rounded-2xl border border-border/60 bg-card p-5 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md"
+              >
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                  <item.icon className="h-5 w-5" />
+                </div>
+                <div className="mt-4 flex items-center gap-2">
+                  <h3 className="font-semibold text-foreground">{item.item}</h3>
+                  <CheckCircle2 className="h-4 w-4 text-primary" />
+                </div>
+                <p className="mt-1 text-sm text-muted-foreground">{item.note}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 rounded-2xl border border-border/60 bg-primary/5 p-6">
+            <div className="flex items-start gap-3">
+              <FileText className="h-5 w-5 text-primary mt-0.5" />
+              <div>
+                <h3 className="font-semibold text-foreground">Onthaalbrochure voor nieuwe leden</h3>
+                <p className="text-sm text-muted-foreground">
+                  Uitgebreide info over de club, werking en praktische zaken.
+                </p>
+              </div>
+            </div>
+            <Button variant="outline" size="sm" asChild className="shrink-0">
+              <a
+                href="https://drive.google.com/file/d/16o-P8Lf5ulHMuVvUnD3BLlYw8IMH_ste/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2"
+              >
+                Download PDF
+                <ExternalLink className="h-3 w-3" />
+              </a>
+            </Button>
+          </div>
+        </section>
+
+        {/* Kledij */}
+        <section id="kledij" className="scroll-mt-20">
+          <div className="mb-8">
+            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary mb-2">
+              <Shirt className="h-3.5 w-3.5" />
+              Outfit
+            </div>
+            <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground">
+              Wedstrijdoutfit & clubkledij
+            </h2>
+          </div>
+
+          <div className="grid gap-6 lg:grid-cols-2">
+            <div className="rounded-2xl border border-border/60 bg-card p-6">
+              <h3 className="font-semibold text-foreground flex items-center gap-2">
+                <Shirt className="h-4 w-4 text-primary" />
+                Wedstrijdoutfit
+              </h3>
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                De officiële outfit bestaat uit een T-shirt met je naam (rugnummer vanaf U14), rokje of short
+                en kousen. Te bestellen via de webshop van Topsport — niet in de winkel zelf.
+              </p>
+              <p className="mt-3 text-sm text-muted-foreground">
+                Hoodies, regenjassen en andere clubkledij zijn optioneel en bestelbaar via dezelfde link.
+              </p>
+              <Button size="sm" asChild className="mt-5">
+                <a
+                  href="https://topsport-clubs.be/collections/d-mon-hockey"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2"
+                >
+                  <ShoppingBag className="h-4 w-4" />
+                  Bestellen via Topsport
+                  <ExternalLink className="h-3 w-3" />
+                </a>
+              </Button>
+            </div>
+
+            <div className="rounded-2xl border border-border/60 bg-card p-6">
+              <h3 className="font-semibold text-foreground flex items-center gap-2">
+                <Tag className="h-4 w-4 text-primary" />
+                Kortingen bij winkels
+              </h3>
+              <div className="mt-4 space-y-3">
+                {storeDiscounts.map((store) => (
+                  <div
+                    key={store.store}
+                    className="flex items-start justify-between gap-3 rounded-xl border border-border/60 bg-background p-4"
+                  >
+                    <div>
+                      <h4 className="font-medium text-foreground">{store.store}</h4>
+                      <p className="text-sm text-muted-foreground">{store.note}</p>
+                    </div>
+                    <Badge variant="secondary" className="shrink-0 bg-primary/10 text-primary border-primary/20">
+                      {store.discount}
+                    </Badge>
+                  </div>
+                ))}
+              </div>
+              <RouterLink to="/shop" className="mt-5 inline-block">
+                <Button variant="outline" size="sm">
+                  <ShoppingBag className="h-4 w-4 mr-2" />
+                  Bezoek club shop
+                </Button>
+              </RouterLink>
+            </div>
+          </div>
+        </section>
+
+        {/* Final CTA */}
+        <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary to-primary-light p-8 lg:p-14 text-primary-foreground">
+          <div
+            className="absolute inset-0 opacity-20"
+            aria-hidden
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at 80% 20%, hsl(var(--accent) / 0.6) 0%, transparent 50%)",
+            }}
+          />
+          <div className="relative max-w-2xl">
+            <h2 className="font-display text-3xl lg:text-4xl font-bold leading-tight">
+              Klaar om de stick op te pikken?
+            </h2>
+            <p className="mt-3 text-primary-foreground/85">
+              Start vandaag je hockey-avontuur bij D-mon. Vul het registratieformulier in of stel je vraag
+              — we helpen je graag verder.
+            </p>
+            <div className="mt-6 flex flex-col sm:flex-row gap-3">
+              <RouterLink to="/lidmaatschap/registratie">
+                <Button size="lg" variant="secondary" className="font-semibold">
+                  Vul registratieformulier in
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </RouterLink>
+              <RouterLink to="/lidmaatschap/contact">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-primary-foreground/40 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+                >
+                  <Mail className="h-4 w-4 mr-2" />
+                  Stel een vraag
+                </Button>
+              </RouterLink>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  );
 };
+
 export default MembershipInfo;

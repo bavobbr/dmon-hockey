@@ -1,54 +1,47 @@
-## Doel
-Agenda sneller scanbaar maken: minder herhaling, duidelijker onderscheid tussen wedstrijden / trainingen / events, en een rustigere visuele hiërarchie.
+# Plan: /lidmaatschap/info opfrissen
 
-## Wat verandert er visueel
+## Probleem
+De pagina is nu één lange stapel grijze cards met dezelfde kop-tekst-structuur. Geen visuele hiërarchie, geen hero, en hardgecodeerde kleurtjes (blue-50, amber-50, green-50, red-500) die afwijken van het design system. Het belangrijkste — *lid worden* — staat helemaal onderaan.
 
-### 1. Dag-gegroepeerde lijst i.p.v. losse kaarten
-Binnen elke sectie (Vandaag, Morgen, Deze Week, …) groeperen we events per dag. De datum staat één keer als sticky daghoofd ("Maandag 18 mei — 6 events"). Daaronder compacte rijen met enkel het uur. Scheelt veel ruimte en herhaling.
+## Wat we aanpakken
 
-```text
-─ Vandaag ───────────────────────────────
-  MAANDAG 18 MEI                6 events
-  ─────────────────────────────────────
-  │ 18:00  Training   U10G2, U10G3, U10G1, U11G1
-  │ 19:15  Training   U16G1, U16G2          · Hockey Veld
-  │ 20:30  Training   G1, G2, TRM           · Hockey veld
-  ▌ 20:30  WEDSTRIJD  Lokeren G-1  vs  Dendermonde G-1   [Uit]
-  ▌ 20:30  WEDSTRIJD  Lokeren G-2  vs  Dendermonde G-2   [Uit]
-```
+### 1. Hero in dezelfde stijl als Teams/Waarden/Media
+- `bg-gradient-hero` met radial accents, badge ("Seizoen 2025–2026"), grote titel ("Word lid van D-mon"), korte intro, twee CTA's (Registreer / Stel een vraag) bovenaan.
+- Drie quick-stats inline: lidgeld vanaf, aantal categorieën, kortingen mogelijk.
 
-### 2. Visuele typering per event
-- Linker accentbalk + icoon in een eigen kleur per type:
-  - Wedstrijd: `primary` (donkerblauw) — meest prominent, lichte achtergrond-tint
-  - Training: neutraal grijs, dunne balk
-  - Event: accentkleur
-- Thuis/Uit als kleine pill rechts i.p.v. tussen de andere badges
-- Score, indien aanwezig, rechts uitgelijnd in mono-font zodat het direct opvalt
+### 2. Sticky sub-navigatie
+- Anchor-links onder de hero: *Lidgeld · Nieuwe leden · Kortingen · Uitrusting · Kledij*. Zelfde sticky-pattern als de filterbar op /club/teams. Maakt de pagina scanbaar.
 
-### 3. Compactere rij-layout
-- Uur links (vast 56px), type-label (vast 90px), titel volledig leesbaar daarnaast
-- Locatie en serie als secundaire regel onder de titel in kleinere muted tekst
-- Hoogte ~56px voor trainings, ~72px voor wedstrijden (iets meer adem)
-- Max-breedte van content beperken (`max-w-3xl` binnen kolom) zodat tekst niet over het hele scherm uitloopt op grote schermen
+### 3. Lidgeld als visuele tarieftabel
+- Vervang generieke cards door een prominent grid met grote prijs, categorie-icoon en korte beschrijving. Basistarief krijgt een "Meest gekozen"-accent.
 
-### 4. Sectie-koppen rustiger
-- "Vandaag", "Morgen", "Deze Week" als typografische headers (geen grote gekleurde pill meer), met onderstreep-accent en het aantal events in muted tekst
-- Sticky bij scrollen zodat je altijd weet waar je bent
+### 4. Nieuwe leden als genummerde stappenflow
+- Horizontale stappen (1 → 2 → 3) met connector-lijn op desktop, ipv twee kleine bullets. Voeg stap 3 toe: "Bevestig & betaal". Telefoonnummer als klikbare `tel:` link.
 
-### 5. Lege/onbenoemde events
-"Event zonder naam" tonen als italic muted "Naamloos event" met type-label ervoor, zodat het minder schreeuwt.
+### 5. Kortingen + betalinginfo splitsen
+- Gezinskorting / sociaal tarief als twee gelijkwaardige featured tiles met grotere iconen.
+- Betalingsinformatie krijgt eigen subtiele callout met `bg-muted` + linker accentbalk in `border-primary` ipv amber.
 
-### 6. Kalender-sidebar
-Ongewijzigd qua functie, maar visueel iets compacter en met dezelfde type-kleurpunten als de lijst zodat er consistentie is.
+### 6. Uitrusting als checklist met iconen
+- Per item een eigen icoon (stick, scheenbeschermers, bitje, schoen via lucide of emoji). "Verplicht"-badge subtieler. Onthaalbrochure-CTA als afsluitende banner.
 
-## Technische opzet
-- Alles in `src/components/events/EventCard.tsx`, `EventGroup.tsx`, en `EventFilters.tsx` (geen schema-wijzigingen)
-- Nieuwe helper in `EventGroup` die events per dag subgroepeert
-- Type-kleuren via bestaande semantic tokens (`primary`, `muted`, `accent`) — geen nieuwe kleuren toevoegen
-- Daghoofd en sectiehoofd `position: sticky` met `top` offset rekening houdend met `AppHeader`
-- Geen backend- of data-wijzigingen
+### 7. Clubkledij compacter
+- Wedstrijdoutfit + winkelkortingen in één sectie met twee kolommen ipv drie geneste blokken. Verwijder achterhaalde tekst over "juni 2025".
 
-## Niet inbegrepen
-- Geen nieuwe filters of functies
-- Geen wijzigingen aan de data of edge functions
-- Mobile layout blijft single-column zoals nu, gewoon met de nieuwe rij-stijl
+### 8. Afsluitende CTA-banner
+- Volledige breedte, `bg-gradient-to-br from-primary to-primary-light`, witte tekst, twee knoppen — visueel gelijk aan de CTA onderaan /club/media.
+
+### 9. Design-system opkuis
+- Alle `bg-blue-50`, `amber-50`, `green-50`, `red-500`, `text-green-600` enz. vervangen door semantische tokens (`bg-muted`, `bg-primary/5`, `text-primary`, `border-border`, `text-destructive`). Donkere modus werkt dan automatisch.
+- Emoji's (📅 🏑 👕 💰 💡) vervangen door Lucide-iconen voor consistentie.
+
+### 10. SEO & a11y
+- Eén `<h1>` (in hero), elke sectie krijgt `<section id="…">` met `<h2>`. Nuttige meta-title/description toevoegen.
+
+## Buiten scope
+- Geen wijzigingen aan tariefbedragen of teksten over registratieproces (alleen herstructurering).
+- Geen wijzigingen aan /lidmaatschap/registratie of /lidmaatschap/contact.
+- Alleen frontend/presentatie — geen data of routes.
+
+## Bestanden
+- `src/pages/lidmaatschap/Info.tsx` — volledige herstructurering.
