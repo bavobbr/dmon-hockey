@@ -212,7 +212,10 @@ const Index = () => {
 
               <h1 className="font-display font-black italic uppercase text-white leading-[0.9] tracking-tighter text-5xl md:text-7xl lg:text-8xl fade-in-up">
                 D-mon<br />
-                <span className="text-secondary">Hockey Club</span>
+                <span className="relative inline-block">
+                  Hockey Club
+                  <span className="absolute bottom-1 left-0 w-full h-2 bg-secondary/90" aria-hidden="true" />
+                </span>
               </h1>
 
               <p className="mt-6 text-primary-foreground/80 text-base md:text-xl max-w-xl font-medium leading-relaxed fade-in-up">
