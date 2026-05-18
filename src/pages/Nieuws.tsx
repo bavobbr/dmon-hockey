@@ -113,8 +113,8 @@ const NewsCard = ({ announcement, index, eager }: { announcement: Announcement; 
           )}
           style={{ animationDelay: `${Math.min(index * 0.06, 0.4)}s` }}
         >
-          {/* Top accent bar in clubkleur */}
-          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-primary/70 to-accent z-10" />
+          {/* Top accent bar — subtiele grijstint voor structuur zonder kleurchaos */}
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-muted-foreground/30 via-muted-foreground/15 to-transparent z-10" />
 
           {/* Image */}
           <div className={cn(
@@ -129,14 +129,14 @@ const NewsCard = ({ announcement, index, eager }: { announcement: Announcement; 
                   loading={eager ? "eager" : "lazy"}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
-                {/* Duotone tint: subtiele clubblauw-overlay voor visuele samenhang, fade-t weg op hover */}
+                {/* Grijstint-overlay voor visuele samenhang, fade-t weg op hover */}
                 <div
                   aria-hidden
-                  className="absolute inset-0 bg-primary/30 mix-blend-multiply opacity-100 group-hover:opacity-0 transition-opacity duration-500"
+                  className="absolute inset-0 bg-black/20 mix-blend-multiply opacity-100 group-hover:opacity-0 transition-opacity duration-500"
                 />
                 <div
                   aria-hidden
-                  className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-500"
+                  className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-500"
                 />
               </>
             ) : (
@@ -155,15 +155,15 @@ const NewsCard = ({ announcement, index, eager }: { announcement: Announcement; 
           {/* Content */}
           <div className="flex flex-col flex-1 p-5">
             <div className="flex items-center gap-2 mb-3">
-              <div className="p-1.5 rounded-md bg-primary/10">
-                <IconComponent className="h-4 w-4 text-primary" />
+              <div className="p-1.5 rounded-md bg-muted">
+                <IconComponent className="h-4 w-4 text-muted-foreground" />
               </div>
               <span className="text-xs text-muted-foreground">
                 {formatDate(announcement.created_at)}
               </span>
             </div>
             <h3 className={cn(
-              "font-semibold text-foreground mb-2 line-clamp-2 group-hover:text-primary transition-colors",
+              "font-semibold text-foreground mb-2 line-clamp-2 group-hover:text-foreground/80 transition-colors",
               isWide || isTall ? "text-xl lg:text-2xl" : "text-lg"
             )}>
               {announcement.title}
@@ -174,7 +174,7 @@ const NewsCard = ({ announcement, index, eager }: { announcement: Announcement; 
             )}>
               {announcement.excerpt || announcement.content.replace(/<[^>]*>/g, '').substring(0, 160) + '...'}
             </p>
-            <span className="inline-flex items-center gap-1.5 text-sm text-primary font-medium mt-4 group-hover:gap-2.5 transition-all">
+            <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground font-medium mt-4 group-hover:gap-2.5 transition-all group-hover:text-foreground">
               Lees meer <Icons.ArrowRight className="h-3.5 w-3.5" />
             </span>
           </div>
