@@ -20,8 +20,8 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				'display': ['Montserrat', 'sans-serif'],
-				'body': ['Inter', 'sans-serif'],
+				'display': ['"Bebas Neue"', 'sans-serif'],
+				'body': ['Barlow', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
