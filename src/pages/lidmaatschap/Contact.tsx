@@ -5,7 +5,7 @@ import { ContactPageJsonLd } from "@/components/JsonLd";
 
 const Contact = () => {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-12 lg:py-16">
       <ContactPageJsonLd />
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold mb-8 text-foreground">Contact</h1>

@@ -136,7 +136,7 @@ export default function RulesAgent() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-4xl">
+    <div className="container mx-auto px-4 py-12 lg:py-16 max-w-4xl">
       <Card className="h-[calc(100vh-12rem)] flex flex-col">
         <CardHeader className="border-b">
           <div className="flex items-center justify-between">

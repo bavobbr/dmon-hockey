@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import indoorRulesTable1 from "@/assets/indoor-rules-table-1.png";
 import indoorRulesTable2 from "@/assets/indoor-rules-table-2.png";
 const IndoorRules = () => {
-  return <div className="container mx-auto px-4 py-8">
+  return <div className="container mx-auto px-4 py-12 lg:py-16">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold mb-8 text-foreground">Indoor Hockey: Een Gids voor Beginners</h1>
         

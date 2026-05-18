@@ -6,7 +6,7 @@ import scheidsrechterLeerplanImage from "@/assets/scheidsrechter-leerplan.png";
 
 const U14PlusRules = () => {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-12 lg:py-16">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold mb-8 text-foreground">Spelregels U14 en hoger</h1>
         

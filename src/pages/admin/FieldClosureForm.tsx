@@ -94,14 +94,14 @@ const FieldClosureForm = () => {
 
   if (isLoading) {
     return (
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-12 lg:py-16">
         <p>Laden...</p>
       </div>
     );
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-12 lg:py-16">
       <Card>
         <CardHeader>
           <CardTitle>{isEditing ? "Sluiting Bewerken" : "Nieuwe Sluiting"}</CardTitle>

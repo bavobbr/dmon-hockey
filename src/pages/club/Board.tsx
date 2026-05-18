@@ -22,7 +22,7 @@ const Board = () => {
   });
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-12 lg:py-16">
       <BoardPageJsonLd members={boardMembers || []} />
       <div className="max-w-6xl mx-auto">
         <h1 className="text-4xl font-bold mb-8 text-foreground">Bestuur, Sportieve cel en medewerkers</h1>
