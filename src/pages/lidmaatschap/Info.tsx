@@ -26,7 +26,7 @@ import { Link as RouterLink } from "react-router-dom";
 
 const MembershipInfo = () => {
   const membershipFees = [
-    { category: "Basistarief", description: "2 trainingen + match", fee: "320", featured: true },
+    { category: "Basistarief", description: "2 trainingen + match", fee: "320" },
     { category: "U6", description: "1 training + match vanaf februari", fee: "220" },
     { category: "Dames en heren", description: "Volwassen teams", fee: "320" },
     { category: "Trimmers en Gents", description: "Oudere teams", fee: "285" },
