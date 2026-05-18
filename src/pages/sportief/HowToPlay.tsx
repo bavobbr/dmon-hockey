@@ -65,24 +65,32 @@ const HowToPlay = () => {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-hero">
-        <div className="container mx-auto px-4 py-16 lg:py-24">
+      <section className="relative overflow-hidden bg-gradient-hero text-primary-foreground">
+        <div
+          className="absolute inset-0 opacity-30"
+          aria-hidden
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 20% 30%, hsl(var(--primary-glow) / 0.6) 0%, transparent 50%), radial-gradient(circle at 80% 70%, hsl(var(--accent) / 0.4) 0%, transparent 50%)",
+          }}
+        />
+        <div className="container mx-auto px-4 py-16 lg:py-24 relative">
           <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-4 bg-primary/10 text-primary border-primary/20 hover:bg-primary/15">
+            <div className="inline-flex items-center gap-2 rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-sm mb-6">
               Start met hockey
-            </Badge>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-foreground">
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Hoe speel je hockey?
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-primary-foreground/85 mb-8 max-w-3xl mx-auto">
               Hockey is een snelle, technische en vooral ontzettend leuke teamsport op kunstgras.
               Twee ploegen proberen de bal in elkaars doel te krijgen door slim samen te spelen.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
-              <Button asChild>
+              <Button asChild variant="secondary">
                 <Link to="/lidmaatschap/info">Word lid</Link>
               </Button>
-              <Button variant="outline" asChild>
+              <Button variant="outline" asChild className="bg-transparent border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground">
                 <Link to="/sportief/hockey-principes">
                   Hockey principes <ArrowRight className="h-4 w-4 ml-2" />
                 </Link>
