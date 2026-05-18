@@ -191,7 +191,7 @@ const U10U12Rules = () => {
                     <iframe
                       width="100%"
                       height="315"
-                      src="https://www.youtube.com/embed/saPV678-3Ik?list=PLag9_tWawv3Q6uOVToLVgb8UixIsBgin2"
+                      src="https://www.youtube.com/embed/DXZ90hdkiW4"
                       title="Start to umpire - Kick (Fr)"
                       frameBorder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -201,7 +201,7 @@ const U10U12Rules = () => {
                   </div>
                   
                   <p className="text-sm text-muted-foreground mb-4">
-                    Meer filmpjes vind je op: <a href="https://hockey.be/nl/competitie/outdoor-hockey/starttoumpire/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">https://hockey.be/nl/competitie/outdoor-hockey/starttoumpire/</a>
+                    Meer filmpjes vind je op: <a href="https://hockey.be/nl/hockey-vlaanderen/hockey-academy/umpire-academy/starttoumpire/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">https://hockey.be/nl/hockey-vlaanderen/hockey-academy/umpire-academy/starttoumpire/</a>
                   </p>
                 </div>
 
