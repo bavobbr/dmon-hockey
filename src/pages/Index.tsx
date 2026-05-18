@@ -455,11 +455,72 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Full-bleed identity band */}
+      <section className="relative w-full overflow-hidden bg-primary text-primary-foreground py-24 md:py-32">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary/80 pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,hsl(var(--primary-glow)/0.35),transparent_55%)] pointer-events-none" />
+        <svg
+          className="absolute inset-0 w-full h-full opacity-[0.07] pointer-events-none"
+          viewBox="0 0 1200 400"
+          preserveAspectRatio="xMidYMid slice"
+          aria-hidden="true"
+        >
+          <circle cx="600" cy="200" r="160" stroke="white" strokeWidth="2" fill="none" />
+          <line x1="600" y1="0" x2="600" y2="400" stroke="white" strokeWidth="2" />
+          <rect x="0" y="100" width="120" height="200" stroke="white" strokeWidth="2" fill="none" />
+          <rect x="1080" y="100" width="120" height="200" stroke="white" strokeWidth="2" fill="none" />
+        </svg>
+
+        <div className="relative z-10 container mx-auto px-6 md:px-10">
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-7">
+              <span className="text-accent font-display font-bold tracking-[0.3em] text-xs uppercase mb-4 block">
+                Onze passie
+              </span>
+              <h2 className="font-display font-black italic uppercase leading-[0.95] tracking-tight text-4xl md:text-6xl lg:text-7xl">
+                Meer dan een<br />
+                <span className="relative inline-block">
+                  hockeyclub
+                  <span className="absolute -bottom-1 left-0 w-full h-2 bg-secondary/90" aria-hidden="true" />
+                </span>
+              </h2>
+              <p className="mt-8 text-primary-foreground/80 text-lg md:text-xl max-w-2xl font-medium leading-relaxed">
+                Bij D-mon Hockey Club bouwen we elke week aan een gemeenschap waar plezier, sportiviteit en groei centraal staan — voor jong en oud.
+              </p>
+            </div>
+            <div className="lg:col-span-5 grid grid-cols-3 gap-4 md:gap-6">
+              <div className="text-center p-4 md:p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                <div className="font-display font-black text-4xl md:text-5xl text-accent">2023</div>
+                <div className="text-xs md:text-sm uppercase tracking-wider text-primary-foreground/70 mt-2">Opgericht</div>
+              </div>
+              <div className="text-center p-4 md:p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                <div className="font-display font-black text-4xl md:text-5xl text-accent">10+</div>
+                <div className="text-xs md:text-sm uppercase tracking-wider text-primary-foreground/70 mt-2">Teams</div>
+              </div>
+              <div className="text-center p-4 md:p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                <div className="font-display font-black text-4xl md:text-5xl text-accent">1</div>
+                <div className="text-xs md:text-sm uppercase tracking-wider text-primary-foreground/70 mt-2">Familie</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="absolute bottom-0 left-0 w-1/3 h-1.5 flex pointer-events-none">
+          <div className="h-full flex-1 bg-secondary" />
+          <div className="h-full flex-1 bg-accent" />
+        </div>
+      </section>
+
       {/* Upcoming Events */}
-      <section className="py-20 px-4 bg-gradient-subtle">
-        <div className="container mx-auto max-w-full">
-          <div className="flex items-center justify-between mb-16">
-            <h2 className="text-3xl font-bold text-center text-foreground">Aankomende Evenementen</h2>
+      <section className="py-24 px-4 bg-gradient-subtle">
+        <div className="container mx-auto max-w-6xl">
+          <div className="flex items-end justify-between mb-16 flex-wrap gap-4">
+            <div>
+              <span className="text-secondary font-display font-bold tracking-[0.25em] text-xs uppercase mb-3 block">
+                Agenda
+              </span>
+              <h2 className="text-4xl md:text-5xl font-display font-black italic uppercase text-foreground tracking-tight">Aankomende Evenementen</h2>
+            </div>
             <Link to="/events">
               <Button variant="outline" size="sm">
                 Bekijk Meer
