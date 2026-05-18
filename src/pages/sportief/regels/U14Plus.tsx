@@ -198,7 +198,7 @@ const U14PlusRules = () => {
                   <iframe 
                     width="100%" 
                     height="100%" 
-                    src="https://www.youtube.com/embed/saPV678-3Ik?list=PLag9_tWawv3Q6uOVToLVgb8UixIsBgin2" 
+                    src="https://www.youtube.com/embed/DXZ90hdkiW4" 
                     title="Start to umpire - Kick (Fr)" 
                     frameBorder={0} 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -213,7 +213,7 @@ const U14PlusRules = () => {
               
               <Button asChild variant="outline">
                 <a 
-                  href="https://hockey.be/nl/competitie/outdoor-hockey/starttoumpire/" 
+                  href="https://hockey.be/nl/hockey-vlaanderen/hockey-academy/umpire-academy/starttoumpire/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center gap-2"
