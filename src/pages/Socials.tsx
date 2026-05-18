@@ -97,7 +97,7 @@ export default function Socials() {
 
   if (loading) {
     return (
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-12 lg:py-16">
         <div className="space-y-6">
           <div className="text-center">
             <h1 className="text-3xl font-bold mb-4">Socials</h1>
@@ -122,7 +122,7 @@ export default function Socials() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-12 lg:py-16">
       <div className="space-y-6">
         <div className="text-center">
           <h1 className="text-3xl font-bold mb-4">Socials</h1>

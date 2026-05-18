@@ -5,7 +5,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 
 const IndoorRegistration = () => {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-12 lg:py-16">
       <div className="max-w-6xl mx-auto">
         <h1 className="text-4xl font-bold mb-8 text-foreground">Indoor Hockey Registratie</h1>
         

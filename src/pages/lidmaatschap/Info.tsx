@@ -60,7 +60,7 @@ const MembershipInfo = () => {
     discount: "10%",
     note: "Voor de aankoop van hockeymateriaal"
   }];
-  return <div className="container mx-auto px-4 py-8">
+  return <div className="container mx-auto px-4 py-12 lg:py-16">
       <div className="max-w-6xl mx-auto">
         <h1 className="text-4xl font-bold mb-8 text-foreground">Lid Worden - Informatie</h1>
         

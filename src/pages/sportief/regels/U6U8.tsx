@@ -7,7 +7,7 @@ import u7u8BackImage from "@/assets/u7u8_2023_back.png";
 
 const U6U8Rules = () => {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-12 lg:py-16">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold mb-8 text-foreground">Spelregels U6 tot U8</h1>
         

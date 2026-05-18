@@ -7,7 +7,7 @@ import u10u12Rules2 from "@/assets/u10u12-rules-2.png";
 
 const U10U12Rules = () => {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-12 lg:py-16">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold mb-8 text-foreground">Spelregels U10 tot U12</h1>
         

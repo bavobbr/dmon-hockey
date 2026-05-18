@@ -127,7 +127,7 @@ const App = () => (
               <AppSidebar />
               <div className="flex-1 flex flex-col min-w-0">
                 <AppHeader />
-                <main className="flex-1 overflow-auto overflow-x-hidden">
+                <main className="flex-1 overflow-auto overflow-x-hidden lg:pl-2">
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/auth" element={<Auth />} />
