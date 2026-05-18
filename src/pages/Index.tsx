@@ -561,7 +561,7 @@ const Index = () => {
             </div>
             <div className="lg:col-span-5 grid grid-cols-3 gap-4 md:gap-6">
               <div className="text-center p-4 md:p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
-                <div className="font-display text-4xl md:text-5xl text-accent">2023</div>
+                <div className="font-display text-4xl md:text-5xl text-accent">2018</div>
                 <div className="text-xs md:text-sm uppercase tracking-wider text-primary-foreground/70 mt-2">Opgericht</div>
               </div>
               <div className="text-center p-4 md:p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
