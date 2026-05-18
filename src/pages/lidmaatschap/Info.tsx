@@ -223,17 +223,8 @@ const MembershipInfo = () => {
             {membershipFees.map((fee) => (
               <div
                 key={fee.category}
-                className={`relative rounded-2xl border p-6 transition-all hover:-translate-y-0.5 hover:shadow-lg ${
-                  fee.featured
-                    ? "border-primary/40 bg-gradient-to-br from-primary/10 to-transparent shadow-md"
-                    : "border-border/60 bg-card"
-                }`}
+                className="relative rounded-2xl border border-border/60 bg-card p-6 transition-all hover:-translate-y-0.5 hover:shadow-lg"
               >
-                {fee.featured && (
-                  <Badge className="absolute -top-2.5 left-6 bg-primary text-primary-foreground">
-                    Meest gekozen
-                  </Badge>
-                )}
                 <h3 className="font-semibold text-foreground">{fee.category}</h3>
                 <p className="mt-1 text-sm text-muted-foreground min-h-[2.5rem]">{fee.description}</p>
                 <div className="mt-6 flex items-baseline gap-1">
