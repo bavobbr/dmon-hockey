@@ -20,7 +20,7 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				'display': ['"Bebas Neue"', 'sans-serif'],
+				'display': ['Outfit', 'sans-serif'],
 				'body': ['Barlow', 'sans-serif'],
 			},
 			colors: {
