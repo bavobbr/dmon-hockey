@@ -113,8 +113,8 @@ const NewsCard = ({ announcement, index, eager }: { announcement: Announcement; 
           )}
           style={{ animationDelay: `${Math.min(index * 0.06, 0.4)}s` }}
         >
-          {/* Top accent bar — subtiele grijstint voor structuur zonder kleurchaos */}
-          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-muted-foreground/30 via-muted-foreground/15 to-transparent z-10" />
+          {/* Top accent bar in clubkleur */}
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-primary/70 to-accent z-10" />
 
           {/* Image */}
           <div className={cn(
