@@ -12,11 +12,15 @@ const FALLBACK_IMG = "/lovable-uploads/03104bbc-f9de-44a2-a8b0-aedb91fd1c6c.png"
 
 const categorize = (team: { age_group?: string | null; name: string }) => {
   const src = `${team.age_group ?? ""} ${team.name}`.toLowerCase();
-  if (/heren|h\d|gents|men/.test(src)) return "Heren";
-  if (/dames|d\d|ladies|women/.test(src)) return "Dames";
-  if (/u\s?6|u\s?7|u\s?8|u\s?9|u\s?10|u\s?12/.test(src)) return "Jeugd U6–U12";
-  if (/u\s?14|u\s?16|u\s?19/.test(src)) return "Jeugd U14–U19";
   if (/indoor|zaal/.test(src)) return "Indoor";
+  if (/heren|gents|\bmen\b/.test(src)) return "Heren";
+  if (/dames|ladies|women/.test(src)) return "Dames";
+  const uMatch = src.match(/u\s?(\d{1,2})/);
+  if (uMatch) {
+    const n = parseInt(uMatch[1], 10);
+    if (n <= 12) return "Jeugd U6–U12";
+    if (n <= 19) return "Jeugd U14–U19";
+  }
   return "Overige";
 };
 
