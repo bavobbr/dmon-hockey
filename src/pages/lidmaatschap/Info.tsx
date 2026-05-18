@@ -1,8 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import {
   Users,
-  Euro,
   Gift,
   ShoppingBag,
   Shirt,
