@@ -543,13 +543,19 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Teams Section */}
-      <section className="py-16 px-4 bg-muted/50">
-        <div className="container mx-auto max-w-full">
-          <div className="flex items-center justify-between mb-12">
-            <h2 className="text-3xl font-bold text-center text-foreground">Onze Teams</h2>
+      {/* Teams Section — dark full-bleed */}
+      <section className="relative py-24 md:py-32 px-4 bg-foreground text-background overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-foreground via-foreground to-primary/40 pointer-events-none" />
+        <div className="relative z-10 container mx-auto max-w-6xl">
+          <div className="flex items-end justify-between mb-16 flex-wrap gap-4">
+            <div>
+              <span className="text-accent font-display font-bold tracking-[0.25em] text-xs uppercase mb-3 block">
+                Onze teams
+              </span>
+              <h2 className="text-4xl md:text-5xl font-display font-black italic uppercase text-background tracking-tight">Spelend op het veld</h2>
+            </div>
             <Link to="/club/teams">
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="sm" className="border-background/40 text-background bg-background/10 hover:bg-background/20 hover:text-background">
                 Bekijk Meer
               </Button>
             </Link>
