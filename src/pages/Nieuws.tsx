@@ -116,7 +116,7 @@ const NewsCard = ({ announcement, index, eager }: { announcement: Announcement; 
           {/* Image */}
           <div className={cn(
             "relative overflow-hidden bg-muted",
-            isTall ? "h-64 lg:h-[340px]" : isWide ? "h-52 md:h-60" : "h-48"
+            isWide ? "h-52 md:h-60" : "h-52"
           )}>
             {backgroundImage ? (
               <img
