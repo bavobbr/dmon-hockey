@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
   Users,
-  Euro,
   Gift,
   ShoppingBag,
   Shirt,
@@ -26,7 +25,7 @@ import { Link as RouterLink } from "react-router-dom";
 
 const MembershipInfo = () => {
   const membershipFees = [
-    { category: "Basistarief", description: "2 trainingen + match", fee: "320", featured: true },
+    { category: "Basistarief", description: "2 trainingen + match", fee: "320" },
     { category: "U6", description: "1 training + match vanaf februari", fee: "220" },
     { category: "Dames en heren", description: "Volwassen teams", fee: "320" },
     { category: "Trimmers en Gents", description: "Oudere teams", fee: "285" },
@@ -134,11 +133,6 @@ const MembershipInfo = () => {
 
             <div className="mt-10 flex flex-wrap gap-6 text-sm text-primary-foreground/85">
               <div className="flex items-center gap-2">
-                <Euro className="h-4 w-4" />
-                <span className="font-semibold text-primary-foreground">vanaf 195 €</span>
-                <span>lidgeld per seizoen</span>
-              </div>
-              <div className="flex items-center gap-2">
                 <Users className="h-4 w-4" />
                 <span className="font-semibold text-primary-foreground">5</span>
                 <span>tariefcategorieën</span>
@@ -223,17 +217,8 @@ const MembershipInfo = () => {
             {membershipFees.map((fee) => (
               <div
                 key={fee.category}
-                className={`relative rounded-2xl border p-6 transition-all hover:-translate-y-0.5 hover:shadow-lg ${
-                  fee.featured
-                    ? "border-primary/40 bg-gradient-to-br from-primary/10 to-transparent shadow-md"
-                    : "border-border/60 bg-card"
-                }`}
+                className="relative rounded-2xl border border-border/60 bg-card p-6 transition-all hover:-translate-y-0.5 hover:shadow-lg"
               >
-                {fee.featured && (
-                  <Badge className="absolute -top-2.5 left-6 bg-primary text-primary-foreground">
-                    Meest gekozen
-                  </Badge>
-                )}
                 <h3 className="font-semibold text-foreground">{fee.category}</h3>
                 <p className="mt-1 text-sm text-muted-foreground min-h-[2.5rem]">{fee.description}</p>
                 <div className="mt-6 flex items-baseline gap-1">
