@@ -129,14 +129,14 @@ const NewsCard = ({ announcement, index, eager }: { announcement: Announcement; 
                   loading={eager ? "eager" : "lazy"}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
-                {/* Duotone tint: subtiele clubblauw-overlay voor visuele samenhang, fade-t weg op hover */}
+                {/* Grijstint-overlay voor visuele samenhang, fade-t weg op hover */}
                 <div
                   aria-hidden
-                  className="absolute inset-0 bg-primary/30 mix-blend-multiply opacity-100 group-hover:opacity-0 transition-opacity duration-500"
+                  className="absolute inset-0 bg-black/20 mix-blend-multiply opacity-100 group-hover:opacity-0 transition-opacity duration-500"
                 />
                 <div
                   aria-hidden
-                  className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-500"
+                  className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-500"
                 />
               </>
             ) : (
