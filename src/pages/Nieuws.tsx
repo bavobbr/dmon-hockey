@@ -278,7 +278,7 @@ const Nieuws = () => {
           )}
 
           {otherAnnouncements.length > 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-flow-row-dense gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-flow-row-dense gap-6 auto-rows-fr">
               {otherAnnouncements.map((announcement, index) => (
                 <NewsCard
                   key={announcement.id}
