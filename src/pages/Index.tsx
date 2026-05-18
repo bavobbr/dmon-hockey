@@ -653,22 +653,20 @@ const Index = () => {
       </section>
 
       {/* Sponsors Section */}
-      <section className="py-16 px-4">
-        <div className="container mx-auto max-w-full">
-          <div className="flex items-center justify-between mb-12">
-            <h2 className="text-3xl font-bold text-center text-foreground">Onze Sponsors</h2>
-            <Link to="/club/sponsors">
-              <Button variant="outline" size="sm">
-                Bekijk Meer
-              </Button>
-            </Link>
+      <section className="py-24 md:py-32 px-4 bg-muted/30 border-t border-border">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-16">
+            <span className="text-primary font-display font-bold tracking-[0.25em] text-xs uppercase mb-3 block">
+              Met de steun van
+            </span>
+            <h2 className="text-4xl md:text-5xl font-display font-black italic uppercase text-foreground tracking-tight">Onze Sponsors</h2>
           </div>
           
           {sponsorsLoading ? <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
               {[...Array(6)].map((_, i) => <div key={i} className="animate-pulse bg-muted rounded-lg h-24"></div>)}
-            </div> : sponsors.length > 0 ? <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-              {sponsors.map(sponsor => <div key={sponsor.id} className="flex items-center justify-center p-4 bg-card rounded-lg border hover:shadow-lg transition-shadow">
-                  {sponsor.logo_path ? <img src={supabase.storage.from('sponsor-logos').getPublicUrl(sponsor.logo_path).data.publicUrl} alt={sponsor.name} className="max-h-16 max-w-full object-contain" /> : <div className="text-center text-sm font-medium text-muted-foreground">
+            </div> : sponsors.length > 0 ? <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center">
+              {sponsors.map(sponsor => <div key={sponsor.id} className="flex items-center justify-center p-4 grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300">
+                  {sponsor.logo_path ? <img src={supabase.storage.from('sponsor-logos').getPublicUrl(sponsor.logo_path).data.publicUrl} alt={sponsor.name} loading="lazy" className="max-h-16 max-w-full object-contain" /> : <div className="text-center text-sm font-medium text-muted-foreground">
                       {sponsor.name}
                     </div>}
                 </div>)}
@@ -678,22 +676,12 @@ const Index = () => {
                   <Button>Eerste Sponsor Toevoegen</Button>
                 </Link>}
             </div>}
-        </div>
-      </section>
-
-
-      {/* Club Colors Showcase */}
-      <section className="bg-muted py-[14px]">
-        <div className="container mx-auto px-4 text-center">
-          <div className="flex justify-center gap-2 sm:gap-4 flex-wrap">
-            <div className="w-12 h-12 sm:w-20 sm:h-20 bg-primary rounded-lg shadow-lg flex items-center justify-center">
-            </div>
-            <div className="w-12 h-12 sm:w-20 sm:h-20 bg-secondary rounded-lg shadow-lg flex items-center justify-center">
-            </div>
-            <div className="w-12 h-12 sm:w-20 sm:h-20 bg-accent rounded-lg shadow-lg flex items-center justify-center">
-            </div>
-            <div className="w-12 h-12 sm:w-20 sm:h-20 bg-foreground rounded-lg shadow-lg flex items-center justify-center">
-            </div>
+          <div className="mt-12 text-center">
+            <Link to="/club/sponsors">
+              <Button variant="outline" size="sm">
+                Bekijk alle sponsors
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
