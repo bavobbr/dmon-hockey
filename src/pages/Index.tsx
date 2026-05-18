@@ -597,10 +597,15 @@ const Index = () => {
       </section>
 
       {/* Instagram Posts Section */}
-      <section className="py-16 px-4 bg-muted/50">
-        <div className="container mx-auto max-w-full">
-          <div className="flex items-center justify-between mb-12">
-            <h2 className="text-3xl font-bold text-center text-foreground">Van Onze Instagram</h2>
+      <section className="py-24 md:py-32 px-4 bg-background">
+        <div className="container mx-auto max-w-6xl">
+          <div className="flex items-end justify-between mb-16 flex-wrap gap-4">
+            <div>
+              <span className="text-accent font-display font-bold tracking-[0.25em] text-xs uppercase mb-3 block">
+                Socials
+              </span>
+              <h2 className="text-4xl md:text-5xl font-display font-black italic uppercase text-foreground tracking-tight">Van Onze Instagram</h2>
+            </div>
             <Link to="/socials">
               <Button variant="outline" size="sm">
                 Bekijk Meer
