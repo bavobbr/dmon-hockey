@@ -80,17 +80,18 @@ const HeroCard = ({ announcement }: { announcement: Announcement }) => {
   );
 };
 
-// Bento layout: cycle of 6 items per row group on lg
-// Pattern: [wide][tall][normal] / [normal][wide] ... creates rhythm
+// Bento layout: 4-col grid on lg with varied widths
+// Pattern per 5 cards: [2][2] / [1][2][1] / [1][1][2] — fills cleanly
 const bentoSpan = (i: number): string => {
-  const pattern = i % 6;
+  const pattern = i % 7;
   switch (pattern) {
-    case 0: return "lg:col-span-2"; // wide
-    case 1: return "lg:col-span-1 lg:row-span-2"; // tall
+    case 0: return "lg:col-span-2";
+    case 1: return "lg:col-span-2";
     case 2: return "lg:col-span-1";
-    case 3: return "lg:col-span-1";
-    case 4: return "lg:col-span-2"; // wide
+    case 3: return "lg:col-span-2";
+    case 4: return "lg:col-span-1";
     case 5: return "lg:col-span-1";
+    case 6: return "lg:col-span-1";
     default: return "lg:col-span-1";
   }
 };
