@@ -38,7 +38,7 @@ const Insurance = () => {
               <Button
                 variant="outline"
                 size="lg"
-                className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+                className="border-primary-foreground/40 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
                 asChild
               >
                 <a href="mailto:secretaris@dmon.be">
@@ -358,7 +358,7 @@ const Insurance = () => {
               <Button
                 variant="outline"
                 size="lg"
-                className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+                className="border-primary-foreground/40 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
                 asChild
               >
                 <a href="https://hockey.be/wp-content/uploads/2022/06/Aangifteformulier-Lichamelijke-Ongevallen_Vlaamse-Hockey-Liga_update-06-2022.pdf" target="_blank" rel="noopener noreferrer">
