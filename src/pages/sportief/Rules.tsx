@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Timer, Users, Award, Lightbulb, ExternalLink, BookOpen, ChevronRight, Bot, Mail, Whistle } from "lucide-react";
+import { Timer, Users, Lightbulb, ExternalLink, BookOpen, ChevronRight, Bot, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import scheidsrechterPad from "@/assets/scheidsrechter-pad.png";
