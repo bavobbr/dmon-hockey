@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { supabase } from "@/integrations/supabase/client";
 import * as Icons from "lucide-react";
@@ -237,18 +238,22 @@ const Nieuws = () => {
 
   if (loading) {
     return (
-      <div className="container mx-auto p-6">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-foreground">Nieuws</h1>
-          <p className="text-lg text-muted-foreground mt-2">
-            Alle aankondigingen en nieuws van D-mon Hockey Club
-          </p>
-        </div>
-        <div className="animate-pulse rounded-xl bg-muted h-[420px] mb-8" />
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {Array.from({ length: 6 }).map((_, i) => (
-            <div key={i} className="animate-pulse rounded-xl bg-muted h-[340px]" />
-          ))}
+      <div className="min-h-screen bg-background">
+        {/* Hero skeleton */}
+        <section className="relative overflow-hidden bg-gradient-hero">
+          <div className="container mx-auto px-6 py-16 md:py-24 max-w-6xl">
+            <div className="animate-pulse rounded-full bg-primary-foreground/20 h-6 w-24 mb-4" />
+            <div className="animate-pulse rounded bg-primary-foreground/20 h-12 md:h-16 w-3/4 mb-4" />
+            <div className="animate-pulse rounded bg-primary-foreground/10 h-6 w-1/2" />
+          </div>
+        </section>
+        <div className="container mx-auto px-6 py-10 max-w-6xl">
+          <div className="animate-pulse rounded-xl bg-muted h-[420px] mb-8" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <div key={i} className="animate-pulse rounded-xl bg-muted h-[340px]" />
+            ))}
+          </div>
         </div>
       </div>
     );
@@ -256,54 +261,91 @@ const Nieuws = () => {
 
   if (error) {
     return (
-      <div className="container mx-auto p-6">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-foreground">Nieuws</h1>
+      <div className="min-h-screen bg-background">
+        {/* Hero */}
+        <section className="relative overflow-hidden bg-gradient-hero text-primary-foreground">
+          <div className="container mx-auto px-6 py-16 md:py-24 max-w-6xl">
+            <Badge variant="secondary" className="mb-4 bg-primary-foreground/10 text-primary-foreground border-primary-foreground/20">
+              Nieuws
+            </Badge>
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-tight">
+              Laatste nieuws
+            </h1>
+            <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl">
+              Alle aankondigingen en nieuws van D-mon Hockey Club.
+            </p>
+          </div>
+        </section>
+        <div className="container mx-auto px-6 py-10 max-w-6xl">
+          <Card>
+            <CardContent className="pt-6">
+              <p className="text-center text-muted-foreground">{error}</p>
+            </CardContent>
+          </Card>
         </div>
-        <Card>
-          <CardContent className="pt-6">
-            <p className="text-center text-muted-foreground">{error}</p>
-          </CardContent>
-        </Card>
       </div>
     );
   }
 
   return (
-    <div className="container mx-auto p-6">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-foreground">Nieuws</h1>
-        <p className="text-lg text-muted-foreground mt-2">
-          Alle aankondigingen en nieuws van D-mon Hockey Club
-        </p>
-      </div>
-
-      {announcements.length === 0 ? (
-        <Card>
-          <CardContent className="pt-6">
-            <p className="text-center text-muted-foreground">Geen nieuws gevonden.</p>
-          </CardContent>
-        </Card>
-      ) : (
-        <div className="space-y-8">
-          {featuredAnnouncement && (
-            <HeroCard announcement={featuredAnnouncement} />
-          )}
-
-          {otherAnnouncements.length > 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-flow-row-dense gap-6 auto-rows-fr">
-              {otherAnnouncements.map((announcement, index) => (
-                <NewsCard
-                  key={announcement.id}
-                  announcement={announcement}
-                  index={index}
-                  eager={index < 3}
-                />
-              ))}
-            </div>
-          )}
+    <div className="min-h-screen bg-background">
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-gradient-hero text-primary-foreground">
+        <div className="container mx-auto px-6 py-16 md:py-24 max-w-6xl">
+          <Badge variant="secondary" className="mb-4 bg-primary-foreground/10 text-primary-foreground border-primary-foreground/20">
+            Nieuws
+          </Badge>
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-tight">
+            Laatste nieuws
+          </h1>
+          <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl">
+            Alle aankondigingen en nieuws van D-mon Hockey Club.
+          </p>
         </div>
-      )}
+      </section>
+
+      {/* Sticky sub-navigation */}
+      <nav className="sticky top-0 z-30 border-b border-border/60 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
+        <div className="container mx-auto px-6 max-w-6xl">
+          <div className="flex gap-6 overflow-x-auto py-3 text-sm">
+            <a href="#uitgelicht" className="whitespace-nowrap text-muted-foreground transition-colors hover:text-foreground">Uitgelicht</a>
+            <a href="#laatste" className="whitespace-nowrap text-muted-foreground transition-colors hover:text-foreground">Laatste nieuws</a>
+          </div>
+        </div>
+      </nav>
+
+      <div className="container mx-auto px-6 py-10 max-w-6xl">
+        {announcements.length === 0 ? (
+          <Card>
+            <CardContent className="pt-6">
+              <p className="text-center text-muted-foreground">Geen nieuws gevonden.</p>
+            </CardContent>
+          </Card>
+        ) : (
+          <div className="space-y-8">
+            {featuredAnnouncement && (
+              <section id="uitgelicht">
+                <HeroCard announcement={featuredAnnouncement} />
+              </section>
+            )}
+
+            {otherAnnouncements.length > 0 && (
+              <section id="laatste">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-flow-row-dense gap-6 auto-rows-fr">
+                  {otherAnnouncements.map((announcement, index) => (
+                    <NewsCard
+                      key={announcement.id}
+                      announcement={announcement}
+                      index={index}
+                      eager={index < 3}
+                    />
+                  ))}
+                </div>
+              </section>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
