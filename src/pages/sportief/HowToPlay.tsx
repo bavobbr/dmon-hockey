@@ -82,11 +82,11 @@ const HowToPlay = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Hoe speel je hockey?
             </h1>
-            <p className="text-lg md:text-xl text-primary-foreground/85 mb-8 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-primary-foreground/85 mb-8 max-w-2xl">
               Hockey is een snelle, technische en vooral ontzettend leuke teamsport op kunstgras.
               Twee ploegen proberen de bal in elkaars doel te krijgen door slim samen te spelen.
             </p>
-            <div className="flex flex-wrap gap-3 justify-center">
+            <div className="flex flex-wrap gap-3">
               <Button asChild variant="secondary">
                 <Link to="/lidmaatschap/info">Word lid</Link>
               </Button>
