@@ -75,18 +75,18 @@ const HowToPlay = () => {
           }}
         />
         <div className="container mx-auto px-4 py-16 lg:py-24 relative">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-sm mb-6">
               Start met hockey
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Hoe speel je hockey?
             </h1>
-            <p className="text-lg md:text-xl text-primary-foreground/85 mb-8 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-primary-foreground/85 mb-8 max-w-2xl">
               Hockey is een snelle, technische en vooral ontzettend leuke teamsport op kunstgras.
               Twee ploegen proberen de bal in elkaars doel te krijgen door slim samen te spelen.
             </p>
-            <div className="flex flex-wrap gap-3 justify-center">
+            <div className="flex flex-wrap gap-3">
               <Button asChild variant="secondary">
                 <Link to="/lidmaatschap/info">Word lid</Link>
               </Button>
