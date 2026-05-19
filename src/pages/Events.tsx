@@ -85,18 +85,6 @@ const Events = () => {
   const grouped = useMemo(() => groupEvents(filteredEvents), [filteredEvents]);
   const showTimeline = !selectedDate;
 
-  const upcomingCount = useMemo(
-    () =>
-      events.filter((e) => {
-        try {
-          return parseEventDateZoned(e.start_at).getTime() >= Date.now();
-        } catch {
-          return false;
-        }
-      }).length,
-    [events]
-  );
-
   return (
     <div className="min-h-screen bg-background">
       <EventsPageJsonLd events={events} />
@@ -113,7 +101,7 @@ const Events = () => {
           <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mb-8">
             Alle komende wedstrijden, trainingen en clubactiviteiten op één plek. Filter op team of type en bekijk wat eraan komt.
           </p>
-          <div className="flex flex-wrap gap-3 mb-10">
+          <div className="flex flex-wrap gap-3">
             <Button
               size="lg"
               variant="secondary"
@@ -134,20 +122,6 @@ const Events = () => {
                 Filter agenda
               </a>
             </Button>
-          </div>
-          <div className="grid grid-cols-3 gap-6 max-w-xl">
-            <div>
-              <div className="text-3xl md:text-4xl font-bold">{loading ? "—" : upcomingCount}</div>
-              <div className="text-sm text-primary-foreground/70 mt-1">Komende events</div>
-            </div>
-            <div>
-              <div className="text-3xl md:text-4xl font-bold">{loading ? "—" : teamNames.length}</div>
-              <div className="text-sm text-primary-foreground/70 mt-1">Teams actief</div>
-            </div>
-            <div>
-              <div className="text-3xl md:text-4xl font-bold">7d</div>
-              <div className="text-sm text-primary-foreground/70 mt-1">Geschiedenis</div>
-            </div>
           </div>
         </div>
       </section>
