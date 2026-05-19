@@ -190,15 +190,6 @@ const Sfeer = () => {
       {/* Galerij */}
       <section id="galerij" className="container mx-auto px-4 py-12 lg:py-16 scroll-mt-20">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-8">
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">
-              Galerij
-            </h2>
-            <p className="text-muted-foreground max-w-2xl">
-              Klik op een foto om in groot formaat te bekijken. Navigeer met de pijltjestoetsen.
-            </p>
-          </div>
-
           <div className="flex gap-3 sm:gap-4">
             {columns.map((col, colIdx) => (
               <div key={colIdx} className="flex-1 flex flex-col gap-3 sm:gap-4">
