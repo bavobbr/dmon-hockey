@@ -1,7 +1,9 @@
-import { useState, useEffect, useRef, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { ChevronLeft, ChevronRight, Camera, Images, Mail, Users } from "lucide-react";
 
 import teamNight from "@/assets/gallery/team-night.png";
 import partyGroup from "@/assets/gallery/party-group.png";
@@ -79,7 +81,6 @@ const galleryImages = [
   { src: kidsMouthguards, alt: "Kinderen met mondkapjes" },
 ];
 
-// Distribute images across columns for masonry layout
 function distributeToColumns(images: typeof galleryImages, columnCount: number) {
   const columns: (typeof galleryImages)[] = Array.from({ length: columnCount }, () => []);
   images.forEach((img, i) => {
@@ -88,11 +89,14 @@ function distributeToColumns(images: typeof galleryImages, columnCount: number) 
   return columns;
 }
 
+const scrollToSection = (id: string) => {
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+};
+
 const Sfeer = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [columnCount, setColumnCount] = useState(4);
 
-  // Responsive column count
   useEffect(() => {
     const update = () => {
       const w = window.innerWidth;
@@ -110,10 +114,7 @@ const Sfeer = () => {
     [columnCount]
   );
 
-  // Map column/row position back to flat index for lightbox
-  const getOriginalIndex = (colIdx: number, rowIdx: number) => {
-    return rowIdx * columnCount + colIdx;
-  };
+  const getOriginalIndex = (colIdx: number, rowIdx: number) => rowIdx * columnCount + colIdx;
 
   const navigate = (dir: -1 | 1) => {
     if (selectedImage === null) return;
@@ -121,7 +122,6 @@ const Sfeer = () => {
     if (next >= 0 && next < galleryImages.length) setSelectedImage(next);
   };
 
-  // Keyboard nav
   useEffect(() => {
     if (selectedImage === null) return;
     const handler = (e: KeyboardEvent) => {
@@ -134,53 +134,134 @@ const Sfeer = () => {
   }, [selectedImage]);
 
   return (
-    <div className="container mx-auto px-4 py-12 lg:py-16">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="mb-10 fade-in-up">
-          <h1 className="font-display text-5xl lg:text-6xl font-bold text-foreground mb-3">
-            Sfeer
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-xl">
-            Beleef de familiale en speelse sfeer van D-Mon Hockey — op en naast het veld!
-          </p>
-        </div>
-
-        {/* Masonry grid */}
-        <div className="flex gap-3 sm:gap-4">
-          {columns.map((col, colIdx) => (
-            <div key={colIdx} className="flex-1 flex flex-col gap-3 sm:gap-4">
-              {col.map((image, rowIdx) => {
-                const flatIdx = getOriginalIndex(colIdx, rowIdx);
-                return (
-                  <div
-                    key={flatIdx}
-                    className="group relative overflow-hidden rounded-xl cursor-pointer fade-in-up"
-                    style={{ animationDelay: `${flatIdx * 0.03}s` }}
-                    onClick={() => setSelectedImage(flatIdx)}
-                  >
-                    <img
-                      src={image.src}
-                      alt={image.alt}
-                      loading="lazy"
-                      className="w-full h-auto block group-hover:scale-[1.03] transition-transform duration-500"
-                    />
-                    {/* Hover overlay */}
-                    <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/10 transition-colors duration-300" />
-                  </div>
-                );
-              })}
+    <div className="min-h-screen bg-background">
+      {/* Hero */}
+      <section className="bg-gradient-hero text-primary-foreground">
+        <div className="container mx-auto px-4 py-16 lg:py-24">
+          <div className="max-w-3xl">
+            <Badge className="mb-4 bg-primary-foreground/15 text-primary-foreground border-primary-foreground/20 hover:bg-primary-foreground/20">
+              Onze club in beeld
+            </Badge>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+              Sfeer
+            </h1>
+            <p className="text-lg md:text-xl text-primary-foreground/90 mb-8 leading-relaxed">
+              Beleef de familiale en speelse sfeer van D-Mon Hockey — op en naast het veld.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Button size="lg" variant="secondary" onClick={() => scrollToSection("galerij")}>
+                <Images className="h-4 w-4" />
+                Bekijk galerij
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="bg-transparent text-primary-foreground border-primary-foreground/30 hover:bg-primary-foreground/10 hover:text-primary-foreground"
+                onClick={() => scrollToSection("deel-mee")}
+              >
+                <Camera className="h-4 w-4" />
+                Deel je foto's
+              </Button>
             </div>
-          ))}
+          </div>
         </div>
-      </div>
+      </section>
 
-      {/* Lightbox with navigation */}
+      {/* Sticky sub-nav */}
+      <nav className="sticky top-0 z-30 bg-background/95 backdrop-blur border-b border-border/60">
+        <div className="container mx-auto px-4">
+          <div className="flex gap-1 overflow-x-auto py-3">
+            <button
+              onClick={() => scrollToSection("galerij")}
+              className="px-4 py-2 text-sm font-medium rounded-lg hover:bg-primary/5 hover:text-primary transition-colors whitespace-nowrap"
+            >
+              Galerij
+            </button>
+            <button
+              onClick={() => scrollToSection("deel-mee")}
+              className="px-4 py-2 text-sm font-medium rounded-lg hover:bg-primary/5 hover:text-primary transition-colors whitespace-nowrap"
+            >
+              Deel mee
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Galerij */}
+      <section id="galerij" className="container mx-auto px-4 py-12 lg:py-16 scroll-mt-20">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-8">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">
+              Galerij
+            </h2>
+            <p className="text-muted-foreground max-w-2xl">
+              Klik op een foto om in groot formaat te bekijken. Navigeer met de pijltjestoetsen.
+            </p>
+          </div>
+
+          <div className="flex gap-3 sm:gap-4">
+            {columns.map((col, colIdx) => (
+              <div key={colIdx} className="flex-1 flex flex-col gap-3 sm:gap-4">
+                {col.map((image, rowIdx) => {
+                  const flatIdx = getOriginalIndex(colIdx, rowIdx);
+                  return (
+                    <div
+                      key={flatIdx}
+                      className="group relative overflow-hidden rounded-xl cursor-pointer shadow-card hover:shadow-elegant transition-shadow"
+                      onClick={() => setSelectedImage(flatIdx)}
+                    >
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        loading="lazy"
+                        className="w-full h-auto block group-hover:scale-[1.03] transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/10 transition-colors duration-300" />
+                    </div>
+                  );
+                })}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Deel mee CTA */}
+      <section id="deel-mee" className="container mx-auto px-4 py-12 lg:py-16 scroll-mt-20">
+        <Card className="bg-gradient-to-br from-primary to-primary-light text-primary-foreground border-0 overflow-hidden">
+          <CardContent className="p-8 md:p-12">
+            <div className="max-w-3xl">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="h-12 w-12 rounded-full bg-primary-foreground/15 flex items-center justify-center">
+                  <Camera className="h-6 w-6" />
+                </div>
+                <div className="h-12 w-12 rounded-full bg-primary-foreground/15 flex items-center justify-center">
+                  <Users className="h-6 w-6" />
+                </div>
+              </div>
+              <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
+                Heb jij mooie clubfoto's?
+              </h2>
+              <p className="text-lg text-primary-foreground/90 mb-8 leading-relaxed">
+                Stuur ons je beste momenten van trainingen, wedstrijden of clubactiviteiten —
+                wij voegen ze graag toe aan onze galerij.
+              </p>
+              <Button size="lg" variant="secondary" asChild>
+                <a href="mailto:info@dmon.be?subject=Foto's voor de galerij">
+                  <Mail className="h-4 w-4" />
+                  Stuur je foto's
+                </a>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </section>
+
+      {/* Lightbox */}
       <Dialog open={selectedImage !== null} onOpenChange={() => setSelectedImage(null)}>
         <DialogContent className="max-w-6xl w-full p-0 bg-background/95 backdrop-blur-md border-0 overflow-hidden">
           {selectedImage !== null && (
             <div className="relative flex items-center justify-center min-h-[50vh]">
-              {/* Previous */}
               {selectedImage > 0 && (
                 <Button
                   variant="ghost"
@@ -198,7 +279,6 @@ const Sfeer = () => {
                 className="w-full h-auto max-h-[85vh] object-contain"
               />
 
-              {/* Next */}
               {selectedImage < galleryImages.length - 1 && (
                 <Button
                   variant="ghost"
@@ -210,7 +290,6 @@ const Sfeer = () => {
                 </Button>
               )}
 
-              {/* Counter */}
               <span className="absolute bottom-3 left-1/2 -translate-x-1/2 text-sm text-muted-foreground bg-background/80 px-3 py-1 rounded-full">
                 {selectedImage + 1} / {galleryImages.length}
               </span>
