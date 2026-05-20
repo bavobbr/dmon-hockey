@@ -17,7 +17,7 @@ import sfeerCakeSale from "@/assets/gallery/cake-sale.png";
 import sfeerKidsCircle from "@/assets/gallery/kids-circle.png";
 import sfeerWaterFun from "@/assets/gallery/water-fun.png";
 import sfeerClubFamily from "@/assets/gallery/club-family-photo.png";
-import sfeerGirlsSelfie from "@/assets/gallery/girls-selfie.png";
+
 import heroAction from "@/assets/hero-action.jpg";
 interface Announcement {
   id: string;
