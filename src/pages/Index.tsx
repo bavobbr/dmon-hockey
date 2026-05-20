@@ -9,8 +9,15 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import DOMPurify from 'dompurify';
 import UpcomingEvents from "@/components/UpcomingEvents";
-import { Target, Trophy, Users, Newspaper } from "lucide-react";
+import { Target, Trophy, Users, Newspaper, Sparkles, ArrowRight } from "lucide-react";
 import { HomepageJsonLd } from "@/components/JsonLd";
+import sfeerPartyGroup from "@/assets/gallery/party-group.png";
+import sfeerHockquiz from "@/assets/gallery/hockquiz.png";
+import sfeerCakeSale from "@/assets/gallery/cake-sale.png";
+import sfeerKidsCircle from "@/assets/gallery/kids-circle.png";
+import sfeerWaterFun from "@/assets/gallery/water-fun.png";
+import sfeerClubFamily from "@/assets/gallery/club-family-photo.png";
+import sfeerGirlsSelfie from "@/assets/gallery/girls-selfie.png";
 import heroAction from "@/assets/hero-action.jpg";
 interface Announcement {
   id: string;
