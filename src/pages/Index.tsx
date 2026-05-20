@@ -10,9 +10,6 @@ import { useToast } from "@/hooks/use-toast";
 import DOMPurify from 'dompurify';
 import UpcomingEvents from "@/components/UpcomingEvents";
 import { Target, Trophy, Users, Newspaper } from "lucide-react";
-import trainingImage from "@/assets/training-card.png";
-import competitiveImage from "@/assets/competitive-card.png";
-import familyImage from "@/assets/family-card.png";
 import { HomepageJsonLd } from "@/components/JsonLd";
 import heroAction from "@/assets/hero-action.jpg";
 interface Announcement {
