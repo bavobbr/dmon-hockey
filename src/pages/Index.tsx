@@ -10,9 +10,6 @@ import { useToast } from "@/hooks/use-toast";
 import DOMPurify from 'dompurify';
 import UpcomingEvents from "@/components/UpcomingEvents";
 import { Target, Trophy, Users, Newspaper } from "lucide-react";
-import trainingImage from "@/assets/training-card.png";
-import competitiveImage from "@/assets/competitive-card.png";
-import familyImage from "@/assets/family-card.png";
 import { HomepageJsonLd } from "@/components/JsonLd";
 import heroAction from "@/assets/hero-action.jpg";
 interface Announcement {
@@ -286,82 +283,82 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Quick Info Cards */}
+      {/* Quick Info — Compact pillars */}
       <section className="py-24 md:py-32 px-4 bg-gradient-subtle overflow-x-hidden">
         <div className="container mx-auto max-w-6xl">
-          <div className="flex items-end justify-between mb-16 flex-wrap gap-4">
-            <div className="max-w-xl">
-              <span className="text-primary font-display font-bold tracking-[0.25em] text-xs uppercase mb-3 block">
+          {/* Header */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b-2 border-border/60 pb-8 gap-6">
+            <div className="space-y-2">
+              <span className="block text-secondary font-display font-bold tracking-[0.2em] text-sm uppercase">
                 Wat we bieden
               </span>
-              <h2 className="text-4xl md:text-5xl font-display uppercase text-foreground tracking-tight leading-[0.95]">
-                Hockey op<br />jouw niveau
+              <h2 className="font-display text-5xl md:text-6xl font-bold uppercase tracking-tight text-primary leading-[0.95]">
+                Hockey op <span className="text-accent">jouw niveau</span>
               </h2>
             </div>
-            <Link to="/club/sfeer">
-              <Button variant="outline" size="sm">
-                Bekijk Meer
-              </Button>
+            <Link
+              to="/sportief/training"
+              className="group inline-flex items-center font-display font-bold uppercase tracking-wider text-sm text-primary hover:text-secondary transition-colors"
+            >
+              Bekijk meer
+              <svg className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
             </Link>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="border-primary/20 hover:border-primary/40 group fade-in-up overflow-hidden">
-              <CardHeader className="pb-4">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors shrink-0 border border-primary/20">
-                    <Target className="w-6 h-6 text-primary" />
-                  </div>
-                  <CardTitle className="text-primary text-xl">Trainingen</CardTitle>
-                </div>
-                <CardDescription className="text-base">Professionele coaching voor alle niveaus</CardDescription>
-              </CardHeader>
-              <CardContent className="pb-4">
-                <p className="text-muted-foreground leading-relaxed mb-4">Wekelijkse trainingen met ervaren trainers om je techniek en strategie te verbeteren.</p>
-              </CardContent>
-              <div className="relative h-48 overflow-hidden">
-                <img src={trainingImage} alt="Training sessie" loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-90 contrast-100 saturate-90" />
+
+          {/* Pillars Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-border/60">
+            {/* Pillar 1: Trainingen */}
+            <div className="group p-8 md:px-10 transition-colors duration-300 hover:bg-background">
+              <div className="mb-8 text-primary transition-transform duration-500 group-hover:scale-110 origin-left">
+                <Target className="w-14 h-14" strokeWidth={1.5} />
               </div>
-            </Card>
-            
-            <Card className="border-secondary/20 hover:border-secondary/40 group fade-in-up overflow-hidden">
-              <CardHeader className="pb-4">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center group-hover:bg-secondary/20 transition-colors shrink-0 border border-secondary/20">
-                    <Trophy className="w-6 h-6 text-secondary" />
-                  </div>
-                  <CardTitle className="text-secondary text-xl">Competitieve Wedstrijden</CardTitle>
-                </div>
-                <CardDescription className="text-base">Competitie en toernooien</CardDescription>
-              </CardHeader>
-              <CardContent className="pb-4">
-                <p className="text-muted-foreground leading-relaxed mb-4">
-                  Deelnemen aan regionale en nationale competities om onze club met trots te vertegenwoordigen.
-                </p>
-              </CardContent>
-              <div className="relative h-48 overflow-hidden">
-                <img src={competitiveImage} alt="Competitieve wedstrijd" loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-90 contrast-100 saturate-90" />
+              <h3 className="font-display text-2xl text-primary font-bold uppercase mb-3">
+                Trainingen
+              </h3>
+              <div className="inline-block bg-primary/10 text-primary px-3 py-1 text-xs font-display font-bold uppercase tracking-widest mb-6">
+                Tot 3× per week training
               </div>
-            </Card>
-            
-            <Card className="border-accent/20 hover:border-accent/40 group fade-in-up overflow-hidden">
-              <CardHeader className="pb-4">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center group-hover:bg-accent/20 transition-colors shrink-0 border border-accent/20">
-                    <Users className="w-6 h-6 text-accent" />
-                  </div>
-                  <CardTitle className="text-accent text-xl">Familieclub</CardTitle>
-                </div>
-                <CardDescription className="text-base">Een gastvrije hockeyfamilie</CardDescription>
-              </CardHeader>
-              <CardContent className="pb-4">
-                <p className="text-muted-foreground leading-relaxed mb-4">
-                  Sluit je aan bij een ondersteunende gemeenschap van hockeyliefhebbers die je passie voor de sport delen.
-                </p>
-              </CardContent>
-              <div className="relative h-48 overflow-hidden">
-                <img src={familyImage} alt="Club familie" loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-90 contrast-100 saturate-90" />
+              <p className="text-foreground/80 leading-relaxed">
+                Professionele coaching voor alle niveaus. Wekelijkse sessies met ervaren trainers
+                om je techniek en spelinzicht te perfectioneren.
+              </p>
+            </div>
+
+            {/* Pillar 2: Competitie */}
+            <div className="group p-8 md:px-10 transition-colors duration-300 hover:bg-background">
+              <div className="mb-8 text-secondary transition-transform duration-500 group-hover:scale-110 origin-left">
+                <Trophy className="w-14 h-14" strokeWidth={1.5} />
               </div>
-            </Card>
+              <h3 className="font-display text-2xl text-primary font-bold uppercase mb-3">
+                Competitieve Wedstrijden
+              </h3>
+              <div className="inline-block bg-secondary/10 text-secondary px-3 py-1 text-xs font-display font-bold uppercase tracking-widest mb-6">
+                Regionaal & nationaal niveau
+              </div>
+              <p className="text-foreground/80 leading-relaxed">
+                Onze teams verdedigen de clubkleuren in regionale en nationale competities — van
+                de jongste jeugd tot de senioren.
+              </p>
+            </div>
+
+            {/* Pillar 3: Familieclub */}
+            <div className="group p-8 md:px-10 transition-colors duration-300 hover:bg-background">
+              <div className="mb-8 text-accent transition-transform duration-500 group-hover:scale-110 origin-left">
+                <Users className="w-14 h-14" strokeWidth={1.5} />
+              </div>
+              <h3 className="font-display text-2xl text-primary font-bold uppercase mb-3">
+                Familieclub
+              </h3>
+              <div className="inline-block bg-accent/10 text-accent px-3 py-1 text-xs font-display font-bold uppercase tracking-widest mb-6">
+                Een hechte hockeyfamilie
+              </div>
+              <p className="text-foreground/80 leading-relaxed">
+                Sluit je aan bij een warme gemeenschap van hockeyliefhebbers die jouw passie
+                delen. D-mon is meer dan een sportclub.
+              </p>
+            </div>
           </div>
         </div>
       </section>
