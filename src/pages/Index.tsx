@@ -9,8 +9,15 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import DOMPurify from 'dompurify';
 import UpcomingEvents from "@/components/UpcomingEvents";
-import { Target, Trophy, Users, Newspaper } from "lucide-react";
+import { Target, Trophy, Users, Newspaper, Sparkles, ArrowRight } from "lucide-react";
 import { HomepageJsonLd } from "@/components/JsonLd";
+import sfeerPartyGroup from "@/assets/gallery/party-group.png";
+import sfeerHockquiz from "@/assets/gallery/hockquiz.png";
+import sfeerCakeSale from "@/assets/gallery/cake-sale.png";
+import sfeerKidsCircle from "@/assets/gallery/kids-circle.png";
+import sfeerWaterFun from "@/assets/gallery/water-fun.png";
+import sfeerClubFamily from "@/assets/gallery/club-family-photo.png";
+
 import heroAction from "@/assets/hero-action.jpg";
 interface Announcement {
   id: string;
@@ -358,6 +365,109 @@ const Index = () => {
                 Sluit je aan bij een warme gemeenschap van hockeyliefhebbers die jouw passie
                 delen. D-mon is meer dan een sportclub.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Meer dan hockey — sfeer bento */}
+      <section className="py-24 md:py-32 px-4 bg-background overflow-x-hidden">
+        <div className="container mx-auto max-w-7xl">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* Text column */}
+            <div className="lg:col-span-5">
+              <div className="inline-flex items-center gap-2 rounded-full bg-accent/10 px-4 py-1.5 text-xs font-display font-bold uppercase tracking-widest text-accent mb-6">
+                <Sparkles className="h-3.5 w-3.5" />
+                Meer dan hockey
+              </div>
+              <h2 className="font-display text-5xl md:text-6xl font-bold uppercase tracking-tight text-primary leading-[0.95]">
+                Het clubleven<br />
+                <span className="text-secondary">begint na de match</span>
+              </h2>
+              <p className="mt-6 text-lg text-foreground/80 leading-relaxed max-w-md">
+                Hockquiz, afterparty's, cake sales, jeugdkampen, derde helft op het terras —
+                D-mon is een familie waar vriendschappen even belangrijk zijn als doelpunten.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link to="/club/sfeer">
+                  <Button size="lg" variant="hero" className="font-semibold">
+                    Ontdek het clubleven
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+
+            {/* Photo bento */}
+            <div className="lg:col-span-7">
+              <div className="grid grid-cols-6 grid-rows-6 gap-3 h-[480px] md:h-[560px]">
+                <Link
+                  to="/club/sfeer"
+                  className="group col-span-3 row-span-4 relative overflow-hidden rounded-2xl shadow-md"
+                >
+                  <img
+                    src={sfeerPartyGroup}
+                    alt="Clubavond met spelers en supporters"
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </Link>
+                <Link
+                  to="/club/sfeer"
+                  className="group col-span-3 row-span-3 relative overflow-hidden rounded-2xl shadow-md"
+                >
+                  <img
+                    src={sfeerHockquiz}
+                    alt="Hockquiz avond op de club"
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </Link>
+                <Link
+                  to="/club/sfeer"
+                  className="group col-span-2 row-span-3 relative overflow-hidden rounded-2xl shadow-md"
+                >
+                  <img
+                    src={sfeerKidsCircle}
+                    alt="Jeugdspelers in een kring"
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </Link>
+                <Link
+                  to="/club/sfeer"
+                  className="group col-span-2 row-span-2 relative overflow-hidden rounded-2xl shadow-md"
+                >
+                  <img
+                    src={sfeerCakeSale}
+                    alt="Cake sale aan de club"
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </Link>
+                <Link
+                  to="/club/sfeer"
+                  className="group col-span-3 row-span-2 relative overflow-hidden rounded-2xl shadow-md"
+                >
+                  <img
+                    src={sfeerWaterFun}
+                    alt="Waterplezier tijdens een clubevent"
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </Link>
+                <Link
+                  to="/club/sfeer"
+                  className="group col-span-3 row-span-2 relative overflow-hidden rounded-2xl shadow-md hidden sm:block"
+                >
+                  <img
+                    src={sfeerClubFamily}
+                    alt="Clubfoto met alle leden"
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
