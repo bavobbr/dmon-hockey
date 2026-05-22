@@ -22,6 +22,7 @@ import {
   Tag,
 } from "lucide-react";
 import { Link as RouterLink } from "react-router-dom";
+import { FaqJsonLd } from "@/components/JsonLd";
 
 const MembershipInfo = () => {
   const membershipFees = [
