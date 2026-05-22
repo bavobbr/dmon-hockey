@@ -259,6 +259,41 @@ const Training = () => {
           </div>
         </section>
 
+        {/* Sportief Beleid */}
+        <section id="sportief-beleid" className="scroll-mt-20">
+          <div className="relative overflow-hidden rounded-3xl border border-primary/20 bg-gradient-to-br from-primary/5 via-background to-accent/5 p-8 lg:p-10">
+            <div className="absolute -left-20 -bottom-20 h-64 w-64 rounded-full bg-primary/10 blur-3xl" />
+            <div className="relative grid gap-6 lg:grid-cols-[auto_1fr_auto] lg:items-center lg:gap-8">
+              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-lg">
+                <FileText className="h-7 w-7" />
+              </div>
+              <div>
+                <span className="text-xs font-semibold uppercase tracking-widest text-primary">
+                  Charter
+                </span>
+                <h2 className="mt-1 font-display text-2xl font-bold lg:text-3xl">
+                  Sportief Beleid
+                </h2>
+                <p className="mt-2 max-w-2xl text-foreground/80">
+                  Onze sportieve visie, opleidingsplan, rol van trainers, coaches en
+                  scheidsrechters en de procedures voor ploegsamenstelling.
+                </p>
+              </div>
+              <Button asChild size="lg" className="lg:self-center">
+                <a
+                  href="/docs/sportief-beleid-dmon.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Download className="mr-2 h-4 w-4" />
+                  Download PDF
+                </a>
+              </Button>
+            </div>
+          </div>
+        </section>
+
+
         {/* Contact CTA */}
         <section id="contact" className="scroll-mt-20">
           <div className="relative overflow-hidden rounded-3xl bg-gradient-hero p-8 text-primary-foreground lg:p-12">
