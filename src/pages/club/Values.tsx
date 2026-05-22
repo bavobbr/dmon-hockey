@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Shield, Heart, Users, AlertTriangle, Mail, ExternalLink, Sparkles } from "lucide-react";
+import { Shield, Heart, Users, AlertTriangle, Mail, ExternalLink, Sparkles, FileText, Download } from "lucide-react";
 import clubValuesImage from "@/assets/club-values.png";
 
 const values = [
