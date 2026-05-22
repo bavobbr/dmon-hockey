@@ -179,6 +179,8 @@ const Index = () => {
             alt="Veldhockey actie — D-mon Hockey Club"
             width={1920}
             height={1080}
+            fetchPriority="high"
+            decoding="async"
             className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-luminosity pointer-events-none select-none"
           />
           {/* Layer 2: navy wash + radial highlight */}
