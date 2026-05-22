@@ -18,8 +18,8 @@ export function HomepageJsonLd() {
     "@type": "SportsOrganization",
     name: "D-mon Hockey Club",
     alternateName: "DMON Hockey",
-    url: "https://dmon-hockey.lovable.app",
-    logo: "https://dmon-hockey.lovable.app/dman-hockey-logo.png",
+    url: "https://www.dmon.be",
+    logo: "https://www.dmon.be/dman-hockey-logo.png",
     sport: "Field Hockey",
     description:
       "D-mon Hockey Club Dendermonde - Veldhockeyclub in België. Training, wedstrijden en de passie voor hockey.",
@@ -73,7 +73,7 @@ export function EventsPageJsonLd({
     organizer: {
       "@type": "SportsOrganization",
       name: "D-mon Hockey Club",
-      url: "https://dmon-hockey.lovable.app",
+      url: "https://www.dmon.be",
     },
     ...(event.description && { description: event.description }),
   }));
@@ -110,7 +110,7 @@ export function HockeyFieldJsonLd() {
     name: "D-mon Hockey Club – Hockeyterrein",
     description:
       "Hockeyveld van D-mon Hockey Club in Grembergen, Dendermonde. Kunstgrasveld voor training en wedstrijden.",
-    url: "https://dmon-hockey.lovable.app/club/veld",
+    url: "https://www.dmon.be/club/veld",
     address: CLUB_ADDRESS,
     geo: {
       "@type": "GeoCoordinates",
@@ -132,8 +132,8 @@ export function ContactPageJsonLd() {
     "@context": "https://schema.org",
     "@type": "SportsOrganization",
     name: "D-mon Hockey Club",
-    url: "https://dmon-hockey.lovable.app",
-    logo: "https://dmon-hockey.lovable.app/dman-hockey-logo.png",
+    url: "https://www.dmon.be",
+    logo: "https://www.dmon.be/dman-hockey-logo.png",
     email: "info@dmon.be",
     address: CLUB_ADDRESS,
     contactPoint: [
@@ -204,7 +204,7 @@ export function BoardPageJsonLd({
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "D-mon Hockey Club – Bestuur",
-    url: "https://dmon-hockey.lovable.app/club/bestuur",
+    url: "https://www.dmon.be/club/bestuur",
     member: members
       .filter((m) => m.name)
       .map((m) => ({
@@ -241,7 +241,7 @@ export function NewsPageJsonLd({
         headline: a.title,
         datePublished: a.created_at,
         description: plain,
-        url: `https://dmon-hockey.lovable.app/nieuws#${a.id}`,
+        url: `https://www.dmon.be/nieuws#${a.id}`,
         author: {
           "@type": "Organization",
           name: "D-mon Hockey Club",
@@ -251,7 +251,7 @@ export function NewsPageJsonLd({
           name: "D-mon Hockey Club",
           logo: {
             "@type": "ImageObject",
-            url: "https://dmon-hockey.lovable.app/dman-hockey-logo.png",
+            url: "https://www.dmon.be/dman-hockey-logo.png",
           },
         },
       },

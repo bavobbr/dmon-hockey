@@ -2,175 +2,175 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Homepage -->
   <url>
-    <loc>https://dmon-hockey.lovable.app/</loc>
+    <loc>https://www.dmon.be/</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   <!-- Events & Nieuws -->
   <url>
-    <loc>https://dmon-hockey.lovable.app/events</loc>
+    <loc>https://www.dmon.be/events</loc>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://dmon-hockey.lovable.app/nieuws</loc>
+    <loc>https://www.dmon.be/nieuws</loc>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://dmon-hockey.lovable.app/socials</loc>
+    <loc>https://www.dmon.be/socials</loc>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://dmon-hockey.lovable.app/shop</loc>
+    <loc>https://www.dmon.be/shop</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- Club -->
   <url>
-    <loc>https://dmon-hockey.lovable.app/club/veld</loc>
+    <loc>https://www.dmon.be/club/veld</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://dmon-hockey.lovable.app/club/teams</loc>
+    <loc>https://www.dmon.be/club/teams</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://dmon-hockey.lovable.app/club/bestuur</loc>
+    <loc>https://www.dmon.be/club/bestuur</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://dmon-hockey.lovable.app/club/waarden</loc>
+    <loc>https://www.dmon.be/club/waarden</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://dmon-hockey.lovable.app/club/geschiedenis</loc>
+    <loc>https://www.dmon.be/club/geschiedenis</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://dmon-hockey.lovable.app/club/veld-status</loc>
+    <loc>https://www.dmon.be/club/veld-status</loc>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://dmon-hockey.lovable.app/club/sfeer</loc>
+    <loc>https://www.dmon.be/club/sfeer</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://dmon-hockey.lovable.app/club/media</loc>
+    <loc>https://www.dmon.be/club/media</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://dmon-hockey.lovable.app/club/sponsors</loc>
+    <loc>https://www.dmon.be/club/sponsors</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://dmon-hockey.lovable.app/club/privacy</loc>
+    <loc>https://www.dmon.be/club/privacy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <!-- Lidmaatschap -->
   <url>
-    <loc>https://dmon-hockey.lovable.app/lidmaatschap/info</loc>
+    <loc>https://www.dmon.be/lidmaatschap/info</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://dmon-hockey.lovable.app/lidmaatschap/registratie</loc>
+    <loc>https://www.dmon.be/lidmaatschap/registratie</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://dmon-hockey.lovable.app/lidmaatschap/indoor-registratie</loc>
+    <loc>https://www.dmon.be/lidmaatschap/indoor-registratie</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://dmon-hockey.lovable.app/lidmaatschap/verzekering</loc>
+    <loc>https://www.dmon.be/lidmaatschap/verzekering</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://dmon-hockey.lovable.app/lidmaatschap/contact</loc>
+    <loc>https://www.dmon.be/lidmaatschap/contact</loc>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- Sportief -->
   <url>
-    <loc>https://dmon-hockey.lovable.app/sportief/training</loc>
+    <loc>https://www.dmon.be/sportief/training</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://dmon-hockey.lovable.app/sportief/hoe-te-spelen</loc>
+    <loc>https://www.dmon.be/sportief/hoe-te-spelen</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://dmon-hockey.lovable.app/sportief/regels</loc>
+    <loc>https://www.dmon.be/sportief/regels</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://dmon-hockey.lovable.app/sportief/regels/u6-u8</loc>
+    <loc>https://www.dmon.be/sportief/regels/u6-u8</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://dmon-hockey.lovable.app/sportief/regels/u9</loc>
+    <loc>https://www.dmon.be/sportief/regels/u9</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://dmon-hockey.lovable.app/sportief/regels/u10-u12</loc>
+    <loc>https://www.dmon.be/sportief/regels/u10-u12</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://dmon-hockey.lovable.app/sportief/regels/u14-plus</loc>
+    <loc>https://www.dmon.be/sportief/regels/u14-plus</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://dmon-hockey.lovable.app/sportief/regels/indoor</loc>
+    <loc>https://www.dmon.be/sportief/regels/indoor</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://dmon-hockey.lovable.app/sportief/stick-gids</loc>
+    <loc>https://www.dmon.be/sportief/stick-gids</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://dmon-hockey.lovable.app/sportief/coaches-info</loc>
+    <loc>https://www.dmon.be/sportief/coaches-info</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://dmon-hockey.lovable.app/sportief/hockey-principes</loc>
+    <loc>https://www.dmon.be/sportief/hockey-principes</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://dmon-hockey.lovable.app/sportief/indoor-hockey</loc>
+    <loc>https://www.dmon.be/sportief/indoor-hockey</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://dmon-hockey.lovable.app/sportief/regels-assistent</loc>
+    <loc>https://www.dmon.be/sportief/regels-assistent</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
