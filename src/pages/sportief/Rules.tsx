@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Timer, Users, Lightbulb, ExternalLink, BookOpen, ChevronRight, Bot, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { FaqJsonLd } from "@/components/JsonLd";
 import scheidsrechterPad from "@/assets/scheidsrechter-pad.png";
 import stappen from "@/assets/stappen.png";
 
@@ -22,9 +23,44 @@ const subNavLinks = [
   { href: "#materiaal", label: "Materiaal" },
 ];
 
+const rulesFaqs = [
+  {
+    question: "Welke spelregels gelden voor U6 tot U8 bij hockey?",
+    answer:
+      "Voor U6 tot U8 wordt gespeeld met vereenvoudigde pictogramregels op een klein veld. De focus ligt op spelplezier en basisvaardigheden, zonder penalty corners.",
+  },
+  {
+    question: "Welke spelregels gelden voor U9 bij hockey?",
+    answer:
+      "Vanaf U9 wordt gefloten door scheidsrechters (altijd met twee). De regels worden uitgelegd via pictogrammen en de Start TO Umpire videos van Hockey Belgium.",
+  },
+  {
+    question: "Welke spelregels gelden voor U10 tot U12?",
+    answer:
+      "U10 tot U12 spelen op een half veld met cirkel, inclusief penalty corners. Het speltempo en de tactische opbouw nemen toe ten opzichte van de jongere categorieën.",
+  },
+  {
+    question: "Welke spelregels gelden vanaf U14?",
+    answer:
+      "Vanaf U14 wordt gespeeld op het volledige groot veld volgens de officiële FIH-regels, met alle standaard spelfases zoals penalty corners en strafballen.",
+  },
+  {
+    question: "Welke regels gelden bij indoor hockey?",
+    answer:
+      "Indoor hockey heeft eigen regels: kleiner veld met boarden, geen hoge bal en aangepaste push- en sleeptechnieken. De regels staan onder /sportief/regels/indoor.",
+  },
+  {
+    question: "Vanaf welke leeftijd kan je beginnen met fluiten bij D-mon?",
+    answer:
+      "Je kan al starten met fluiten vanaf U6. Vanaf U9 wordt altijd met twee scheidsrechters gefloten, zodat je stap voor stap meegroeit met de leeftijdscategorieën.",
+  },
+];
+
 const Rules = () => {
   return (
     <div className="min-h-screen bg-background">
+      <FaqJsonLd faqs={rulesFaqs} />
+
       {/* Hero */}
       <section className="relative overflow-hidden bg-gradient-hero text-primary-foreground">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/20 opacity-30" />

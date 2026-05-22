@@ -217,3 +217,77 @@ export function BoardPageJsonLd({
 
   return <JsonLd data={data} />;
 }
+
+export function NewsPageJsonLd({
+  announcements,
+}: {
+  announcements: Array<{
+    id: string;
+    title: string;
+    excerpt?: string | null;
+    content?: string | null;
+    created_at: string;
+  }>;
+}) {
+  if (!announcements.length) return null;
+
+  const items = announcements.slice(0, 20).map((a, index) => {
+    const plain = (a.excerpt || (a.content || "").replace(/<[^>]*>/g, "")).slice(0, 200);
+    return {
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "NewsArticle",
+        headline: a.title,
+        datePublished: a.created_at,
+        description: plain,
+        url: `https://dmon-hockey.lovable.app/nieuws#${a.id}`,
+        author: {
+          "@type": "Organization",
+          name: "D-mon Hockey Club",
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "D-mon Hockey Club",
+          logo: {
+            "@type": "ImageObject",
+            url: "https://dmon-hockey.lovable.app/dman-hockey-logo.png",
+          },
+        },
+      },
+    };
+  });
+
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Nieuws D-mon Hockey Club",
+    itemListElement: items,
+  };
+
+  return <JsonLd data={data} />;
+}
+
+export function FaqJsonLd({
+  faqs,
+}: {
+  faqs: Array<{ question: string; answer: string }>;
+}) {
+  if (!faqs.length) return null;
+
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: f.answer,
+      },
+    })),
+  };
+
+  return <JsonLd data={data} />;
+}
+

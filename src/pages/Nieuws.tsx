@@ -7,6 +7,7 @@ import { supabase } from "@/integrations/supabase/client";
 import * as Icons from "lucide-react";
 import DOMPurify from 'dompurify';
 import { cn } from "@/lib/utils";
+import { NewsPageJsonLd } from "@/components/JsonLd";
 
 interface Announcement {
   id: string;
@@ -289,6 +290,8 @@ const Nieuws = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <NewsPageJsonLd announcements={announcements} />
+
       {/* Hero */}
       <section className="relative overflow-hidden bg-gradient-hero text-primary-foreground">
         <div className="container mx-auto px-6 py-16 md:py-24 max-w-6xl">
