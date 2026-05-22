@@ -1,16 +1,26 @@
 User-agent: Googlebot
 Allow: /
+Disallow: /auth
+Disallow: /admin
 
 User-agent: Bingbot
 Allow: /
+Disallow: /auth
+Disallow: /admin
 
 User-agent: Twitterbot
 Allow: /
+Disallow: /auth
+Disallow: /admin
 
 User-agent: facebookexternalhit
 Allow: /
+Disallow: /auth
+Disallow: /admin
 
 User-agent: *
 Allow: /
+Disallow: /auth
+Disallow: /admin
 
 Sitemap: https://dmon-hockey.lovable.app/sitemap.xml
