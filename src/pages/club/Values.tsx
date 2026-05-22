@@ -166,6 +166,41 @@ const ClubValues = () => {
         </div>
       </section>
 
+      {/* Sportief Beleid - Charter download */}
+      <section className="container mx-auto px-4 pb-4 pt-0 lg:pb-8">
+        <div className="relative overflow-hidden rounded-3xl border border-primary/20 bg-gradient-to-br from-primary/5 via-background to-accent/5 p-8 lg:p-12">
+          <div className="absolute -left-20 -bottom-20 h-64 w-64 rounded-full bg-primary/10 blur-3xl" />
+          <div className="relative grid gap-8 lg:grid-cols-[auto_1fr_auto] lg:items-center lg:gap-10">
+            <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-lg lg:h-20 lg:w-20">
+              <FileText className="h-8 w-8 lg:h-10 lg:w-10" />
+            </div>
+            <div>
+              <span className="text-xs font-semibold uppercase tracking-widest text-primary">
+                Charter
+              </span>
+              <h2 className="mt-2 font-display text-2xl font-bold lg:text-3xl">
+                Sportief Beleid
+              </h2>
+              <p className="mt-3 max-w-2xl text-foreground/80">
+                Onze sportieve missie, visie en waarden, de gedragscode, organisatie van de club,
+                opleiding van trainers en scheidsrechters en het opleidingsplan voor spelers —
+                allemaal samengebracht in één document.
+              </p>
+            </div>
+            <Button asChild size="lg" className="lg:self-center">
+              <a
+                href="/docs/sportief-beleid-dmon.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Download className="mr-2 h-4 w-4" />
+                Download PDF
+              </a>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* API section */}
       <section className="container mx-auto px-4 py-16 lg:py-24">
         <div className="relative overflow-hidden rounded-3xl border-2 border-secondary/30 bg-gradient-to-br from-secondary/5 via-background to-background p-8 lg:p-12">
