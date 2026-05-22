@@ -6,7 +6,7 @@ interface PageMetaProps {
   path?: string;
 }
 
-const BASE_URL = "https://dmon-hockey.lovable.app";
+const BASE_URL = "https://www.dmon.be";
 const OG_IMAGE = `${BASE_URL}/og-image.png`;
 
 export default function PageMeta({ title, description, path }: PageMetaProps) {

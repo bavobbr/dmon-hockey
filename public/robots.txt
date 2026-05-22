@@ -23,4 +23,4 @@ Allow: /
 Disallow: /auth
 Disallow: /admin
 
-Sitemap: https://dmon-hockey.lovable.app/sitemap.xml
+Sitemap: https://www.dmon.be/sitemap.xml
