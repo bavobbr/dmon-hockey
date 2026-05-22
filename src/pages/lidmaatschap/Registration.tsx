@@ -139,7 +139,7 @@ const Registration = () => {
                     <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
                       <s.icon className="h-6 w-6" />
                     </div>
-                    <span className="text-2xl font-bold text-muted-foreground/40">{s.step}</span>
+                    <span className="text-2xl font-bold text-muted-foreground">{s.step}</span>
                   </div>
                   <CardTitle className="mt-4">{s.title}</CardTitle>
                   <CardDescription>{s.desc}</CardDescription>
