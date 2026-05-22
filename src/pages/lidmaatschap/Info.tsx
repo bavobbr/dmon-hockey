@@ -87,8 +87,43 @@ const MembershipInfo = () => {
     { id: "kledij", label: "Kledij" },
   ];
 
+  const faqs = [
+    {
+      question: "Hoeveel kost het lidgeld bij D-mon Hockey Club?",
+      answer:
+        "Het basistarief is 320 euro per seizoen (2 trainingen + match). U6 betaalt 220 euro, Trimmers en Gents 285 euro, en G-hockey 195 euro. Alles is inbegrepen: training, competitie en clubactiviteiten.",
+    },
+    {
+      question: "Welke kortingen zijn er op het lidgeld?",
+      answer:
+        "Er is een gezinskorting van 25 euro per bijkomend gezinslid. Bij financiële moeilijkheden kan je beroep doen op een sociaal tarief via de Uitpas Kansentarief.",
+    },
+    {
+      question: "Hoe schrijf ik me in bij D-mon Hockey Club?",
+      answer:
+        "Vul het registratieformulier in op /lidmaatschap/registratie. We laten je weten of er nog plaats is. De penningmeester stuurt in september/oktober een uitnodiging tot betaling samen met een mutualiteitsattest.",
+    },
+    {
+      question: "Welke uitrusting heb ik nodig om te starten met hockey?",
+      answer:
+        "Je hebt een hockeystick nodig (geschikt voor je leeftijd en niveau), beenbeschermers, een bitje (verplicht voor alle spelers tijdens trainingen en matches) en hockeyschoenen met antislip zolen geschikt voor kunstgras.",
+    },
+    {
+      question: "Waar koop ik de officiële wedstrijdoutfit?",
+      answer:
+        "De officiële outfit (T-shirt met naam, rokje of short en kousen) bestel je via de webshop van Topsport — niet in de winkel zelf. Vanaf U14 staat ook het rugnummer op het shirt.",
+    },
+    {
+      question: "Krijgen leden korting bij sportwinkels?",
+      answer:
+        "Ja, leden krijgen 20% korting bij Topsport Dendermonde (mogelijk dien je je lidmaatschap aan te tonen) en 10% korting bij DNA Boom voor de aankoop van hockeymateriaal.",
+    },
+  ];
+
   return (
     <div>
+      <FaqJsonLd faqs={faqs} />
+
       {/* Hero */}
       <section className="relative overflow-hidden bg-gradient-hero text-primary-foreground">
         <div
