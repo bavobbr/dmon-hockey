@@ -236,12 +236,12 @@ const Contact = () => {
                 <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
                   <MapPin className="h-5 w-5 text-primary" />
                 </div>
-                <CardTitle>Clubhuis</CardTitle>
+                <CardTitle>Terrein & bar</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  Sportcomplex De Schorre<br />
-                  Sint-Gillis-Dendermonde
+                  Hockeyterrein D-MON<br />
+                  Grembergen (Dendermonde)
                 </p>
               </CardContent>
             </Card>
