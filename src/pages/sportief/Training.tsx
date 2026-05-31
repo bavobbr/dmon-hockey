@@ -89,7 +89,7 @@ const Training = () => {
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-sm">
               <Sparkles className="h-3.5 w-3.5" />
-              Seizoen 2025–2026
+              Seizoen 2026–2027
             </div>
             <h1 className="mt-6 font-display text-4xl font-bold leading-tight lg:text-6xl">
               Trainingen
@@ -103,7 +103,7 @@ const Training = () => {
             <div className="mt-8 flex flex-wrap gap-3">
               <Button size="lg" variant="secondary" className="font-semibold" asChild>
                 <a
-                  href="https://static.twizzit.com/public/v2/chat/message/attachment/3210422/f72e69c96d253fcdc03611b7dc769262d0fd5f8b.pdf"
+                  href="/docs/trainingsschema-2026-2027.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -165,7 +165,7 @@ const Training = () => {
               <div>
                 <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary">
                   <FileText className="h-3.5 w-3.5" />
-                  Trainingsschema 2025–2026
+                  Trainingsschema 2026–2027
                 </div>
                 <h2 className="mt-2 font-display text-2xl font-bold text-foreground lg:text-3xl">
                   Volledig schema in één PDF
@@ -177,7 +177,7 @@ const Training = () => {
             </div>
             <Button asChild className="shrink-0">
               <a
-                href="https://static.twizzit.com/public/v2/chat/message/attachment/3210422/f72e69c96d253fcdc03611b7dc769262d0fd5f8b.pdf"
+                href="/docs/trainingsschema-2026-2027.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2"
