@@ -12,7 +12,7 @@ import UpcomingEvents from "@/components/UpcomingEvents";
 import { Target, Trophy, Users, Newspaper, Sparkles, ArrowRight } from "lucide-react";
 import { HomepageJsonLd } from "@/components/JsonLd";
 import sfeerPartyGroup from "@/assets/gallery/party-group.png";
-import sfeerHockquiz from "@/assets/gallery/hockquiz.png";
+import sfeerHockquiz from "@/assets/gallery/team-night.png";
 import sfeerCakeSale from "@/assets/gallery/cake-sale.png";
 import sfeerKidsCircle from "@/assets/gallery/kids-circle.png";
 import sfeerWaterFun from "@/assets/gallery/water-fun.png";
@@ -420,7 +420,7 @@ const Index = () => {
                 >
                   <img
                     src={sfeerHockquiz}
-                    alt="Hockquiz avond op de club"
+                    alt="Spelers samen op een clubavond na de match"
                     loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
