@@ -220,7 +220,7 @@ const Index = () => {
                 D-mon<br />
                 <span className="relative inline-block">
                   Hockey Club
-                  <span className="absolute bottom-1 left-0 w-full h-2 bg-secondary/90" aria-hidden="true" />
+                  <span className="absolute -bottom-1 md:-bottom-2 left-0 w-full h-1.5 md:h-2 bg-secondary/90" aria-hidden="true" />
                 </span>
               </h1>
 
