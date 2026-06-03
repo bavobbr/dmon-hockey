@@ -189,8 +189,9 @@ All colors MUST be HSL.
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse 32% 48% at 82% 32%, hsl(var(--secondary) / 0.68) 0%, transparent 62%),
-      radial-gradient(ellipse 28% 44% at 90% 82%, hsl(var(--accent) / 0.82) 0%, transparent 58%),
+      radial-gradient(ellipse 36% 52% at 76% 28%, hsl(var(--secondary) / 0.82) 0%, transparent 60%),
+      radial-gradient(ellipse 34% 48% at 82% 78%, hsl(var(--accent) / 0.92) 0%, transparent 56%),
+      linear-gradient(120deg, transparent 0%, transparent 48%, hsl(var(--secondary) / 0.18) 62%, hsl(var(--accent) / 0.24) 100%),
       radial-gradient(circle at 18% 28%, hsl(var(--primary-glow) / 0.8) 0%, transparent 45%),
       radial-gradient(circle at 12% 88%, hsl(0 0% 100% / 0.28) 0%, transparent 38%);
     pointer-events: none;
