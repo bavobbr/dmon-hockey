@@ -343,16 +343,17 @@ const Rules = () => {
               <div className="relative flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
                 <div className="flex items-start gap-4">
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary-foreground/15 backdrop-blur-sm">
-                    <Mail className="h-6 w-6" />
+                    <ExternalLink className="h-6 w-6" />
                   </div>
                   <div>
                     <h2 className="mb-1 text-2xl font-bold md:text-3xl">Zin om te fluiten?</h2>
-                    <p className="text-primary-foreground/85">Laat het ons weten — we helpen je graag op weg.</p>
+                    <p className="text-primary-foreground/85">Schrijf je in via Twizzit — we helpen je graag op weg.</p>
                   </div>
                 </div>
                 <Button asChild size="lg" variant="secondary">
-                  <a href="mailto:info@dmon.be">Mail ons</a>
+                  <a href="https://app.twizzit.com/go/dmon-fluitjes" target="_blank" rel="noopener noreferrer">Inschrijven</a>
                 </Button>
+
               </div>
             </div>
           </section>
