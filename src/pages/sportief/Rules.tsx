@@ -189,19 +189,20 @@ const Rules = () => {
                   </div>
                   <h3 className="mb-2 font-semibold text-foreground">Registreer je</h3>
                   <p className="mb-4 flex-1 text-sm text-muted-foreground">
-                    Toegang tot Drillster en op het wedstrijdblad? Registreer je via Twizzit.
+                    Toegang tot Drillster en op het wedstrijdblad? Schrijf je in via Twizzit.
                   </p>
                   <Button asChild size="sm" className="w-full">
                     <a
-                      href="https://app.twizzit.com/v2/public/form/cea9e8831bead08352918535621cd399"
+                      href="https://app.twizzit.com/go/dmon-fluitjes"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2"
                     >
                       <ExternalLink className="h-4 w-4" />
-                      Registreer via Twizzit
+                      Inschrijven via Twizzit
                     </a>
                   </Button>
+
                 </CardContent>
               </Card>
             </div>
