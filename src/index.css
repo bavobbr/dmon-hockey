@@ -176,31 +176,22 @@ All colors MUST be HSL.
 
 @layer components {
   /* Hero gradient background */
-  .hero-gradient,
-  .bg-gradient-hero {
+  .hero-gradient {
     background: var(--gradient-hero);
     position: relative;
     overflow: hidden;
   }
 
-  .hero-gradient::before,
-  .bg-gradient-hero::before {
+  .hero-gradient::before {
     content: '';
     position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 36% 52% at 76% 28%, hsl(var(--secondary) / 0.82) 0%, transparent 60%),
-      radial-gradient(ellipse 34% 48% at 82% 78%, hsl(var(--accent) / 0.92) 0%, transparent 56%),
-      linear-gradient(120deg, transparent 0%, transparent 48%, hsl(var(--secondary) / 0.18) 62%, hsl(var(--accent) / 0.24) 100%),
-      radial-gradient(circle at 18% 28%, hsl(var(--primary-glow) / 0.8) 0%, transparent 45%),
-      radial-gradient(circle at 12% 88%, hsl(0 0% 100% / 0.28) 0%, transparent 38%);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 20%, hsl(var(--primary-glow) / 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, hsl(var(--accent) / 0.2) 0%, transparent 50%);
     pointer-events: none;
-    z-index: 0;
-  }
-
-  .bg-gradient-hero > * {
-    position: relative;
-    z-index: 1;
   }
 
   /* Enhanced card styles */
