@@ -62,7 +62,6 @@ const History = () => {
               Van een kleine groep enthousiastelingen tot een bloeiende hockeyclub in hartje Dendermonde.
               Ontdek het verhaal van D-MON Hockey Club.
             </p>
-            <div className="mt-8 h-1 w-24 rounded-full bg-accent" />
             <div className="mt-8 flex flex-wrap gap-4">
               <Button variant="secondary" size="lg" onClick={() => scrollToSection("verhaal")}>
                 <ArrowRight className="mr-2 h-5 w-5" />

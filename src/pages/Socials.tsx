@@ -137,7 +137,6 @@ export default function Socials() {
                 Blijf op de hoogte van alles wat er bij D-mon gebeurt — van
                 trainingen en matches tot evenementen en clubnieuws.
               </p>
-              <div className="mt-8 h-1 w-24 rounded-full bg-accent" />
             </div>
           </div>
         </section>
@@ -187,7 +186,6 @@ export default function Socials() {
               Blijf op de hoogte van alles wat er bij D-mon gebeurt — van
               trainingen en matches tot evenementen en clubnieuws.
             </p>
-            <div className="mt-8 h-1 w-24 rounded-full bg-accent" />
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Button

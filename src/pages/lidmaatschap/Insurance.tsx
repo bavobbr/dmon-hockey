@@ -28,7 +28,6 @@ const Insurance = () => {
               Een deel van je lidgeld gaat naar aansluiting bij de Vlaamse Hockey Liga. 
               Je bent verzekerd voor lichamelijke ongevallen en burgerlijke aansprakelijkheid tijdens alle hockeyactiviteiten.
             </p>
-            <div className="mt-8 h-1 w-24 rounded-full bg-accent" />
             <div className="mt-8 flex flex-wrap gap-4">
               <Button variant="secondary" size="lg" asChild>
                 <a href="#ongeval">

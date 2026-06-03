@@ -86,7 +86,6 @@ const HowToPlay = () => {
               Hockey is een snelle, technische en vooral ontzettend leuke teamsport op kunstgras.
               Twee ploegen proberen de bal in elkaars doel te krijgen door slim samen te spelen.
             </p>
-            <div className="mt-8 h-1 w-24 rounded-full bg-accent" />
             <div className="flex flex-wrap gap-3">
               <Button asChild variant="secondary">
                 <Link to="/lidmaatschap/info">Word lid</Link>

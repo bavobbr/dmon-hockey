@@ -40,7 +40,6 @@ const StickGuide = () => {
             <p className="text-lg md:text-xl text-primary-foreground/85 mb-8 max-w-2xl">
               Lengte, samenstelling en kromming bepalen samen of een stick bij jou past. Een korte gids om bewust te kiezen — voor jezelf of je kind.
             </p>
-            <div className="mt-8 h-1 w-24 rounded-full bg-accent" />
             <div className="flex flex-wrap gap-3">
               <Button asChild variant="secondary">
                 <a href="#stick-nodig">Stick kopen</a>

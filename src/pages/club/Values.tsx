@@ -78,7 +78,6 @@ const ClubValues = () => {
               Drie principes die elke training, elke wedstrijd en elk moment langs de lijn vormgeven.
               Samen maken ze D-mon Hockey Club tot wat het is.
             </p>
-            <div className="mt-8 h-1 w-24 rounded-full bg-accent" />
           </div>
         </div>
       </section>
