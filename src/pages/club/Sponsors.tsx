@@ -78,6 +78,7 @@ const ClubSponsors = () => {
             <p className="text-lg md:text-xl text-primary-foreground/85 mb-8 max-w-2xl">
               Dankzij de steun van onze partners kunnen we kwaliteitsvolle hockey aanbieden en de club laten groeien.
             </p>
+            <div className="mt-8 h-1 w-24 rounded-full bg-accent" />
             <div className="flex flex-wrap gap-3">
               <Button variant="secondary" size="lg" onClick={() => scrollToSection("sponsors")}>
                 Bekijk sponsors

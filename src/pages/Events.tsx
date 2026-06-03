@@ -101,6 +101,7 @@ const Events = () => {
           <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mb-8">
             Alle komende wedstrijden, trainingen en clubactiviteiten op één plek. Filter op team of type en bekijk wat eraan komt.
           </p>
+          <div className="mt-8 h-1 w-24 rounded-full bg-accent" />
           <div className="flex flex-wrap gap-3">
             <Button
               size="lg"

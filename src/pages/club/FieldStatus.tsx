@@ -77,6 +77,7 @@ const FieldStatus = () => {
             <p className="text-lg md:text-xl text-primary-foreground/90 mb-8 leading-relaxed">
               Bekijk de aangekondigde sluitingen van ons veld voor de komende 7 dagen.
             </p>
+            <div className="mt-8 h-1 w-24 rounded-full bg-accent" />
             <div className="flex flex-wrap gap-3">
               <Button size="lg" variant="secondary" onClick={() => scrollToSection("overzicht")}>
                 <CalendarDays className="h-4 w-4" />

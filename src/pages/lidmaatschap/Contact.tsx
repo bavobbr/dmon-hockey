@@ -29,6 +29,7 @@ const Contact = () => {
               Wil je lid worden, vrijwilliger, scheidsrechter of heb je een vraag?
               Hieronder vind je alle wegen om met ons in contact te komen.
             </p>
+            <div className="mt-8 h-1 w-24 rounded-full bg-accent" />
             <div className="mt-8 flex flex-wrap gap-4">
               <Button variant="secondary" size="lg" asChild>
                 <a href="mailto:info@dmon.be">

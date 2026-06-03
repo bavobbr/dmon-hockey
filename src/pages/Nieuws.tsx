@@ -304,6 +304,7 @@ const Nieuws = () => {
           <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl">
             Alle aankondigingen en nieuws van D-mon Hockey Club.
           </p>
+          <div className="mt-8 h-1 w-24 rounded-full bg-accent" />
         </div>
       </section>
 
