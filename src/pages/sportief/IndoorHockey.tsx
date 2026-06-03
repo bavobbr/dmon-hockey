@@ -109,6 +109,7 @@ const IndoorHockey = () => {
               De snelle, technische en dynamische variant van veldhockey. 
               Negen ploegen schreven zich in voor de competitie en er is opnieuw een mogelijkheid om enkel trainingen te volgen.
             </p>
+            <div className="mt-8 h-1 w-24 rounded-full bg-accent" />
             <div className="flex flex-wrap gap-3">
               <Button asChild variant="secondary" size="lg">
                 <Link to="/lidmaatschap/indoor-registratie" className="inline-flex items-center gap-2">

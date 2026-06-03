@@ -38,6 +38,7 @@ const Registration = () => {
               Welkom bij D-mon Hockey Club! Vul het officiële registratieformulier in en wij nemen
               zo snel mogelijk contact met je op om je inschrijving af te ronden.
             </p>
+            <div className="mt-8 h-1 w-24 rounded-full bg-accent" />
             <div className="mt-8 flex flex-wrap gap-4">
               <Button variant="secondary" size="lg" asChild>
                 <a href="#formulier">
