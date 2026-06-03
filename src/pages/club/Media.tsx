@@ -80,7 +80,6 @@ const Media = () => {
                 Van de eerste aankondiging tot ons eigen veld — een chronologisch overzicht van
                 artikels en reportages over onze club.
               </p>
-              <div className="mt-8 h-1 w-24 rounded-full bg-accent" />
             </div>
             <div className="flex gap-6 lg:gap-10">
               <div>

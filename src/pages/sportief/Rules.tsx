@@ -75,7 +75,6 @@ const Rules = () => {
             <p className="mb-8 max-w-2xl text-lg text-primary-foreground/85 md:text-xl">
               Vaak aan de zijlijn en zin om de club mee te dragen? Fluiten is een van de leukste, zinvolste taken die je kan opnemen — en je groeit stap voor stap mee met de leeftijdscategorieën.
             </p>
-            <div className="mt-8 h-1 w-24 rounded-full bg-accent" />
             <div className="flex flex-wrap gap-3">
               <Button asChild variant="secondary" size="lg">
                 <Link to="/sportief/regels-assistent" className="inline-flex items-center gap-2">

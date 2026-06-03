@@ -98,7 +98,6 @@ const Training = () => {
               Van U6 tot Gents — elk team traint op zijn eigen niveau en ritme. Ontdek de
               trainingsmomenten, wedstrijddagen en download het volledige schema.
             </p>
-            <div className="mt-8 h-1 w-24 rounded-full bg-accent" />
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Button size="lg" variant="secondary" className="font-semibold" asChild>

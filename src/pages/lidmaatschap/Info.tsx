@@ -147,7 +147,6 @@ const MembershipInfo = () => {
               Van jeugd tot Gents, van eerste training tot competitie — bij D-mon Hockey vind je een plek
               op het veld. Ontdek hieronder hoe je je aansluit en wat het kost.
             </p>
-            <div className="mt-8 h-1 w-24 rounded-full bg-accent" />
 
             <div className="mt-8 flex flex-wrap gap-3">
               <RouterLink to="/lidmaatschap/registratie">

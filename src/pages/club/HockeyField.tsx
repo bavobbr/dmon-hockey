@@ -39,7 +39,6 @@ const HockeyField = () => {
               Vind ons terrein in Grembergen, ontdek hoe je er duurzaam geraakt en
               lees de afspraken voor verantwoord gebruik.
             </p>
-            <div className="mt-8 h-1 w-24 rounded-full bg-accent" />
             <div className="flex flex-wrap gap-3">
               <Button size="lg" variant="secondary" onClick={() => scrollToSection("locatie")}>
                 <MapPin className="h-4 w-4" />

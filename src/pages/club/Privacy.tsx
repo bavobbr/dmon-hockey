@@ -31,7 +31,6 @@ const Privacy = () => {
             <p className="text-lg md:text-xl text-primary-foreground/85 mb-8 max-w-2xl">
               Hoe D-MON Hockey omgaat met je persoonsgegevens — transparant, veilig en conform de GDPR.
             </p>
-            <div className="mt-8 h-1 w-24 rounded-full bg-accent" />
             <div className="flex flex-wrap gap-3">
               <Button variant="secondary" size="lg" onClick={() => scrollToSection("algemeen")}>
                 Lees verklaring

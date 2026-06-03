@@ -148,7 +148,6 @@ const Sfeer = () => {
             <p className="text-lg md:text-xl text-primary-foreground/90 mb-8 leading-relaxed">
               Beleef de familiale en speelse sfeer van D-Mon Hockey — op en naast het veld.
             </p>
-            <div className="mt-8 h-1 w-24 rounded-full bg-accent" />
             <div className="flex flex-wrap gap-3">
               <Button size="lg" variant="secondary" onClick={() => scrollToSection("galerij")}>
                 <Images className="h-4 w-4" />

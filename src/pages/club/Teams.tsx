@@ -79,7 +79,6 @@ const ClubTeams = () => {
               Van onze jongste U6-spelertjes tot Heren en Dames — ontdek alle teams van D-mon Hockey,
               hun coaches en team managers.
             </p>
-            <div className="mt-8 h-1 w-24 rounded-full bg-accent" />
 
             <div className="mt-8 flex flex-wrap gap-6 text-sm text-primary-foreground/85">
               <div className="flex items-center gap-2">

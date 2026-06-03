@@ -101,13 +101,12 @@ const Events = () => {
           <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mb-8">
             Alle komende wedstrijden, trainingen en clubactiviteiten op één plek. Filter op team of type en bekijk wat eraan komt.
           </p>
-          <div className="mt-8 h-1 w-24 rounded-full bg-accent" />
           <div className="flex flex-wrap gap-3">
             <Button
               size="lg"
               variant="secondary"
               onClick={scrollToToday}
-              className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
+              className="bg-secondary text-secondary-foreground hover:bg-secondary-light shadow-md"
             >
               <Calendar className="mr-2 h-4 w-4" />
               Spring naar vandaag
@@ -281,7 +280,7 @@ const Events = () => {
               size="lg"
               variant="secondary"
               asChild
-              className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
+              className="bg-secondary text-secondary-foreground hover:bg-secondary-light shadow-md"
             >
               <Link to="/club/teams">
                 <Users className="mr-2 h-4 w-4" />
