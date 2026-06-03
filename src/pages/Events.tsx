@@ -106,7 +106,7 @@ const Events = () => {
               size="lg"
               variant="secondary"
               onClick={scrollToToday}
-              className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
+              className="bg-secondary text-secondary-foreground hover:bg-secondary-light shadow-md"
             >
               <Calendar className="mr-2 h-4 w-4" />
               Spring naar vandaag
@@ -280,7 +280,7 @@ const Events = () => {
               size="lg"
               variant="secondary"
               asChild
-              className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
+              className="bg-secondary text-secondary-foreground hover:bg-secondary-light shadow-md"
             >
               <Link to="/club/teams">
                 <Users className="mr-2 h-4 w-4" />
