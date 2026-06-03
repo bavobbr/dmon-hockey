@@ -123,18 +123,6 @@ const Training = () => {
               </RouterLink>
             </div>
 
-            <div className="mt-10 flex flex-wrap gap-6 text-sm text-primary-foreground/85">
-              <div className="flex items-center gap-2">
-                <Users className="h-4 w-4" />
-                <span className="font-semibold text-primary-foreground">4</span>
-                <span>trainingsgroepen</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Calendar className="h-4 w-4" />
-                <span className="font-semibold text-primary-foreground">Za, zo & ma</span>
-                <span>wedstrijddagen</span>
-              </div>
-            </div>
           </div>
         </div>
       </section>
