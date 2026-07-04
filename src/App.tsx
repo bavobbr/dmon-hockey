@@ -29,6 +29,9 @@ import BoardMemberForm from "./pages/admin/BoardMemberForm";
 import FieldClosures from "./pages/admin/FieldClosures";
 import FieldClosureForm from "./pages/admin/FieldClosureForm";
 import Users from "./pages/admin/Users";
+import Vacancies from "./pages/admin/Vacancies";
+import VacancyForm from "./pages/admin/VacancyForm";
+
 
 // Club pages
 import HockeyField from "./pages/club/HockeyField";
@@ -70,6 +73,9 @@ import Socials from "./pages/Socials";
 import Events from "./pages/Events";
 import { Analytics } from "@vercel/analytics/react";
 import Nieuws from "./pages/Nieuws";
+import Vacatures from "./pages/Vacatures";
+import VacatureDetail from "./pages/VacatureDetail";
+
 
 const queryClient = new QueryClient();
 
@@ -134,6 +140,9 @@ const App = () => (
               <Route path="/events" element={<Events />} />
               <Route path="/nieuws" element={<Nieuws />} />
               <Route path="/socials" element={<Socials />} />
+              <Route path="/vacatures" element={<Vacatures />} />
+              <Route path="/vacatures/:slug" element={<VacatureDetail />} />
+
                     
                     {/* Club routes */}
                     <Route path="/club/teams" element={<ClubTeams />} />
@@ -231,6 +240,22 @@ const App = () => (
                         <Users />
                       </ProtectedRoute>
                     } />
+                    <Route path="/admin/vacancies" element={
+                      <ProtectedRoute requireModerator>
+                        <Vacancies />
+                      </ProtectedRoute>
+                    } />
+                    <Route path="/admin/vacancies/new" element={
+                      <ProtectedRoute requireModerator>
+                        <VacancyForm />
+                      </ProtectedRoute>
+                    } />
+                    <Route path="/admin/vacancies/edit/:id" element={
+                      <ProtectedRoute requireModerator>
+                        <VacancyForm />
+                      </ProtectedRoute>
+                    } />
+
                     
                     {/* Nederlandse routes - Lidmaatschap */}
                     <Route path="/lidmaatschap/info" element={<MembershipInfo />} />

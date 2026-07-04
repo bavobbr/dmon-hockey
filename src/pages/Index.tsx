@@ -10,7 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 import { sanitizeRichHtml } from '@/lib/sanitizeHtml';
 import { extractMedia, excerptFromContent } from '@/lib/newsMedia';
 import UpcomingEvents from "@/components/UpcomingEvents";
-import { Target, Trophy, Users, Newspaper, Sparkles, ArrowRight, PlayCircle, Play } from "lucide-react";
+import { Target, Trophy, Users, Newspaper, Sparkles, ArrowRight, PlayCircle, Play, HandHeart } from "lucide-react";
 import { HomepageJsonLd } from "@/components/JsonLd";
 import sfeerPartyGroup from "@/assets/gallery/party-group.png";
 import sfeerHockquiz from "@/assets/gallery/team-night.png";
@@ -53,6 +53,15 @@ interface InstagramPost {
   timestamp: string;
   permalink: string;
 }
+interface VacancyTeaser {
+  id: string;
+  title: string;
+  slug: string;
+  emoji: string | null;
+  intro: string;
+  category: 'bestuur' | 'werkgroep' | 'sportief';
+}
+
 const Index = () => {
   const {
     user,
@@ -71,12 +80,25 @@ const Index = () => {
   const [teamsLoading, setTeamsLoading] = useState(true);
   const [sponsorsLoading, setSponsorsLoading] = useState(true);
   const [instagramLoading, setInstagramLoading] = useState(true);
+  const [vacancies, setVacancies] = useState<VacancyTeaser[]>([]);
   useEffect(() => {
     fetchAnnouncements();
     fetchTeams();
     fetchSponsors();
     fetchInstagramPosts();
+    fetchVacancies();
   }, []);
+  const fetchVacancies = async () => {
+    const { data } = await supabase
+      .from('vacancies')
+      .select('id,title,slug,emoji,intro,category')
+      .eq('published', true)
+      .order('sort_order', { ascending: true })
+      .order('created_at', { ascending: false })
+      .limit(3);
+    setVacancies(data || []);
+  };
+
   const fetchSponsors = async () => {
     try {
       const {
@@ -660,7 +682,61 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Vacatures teaser */}
+      {vacancies.length > 0 && (
+        <section className="py-20 px-4 bg-background border-t border-border/60">
+          <div className="container mx-auto max-w-6xl">
+            <div className="flex items-end justify-between gap-4 mb-10 flex-wrap">
+              <div>
+                <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary mb-2">
+                  <HandHeart className="h-3.5 w-3.5" />
+                  Word vrijwilliger
+                </div>
+                <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
+                  Zonder vrijwilligers geen D-mon
+                </h2>
+                <p className="mt-2 text-muted-foreground max-w-2xl">
+                  Onze club draait op enthousiaste vrijwilligers. Ontdek waar jouw talent van pas komt.
+                </p>
+              </div>
+              <Link
+                to="/vacatures"
+                className="group inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all"
+              >
+                Alle vacatures <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {vacancies.map(v => (
+                <Link
+                  key={v.id}
+                  to={`/vacatures/${v.slug}`}
+                  className="group relative flex flex-col rounded-2xl border border-border/60 bg-card p-5 transition-all hover:-translate-y-1 hover:shadow-[var(--shadow-elegant)] hover:border-primary/40"
+                >
+                  <div className="absolute top-0 left-5 right-5 h-1 bg-gradient-to-r from-primary via-primary/70 to-accent rounded-b-full" />
+                  <div className="flex items-start gap-3 mb-3">
+                    {v.emoji ? (
+                      <span className="text-2xl leading-none" aria-hidden>{v.emoji}</span>
+                    ) : (
+                      <div className="rounded-lg bg-primary/10 p-2"><HandHeart className="h-4 w-4 text-primary" /></div>
+                    )}
+                    <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2">
+                      {v.title}
+                    </h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground line-clamp-3 flex-1">{v.intro}</p>
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm text-primary font-medium group-hover:gap-2.5 transition-all">
+                    Meer info <ArrowRight className="h-3.5 w-3.5" />
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Full-bleed identity band */}
+
       <section className="relative w-full overflow-hidden bg-primary text-primary-foreground py-24 md:py-32">
         <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary/80 pointer-events-none" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,hsl(var(--primary-glow)/0.35),transparent_55%)] pointer-events-none" />

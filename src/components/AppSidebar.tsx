@@ -23,6 +23,8 @@ import {
   HousePlus,
   Bot
 } from "lucide-react";
+
+
 import { NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState, useMemo } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -65,6 +67,12 @@ const navigation = [
     url: "/socials",
     icon: MessageCircle,
   },
+  {
+    title: "Vacatures",
+    url: "/vacatures",
+    icon: HandHeart,
+  },
+
   {
     title: "Lidmaatschap",
     icon: UserPlus,
