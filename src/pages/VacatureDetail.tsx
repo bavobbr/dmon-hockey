@@ -83,21 +83,21 @@ const VacatureDetail = () => {
         <div className="container mx-auto px-4 py-12 lg:py-16 relative max-w-4xl">
           <Link
             to="/vacatures"
-            className="inline-flex items-center gap-2 text-sm text-primary-foreground/80 hover:text-primary-foreground mb-6"
+            className="inline-flex items-center gap-2 text-sm text-primary-foreground/80 hover:text-primary-foreground"
           >
             <ArrowLeft className="h-4 w-4" />
             Alle vacatures
           </Link>
-          <Badge variant="outline" className="mb-4 border-primary-foreground/30 bg-primary-foreground/10 text-primary-foreground">
+          <Badge variant="outline" className="mt-6 border-primary-foreground/30 bg-primary-foreground/10 text-primary-foreground">
             {VACANCY_CATEGORY_LABELS[vacancy.category]}
           </Badge>
-          <h1 className="font-display text-3xl lg:text-5xl font-bold leading-tight">
-            {vacancy.emoji && <span className="mr-3" aria-hidden>{vacancy.emoji}</span>}
+          <h1 className="mt-5 font-display text-3xl lg:text-5xl font-bold leading-tight">
             {vacancy.title}
           </h1>
-          <p className="mt-4 text-base lg:text-lg text-primary-foreground/85 max-w-2xl">
+          <p className="mt-5 text-base lg:text-lg text-primary-foreground/85 max-w-2xl">
             {vacancy.intro}
           </p>
+
         </div>
       </section>
 
