@@ -240,6 +240,22 @@ const App = () => (
                         <Users />
                       </ProtectedRoute>
                     } />
+                    <Route path="/admin/vacancies" element={
+                      <ProtectedRoute requireModerator>
+                        <Vacancies />
+                      </ProtectedRoute>
+                    } />
+                    <Route path="/admin/vacancies/new" element={
+                      <ProtectedRoute requireModerator>
+                        <VacancyForm />
+                      </ProtectedRoute>
+                    } />
+                    <Route path="/admin/vacancies/edit/:id" element={
+                      <ProtectedRoute requireModerator>
+                        <VacancyForm />
+                      </ProtectedRoute>
+                    } />
+
                     
                     {/* Nederlandse routes - Lidmaatschap */}
                     <Route path="/lidmaatschap/info" element={<MembershipInfo />} />
