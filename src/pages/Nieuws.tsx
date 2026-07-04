@@ -234,8 +234,8 @@ const Nieuws = () => {
     fetchAnnouncements();
   }, []);
 
-  const featuredAnnouncement = announcements.find(a => a.featured);
-  const otherAnnouncements = announcements.filter(a => a !== featuredAnnouncement);
+  const featuredAnnouncement = announcements[0];
+  const otherAnnouncements = announcements.slice(1);
 
   if (loading) {
     return (
