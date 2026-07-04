@@ -182,7 +182,7 @@ const AnnouncementForm = () => {
         ['bold', 'italic', 'underline', 'strike'],
         [{ 'list': 'ordered'}, { 'list': 'bullet' }],
         [{ 'color': [] }, { 'background': [] }],
-        ['link', 'image'],
+        ['link', 'image', 'video'],
         ['clean']
       ],
       handlers: {
@@ -193,7 +193,7 @@ const AnnouncementForm = () => {
 
   const formats = [
     'header', 'bold', 'italic', 'underline', 'strike',
-    'list', 'bullet', 'color', 'background', 'link', 'image'
+    'list', 'bullet', 'color', 'background', 'link', 'image', 'video'
   ];
 
   return (
