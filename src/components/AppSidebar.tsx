@@ -21,9 +21,9 @@ import {
   Camera,
   ThermometerSnowflake,
   HousePlus,
-  Bot,
-  HandHeart as HandHeartIcon
+  Bot
 } from "lucide-react";
+
 
 import { NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState, useMemo } from "react";
