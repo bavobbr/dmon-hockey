@@ -191,7 +191,6 @@ const AnnouncementDialog = ({ announcement }: { announcement: Announcement }) =>
       <DialogDescription className="text-sm text-muted-foreground">
         {formatDate(announcement.created_at)}
       </DialogDescription>
-      </DialogDescription>
     </DialogHeader>
     <div
       className="prose prose-sm max-w-none text-foreground mt-4 prose-a:text-primary prose-a:underline prose-a:underline-offset-2 hover:prose-a:text-primary/80"
