@@ -147,11 +147,6 @@ const NewsCard = ({ announcement, index, eager }: { announcement: Announcement; 
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--primary-foreground)/0.15),transparent_60%)]" />
               </div>
             )}
-            {announcement.featured && (
-              <Badge className="absolute top-3 right-3 bg-accent text-accent-foreground border-0 backdrop-blur-sm uppercase tracking-wider text-[10px] font-bold z-10">
-                Uitgelicht
-              </Badge>
-            )}
           </div>
 
           {/* Content */}
