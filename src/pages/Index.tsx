@@ -80,12 +80,25 @@ const Index = () => {
   const [teamsLoading, setTeamsLoading] = useState(true);
   const [sponsorsLoading, setSponsorsLoading] = useState(true);
   const [instagramLoading, setInstagramLoading] = useState(true);
+  const [vacancies, setVacancies] = useState<VacancyTeaser[]>([]);
   useEffect(() => {
     fetchAnnouncements();
     fetchTeams();
     fetchSponsors();
     fetchInstagramPosts();
+    fetchVacancies();
   }, []);
+  const fetchVacancies = async () => {
+    const { data } = await supabase
+      .from('vacancies')
+      .select('id,title,slug,emoji,intro,category')
+      .eq('published', true)
+      .order('sort_order', { ascending: true })
+      .order('created_at', { ascending: false })
+      .limit(3);
+    setVacancies(data || []);
+  };
+
   const fetchSponsors = async () => {
     try {
       const {
