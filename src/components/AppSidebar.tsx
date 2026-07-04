@@ -68,6 +68,12 @@ const navigation = [
     icon: MessageCircle,
   },
   {
+    title: "Vacatures",
+    url: "/vacatures",
+    icon: HandHeart,
+  },
+
+  {
     title: "Lidmaatschap",
     icon: UserPlus,
     items: [
