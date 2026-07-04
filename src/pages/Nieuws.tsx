@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { supabase } from "@/integrations/supabase/client";
 import * as Icons from "lucide-react";
-import DOMPurify from 'dompurify';
+import { sanitizeRichHtml } from "@/lib/sanitizeHtml";
 import { cn } from "@/lib/utils";
 import { NewsPageJsonLd } from "@/components/JsonLd";
 
@@ -204,7 +204,7 @@ const AnnouncementDialog = ({ announcement }: { announcement: Announcement }) =>
     </DialogHeader>
     <div
       className="prose prose-sm max-w-none text-foreground mt-4 prose-a:text-primary prose-a:underline prose-a:underline-offset-2 hover:prose-a:text-primary/80"
-      dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(announcement.content) }}
+      dangerouslySetInnerHTML={{ __html: sanitizeRichHtml(announcement.content) }}
     />
   </DialogContent>
 );

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import DOMPurify from 'dompurify';
+import { sanitizeRichHtml } from '@/lib/sanitizeHtml';
 import UpcomingEvents from "@/components/UpcomingEvents";
 import { Target, Trophy, Users, Newspaper, Sparkles, ArrowRight } from "lucide-react";
 import { HomepageJsonLd } from "@/components/JsonLd";
@@ -568,7 +568,7 @@ const Index = () => {
                           {new Date(featured.created_at).toLocaleDateString("nl-BE")}
                         </DialogDescription>
                       </DialogHeader>
-                      <div className="prose prose-sm max-w-none text-foreground mt-4" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(featured.content) }} />
+                      <div className="prose prose-sm max-w-none text-foreground mt-4" dangerouslySetInnerHTML={{ __html: sanitizeRichHtml(featured.content) }} />
                     </DialogContent>
                   </Dialog>
                 );
@@ -615,7 +615,7 @@ const Index = () => {
                             {new Date(announcement.created_at).toLocaleDateString("nl-BE")}
                           </DialogDescription>
                         </DialogHeader>
-                        <div className="prose prose-sm max-w-none text-foreground mt-4" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(announcement.content) }} />
+                        <div className="prose prose-sm max-w-none text-foreground mt-4" dangerouslySetInnerHTML={{ __html: sanitizeRichHtml(announcement.content) }} />
                       </DialogContent>
                     </Dialog>
                   );
