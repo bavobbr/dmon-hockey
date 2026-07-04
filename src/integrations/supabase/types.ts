@@ -371,6 +371,54 @@ export type Database = {
         }
         Relationships: []
       }
+      vacancies: {
+        Row: {
+          category: Database["public"]["Enums"]["vacancy_category"]
+          contact_email: string
+          contact_name: string
+          content: string
+          created_at: string
+          emoji: string | null
+          id: string
+          intro: string
+          published: boolean
+          slug: string
+          sort_order: number
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          category: Database["public"]["Enums"]["vacancy_category"]
+          contact_email: string
+          contact_name: string
+          content: string
+          created_at?: string
+          emoji?: string | null
+          id?: string
+          intro: string
+          published?: boolean
+          slug: string
+          sort_order?: number
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          category?: Database["public"]["Enums"]["vacancy_category"]
+          contact_email?: string
+          contact_name?: string
+          content?: string
+          created_at?: string
+          emoji?: string | null
+          id?: string
+          intro?: string
+          published?: boolean
+          slug?: string
+          sort_order?: number
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       board_members_public: {
@@ -433,6 +481,7 @@ export type Database = {
     Enums: {
       app_role: "admin" | "moderator" | "member"
       field_closure_status: "closure" | "pending"
+      vacancy_category: "bestuur" | "werkgroep" | "sportief"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -562,6 +611,7 @@ export const Constants = {
     Enums: {
       app_role: ["admin", "moderator", "member"],
       field_closure_status: ["closure", "pending"],
+      vacancy_category: ["bestuur", "werkgroep", "sportief"],
     },
   },
 } as const
