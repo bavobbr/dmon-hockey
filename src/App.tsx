@@ -73,6 +73,9 @@ import Socials from "./pages/Socials";
 import Events from "./pages/Events";
 import { Analytics } from "@vercel/analytics/react";
 import Nieuws from "./pages/Nieuws";
+import Vacatures from "./pages/Vacatures";
+import VacatureDetail from "./pages/VacatureDetail";
+
 
 const queryClient = new QueryClient();
 
