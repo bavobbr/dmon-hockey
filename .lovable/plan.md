@@ -1,50 +1,33 @@
-## Wat we doen
+## Doel
 
-De huidige sectie op de homepage (`src/pages/Index.tsx`, regels 289–367) — drie gelijke cards met icoon-tegel, tekst en foto onderaan — vervangen door de gekozen **"Compact pillars"** richting: foto's eruit, drie strakke kolommen met een groot icoon in clubkleur, een korte "proof"-badge en een paragraaf. Asymmetrische koptekst met een accent-kleur en een tekstuele "Bekijk meer" CTA rechts.
+Het aanmaken van een nieuwsbericht eenvoudiger maken. Drie velden verdwijnen uit het admin-formulier: **Excerpt**, **Publish immediately** en **Featured announcement**.
 
-## Layout
+## Wijzigingen
 
-```text
-┌──────────────────────────────────────────────────────────┐
-│ WAT WE BIEDEN                                Bekijk meer→│
-│ Hockey op JOUW NIVEAU  ──────────────────────────────────│
-│                                                          │
-│  ◎ Target       │  🏆 Trophy        │  👥 Users         │
-│  TRAININGEN     │  COMPETITIEVE…    │  FAMILIECLUB      │
-│  [3× per week]  │  [Reg. & nat.]    │  [Hechte familie] │
-│  Coaching tekst │  Competitietekst  │  Communitytekst   │
-└──────────────────────────────────────────────────────────┘
-```
+### 1. Admin formulier (`src/pages/admin/AnnouncementForm.tsx`)
+- Velden verwijderen: excerpt input, featured switch, published switch.
+- Bij opslaan altijd `published: true` sturen (zodat nieuwe berichten meteen zichtbaar zijn).
+- `excerpt` niet meer meesturen (blijft leeg / null in de DB).
+- `featured` niet meer meesturen (default `false`).
 
-## Concrete wijzigingen
+### 2. Admin overzicht (`src/pages/admin/Announcements.tsx`)
+- "Featured"-badge weghalen uit de lijst.
+- Excerpt-regel weghalen; in plaats daarvan tonen we de eerste ~160 tekens van de content (HTML gestript), net zoals /nieuws al doet als fallback.
 
-1. **Header**
-   - Eyebrow "Wat we bieden" in `text-secondary` (rood), `font-display`, tracking-widest.
-   - H2 "Hockey op **jouw niveau**" — "jouw niveau" in `text-accent` (goud), rest in `text-primary` (blauw). Groter formaat: `text-5xl md:text-6xl`.
-   - "Bekijk Meer"-knop wordt een tekstuele link met pijl, in `text-primary` met `hover:text-secondary`. Link bestemming wijzigt van `/club/sfeer` → `/sportief/training` (inhoudelijk logischer).
-   - Onderscheidende `border-b-2 border-border/60 pb-8` onder de header.
+### 3. Publieke pagina's — auto-samenvatting i.p.v. excerpt
+Overal waar nu `announcement.excerpt || <fallback>` staat, valt de excerpt weg en houden we alleen de fallback (HTML strippen + inkorten):
+- `src/pages/Nieuws.tsx` — kaart, hero-card, dialog beschrijving.
+- `src/pages/Index.tsx` — featured card en secundaire cards.
 
-2. **Drie pijlers in een grid met `divide-x`**
-   - Geen `Card`-component meer; gewoon padding + verticale scheidingslijntjes via `divide-border/60`.
-   - Geen foto's. Groot Lucide-icoon (`w-14 h-14`, `strokeWidth=1.5`) in clubkleur per pijler: `Target` (primary), `Trophy` (secondary), `Users` (accent).
-   - Hover: icoon `scale-110` (origin-left), achtergrond licht naar `bg-background`.
-   - Per pijler: titel (uppercase, font-display), proof-badge (`bg-{kleur}/10 text-{kleur}`), beschrijving in `text-foreground/80`.
+### 4. Featured-logica op /nieuws en homepage
+Zonder `featured` toggle moeten we kiezen wat er in de "Uitgelicht" hero verschijnt:
+- **Voorstel:** het meest recente bericht (op `created_at`) wordt automatisch het uitgelichte artikel, de rest komt onder "Laatste nieuws".
+- Op de homepage blijft dezelfde logica: nieuwste = groot, rest = kleiner. De tekst "Uitgelicht/Hoofdartikel" wordt gewoon "Hoofdartikel".
 
-3. **Proof-badges (tekst, geen verzonnen cijfers)**
-   - Trainingen → "Tot 3× per week training"
-   - Competitie → "Regionaal & nationaal niveau"
-   - Familieclub → "Een hechte hockeyfamilie"
+### 5. Database
+Geen schema-wijziging nodig. `excerpt`, `featured` en `published` blijven bestaan in de tabel (bestaande data blijft werken); we sturen ze alleen niet meer vanuit het formulier. Nieuwe records krijgen `published=true`, `featured=false`, `excerpt=null`.
 
-4. **Design-system opkuis**
-   - Alle kleuren via semantische tokens (`primary`, `secondary`, `accent`, `border`, `foreground`, `background`) — geen hardgecodeerde hex.
-   - Imports `trainingImage`, `competitiveImage`, `familyImage` en de `Card`-imports (indien verder ongebruikt) worden opgeruimd.
+*Optioneel later:* de kolommen echt droppen. Voor nu laten we ze staan om niets kapot te maken.
 
-## Buiten scope
-
-- Geen wijzigingen aan andere homepage-secties (hero, agenda, nieuws, sponsors).
-- Geen nieuwe routes of data.
-- Geen verzonnen statistieken; badges blijven beschrijvend totdat we echte cijfers hebben.
-
-## Bestanden
-
-- `src/pages/Index.tsx` — sectie regels 289–367 vervangen, imports opschonen.
+## Vraag ter bevestiging
+Klopt het dat "nieuwste bericht = automatisch uitgelicht" de gewenste vervanging is voor de handmatige featured-toggle? Zo niet, dan verdwijnt de hero-sectie op /nieuws helemaal en tonen we alles in één lijst.
