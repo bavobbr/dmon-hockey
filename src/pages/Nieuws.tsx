@@ -59,7 +59,7 @@ const HeroCard = ({ announcement }: { announcement: Announcement }) => {
           <div className="relative h-full flex flex-col justify-end p-6 md:p-10 lg:p-14 text-white">
             <div className="flex items-center gap-3 mb-4">
               <Badge className="bg-accent text-accent-foreground border-0 uppercase tracking-wider text-[10px] font-bold">
-                Uitgelicht
+                Hoofdartikel
               </Badge>
               <span className="text-sm text-white/80">
                 {formatDate(announcement.created_at)}
