@@ -169,7 +169,7 @@ const NewsCard = ({ announcement, index, eager }: { announcement: Announcement; 
               "text-sm text-muted-foreground flex-1 leading-relaxed",
               isTall ? "line-clamp-5" : "line-clamp-3"
             )}>
-              {announcement.excerpt || announcement.content.replace(/<[^>]*>/g, '').substring(0, 160) + '...'}
+              {announcement.content.replace(/<[^>]*>/g, '').substring(0, 160) + '...'}
             </p>
             <span className="inline-flex items-center gap-1.5 text-sm text-primary font-medium mt-4 group-hover:gap-2.5 transition-all">
               Lees meer <Icons.ArrowRight className="h-3.5 w-3.5" />
