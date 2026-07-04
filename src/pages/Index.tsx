@@ -10,7 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 import { sanitizeRichHtml } from '@/lib/sanitizeHtml';
 import { extractMedia, excerptFromContent } from '@/lib/newsMedia';
 import UpcomingEvents from "@/components/UpcomingEvents";
-import { Target, Trophy, Users, Newspaper, Sparkles, ArrowRight, PlayCircle, Play } from "lucide-react";
+import { Target, Trophy, Users, Newspaper, Sparkles, ArrowRight, PlayCircle, Play, HandHeart } from "lucide-react";
 import { HomepageJsonLd } from "@/components/JsonLd";
 import sfeerPartyGroup from "@/assets/gallery/party-group.png";
 import sfeerHockquiz from "@/assets/gallery/team-night.png";
