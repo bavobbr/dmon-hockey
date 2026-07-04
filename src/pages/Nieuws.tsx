@@ -6,6 +6,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { supabase } from "@/integrations/supabase/client";
 import * as Icons from "lucide-react";
 import { sanitizeRichHtml } from "@/lib/sanitizeHtml";
+import { extractMedia, excerptFromContent } from "@/lib/newsMedia";
 import { cn } from "@/lib/utils";
 import { NewsPageJsonLd } from "@/components/JsonLd";
 
@@ -20,10 +21,6 @@ interface Announcement {
   icon: string;
 }
 
-function extractFirstImage(html: string): string | null {
-  const match = html.match(/<img[^>]+src=["']([^"']+)["']/i);
-  return match ? match[1] : null;
-}
 
 function formatDate(date: string) {
   return new Date(date).toLocaleDateString("nl-BE", {
@@ -33,16 +30,16 @@ function formatDate(date: string) {
 
 const HeroCard = ({ announcement }: { announcement: Announcement }) => {
   const IconComponent = (Icons as any)[announcement.icon || 'Newspaper'] || Icons.Newspaper;
-  const backgroundImage = extractFirstImage(announcement.content);
+  const media = extractMedia(announcement.content);
 
   return (
     <Dialog>
       <DialogTrigger asChild>
         <Card className="group relative cursor-pointer fade-in-up overflow-hidden border-0 shadow-[var(--shadow-elegant)] hover:shadow-[var(--shadow-glow)] transition-all duration-500 min-h-[420px] md:min-h-[520px]">
           {/* Background image / gradient */}
-          {backgroundImage ? (
+          {media ? (
             <img
-              src={backgroundImage}
+              src={media.thumbnail}
               alt={announcement.title}
               className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-[1400ms] ease-out"
             />
@@ -55,12 +52,27 @@ const HeroCard = ({ announcement }: { announcement: Announcement }) => {
           <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/10" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent" />
 
+          {/* Video play overlay */}
+          {media?.type === 'video' && (
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <Icons.PlayCircle
+                className="h-20 w-20 md:h-24 md:w-24 text-white/95 drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)] group-hover:scale-110 transition-transform duration-500"
+                strokeWidth={1.25}
+              />
+            </div>
+          )}
+
           {/* Text content */}
           <div className="relative h-full flex flex-col justify-end p-6 md:p-10 lg:p-14 text-white">
             <div className="flex items-center gap-3 mb-4">
               <Badge className="bg-accent text-accent-foreground border-0 uppercase tracking-wider text-[10px] font-bold">
                 Hoofdartikel
               </Badge>
+              {media?.type === 'video' && (
+                <Badge className="bg-white/15 text-white border-0 backdrop-blur-sm uppercase tracking-wider text-[10px] font-bold gap-1">
+                  <Icons.Play className="h-3 w-3" /> Video
+                </Badge>
+              )}
               <span className="text-sm text-white/80">
                 {formatDate(announcement.created_at)}
               </span>
@@ -69,10 +81,10 @@ const HeroCard = ({ announcement }: { announcement: Announcement }) => {
               {announcement.title}
             </h2>
             <p className="text-base md:text-lg text-white/90 leading-relaxed line-clamp-2 max-w-2xl mb-6">
-              {announcement.content.replace(/<[^>]*>/g, '').substring(0, 200) + '...'}
+              {excerptFromContent(announcement.content, media, 200)}
             </p>
             <span className="inline-flex items-center gap-2 font-medium group-hover:gap-3 transition-all w-fit">
-              Lees meer <Icons.ArrowRight className="h-4 w-4" />
+              {media?.type === 'video' ? 'Bekijk video' : 'Lees meer'} <Icons.ArrowRight className="h-4 w-4" />
             </span>
           </div>
         </Card>
@@ -100,7 +112,7 @@ const bentoSpan = (i: number): string => {
 
 const NewsCard = ({ announcement, index, eager }: { announcement: Announcement; index: number; eager?: boolean }) => {
   const IconComponent = (Icons as any)[announcement.icon || 'Newspaper'] || Icons.Newspaper;
-  const backgroundImage = extractFirstImage(announcement.content);
+  const media = extractMedia(announcement.content);
   const span = bentoSpan(index);
   const isTall = span.includes("row-span-2");
   const isWide = span.includes("col-span-2");
@@ -123,15 +135,14 @@ const NewsCard = ({ announcement, index, eager }: { announcement: Announcement; 
             "relative overflow-hidden bg-muted",
             isWide ? "h-52 md:h-60" : "h-52"
           )}>
-            {backgroundImage ? (
+            {media ? (
               <>
                 <img
-                  src={backgroundImage}
+                  src={media.thumbnail}
                   alt={announcement.title}
                   loading={eager ? "eager" : "lazy"}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
-                {/* Grijstint-overlay voor visuele samenhang, fade-t weg op hover */}
                 <div
                   aria-hidden
                   className="absolute inset-0 bg-black/20 mix-blend-multiply opacity-100 group-hover:opacity-0 transition-opacity duration-500"
@@ -140,6 +151,19 @@ const NewsCard = ({ announcement, index, eager }: { announcement: Announcement; 
                   aria-hidden
                   className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-500"
                 />
+                {media.type === 'video' && (
+                  <>
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                      <Icons.PlayCircle
+                        className="h-14 w-14 text-white/95 drop-shadow-[0_4px_16px_rgba(0,0,0,0.5)] group-hover:scale-110 transition-transform duration-500"
+                        strokeWidth={1.25}
+                      />
+                    </div>
+                    <Badge className="absolute top-3 right-3 z-10 bg-black/60 text-white border-0 backdrop-blur-sm uppercase tracking-wider text-[10px] font-bold gap-1">
+                      <Icons.Play className="h-3 w-3" /> Video
+                    </Badge>
+                  </>
+                )}
               </>
             ) : (
               <div className="w-full h-full bg-[image:var(--gradient-primary)] flex items-center justify-center relative">
@@ -169,10 +193,10 @@ const NewsCard = ({ announcement, index, eager }: { announcement: Announcement; 
               "text-sm text-muted-foreground flex-1 leading-relaxed",
               isTall ? "line-clamp-5" : "line-clamp-3"
             )}>
-              {announcement.content.replace(/<[^>]*>/g, '').substring(0, 160) + '...'}
+              {excerptFromContent(announcement.content, media, 160)}
             </p>
             <span className="inline-flex items-center gap-1.5 text-sm text-primary font-medium mt-4 group-hover:gap-2.5 transition-all">
-              Lees meer <Icons.ArrowRight className="h-3.5 w-3.5" />
+              {media?.type === 'video' ? 'Bekijk video' : 'Lees meer'} <Icons.ArrowRight className="h-3.5 w-3.5" />
             </span>
           </div>
         </Card>
