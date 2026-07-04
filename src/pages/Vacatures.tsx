@@ -73,7 +73,7 @@ const Vacatures = () => {
               Word vrijwilliger
             </div>
             <h1 className="mt-6 font-display text-4xl font-bold leading-tight lg:text-6xl">
-              Zonder vrijwilligers geen D-mon
+              Zonder vrijwilligers geen D{"\u2011"}mon
             </h1>
             <p className="mt-4 max-w-2xl text-base lg:text-lg text-primary-foreground/85">
               Onze club draait op mensen die hun tijd, talent en enthousiasme delen. Vind hieronder de
