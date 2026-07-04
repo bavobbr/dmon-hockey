@@ -21,6 +21,12 @@ const toEmbedSrc = (src: string): string => {
     if (host.endsWith('youtube.com') && url.pathname.startsWith('/embed/')) {
       return `https://www.youtube-nocookie.com${url.pathname}${url.search}`;
     }
+
+    // youtube.com/shorts/<id>
+    if (host.endsWith('youtube.com') && url.pathname.startsWith('/shorts/')) {
+      const id = url.pathname.split('/')[2];
+      if (id) return `https://www.youtube-nocookie.com/embed/${id}`;
+    }
   } catch {
     // ignore, return original
   }
