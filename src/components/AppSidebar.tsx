@@ -67,11 +67,6 @@ const navigation = [
     url: "/socials",
     icon: MessageCircle,
   },
-  {
-    title: "Vacatures",
-    url: "/vacatures",
-    icon: HandHeart,
-  },
 
   {
     title: "Lidmaatschap",
@@ -80,9 +75,11 @@ const navigation = [
       { title: "Informatie", url: "/lidmaatschap/info", icon: UserPlus },
       { title: "Registratie", url: "/lidmaatschap/registratie", icon: FileText },
       { title: "Verzekering", url: "/lidmaatschap/verzekering", icon: Shield },
+      { title: "Vacatures", url: "/vacatures", icon: HandHeart },
       { title: "Contact", url: "/lidmaatschap/contact", icon: Phone },
     ],
   },
+
   {
     title: "Sportief",
     icon: Trophy,
