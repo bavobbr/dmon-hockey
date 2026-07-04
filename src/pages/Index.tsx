@@ -712,15 +712,12 @@ const Index = () => {
                 >
                   <div className="absolute top-0 left-5 right-5 h-1 bg-gradient-to-r from-primary via-primary/70 to-accent rounded-b-full" />
                   <div className="flex items-start gap-3 mb-3">
-                    {v.emoji ? (
-                      <span className="text-2xl leading-none" aria-hidden>{v.emoji}</span>
-                    ) : (
-                      <div className="rounded-lg bg-primary/10 p-2"><HandHeart className="h-4 w-4 text-primary" /></div>
-                    )}
+                    <div className="rounded-lg bg-primary/10 p-2"><HandHeart className="h-4 w-4 text-primary" /></div>
                     <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2">
                       {v.title}
                     </h3>
                   </div>
+
                   <p className="text-sm text-muted-foreground line-clamp-3 flex-1">{v.intro}</p>
                   <span className="mt-4 inline-flex items-center gap-1.5 text-sm text-primary font-medium group-hover:gap-2.5 transition-all">
                     Meer info <ArrowRight className="h-3.5 w-3.5" />
