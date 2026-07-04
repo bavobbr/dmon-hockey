@@ -88,9 +88,12 @@ const VacatureDetail = () => {
             <ArrowLeft className="h-4 w-4" />
             Alle vacatures
           </Link>
-          <Badge variant="outline" className="mt-6 border-primary-foreground/30 bg-primary-foreground/10 text-primary-foreground">
-            {VACANCY_CATEGORY_LABELS[vacancy.category]}
-          </Badge>
+          <div className="mt-8">
+            <Badge variant="outline" className="border-primary-foreground/30 bg-primary-foreground/10 text-primary-foreground">
+              {VACANCY_CATEGORY_LABELS[vacancy.category]}
+            </Badge>
+          </div>
+
           <h1 className="mt-5 font-display text-3xl lg:text-5xl font-bold leading-tight">
             {vacancy.title}
           </h1>
