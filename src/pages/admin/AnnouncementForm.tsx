@@ -75,9 +75,9 @@ const AnnouncementForm = () => {
       const announcementData = {
         title,
         content,
-        excerpt,
-        featured,
-        published,
+        excerpt: null,
+        featured: false,
+        published: true,
         icon,
         author_id: user.id,
       };
