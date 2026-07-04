@@ -590,16 +590,15 @@ const Index = () => {
               {/* Sidebar Articles */}
               <div className="lg:col-span-4 flex flex-col gap-10 border-t lg:border-t-0 lg:border-l border-border lg:pl-10 pt-10 lg:pt-0">
                 {announcements.slice(1, 3).map((announcement) => {
-                  const imgMatch = announcement.content.match(/<img[^>]+src=["']([^"']+)["']/i);
-                  const sideImage = imgMatch ? imgMatch[1] : null;
+                  const media = extractMedia(announcement.content);
                   return (
                     <Dialog key={announcement.id}>
                       <DialogTrigger asChild>
                         <article className="group cursor-pointer fade-in-up">
                           <div className="relative overflow-hidden bg-muted aspect-video mb-4 rounded-lg">
-                            {sideImage ? (
+                            {media ? (
                               <img
-                                src={sideImage}
+                                src={media.thumbnail}
                                 alt={announcement.title}
                                 loading="lazy"
                                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -609,6 +608,19 @@ const Index = () => {
                                 <Newspaper className="w-10 h-10 text-primary/40" />
                               </div>
                             )}
+                            {media?.type === 'video' && (
+                              <>
+                                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                  <PlayCircle
+                                    className="h-12 w-12 text-white/95 drop-shadow-[0_4px_16px_rgba(0,0,0,0.5)] group-hover:scale-110 transition-transform duration-500"
+                                    strokeWidth={1.25}
+                                  />
+                                </div>
+                                <span className="absolute top-3 right-3 inline-flex items-center gap-1 bg-black/60 text-white px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider rounded backdrop-blur-sm">
+                                  <Play className="h-3 w-3" /> Video
+                                </span>
+                              </>
+                            )}
                           </div>
                           <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-2 block">
                             {new Date(announcement.created_at).toLocaleDateString("nl-BE", { day: "numeric", month: "long", year: "numeric" })}
@@ -617,7 +629,7 @@ const Index = () => {
                             {announcement.title}
                           </h4>
                           <p className="text-muted-foreground text-sm line-clamp-2 leading-relaxed">
-                            {announcement.content.replace(/<[^>]+>/g, "").substring(0, 120) + "..."}
+                            {excerptFromContent(announcement.content, media, 120)}
                           </p>
                         </article>
                       </DialogTrigger>
