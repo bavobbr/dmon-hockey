@@ -688,10 +688,6 @@ const Index = () => {
           <div className="container mx-auto max-w-6xl">
             <div className="flex items-end justify-between gap-4 mb-10 flex-wrap">
               <div>
-                <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary mb-2">
-                  <HandHeart className="h-3.5 w-3.5" />
-                  Word vrijwilliger
-                </div>
                 <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
                   Zonder vrijwilligers geen D-mon
                 </h2>
@@ -699,6 +695,7 @@ const Index = () => {
                   Onze club draait op enthousiaste vrijwilligers. Ontdek waar jouw talent van pas komt.
                 </p>
               </div>
+
               <Link
                 to="/vacatures"
                 className="group inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all"
@@ -715,15 +712,12 @@ const Index = () => {
                 >
                   <div className="absolute top-0 left-5 right-5 h-1 bg-gradient-to-r from-primary via-primary/70 to-accent rounded-b-full" />
                   <div className="flex items-start gap-3 mb-3">
-                    {v.emoji ? (
-                      <span className="text-2xl leading-none" aria-hidden>{v.emoji}</span>
-                    ) : (
-                      <div className="rounded-lg bg-primary/10 p-2"><HandHeart className="h-4 w-4 text-primary" /></div>
-                    )}
+                    <div className="rounded-lg bg-primary/10 p-2"><HandHeart className="h-4 w-4 text-primary" /></div>
                     <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2">
                       {v.title}
                     </h3>
                   </div>
+
                   <p className="text-sm text-muted-foreground line-clamp-3 flex-1">{v.intro}</p>
                   <span className="mt-4 inline-flex items-center gap-1.5 text-sm text-primary font-medium group-hover:gap-2.5 transition-all">
                     Meer info <ArrowRight className="h-3.5 w-3.5" />
