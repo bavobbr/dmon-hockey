@@ -540,7 +540,7 @@ const Index = () => {
                           )}
                           <div className="absolute top-6 left-6">
                             <span className="bg-primary text-primary-foreground px-5 py-2 text-xs font-bold uppercase tracking-wider shadow-lg">
-                              {featured.featured ? "Uitgelicht" : "Hoofdartikel"}
+                              Hoofdartikel
                             </span>
                           </div>
                         </div>
@@ -556,7 +556,7 @@ const Index = () => {
                             {featured.title}
                           </h3>
                           <p className="text-muted-foreground text-lg leading-relaxed">
-                            {featured.excerpt || featured.content.replace(/<[^>]+>/g, "").substring(0, 200) + "..."}
+                            {featured.content.replace(/<[^>]+>/g, "").substring(0, 200) + "..."}
                           </p>
                         </div>
                       </article>
@@ -604,7 +604,7 @@ const Index = () => {
                             {announcement.title}
                           </h4>
                           <p className="text-muted-foreground text-sm line-clamp-2 leading-relaxed">
-                            {announcement.excerpt || announcement.content.replace(/<[^>]+>/g, "").substring(0, 120) + "..."}
+                            {announcement.content.replace(/<[^>]+>/g, "").substring(0, 120) + "..."}
                           </p>
                         </article>
                       </DialogTrigger>

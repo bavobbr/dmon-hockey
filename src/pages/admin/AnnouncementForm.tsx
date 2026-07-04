@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Switch } from '@/components/ui/switch';
+
 import { IconSelector } from '@/components/admin/IconSelector';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
@@ -32,9 +32,6 @@ const AnnouncementForm = () => {
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [excerpt, setExcerpt] = useState('');
-  const [featured, setFeatured] = useState(false);
-  const [published, setPublished] = useState(false);
   const [icon, setIcon] = useState('Newspaper');
 
   const fetchAnnouncement = useCallback(async () => {
@@ -50,9 +47,6 @@ const AnnouncementForm = () => {
 
       setTitle(data.title);
       setContent(data.content);
-      setExcerpt(data.excerpt || '');
-      setFeatured(data.featured);
-      setPublished(data.published);
       setIcon(data.icon || 'Newspaper');
     } catch (error) {
       console.error('Error fetching announcement:', error);
@@ -81,9 +75,9 @@ const AnnouncementForm = () => {
       const announcementData = {
         title,
         content,
-        excerpt,
-        featured,
-        published,
+        excerpt: null,
+        featured: false,
+        published: true,
         icon,
         author_id: user.id,
       };
@@ -227,16 +221,6 @@ const AnnouncementForm = () => {
               />
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="excerpt">Excerpt</Label>
-              <Input
-                id="excerpt"
-                value={excerpt}
-                onChange={(e) => setExcerpt(e.target.value)}
-                placeholder="Brief summary of the announcement"
-              />
-            </div>
-
             <IconSelector value={icon} onChange={setIcon} />
 
             <div className="space-y-2">
@@ -255,23 +239,6 @@ const AnnouncementForm = () => {
               </div>
             </div>
 
-            <div className="flex items-center space-x-2">
-              <Switch
-                id="featured"
-                checked={featured}
-                onCheckedChange={setFeatured}
-              />
-              <Label htmlFor="featured">Featured announcement</Label>
-            </div>
-
-            <div className="flex items-center space-x-2">
-              <Switch
-                id="published"
-                checked={published}
-                onCheckedChange={setPublished}
-              />
-              <Label htmlFor="published">Publish immediately</Label>
-            </div>
 
             <div className="flex gap-4 pt-4">
               <Button type="submit" disabled={loading}>

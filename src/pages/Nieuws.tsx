@@ -59,7 +59,7 @@ const HeroCard = ({ announcement }: { announcement: Announcement }) => {
           <div className="relative h-full flex flex-col justify-end p-6 md:p-10 lg:p-14 text-white">
             <div className="flex items-center gap-3 mb-4">
               <Badge className="bg-accent text-accent-foreground border-0 uppercase tracking-wider text-[10px] font-bold">
-                Uitgelicht
+                Hoofdartikel
               </Badge>
               <span className="text-sm text-white/80">
                 {formatDate(announcement.created_at)}
@@ -69,7 +69,7 @@ const HeroCard = ({ announcement }: { announcement: Announcement }) => {
               {announcement.title}
             </h2>
             <p className="text-base md:text-lg text-white/90 leading-relaxed line-clamp-2 max-w-2xl mb-6">
-              {announcement.excerpt || announcement.content.replace(/<[^>]*>/g, '').substring(0, 200) + '...'}
+              {announcement.content.replace(/<[^>]*>/g, '').substring(0, 200) + '...'}
             </p>
             <span className="inline-flex items-center gap-2 font-medium group-hover:gap-3 transition-all w-fit">
               Lees meer <Icons.ArrowRight className="h-4 w-4" />
@@ -147,11 +147,6 @@ const NewsCard = ({ announcement, index, eager }: { announcement: Announcement; 
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--primary-foreground)/0.15),transparent_60%)]" />
               </div>
             )}
-            {announcement.featured && (
-              <Badge className="absolute top-3 right-3 bg-accent text-accent-foreground border-0 backdrop-blur-sm uppercase tracking-wider text-[10px] font-bold z-10">
-                Uitgelicht
-              </Badge>
-            )}
           </div>
 
           {/* Content */}
@@ -174,7 +169,7 @@ const NewsCard = ({ announcement, index, eager }: { announcement: Announcement; 
               "text-sm text-muted-foreground flex-1 leading-relaxed",
               isTall ? "line-clamp-5" : "line-clamp-3"
             )}>
-              {announcement.excerpt || announcement.content.replace(/<[^>]*>/g, '').substring(0, 160) + '...'}
+              {announcement.content.replace(/<[^>]*>/g, '').substring(0, 160) + '...'}
             </p>
             <span className="inline-flex items-center gap-1.5 text-sm text-primary font-medium mt-4 group-hover:gap-2.5 transition-all">
               Lees meer <Icons.ArrowRight className="h-3.5 w-3.5" />
@@ -195,11 +190,6 @@ const AnnouncementDialog = ({ announcement }: { announcement: Announcement }) =>
       </DialogTitle>
       <DialogDescription className="text-sm text-muted-foreground">
         {formatDate(announcement.created_at)}
-        {announcement.featured && (
-          <Badge variant="secondary" className="ml-2 bg-accent/10 text-accent border-accent/20">
-            Uitgelicht
-          </Badge>
-        )}
       </DialogDescription>
     </DialogHeader>
     <div
@@ -234,8 +224,8 @@ const Nieuws = () => {
     fetchAnnouncements();
   }, []);
 
-  const featuredAnnouncement = announcements.find(a => a.featured);
-  const otherAnnouncements = announcements.filter(a => a !== featuredAnnouncement);
+  const featuredAnnouncement = announcements[0];
+  const otherAnnouncements = announcements.slice(1);
 
   if (loading) {
     return (
