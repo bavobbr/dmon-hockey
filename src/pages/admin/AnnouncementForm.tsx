@@ -32,9 +32,6 @@ const AnnouncementForm = () => {
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [excerpt, setExcerpt] = useState('');
-  const [featured, setFeatured] = useState(false);
-  const [published, setPublished] = useState(false);
   const [icon, setIcon] = useState('Newspaper');
 
   const fetchAnnouncement = useCallback(async () => {
