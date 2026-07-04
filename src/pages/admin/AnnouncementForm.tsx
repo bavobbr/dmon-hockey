@@ -221,16 +221,6 @@ const AnnouncementForm = () => {
               />
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="excerpt">Excerpt</Label>
-              <Input
-                id="excerpt"
-                value={excerpt}
-                onChange={(e) => setExcerpt(e.target.value)}
-                placeholder="Brief summary of the announcement"
-              />
-            </div>
-
             <IconSelector value={icon} onChange={setIcon} />
 
             <div className="space-y-2">
@@ -249,23 +239,6 @@ const AnnouncementForm = () => {
               </div>
             </div>
 
-            <div className="flex items-center space-x-2">
-              <Switch
-                id="featured"
-                checked={featured}
-                onCheckedChange={setFeatured}
-              />
-              <Label htmlFor="featured">Featured announcement</Label>
-            </div>
-
-            <div className="flex items-center space-x-2">
-              <Switch
-                id="published"
-                checked={published}
-                onCheckedChange={setPublished}
-              />
-              <Label htmlFor="published">Publish immediately</Label>
-            </div>
 
             <div className="flex gap-4 pt-4">
               <Button type="submit" disabled={loading}>
