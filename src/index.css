@@ -318,3 +318,13 @@ All colors MUST be HSL.
     color: hsl(var(--foreground)) !important;
   }
 }
+/* Responsive video embeds inside rich-text content (announcements) */
+.prose iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border-radius: 0.5rem;
+  border: 0;
+  display: block;
+  margin: 1.25rem 0;
+}
