@@ -227,6 +227,14 @@ const Dashboard = () => {
       href: '/admin/field-closures',
       count: '',
     },
+    {
+      title: 'Vacatures',
+      description: 'Beheer vrijwilligersvacatures',
+      icon: Handshake,
+      href: '/admin/vacancies',
+      count: '',
+    },
+
   ];
 
   if (isAdmin) {
