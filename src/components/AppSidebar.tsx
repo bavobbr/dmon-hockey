@@ -21,8 +21,10 @@ import {
   Camera,
   ThermometerSnowflake,
   HousePlus,
-  Bot
+  Bot,
+  HandHeart as HandHeartIcon
 } from "lucide-react";
+
 import { NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState, useMemo } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
