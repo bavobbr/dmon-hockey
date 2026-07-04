@@ -604,7 +604,7 @@ const Index = () => {
                             {announcement.title}
                           </h4>
                           <p className="text-muted-foreground text-sm line-clamp-2 leading-relaxed">
-                            {announcement.excerpt || announcement.content.replace(/<[^>]+>/g, "").substring(0, 120) + "..."}
+                            {announcement.content.replace(/<[^>]+>/g, "").substring(0, 120) + "..."}
                           </p>
                         </article>
                       </DialogTrigger>
