@@ -520,16 +520,15 @@ const Index = () => {
               {/* Featured Article */}
               {(() => {
                 const featured = announcements[0];
-                const imgMatch = featured.content.match(/<img[^>]+src=["']([^"']+)["']/i);
-                const featuredImage = imgMatch ? imgMatch[1] : null;
+                const media = extractMedia(featured.content);
                 return (
                   <Dialog key={featured.id}>
                     <DialogTrigger asChild>
                       <article className="lg:col-span-8 group cursor-pointer fade-in-up">
                         <div className="relative overflow-hidden bg-muted aspect-[16/9] mb-6 rounded-lg">
-                          {featuredImage ? (
+                          {media ? (
                             <img
-                              src={featuredImage}
+                              src={media.thumbnail}
                               alt={featured.title}
                               loading="lazy"
                               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -538,6 +537,19 @@ const Index = () => {
                             <div className="w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
                               <Newspaper className="w-16 h-16 text-primary/40" />
                             </div>
+                          )}
+                          {media?.type === 'video' && (
+                            <>
+                              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                <PlayCircle
+                                  className="h-20 w-20 text-white/95 drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)] group-hover:scale-110 transition-transform duration-500"
+                                  strokeWidth={1.25}
+                                />
+                              </div>
+                              <span className="absolute top-6 right-6 inline-flex items-center gap-1 bg-black/60 text-white px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded backdrop-blur-sm">
+                                <Play className="h-3 w-3" /> Video
+                              </span>
+                            </>
                           )}
                           <div className="absolute top-6 left-6">
                             <span className="bg-primary text-primary-foreground px-5 py-2 text-xs font-bold uppercase tracking-wider shadow-lg">
@@ -557,7 +569,7 @@ const Index = () => {
                             {featured.title}
                           </h3>
                           <p className="text-muted-foreground text-lg leading-relaxed">
-                            {featured.content.replace(/<[^>]+>/g, "").substring(0, 200) + "..."}
+                            {excerptFromContent(featured.content, media, 200)}
                           </p>
                         </div>
                       </article>
