@@ -109,12 +109,14 @@ const VacatureDetail = () => {
         <article
           className="prose prose-sm md:prose-base max-w-none text-foreground
                      prose-headings:font-display prose-headings:text-foreground
-                     prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-3
-                     prose-h3:text-xl prose-h3:mt-6 prose-h3:mb-2
+                     prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-5
+                     prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4
+                     prose-p:my-4
                      prose-a:text-primary prose-a:underline prose-a:underline-offset-2 hover:prose-a:text-primary/80
-                     prose-ul:my-3 prose-li:my-1"
+                     prose-ul:my-4 prose-li:my-1.5"
           dangerouslySetInnerHTML={{ __html: sanitizeRichHtml(vacancy.content) }}
         />
+
 
         {/* Contact card */}
         <aside className="lg:sticky lg:top-20 h-fit">
