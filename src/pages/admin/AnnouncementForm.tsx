@@ -47,9 +47,6 @@ const AnnouncementForm = () => {
 
       setTitle(data.title);
       setContent(data.content);
-      setExcerpt(data.excerpt || '');
-      setFeatured(data.featured);
-      setPublished(data.published);
       setIcon(data.icon || 'Newspaper');
     } catch (error) {
       console.error('Error fetching announcement:', error);
