@@ -688,10 +688,6 @@ const Index = () => {
           <div className="container mx-auto max-w-6xl">
             <div className="flex items-end justify-between gap-4 mb-10 flex-wrap">
               <div>
-                <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary mb-2">
-                  <HandHeart className="h-3.5 w-3.5" />
-                  Word vrijwilliger
-                </div>
                 <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
                   Zonder vrijwilligers geen D-mon
                 </h2>
@@ -699,6 +695,7 @@ const Index = () => {
                   Onze club draait op enthousiaste vrijwilligers. Ontdek waar jouw talent van pas komt.
                 </p>
               </div>
+
               <Link
                 to="/vacatures"
                 className="group inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all"
