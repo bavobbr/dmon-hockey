@@ -29,6 +29,9 @@ import BoardMemberForm from "./pages/admin/BoardMemberForm";
 import FieldClosures from "./pages/admin/FieldClosures";
 import FieldClosureForm from "./pages/admin/FieldClosureForm";
 import Users from "./pages/admin/Users";
+import Vacancies from "./pages/admin/Vacancies";
+import VacancyForm from "./pages/admin/VacancyForm";
+
 
 // Club pages
 import HockeyField from "./pages/club/HockeyField";
