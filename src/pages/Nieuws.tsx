@@ -69,7 +69,7 @@ const HeroCard = ({ announcement }: { announcement: Announcement }) => {
               {announcement.title}
             </h2>
             <p className="text-base md:text-lg text-white/90 leading-relaxed line-clamp-2 max-w-2xl mb-6">
-              {announcement.excerpt || announcement.content.replace(/<[^>]*>/g, '').substring(0, 200) + '...'}
+              {announcement.content.replace(/<[^>]*>/g, '').substring(0, 200) + '...'}
             </p>
             <span className="inline-flex items-center gap-2 font-medium group-hover:gap-3 transition-all w-fit">
               Lees meer <Icons.ArrowRight className="h-4 w-4" />
