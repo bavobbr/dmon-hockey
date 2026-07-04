@@ -540,7 +540,7 @@ const Index = () => {
                           )}
                           <div className="absolute top-6 left-6">
                             <span className="bg-primary text-primary-foreground px-5 py-2 text-xs font-bold uppercase tracking-wider shadow-lg">
-                              {featured.featured ? "Uitgelicht" : "Hoofdartikel"}
+                              Hoofdartikel
                             </span>
                           </div>
                         </div>
