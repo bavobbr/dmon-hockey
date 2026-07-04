@@ -6,6 +6,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { supabase } from "@/integrations/supabase/client";
 import * as Icons from "lucide-react";
 import { sanitizeRichHtml } from "@/lib/sanitizeHtml";
+import { extractMedia, excerptFromContent } from "@/lib/newsMedia";
 import { cn } from "@/lib/utils";
 import { NewsPageJsonLd } from "@/components/JsonLd";
 
