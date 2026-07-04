@@ -155,17 +155,15 @@ const Announcements = () => {
                   <div className="flex-1">
                     <CardTitle className="flex items-center gap-2">
                       {announcement.title}
-                      {announcement.featured && (
-                        <Badge variant="secondary">Featured</Badge>
-                      )}
-                      <Badge 
+                      <Badge
                         variant={announcement.published ? "default" : "outline"}
                       >
                         {announcement.published ? 'Published' : 'Draft'}
                       </Badge>
                     </CardTitle>
                     <CardDescription>
-                      {announcement.excerpt}
+                      {announcement.excerpt ||
+                        announcement.content.replace(/<[^>]*>/g, '').substring(0, 160) + '…'}
                     </CardDescription>
                   </div>
                   <div className="flex gap-2">
