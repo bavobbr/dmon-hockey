@@ -21,10 +21,6 @@ interface Announcement {
   icon: string;
 }
 
-function extractFirstImage(html: string): string | null {
-  const match = html.match(/<img[^>]+src=["']([^"']+)["']/i);
-  return match ? match[1] : null;
-}
 
 function formatDate(date: string) {
   return new Date(date).toLocaleDateString("nl-BE", {
