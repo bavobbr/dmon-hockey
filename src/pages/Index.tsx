@@ -556,7 +556,7 @@ const Index = () => {
                             {featured.title}
                           </h3>
                           <p className="text-muted-foreground text-lg leading-relaxed">
-                            {featured.excerpt || featured.content.replace(/<[^>]+>/g, "").substring(0, 200) + "..."}
+                            {featured.content.replace(/<[^>]+>/g, "").substring(0, 200) + "..."}
                           </p>
                         </div>
                       </article>
