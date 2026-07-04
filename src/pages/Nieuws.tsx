@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { supabase } from "@/integrations/supabase/client";
 import * as Icons from "lucide-react";
-import DOMPurify from 'dompurify';
+import { sanitizeRichHtml } from "@/lib/sanitizeHtml";
 import { cn } from "@/lib/utils";
 import { NewsPageJsonLd } from "@/components/JsonLd";
 
