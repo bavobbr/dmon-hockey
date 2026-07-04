@@ -190,11 +190,7 @@ const AnnouncementDialog = ({ announcement }: { announcement: Announcement }) =>
       </DialogTitle>
       <DialogDescription className="text-sm text-muted-foreground">
         {formatDate(announcement.created_at)}
-        {announcement.featured && (
-          <Badge variant="secondary" className="ml-2 bg-accent/10 text-accent border-accent/20">
-            Uitgelicht
-          </Badge>
-        )}
+      </DialogDescription>
       </DialogDescription>
     </DialogHeader>
     <div
