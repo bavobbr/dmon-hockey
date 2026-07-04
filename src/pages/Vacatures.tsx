@@ -131,13 +131,10 @@ const Vacatures = () => {
               >
                 <div className="absolute top-0 left-6 right-6 h-1 bg-gradient-to-r from-primary via-primary/70 to-accent rounded-b-full" />
                 <div className="flex items-start justify-between gap-3 mb-4">
-                  {v.emoji ? (
-                    <span className="text-3xl leading-none" aria-hidden>{v.emoji}</span>
-                  ) : (
-                    <div className="rounded-xl bg-primary/10 p-2.5">
-                      <Sparkles className="h-5 w-5 text-primary" />
-                    </div>
-                  )}
+                  <div className="rounded-xl bg-primary/10 p-2.5">
+                    <Sparkles className="h-5 w-5 text-primary" />
+                  </div>
+
                   <Badge variant="outline" className={VACANCY_CATEGORY_BADGE[v.category]}>
                     {VACANCY_CATEGORY_LABELS[v.category]}
                   </Badge>
