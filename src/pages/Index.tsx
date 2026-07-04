@@ -53,6 +53,15 @@ interface InstagramPost {
   timestamp: string;
   permalink: string;
 }
+interface VacancyTeaser {
+  id: string;
+  title: string;
+  slug: string;
+  emoji: string | null;
+  intro: string;
+  category: 'bestuur' | 'werkgroep' | 'sportief';
+}
+
 const Index = () => {
   const {
     user,
