@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import DOMPurify from 'dompurify';
+import { sanitizeRichHtml } from '@/lib/sanitizeHtml';
 import UpcomingEvents from "@/components/UpcomingEvents";
 import { Target, Trophy, Users, Newspaper, Sparkles, ArrowRight } from "lucide-react";
 import { HomepageJsonLd } from "@/components/JsonLd";
