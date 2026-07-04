@@ -107,15 +107,17 @@ const VacatureDetail = () => {
       <div className="container mx-auto px-4 py-12 lg:py-16 max-w-4xl grid gap-8 lg:grid-cols-[1fr_320px]">
         {/* Content */}
         <article
-          className="prose prose-sm md:prose-base max-w-none text-foreground
-                     prose-headings:font-display prose-headings:text-foreground
-                     prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-5
-                     prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4
-                     prose-p:my-4
-                     prose-a:text-primary prose-a:underline prose-a:underline-offset-2 hover:prose-a:text-primary/80
-                     prose-ul:my-4 prose-li:my-1.5"
+          className="max-w-none text-foreground leading-relaxed
+                     [&_h2]:font-display [&_h2]:text-foreground [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:mt-10 [&_h2]:mb-4
+                     [&_h3]:font-display [&_h3]:text-foreground [&_h3]:text-xl [&_h3]:font-bold [&_h3]:mt-8 [&_h3]:mb-3
+                     [&_p]:my-4
+                     [&_ul]:my-4 [&_ul]:pl-6 [&_ul]:list-disc [&_ol]:my-4 [&_ol]:pl-6 [&_ol]:list-decimal
+                     [&_li]:my-1.5
+                     [&_a]:text-primary [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:text-primary/80
+                     [&_h2:first-child]:mt-0 [&_h3:first-child]:mt-0 [&_p:first-child]:mt-0"
           dangerouslySetInnerHTML={{ __html: sanitizeRichHtml(vacancy.content) }}
         />
+
 
 
         {/* Contact card */}
