@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 
 export function useWindowHeight() {
-  const [height, setHeight] = useState(
-    typeof window !== "undefined" ? window.innerHeight : 0
-  );
+  // Always start at 0 so SSR and client render the same initial value.
+  // The real height is applied after hydration in useEffect.
+  const [height, setHeight] = useState(0);
 
   useEffect(() => {
     let timeoutId: ReturnType<typeof setTimeout>;
@@ -16,7 +16,7 @@ export function useWindowHeight() {
     };
 
     window.addEventListener("resize", handleResize);
-    // Set initial value
+    // Set initial value after hydration
     setHeight(window.innerHeight);
 
     return () => {
