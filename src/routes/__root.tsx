@@ -27,15 +27,13 @@ import appCss from "../styles.css?url";
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
+    // No title/description/og:title/og:description here — each leaf route
+    // provides its own unique metadata via buildPageHead/buildPrivateHead in
+    // src/lib/pageHead.ts. Keeping them in the root would duplicate those
+    // tags on every route (TanStack Router concatenates root + leaf meta).
     meta: [
       { charSet: "UTF-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1.0" },
-      { title: "D-mon Hockey Club Dendermonde - Veldhockey in België" },
-      {
-        name: "description",
-        content:
-          "D-mon Hockey Club Dendermonde - Veldhockeyclub in België. Sluit je aan voor trainingen, wedstrijden en de passie voor hockey.",
-      },
       { name: "author", content: "D-mon Hockey Club" },
       {
         name: "keywords",
@@ -46,19 +44,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         name: "google-site-verification",
         content: "RTnM8R_eXn945ghFmrxpBJR6kQRaOGJXN9oFfGGQZzM",
       },
-      {
-        property: "og:title",
-        content: "D-mon Hockey Club Dendermonde - Veldhockey in België",
-      },
-      {
-        property: "og:description",
-        content:
-          "Veldhockeyclub in Dendermonde, België. Sluit je aan voor trainingen, wedstrijden en de passie voor hockey.",
-      },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "D-mon Hockey Club" },
-      { name: "twitter:card", content: "summary_large_image" },
-
     ],
     links: [
       { rel: "stylesheet", href: appCss },
