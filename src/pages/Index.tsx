@@ -49,6 +49,7 @@ interface InstagramPost {
   id: string;
   caption: string;
   media_url: string;
+  thumbnail_url?: string | null;
   media_type: string;
   timestamp: string;
   permalink: string;
