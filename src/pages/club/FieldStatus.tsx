@@ -68,7 +68,7 @@ const FieldStatus = () => {
       <section className="overflow-hidden relative bg-gradient-hero text-primary-foreground">
         <div className="hero-decor" aria-hidden />
         <div className="hero-rule" aria-hidden />
-        <div className="container mx-auto px-4 py-16 lg:py-24">
+        <div className="relative container mx-auto px-4 py-16 lg:py-24">
           <div className="max-w-3xl">
             <Badge className="mb-4 bg-primary-foreground/15 text-primary-foreground border-primary-foreground/20 hover:bg-primary-foreground/20">
               Bespeelbaarheid

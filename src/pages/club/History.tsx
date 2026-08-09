@@ -188,7 +188,7 @@ const History = () => {
       <section className="overflow-hidden relative bg-gradient-hero py-16">
         <div className="hero-decor" aria-hidden />
         <div className="hero-rule" aria-hidden />
-        <div className="container mx-auto px-4">
+        <div className="relative container mx-auto px-4">
           <div className="mx-auto max-w-3xl text-center">
             <Users className="mx-auto h-10 w-10 text-primary-foreground" />
             <h2 className="mt-4 text-3xl font-bold text-primary-foreground md:text-4xl">

@@ -264,7 +264,7 @@ const Nieuws = () => {
         <section className="relative overflow-hidden bg-gradient-hero">
           <div className="hero-decor" aria-hidden />
           <div className="hero-rule" aria-hidden />
-          <div className="container mx-auto px-6 py-16 md:py-24 max-w-6xl">
+          <div className="relative container mx-auto px-6 py-16 md:py-24 max-w-6xl">
             <div className="animate-pulse rounded-full bg-primary-foreground/20 h-6 w-24 mb-4" />
             <div className="animate-pulse rounded-[0.25rem] bg-primary-foreground/20 h-12 md:h-16 w-3/4 mb-4" />
             <div className="animate-pulse rounded-[0.25rem] bg-primary-foreground/10 h-6 w-1/2" />
@@ -289,7 +289,7 @@ const Nieuws = () => {
         <section className="relative overflow-hidden bg-gradient-hero text-primary-foreground">
           <div className="hero-decor" aria-hidden />
           <div className="hero-rule" aria-hidden />
-          <div className="container mx-auto px-6 py-16 md:py-24 max-w-6xl">
+          <div className="relative container mx-auto px-6 py-16 md:py-24 max-w-6xl">
             <Badge variant="secondary" className="mb-4 bg-primary-foreground/10 text-primary-foreground border-primary-foreground/20">
               Nieuws
             </Badge>
@@ -320,7 +320,7 @@ const Nieuws = () => {
       <section className="relative overflow-hidden bg-gradient-hero text-primary-foreground">
         <div className="hero-decor" aria-hidden />
         <div className="hero-rule" aria-hidden />
-        <div className="container mx-auto px-6 py-16 md:py-24 max-w-6xl">
+        <div className="relative container mx-auto px-6 py-16 md:py-24 max-w-6xl">
           <Badge variant="secondary" className="mb-4 bg-primary-foreground/10 text-primary-foreground border-primary-foreground/20">
             Nieuws
           </Badge>
