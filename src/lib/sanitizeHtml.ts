@@ -2,7 +2,7 @@ import DOMPurify from 'dompurify';
 
 const toEmbedSrc = (src: string): string => {
   try {
-    const url = new URL(src, window.location.origin);
+    const url = new URL(src, "https://www.dmon.be");
     const host = url.hostname.replace(/^www\./, '');
 
     // youtu.be/<id>
