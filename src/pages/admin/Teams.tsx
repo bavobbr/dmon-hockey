@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Plus, Edit, Trash2 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link } from '@/lib/router-compat';
 import { useToast } from '@/hooks/use-toast';
 
 interface Team {
@@ -31,7 +31,14 @@ const Teams = () => {
         .order('created_at', { ascending: false });
 
       if (error) throw error;
-      setTeams(data || []);
+      setTeams((data ?? []).map((t) => ({
+        ...t,
+        division: t.division ?? '',
+        age_group: t.age_group ?? '',
+        description: t.description ?? '',
+        season: t.season ?? '',
+        active: t.active ?? true,
+      })));
     } catch (error) {
       console.error('Error fetching teams:', error);
       toast({

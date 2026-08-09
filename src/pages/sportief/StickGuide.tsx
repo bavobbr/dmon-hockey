@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Zap, Ruler, Target, Users, ShoppingBag, ArrowRight, Mail } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link } from "@/lib/router-compat";
 
 const sections = [
   { id: "factoren", label: "Factoren" },
@@ -33,7 +33,7 @@ const StickGuide = () => {
         />
         <div className="container mx-auto px-4 py-16 lg:py-24 relative">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-sm mb-6">
+            <div className="inline-flex items-center rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-xs mb-6">
               Materiaalgids
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">De juiste stick kiezen</h1>
@@ -289,7 +289,7 @@ const StickGuide = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/20 opacity-40" />
               <div className="relative flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
                 <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary-foreground/15 backdrop-blur-sm">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary-foreground/15 backdrop-blur-xs">
                     <ShoppingBag className="h-6 w-6" />
                   </div>
                   <div>

@@ -156,7 +156,7 @@ const ClubSponsors = () => {
                               className="max-h-20 max-w-full object-contain"
                             />
                           ) : (
-                            <div className="h-20 w-full bg-muted/50 rounded flex items-center justify-center">
+                            <div className="h-20 w-full bg-muted/50 rounded-[0.25rem] flex items-center justify-center">
                               <span className="font-display font-semibold text-muted-foreground">{sponsor.name}</span>
                             </div>
                           )}

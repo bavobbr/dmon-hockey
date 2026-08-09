@@ -356,21 +356,21 @@ const IndoorRules = () => {
                   <tbody>
                     <tr>
                       <td className="border border-border p-3">
-                        <span className="inline-block px-3 py-1 rounded bg-green-500 text-white font-semibold">Groene Kaart</span>
+                        <span className="inline-block px-3 py-1 rounded-[0.25rem] bg-green-500 text-white font-semibold">Groene Kaart</span>
                       </td>
                       <td className="border border-border p-3 text-sm">Een waarschuwing voor een lichte overtreding.</td>
                       <td className="border border-border p-3 text-sm">1 minuut tijdelijke uitsluiting. Het team speelt met een speler minder.</td>
                     </tr>
                     <tr>
                       <td className="border border-border p-3">
-                        <span className="inline-block px-3 py-1 rounded bg-yellow-400 text-black font-semibold">Gele Kaart</span>
+                        <span className="inline-block px-3 py-1 rounded-[0.25rem] bg-yellow-400 text-black font-semibold">Gele Kaart</span>
                       </td>
                       <td className="border border-border p-3 text-sm">Een zwaardere straf voor herhaalde of ernstigere overtredingen.</td>
                       <td className="border border-border p-3 text-sm">Minimaal 2 minuten tijdelijke uitsluiting. Het team speelt met een speler minder.</td>
                     </tr>
                     <tr>
                       <td className="border border-border p-3">
-                        <span className="inline-block px-3 py-1 rounded bg-red-600 text-white font-semibold">Rode Kaart</span>
+                        <span className="inline-block px-3 py-1 rounded-[0.25rem] bg-red-600 text-white font-semibold">Rode Kaart</span>
                       </td>
                       <td className="border border-border p-3 text-sm">Voor een zeer ernstige overtreding.</td>
                       <td className="border border-border p-3 text-sm">Permanente uitsluiting voor de rest van de wedstrijd. Het team speelt de rest van de wedstrijd met een speler minder.</td>

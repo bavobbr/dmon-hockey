@@ -15,9 +15,9 @@ const categorize = (team: { age_group?: string | null; name: string }) => {
   if (/indoor|zaal/.test(src)) return "Indoor";
   if (/heren|gents|\bmen\b/.test(src)) return "Heren";
   if (/dames|ladies|women/.test(src)) return "Dames";
-  const uMatch = src.match(/u\s?(\d{1,2})/);
-  if (uMatch) {
-    const n = parseInt(uMatch[1], 10);
+  const uDigits = src.match(/u\s?(\d{1,2})/)?.[1];
+  if (uDigits) {
+    const n = parseInt(uDigits, 10);
     if (n <= 12) return "Jeugd U6–U12";
     if (n <= 19) return "Jeugd U14–U19";
   }
@@ -68,7 +68,7 @@ const ClubTeams = () => {
         />
         <div className="container mx-auto px-4 py-16 lg:py-24 relative">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-sm">
+            <div className="inline-flex items-center gap-2 rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-xs">
               <Sparkles className="h-3.5 w-3.5" />
               Seizoen {teams?.[0]?.season ?? "2025–2026"}
             </div>

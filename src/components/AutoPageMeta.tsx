@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation } from "@/lib/router-compat";
 import PageMeta from "./PageMeta";
 import { PAGE_META } from "@/config/pageMeta";
 

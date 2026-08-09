@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams } from "@/lib/router-compat";
 import { supabase } from "@/integrations/supabase/client";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -45,9 +45,9 @@ const VacatureDetail = () => {
     return (
       <div className="container mx-auto px-4 py-16 max-w-3xl">
         <div className="animate-pulse space-y-4">
-          <div className="h-6 bg-muted rounded w-24" />
-          <div className="h-10 bg-muted rounded w-3/4" />
-          <div className="h-64 bg-muted rounded" />
+          <div className="h-6 bg-muted rounded-[0.25rem] w-24" />
+          <div className="h-10 bg-muted rounded-[0.25rem] w-3/4" />
+          <div className="h-64 bg-muted rounded-[0.25rem]" />
         </div>
       </div>
     );

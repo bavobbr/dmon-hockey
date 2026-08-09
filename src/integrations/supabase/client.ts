@@ -5,11 +5,11 @@ import type { Database } from './types';
 // Read from Vite env vars to support local dev and Vercel deployments.
 // Falls back to the repo's current Supabase project so no extra setup is required.
 const SUPABASE_URL = (
-  (import.meta.env.VITE_SUPABASE_URL as string | undefined) ??
+  (import.meta.env['VITE_SUPABASE_URL'] as string | undefined) ??
   'https://rtvcsywkkcgakfzsuxgz.supabase.co'
 );
 const SUPABASE_PUBLISHABLE_KEY = (
-  (import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string | undefined) ??
+  (import.meta.env['VITE_SUPABASE_PUBLISHABLE_KEY'] as string | undefined) ??
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ0dmNzeXdra2NnYWtmenN1eGd6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUyNjM5OTcsImV4cCI6MjA3MDgzOTk5N30.qYNlvhXeUI0IVEu2XMbAPVVcdpHCMSugiS-fhEFkHlk'
 );
 
@@ -21,7 +21,7 @@ export const supabase = createClient<Database>(
   SUPABASE_PUBLISHABLE_KEY,
   {
     auth: {
-      storage: localStorage,
+      storage: typeof window !== "undefined" ? window.localStorage : undefined,
       persistSession: true,
       autoRefreshToken: true,
     },

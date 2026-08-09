@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Plus, Edit, Trash2, Mail, Phone } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link } from '@/lib/router-compat';
 import { useToast } from '@/hooks/use-toast';
 
 interface BoardMember {
@@ -33,7 +33,15 @@ const BoardMembers = () => {
         .order('order_index', { ascending: true });
 
       if (error) throw error;
-      setBoardMembers(data || []);
+      setBoardMembers((data ?? []).map((m) => ({
+        ...m,
+        bio: m.bio ?? '',
+        photo_url: m.photo_url ?? '',
+        email: m.email ?? '',
+        phone: m.phone ?? '',
+        order_index: m.order_index ?? 0,
+        active: m.active ?? true,
+      })));
     } catch (error) {
       console.error('Error fetching board members:', error);
       toast({

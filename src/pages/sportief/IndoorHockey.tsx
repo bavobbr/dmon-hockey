@@ -15,7 +15,7 @@ import {
   Shield,
   Mail,
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link } from "@/lib/router-compat";
 
 const subNavLinks = [
   { href: "#overzicht", label: "Overzicht" },
@@ -99,7 +99,7 @@ const IndoorHockey = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/20 opacity-30" />
         <div className="container relative mx-auto px-4 py-20 lg:py-28">
           <div className="max-w-3xl">
-            <div className="mb-6 inline-flex items-center rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-sm">
+            <div className="mb-6 inline-flex items-center rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-xs">
               Seizoen 2025-2026
             </div>
             <h1 className="mb-6 text-4xl font-bold tracking-tight md:text-6xl">
