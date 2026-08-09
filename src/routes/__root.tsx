@@ -8,7 +8,6 @@ import {
   createRootRouteWithContext,
   redirect,
 } from "@tanstack/react-router";
-import { HelmetProvider } from "react-helmet-async";
 import { Menu } from "lucide-react";
 import { Analytics } from "@vercel/analytics/react";
 
@@ -18,7 +17,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { SidebarProvider, SidebarTrigger, useSidebar } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 import { AppSidebar } from "@/components/AppSidebar";
-import AutoPageMeta from "@/components/AutoPageMeta";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { AuthProvider } from "@/hooks/useAuth";
 import NotFound from "@/pages/NotFound";
@@ -145,13 +143,11 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <HelmetProvider>
         <AuthProvider>
           <TooltipProvider>
             <Toaster />
             <Sonner />
             <ScrollToTop />
-            <AutoPageMeta />
             <SidebarProvider
               defaultOpen
               style={
@@ -171,7 +167,6 @@ function RootComponent() {
             <Analytics />
           </TooltipProvider>
         </AuthProvider>
-      </HelmetProvider>
     </QueryClientProvider>
   );
 }
