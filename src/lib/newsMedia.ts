@@ -14,11 +14,10 @@ export function extractMedia(html: string): NewsMedia | null {
   if (!html) return null;
 
   // Look for an iframe first (video embeds).
-  const iframeMatch = html.match(/<iframe[^>]+src=["']([^"']+)["']/i);
-  if (iframeMatch) {
-    const idMatch = iframeMatch[1].match(YT_ID_RE);
-    if (idMatch) {
-      const videoId = idMatch[1];
+  const iframeSrc = html.match(/<iframe[^>]+src=["']([^"']+)["']/i)?.[1];
+  if (iframeSrc) {
+    const videoId = iframeSrc.match(YT_ID_RE)?.[1];
+    if (videoId) {
       return {
         type: 'video',
         videoId,
@@ -28,9 +27,9 @@ export function extractMedia(html: string): NewsMedia | null {
   }
 
   // Fallback: first inline image.
-  const imgMatch = html.match(/<img[^>]+src=["']([^"']+)["']/i);
-  if (imgMatch) {
-    return { type: 'image', thumbnail: imgMatch[1] };
+  const imgSrc = html.match(/<img[^>]+src=["']([^"']+)["']/i)?.[1];
+  if (imgSrc) {
+    return { type: 'image', thumbnail: imgSrc };
   }
 
   return null;

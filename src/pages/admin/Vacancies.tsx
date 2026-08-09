@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Plus, Edit, Trash2, Eye, EyeOff, ArrowUp, ArrowDown } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link } from '@/lib/router-compat';
 import { useToast } from '@/hooks/use-toast';
 import { VACANCY_CATEGORY_LABELS, VACANCY_CATEGORY_BADGE, type VacancyCategory } from '@/lib/vacancies';
 
@@ -71,6 +71,7 @@ const Vacancies = () => {
     if (newIndex < 0 || newIndex >= vacancies.length) return;
     const a = vacancies[index];
     const b = vacancies[newIndex];
+    if (!a || !b) return;
     const [orderA, orderB] = [a.sort_order, b.sort_order];
     // Als beide gelijk zijn, forceer een verschil
     const newA = orderA === orderB ? orderB + (dir === -1 ? -1 : 1) : orderB;

@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Plus, Edit, Trash2, Eye } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link } from '@/lib/router-compat';
 import { useToast } from '@/hooks/use-toast';
 
 interface Announcement {
@@ -33,7 +33,12 @@ const Announcements = () => {
         .order('created_at', { ascending: false });
 
       if (error) throw error;
-      setAnnouncements(data || []);
+      setAnnouncements((data ?? []).map((a) => ({
+        ...a,
+        excerpt: a.excerpt ?? '',
+        featured: a.featured ?? false,
+        published: a.published ?? true,
+      })));
     } catch (error) {
       console.error('Error fetching announcements:', error);
       toast({

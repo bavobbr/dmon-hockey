@@ -84,7 +84,7 @@ const galleryImages = [
 function distributeToColumns(images: typeof galleryImages, columnCount: number) {
   const columns: (typeof galleryImages)[] = Array.from({ length: columnCount }, () => []);
   images.forEach((img, i) => {
-    columns[i % columnCount].push(img);
+    columns[i % columnCount]?.push(img);
   });
   return columns;
 }
@@ -265,8 +265,8 @@ const Sfeer = () => {
               )}
 
               <img
-                src={galleryImages[selectedImage].src}
-                alt={galleryImages[selectedImage].alt}
+                src={galleryImages[selectedImage]?.src ?? ''}
+                alt={galleryImages[selectedImage]?.alt ?? ''}
                 className="w-full h-auto max-h-[85vh] object-contain"
               />
 

@@ -67,7 +67,7 @@ const ClubValues = () => {
         />
         <div className="container relative mx-auto px-4 py-16 lg:py-24">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-sm">
+            <div className="inline-flex items-center gap-2 rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-xs">
               <Sparkles className="h-3.5 w-3.5" />
               Wie we zijn
             </div>

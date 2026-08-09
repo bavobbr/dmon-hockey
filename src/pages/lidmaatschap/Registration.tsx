@@ -28,7 +28,7 @@ const Registration = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/20 opacity-30" />
         <div className="container relative mx-auto px-4 py-20 lg:py-28">
           <div className="max-w-3xl">
-            <span className="inline-flex items-center rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-sm">
+            <span className="inline-flex items-center rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-xs">
               Word lid
             </span>
             <h1 className="mt-6 text-4xl font-bold tracking-tight md:text-6xl">
@@ -58,15 +58,15 @@ const Registration = () => {
               </Button>
             </div>
             <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3">
-              <div className="rounded-xl bg-primary-foreground/10 p-4 backdrop-blur-sm">
+              <div className="rounded-xl bg-primary-foreground/10 p-4 backdrop-blur-xs">
                 <div className="text-2xl font-bold">3</div>
                 <div className="text-sm text-primary-foreground/75">Eenvoudige stappen</div>
               </div>
-              <div className="rounded-xl bg-primary-foreground/10 p-4 backdrop-blur-sm">
+              <div className="rounded-xl bg-primary-foreground/10 p-4 backdrop-blur-xs">
                 <div className="text-2xl font-bold">~5 min</div>
                 <div className="text-sm text-primary-foreground/75">Invultijd</div>
               </div>
-              <div className="rounded-xl bg-primary-foreground/10 p-4 backdrop-blur-sm col-span-2 sm:col-span-1">
+              <div className="rounded-xl bg-primary-foreground/10 p-4 backdrop-blur-xs col-span-2 sm:col-span-1">
                 <div className="text-2xl font-bold">VHL</div>
                 <div className="text-sm text-primary-foreground/75">Aansluiting inbegrepen</div>
               </div>

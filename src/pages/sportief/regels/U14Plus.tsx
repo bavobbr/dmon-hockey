@@ -148,7 +148,7 @@ const U14PlusRules = () => {
                     scrolling="no" 
                     style={{border: "1px solid #CCC", borderWidth: "1px", marginBottom: "5px", maxWidth: "100%"}}
                     allowFullScreen
-                    className="rounded"
+                    className="rounded-[0.25rem]"
                   />
                 </div>
                 <div className="text-sm text-muted-foreground mt-2">
@@ -203,7 +203,7 @@ const U14PlusRules = () => {
                     frameBorder={0} 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                     allowFullScreen
-                    className="rounded"
+                    className="rounded-[0.25rem]"
                   />
                 </div>
                 <p className="text-sm text-muted-foreground">
@@ -309,7 +309,7 @@ const U14PlusRules = () => {
                     frameBorder={0} 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                     allowFullScreen
-                    className="rounded"
+                    className="rounded-[0.25rem]"
                   />
                 </div>
                 <p className="text-sm text-muted-foreground mt-2">

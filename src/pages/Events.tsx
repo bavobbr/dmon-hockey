@@ -6,7 +6,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Calendar, CalendarDays, Filter, Mail, Users } from "lucide-react";
 import { format, isSameDay } from "date-fns";
 import { nl } from "date-fns/locale";
-import { Link } from "react-router-dom";
+import { Link } from "@/lib/router-compat";
 import { EventsPageJsonLd } from "@/components/JsonLd";
 import {
   TwizzitEvent,
@@ -185,10 +185,10 @@ const Events = () => {
               <Card key={i} className="animate-pulse">
                 <CardContent className="p-4">
                   <div className="flex gap-4">
-                    <div className="w-16 h-12 bg-muted rounded" />
+                    <div className="w-16 h-12 bg-muted rounded-[0.25rem]" />
                     <div className="flex-1 space-y-2">
-                      <div className="h-4 bg-muted rounded w-3/4" />
-                      <div className="h-3 bg-muted rounded w-1/2" />
+                      <div className="h-4 bg-muted rounded-[0.25rem] w-3/4" />
+                      <div className="h-3 bg-muted rounded-[0.25rem] w-1/2" />
                     </div>
                   </div>
                 </CardContent>

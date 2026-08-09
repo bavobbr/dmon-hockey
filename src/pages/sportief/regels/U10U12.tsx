@@ -128,7 +128,7 @@ const U10U12Rules = () => {
                     frameBorder="0"
                     allow="autoplay; fullscreen; encrypted-media"
                     title="Start To Hockey - Spelregels"
-                    className="rounded"
+                    className="rounded-[0.25rem]"
                   ></iframe>
                 </div>
                 <p className="text-sm text-muted-foreground mb-2">
@@ -196,7 +196,7 @@ const U10U12Rules = () => {
                       frameBorder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
-                      className="rounded"
+                      className="rounded-[0.25rem]"
                     ></iframe>
                   </div>
                   

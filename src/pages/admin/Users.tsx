@@ -21,7 +21,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Navigate } from 'react-router-dom';
+import { Navigate } from '@/lib/router-compat';
 
 interface UserProfile {
   id: string;
