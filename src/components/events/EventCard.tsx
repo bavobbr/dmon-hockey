@@ -121,7 +121,7 @@ const EventCard = ({ event }: EventCardProps) => {
       {/* Score */}
       {event.score && (
         <div className="flex-shrink-0 flex items-center pr-3">
-          <span className="font-mono font-bold text-sm bg-foreground text-background px-2 py-1 rounded">
+          <span className="font-mono font-bold text-sm bg-foreground text-background px-2 py-1 rounded-[0.25rem]">
             {event.score}
           </span>
         </div>

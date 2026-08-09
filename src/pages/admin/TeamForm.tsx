@@ -7,7 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Switch } from '@/components/ui/switch';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from '@/lib/router-compat';
 import { useToast } from '@/hooks/use-toast';
 
 interface TeamFormData {
@@ -58,7 +58,7 @@ const TeamForm = () => {
         season: data.season || '',
         coach: data.coach || '',
         team_manager: data.team_manager || '',
-        active: data.active,
+        active: data.active ?? true,
       });
     } catch (error) {
       console.error('Error fetching team:', error);

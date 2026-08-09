@@ -6,7 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Switch } from '@/components/ui/switch';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from '@/lib/router-compat';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 
@@ -54,7 +54,7 @@ const SponsorForm = () => {
         website_url: data.website_url || '',
         description: data.description || '',
         tier: data.tier as 'diamond' | 'gold' | 'silver' | 'bronze' | 'materiaal_kledij' | 'woodstick' | 'sympathie',
-        active: data.active,
+        active: data.active ?? true,
       });
     } catch (error) {
       console.error('Error fetching sponsor:', error);
@@ -218,7 +218,7 @@ const SponsorForm = () => {
                   <img 
                     src={`${supabase.storage.from('sponsor-logos').getPublicUrl(formData.logo_path).data.publicUrl}`}
                     alt="Current logo"
-                    className="mt-2 h-16 object-contain rounded border"
+                    className="mt-2 h-16 object-contain rounded-[0.25rem] border"
                   />
                 </div>
               )}

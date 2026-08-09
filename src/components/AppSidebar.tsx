@@ -25,7 +25,7 @@ import {
 } from "lucide-react";
 
 
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "@/lib/router-compat";
 import { useEffect, useState, useMemo } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useWindowHeight } from "@/hooks/use-window-height";
@@ -169,8 +169,9 @@ export function AppSidebar() {
       const shouldAutoExpand = priorityIndex !== -1 && priorityIndex < autoExpandCount;
 
       // Priority: manual override > active route > auto-expand
-      if (manualOverrides[group.title] !== undefined) {
-        result[group.title] = manualOverrides[group.title];
+      const override = manualOverrides[group.title];
+      if (override !== undefined) {
+        result[group.title] = override;
       } else if (isActiveRoute) {
         result[group.title] = true;
       } else {
@@ -198,6 +199,7 @@ export function AppSidebar() {
       }, 100);
       return () => clearTimeout(timer);
     }
+    return undefined;
   }, [currentPath, isMobile, setOpenMobile]);
 
   // Reset manual overrides when route changes (user navigates to new section)
@@ -232,7 +234,7 @@ export function AppSidebar() {
         {/* Logo Header */}
         <div className="border-b border-sidebar-border p-4">
           <div className="flex items-center gap-3">
-            <div className="bg-white rounded-lg p-2 shadow-sm flex-shrink-0">
+            <div className="bg-white rounded-lg p-2 shadow-xs flex-shrink-0">
               <img 
                 src="/lovable-uploads/03104bbc-f9de-44a2-a8b0-aedb91fd1c6c.png" 
                 alt="D-mon Hockey Club Logo" 
@@ -349,7 +351,6 @@ export function AppSidebar() {
                     <SidebarMenuButton asChild>
                        <NavLink
                          to={item.url}
-                         end
                          onClick={handleMobileNavClick}
                          className={`${getNavCls} flex items-center gap-2 w-full min-h-[2.5rem]`}
                        >

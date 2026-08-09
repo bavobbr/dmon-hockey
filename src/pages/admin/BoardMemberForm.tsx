@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Switch } from '@/components/ui/switch';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from '@/lib/router-compat';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 
@@ -56,8 +56,8 @@ const BoardMemberForm = () => {
         photo_url: data.photo_url || '',
         email: data.email || '',
         phone: data.phone || '',
-        order_index: data.order_index,
-        active: data.active,
+        order_index: data.order_index ?? 0,
+        active: data.active ?? true,
       });
     } catch (error) {
       console.error('Error fetching board member:', error);

@@ -69,7 +69,7 @@ const HeroCard = ({ announcement }: { announcement: Announcement }) => {
                 Hoofdartikel
               </Badge>
               {media?.type === 'video' && (
-                <Badge className="bg-white/15 text-white border-0 backdrop-blur-sm uppercase tracking-wider text-[10px] font-bold gap-1">
+                <Badge className="bg-white/15 text-white border-0 backdrop-blur-xs uppercase tracking-wider text-[10px] font-bold gap-1">
                   <Icons.Play className="h-3 w-3" /> Video
                 </Badge>
               )}
@@ -159,7 +159,7 @@ const NewsCard = ({ announcement, index, eager }: { announcement: Announcement; 
                         strokeWidth={1.25}
                       />
                     </div>
-                    <Badge className="absolute top-3 right-3 z-10 bg-black/60 text-white border-0 backdrop-blur-sm uppercase tracking-wider text-[10px] font-bold gap-1">
+                    <Badge className="absolute top-3 right-3 z-10 bg-black/60 text-white border-0 backdrop-blur-xs uppercase tracking-wider text-[10px] font-bold gap-1">
                       <Icons.Play className="h-3 w-3" /> Video
                     </Badge>
                   </>
@@ -237,7 +237,13 @@ const Nieuws = () => {
           .eq('published', true)
           .order('created_at', { ascending: false });
         if (error) throw error;
-        setAnnouncements(data || []);
+        setAnnouncements((data ?? []).map((a) => ({
+          ...a,
+          excerpt: a.excerpt ?? '',
+          featured: a.featured ?? false,
+          published: a.published ?? true,
+          icon: a.icon ?? 'Newspaper',
+        })));
       } catch (err) {
         console.error('Error fetching announcements:', err);
         setError('Failed to load announcements');
@@ -258,8 +264,8 @@ const Nieuws = () => {
         <section className="relative overflow-hidden bg-gradient-hero">
           <div className="container mx-auto px-6 py-16 md:py-24 max-w-6xl">
             <div className="animate-pulse rounded-full bg-primary-foreground/20 h-6 w-24 mb-4" />
-            <div className="animate-pulse rounded bg-primary-foreground/20 h-12 md:h-16 w-3/4 mb-4" />
-            <div className="animate-pulse rounded bg-primary-foreground/10 h-6 w-1/2" />
+            <div className="animate-pulse rounded-[0.25rem] bg-primary-foreground/20 h-12 md:h-16 w-3/4 mb-4" />
+            <div className="animate-pulse rounded-[0.25rem] bg-primary-foreground/10 h-6 w-1/2" />
           </div>
         </section>
         <div className="container mx-auto px-6 py-10 max-w-6xl">

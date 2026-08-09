@@ -1,0 +1,9 @@
+{"functions": [
+  {"name": "bulk-insert-sponsors", "classification": "unknown", "signal": "no internal call sites; one-off admin utility; URL load-bearing until proven otherwise", "outcome": "left"},
+  {"name": "fetch-instagram-posts", "classification": "internal-only", "signal": "called from src/pages/Index.tsx; coupled to instagram_tokens cron flow and Supabase-held secrets; project memory warns deployed code may contain manual fixes not in repo", "outcome": "left"},
+  {"name": "get-cron-status", "classification": "internal-only", "signal": "called from src/pages/admin/Dashboard.tsx; reads cron.job with service role only available in Supabase", "outcome": "left"},
+  {"name": "get-mapbox-token", "classification": "internal-only", "signal": "called from src/components/ClubLocationMap.tsx; MAPBOX_PUBLIC_TOKEN secret provisioned in Supabase", "outcome": "left"},
+  {"name": "refresh-instagram-token", "classification": "cron target", "signal": "cron.schedule in supabase/migrations/20260112212409 (1st of month 3AM UTC)", "outcome": "left"},
+  {"name": "sync-twizzit-events", "classification": "cron target", "signal": "cron.schedule in supabase/migrations/20260112212409 (Sun 6AM UTC)", "outcome": "left"},
+  {"name": "sync-twizzit-teams", "classification": "unknown", "signal": "no internal call sites; sibling of cron-driven Twizzit sync; schedule may exist only in dashboard", "outcome": "left"}
+]}

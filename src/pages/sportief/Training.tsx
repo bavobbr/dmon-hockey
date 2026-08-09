@@ -14,7 +14,7 @@ import {
   Dumbbell,
   CalendarDays,
 } from "lucide-react";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink } from "@/lib/router-compat";
 
 const Training = () => {
   const trainingGroups = [
@@ -87,7 +87,7 @@ const Training = () => {
         />
         <div className="container mx-auto px-4 py-16 lg:py-24 relative">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-sm">
+            <div className="inline-flex items-center gap-2 rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-xs">
               <Sparkles className="h-3.5 w-3.5" />
               Seizoen 2026–2027
             </div>

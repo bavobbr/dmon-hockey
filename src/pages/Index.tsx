@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Link } from "react-router-dom";
+import { Link } from "@/lib/router-compat";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
@@ -108,7 +108,12 @@ const Index = () => {
         ascending: true
       });
       if (error) throw error;
-      setSponsors(data || []);
+      setSponsors((data ?? []).map((s) => ({
+        ...s,
+        logo_path: s.logo_path ?? '',
+        website_url: s.website_url ?? '',
+        tier: s.tier ?? '',
+      })));
     } catch (error) {
       console.error('Error fetching sponsors:', error);
     } finally {
@@ -144,7 +149,13 @@ const Index = () => {
         ascending: false
       }).limit(6);
       if (error) throw error;
-      setTeams(data || []);
+      setTeams((data ?? []).map((t) => ({
+        ...t,
+        division: t.division ?? '',
+        age_group: t.age_group ?? '',
+        description: t.description ?? '',
+        season: t.season ?? '',
+      })));
     } catch (error) {
       console.error('Error fetching teams:', error);
     } finally {
@@ -160,7 +171,12 @@ const Index = () => {
         ascending: false
       }).limit(3);
       if (error) throw error;
-      setAnnouncements(data || []);
+      setAnnouncements((data ?? []).map((a) => ({
+        ...a,
+        excerpt: a.excerpt ?? '',
+        featured: a.featured ?? false,
+        published: a.published ?? true,
+      })));
     } catch (error) {
       console.error('Error fetching announcements:', error);
     } finally {
@@ -268,7 +284,7 @@ const Index = () => {
                       size="lg"
                       variant="outline"
                       onClick={handleSignOut}
-                      className="border-white/40 text-white bg-white/10 hover:bg-white/20 hover:text-white hover:border-white/60 backdrop-blur-sm"
+                      className="border-white/40 text-white bg-white/10 hover:bg-white/20 hover:text-white hover:border-white/60 backdrop-blur-xs"
                     >
                       Afmelden
                     </Button>
@@ -288,7 +304,7 @@ const Index = () => {
                     <Button
                       size="lg"
                       variant="outline"
-                      className="rounded-full px-8 py-4 bg-transparent border-2 border-accent/60 text-accent hover:bg-accent hover:text-accent-foreground hover:border-accent backdrop-blur-sm"
+                      className="rounded-full px-8 py-4 bg-transparent border-2 border-accent/60 text-accent hover:bg-accent hover:text-accent-foreground hover:border-accent backdrop-blur-xs"
                     >
                       Leden Login
                     </Button>
@@ -523,16 +539,16 @@ const Index = () => {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
               <div className="lg:col-span-8 animate-pulse">
                 <div className="aspect-[16/9] bg-muted rounded-lg mb-6" />
-                <div className="h-4 bg-muted rounded w-1/3 mb-4" />
-                <div className="h-8 bg-muted rounded w-3/4 mb-3" />
-                <div className="h-4 bg-muted rounded w-full" />
+                <div className="h-4 bg-muted rounded-[0.25rem] w-1/3 mb-4" />
+                <div className="h-8 bg-muted rounded-[0.25rem] w-3/4 mb-3" />
+                <div className="h-4 bg-muted rounded-[0.25rem] w-full" />
               </div>
               <div className="lg:col-span-4 flex flex-col gap-10 lg:border-l border-border lg:pl-10">
                 {[...Array(2)].map((_, i) => (
                   <div key={i} className="animate-pulse">
                     <div className="aspect-video bg-muted rounded-lg mb-4" />
-                    <div className="h-3 bg-muted rounded w-1/3 mb-2" />
-                    <div className="h-5 bg-muted rounded w-3/4" />
+                    <div className="h-3 bg-muted rounded-[0.25rem] w-1/3 mb-2" />
+                    <div className="h-5 bg-muted rounded-[0.25rem] w-3/4" />
                   </div>
                 ))}
               </div>
@@ -542,6 +558,7 @@ const Index = () => {
               {/* Featured Article */}
               {(() => {
                 const featured = announcements[0];
+                if (!featured) return null;
                 const media = extractMedia(featured.content);
                 return (
                   <Dialog key={featured.id}>
@@ -568,7 +585,7 @@ const Index = () => {
                                   strokeWidth={1.25}
                                 />
                               </div>
-                              <span className="absolute top-6 right-6 inline-flex items-center gap-1 bg-black/60 text-white px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded backdrop-blur-sm">
+                              <span className="absolute top-6 right-6 inline-flex items-center gap-1 bg-black/60 text-white px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded-[0.25rem] backdrop-blur-xs">
                                 <Play className="h-3 w-3" /> Video
                               </span>
                             </>
@@ -638,7 +655,7 @@ const Index = () => {
                                     strokeWidth={1.25}
                                   />
                                 </div>
-                                <span className="absolute top-3 right-3 inline-flex items-center gap-1 bg-black/60 text-white px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider rounded backdrop-blur-sm">
+                                <span className="absolute top-3 right-3 inline-flex items-center gap-1 bg-black/60 text-white px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider rounded-[0.25rem] backdrop-blur-xs">
                                   <Play className="h-3 w-3" /> Video
                                 </span>
                               </>
@@ -764,15 +781,15 @@ const Index = () => {
               </p>
             </div>
             <div className="lg:col-span-5 grid grid-cols-3 gap-4 md:gap-6">
-              <div className="text-center p-4 md:p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+              <div className="text-center p-4 md:p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xs">
                 <div className="font-display text-4xl md:text-5xl text-accent">2018</div>
                 <div className="text-xs md:text-sm uppercase tracking-wider text-primary-foreground/70 mt-2">Opgericht</div>
               </div>
-              <div className="text-center p-4 md:p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+              <div className="text-center p-4 md:p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xs">
                 <div className="font-display text-4xl md:text-5xl text-accent">30+</div>
                 <div className="text-xs md:text-sm uppercase tracking-wider text-primary-foreground/70 mt-2">Teams</div>
               </div>
-              <div className="text-center p-4 md:p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+              <div className="text-center p-4 md:p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xs">
                 <div className="font-display text-4xl md:text-5xl text-accent">350+</div>
                 <div className="text-xs md:text-sm uppercase tracking-wider text-primary-foreground/70 mt-2">Spelende leden</div>
               </div>
@@ -827,12 +844,12 @@ const Index = () => {
           {teamsLoading ? <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[...Array(6)].map((_, i) => <Card key={i} className="animate-pulse">
                   <CardHeader>
-                    <div className="h-4 bg-muted rounded w-3/4"></div>
-                    <div className="h-3 bg-muted rounded w-1/2"></div>
+                    <div className="h-4 bg-muted rounded-[0.25rem] w-3/4"></div>
+                    <div className="h-3 bg-muted rounded-[0.25rem] w-1/2"></div>
                   </CardHeader>
                   <CardContent>
-                    <div className="h-3 bg-muted rounded mb-2"></div>
-                    <div className="h-3 bg-muted rounded w-2/3"></div>
+                    <div className="h-3 bg-muted rounded-[0.25rem] mb-2"></div>
+                    <div className="h-3 bg-muted rounded-[0.25rem] w-2/3"></div>
                   </CardContent>
                 </Card>)}
             </div> : teams.length > 0 ? <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -880,8 +897,8 @@ const Index = () => {
               {[...Array(4)].map((_, i) => <Card key={i} className="animate-pulse">
                   <div className="aspect-square bg-muted rounded-t-lg"></div>
                   <CardContent className="p-4">
-                    <div className="h-3 bg-muted rounded mb-2"></div>
-                    <div className="h-3 bg-muted rounded w-2/3"></div>
+                    <div className="h-3 bg-muted rounded-[0.25rem] mb-2"></div>
+                    <div className="h-3 bg-muted rounded-[0.25rem] w-2/3"></div>
                   </CardContent>
                 </Card>)}
             </div> : instagramPosts.length > 0 ? <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

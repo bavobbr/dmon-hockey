@@ -126,7 +126,7 @@ export default function Socials() {
           />
           <div className="container mx-auto px-4 py-16 lg:py-24 relative">
             <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-sm">
+              <div className="inline-flex items-center gap-2 rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-xs">
                 <Instagram className="h-3.5 w-3.5" />
                 @dmon_hockey
               </div>
@@ -149,8 +149,8 @@ export default function Socials() {
                 <div className="h-64 bg-muted"></div>
                 <CardContent className="p-4">
                   <div className="space-y-2">
-                    <div className="h-4 bg-muted rounded w-3/4"></div>
-                    <div className="h-4 bg-muted rounded w-1/2"></div>
+                    <div className="h-4 bg-muted rounded-[0.25rem] w-3/4"></div>
+                    <div className="h-4 bg-muted rounded-[0.25rem] w-1/2"></div>
                   </div>
                 </CardContent>
               </Card>
@@ -175,7 +175,7 @@ export default function Socials() {
         />
         <div className="container mx-auto px-4 py-16 lg:py-24 relative">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-sm">
+            <div className="inline-flex items-center gap-2 rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-xs">
               <Instagram className="h-3.5 w-3.5" />
               @dmon_hockey
             </div>
@@ -269,7 +269,7 @@ export default function Socials() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <Badge
                   variant="secondary"
-                  className="absolute top-3 right-3 bg-background/90 backdrop-blur-sm"
+                  className="absolute top-3 right-3 bg-background/90 backdrop-blur-xs"
                 >
                   {formatDate(post.timestamp)}
                 </Badge>
@@ -313,7 +313,7 @@ export default function Socials() {
         <div className="bg-gradient-to-br from-primary to-primary-light">
           <div className="container mx-auto px-4 py-16 lg:py-20">
             <div className="mx-auto max-w-3xl text-center text-primary-foreground">
-              <div className="inline-flex items-center gap-2 rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-sm">
+              <div className="inline-flex items-center gap-2 rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-xs">
                 <Instagram className="h-3.5 w-3.5" />
                 Instagram
               </div>

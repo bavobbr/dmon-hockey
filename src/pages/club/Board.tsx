@@ -69,7 +69,7 @@ const Board = () => {
                 <div className="flex flex-col items-center text-center gap-4">
                   {member.photo_url ? (
                     <img
-                      src={member.photo_url}
+                      src={member.photo_url ?? ''}
                       alt={member.name}
                       loading="lazy"
                       className="w-24 h-24 object-cover rounded-full border"

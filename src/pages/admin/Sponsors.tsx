@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Plus, Edit, Trash2, ExternalLink } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link } from '@/lib/router-compat';
 import { useToast } from '@/hooks/use-toast';
 
 interface Sponsor {
@@ -168,7 +168,7 @@ const Sponsors = () => {
                       <img 
                         src={supabase.storage.from('sponsor-logos').getPublicUrl(sponsor.logo_path).data.publicUrl}
                         alt={sponsor.name}
-                        className="w-16 h-16 object-contain rounded border"
+                        className="w-16 h-16 object-contain rounded-[0.25rem] border"
                       />
                     )}
                     <div className="flex-1">

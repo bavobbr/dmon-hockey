@@ -7,7 +7,7 @@ import { formatInTimeZone } from "date-fns-tz/formatInTimeZone";
 import { fromZonedTime } from "date-fns-tz/fromZonedTime";
 import { MapPin, Clock, ChevronLeft, ChevronRight, Calendar } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
-import { Link } from "react-router-dom";
+import { Link } from "@/lib/router-compat";
 
 interface TwizzitEvent {
   id: string;
@@ -157,7 +157,7 @@ const UpcomingEvents = () => {
         <Button
           variant="outline"
           size="icon"
-          className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 h-9 w-9 rounded-full shadow-md bg-background/90 backdrop-blur-sm opacity-0 group-hover/carousel:opacity-100 transition-opacity"
+          className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 h-9 w-9 rounded-full shadow-md bg-background/90 backdrop-blur-xs opacity-0 group-hover/carousel:opacity-100 transition-opacity"
           onClick={() => emblaApi?.scrollPrev()}
         >
           <ChevronLeft className="h-4 w-4" />
@@ -167,7 +167,7 @@ const UpcomingEvents = () => {
         <Button
           variant="outline"
           size="icon"
-          className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 h-9 w-9 rounded-full shadow-md bg-background/90 backdrop-blur-sm opacity-0 group-hover/carousel:opacity-100 transition-opacity"
+          className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 h-9 w-9 rounded-full shadow-md bg-background/90 backdrop-blur-xs opacity-0 group-hover/carousel:opacity-100 transition-opacity"
           onClick={() => emblaApi?.scrollNext()}
         >
           <ChevronRight className="h-4 w-4" />
