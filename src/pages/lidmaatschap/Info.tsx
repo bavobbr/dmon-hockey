@@ -126,14 +126,8 @@ const MembershipInfo = () => {
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-gradient-hero text-primary-foreground">
-        <div
-          className="absolute inset-0 opacity-30"
-          aria-hidden
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 20% 30%, hsl(var(--primary-glow) / 0.6) 0%, transparent 50%), radial-gradient(circle at 80% 70%, hsl(var(--accent) / 0.4) 0%, transparent 50%)",
-          }}
-        />
+        <div className="hero-decor" aria-hidden />
+        <div className="hero-rule" aria-hidden />
         <div className="container mx-auto px-4 py-16 lg:py-24 relative">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-xs">

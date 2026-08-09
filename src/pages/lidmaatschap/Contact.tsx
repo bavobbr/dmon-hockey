@@ -16,7 +16,8 @@ const Contact = () => {
     <div>
       {/* ===== Hero ===== */}
       <section className="relative overflow-hidden bg-gradient-hero text-primary-foreground">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/20 opacity-30" />
+        <div className="hero-decor" aria-hidden />
+        <div className="hero-rule" aria-hidden />
         <div className="container relative mx-auto px-4 py-20 lg:py-28">
           <div className="max-w-3xl">
             <span className="inline-flex items-center rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-xs">
@@ -269,8 +270,8 @@ const Contact = () => {
       </section>
 
       {/* ===== Final CTA ===== */}
-      <section className="bg-gradient-hero py-16">
-        <div className="container mx-auto px-4">
+      <section className="overflow-hidden relative bg-gradient-hero py-16">
+        <div className="relative container mx-auto px-4">
           <div className="mx-auto max-w-3xl text-center">
             <Mail className="mx-auto h-10 w-10 text-primary-foreground" />
             <h2 className="mt-4 text-3xl font-bold text-primary-foreground md:text-4xl">
