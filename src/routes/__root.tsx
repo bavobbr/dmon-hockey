@@ -8,7 +8,6 @@ import {
   createRootRouteWithContext,
   redirect,
 } from "@tanstack/react-router";
-import { HelmetProvider } from "react-helmet-async";
 import { Menu } from "lucide-react";
 import { Analytics } from "@vercel/analytics/react";
 
@@ -18,7 +17,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { SidebarProvider, SidebarTrigger, useSidebar } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 import { AppSidebar } from "@/components/AppSidebar";
-import AutoPageMeta from "@/components/AutoPageMeta";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { AuthProvider } from "@/hooks/useAuth";
 import NotFound from "@/pages/NotFound";
@@ -58,19 +56,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Veldhockeyclub in Dendermonde, België. Sluit je aan voor trainingen, wedstrijden en de passie voor hockey.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://www.dmon.be/" },
-      { property: "og:image", content: "https://www.dmon.be/og-image.png" },
+      { property: "og:site_name", content: "D-mon Hockey Club" },
       { name: "twitter:card", content: "summary_large_image" },
-      {
-        name: "twitter:title",
-        content: "D-mon Hockey Club Dendermonde - Veldhockey in België",
-      },
-      {
-        name: "twitter:description",
-        content:
-          "Veldhockeyclub in Dendermonde, België. Sluit je aan voor trainingen, wedstrijden en de passie voor hockey.",
-      },
-      { name: "twitter:image", content: "https://www.dmon.be/og-image.png" },
+
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -155,13 +143,11 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <HelmetProvider>
         <AuthProvider>
           <TooltipProvider>
             <Toaster />
             <Sonner />
             <ScrollToTop />
-            <AutoPageMeta />
             <SidebarProvider
               defaultOpen
               style={
@@ -181,7 +167,6 @@ function RootComponent() {
             <Analytics />
           </TooltipProvider>
         </AuthProvider>
-      </HelmetProvider>
     </QueryClientProvider>
   );
 }

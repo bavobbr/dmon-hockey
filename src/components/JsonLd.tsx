@@ -1,16 +1,19 @@
-import { Helmet } from "react-helmet-async";
-
 interface JsonLdProps {
   data: Record<string, unknown>;
 }
 
 export function JsonLd({ data }: JsonLdProps) {
+  // Server-gerenderd script: leesbaar voor crawlers zonder JavaScript.
   return (
-    <Helmet>
-      <script type="application/ld+json">{JSON.stringify(data)}</script>
-    </Helmet>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(data).replace(/</g, "\\u003c"),
+      }}
+    />
   );
 }
+
 
 export function HomepageJsonLd() {
   const data = {
