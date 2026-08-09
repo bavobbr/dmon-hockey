@@ -258,7 +258,7 @@ export default function Socials() {
             >
               <div className="relative">
                 <img
-                  src={post.media_url}
+                  src={post.thumbnail_url || post.media_url}
                   alt={
                     post.caption
                       ? post.caption.substring(0, 120)
