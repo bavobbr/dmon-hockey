@@ -84,6 +84,7 @@ serve(async (req) => {
         id: string;
         caption?: string;
         media_url: string;
+        thumbnail_url?: string;
         media_type: string;
         timestamp: string;
         permalink: string;
