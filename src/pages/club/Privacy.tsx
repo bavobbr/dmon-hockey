@@ -19,7 +19,9 @@ const Privacy = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero */}
-      <section className="bg-gradient-hero text-primary-foreground">
+      <section className="overflow-hidden relative bg-gradient-hero text-primary-foreground">
+        <div className="hero-decor" aria-hidden />
+        <div className="hero-rule" aria-hidden />
         <div className="container mx-auto px-6 py-20 lg:py-28">
           <div className="max-w-3xl">
             <Badge variant="secondary" className="mb-6 bg-white/15 text-primary-foreground border-white/20 hover:bg-white/20">

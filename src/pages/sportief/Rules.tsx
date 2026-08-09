@@ -63,6 +63,8 @@ const Rules = () => {
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-gradient-hero text-primary-foreground">
+        <div className="hero-decor" aria-hidden />
+        <div className="hero-rule" aria-hidden />
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/20 opacity-30" />
         <div className="container relative mx-auto px-4 py-20 lg:py-28">
           <div className="max-w-3xl">

@@ -15,6 +15,8 @@ const Insurance = () => {
     <div>
       {/* ===== Hero ===== */}
       <section className="relative overflow-hidden bg-gradient-hero text-primary-foreground">
+        <div className="hero-decor" aria-hidden />
+        <div className="hero-rule" aria-hidden />
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/20 opacity-30" />
         <div className="container relative mx-auto px-4 py-20 lg:py-28">
           <div className="max-w-3xl">
@@ -338,7 +340,9 @@ const Insurance = () => {
       </section>
 
       {/* ===== Final CTA ===== */}
-      <section className="bg-gradient-hero py-16">
+      <section className="overflow-hidden relative bg-gradient-hero py-16">
+        <div className="hero-decor" aria-hidden />
+        <div className="hero-rule" aria-hidden />
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-3xl text-center">
             <Shield className="mx-auto h-10 w-10 text-primary-foreground" />
