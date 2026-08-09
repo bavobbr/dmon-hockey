@@ -3,6 +3,6 @@ import Auth from "@/pages/Auth";
 import { buildPageHead } from "@/lib/pageHead";
 
 export const Route = createFileRoute("/auth")({
-  head: () => buildPageHead("/auth"),
+  head: () => buildPageHead("/auth", { noindex: true }),
   component: Auth,
 });
