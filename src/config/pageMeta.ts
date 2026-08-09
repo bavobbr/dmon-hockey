@@ -23,6 +23,12 @@ export const PAGE_META: Record<string, { title: string; description: string }> =
     title: "Shop",
     description: "Bestel D-mon Hockey Club kledij en uitrusting via onze online shops.",
   },
+  "/vacatures": {
+    title: "Vacatures",
+    description:
+      "Word vrijwilliger bij D-mon Hockey Club Dendermonde. Bekijk de open vacatures in bestuur, werkgroepen en sportieve cel.",
+  },
+
   "/club/veld": {
     title: "Ons Veld",
     description: "Informatie over het hockeyveld van D-mon Hockey Club in Dendermonde. Locatie, faciliteiten en bereikbaarheid.",
