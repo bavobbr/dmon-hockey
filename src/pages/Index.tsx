@@ -247,7 +247,7 @@ const Index = () => {
               <div className="mb-8 p-1.5 bg-white rounded-full shadow-2xl inline-block fade-in-up">
                 <img
                   src="/lovable-uploads/03104bbc-f9de-44a2-a8b0-aedb91fd1c6c.png"
-                  alt="D-mon Hockey Club logo"
+                  alt="Clublogo van D-mon Hockey Club — veldhockeyclub in Dendermonde"
                   className="w-20 h-20 md:w-24 md:h-24 object-contain rounded-full"
                 />
               </div>
@@ -261,6 +261,9 @@ const Index = () => {
                 <span className="relative inline-block">
                   Hockey Club
                   <span className="absolute -bottom-1 md:-bottom-2 left-0 w-full h-1.5 md:h-2 bg-secondary/90" aria-hidden="true" />
+                </span>
+                <span className="block mt-3 md:mt-5 text-lg md:text-2xl lg:text-3xl font-semibold normal-case tracking-[0.2em] text-accent">
+                  Veldhockey in Dendermonde
                 </span>
               </h1>
 
