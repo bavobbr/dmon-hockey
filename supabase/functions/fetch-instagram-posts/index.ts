@@ -66,7 +66,7 @@ serve(async (req) => {
     
     // Fetch media from Instagram Graph API
     const response = await fetch(
-      `https://graph.instagram.com/me/media?fields=id,caption,media_url,media_type,timestamp,permalink&limit=${limit}&access_token=${accessToken}`
+      `https://graph.instagram.com/me/media?fields=id,caption,media_url,thumbnail_url,media_type,timestamp,permalink&limit=${limit}&access_token=${accessToken}`
     );
 
     if (!response.ok) {
@@ -84,6 +84,7 @@ serve(async (req) => {
         id: string;
         caption?: string;
         media_url: string;
+        thumbnail_url?: string;
         media_type: string;
         timestamp: string;
         permalink: string;
@@ -97,6 +98,7 @@ serve(async (req) => {
       id: post.id,
       caption: post.caption ?? '',
       media_url: post.media_url,
+      thumbnail_url: post.thumbnail_url ?? null,
       media_type: post.media_type,
       timestamp: post.timestamp,
       permalink: post.permalink
