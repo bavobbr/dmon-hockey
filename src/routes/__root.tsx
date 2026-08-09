@@ -58,19 +58,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Veldhockeyclub in Dendermonde, België. Sluit je aan voor trainingen, wedstrijden en de passie voor hockey.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://www.dmon.be/" },
-      { property: "og:image", content: "https://www.dmon.be/og-image.png" },
+      { property: "og:site_name", content: "D-mon Hockey Club" },
       { name: "twitter:card", content: "summary_large_image" },
-      {
-        name: "twitter:title",
-        content: "D-mon Hockey Club Dendermonde - Veldhockey in België",
-      },
-      {
-        name: "twitter:description",
-        content:
-          "Veldhockeyclub in Dendermonde, België. Sluit je aan voor trainingen, wedstrijden en de passie voor hockey.",
-      },
-      { name: "twitter:image", content: "https://www.dmon.be/og-image.png" },
+
     ],
     links: [
       { rel: "stylesheet", href: appCss },
