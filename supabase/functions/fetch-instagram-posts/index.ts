@@ -97,6 +97,7 @@ serve(async (req) => {
       id: post.id,
       caption: post.caption ?? '',
       media_url: post.media_url,
+      thumbnail_url: post.thumbnail_url ?? null,
       media_type: post.media_type,
       timestamp: post.timestamp,
       permalink: post.permalink
