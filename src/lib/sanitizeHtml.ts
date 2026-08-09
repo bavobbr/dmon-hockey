@@ -35,11 +35,13 @@ const toEmbedSrc = (src: string): string => {
 
 // Rewrite iframe src to privacy-enhanced YouTube domain to avoid the
 // consent.youtube.com redirect that is blocked in some browsers.
-DOMPurify.addHook('uponSanitizeAttribute', (node, data) => {
-  if (data.attrName === 'src' && node.nodeName === 'IFRAME') {
-    data.attrValue = toEmbedSrc(data.attrValue);
-  }
-});
+if (typeof (DOMPurify as { addHook?: unknown }).addHook === "function") {
+  DOMPurify.addHook('uponSanitizeAttribute', (node, data) => {
+    if (data.attrName === 'src' && node.nodeName === 'IFRAME') {
+      data.attrValue = toEmbedSrc(data.attrValue);
+    }
+  });
+}
 
 // Allow safe YouTube/Vimeo embeds inserted via the rich text editor.
 export const sanitizeRichHtml = (html: string): string =>
