@@ -28,6 +28,12 @@
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://www.dmon.be/vacatures</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 
   <!-- Club -->
   <url>
