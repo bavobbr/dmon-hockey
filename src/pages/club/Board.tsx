@@ -70,7 +70,7 @@ const Board = () => {
                   {member.photo_url ? (
                     <img
                       src={member.photo_url ?? ''}
-                      alt={member.name}
+                      alt={member.name ?? ''}
                       loading="lazy"
                       className="w-24 h-24 object-cover rounded-full border"
                     />
