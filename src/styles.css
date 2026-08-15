@@ -137,9 +137,10 @@
 
   /* Gradients */
   --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
-  --gradient-hero: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+  --gradient-hero: linear-gradient(135deg, hsl(210 93% 16%) 0%, hsl(210 93% 22%) 50%, hsl(210 93% 12%) 100%);
   --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-light)));
   --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
+
 
   /* Animations */
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -241,38 +242,46 @@
   background-image: var(--gradient-subtle);
 }
 
-/* Shared hero decoration: club colours (blue / gold / red) + fine pinstripes */
+/* Shared hero decoration: deep blue gradient + soft red/gold edge diffusions + subtle pinstripes */
 @utility hero-decor {
   position: absolute;
   inset: 0;
   pointer-events: none;
   background-image:
-    radial-gradient(circle at 16% 20%, hsl(var(--primary-glow) / 0.55) 0%, transparent 55%),
-    radial-gradient(circle at 84% 8%, hsl(var(--accent) / 0.4) 0%, transparent 52%),
-    radial-gradient(circle at 72% 96%, hsl(var(--secondary) / 0.32) 0%, transparent 55%),
-    repeating-linear-gradient(
-      115deg,
-      hsl(0 0% 100% / 0.05) 0px,
-      hsl(0 0% 100% / 0.05) 1px,
-      transparent 1px,
-      transparent 15px
-    );
+    /* Ultra-subtle pinstripes */
+    repeating-linear-gradient(45deg, hsl(0 0% 100% / 0.03) 0px, hsl(0 0% 100% / 0.03) 1px, transparent 1px, transparent 24px),
+    /* Soft red diffusion at top-right edge */
+    radial-gradient(circle at 90% 10%, hsl(var(--secondary) / 0.12) 0%, transparent 45%),
+    /* Soft gold diffusion at bottom-left edge */
+    radial-gradient(circle at 10% 95%, hsl(var(--accent) / 0.07) 0%, transparent 45%);
+
+  /* Thin gold accent line at the top — avoids a "sun" blob */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 5rem;
+    width: 8rem;
+    height: 2px;
+    background-image: linear-gradient(90deg, hsl(var(--accent) / 0.5), transparent);
+  }
 }
 
-/* Thin club-colour rule closing off a hero section */
+/* Subtle bottom rule for hero sections */
 @utility hero-rule {
   position: absolute;
   inset-inline: 0;
   bottom: 0;
-  height: 3px;
+  height: 2px;
   pointer-events: none;
   background-image: linear-gradient(
     90deg,
-    hsl(var(--primary-glow)) 0%,
-    hsl(var(--accent)) 45%,
-    hsl(var(--secondary)) 100%
+    transparent 0%,
+    hsl(var(--accent) / 0.35) 50%,
+    transparent 100%
   );
 }
+
 
 /* Preserve the v3 container behaviour (centered, 2rem padding) */
 @utility container {
