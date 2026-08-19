@@ -236,7 +236,7 @@ export function AppSidebar() {
           <div className="flex items-center gap-3">
             <div className="bg-white rounded-lg p-2 shadow-xs flex-shrink-0">
               <img 
-                src="/lovable-uploads/03104bbc-f9de-44a2-a8b0-aedb91fd1c6c.png" 
+                src="/dmon-logo.png" 
                 alt="Clublogo van D-mon Hockey Club — veldhockeyclub in Dendermonde" 
                 className="w-8 h-8 object-contain"
               />

@@ -22,7 +22,7 @@ export function HomepageJsonLd() {
     name: "D-mon Hockey Club",
     alternateName: "DMON Hockey",
     url: "https://www.dmon.be",
-    logo: "https://www.dmon.be/dman-hockey-logo.png",
+    logo: "https://www.dmon.be/dmon-logo.png",
     sport: "Field Hockey",
     description:
       "D-mon Hockey Club Dendermonde - Veldhockeyclub in België. Training, wedstrijden en de passie voor hockey.",
@@ -136,7 +136,7 @@ export function ContactPageJsonLd() {
     "@type": "SportsOrganization",
     name: "D-mon Hockey Club",
     url: "https://www.dmon.be",
-    logo: "https://www.dmon.be/dman-hockey-logo.png",
+    logo: "https://www.dmon.be/dmon-logo.png",
     email: "info@dmon.be",
     address: CLUB_ADDRESS,
     contactPoint: [
@@ -254,7 +254,7 @@ export function NewsPageJsonLd({
           name: "D-mon Hockey Club",
           logo: {
             "@type": "ImageObject",
-            url: "https://www.dmon.be/dman-hockey-logo.png",
+            url: "https://www.dmon.be/dmon-logo.png",
           },
         },
       },
