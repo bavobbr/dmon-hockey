@@ -246,7 +246,7 @@ const Index = () => {
             <div className="lg:col-span-9 flex flex-col items-start">
               <div className="mb-8 p-1.5 bg-white rounded-full shadow-2xl inline-block fade-in-up">
                 <img
-                  src="/lovable-uploads/03104bbc-f9de-44a2-a8b0-aedb91fd1c6c.png"
+                  src="/dmon-logo.png"
                   alt="Clublogo van D-mon Hockey Club — veldhockeyclub in Dendermonde"
                   className="w-20 h-20 md:w-24 md:h-24 object-contain rounded-full"
                 />

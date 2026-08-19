@@ -105,7 +105,7 @@ const Auth = () => {
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <img 
-            src="/dman-hockey-logo.png" 
+            src="/dmon-logo.png" 
             alt="D-Mon Hockey Club" 
             className="w-24 h-24 mx-auto mb-4 bg-background rounded-full p-2"
           />

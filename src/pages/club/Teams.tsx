@@ -8,7 +8,7 @@ import { Trophy, Users, Mail, Sparkles, ImageIcon } from "lucide-react";
 import { TeamsPageJsonLd } from "@/components/JsonLd";
 import { cn } from "@/lib/utils";
 
-const FALLBACK_IMG = "/lovable-uploads/03104bbc-f9de-44a2-a8b0-aedb91fd1c6c.png";
+const FALLBACK_IMG = "/dmon-logo.png";
 
 const categorize = (team: { age_group?: string | null; name: string }) => {
   const src = `${team.age_group ?? ""} ${team.name}`.toLowerCase();
