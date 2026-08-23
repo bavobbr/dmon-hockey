@@ -27,6 +27,7 @@ const AnnouncementForm = () => {
   const { id } = useParams();
   const isEditing = Boolean(id);
   const quillRef = useRef<any>(null);
+  const handleEditorReady = useCallback((q: unknown) => { quillRef.current = q; }, []);
 
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState('');
@@ -232,7 +233,7 @@ const AnnouncementForm = () => {
                   formats={formats}
                   placeholder="Write your announcement content here..."
                   className="h-[250px]"
-                  onEditorReady={(q) => { quillRef.current = q; }}
+                  onEditorReady={handleEditorReady}
                 />
               </div>
             </div>

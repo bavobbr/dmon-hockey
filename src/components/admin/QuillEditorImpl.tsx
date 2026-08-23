@@ -24,8 +24,23 @@ const QuillEditorImpl = ({
   const quillRef = useRef<ReactQuill>(null);
 
   useEffect(() => {
-    const editor = quillRef.current?.getEditor();
-    if (editor && onEditorReady) onEditorReady(editor);
+    if (!onEditorReady) return;
+    let frame = 0;
+    let attempts = 0;
+    const tryAttach = () => {
+      try {
+        const editor = quillRef.current?.getEditor();
+        if (editor) {
+          onEditorReady(editor);
+          return;
+        }
+      } catch {
+        // editor not instantiated yet — retry on the next frame
+      }
+      if (attempts++ < 30) frame = requestAnimationFrame(tryAttach);
+    };
+    tryAttach();
+    return () => cancelAnimationFrame(frame);
   }, [onEditorReady]);
 
   return (
