@@ -9,8 +9,7 @@ import { Switch } from '@/components/ui/switch';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useNavigate, useParams } from '@/lib/router-compat';
 import { useToast } from '@/hooks/use-toast';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import { RichTextEditor } from '@/components/admin/RichTextEditor';
 import { VACANCY_CATEGORY_LABELS, VACANCY_CATEGORY_OPTIONS, slugify, type VacancyCategory } from '@/lib/vacancies';
 
 const quillModules = {
@@ -166,8 +165,8 @@ const VacancyForm = () => {
             <div className="space-y-2">
               <Label>Inhoud *</Label>
               <div className="min-h-[350px]">
-                <ReactQuill value={content} onChange={setContent} modules={quillModules} formats={quillFormats}
-                  theme="snow" className="h-[300px]" placeholder="Wat ga je doen? / Wie zoeken we? / Wat bieden we?" />
+                <RichTextEditor value={content} onChange={setContent} modules={quillModules} formats={quillFormats}
+                  className="h-[300px]" placeholder="Wat ga je doen? / Wie zoeken we? / Wat bieden we?" />
               </div>
             </div>
 
