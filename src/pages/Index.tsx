@@ -89,12 +89,23 @@ const Index = () => {
   const [sponsorsLoading, setSponsorsLoading] = useState(true);
   const [instagramLoading, setInstagramLoading] = useState(true);
   const [vacancies, setVacancies] = useState<VacancyTeaser[]>([]);
+  const [heroImage, setHeroImage] = useState<string | null>(null);
+  const [heroLoaded, setHeroLoaded] = useState(false);
   useEffect(() => {
     fetchAnnouncements();
     fetchTeams();
     fetchSponsors();
     fetchInstagramPosts();
     fetchVacancies();
+  }, []);
+  // Kies na hydratie een willekeurige galerijfoto als hero-achtergrond.
+  useEffect(() => {
+    const paths = Object.keys(galleryModules);
+    if (paths.length === 0) return;
+    const randomPath = paths[Math.floor(Math.random() * paths.length)];
+    galleryModules[randomPath]().then((mod) => {
+      setHeroImage(mod.default);
+    });
   }, []);
   const fetchVacancies = async () => {
     const { data } = await supabase
