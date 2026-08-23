@@ -25,12 +25,22 @@ const QuillEditorImpl = ({
 
   useEffect(() => {
     if (!onEditorReady) return;
-    try {
-      const editor = quillRef.current?.getEditor();
-      if (editor) onEditorReady(editor);
-    } catch {
-      // editor not instantiated yet (e.g. StrictMode remount) — ignored
-    }
+    let frame = 0;
+    let attempts = 0;
+    const tryAttach = () => {
+      try {
+        const editor = quillRef.current?.getEditor();
+        if (editor) {
+          onEditorReady(editor);
+          return;
+        }
+      } catch {
+        // editor not instantiated yet — retry on the next frame
+      }
+      if (attempts++ < 30) frame = requestAnimationFrame(tryAttach);
+    };
+    tryAttach();
+    return () => cancelAnimationFrame(frame);
   }, [onEditorReady]);
 
   return (
