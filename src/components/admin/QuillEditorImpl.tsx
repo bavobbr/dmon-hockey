@@ -24,8 +24,13 @@ const QuillEditorImpl = ({
   const quillRef = useRef<ReactQuill>(null);
 
   useEffect(() => {
-    const editor = quillRef.current?.getEditor();
-    if (editor && onEditorReady) onEditorReady(editor);
+    if (!onEditorReady) return;
+    try {
+      const editor = quillRef.current?.getEditor();
+      if (editor) onEditorReady(editor);
+    } catch {
+      // editor not instantiated yet (e.g. StrictMode remount) — ignored
+    }
   }, [onEditorReady]);
 
   return (
