@@ -7,6 +7,7 @@ import { Link } from "@/lib/router-compat";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { cn } from "@/lib/utils";
 import { sanitizeRichHtml } from '@/lib/sanitizeHtml';
 import { extractMedia, excerptFromContent } from '@/lib/newsMedia';
 import UpcomingEvents from "@/components/UpcomingEvents";
@@ -19,7 +20,13 @@ import sfeerKidsCircle from "@/assets/gallery/kids-circle.png";
 import sfeerWaterFun from "@/assets/gallery/water-fun.png";
 import sfeerClubFamily from "@/assets/gallery/club-family-photo.png";
 
-import heroAction from "@/assets/hero-action.jpg";
+// Dynamische galerijafbeeldingen voor de hero-achtergrond.
+// Er wordt willekeurig één foto gekozen, zodat de homepage telkens een
+// ander sfeerbeeld toont.
+const galleryModules = import.meta.glob<{ default: string }>(
+  "@/assets/gallery/*.{png,jpg,jpeg,webp,avif}",
+  { eager: false }
+);
 interface Announcement {
   id: string;
   title: string;
@@ -82,12 +89,24 @@ const Index = () => {
   const [sponsorsLoading, setSponsorsLoading] = useState(true);
   const [instagramLoading, setInstagramLoading] = useState(true);
   const [vacancies, setVacancies] = useState<VacancyTeaser[]>([]);
+  const [heroImage, setHeroImage] = useState<string | null>(null);
+  const [heroLoaded, setHeroLoaded] = useState(false);
   useEffect(() => {
     fetchAnnouncements();
     fetchTeams();
     fetchSponsors();
     fetchInstagramPosts();
     fetchVacancies();
+  }, []);
+  // Kies na hydratie een willekeurige galerijfoto als hero-achtergrond.
+  useEffect(() => {
+    const entries = Object.entries(galleryModules) as [string, () => Promise<{ default: string }>][];
+    if (entries.length === 0) return;
+    const entry = entries[Math.floor(Math.random() * entries.length)];
+    if (!entry) return;
+    entry[1]().then((mod) => {
+      setHeroImage(mod.default);
+    });
   }, []);
   const fetchVacancies = async () => {
     const { data } = await supabase
@@ -213,16 +232,20 @@ const Index = () => {
       {/* Hero Section — Dynamic Editorial */}
       <section className="relative w-full px-0 pt-4 lg:px-6 lg:pt-8">
         <div className="relative w-full overflow-hidden bg-primary text-primary-foreground min-h-[560px] md:min-h-[640px] lg:min-h-[680px] lg:rounded-3xl shadow-elegant flex items-center">
-          {/* Layer 1: action photography */}
-          <img
-            src={heroAction}
-            alt="Veldhockey actie — D-mon Hockey Club"
-            width={1920}
-            height={1080}
-            fetchPriority="high"
-            decoding="async"
-            className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-luminosity pointer-events-none select-none"
-          />
+          {/* Layer 1: willekeurig sfeerbeeld uit de galerij */}
+          {heroImage && (
+            <img
+              src={heroImage}
+              alt="Sfeerbeeld van D-mon Hockey Club"
+              fetchPriority="high"
+              decoding="async"
+              onLoad={() => setHeroLoaded(true)}
+              className={cn(
+                "absolute inset-0 w-full h-full object-cover blur-[2px] mix-blend-luminosity pointer-events-none select-none transition-opacity duration-1000",
+                heroLoaded ? "opacity-40" : "opacity-0"
+              )}
+            />
+          )}
           {/* Layer 2: navy wash + radial highlight */}
           <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/70 to-primary/95 pointer-events-none" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,hsl(var(--primary-glow)/0.35),transparent_60%)] pointer-events-none" />
