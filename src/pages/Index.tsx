@@ -102,8 +102,9 @@ const Index = () => {
   useEffect(() => {
     const entries = Object.entries(galleryModules) as [string, () => Promise<{ default: string }>][];
     if (entries.length === 0) return;
-    const [, importFn] = entries[Math.floor(Math.random() * entries.length)];
-    importFn().then((mod) => {
+    const entry = entries[Math.floor(Math.random() * entries.length)];
+    if (!entry) return;
+    entry[1]().then((mod) => {
       setHeroImage(mod.default);
     });
   }, []);
