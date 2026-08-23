@@ -232,16 +232,20 @@ const Index = () => {
       {/* Hero Section — Dynamic Editorial */}
       <section className="relative w-full px-0 pt-4 lg:px-6 lg:pt-8">
         <div className="relative w-full overflow-hidden bg-primary text-primary-foreground min-h-[560px] md:min-h-[640px] lg:min-h-[680px] lg:rounded-3xl shadow-elegant flex items-center">
-          {/* Layer 1: action photography */}
-          <img
-            src={heroAction}
-            alt="Veldhockey actie — D-mon Hockey Club"
-            width={1920}
-            height={1080}
-            fetchPriority="high"
-            decoding="async"
-            className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-luminosity pointer-events-none select-none"
-          />
+          {/* Layer 1: willekeurig sfeerbeeld uit de galerij */}
+          {heroImage && (
+            <img
+              src={heroImage}
+              alt="Sfeerbeeld van D-mon Hockey Club"
+              fetchPriority="high"
+              decoding="async"
+              onLoad={() => setHeroLoaded(true)}
+              className={cn(
+                "absolute inset-0 w-full h-full object-cover blur-[2px] mix-blend-luminosity pointer-events-none select-none transition-opacity duration-1000",
+                heroLoaded ? "opacity-40" : "opacity-0"
+              )}
+            />
+          )}
           {/* Layer 2: navy wash + radial highlight */}
           <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/70 to-primary/95 pointer-events-none" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,hsl(var(--primary-glow)/0.35),transparent_60%)] pointer-events-none" />
