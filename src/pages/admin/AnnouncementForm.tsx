@@ -9,8 +9,7 @@ import { Label } from '@/components/ui/label';
 import { IconSelector } from '@/components/admin/IconSelector';
 import { useNavigate, useParams } from '@/lib/router-compat';
 import { useToast } from '@/hooks/use-toast';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import { RichTextEditor } from '@/components/admin/RichTextEditor';
 
 interface AnnouncementFormData {
   title: string;
@@ -27,7 +26,7 @@ const AnnouncementForm = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const isEditing = Boolean(id);
-  const quillRef = useRef<ReactQuill>(null);
+  const quillRef = useRef<any>(null);
 
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState('');
@@ -152,7 +151,7 @@ const AnnouncementForm = () => {
           .from('announcement-images')
           .getPublicUrl(data.path);
 
-        const quill = quillRef.current?.getEditor();
+        const quill = quillRef.current;
         if (quill) {
           const range = quill.getSelection();
           quill.insertEmbed(range?.index || 0, 'image', publicUrl);
@@ -226,15 +225,14 @@ const AnnouncementForm = () => {
             <div className="space-y-2">
               <Label htmlFor="content">Content *</Label>
               <div className="min-h-[300px] w-full">
-                <ReactQuill
-                  ref={quillRef}
+                <RichTextEditor
                   value={content}
                   onChange={setContent}
                   modules={modules}
                   formats={formats}
                   placeholder="Write your announcement content here..."
-                  theme="snow"
                   className="h-[250px]"
+                  onEditorReady={(q) => { quillRef.current = q; }}
                 />
               </div>
             </div>
