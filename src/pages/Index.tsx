@@ -100,11 +100,10 @@ const Index = () => {
   }, []);
   // Kies na hydratie een willekeurige galerijfoto als hero-achtergrond.
   useEffect(() => {
-    const modules = galleryModules as Record<string, () => Promise<{ default: string }>>;
-    const paths = Object.keys(modules);
-    if (paths.length === 0) return;
-    const randomPath = paths[Math.floor(Math.random() * paths.length)];
-    modules[randomPath]().then((mod) => {
+    const entries = Object.entries(galleryModules) as [string, () => Promise<{ default: string }>][];
+    if (entries.length === 0) return;
+    const [, importFn] = entries[Math.floor(Math.random() * entries.length)];
+    importFn().then((mod) => {
       setHeroImage(mod.default);
     });
   }, []);
