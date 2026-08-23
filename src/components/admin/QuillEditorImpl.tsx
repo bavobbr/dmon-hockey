@@ -33,11 +33,11 @@ const QuillEditorImpl = ({
       ref={quillRef}
       value={value}
       onChange={onChange}
-      modules={modules}
-      formats={formats}
-      placeholder={placeholder}
+      modules={modules ?? {}}
+      formats={formats ?? []}
+      placeholder={placeholder ?? ''}
       theme="snow"
-      className={className}
+      className={className ?? ''}
     />
   );
 };
