@@ -35,10 +35,25 @@ export function extractMedia(html: string): NewsMedia | null {
   return null;
 }
 
+/** Decode the handful of HTML entities that show up in stored rich text. */
+function decodeEntities(input: string): string {
+  return input
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&#(\d+);/g, (_m, code) => String.fromCharCode(Number(code)));
+}
+
 /** Plain-text excerpt fallback with a friendly default for video-only posts. */
 export function excerptFromContent(html: string, media: NewsMedia | null, max = 200): string {
-  const text = (html || '').replace(/<[^>]*>/g, '').trim();
+  const text = decodeEntities((html || '').replace(/<[^>]*>/g, ''))
+    .replace(/\s+/g, ' ')
+    .trim();
   if (text) return text.length > max ? text.substring(0, max) + '…' : text;
   if (media?.type === 'video') return '🎬 Bekijk de video';
   return '';
 }
+
