@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import Quill from 'quill';
+import 'quill/dist/quill.snow.css';
 
 export interface QuillEditorProps {
   value: string;
@@ -9,7 +9,7 @@ export interface QuillEditorProps {
   formats?: string[];
   placeholder?: string;
   className?: string;
-  onEditorReady?: (quill: ReturnType<ReactQuill['getEditor']>) => void;
+  onEditorReady?: (quill: Quill) => void;
 }
 
 const QuillEditorImpl = ({
@@ -21,40 +21,56 @@ const QuillEditorImpl = ({
   className,
   onEditorReady,
 }: QuillEditorProps) => {
-  const quillRef = useRef<ReactQuill>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const quillRef = useRef<Quill | null>(null);
+  const onChangeRef = useRef(onChange);
+  onChangeRef.current = onChange;
 
   useEffect(() => {
-    if (!onEditorReady) return;
-    let frame = 0;
-    let attempts = 0;
-    const tryAttach = () => {
-      try {
-        const editor = quillRef.current?.getEditor();
-        if (editor) {
-          onEditorReady(editor);
-          return;
-        }
-      } catch {
-        // editor not instantiated yet — retry on the next frame
-      }
-      if (attempts++ < 30) frame = requestAnimationFrame(tryAttach);
-    };
-    tryAttach();
-    return () => cancelAnimationFrame(frame);
-  }, [onEditorReady]);
+    const container = containerRef.current;
+    if (!container) return;
 
-  return (
-    <ReactQuill
-      ref={quillRef}
-      value={value}
-      onChange={onChange}
-      modules={modules ?? {}}
-      formats={formats ?? []}
-      placeholder={placeholder ?? ''}
-      theme="snow"
-      className={className ?? ''}
-    />
-  );
+    const editorEl = document.createElement('div');
+    container.appendChild(editorEl);
+
+    const quill = new Quill(editorEl, {
+      theme: 'snow',
+      placeholder: placeholder ?? '',
+      modules: (modules ?? {}) as Record<string, unknown>,
+      ...(formats && formats.length ? { formats } : {}),
+    });
+    quillRef.current = quill;
+
+    if (value) {
+      quill.clipboard.dangerouslyPasteHTML(value, 'silent');
+    }
+
+    quill.on('text-change', () => {
+      const html = quill.getSemanticHTML();
+      onChangeRef.current(quill.getText().trim() ? html : '');
+    });
+
+    onEditorReady?.(quill);
+
+    return () => {
+      quillRef.current = null;
+      container.innerHTML = '';
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Sync external value changes (e.g. loading an existing record).
+  useEffect(() => {
+    const quill = quillRef.current;
+    if (!quill) return;
+    const current = quill.getSemanticHTML();
+    if ((value ?? '') !== current && (value ?? '') !== '' ) {
+      if (quill.hasFocus()) return;
+      quill.clipboard.dangerouslyPasteHTML(value ?? '', 'silent');
+    }
+  }, [value]);
+
+  return <div ref={containerRef} className={className ?? ''} />;
 };
 
 export default QuillEditorImpl;
