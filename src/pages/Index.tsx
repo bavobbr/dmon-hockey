@@ -7,6 +7,7 @@ import { Link } from "@/lib/router-compat";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { cn } from "@/lib/utils";
 import { sanitizeRichHtml } from '@/lib/sanitizeHtml';
 import { extractMedia, excerptFromContent } from '@/lib/newsMedia';
 import UpcomingEvents from "@/components/UpcomingEvents";
@@ -19,7 +20,13 @@ import sfeerKidsCircle from "@/assets/gallery/kids-circle.png";
 import sfeerWaterFun from "@/assets/gallery/water-fun.png";
 import sfeerClubFamily from "@/assets/gallery/club-family-photo.png";
 
-import heroAction from "@/assets/hero-action.jpg";
+// Dynamische galerijafbeeldingen voor de hero-achtergrond.
+// Er wordt willekeurig één foto gekozen, zodat de homepage telkens een
+// ander sfeerbeeld toont.
+const galleryModules = import.meta.glob<{ default: string }>(
+  "@/assets/gallery/*.{png,jpg,jpeg,webp,avif}",
+  { eager: false }
+);
 interface Announcement {
   id: string;
   title: string;
