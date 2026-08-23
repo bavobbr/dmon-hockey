@@ -46,7 +46,7 @@ const QuillEditorImpl = ({
     }
 
     quill.on('text-change', () => {
-      const html = quill.getSemanticHTML();
+      const html = quill.root.innerHTML;
       onChangeRef.current(quill.getText().trim() ? html : '');
     });
 
@@ -63,7 +63,7 @@ const QuillEditorImpl = ({
   useEffect(() => {
     const quill = quillRef.current;
     if (!quill) return;
-    const current = quill.getSemanticHTML();
+    const current = quill.root.innerHTML;
     if ((value ?? '') !== current && (value ?? '') !== '' ) {
       if (quill.hasFocus()) return;
       quill.clipboard.dangerouslyPasteHTML(value ?? '', 'silent');
