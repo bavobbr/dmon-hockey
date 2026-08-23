@@ -15,6 +15,7 @@ import { Route as EventsRouteImport } from './routes/events'
 import { Route as NieuwsRouteImport } from './routes/nieuws'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as SocialsRouteImport } from './routes/socials'
+import { Route as TmpEditorCheckRouteImport } from './routes/tmp-editor-check'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as AdminUsersRouteImport } from './routes/admin/users'
 import { Route as ClubBestuurRouteImport } from './routes/club/bestuur'
@@ -94,6 +95,11 @@ const ShopRoute = ShopRouteImport.update({
 const SocialsRoute = SocialsRouteImport.update({
   id: '/socials',
   path: '/socials',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TmpEditorCheckRoute = TmpEditorCheckRouteImport.update({
+  id: '/tmp-editor-check',
+  path: '/tmp-editor-check',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminIndexRoute = AdminIndexRouteImport.update({
@@ -357,6 +363,7 @@ export interface FileRoutesByFullPath {
   '/nieuws': typeof NieuwsRoute
   '/shop': typeof ShopRoute
   '/socials': typeof SocialsRoute
+  '/tmp-editor-check': typeof TmpEditorCheckRoute
   '/admin/users': typeof AdminUsersRoute
   '/club/bestuur': typeof ClubBestuurRoute
   '/club/geschiedenis': typeof ClubGeschiedenisRoute
@@ -415,6 +422,7 @@ export interface FileRoutesByTo {
   '/nieuws': typeof NieuwsRoute
   '/shop': typeof ShopRoute
   '/socials': typeof SocialsRoute
+  '/tmp-editor-check': typeof TmpEditorCheckRoute
   '/admin/users': typeof AdminUsersRoute
   '/club/bestuur': typeof ClubBestuurRoute
   '/club/geschiedenis': typeof ClubGeschiedenisRoute
@@ -474,6 +482,7 @@ export interface FileRoutesById {
   '/nieuws': typeof NieuwsRoute
   '/shop': typeof ShopRoute
   '/socials': typeof SocialsRoute
+  '/tmp-editor-check': typeof TmpEditorCheckRoute
   '/admin/users': typeof AdminUsersRoute
   '/club/bestuur': typeof ClubBestuurRoute
   '/club/geschiedenis': typeof ClubGeschiedenisRoute
@@ -534,6 +543,7 @@ export interface FileRouteTypes {
     | '/nieuws'
     | '/shop'
     | '/socials'
+    | '/tmp-editor-check'
     | '/admin/users'
     | '/club/bestuur'
     | '/club/geschiedenis'
@@ -592,6 +602,7 @@ export interface FileRouteTypes {
     | '/nieuws'
     | '/shop'
     | '/socials'
+    | '/tmp-editor-check'
     | '/admin/users'
     | '/club/bestuur'
     | '/club/geschiedenis'
@@ -650,6 +661,7 @@ export interface FileRouteTypes {
     | '/nieuws'
     | '/shop'
     | '/socials'
+    | '/tmp-editor-check'
     | '/admin/users'
     | '/club/bestuur'
     | '/club/geschiedenis'
@@ -709,6 +721,7 @@ export interface RootRouteChildren {
   NieuwsRoute: typeof NieuwsRoute
   ShopRoute: typeof ShopRoute
   SocialsRoute: typeof SocialsRoute
+  TmpEditorCheckRoute: typeof TmpEditorCheckRoute
   AdminUsersRoute: typeof AdminUsersRoute
   ClubBestuurRoute: typeof ClubBestuurRoute
   ClubGeschiedenisRoute: typeof ClubGeschiedenisRoute
@@ -803,6 +816,13 @@ declare module '@tanstack/react-router' {
       path: '/socials'
       fullPath: '/socials'
       preLoaderRoute: typeof SocialsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tmp-editor-check': {
+      id: '/tmp-editor-check'
+      path: '/tmp-editor-check'
+      fullPath: '/tmp-editor-check'
+      preLoaderRoute: typeof TmpEditorCheckRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/': {
@@ -1165,6 +1185,7 @@ const rootRouteChildren: RootRouteChildren = {
   NieuwsRoute: NieuwsRoute,
   ShopRoute: ShopRoute,
   SocialsRoute: SocialsRoute,
+  TmpEditorCheckRoute: TmpEditorCheckRoute,
   AdminUsersRoute: AdminUsersRoute,
   ClubBestuurRoute: ClubBestuurRoute,
   ClubGeschiedenisRoute: ClubGeschiedenisRoute,
