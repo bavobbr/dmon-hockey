@@ -21,7 +21,7 @@ const quillModules = {
     ['clean'],
   ],
 };
-const quillFormats = ['header', 'bold', 'italic', 'underline', 'list', 'bullet', 'link'];
+const quillFormats = ['header', 'bold', 'italic', 'underline', 'list', 'link'];
 
 const VacancyForm = () => {
   const { toast } = useToast();
