@@ -25,7 +25,7 @@ import sfeerClubFamily from "@/assets/gallery/club-family-photo.png";
 // ander sfeerbeeld toont.
 const galleryModules = import.meta.glob<{ default: string }>(
   "@/assets/gallery/*.{png,jpg,jpeg,webp,avif}",
-  { eager: false }
+  { eager: true }
 );
 interface Announcement {
   id: string;
