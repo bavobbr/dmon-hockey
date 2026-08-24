@@ -100,13 +100,10 @@ const Index = () => {
   }, []);
   // Kies na hydratie een willekeurige galerijfoto als hero-achtergrond.
   useEffect(() => {
-    const entries = Object.entries(galleryModules) as [string, () => Promise<{ default: string }>][];
-    if (entries.length === 0) return;
-    const entry = entries[Math.floor(Math.random() * entries.length)];
-    if (!entry) return;
-    entry[1]().then((mod) => {
-      setHeroImage(mod.default);
-    });
+    const urls = Object.values(galleryModules).map((mod) => mod.default);
+    if (urls.length === 0) return;
+    const url = urls[Math.floor(Math.random() * urls.length)];
+    if (url) setHeroImage(url);
   }, []);
   const fetchVacancies = async () => {
     const { data } = await supabase
