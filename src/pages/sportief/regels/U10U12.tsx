@@ -1,9 +1,9 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Timer, ExternalLink, BookOpen, Users, Target, PlayCircle } from "lucide-react";
+import { Timer, ExternalLink, BookOpen, Users, Target, PlayCircle, Download, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import stappen from "@/assets/stappen.png";
-import u10u12Rules1 from "@/assets/u10u12-rules-1.png";
-import u10u12Rules2 from "@/assets/u10u12-rules-2.png";
+import u10u12Rules from "@/assets/u10-u12-regels.png.asset.json";
+import u10u12RulesDetails from "@/assets/u10-u12-regels-details.png.asset.json";
 
 const U10U12Rules = () => {
   return (
