@@ -331,7 +331,7 @@ const U14PlusRules = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Button asChild variant="outline">
                   <a 
-                    href="https://hockey.be/nl/competitie/outdoor-hockey/spelregels-1/" 
+                    href="https://hockey.be/nl/officials-division/spelregels-outdoor/" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="flex items-center gap-2"

@@ -119,7 +119,7 @@ const U6U8Rules = () => {
                 </Button>
                 <Button asChild variant="outline">
                   <a
-                    href="https://hockey.be/nl/competitie/outdoor-hockey/spelregels-1/"
+                    href="https://hockey.be/nl/officials-division/spelregels-outdoor/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2"
