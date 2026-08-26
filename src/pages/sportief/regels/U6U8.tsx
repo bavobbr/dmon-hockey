@@ -1,9 +1,8 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Users, CheckCircle, AlertTriangle, ExternalLink } from "lucide-react";
+import { Users, CheckCircle, AlertTriangle, ExternalLink, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import stappenImage from "@/assets/stappen.png";
-import u7u8Image from "@/assets/u7u8_2023.png";
-import u7u8BackImage from "@/assets/u7u8_2023_back.png";
+import u7u8Image from "@/assets/u7-u8-regels.png.asset.json";
+import u7u8BackImage from "@/assets/u7-u8-regels-details.png.asset.json";
 
 const U6U8Rules = () => {
   return (
