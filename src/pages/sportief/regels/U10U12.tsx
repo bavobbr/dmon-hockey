@@ -1,9 +1,9 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Timer, ExternalLink, BookOpen, Users, Target, PlayCircle } from "lucide-react";
+import { Timer, ExternalLink, BookOpen, Users, Target, PlayCircle, Download, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import stappen from "@/assets/stappen.png";
-import u10u12Rules1 from "@/assets/u10u12-rules-1.png";
-import u10u12Rules2 from "@/assets/u10u12-rules-2.png";
+import u10u12Rules from "@/assets/u10-u12-regels.png.asset.json";
+import u10u12RulesDetails from "@/assets/u10-u12-regels-details.png.asset.json";
 
 const U10U12Rules = () => {
   return (
@@ -206,32 +206,72 @@ const U10U12Rules = () => {
                 </div>
 
                 <div>
-                  <h4 className="font-semibold mb-4">Pictogrammen U10/U12</h4>
-                  <p className="text-sm mb-4 text-muted-foreground">
-                    Ook de Belgische hockeybond heeft pictogrammen voor U10/U12:
-                  </p>
-                  
-                  <div className="grid md:grid-cols-2 gap-4">
+                  <h4 className="font-semibold mb-4">Pictogrammen U10/U12 (nieuw seizoen)</h4>
+                  <ul className="space-y-2 mb-4">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-4 w-4 text-green-600 mt-1 flex-shrink-0" />
+                      <span className="text-sm text-muted-foreground">8 tegen 8 (min 6, max 8 per team), 2 x 25 minuten met 5 minuten rusttijd</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-4 w-4 text-green-600 mt-1 flex-shrink-0" />
+                      <span className="text-sm text-muted-foreground">Half veld met verplichte keeper; hoge ballen enkel toegestaan op doel</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-4 w-4 text-green-600 mt-1 flex-shrink-0" />
+                      <span className="text-sm text-muted-foreground">Penalty corner: 3 verdedigers + keeper (U10), 4 verdedigers + keeper (U11-U12)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-4 w-4 text-green-600 mt-1 flex-shrink-0" />
+                      <span className="text-sm text-muted-foreground">Vrije slag met tegenstander op 5m; self pass toegestaan; wissels op elk moment behalve tijdens PC</span>
+                    </li>
+                  </ul>
+
+                  <div className="flex flex-wrap gap-3 mb-6">
+                    <Button asChild>
+                      <a
+                        href="/docs/pictos-u10-u12.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2"
+                      >
+                        <Download className="h-4 w-4" />
+                        Download pictogrammen (PDF)
+                      </a>
+                    </Button>
+                    <Button asChild variant="outline">
+                      <a
+                        href="https://hockey.be/nl/officials-division/spelregels-outdoor/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2"
+                      >
+                        <ExternalLink className="h-4 w-4" />
+                        Bekijk op VHL website
+                      </a>
+                    </Button>
+                  </div>
+
+                  <div className="space-y-6">
                     <div className="text-center">
-                      <img 
-                        src={u10u12Rules1} 
-                        alt="U10/U12 spelregels - deel 1" 
+                      <img
+                        src={u10u12Rules.url}
+                        alt="U10-U12 spelregels pictogrammen overzicht"
                         loading="lazy"
-                        className="w-full h-auto rounded-lg shadow-lg border"
+                        className="w-full mx-auto rounded-lg shadow-md"
                       />
+                      <p className="text-sm text-muted-foreground mt-2">U10-U12 Spelregels (8x8)</p>
                     </div>
+
                     <div className="text-center">
-                      <img 
-                        src={u10u12Rules2} 
-                        alt="U10/U12 spelregels - deel 2"
+                      <img
+                        src={u10u12RulesDetails.url}
+                        alt="U10-U12 spelregels detailtabel"
                         loading="lazy"
-                        className="w-full h-auto rounded-lg shadow-lg border"
+                        className="w-full mx-auto rounded-lg shadow-md"
                       />
+                      <p className="text-sm text-muted-foreground mt-2">Detailregels U10-U12</p>
                     </div>
                   </div>
-                  <p className="text-sm text-muted-foreground mt-2 text-center">
-                    Alle spelregels voor U10/U12
-                  </p>
                 </div>
               </div>
             </CardContent>
