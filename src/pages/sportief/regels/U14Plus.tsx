@@ -331,13 +331,13 @@ const U14PlusRules = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Button asChild variant="outline">
                   <a 
-                    href="https://hockey.be/nl/officials-division/spelregels-outdoor/" 
+                    href="https://hockey.be/wp-content/uploads/2025/10/Spelregels-Outdoor-25-26.pdf" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="flex items-center gap-2"
                   >
                     <ExternalLink className="h-4 w-4" />
-                    Belgische spelregels
+                    Belgische spelregels (PDF)
                   </a>
                 </Button>
                 
