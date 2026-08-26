@@ -1,9 +1,8 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Users, CheckCircle, AlertTriangle, ExternalLink } from "lucide-react";
+import { Users, CheckCircle, AlertTriangle, ExternalLink, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import stappenImage from "@/assets/stappen.png";
-import u7u8Image from "@/assets/u7u8_2023.png";
-import u7u8BackImage from "@/assets/u7u8_2023_back.png";
+import u7u8Image from "@/assets/u7-u8-regels.png.asset.json";
+import u7u8BackImage from "@/assets/u7-u8-regels-details.png.asset.json";
 
 const U6U8Rules = () => {
   return (
@@ -102,51 +101,64 @@ const U6U8Rules = () => {
             <CardHeader>
               <CardTitle>Spelregels U6 tot U8 (klein veld)</CardTitle>
               <CardDescription>
-                Voor de allerkleinsten zijn de pictogrammen erg informatief, ook te vinden op de VHL website
+                Nieuw dit seizoen: U7-U8 spelen 3x3 met 4 doelen op 1/8 van het veld. De pictogrammen hieronder zijn ook te vinden op de RBHA/VHL website.
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <Button asChild className="mb-4">
-                <a 
-                  href="https://hockey.be/nl/competitie/outdoor-hockey/spelregels-1/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2"
-                >
-                  <ExternalLink className="h-4 w-4" />
-                  Bekijk op VHL website
-                </a>
-              </Button>
-              
+              <div className="flex flex-wrap gap-3 mb-4">
+                <Button asChild>
+                  <a
+                    href="/docs/pictos-u7-u8.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2"
+                  >
+                    <Download className="h-4 w-4" />
+                    Download pictogrammen (PDF)
+                  </a>
+                </Button>
+                <Button asChild variant="outline">
+                  <a
+                    href="https://hockey.be/nl/competitie/outdoor-hockey/spelregels-1/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2"
+                  >
+                    <ExternalLink className="h-4 w-4" />
+                    Bekijk op VHL website
+                  </a>
+                </Button>
+              </div>
+
               <div className="space-y-4">
                 <div className="p-4 bg-muted rounded-lg">
                   <h4 className="font-semibold mb-2">Signalen</h4>
                   <p className="text-sm text-muted-foreground">
-                    Bij onze jongste spelers kan je best gewoon vertellen waarom je een beslissing neemt, en hen begeleiden 
-                    naar de juiste opvolg-actie. Vanaf half veld gebruiken we signalen. De eerste stap is duidelijk fluiten, 
+                    Bij onze jongste spelers kan je best gewoon vertellen waarom je een beslissing neemt, en hen begeleiden
+                    naar de juiste opvolg-actie. Vanaf half veld gebruiken we signalen. De eerste stap is duidelijk fluiten,
                     verbaal aangeven en dan de speelrichting wijzen. De andere signalen kan je rustig aanleren.
                   </p>
                 </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+
+                <div className="space-y-6 mt-6">
                   <div className="text-center">
-                    <img 
-                      src={u7u8Image} 
-                      alt="U6-U8 spelregels voorkant" 
+                    <img
+                      src={u7u8Image.url}
+                      alt="U7-U8 spelregels pictogrammen overzicht"
                       loading="lazy"
-                      className="w-full max-w-md mx-auto rounded-lg shadow-md"
+                      className="w-full mx-auto rounded-lg shadow-md"
                     />
-                    <p className="text-sm text-muted-foreground mt-2">U6-U8 Spelregels</p>
+                    <p className="text-sm text-muted-foreground mt-2">U7-U8 Spelregels (3x3)</p>
                   </div>
-                  
+
                   <div className="text-center">
-                    <img 
-                      src={u7u8BackImage} 
-                      alt="U6-U8 spelregels achterkant" 
+                    <img
+                      src={u7u8BackImage.url}
+                      alt="U7-U8 spelregels detailtabel"
                       loading="lazy"
-                      className="w-full max-w-md mx-auto rounded-lg shadow-md"
+                      className="w-full mx-auto rounded-lg shadow-md"
                     />
-                    <p className="text-sm text-muted-foreground mt-2">Achterkant spelregels</p>
+                    <p className="text-sm text-muted-foreground mt-2">Detailregels U7-U8</p>
                   </div>
                 </div>
               </div>
