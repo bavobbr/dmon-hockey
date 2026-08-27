@@ -117,8 +117,8 @@ const Board = () => {
                 <DialogTrigger asChild>
                   <div className="cursor-pointer hover:opacity-90 transition-opacity">
                     <img
-                      src={clubOrganizationImage}
-                      alt="Club Organisatie - Medewerkers"
+                      src={clubOrganizationAsset.url}
+                      alt="Organisatiestructuur D-mon Hockey Club"
                       className="w-full h-auto rounded-lg shadow-lg border max-h-[600px] object-contain"
                     />
                   </div>
@@ -126,8 +126,8 @@ const Board = () => {
                 <DialogContent className="max-w-7xl max-h-[90vh] p-2">
                   <div className="overflow-auto">
                     <img
-                      src={clubOrganizationImage}
-                      alt="Club Organisatie - Medewerkers (Vergroot)"
+                      src={clubOrganizationAsset.url}
+                      alt="Organisatiestructuur D-mon Hockey Club (Vergroot)"
                       className="w-full h-auto"
                     />
                   </div>
