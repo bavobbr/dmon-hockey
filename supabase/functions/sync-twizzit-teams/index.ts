@@ -72,6 +72,7 @@ const envSeasonId = Deno.env.get("TWIZZIT_SEASON_ID");
 interface TwizzitSeason {
   id: number;
   name?: string;
+  active?: boolean;
   "start-date"?: string;
   "end-date"?: string;
   startDate?: string;
