@@ -512,7 +512,10 @@ serve(async (req) => {
       JSON.stringify({
         success: true,
         count: mappedRows.length,
-        message: `Successfully synced ${mappedRows.length} teams`,
+        season: seasonResolution,
+        message: `Successfully synced ${mappedRows.length} teams (season ${
+          seasonResolution.seasonName ?? seasonResolution.seasonId
+        })`,
       }),
       {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
