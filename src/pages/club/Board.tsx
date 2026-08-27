@@ -2,8 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { supabase } from "@/integrations/supabase/client";
 import { UserCheck, Mail, Phone } from "lucide-react";
-import organogramImage from "@/assets/organogram.png";
-import clubOrganizationAsset from "@/assets/club-organization-2026.png.asset.json";
+import organogramAsset from "@/assets/club-organization-2026.png.asset.json";
+import clubOrganizationImage from "@/assets/club-organization.png";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { useState } from "react";
 import { BoardPageJsonLd } from "@/components/JsonLd";
@@ -51,8 +51,8 @@ const Board = () => {
               <div className="flex justify-center mb-6">
                 <div className="max-w-md">
                   <img
-                    src={organogramImage}
-                    alt="Organogram D-mon Hockey Club Bestuur"
+                    src={organogramAsset.url}
+                    alt="Organisatiestructuur D-mon Hockey Club"
                     loading="lazy"
                     className="w-full h-auto rounded-lg shadow-lg border"
                   />
@@ -117,8 +117,8 @@ const Board = () => {
                 <DialogTrigger asChild>
                   <div className="cursor-pointer hover:opacity-90 transition-opacity">
                     <img
-                      src={clubOrganizationAsset.url}
-                      alt="Organisatiestructuur D-mon Hockey Club"
+                      src={clubOrganizationImage}
+                      alt="Sportieve cel en Medewerkers D-mon Hockey Club"
                       className="w-full h-auto rounded-lg shadow-lg border max-h-[600px] object-contain"
                     />
                   </div>
@@ -126,8 +126,8 @@ const Board = () => {
                 <DialogContent className="max-w-7xl max-h-[90vh] p-2">
                   <div className="overflow-auto">
                     <img
-                      src={clubOrganizationAsset.url}
-                      alt="Organisatiestructuur D-mon Hockey Club (Vergroot)"
+                      src={clubOrganizationImage}
+                      alt="Sportieve cel en Medewerkers D-mon Hockey Club (Vergroot)"
                       className="w-full h-auto"
                     />
                   </div>
