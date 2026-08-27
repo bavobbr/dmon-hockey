@@ -154,10 +154,30 @@ serve(async (req) => {
       throw new Error("No authentication token returned");
     }
 
+    // RESOLVE SEASON (dynamic: explicit param > env > active season from Twizzit > fallback)
+    const seasons = await fetchSeasons(token, rid);
+
+    if (requestUrl.searchParams.get("seasons") === "1") {
+      return new Response(
+        JSON.stringify({ success: true, seasons }, null, 2),
+        { headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    const seasonResolution = resolveSeasonId(
+      requestUrl.searchParams.get("season-id"),
+      seasons
+    );
+    log("season.resolved", { rid, ...seasonResolution });
+
+    if (!seasonResolution.seasonId) {
+      throw new Error("Could not determine a Twizzit season id");
+    }
+
     // FETCH TEAMS
     const teamLimit =
       limit !== undefined ? Math.min(Math.max(limit, 1), 100) : 100;
-    const teamsUrl = `${TWIZZIT_API_BASE}/groups?organization-ids[]=${twizzitOrgId}&season-id=51270&group-type=1&limit=${teamLimit}&page=1`;
+    const teamsUrl = `${TWIZZIT_API_BASE}/groups?organization-ids[]=${twizzitOrgId}&season-id=${seasonResolution.seasonId}&group-type=1&limit=${teamLimit}&page=1`;
 
     log("teams.request", { rid, url: teamsUrl });
 
