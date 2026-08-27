@@ -65,10 +65,150 @@ const TWIZZIT_API_BASE = "https://app.twizzit.com/v2/api";
 const TRAINER_FUNCTION_ID = 242098;
 const COACH_FUNCTION_ID = 242093;
 
+// Last-resort fallback (season 2025-2026) if Twizzit gives us nothing usable.
+const FALLBACK_SEASON_ID = 51270;
+const envSeasonId = Deno.env.get("TWIZZIT_SEASON_ID");
+
+interface TwizzitSeason {
+  id: number;
+  name?: string;
+  active?: boolean;
+  "start-date"?: string;
+  "end-date"?: string;
+  startDate?: string;
+  endDate?: string;
+}
+
 const extractAgeGroup = (teamName: string): string | null => {
   const ageGroupMatch = teamName.match(/U(\d+)/i);
   return ageGroupMatch ? `U${ageGroupMatch[1]}` : null;
 };
+
+const seasonStart = (s: TwizzitSeason): string | null =>
+  s["start-date"] ?? s.startDate ?? null;
+const seasonEnd = (s: TwizzitSeason): string | null =>
+  s["end-date"] ?? s.endDate ?? null;
+
+const fetchSeasons = async (
+  token: string,
+  rid: string
+): Promise<TwizzitSeason[]> => {
+  const url = `${TWIZZIT_API_BASE}/seasons?organization-ids[]=${twizzitOrgId}`;
+  log("seasons.request", { rid, url });
+
+  try {
+    const res = await fetch(url, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    log("seasons.response", { rid, status: res.status, ok: res.ok });
+
+    if (!res.ok) {
+      const preview = await res.text().catch(() => "<unreadable>");
+      err("seasons.failed", {
+        rid,
+        status: res.status,
+        bodyPreview: preview?.slice(0, 500),
+      });
+      return [];
+    }
+
+    const data = await res.json();
+    const seasons: TwizzitSeason[] = Array.isArray(data)
+      ? data
+      : data?.seasons ?? [];
+    log("seasons.parsed", {
+      rid,
+      count: seasons.length,
+      sample: seasons.slice(0, 5).map((s) => ({
+        id: s?.id,
+        name: s?.name,
+        start: seasonStart(s),
+        end: seasonEnd(s),
+      })),
+    });
+    return seasons.filter((s) => typeof s?.id === "number");
+  } catch (e) {
+    err("seasons.error", { rid, error: e instanceof Error ? e.message : e });
+    return [];
+  }
+};
+
+const resolveSeasonId = (
+  requestedSeasonId: string | null,
+  seasons: TwizzitSeason[]
+): { seasonId: number | null; seasonName: string | null; source: string } => {
+  const named = (id: number | null) => {
+    const match = seasons.find((s) => s.id === id);
+    return match?.name ?? null;
+  };
+
+  // 1. Explicit request parameter wins.
+  if (requestedSeasonId) {
+    const parsed = Number.parseInt(requestedSeasonId, 10);
+    if (!Number.isNaN(parsed) && parsed > 0) {
+      return { seasonId: parsed, seasonName: named(parsed), source: "param" };
+    }
+  }
+
+  // 2. Environment override (TWIZZIT_SEASON_ID) for manual pinning.
+  if (envSeasonId) {
+    const parsed = Number.parseInt(envSeasonId, 10);
+    if (!Number.isNaN(parsed) && parsed > 0) {
+      return { seasonId: parsed, seasonName: named(parsed), source: "env" };
+    }
+  }
+
+  // 3. Season flagged active by Twizzit.
+  const active = seasons.find((s) => s.active === true);
+  if (active) {
+    return {
+      seasonId: active.id,
+      seasonName: active.name ?? null,
+      source: "twizzit-active-flag",
+    };
+  }
+
+  // 4. Season that contains today's date.
+  const now = Date.now();
+  const current = seasons.find((s) => {
+    const start = seasonStart(s);
+    const end = seasonEnd(s);
+    if (!start || !end) return false;
+    const startTs = Date.parse(start);
+    const endTs = Date.parse(end);
+    if (Number.isNaN(startTs) || Number.isNaN(endTs)) return false;
+    return startTs <= now && now <= endTs;
+  });
+  if (current) {
+    return {
+      seasonId: current.id,
+      seasonName: current.name ?? null,
+      source: "twizzit-active",
+    };
+  }
+
+  // 4. Most recently started season.
+  const sorted = [...seasons].sort((a, b) => {
+    const aTs = Date.parse(seasonStart(a) ?? "") || 0;
+    const bTs = Date.parse(seasonStart(b) ?? "") || 0;
+    return bTs - aTs || b.id - a.id;
+  });
+  if (sorted.length > 0) {
+    return {
+      seasonId: sorted[0].id,
+      seasonName: sorted[0].name ?? null,
+      source: "twizzit-latest",
+    };
+  }
+
+  // 5. Hardcoded fallback.
+  return {
+    seasonId: FALLBACK_SEASON_ID,
+    seasonName: null,
+    source: "fallback",
+  };
+};
+
 
 serve(async (req) => {
   const rid = crypto.randomUUID();
@@ -154,10 +294,30 @@ serve(async (req) => {
       throw new Error("No authentication token returned");
     }
 
+    // RESOLVE SEASON (dynamic: explicit param > env > active season from Twizzit > fallback)
+    const seasons = await fetchSeasons(token, rid);
+
+    if (requestUrl.searchParams.get("seasons") === "1") {
+      return new Response(
+        JSON.stringify({ success: true, seasons }, null, 2),
+        { headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    const seasonResolution = resolveSeasonId(
+      requestUrl.searchParams.get("season-id"),
+      seasons
+    );
+    log("season.resolved", { rid, ...seasonResolution });
+
+    if (!seasonResolution.seasonId) {
+      throw new Error("Could not determine a Twizzit season id");
+    }
+
     // FETCH TEAMS
     const teamLimit =
       limit !== undefined ? Math.min(Math.max(limit, 1), 100) : 100;
-    const teamsUrl = `${TWIZZIT_API_BASE}/groups?organization-ids[]=${twizzitOrgId}&season-id=51270&group-type=1&limit=${teamLimit}&page=1`;
+    const teamsUrl = `${TWIZZIT_API_BASE}/groups?organization-ids[]=${twizzitOrgId}&season-id=${seasonResolution.seasonId}&group-type=1&limit=${teamLimit}&page=1`;
 
     log("teams.request", { rid, url: teamsUrl });
 
@@ -363,7 +523,10 @@ serve(async (req) => {
       JSON.stringify({
         success: true,
         count: mappedRows.length,
-        message: `Successfully synced ${mappedRows.length} teams`,
+        season: seasonResolution,
+        message: `Successfully synced ${mappedRows.length} teams (season ${
+          seasonResolution.seasonName ?? seasonResolution.seasonId
+        })`,
       }),
       {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
