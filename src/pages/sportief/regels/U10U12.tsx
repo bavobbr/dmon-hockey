@@ -2,8 +2,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Timer, ExternalLink, BookOpen, Users, Target, PlayCircle, Download, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import stappen from "@/assets/stappen.png";
-import u10u12Rules from "@/assets/u10-u12-regels.png.asset.json";
-import u10u12RulesDetails from "@/assets/u10-u12-regels-details.png.asset.json";
+const u10u12Rules = { url: "/images/u10-u12-regels.png" };
+const u10u12RulesDetails = { url: "/images/u10-u12-regels-details.png" };
 
 const U10U12Rules = () => {
   return (
