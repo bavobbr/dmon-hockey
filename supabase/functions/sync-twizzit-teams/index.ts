@@ -157,7 +157,17 @@ const resolveSeasonId = (
     }
   }
 
-  // 3. Season that contains today's date.
+  // 3. Season flagged active by Twizzit.
+  const active = seasons.find((s) => s.active === true);
+  if (active) {
+    return {
+      seasonId: active.id,
+      seasonName: active.name ?? null,
+      source: "twizzit-active-flag",
+    };
+  }
+
+  // 4. Season that contains today's date.
   const now = Date.now();
   const current = seasons.find((s) => {
     const start = seasonStart(s);
