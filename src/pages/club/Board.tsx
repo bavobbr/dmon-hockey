@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { supabase } from "@/integrations/supabase/client";
 import { UserCheck, Mail, Phone } from "lucide-react";
 import organogramAsset from "@/assets/club-organization-2026.png.asset.json";
-import clubOrganizationImage from "@/assets/club-organization.png";
+import sportieveCelAsset from "@/assets/sportieve-cel-2026.png.asset.json";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { useState } from "react";
 import { BoardPageJsonLd } from "@/components/JsonLd";
