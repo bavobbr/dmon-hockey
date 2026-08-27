@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { supabase } from "@/integrations/supabase/client";
 import { UserCheck, Mail, Phone } from "lucide-react";
 import organogramAsset from "@/assets/club-organization-2026.png.asset.json";
-import clubOrganizationImage from "@/assets/club-organization.png";
+import sportieveCelAsset from "@/assets/sportieve-cel-2026.png.asset.json";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { useState } from "react";
 import { BoardPageJsonLd } from "@/components/JsonLd";
@@ -117,8 +117,9 @@ const Board = () => {
                 <DialogTrigger asChild>
                   <div className="cursor-pointer hover:opacity-90 transition-opacity">
                     <img
-                      src={clubOrganizationImage}
+                      src={sportieveCelAsset.url}
                       alt="Sportieve cel en Medewerkers D-mon Hockey Club"
+                      loading="lazy"
                       className="w-full h-auto rounded-lg shadow-lg border max-h-[600px] object-contain"
                     />
                   </div>
@@ -126,7 +127,7 @@ const Board = () => {
                 <DialogContent className="max-w-7xl max-h-[90vh] p-2">
                   <div className="overflow-auto">
                     <img
-                      src={clubOrganizationImage}
+                      src={sportieveCelAsset.url}
                       alt="Sportieve cel en Medewerkers D-mon Hockey Club (Vergroot)"
                       className="w-full h-auto"
                     />
