@@ -1,8 +1,8 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Timer, Users, ExternalLink, Download, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import u9Image from "@/assets/u9-regels.png.asset.json";
-import u9BackImage from "@/assets/u9-regels-details.png.asset.json";
+const u9Image = { url: "/images/u9-regels.png" };
+const u9BackImage = { url: "/images/u9-regels-details.png" };
 
 const U9Rules = () => {
   return (

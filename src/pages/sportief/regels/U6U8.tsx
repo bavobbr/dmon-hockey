@@ -1,8 +1,8 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users, CheckCircle, AlertTriangle, ExternalLink, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import u7u8Image from "@/assets/u7-u8-regels.png.asset.json";
-import u7u8BackImage from "@/assets/u7-u8-regels-details.png.asset.json";
+const u7u8Image = { url: "/images/u7-u8-regels.png" };
+const u7u8BackImage = { url: "/images/u7-u8-regels-details.png" };
 
 const U6U8Rules = () => {
   return (
