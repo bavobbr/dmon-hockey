@@ -69,6 +69,14 @@ const carbonGuide = [
   { level: "Zeer ervaren / hoog niveau", carbon: "80–100%" },
 ];
 
+const priceGuide = [
+  { carbon: "20%", new: "~ €60", lastSeason: "~ €40", older: "~ €30" },
+  { carbon: "50%", new: "~ €150", lastSeason: "~ €100", older: "~ €75" },
+  { carbon: "70%", new: "~ €210", lastSeason: "~ €140", older: "~ €105" },
+  { carbon: "90%", new: "~ €270", lastSeason: "~ €180", older: "~ €135" },
+  { carbon: "100%", new: "~ €300", lastSeason: "~ €200", older: "~ €150" },
+];
+
 const SectionHeader = ({ eyebrow, title, intro }: { eyebrow: string; title: string; intro?: string }) => (
   <div className="mb-8">
     <div className="mb-2 inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-primary">
