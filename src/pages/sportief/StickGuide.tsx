@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Zap, Ruler, Target, ShoppingBag, ArrowRight, Mail, Lightbulb, AlertTriangle } from "lucide-react";
+import { Zap, Ruler, Target, ShoppingBag, ArrowRight, Mail, Lightbulb, AlertTriangle, Euro } from "lucide-react";
 import { Link } from "@/lib/router-compat";
 
 const sections = [
@@ -9,6 +9,7 @@ const sections = [
   { id: "lengte", label: "Lengte" },
   { id: "kromming", label: "Kromming" },
   { id: "carbon", label: "Carbon" },
+  { id: "prijsadvies", label: "Prijsadvies" },
   { id: "stick-nodig", label: "Stick nodig?" },
 ];
 
