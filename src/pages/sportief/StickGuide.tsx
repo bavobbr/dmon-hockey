@@ -110,14 +110,14 @@ const StickGuide = () => {
               </Button>
             </div>
 
-            <div className="mt-10 grid max-w-xl grid-cols-3 gap-6">
+            <div className="mt-10 grid max-w-2xl grid-cols-3 gap-6">
               {[
                 { n: "1", label: "Lengte", sub: "Past bij je lichaam" },
                 { n: "2", label: "Kromming", sub: "Past bij je techniek" },
                 { n: "3", label: "Carbon", sub: "Past bij je niveau" },
               ].map((f) => (
                 <div key={f.label}>
-                  <div className="text-2xl font-bold md:text-3xl">{f.n}. {f.label}</div>
+                  <div className="text-2xl font-bold md:text-3xl whitespace-nowrap">{f.n}. {f.label}</div>
                   <div className="text-xs uppercase tracking-wider text-primary-foreground/70">{f.sub}</div>
                 </div>
               ))}
