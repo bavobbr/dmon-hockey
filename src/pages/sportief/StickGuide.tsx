@@ -444,6 +444,69 @@ const StickGuide = () => {
             </div>
           </section>
 
+          {/* Prijsadvies */}
+          <section id="prijsadvies" className="scroll-mt-24">
+            <SectionHeader
+              eyebrow="Budget"
+              title="Wat mag een seniorenstick kosten?"
+              intro="Voor seniorensticks is er een eenvoudige vuistregel: de prijs volgt het carbonpercentage. Dit geeft je een idee van wat redelijk is, afhankelijk van hoe recent de reeks is."
+            />
+
+            <Card className="border-primary/30 bg-primary/5">
+              <CardContent className="p-0 overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-primary/20 text-left">
+                      <th className="px-6 py-4 font-semibold text-foreground">Carbon</th>
+                      <th className="px-6 py-4 font-semibold text-foreground">Nieuwe reeks</th>
+                      <th className="px-6 py-4 font-semibold text-foreground">Vorig seizoen</th>
+                      <th className="px-6 py-4 font-semibold text-foreground">Oudere reeks</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {priceGuide.map((row) => (
+                      <tr key={row.carbon} className="border-b border-border/50 last:border-0 align-top">
+                        <td className="px-6 py-4 font-semibold text-primary whitespace-nowrap">{row.carbon}</td>
+                        <td className="px-6 py-4 text-muted-foreground">{row.new}</td>
+                        <td className="px-6 py-4 text-muted-foreground">{row.lastSeason}</td>
+                        <td className="px-6 py-4 text-muted-foreground">{row.older}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </CardContent>
+            </Card>
+
+            <div className="mt-6 grid md:grid-cols-2 gap-4">
+              <Card>
+                <CardContent className="p-6 flex items-start gap-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                    <Euro className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-foreground">Hoe lees je de tabel?</h3>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      Nieuwe reeks: prijs ≈ 3 × carbonpercentage. Vorig seizoen: prijs ≈ 2 × carbonpercentage. Oudere reeksen: prijs ≈ 1,5 × carbonpercentage. Een 100% carbonstick uit de nieuwste reeks komt zo rond de €300 uit.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardContent className="p-6 flex items-start gap-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                    <Lightbulb className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-foreground">Is duurder altijd beter?</h3>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      Niet per se. Voor een jeugdspeler of beginnende senior is een vorige seizoen of zachtere stick vaak beter besteed geld dan een topmodel van dit jaar. Koop geen extreme stick waar je nog niet klaar voor bent.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </section>
+
           {/* Stick nodig CTA */}
           <section id="stick-nodig" className="scroll-mt-24">
             <div className="relative overflow-hidden rounded-3xl bg-gradient-hero p-8 text-primary-foreground md:p-12">
