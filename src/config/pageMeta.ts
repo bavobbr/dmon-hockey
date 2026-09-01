@@ -123,7 +123,8 @@ export const PAGE_META: Record<string, { title: string; description: string }> =
   },
   "/sportief/stick-gids": {
     title: "Stick Gids",
-    description: "Gids voor het kiezen van de juiste hockeystick. Tips voor beginners en gevorderden.",
+    description:
+      "De juiste hockeystick kiezen in drie stappen: lengte, kromming en carbonpercentage — met concrete aanbevelingen per spelersniveau.",
   },
   "/sportief/coaches-info": {
     title: "Coaches Info",
