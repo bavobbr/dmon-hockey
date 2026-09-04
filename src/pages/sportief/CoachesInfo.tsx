@@ -394,10 +394,59 @@ const CoachesInfo = () => {
                 </div>
               </div>
             </div>
-          </CardContent>
-        </Card>
+      </CardContent>
+    </Card>
 
-        <Card className="bg-muted/50">
+    <Card className="mb-8">
+      <CardHeader>
+        <CardTitle className="flex items-center gap-2">
+          <Target className="h-5 w-5" />
+          Tactische plannen 2026/2027
+        </CardTitle>
+        <CardDescription>
+          Volledige tactische plannen voor groot veld in 4-3-3 formatie
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <div className="grid md:grid-cols-2 gap-4">
+          <Button variant="outline" className="h-auto p-4 justify-start" asChild>
+            <a 
+              href="https://pub-5b8aee7e2e414ce7b4916802c52b86f6.r2.dev/dmon%20tactisch%20plan%20-%20spelersversie.pptx" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              download
+            >
+              <div className="text-left">
+                <div className="flex items-center gap-2 mb-1">
+                  <Download className="h-4 w-4" />
+                  <span className="font-medium">Spelersversie</span>
+                </div>
+                <p className="text-xs text-muted-foreground">Korte versie voor spelers</p>
+              </div>
+            </a>
+          </Button>
+          
+          <Button variant="outline" className="h-auto p-4 justify-start" asChild>
+            <a 
+              href="https://pub-5b8aee7e2e414ce7b4916802c52b86f6.r2.dev/dmon%20tactisch%20plan%20v1.pptx" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              download
+            >
+              <div className="text-left">
+                <div className="flex items-center gap-2 mb-1">
+                  <Download className="h-4 w-4" />
+                  <span className="font-medium">Coachversie</span>
+                </div>
+                <p className="text-xs text-muted-foreground">Uitgebreide versie voor coaches</p>
+              </div>
+            </a>
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
+
+    <Card className="bg-muted/50">
           <CardHeader>
             <CardTitle>Toegang tot materiaal</CardTitle>
           </CardHeader>
