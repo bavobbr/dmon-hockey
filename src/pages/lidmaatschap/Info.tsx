@@ -132,7 +132,7 @@ const MembershipInfo = () => {
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-xs">
               <Sparkles className="h-3.5 w-3.5" />
-              Seizoen 2025–2026
+              Seizoen 2026–2027
             </div>
             <h1 className="mt-6 font-display text-4xl font-bold leading-tight lg:text-6xl">
               Word lid van D-mon
@@ -198,11 +198,11 @@ const MembershipInfo = () => {
               Trainingsrooster
             </div>
             <p className="mt-2 text-sm text-muted-foreground">
-              Download het volledige rooster voor seizoen 2025–2026.
+              Download het volledige rooster voor seizoen 2026–2027.
             </p>
             <Button variant="outline" size="sm" asChild className="mt-4">
               <a
-                href="https://static.twizzit.com/public/v2/chat/message/attachment/3210422/f72e69c96d253fcdc03611b7dc769262d0fd5f8b.pdf"
+                href="/docs/trainingsschema-2026-2027.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2"
