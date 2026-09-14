@@ -379,7 +379,7 @@ const MembershipInfo = () => {
             <div className="flex items-start gap-3">
               <FileText className="h-5 w-5 text-primary mt-0.5" />
               <div>
-                <h3 className="font-semibold text-foreground">Onthaalbrochure voor nieuwe leden</h3>
+                <h3 className="font-semibold text-foreground">Onthaalbrochure 2026–2027</h3>
                 <p className="text-sm text-muted-foreground">
                   Uitgebreide info over de club, werking en praktische zaken.
                 </p>
@@ -387,7 +387,7 @@ const MembershipInfo = () => {
             </div>
             <Button variant="outline" size="sm" asChild className="shrink-0">
               <a
-                href="https://drive.google.com/file/d/16o-P8Lf5ulHMuVvUnD3BLlYw8IMH_ste/view?usp=sharing"
+                href="/docs/onthaalbrochure-2026-2027.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2"
