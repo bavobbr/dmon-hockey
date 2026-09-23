@@ -73,6 +73,8 @@ interface TwizzitSeason {
   id: number;
   name?: string;
   active?: boolean;
+  "current-organizations"?: string[];
+  organizations?: string[];
   "start-date"?: string;
   "end-date"?: string;
   startDate?: string;
