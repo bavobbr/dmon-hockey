@@ -160,13 +160,24 @@ const resolveSeasonId = (
     }
   }
 
-  // 3. Season flagged active by Twizzit.
-  const active = seasons.find((s) => s.active === true);
-  if (active) {
+  // 3. Season currently linked to our organization.
+  // Twizzit marks EVERY season as active:true, so `active` is useless here.
+  // `current-organizations` only contains our org id for the running season.
+  const currentForOrg = seasons.filter((s) =>
+    (s["current-organizations"] ?? []).some(
+      (org) => String(org).trim() === String(twizzitOrgId)
+    )
+  );
+  if (currentForOrg.length > 0) {
+    const pick = [...currentForOrg].sort((a, b) => {
+      const aTs = Date.parse(seasonStart(a) ?? "") || 0;
+      const bTs = Date.parse(seasonStart(b) ?? "") || 0;
+      return bTs - aTs || b.id - a.id;
+    })[0];
     return {
-      seasonId: active.id,
-      seasonName: active.name ?? null,
-      source: "twizzit-active-flag",
+      seasonId: pick.id,
+      seasonName: pick.name ?? null,
+      source: "twizzit-current-organizations",
     };
   }
 
