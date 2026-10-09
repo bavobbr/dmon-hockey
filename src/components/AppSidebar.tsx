@@ -225,7 +225,7 @@ export function AppSidebar() {
 
   const getNavCls = ({ isActive }: { isActive: boolean }) =>
     isActive
-      ? "bg-primary text-sidebar-accent-foreground font-medium"
+      ? "bg-primary text-primary-foreground font-medium"
       : "text-sidebar-accent-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground";
 
   return (
@@ -287,7 +287,7 @@ export function AppSidebar() {
                                    >
                                      <SidebarMenuSubItem>
                                        <div className="flex items-center">
-                                         <SidebarMenuSubButton asChild className="flex-1">
+                                         <SidebarMenuSubButton asChild isActive={isActive(subItem.url)} className="flex-1">
                                            <NavLink
                                              to={subItem.url}
                                              onClick={handleMobileNavClick}
@@ -326,7 +326,7 @@ export function AppSidebar() {
                                
                                return (
                                  <SidebarMenuSubItem key={subItem.title}>
-                                   <SidebarMenuSubButton asChild>
+                                   <SidebarMenuSubButton asChild isActive={isActive(subItem.url)}>
                                       <NavLink
                                         to={subItem.url}
                                         onClick={handleMobileNavClick}
@@ -352,7 +352,7 @@ export function AppSidebar() {
                        <NavLink
                          to={item.url}
                          onClick={handleMobileNavClick}
-                         className={`${getNavCls} flex items-center gap-2 w-full min-h-[2.5rem]`}
+                         className={`${getNavCls({ isActive: isActive(item.url) })} flex items-center gap-2 w-full min-h-[2.5rem]`}
                        >
                         <item.icon className="h-4 w-4 flex-shrink-0" />
                         <span className="truncate whitespace-nowrap overflow-hidden">{item.title}</span>

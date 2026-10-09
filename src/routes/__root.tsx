@@ -8,13 +8,13 @@ import {
   createRootRouteWithContext,
   redirect,
 } from "@tanstack/react-router";
-import { Menu } from "lucide-react";
+import { Menu, PanelLeft } from "lucide-react";
 import { Analytics } from "@vercel/analytics/react";
 
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { SidebarProvider, SidebarTrigger, useSidebar } from "@/components/ui/sidebar";
+import { SidebarProvider, useSidebarSafe } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 import { AppSidebar } from "@/components/AppSidebar";
 import { ScrollToTop } from "@/components/ScrollToTop";
@@ -87,7 +87,10 @@ function RootShell({ children }: { children: React.ReactNode }) {
 }
 
 const AppHeader = () => {
-  const { toggleSidebar } = useSidebar();
+  // Zelfde menuknoppen, maar zonder exception als de provider er niet zou zijn:
+  // de header breekt dan niet meer de hele pagina.
+  const sidebar = useSidebarSafe();
+  const toggleSidebar = sidebar?.toggleSidebar ?? (() => {});
 
   return (
     <header className="h-14 flex items-center justify-between border-b bg-background px-4 relative z-10 md:px-6">
@@ -96,18 +99,24 @@ const AppHeader = () => {
         <Button
           variant="ghost"
           size="sm"
+          onClick={toggleSidebar}
           className="lg:hidden flex items-center gap-2 px-3 py-2 text-primary bg-primary/5 hover:bg-primary/10 border border-primary/20 rounded-lg"
-          asChild
         >
-          <SidebarTrigger>
-            <Menu className="h-5 w-5" />
-            <span className="text-sm font-medium">Menu</span>
-          </SidebarTrigger>
+          <Menu className="h-5 w-5" />
+          <span className="text-sm font-medium">Menu</span>
         </Button>
 
         {/* Desktop sidebar trigger - subtle */}
         <div className="hidden lg:block">
-          <SidebarTrigger />
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={toggleSidebar}
+            aria-label="Toon of verberg het menu"
+            className="h-7 w-7"
+          >
+            <PanelLeft className="h-4 w-4" />
+          </Button>
         </div>
 
         <div className="text-lg font-semibold text-foreground">D-mon Hockey Club</div>
