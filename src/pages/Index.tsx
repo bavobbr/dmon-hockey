@@ -246,7 +246,7 @@ const Index = ({ heroIndex = 0 }: IndexProps) => {
                 Hockey in Dendermonde
               </span>
 
-              <h1 className="font-display uppercase font-black text-white leading-[0.86] text-6xl md:text-8xl lg:text-9xl fade-in-up">
+              <h1 className="font-display uppercase font-black text-white leading-[0.86] text-5xl md:text-7xl lg:text-8xl fade-in-up">
                 D-mon<br />
                 <span className="relative inline-block">
                   Hockey
