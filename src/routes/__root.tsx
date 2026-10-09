@@ -7,6 +7,7 @@ import {
   Scripts,
   createRootRouteWithContext,
   redirect,
+  useRouterState,
 } from "@tanstack/react-router";
 import { Menu, PanelLeft } from "lucide-react";
 import { Analytics } from "@vercel/analytics/react";
@@ -137,6 +138,8 @@ const AppHeader = () => {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
+  const compactContent = pathname !== "/" && pathname !== "/auth" && !pathname.startsWith("/admin");
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -155,7 +158,7 @@ function RootComponent() {
                 <AppSidebar />
                 <div className="flex-1 flex flex-col min-w-0">
                   <AppHeader />
-                  <main className="flex-1 overflow-auto overflow-x-hidden">
+                  <main className={`flex-1 overflow-auto overflow-x-hidden${compactContent ? " mobile-content-density" : ""}`}>
                     <Outlet />
                   </main>
                 </div>
