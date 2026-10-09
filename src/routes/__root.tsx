@@ -120,7 +120,7 @@ const AppHeader = () => {
           </Button>
         </div>
 
-        <div className="text-lg font-semibold text-foreground">D-mon Hockey Club</div>
+        <div className="text-lg font-semibold text-foreground">D-mon Hockey</div>
       </div>
 
       {/* Mobile hint text - clickable */}
