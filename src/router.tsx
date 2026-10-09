@@ -9,6 +9,8 @@ export const getRouter = () => {
     routeTree,
     context: { queryClient },
     scrollRestoration: true,
+    // De inhoud scrolt in <main>, niet in window: ook die naar boven bij navigatie.
+    scrollToTopSelectors: ["main"],
     defaultPreloadStaleTime: 0,
   });
 
