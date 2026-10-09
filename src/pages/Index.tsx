@@ -255,7 +255,7 @@ const Index = ({ heroIndex = 0 }: IndexProps) => {
               </h1>
 
               <p className="mt-7 text-primary-foreground/85 text-base md:text-xl max-w-xl font-medium leading-relaxed fade-in-up">
-                Welkom bij onze hockeyclub in Dendermonde. Sluit je aan voor trainingen, wedstrijden en de passie voor hockey.
+                Hockey gemaakt in Dendermonde — van de eerste U6-training tot de seniors op zondag.
               </p>
 
               {user ? (
