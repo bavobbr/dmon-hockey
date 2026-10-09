@@ -45,6 +45,12 @@ function useSidebar() {
   return context
 }
 
+// Zelfde context zonder exception: voor onderdelen die buiten de provider
+// renderen en zich dan stil moeten gedragen in plaats van de pagina te breken.
+function useSidebarSafe() {
+  return React.useContext(SidebarContext)
+}
+
 const SidebarProvider = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"div"> & {
