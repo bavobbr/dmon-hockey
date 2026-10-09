@@ -154,7 +154,9 @@ function RootComponent() {
                 { "--sidebar-width": "280px", "--sidebar-width-icon": "80px" } as React.CSSProperties
               }
             >
-              <div className="min-h-screen flex w-full max-w-full overflow-x-hidden">
+              {/* Vaste kolomhoogte: main is de scroll-container, zodat de
+                  header met de menuknop altijd zichtbaar blijft bij het scrollen. */}
+              <div className="h-dvh flex w-full max-w-full overflow-hidden">
                 <AppSidebar />
                 <div className="flex-1 flex flex-col min-w-0">
                   <AppHeader />
