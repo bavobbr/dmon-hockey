@@ -81,7 +81,7 @@ const Registration = () => {
       </section>
 
       {/* ===== Sticky sub-navigation ===== */}
-      <nav className="sticky top-16 z-30 border-b border-border/60 bg-background/85 backdrop-blur-md">
+      <nav className="subnav-bar relative z-30 border-b border-border/60 bg-background/85 backdrop-blur-md">
         <div className="container mx-auto px-4">
           <div className="flex gap-1 overflow-x-auto py-3 text-sm">
             {[

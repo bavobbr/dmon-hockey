@@ -58,7 +58,7 @@ const Contact = () => {
       </section>
 
       {/* ===== Sticky Sub-Nav ===== */}
-      <div className="sticky top-14 z-30 border-b border-border/60 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="subnav-bar relative z-30 border-b border-border/60 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto px-4">
           <nav className="flex items-center gap-1 overflow-x-auto py-2 no-scrollbar">
             {[
