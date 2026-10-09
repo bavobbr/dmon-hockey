@@ -234,11 +234,11 @@ const MembershipInfo = () => {
             {membershipFees.map((fee) => (
               <div
                 key={fee.category}
-                className="relative rounded-2xl border border-border/60 bg-card p-6 transition-all hover:-translate-y-0.5 hover:shadow-lg"
+                className="membership-fee relative rounded-2xl border border-border/60 bg-card p-6 transition-all hover:-translate-y-0.5 hover:shadow-lg"
               >
                 <h3 className="font-semibold text-foreground">{fee.category}</h3>
                 <p className="mt-1 text-sm text-muted-foreground min-h-[2.5rem]">{fee.description}</p>
-                <div className="mt-6 flex items-baseline gap-1">
+                <div className="membership-fee-price mt-6 flex items-baseline gap-1">
                   <span className="font-display text-4xl font-bold text-foreground">{fee.fee}</span>
                   <span className="text-lg font-semibold text-muted-foreground">€</span>
                   <span className="ml-1 text-sm text-muted-foreground">/ seizoen</span>
