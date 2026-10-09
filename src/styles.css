@@ -487,12 +487,12 @@
     & h2 { font-size: 1.5rem; line-height: 1.3; }
     & h3.text-2xl { font-size: 1.125rem; line-height: 1.4; }
 
-    & .sticky .overflow-x-auto {
+    & .subnav-bar .overflow-x-auto {
       flex-wrap: wrap;
       overflow-x: visible;
       gap: 0.5rem;
     }
-    & .sticky .overflow-x-auto > a {
+    & .subnav-bar .overflow-x-auto > :is(a, button) {
       max-width: 100%;
       white-space: normal;
       padding-inline: 0.75rem;
