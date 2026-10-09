@@ -1,14 +1,19 @@
 import { useEffect } from 'react';
-import { useLocation } from '@/lib/router-compat';
+import { useRouterState } from '@tanstack/react-router';
 
 export function ScrollToTop() {
-  const { pathname } = useLocation();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   useEffect(() => {
-    // De inhoud scrolt in <main> (header blijft zichtbaar), dus ook die
-    // scroll-positie resetten bij routewissel.
-    window.scrollTo(0, 0);
-    document.querySelector('main')?.scrollTo(0, 0);
+    // De inhoud scrolt in <main> (header blijft zichtbaar), dus die
+    // scroll-positie resetten bij routewissel, ook na de render van de nieuwe pagina.
+    const reset = () => {
+      window.scrollTo(0, 0);
+      document.querySelector('main')?.scrollTo(0, 0);
+    };
+    reset();
+    const id = requestAnimationFrame(reset);
+    return () => cancelAnimationFrame(id);
   }, [pathname]);
 
   return null;
