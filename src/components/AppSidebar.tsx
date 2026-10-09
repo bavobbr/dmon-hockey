@@ -352,7 +352,7 @@ export function AppSidebar() {
                        <NavLink
                          to={item.url}
                          onClick={handleMobileNavClick}
-                         className={`${getNavCls} flex items-center gap-2 w-full min-h-[2.5rem]`}
+                         className={`${getNavCls({ isActive: isActive(item.url) })} flex items-center gap-2 w-full min-h-[2.5rem]`}
                        >
                         <item.icon className="h-4 w-4 flex-shrink-0" />
                         <span className="truncate whitespace-nowrap overflow-hidden">{item.title}</span>
