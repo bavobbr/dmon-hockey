@@ -149,7 +149,7 @@ const IndoorHockey = () => {
       </section>
 
       {/* Sticky sub-nav */}
-      <div className="z-30 border-b border-border/60 bg-background/80 backdrop-blur-md">
+      <div className="subnav-bar z-30 border-b border-border/60 bg-background/80 backdrop-blur-md">
         <div className="container mx-auto px-4">
           <nav className="flex gap-1 overflow-x-auto py-3 text-sm">
             {subNavLinks.map((link) => (

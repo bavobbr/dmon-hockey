@@ -96,7 +96,7 @@ const ClubTeams = () => {
       </section>
 
       {/* Filter bar */}
-      <div className="z-20 border-b border-border/60 bg-background/85 backdrop-blur">
+      <div className="subnav-bar z-20 border-b border-border/60 bg-background/85 backdrop-blur">
         <div className="container mx-auto px-4 py-3 flex gap-2 overflow-x-auto">
           {["Alle", ...categories].map((cat) => (
             <Button
