@@ -287,7 +287,7 @@ export function AppSidebar() {
                                    >
                                      <SidebarMenuSubItem>
                                        <div className="flex items-center">
-                                         <SidebarMenuSubButton asChild className="flex-1">
+                                         <SidebarMenuSubButton asChild isActive={isActive(subItem.url)} className="flex-1">
                                            <NavLink
                                              to={subItem.url}
                                              onClick={handleMobileNavClick}
