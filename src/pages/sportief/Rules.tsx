@@ -109,7 +109,7 @@ const Rules = () => {
       </section>
 
       {/* Sticky sub-nav */}
-      <div className="sticky top-0 z-30 border-b border-border/60 bg-background/80 backdrop-blur-md">
+      <div className="z-30 border-b border-border/60 bg-background/80 backdrop-blur-md">
         <div className="container mx-auto px-4">
           <nav className="flex gap-1 overflow-x-auto py-3 text-sm">
             {subNavLinks.map((link) => (

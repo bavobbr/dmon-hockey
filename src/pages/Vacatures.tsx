@@ -78,7 +78,7 @@ const Vacatures = () => {
       </section>
 
       {/* Sticky filter-nav */}
-      <div className="sticky top-0 z-20 border-b border-border/60 bg-background/85 backdrop-blur">
+      <div className="z-20 border-b border-border/60 bg-background/85 backdrop-blur">
         <div className="container mx-auto px-4 py-3 flex gap-2 overflow-x-auto">
           {filters.map(f => (
             <button

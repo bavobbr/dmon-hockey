@@ -99,7 +99,7 @@ const FieldStatus = () => {
       </section>
 
       {/* Sticky sub-nav */}
-      <nav className="sticky top-0 z-30 bg-background/95 backdrop-blur border-b border-border/60">
+      <nav className="z-30 bg-background/95 backdrop-blur border-b border-border/60">
         <div className="container mx-auto px-4">
           <div className="flex gap-1 overflow-x-auto py-3">
             <button
