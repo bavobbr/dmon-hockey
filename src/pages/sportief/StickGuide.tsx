@@ -136,7 +136,7 @@ const StickGuide = () => {
       </section>
 
       {/* Sticky sub-nav */}
-      <nav className="sticky top-0 z-30 bg-background/95 backdrop-blur border-b border-border/60">
+      <nav className="subnav-bar z-30 bg-background/95 backdrop-blur border-b border-border/60">
         <div className="container mx-auto px-4">
           <div className="flex gap-1 overflow-x-auto py-3 scrollbar-hide">
             {sections.map((s) => (
@@ -287,7 +287,7 @@ const StickGuide = () => {
 
               <Card>
                 <CardContent className="p-0">
-                  <div className="border-b border-border/60 px-6 py-4">
+                  <div className="subnav-bar border-b border-border/60 px-6 py-4">
                     <h3 className="font-semibold text-foreground">Richtmaat op lichaamslengte</h3>
                     <p className="text-xs text-muted-foreground">Een richtlijn, geen absolute regel.</p>
                   </div>
@@ -318,7 +318,7 @@ const StickGuide = () => {
               <CardContent className="p-0 overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="border-b border-border/60 text-left">
+                    <tr className="subnav-bar border-b border-border/60 text-left">
                       <th className="px-6 py-4 font-semibold text-foreground">Type</th>
                       <th className="px-6 py-4 font-semibold text-foreground">Bow point</th>
                       <th className="px-6 py-4 font-semibold text-foreground">Geschikt voor</th>
@@ -399,7 +399,7 @@ const StickGuide = () => {
             <div className="grid gap-6 lg:grid-cols-[1.1fr_1fr] items-start">
               <Card>
                 <CardContent className="p-0">
-                  <div className="border-b border-border/60 px-6 py-4">
+                  <div className="subnav-bar border-b border-border/60 px-6 py-4">
                     <h3 className="font-semibold text-foreground">Richtlijn per spelersniveau</h3>
                     <p className="text-xs text-muted-foreground">
                       Percentages zijn niet perfect vergelijkbaar tussen merken: constructie, vezelkwaliteit en hars

@@ -273,7 +273,7 @@
 /* Randafstand voor hero-inhoud en subnavigatie: niet tegen de zijkant plakken
    op brede schermen (1.25rem op mobiel, tot 4.5rem op heel breed). */
 .bg-gradient-hero > .container,
-.sticky.top-0 > .container {
+.subnav-bar > .container {
   padding-inline: clamp(1.25rem, 4vw, 4.5rem);
 }
 

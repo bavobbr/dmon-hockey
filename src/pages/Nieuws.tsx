@@ -332,7 +332,7 @@ const Nieuws = () => {
       </section>
 
       {/* Sticky sub-navigation */}
-      <nav className="sticky top-0 z-30 border-b border-border/60 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
+      <nav className="subnav-bar z-30 border-b border-border/60 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
         <div className="container mx-auto px-6 max-w-6xl">
           <div className="flex gap-6 overflow-x-auto py-3 text-sm">
             <a href="#uitgelicht" className="whitespace-nowrap text-muted-foreground transition-colors hover:text-foreground">Uitgelicht</a>

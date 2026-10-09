@@ -51,7 +51,7 @@ const Privacy = () => {
       </section>
 
       {/* Sticky sub-nav */}
-      <nav className="sticky top-0 z-40 bg-background/95 backdrop-blur border-b border-border/60">
+      <nav className="subnav-bar z-40 bg-background/95 backdrop-blur border-b border-border/60">
         <div className="container mx-auto px-6">
           <div className="flex gap-6 overflow-x-auto py-4 text-sm font-medium">
             <button onClick={() => scrollToSection("algemeen")} className="text-foreground hover:text-primary whitespace-nowrap transition-colors">Algemeen</button>

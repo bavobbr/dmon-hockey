@@ -41,7 +41,7 @@ const EventGroup = forwardRef<HTMLDivElement, EventGroupProps>(
     return (
       <div ref={ref} className="mb-10 scroll-mt-4">
         {/* Section header */}
-        <div className="sticky top-0 z-20 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 py-3 mb-2">
+        <div className="z-20 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 py-3 mb-2">
           <div className="flex items-baseline gap-3">
             <div className="flex items-center gap-2.5">
               <span className={`inline-block w-1.5 h-5 rounded-sm ${accentByVariant[variant]}`} />
