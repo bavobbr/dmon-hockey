@@ -326,7 +326,7 @@ export function AppSidebar() {
                                
                                return (
                                  <SidebarMenuSubItem key={subItem.title}>
-                                   <SidebarMenuSubButton asChild>
+                                   <SidebarMenuSubButton asChild isActive={isActive(subItem.url)}>
                                       <NavLink
                                         to={subItem.url}
                                         onClick={handleMobileNavClick}
