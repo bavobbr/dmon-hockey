@@ -93,7 +93,7 @@ const AppHeader = () => {
   const toggleSidebar = sidebar?.toggleSidebar ?? (() => {});
 
   return (
-    <header className="h-14 flex items-center justify-between border-b bg-background px-4 relative z-10 md:px-6">
+    <header className="h-14 flex items-center justify-between bg-background px-4 relative z-10 md:px-6">
       <div className="flex items-center gap-3">
         {/* Mobile-optimized menu button */}
         <Button
@@ -155,7 +155,7 @@ function RootComponent() {
                 <AppSidebar />
                 <div className="flex-1 flex flex-col min-w-0">
                   <AppHeader />
-                  <main className="flex-1 overflow-auto overflow-x-hidden lg:pl-2">
+                  <main className="flex-1 overflow-auto overflow-x-hidden">
                     <Outlet />
                   </main>
                 </div>
