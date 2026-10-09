@@ -7,7 +7,6 @@ import { Link } from "@/lib/router-compat";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { cn } from "@/lib/utils";
 import { sanitizeRichHtml } from '@/lib/sanitizeHtml';
 import { extractMedia, excerptFromContent } from '@/lib/newsMedia';
 import UpcomingEvents from "@/components/UpcomingEvents";
@@ -20,13 +19,7 @@ import sfeerKidsCircle from "@/assets/gallery/kids-circle.png";
 import sfeerWaterFun from "@/assets/gallery/water-fun.png";
 import sfeerClubFamily from "@/assets/gallery/club-family-photo.png";
 
-// Dynamische galerijafbeeldingen voor de hero-achtergrond.
-// Er wordt willekeurig één foto gekozen, zodat de homepage telkens een
-// ander sfeerbeeld toont.
-const galleryModules = import.meta.glob<{ default: string }>(
-  "@/assets/gallery/*.{png,jpg,jpeg,webp,avif}",
-  { eager: true }
-);
+import { HERO_IMAGES } from "@/lib/heroImages";
 interface Announcement {
   id: string;
   title: string;
@@ -70,12 +63,15 @@ interface VacancyTeaser {
   category: 'bestuur' | 'werkgroep' | 'sportief';
 }
 
-const Index = () => {
+interface IndexProps {
+  heroIndex?: number;
+}
+
+const Index = ({ heroIndex = 0 }: IndexProps) => {
   const {
     user,
     isAdmin,
-    isModerator,
-    loading
+    isModerator
   } = useAuth();
   const {
     toast
@@ -89,21 +85,14 @@ const Index = () => {
   const [sponsorsLoading, setSponsorsLoading] = useState(true);
   const [instagramLoading, setInstagramLoading] = useState(true);
   const [vacancies, setVacancies] = useState<VacancyTeaser[]>([]);
-  const [heroImage, setHeroImage] = useState<string | null>(null);
-  const [heroLoaded, setHeroLoaded] = useState(false);
+  const hero =
+    HERO_IMAGES.length > 0 ? HERO_IMAGES[heroIndex % HERO_IMAGES.length] : undefined;
   useEffect(() => {
     fetchAnnouncements();
     fetchTeams();
     fetchSponsors();
     fetchInstagramPosts();
     fetchVacancies();
-  }, []);
-  // Kies na hydratie een willekeurige galerijfoto als hero-achtergrond.
-  useEffect(() => {
-    const urls = Object.values(galleryModules).map((mod) => mod.default);
-    if (urls.length === 0) return;
-    const url = urls[Math.floor(Math.random() * urls.length)];
-    if (url) setHeroImage(url);
   }, []);
   const fetchVacancies = async () => {
     const { data } = await supabase
@@ -219,76 +208,54 @@ const Index = () => {
       });
     }
   };
-  if (loading) {
-    return <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary"></div>
-      </div>;
-  }
+  // De pagina rendert meteen; het ingelogde paneel volgt zodra de sessie gekend is.
   return <div className="min-h-screen bg-background overflow-x-hidden max-w-full">
       <HomepageJsonLd />
-      {/* Hero Section — Dynamic Editorial */}
+      {/* Hero Section — vol sfeerbeeld met blauwe sluier */}
       <section className="relative w-full px-0 pt-4 lg:px-6 lg:pt-8">
         <div className="relative w-full overflow-hidden bg-primary text-primary-foreground min-h-[560px] md:min-h-[640px] lg:min-h-[680px] lg:rounded-3xl shadow-elegant flex items-center">
-          {/* Layer 1: willekeurig sfeerbeeld uit de galerij */}
-          {heroImage && (
+          {/* Laag 1: scherp sfeerbeeld — wisselt bij elke pagina-lading */}
+          {hero && (
             <img
-              src={heroImage}
-              alt="Sfeerbeeld van D-mon Hockey Club"
+              src={hero.src}
+              srcSet={hero.srcSet}
+              sizes="100vw"
+              alt="Sfeerbeeld van D-mon Hockey Club in Dendermonde"
               fetchPriority="high"
               decoding="async"
-              onLoad={() => setHeroLoaded(true)}
-              className={cn(
-                "absolute inset-0 w-full h-full object-cover blur-[2px] mix-blend-luminosity pointer-events-none select-none transition-opacity duration-1000",
-                heroLoaded ? "opacity-40" : "opacity-0"
-              )}
+              className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
             />
           )}
-          {/* Layer 2: navy wash + radial highlight */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/70 to-primary/95 pointer-events-none" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,hsl(var(--primary-glow)/0.35),transparent_60%)] pointer-events-none" />
+          {/* Laag 2: blauwe sluier — links draagt de tekst, rechts blijft de foto vrij */}
+          <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/90 to-primary/25 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-primary/20 pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,hsl(var(--primary-glow)/0.28),transparent_55%)] pointer-events-none" />
 
-          {/* Layer 3: hockey pitch lines */}
-          <svg
-            className="absolute inset-0 w-full h-full opacity-[0.10] pointer-events-none"
-            viewBox="0 0 1000 1000"
-            fill="none"
-            preserveAspectRatio="xMidYMid slice"
-            aria-hidden="true"
-          >
-            <circle cx="500" cy="500" r="250" stroke="white" strokeWidth="2" />
-            <rect x="0" y="250" width="150" height="500" stroke="white" strokeWidth="2" />
-            <rect x="850" y="250" width="150" height="500" stroke="white" strokeWidth="2" />
-            <line x1="500" y1="0" x2="500" y2="1000" stroke="white" strokeWidth="2" />
-          </svg>
-
-          {/* Layer 4: content */}
-          <div className="relative z-10 grid lg:grid-cols-12 w-full px-6 md:px-12 lg:px-16 py-16 lg:py-20 gap-8 items-center">
-            <div className="lg:col-span-9 flex flex-col items-start">
-              <div className="mb-8 p-1.5 bg-white rounded-full shadow-2xl inline-block fade-in-up">
+          {/* Laag 3: content */}
+          <div className="relative z-10 w-full px-6 md:px-12 lg:px-16 py-16 lg:py-20">
+            <div className="max-w-2xl flex flex-col items-start">
+              <div className="mb-7 p-1.5 bg-white rounded-full shadow-2xl inline-block fade-in-up">
                 <img
                   src="/dmon-logo.png"
-                  alt="Clublogo van D-mon Hockey Club — veldhockeyclub in Dendermonde"
-                  className="w-20 h-20 md:w-24 md:h-24 object-contain rounded-full"
+                  alt="Clublogo van D-mon Hockey Club — hockeyclub in Dendermonde"
+                  className="w-16 h-16 md:w-20 md:h-20 object-contain rounded-full"
                 />
               </div>
 
-              <span className="text-accent font-display font-bold tracking-[0.3em] text-xs md:text-sm uppercase mb-3 fade-in-up">
-                Welkom bij de Club
+              <span className="text-accent font-display font-bold tracking-[0.3em] text-xs md:text-sm uppercase mb-4 fade-in-up">
+                Hockey in Dendermonde
               </span>
 
-              <h1 className="font-display uppercase text-white leading-[0.9]  text-5xl md:text-7xl lg:text-8xl fade-in-up">
+              <h1 className="font-display uppercase font-black text-white leading-[0.86] text-6xl md:text-8xl lg:text-9xl fade-in-up">
                 D-mon<br />
                 <span className="relative inline-block">
-                  Hockey Club
-                  <span className="absolute -bottom-1 md:-bottom-2 left-0 w-full h-1.5 md:h-2 bg-secondary/90" aria-hidden="true" />
-                </span>
-                <span className="block mt-3 md:mt-5 text-lg md:text-2xl lg:text-3xl font-semibold normal-case tracking-[0.2em] text-accent">
-                  Veldhockey in Dendermonde
+                  Hockey
+                  <span className="absolute -bottom-1 md:-bottom-2 left-0 w-full h-1.5 md:h-2.5 bg-secondary/90" aria-hidden="true" />
                 </span>
               </h1>
 
-              <p className="mt-6 text-primary-foreground/80 text-base md:text-xl max-w-xl font-medium leading-relaxed fade-in-up">
-                Welkom bij onze veldhockey gemeenschap in België. Sluit je aan voor trainingen, wedstrijden, en de passie voor hockey.
+              <p className="mt-7 text-primary-foreground/85 text-base md:text-xl max-w-xl font-medium leading-relaxed fade-in-up">
+                Welkom bij onze hockeyclub in Dendermonde. Sluit je aan voor trainingen, wedstrijden en de passie voor hockey.
               </p>
 
               {user ? (
@@ -321,14 +288,14 @@ const Index = () => {
                       size="lg"
                       className="rounded-full px-8 py-4 bg-secondary text-secondary-foreground hover:bg-secondary-light shadow-lg shadow-secondary/30 hover:-translate-y-0.5 transition-all"
                     >
-                      Word Lid van Onze Club
+                      Word lid
                     </Button>
                   </Link>
                   <a href="https://app.twizzit.com/v2/home" target="_blank" rel="noopener noreferrer">
                     <Button
                       size="lg"
                       variant="outline"
-                      className="rounded-full px-8 py-4 bg-transparent border-2 border-accent/60 text-accent hover:bg-accent hover:text-accent-foreground hover:border-accent backdrop-blur-xs"
+                      className="rounded-full px-8 py-4 bg-primary-foreground/10 border-2 border-accent text-primary-foreground hover:bg-accent hover:text-accent-foreground hover:border-accent backdrop-blur-xs"
                     >
                       Leden Login
                     </Button>
@@ -336,22 +303,10 @@ const Index = () => {
                 </div>
               )}
             </div>
-
-            {/* Vertical watermark */}
-            <div className="hidden lg:flex lg:col-span-3 justify-end items-center overflow-hidden">
-              <div className="rotate-90 origin-right translate-x-8 whitespace-nowrap">
-                <span className="font-display uppercase  text-white/[0.05] select-none text-[10rem] leading-none">
-                  Sinds 2023
-                </span>
-              </div>
-            </div>
           </div>
 
           {/* Bottom accent strip */}
-          <div className="absolute bottom-0 right-0 w-1/2 h-1.5 flex pointer-events-none">
-            <div className="h-full flex-1 bg-accent" />
-            <div className="h-full flex-1 bg-secondary" />
-          </div>
+          <div className="absolute inset-x-0 bottom-0 h-1.5 bg-gradient-to-r from-accent to-secondary pointer-events-none" />
         </div>
       </section>
 

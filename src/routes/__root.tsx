@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, lazy } from "react";
 import type { QueryClient } from "@tanstack/react-query";
 import { QueryClientProvider } from "@tanstack/react-query";
 import {
@@ -64,11 +64,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     if (target) {
       throw redirect({ to: target, replace: true });
     }
+    return undefined;
   },
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFound,
-  errorComponent: ErrorComponent,
+  errorComponent: lazy(() => Promise.resolve({ default: ErrorComponent })),
 });
 
 function RootShell({ children }: { children: React.ReactNode }) {
@@ -158,7 +159,7 @@ function RootComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error, reset }: { error: unknown; reset: () => void }) {
   console.error(error);
 
   useEffect(() => {
