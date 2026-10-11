@@ -1,7 +1,7 @@
 import { PAGE_META } from "@/config/pageMeta";
 
 const BASE_URL = "https://www.dmon.be";
-const OG_IMAGE = `${BASE_URL}/og-image.png`;
+const OG_IMAGE = `${BASE_URL}/images/og/og-voorstel-3-gesplitst.jpg`;
 const SUFFIX = "D-mon Hockey Club";
 
 type MetaTag =
