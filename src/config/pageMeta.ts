@@ -78,8 +78,8 @@ export const PAGE_META: Record<string, { title: string; description: string }> =
     description: "Schrijf je in als lid bij D-mon Hockey Club Dendermonde. Online registratieformulier.",
   },
   "/lidmaatschap/indoor-registratie": {
-    title: "Indoor Registratie",
-    description: "Schrijf je in voor indoor hockey bij D-mon Hockey Club.",
+    title: "Indoor inschrijven 2026-2027",
+    description: "Schrijf je via Twizzit in voor de indoorcompetitie 2026-2027 van D-mon Hockey.",
   },
   "/lidmaatschap/verzekering": {
     title: "Verzekering",
@@ -135,8 +135,8 @@ export const PAGE_META: Record<string, { title: string; description: string }> =
     description: "De sportieve principes en speelstijl van D-mon Hockey Club.",
   },
   "/sportief/indoor-hockey": {
-    title: "Indoor Hockey",
-    description: "Alles over indoor hockey bij D-mon Hockey Club. Schema, regels en inschrijving.",
+    title: "Winterstop 2026-2027",
+    description: "Alle informatie over indoor vanaf U9 en het wintercriterium voor U6-U8 bij D-mon Hockey.",
   },
   "/sportief/regels-assistent": {
     title: "Regels Assistent",

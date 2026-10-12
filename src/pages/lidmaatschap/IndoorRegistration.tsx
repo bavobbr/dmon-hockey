@@ -1,68 +1,55 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Link } from "@/lib/router-compat";
-import { Info, ExternalLink } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Link } from "@/lib/router-compat";
+import { AlertCircle, ArrowRight, ExternalLink, Info, Users } from "lucide-react";
+
+const INDOOR_FORM_URL = "https://twizzit.com/go/dmon-indoor-2026";
 
 const IndoorRegistration = () => {
   return (
     <div className="container mx-auto px-4 py-12 lg:py-16">
-      <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8 text-foreground">Indoor Hockey Registratie</h1>
-        
-        {/* Introduction */}
+      <div className="mx-auto max-w-4xl">
+        <h1 className="mb-3 text-4xl font-bold text-foreground">Indoor inschrijven 2026-2027</h1>
+        <p className="mb-8 text-lg text-muted-foreground">Voor spelers vanaf U9 die deelnemen aan trainingen én wedstrijden.</p>
+
         <Alert className="mb-8 border-primary/20 bg-primary/5">
           <Info className="h-4 w-4" />
-          <AlertDescription className="text-muted-foreground">
-            Hier kan je je inschrijven voor indoor hockey. Voor meer informatie over indoor hockey,
-            trainingsschema's, prijzen en benodigdheden, bekijk de{" "}
-            <Link
-              to="/sportief/indoor-hockey"
-              className="text-primary hover:underline inline-flex items-center gap-1"
-            >
-              Indoor Hockey informatiepagina
-              <ExternalLink className="h-3 w-3" />
-            </Link>
+          <AlertDescription>
+            Inschrijven kan tot <strong>29 oktober 2026</strong>. Bekijk eerst de volledige{" "}
+            <Link to="/sportief/indoor-hockey" className="font-medium text-primary underline underline-offset-4">winterstopinformatie</Link>
+            {" "}met trainingsuren, locaties, materiaal en tarieven.
           </AlertDescription>
         </Alert>
 
-        {/* Registration Link */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Inschrijvingsformulier</CardTitle>
-            <CardDescription>
-              Kies je categorie en vul je gegevens in om je in te schrijven voor indoor hockey
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <p className="text-muted-foreground">
-              Klik op de knop hieronder om naar ons inschrijvingsformulier te gaan. 
-              Je wordt doorgestuurd naar een nieuwe pagina waar je je categorie kan kiezen 
-              en je inschrijving kan voltooien.
-            </p>
-            <a
-              href="https://dmon.odoo.com/shop/category/indoor-5"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-8 py-4 text-base font-medium text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:shadow-xl focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-            >
-              Open inschrijvingsformulier
-              <ExternalLink className="h-5 w-5" />
-            </a>
-            <p className="text-sm text-muted-foreground">
-              Het formulier opent in een nieuwe tab
-            </p>
+        <div className="grid gap-4 md:grid-cols-2">
+          <Card>
+            <CardHeader><CardTitle className="flex items-center gap-2"><Users className="h-5 w-5 text-primary" />Beperkte plaatsen</CardTitle></CardHeader>
+            <CardContent className="space-y-3 text-sm text-muted-foreground">
+              <p>Per wedstrijdploeg kunnen maximaal 10 spelers deelnemen. Categorieën met twee ploegen hebben maximaal 20 plaatsen.</p>
+              <p>Is je categorie volzet, dan kom je op de wachtlijst. De sportieve cel bepaalt de definitieve teamindeling.</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader><CardTitle className="flex items-center gap-2"><AlertCircle className="h-5 w-5 text-primary" />Goed om te weten</CardTitle></CardHeader>
+            <CardContent className="space-y-3 text-sm text-muted-foreground">
+              <p>Schrijf in voor je eigen leeftijdscategorie en geslacht.</p>
+              <p>Je inschrijving geldt voor de competitie en de bijbehorende trainingen en wedstrijden. Alleen trainen is dit seizoen niet mogelijk.</p>
+            </CardContent>
+          </Card>
+        </div>
+
+        <Card className="mt-6 border-primary/20">
+          <CardHeader><CardTitle>Inschrijven via Twizzit</CardTitle></CardHeader>
+          <CardContent className="space-y-5">
+            <div className="grid gap-3 sm:grid-cols-2">
+              <div className="rounded-lg bg-muted p-4"><p className="text-sm text-muted-foreground">U9 tot U12</p><p className="text-2xl font-bold">€130</p></div>
+              <div className="rounded-lg bg-muted p-4"><p className="text-sm text-muted-foreground">Vanaf U14</p><p className="text-2xl font-bold">€140</p></div>
+            </div>
+            <Button asChild size="lg"><a href={INDOOR_FORM_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">Open het Twizzit-formulier<ExternalLink className="h-4 w-4" /></a></Button>
+            <Button asChild variant="ghost"><Link to="/sportief/indoor-hockey" className="inline-flex items-center gap-2">Terug naar alle winterstopinformatie<ArrowRight className="h-4 w-4" /></Link></Button>
           </CardContent>
         </Card>
-
-        {/* Additional Info */}
-        <div className="mt-6 text-center text-sm text-muted-foreground">
-          <p>
-            Vragen over de inschrijving? Neem contact op via onze{" "}
-            <Link to="/lidmaatschap/contact" className="text-primary hover:underline">
-              contactpagina
-            </Link>
-          </p>
-        </div>
       </div>
     </div>
   );
