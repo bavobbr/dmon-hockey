@@ -33,16 +33,13 @@ const DiscountMediaCard = ({
   media: DiscountMedia;
   link?: { href: string; text: string } | undefined;
 }) => {
-  const isLogo = media.fit === "contain";
-  const plate = `mt-4 overflow-hidden rounded-xl border border-border/40 ${
-    isLogo ? "bg-primary/5" : "bg-white"
-  }`;
+  const plate = "mt-4 overflow-hidden rounded-xl border border-border/40 bg-primary/5";
   const image = (
     <img
       src={media.src}
       alt={media.alt}
       loading="lazy"
-      className={`aspect-[1200/388] w-full ${isLogo ? "object-contain p-2" : "object-cover"}`}
+      className="aspect-[1200/388] w-full object-contain p-3"
     />
   );
   if (!link) return <div className={plate}>{image}</div>;
