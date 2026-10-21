@@ -24,7 +24,7 @@ import {
 import { Link as RouterLink } from "@/lib/router-compat";
 import { FaqJsonLd } from "@/components/JsonLd";
 
-type DiscountMedia = { src: string; alt: string; fit?: "cover" | "contain" };
+type DiscountMedia = { src: string; alt: string };
 
 const DiscountMediaCard = ({
   media,
@@ -80,7 +80,6 @@ const MembershipInfo = () => {
       media: {
         src: "/images/gezinskorting.jpg",
         alt: "Illustratie van een gezin met een meisje dat een hockeystick vasthoudt, met de boodschap 25 euro korting",
-        fit: "cover",
       },
     },
     {
@@ -91,7 +90,6 @@ const MembershipInfo = () => {
       media: {
         src: "/images/uitpas-dender.png",
         alt: "UiTPAS Dender",
-        fit: "contain",
       },
       link: {
         href: "https://www.dendermonde.be/uitpasmetkansentarief",
