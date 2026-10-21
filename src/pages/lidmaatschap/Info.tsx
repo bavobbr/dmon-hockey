@@ -316,6 +316,14 @@ const MembershipInfo = () => {
                 </div>
                 <h3 className="mt-4 font-semibold text-foreground">{discount.type}</h3>
                 <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{discount.description}</p>
+                {discount.logo && (
+                  <img
+                    src={discount.logo}
+                    alt="UiTPAS Dender"
+                    loading="lazy"
+                    className="mt-4 h-14 w-auto rounded-lg border border-border/40"
+                  />
+                )}
               </div>
             ))}
           </div>
