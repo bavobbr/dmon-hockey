@@ -42,7 +42,7 @@ const DiscountMediaCard = ({
       src={media.src}
       alt={media.alt}
       loading="lazy"
-      className={`aspect-[1200/388] w-full ${isLogo ? "object-contain p-4" : "object-cover"}`}
+      className={`aspect-[1200/388] w-full ${isLogo ? "object-contain p-2" : "object-cover"}`}
     />
   );
   if (!link) return <div className={plate}>{image}</div>;
@@ -89,7 +89,7 @@ const MembershipInfo = () => {
     {
       type: "Sociaal tarief",
       description:
-        "Bij financiële moeilijkheden kan je een beroep doen op een sociaal tarief via de Uitpas Kansentarief.",
+        "Bij financiële moeilijkheden kan je een beroep doen op een sociaal tarief via de UiTPAS Kansentarief.",
       icon: Gift,
       media: {
         src: "/images/uitpas-dender.png",
@@ -98,7 +98,7 @@ const MembershipInfo = () => {
       },
       link: {
         href: "https://www.dendermonde.be/uitpasmetkansentarief",
-        text: "Uitpas Kansentarief",
+        text: "UiTPAS Kansentarief",
       },
     },
   ];
@@ -151,7 +151,7 @@ const MembershipInfo = () => {
     {
       question: "Welke kortingen zijn er op het lidgeld?",
       answer:
-        "Er is een gezinskorting van 25 euro per bijkomend gezinslid. Bij financiële moeilijkheden kan je beroep doen op een sociaal tarief via de Uitpas Kansentarief.",
+        "Er is een gezinskorting van 25 euro per bijkomend gezinslid. Bij financiële moeilijkheden kan je beroep doen op een sociaal tarief via de UiTPAS Kansentarief.",
     },
     {
       question: "Hoe schrijf ik me in bij D-mon Hockey Club?",
