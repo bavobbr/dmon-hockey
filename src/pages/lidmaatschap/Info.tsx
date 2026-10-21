@@ -24,6 +24,40 @@ import {
 import { Link as RouterLink } from "@/lib/router-compat";
 import { FaqJsonLd } from "@/components/JsonLd";
 
+type DiscountMedia = { src: string; alt: string };
+
+const DiscountMediaCard = ({
+  media,
+  link,
+}: {
+  media: DiscountMedia;
+  link?: { href: string; text: string } | undefined;
+}) => {
+  const plate = "mt-4 overflow-hidden rounded-xl border border-border/40 bg-primary/5";
+  const image = (
+    <div className="p-3">
+      <img
+        src={media.src}
+        alt={media.alt}
+        loading="lazy"
+        className="aspect-[1200/388] w-full rounded-lg object-contain"
+      />
+    </div>
+  );
+  if (!link) return <div className={plate}>{image}</div>;
+  return (
+    <a
+      href={link.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Meer info over ${link.text}`}
+      className={`${plate} block transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary`}
+    >
+      {image}
+    </a>
+  );
+};
+
 const MembershipInfo = () => {
   const membershipFees = [
     { category: "Basistarief", description: "2 trainingen + match", fee: "320" },
@@ -37,7 +71,7 @@ const MembershipInfo = () => {
     type: string;
     description: string;
     icon: typeof Gift;
-    logo?: string;
+    media?: DiscountMedia;
     link?: { href: string; text: string };
   }[] = [
     {
@@ -45,16 +79,23 @@ const MembershipInfo = () => {
       description:
         "Vanaf elke bijkomende inschrijving binnen een gezin krijg je 25 euro korting op het lidgeld.",
       icon: HeartHandshake,
+      media: {
+        src: "/images/gezinskorting.jpg",
+        alt: "Illustratie van een gezin met een meisje dat een hockeystick vasthoudt, met de boodschap 25 euro korting",
+      },
     },
     {
       type: "Sociaal tarief",
       description:
-        "Bij financiële moeilijkheden kan je een beroep doen op een sociaal tarief via de Uitpas Kansentarief.",
+        "Bij financiële moeilijkheden kan je een beroep doen op een sociaal tarief via de UiTPAS Kansentarief.",
       icon: Gift,
-      logo: "/images/uitpas-dender.png",
+      media: {
+        src: "/images/uitpas-dender.png",
+        alt: "UiTPAS Dender",
+      },
       link: {
         href: "https://www.dendermonde.be/uitpasmetkansentarief",
-        text: "Uitpas Kansentarief",
+        text: "UiTPAS Kansentarief",
       },
     },
   ];
@@ -107,7 +148,7 @@ const MembershipInfo = () => {
     {
       question: "Welke kortingen zijn er op het lidgeld?",
       answer:
-        "Er is een gezinskorting van 25 euro per bijkomend gezinslid. Bij financiële moeilijkheden kan je beroep doen op een sociaal tarief via de Uitpas Kansentarief.",
+        "Er is een gezinskorting van 25 euro per bijkomend gezinslid. Bij financiële moeilijkheden kan je beroep doen op een sociaal tarief via de UiTPAS Kansentarief.",
     },
     {
       question: "Hoe schrijf ik me in bij D-mon Hockey Club?",
@@ -343,30 +384,9 @@ const MembershipInfo = () => {
                     discount.description
                   )}
                 </p>
-                {discount.logo &&
-                  (discount.link ? (
-                    <a
-                      href={discount.link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`Meer info over ${discount.link.text}`}
-                      className="mt-4 inline-block rounded-lg transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                    >
-                      <img
-                        src={discount.logo}
-                        alt="UiTPAS Dender"
-                        loading="lazy"
-                        className="h-14 w-auto rounded-lg border border-border/40"
-                      />
-                    </a>
-                  ) : (
-                    <img
-                      src={discount.logo}
-                      alt="UiTPAS Dender"
-                      loading="lazy"
-                      className="mt-4 h-14 w-auto rounded-lg border border-border/40"
-                    />
-                  ))}
+                {discount.media && (
+                  <DiscountMediaCard media={discount.media} link={discount.link} />
+                )}
               </div>
             ))}
           </div>
