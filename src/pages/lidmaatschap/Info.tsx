@@ -33,7 +33,7 @@ const MembershipInfo = () => {
     { category: "G-hockey", description: "Hockey voor jongeren met een beperking", fee: "195" },
   ];
 
-  const discounts = [
+  const discounts: { type: string; description: string; icon: typeof Gift; logo?: string }[] = [
     {
       type: "Gezinskorting",
       description:
@@ -45,6 +45,7 @@ const MembershipInfo = () => {
       description:
         "Bij financiële moeilijkheden kan je een beroep doen op een sociaal tarief via de Uitpas Kansentarief.",
       icon: Gift,
+      logo: "/images/uitpas-dender.png",
     },
   ];
 
