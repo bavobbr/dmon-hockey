@@ -365,7 +365,7 @@ const MembershipInfo = () => {
                         src={discount.media.src}
                         alt={discount.media.alt}
                         loading="lazy"
-                        className={`aspect-[1200/335] w-full ${
+                        className={`aspect-[1200/368] w-full ${
                           discount.media.fit === "contain" ? "object-contain p-3" : "object-cover"
                         }`}
                       />
@@ -376,7 +376,7 @@ const MembershipInfo = () => {
                         src={discount.media.src}
                         alt={discount.media.alt}
                         loading="lazy"
-                        className={`aspect-[1200/335] w-full ${
+                        className={`aspect-[1200/368] w-full ${
                           discount.media.fit === "contain" ? "object-contain p-3" : "object-cover"
                         }`}
                       />
