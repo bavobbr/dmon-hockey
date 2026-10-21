@@ -24,6 +24,41 @@ import {
 import { Link as RouterLink } from "@/lib/router-compat";
 import { FaqJsonLd } from "@/components/JsonLd";
 
+type DiscountMedia = { src: string; alt: string; fit?: "cover" | "contain" };
+
+const DiscountMediaCard = ({
+  media,
+  link,
+}: {
+  media: DiscountMedia;
+  link?: { href: string; text: string };
+}) => {
+  const isLogo = media.fit === "contain";
+  const plate = `mt-4 overflow-hidden rounded-xl border border-border/40 ${
+    isLogo ? "bg-primary/5" : "bg-white"
+  }`;
+  const image = (
+    <img
+      src={media.src}
+      alt={media.alt}
+      loading="lazy"
+      className={`aspect-[1200/368] w-full ${isLogo ? "object-contain p-4" : "object-cover"}`}
+    />
+  );
+  if (!link) return <div className={plate}>{image}</div>;
+  return (
+    <a
+      href={link.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Meer info over ${link.text}`}
+      className={`${plate} block transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary`}
+    >
+      {image}
+    </a>
+  );
+};
+
 const MembershipInfo = () => {
   const membershipFees = [
     { category: "Basistarief", description: "2 trainingen + match", fee: "320" },
@@ -37,7 +72,7 @@ const MembershipInfo = () => {
     type: string;
     description: string;
     icon: typeof Gift;
-    media?: { src: string; alt: string; fit?: "cover" | "contain" };
+    media?: DiscountMedia;
     link?: { href: string; text: string };
   }[] = [
     {
@@ -352,36 +387,9 @@ const MembershipInfo = () => {
                     discount.description
                   )}
                 </p>
-                {discount.media &&
-                  (discount.link ? (
-                    <a
-                      href={discount.link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`Meer info over ${discount.link.text}`}
-                      className="mt-4 block overflow-hidden rounded-xl border border-border/40 bg-white transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                    >
-                      <img
-                        src={discount.media.src}
-                        alt={discount.media.alt}
-                        loading="lazy"
-                        className={`aspect-[1200/368] w-full ${
-                          discount.media.fit === "contain" ? "object-contain p-3" : "object-cover"
-                        }`}
-                      />
-                    </a>
-                  ) : (
-                    <div className="mt-4 overflow-hidden rounded-xl border border-border/40 bg-white">
-                      <img
-                        src={discount.media.src}
-                        alt={discount.media.alt}
-                        loading="lazy"
-                        className={`aspect-[1200/368] w-full ${
-                          discount.media.fit === "contain" ? "object-contain p-3" : "object-cover"
-                        }`}
-                      />
-                    </div>
-                  ))}
+                {discount.media && (
+                  <DiscountMediaCard media={discount.media} link={discount.link} />
+                )}
               </div>
             ))}
           </div>
