@@ -33,7 +33,13 @@ const MembershipInfo = () => {
     { category: "G-hockey", description: "Hockey voor jongeren met een beperking", fee: "195" },
   ];
 
-  const discounts: { type: string; description: string; icon: typeof Gift; logo?: string }[] = [
+  const discounts: {
+    type: string;
+    description: string;
+    icon: typeof Gift;
+    logo?: string;
+    link?: { href: string; text: string };
+  }[] = [
     {
       type: "Gezinskorting",
       description:
@@ -46,6 +52,10 @@ const MembershipInfo = () => {
         "Bij financiële moeilijkheden kan je een beroep doen op een sociaal tarief via de Uitpas Kansentarief.",
       icon: Gift,
       logo: "/images/uitpas-dender.png",
+      link: {
+        href: "https://www.dendermonde.be/uitpasmetkansentarief",
+        text: "Uitpas Kansentarief",
+      },
     },
   ];
 
@@ -315,15 +325,48 @@ const MembershipInfo = () => {
                   <discount.icon className="h-6 w-6" />
                 </div>
                 <h3 className="mt-4 font-semibold text-foreground">{discount.type}</h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{discount.description}</p>
-                {discount.logo && (
-                  <img
-                    src={discount.logo}
-                    alt="UiTPAS Dender"
-                    loading="lazy"
-                    className="mt-4 h-14 w-auto rounded-lg border border-border/40"
-                  />
-                )}
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                  {discount.link && discount.description.includes(discount.link.text) ? (
+                    <>
+                      {discount.description.split(discount.link.text)[0]}
+                      <a
+                        href={discount.link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-medium text-primary underline hover:no-underline"
+                      >
+                        {discount.link.text}
+                      </a>
+                      {discount.description.split(discount.link.text)[1]}
+                    </>
+                  ) : (
+                    discount.description
+                  )}
+                </p>
+                {discount.logo &&
+                  (discount.link ? (
+                    <a
+                      href={discount.link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Meer info over ${discount.link.text}`}
+                      className="mt-4 inline-block rounded-lg transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    >
+                      <img
+                        src={discount.logo}
+                        alt="UiTPAS Dender"
+                        loading="lazy"
+                        className="h-14 w-auto rounded-lg border border-border/40"
+                      />
+                    </a>
+                  ) : (
+                    <img
+                      src={discount.logo}
+                      alt="UiTPAS Dender"
+                      loading="lazy"
+                      className="mt-4 h-14 w-auto rounded-lg border border-border/40"
+                    />
+                  ))}
               </div>
             ))}
           </div>
