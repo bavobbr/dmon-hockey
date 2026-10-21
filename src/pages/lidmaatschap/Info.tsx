@@ -35,12 +35,14 @@ const DiscountMediaCard = ({
 }) => {
   const plate = "mt-4 overflow-hidden rounded-xl border border-border/40 bg-primary/5";
   const image = (
-    <img
-      src={media.src}
-      alt={media.alt}
-      loading="lazy"
-      className="aspect-[1200/388] w-full rounded-lg object-contain p-3"
-    />
+    <div className="p-3">
+      <img
+        src={media.src}
+        alt={media.alt}
+        loading="lazy"
+        className="aspect-[1200/388] w-full rounded-lg object-contain"
+      />
+    </div>
   );
   if (!link) return <div className={plate}>{image}</div>;
   return (
