@@ -31,7 +31,7 @@ const DiscountMediaCard = ({
   link,
 }: {
   media: DiscountMedia;
-  link?: { href: string; text: string };
+  link?: { href: string; text: string } | undefined;
 }) => {
   const isLogo = media.fit === "contain";
   const plate = `mt-4 overflow-hidden rounded-xl border border-border/40 ${
