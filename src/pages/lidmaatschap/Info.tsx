@@ -39,7 +39,7 @@ const DiscountMediaCard = ({
       src={media.src}
       alt={media.alt}
       loading="lazy"
-      className="aspect-[1200/388] w-full object-contain p-3"
+      className="aspect-[1200/388] w-full rounded-lg object-contain p-3"
     />
   );
   if (!link) return <div className={plate}>{image}</div>;
