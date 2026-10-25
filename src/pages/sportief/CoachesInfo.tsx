@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Download, BookOpen, Users, Target, Zap, PlayCircle, ArrowRight } from "lucide-react";
 import { Link } from "@/lib/router-compat";
+import { BELEID_PDF_URL, CHARTER_PDF_URL } from "@/config/sportiefCharter";
 
 const CoachesInfo = () => {
   return (
