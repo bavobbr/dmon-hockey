@@ -42,8 +42,8 @@ export const PAGE_META: Record<string, { title: string; description: string }> =
     description: "Maak kennis met het bestuur van D-mon Hockey Club Dendermonde.",
   },
   "/club/waarden": {
-    title: "Waarden",
-    description: "De kernwaarden en visie van D-mon Hockey Club. Wat ons als club drijft.",
+    title: "Sportief charter en waarden",
+    description: "Het sportief charter van D-mon Hockey Club: vijf waarden, wat je mag verwachten en de engagementen van spelers, ouders en coaches.",
   },
   "/club/geschiedenis": {
     title: "Geschiedenis",

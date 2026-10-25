@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Download, BookOpen, Users, Target, Zap, PlayCircle, ArrowRight } from "lucide-react";
 import { Link } from "@/lib/router-compat";
+import { BELEID_PDF_URL, CHARTER_PDF_URL } from "@/config/sportiefCharter";
 
 const CoachesInfo = () => {
   return (
@@ -44,17 +45,24 @@ const CoachesInfo = () => {
           <CardContent>
             <div className="grid md:grid-cols-2 gap-4">
               <Button variant="outline" className="h-auto p-4 justify-start" asChild>
-                <a 
-                  href="/docs/Sportief_beleid_DMON_Hockey.docx" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                >
+                <a href={BELEID_PDF_URL} target="_blank" rel="noopener noreferrer">
                   <div className="text-left">
                     <div className="flex items-center gap-2 mb-1">
                       <Download className="h-4 w-4" />
-                      <span className="font-medium">Sportief beleid</span>
+                      <span className="font-medium">Sportief beleid v1.4</span>
                     </div>
-                    <p className="text-xs text-muted-foreground">Club filosofie en doelstellingen</p>
+                    <p className="text-xs text-muted-foreground">Volledig beleid, 35 pagina's (PDF, 6 MB)</p>
+                  </div>
+                </a>
+              </Button>
+              <Button variant="outline" className="h-auto p-4 justify-start" asChild>
+                <a href={CHARTER_PDF_URL} target="_blank" rel="noopener noreferrer">
+                  <div className="text-left">
+                    <div className="flex items-center gap-2 mb-1">
+                      <Download className="h-4 w-4" />
+                      <span className="font-medium">Sportief charter v1.4</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground">Korte versie, 2 pagina's (PDF)</p>
                   </div>
                 </a>
               </Button>

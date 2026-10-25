@@ -310,6 +310,13 @@ const MembershipInfo = () => {
             <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground">
               Nieuw bij D-mon? Zo werkt het
             </h2>
+            <p className="mt-3 text-sm text-muted-foreground">
+              Bij inschrijving onderschrijf je ons{" "}
+              <RouterLink to="/club/waarden" className="font-medium text-primary underline">
+                sportief charter
+              </RouterLink>
+              . Een handtekening is niet nodig.
+            </p>
           </div>
 
           <div className="relative grid gap-6 md:grid-cols-3">
