@@ -1,17 +1,22 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
-  Shield, Heart, Users, AlertTriangle, Mail, ExternalLink, Sparkles, FileText, Download,
-  Smile, Flame, CheckCircle2, User, UsersRound, Megaphone, HandHeart, BookOpen,
+  AlertTriangle, Mail, ExternalLink, Sparkles, FileText, Download,
+  CheckCircle2, User, UsersRound, Megaphone, HandHeart, BookOpen,
 } from "lucide-react";
 import { CHARTER_PDF_URL, BELEID_PDF_URL, CHARTER_VERSION } from "@/config/sportiefCharter";
+import respectPhoto from "@/assets/values/team-photo.webp.asset.json";
+import funPhoto from "@/assets/values/girls-sticks-up.webp.asset.json";
+import fairPlayPhoto from "@/assets/values/field-action.webp.asset.json";
+import enthusiasmPhoto from "@/assets/values/team-celebration.webp.asset.json";
+import communityPhoto from "@/assets/values/club-family-photo.webp.asset.json";
 
 const values = [
-  { icon: Heart, title: "Respect", text: "Wij tonen respect voor elkaar en voor onszelf, fysiek en mentaal, en evengoed voor de tegenstander, de scheidsrechter, onze begeleiders en het materiaal van de club." },
-  { icon: Smile, title: "Fun", text: "Plezier is de kern van jeugdsport, en bij ons de voorwaarde voor goed spel." },
-  { icon: Shield, title: "Fair Play", text: "Hockey is een ploegsport waarin we samen leren omgaan met winst en verlies. Fair play staat voorop; winnen komt daarna." },
-  { icon: Flame, title: "Enthousiasme", text: "Wij hebben sportieve ambitie en streven naar de beste versie van onszelf." },
-  { icon: Users, title: "Community", text: "Wij maken deel uit van Dendermonde, geven terug aan onze gemeenschap en bouwen onze club van binnenuit: spelers, scheidsrechters, trainers en coaches leiden wij veelal zelf op." },
+  { photo: respectPhoto, alt: "Een ploeg van D-mon Hockey op het veld", title: "Respect", text: "Wij tonen respect voor elkaar en voor onszelf, fysiek en mentaal, en evengoed voor de tegenstander, de scheidsrechter, onze begeleiders en het materiaal van de club.", example: "ik heb respect voor de arbitrage, ook bij een vergissing." },
+  { photo: funPhoto, alt: "Speelsters steken juichend hun sticks in de lucht", title: "Fun", text: "Plezier is de kern van jeugdsport, en bij ons de voorwaarde voor goed spel.", example: "na de wedstrijd eerst de vraag: heb je plezier gehad?" },
+  { photo: fairPlayPhoto, alt: "D-mon speelsters juichen samen met hun sticks in de lucht", title: "Fair Play", text: "Hockey is een ploegsport waarin we samen leren omgaan met winst en verlies. Fair play staat voorop; winnen komt daarna.", example: "ik ga moedig om met verlies en blijf bescheiden bij winst." },
+  { photo: enthusiasmPhoto, alt: "Vrijwilligers van D-mon samen op een clubactiviteit", title: "Enthousiasme", text: "Wij hebben sportieve ambitie en streven naar de beste versie van onszelf.", example: "ik zet me in om te groeien en haal het beste uit mezelf." },
+  { photo: communityPhoto, alt: "Spelers, ouders en vrijwilligers van D-mon samen op de club", title: "Community", text: "Wij maken deel uit van Dendermonde, geven terug aan onze gemeenschap en bouwen onze club van binnenuit: spelers, scheidsrechters, trainers en coaches leiden wij veelal zelf op.", example: "minstens één engagement per seizoenshelft: rijden, bardienst, coachen of fluiten." },
 ];
 
 const expectations = [
@@ -118,21 +123,29 @@ const ClubValues = () => {
       </nav>
 
       <section id="waarden" className="container mx-auto scroll-mt-20 px-4 py-16 lg:py-20">
-        <span className="text-xs font-semibold uppercase tracking-widest text-primary">Ons DNA</span>
-        <h2 className="mt-2 font-display text-3xl font-bold lg:text-4xl">Onze vijf waarden</h2>
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
-          {values.map((v) => (
-            <Card key={v.title} className="relative overflow-hidden border-border/60">
-              <div className="absolute left-0 top-0 h-1 w-full bg-primary" />
-              <CardContent className="p-6">
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                  <v.icon className="h-5 w-5" />
+        <div className="mx-auto max-w-[1120px]">
+          <span className="text-xs font-bold uppercase text-secondary">Ons DNA</span>
+          <h2 className="mt-2 font-display text-3xl font-black uppercase tracking-normal text-primary lg:text-5xl">Onze vijf waarden</h2>
+          <div className="mt-4 h-1 w-24 bg-secondary" aria-hidden />
+          <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted-foreground lg:text-lg">
+            Je herkent ze in hoe we ons gedragen op het veld, langs de lijn en in het clubhuis.
+          </p>
+          <div className="values-photo-grid mt-8">
+            {values.map((v, index) => (
+              <article key={v.title} className={`values-photo-tile ${index < 2 ? "values-photo-tile-featured" : ""}`}>
+                <img src={v.photo.url} alt={v.alt} loading="lazy" decoding="async" className="values-photo-image" />
+                <div className="values-photo-overlay" aria-hidden />
+                <div className="values-photo-content">
+                  <span className="font-display text-xs font-extrabold text-accent">{String(index + 1).padStart(2, "0")}</span>
+                  <h3 className="values-photo-title font-display font-black uppercase tracking-normal">{v.title}</h3>
+                  <p className="text-sm leading-relaxed text-primary-foreground/90">{v.text}</p>
+                  <p className="border-t border-primary-foreground/15 pt-3 text-xs leading-relaxed">
+                    <strong className="text-accent">Zo zie je het:</strong> {v.example}
+                  </p>
                 </div>
-                <h3 className="mt-4 font-display text-xl font-bold">{v.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-foreground/80">{v.text}</p>
-              </CardContent>
-            </Card>
-          ))}
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
