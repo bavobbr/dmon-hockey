@@ -256,19 +256,15 @@ const Training = () => {
                   Sportief Beleid
                 </h2>
                 <p className="mt-2 max-w-2xl text-foreground/80">
-                  Onze sportieve visie, opleidingsplan, rol van trainers, coaches en
-                  scheidsrechters en de procedures voor ploegsamenstelling.
+                  Onze waarden en afspraken voor spelers, ouders en coaches staan in het sportief
+                  charter. Het volledige beleid werkt leerlijn, speeltijd en selectie uit.
                 </p>
               </div>
               <Button asChild size="lg" className="lg:self-center">
-                <a
-                  href="/docs/sportief-beleid-dmon.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Download className="mr-2 h-4 w-4" />
-                  Download PDF
-                </a>
+                <RouterLink to="/club/waarden">
+                  <FileText className="mr-2 h-4 w-4" />
+                  Lees het charter
+                </RouterLink>
               </Button>
             </div>
           </div>

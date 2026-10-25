@@ -169,6 +169,13 @@ const Registration = () => {
               Dit formulier wordt beheerd via Twizzit, ons sportadministratieplatform. Je gegevens
               worden veilig verwerkt en gebruikt voor je aansluiting bij de Vlaamse Hockey Liga.
             </p>
+            <p className="mt-3 text-sm text-muted-foreground">
+              Met je inschrijving bevestig je dat je ons{" "}
+              <a href="/club/waarden" className="font-medium text-primary underline">
+                sportief charter
+              </a>{" "}
+              gelezen hebt en onderschrijft. Een handtekening is niet nodig.
+            </p>
           </div>
 
           <Card className="border-border/60 overflow-hidden">
