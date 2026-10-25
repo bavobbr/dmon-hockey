@@ -5,11 +5,11 @@ import {
   CheckCircle2, User, UsersRound, Megaphone, HandHeart, BookOpen,
 } from "lucide-react";
 import { CHARTER_PDF_URL, BELEID_PDF_URL, CHARTER_VERSION } from "@/config/sportiefCharter";
-import respectPhoto from "@/assets/values/team-photo.webp.asset.json";
-import funPhoto from "@/assets/values/girls-sticks-up.webp.asset.json";
-import fairPlayPhoto from "@/assets/values/field-action.webp.asset.json";
-import enthusiasmPhoto from "@/assets/values/team-celebration.webp.asset.json";
-import communityPhoto from "@/assets/values/club-family-photo.webp.asset.json";
+const respectPhoto = { url: "/images/waarden/team-photo.webp" };
+const funPhoto = { url: "/images/waarden/girls-sticks-up.webp" };
+const fairPlayPhoto = { url: "/images/waarden/field-action.webp" };
+const enthusiasmPhoto = { url: "/images/waarden/team-celebration.webp" };
+const communityPhoto = { url: "/images/waarden/club-family-photo.webp" };
 
 const values = [
   { photo: respectPhoto, alt: "Een ploeg van D-mon Hockey op het veld", title: "Respect", text: "Wij tonen respect voor elkaar en voor onszelf, fysiek en mentaal, en evengoed voor de tegenstander, de scheidsrechter, onze begeleiders en het materiaal van de club.", example: "ik heb respect voor de arbitrage, ook bij een vergissing." },
