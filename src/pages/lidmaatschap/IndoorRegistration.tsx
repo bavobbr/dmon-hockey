@@ -1,3 +1,4 @@
+import { PageHero, PageCta } from "@/components/layout/PageHero";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -8,10 +9,10 @@ const INDOOR_FORM_URL = "https://twizzit.com/go/dmon-indoor-2026";
 
 const IndoorRegistration = () => {
   return (
+    <>
+      <PageHero label="Lidmaatschap" title="Indoor inschrijven 2026-2027" lead="Voor spelers vanaf U9 die deelnemen aan trainingen én wedstrijden." />
     <div className="container mx-auto px-4 py-12 lg:py-16">
       <div className="mx-auto max-w-4xl">
-        <h1 className="mb-3 text-4xl font-bold text-foreground">Indoor inschrijven 2026-2027</h1>
-        <p className="mb-8 text-lg text-muted-foreground">Voor spelers vanaf U9 die deelnemen aan trainingen én wedstrijden.</p>
 
         <Alert className="mb-8 border-primary/20 bg-primary/5">
           <Info className="h-4 w-4" />
@@ -52,6 +53,7 @@ const IndoorRegistration = () => {
         </Card>
       </div>
     </div>
+    </>
   );
 };
 

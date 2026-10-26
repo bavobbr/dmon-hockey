@@ -1,3 +1,6 @@
+import { PageHero, PageCta } from "@/components/layout/PageHero";
+import { Button } from "@/components/ui/button";
+import { Link } from "@tanstack/react-router";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
@@ -5,10 +8,11 @@ import principlesDiagram from "@/assets/hockey-principles.png";
 
 const HockeyPrinciples = () => {
   return (
+    <>
+      <PageHero label="Sportief" title="Hockeyprincipes" />
     <div className="min-h-screen bg-background p-6">
       <div className="max-w-6xl mx-auto space-y-8">
         <div>
-          <h1 className="text-4xl font-bold mb-4">Hockey Principes</h1>
           <p className="text-lg text-muted-foreground">
             Dit document dient als inspiratiebron en verzamelt principes en ideeën van gerespecteerde coaches en gevestigde spelmodellen. 
             Het doel is om je een rijk menu aan concepten te bieden waaruit je kunt kiezen — ze aan te passen en te combineren om ze af te stemmen 
@@ -319,6 +323,8 @@ const HockeyPrinciples = () => {
         </Card>
       </div>
     </div>
+      <PageCta title="Meer voor coaches" text="Presentaties en tactische plannen vind je bij de coachinfo." actions={<Button asChild size="lg" variant="secondary" className="font-semibold"><Link to="/sportief/coaches-info">Naar coachinfo</Link></Button>} />
+    </>
   );
 };
 

@@ -1,12 +1,14 @@
+import { PageHero, PageCta } from "@/components/layout/PageHero";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Shirt, ShoppingCart, ExternalLink } from "lucide-react";
 
 const Shop = () => {
   return (
+    <>
+      <PageHero label="Club" title="Club shop" lead="Clubkledij en hockeymateriaal in de kleuren van D-mon." />
     <div className="container mx-auto px-4 py-12 lg:py-16">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8 text-foreground">Club Shop</h1>
         
         <div className="space-y-6">
           {/* Odoo Clubshop */}
@@ -82,6 +84,7 @@ const Shop = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
