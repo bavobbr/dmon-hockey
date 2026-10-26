@@ -125,7 +125,7 @@ export default function Socials() {
                 <Instagram className="h-3.5 w-3.5" />
                 @dmon_hockey
               </div>
-              <h1 className="mt-6 font-display text-4xl font-bold leading-tight lg:text-6xl">
+              <h1 className="hero-title mt-6">
                 Socials
               </h1>
               <p className="mt-4 max-w-2xl text-base lg:text-lg text-primary-foreground/85">

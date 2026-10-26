@@ -99,7 +99,7 @@ const StickGuide = () => {
             <div className="inline-flex items-center rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-xs mb-6">
               Materiaalgids
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">De juiste hockeystick kiezen</h1>
+            <h1 className="hero-title mb-6">De juiste hockeystick kiezen</h1>
             <p className="text-lg md:text-xl text-primary-foreground/85 mb-8 max-w-2xl">
               Mid Bow, Low Bow, 3K carbon, 95% carbon… merken gooien met termen. In de praktijk hoef je maar op drie
               zaken te letten. En nee: een duurdere of extremere stick is niet automatisch een betere stick.

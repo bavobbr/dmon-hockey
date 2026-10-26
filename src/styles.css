@@ -593,3 +593,15 @@
   display: block;
   margin: 1.25rem 0;
 }
+
+/* Gedeelde titelstijl voor elke pagina-hero (homepage uitgezonderd) */
+@utility hero-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  font-size: var(--text-4xl);
+  @media (width >= 48rem) {
+    font-size: var(--text-6xl);
+  }
+}

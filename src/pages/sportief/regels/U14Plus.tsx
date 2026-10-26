@@ -1,3 +1,5 @@
+import { PageHero, PageCta } from "@/components/layout/PageHero";
+import { Link } from "@tanstack/react-router";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Timer, ExternalLink, BookOpen, Users, Target, Trophy, Play, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -6,9 +8,10 @@ import scheidsrechterLeerplanImage from "@/assets/scheidsrechter-leerplan.png";
 
 const U14PlusRules = () => {
   return (
+    <>
+      <PageHero label="Spelregels" title="Spelregels U14 en hoger" lead="Hockey op het volledige veld, volgens de FIH-regels." />
     <div className="container mx-auto px-4 py-12 lg:py-16">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8 text-foreground">Spelregels U14 en hoger</h1>
         
         <div className="prose prose-gray dark:prose-invert max-w-none">
           <div className="mb-8 p-6 bg-primary/5 rounded-lg border border-primary/20">
@@ -392,6 +395,8 @@ const U14PlusRules = () => {
         </div>
       </div>
     </div>
+      <PageCta title="Twijfel je over een regel?" text="Vraag het aan onze regels assistent of bekijk het overzicht." actions={<Button asChild size="lg" variant="secondary" className="font-semibold"><Link to="/sportief/regels-assistent">Naar de assistent</Link></Button>} />
+    </>
   );
 };
 

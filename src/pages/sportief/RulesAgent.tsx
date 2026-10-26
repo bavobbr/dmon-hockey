@@ -1,3 +1,4 @@
+import { PageHero, PageCta } from "@/components/layout/PageHero";
 import { useState, useRef, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -136,6 +137,8 @@ export default function RulesAgent() {
   };
 
   return (
+    <>
+      <PageHero label="Spelregels" title="Regels assistent" lead="Stel je vraag over de officiële FIH-spelregels en krijg meteen antwoord." />
     <div className="container mx-auto px-4 py-12 lg:py-16 max-w-4xl">
       <Card className="h-[calc(100vh-12rem)] flex flex-col">
         <CardHeader className="border-b">
@@ -208,7 +211,7 @@ export default function RulesAgent() {
                       )}
                       {message.variant && (
                         <Badge 
-                          className={`mt-2 text-xs ${getVariantColor(message.variant)} text-white`}
+                          className={`mt-2 text-xs ${getVariantColor(message.variant)} text-primary-foreground`}
                         >
                           {getVariantLabel(message.variant)}
                         </Badge>
@@ -273,5 +276,6 @@ export default function RulesAgent() {
         </CardContent>
       </Card>
     </div>
+    </>
   );
 }

@@ -1,3 +1,4 @@
+import { PageCta } from "@/components/layout/PageHero";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -53,7 +54,7 @@ const IndoorHockey = () => {
             <div className="mb-6 inline-flex items-center rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-xs">
               Winterstop 2026-2027
             </div>
-            <h1 className="mb-6 text-4xl font-bold tracking-tight md:text-6xl">Hockey tijdens de winterstop</h1>
+            <h1 className="hero-title mb-6">Hockey tijdens de winterstop</h1>
             <p className="mb-8 max-w-2xl text-lg text-primary-foreground/85 md:text-xl">
               Van eind november tot eind februari schakelen de outdoortrainingen en officiële wedstrijden terug. Met indoor vanaf U9 en het wintercriterium voor U6-U8 blijven onze spelers actief.
             </p>
@@ -211,6 +212,7 @@ const IndoorHockey = () => {
           </section>
         </div>
       </div>
+      <PageCta title="Klaar voor de zaal?" text="Schrijf je in voor het indoorseizoen 2026-2027." actions={<Button asChild size="lg" variant="secondary" className="font-semibold"><Link to="/lidmaatschap/indoor-registratie">Schrijf je in voor indoor</Link></Button>} />
     </div>
   );
 };

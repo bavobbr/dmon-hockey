@@ -1,12 +1,16 @@
+import { PageHero, PageCta } from "@/components/layout/PageHero";
+import { Link } from "@tanstack/react-router";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users, Shield, Flag, AlertCircle, ExternalLink, UserCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import indoorRulesTable1 from "@/assets/indoor-rules-table-1.png";
 import indoorRulesTable2 from "@/assets/indoor-rules-table-2.png";
 const IndoorRules = () => {
-  return <div className="container mx-auto px-4 py-12 lg:py-16">
+  return (
+    <>
+      <PageHero label="Spelregels" title="Indoor hockey: een gids voor beginners" lead="De basis van zaalhockey, uitgelegd voor nieuwe spelers en ouders." />
+    <div className="container mx-auto px-4 py-12 lg:py-16">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8 text-foreground">Indoor Hockey: Een Gids voor Beginners</h1>
         
         <div className="prose prose-gray dark:prose-invert max-w-none space-y-6">
           {/* Introduction */}
@@ -503,6 +507,9 @@ const IndoorRules = () => {
           </Card>
         </div>
       </div>
-    </div>;
+    </div>
+      <PageCta title="Twijfel je over een regel?" text="Vraag het aan onze regels assistent of bekijk het overzicht." actions={<Button asChild size="lg" variant="secondary" className="font-semibold"><Link to="/sportief/regels-assistent">Naar de assistent</Link></Button>} />
+    </>
+  );
 };
 export default IndoorRules;

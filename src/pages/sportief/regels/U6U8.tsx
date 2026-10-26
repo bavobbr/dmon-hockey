@@ -1,3 +1,5 @@
+import { PageHero, PageCta } from "@/components/layout/PageHero";
+import { Link } from "@tanstack/react-router";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users, CheckCircle, AlertTriangle, ExternalLink, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -6,9 +8,10 @@ const u7u8BackImage = { url: "/images/u7-u8-regels-details.png" };
 
 const U6U8Rules = () => {
   return (
+    <>
+      <PageHero label="Spelregels" title="Spelregels U6 tot U8" lead="Zo spelen onze jongste spelers: kleine ploegen, veel balcontact en plezier." />
     <div className="container mx-auto px-4 py-12 lg:py-16">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8 text-foreground">Spelregels U6 tot U8</h1>
         
         <div className="prose prose-gray dark:prose-invert max-w-none">
           <div className="mb-8 p-6 bg-primary/5 rounded-lg border border-primary/20">
@@ -190,6 +193,8 @@ const U6U8Rules = () => {
         </div>
       </div>
     </div>
+      <PageCta title="Twijfel je over een regel?" text="Vraag het aan onze regels assistent of bekijk het overzicht." actions={<Button asChild size="lg" variant="secondary" className="font-semibold"><Link to="/sportief/regels-assistent">Naar de assistent</Link></Button>} />
+    </>
   );
 };
 

@@ -1,3 +1,4 @@
+import { PageHero, PageCta } from "@/components/layout/PageHero";
 import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { supabase } from "@/integrations/supabase/client";
@@ -22,10 +23,11 @@ const Board = () => {
   });
 
   return (
+    <>
+      <PageHero label="Club" title="Bestuur, sportieve cel en medewerkers" lead="De mensen die D-mon Hockey elke week draaiende houden." />
     <div className="container mx-auto px-4 py-12 lg:py-16">
       <BoardPageJsonLd members={boardMembers || []} />
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8 text-foreground">Bestuur, Sportieve cel en medewerkers</h1>
 
         <div className="mb-8">
           <Card>
@@ -139,6 +141,7 @@ const Board = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

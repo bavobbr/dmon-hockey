@@ -88,7 +88,7 @@ const VacatureDetail = () => {
             </Badge>
           </div>
 
-          <h1 className="mt-5 font-display text-3xl lg:text-5xl font-bold leading-tight">
+          <h1 className="hero-title mt-5">
             {vacancy.title}
           </h1>
           <p className="mt-5 text-base lg:text-lg text-primary-foreground/85 max-w-2xl">

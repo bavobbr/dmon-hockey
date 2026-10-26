@@ -1,3 +1,4 @@
+import { PageHero, PageCta } from "@/components/layout/PageHero";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Download, BookOpen, Users, Target, Zap, PlayCircle, ArrowRight } from "lucide-react";
@@ -6,9 +7,10 @@ import { BELEID_PDF_URL, CHARTER_PDF_URL } from "@/config/sportiefCharter";
 
 const CoachesInfo = () => {
   return (
+    <>
+      <PageHero label="Sportief" title="Informatie voor coaches" lead="Presentaties, tactische plannen en documenten om je ploeg te begeleiden." />
     <div className="container mx-auto px-4 py-12 lg:py-16">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8 text-foreground">Informatie voor Coaches</h1>
         
         {/* Hockey Principles Link */}
         <Link to="/sportief/hockey-principes">
@@ -467,6 +469,8 @@ const CoachesInfo = () => {
         </Card>
       </div>
     </div>
+      <PageCta title="Vragen als coach?" text="Neem contact op met de sportieve cel." actions={<Button asChild size="lg" variant="secondary" className="font-semibold"><Link to="/lidmaatschap/contact">Contact</Link></Button>} />
+    </>
   );
 };
 

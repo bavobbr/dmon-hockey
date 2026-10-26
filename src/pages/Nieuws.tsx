@@ -56,31 +56,31 @@ const HeroCard = ({ announcement }: { announcement: Announcement }) => {
           {media?.type === 'video' && (
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
               <Icons.PlayCircle
-                className="h-20 w-20 md:h-24 md:w-24 text-white/95 drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)] group-hover:scale-110 transition-transform duration-500"
+                className="h-20 w-20 md:h-24 md:w-24 text-primary-foreground/95 drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)] group-hover:scale-110 transition-transform duration-500"
                 strokeWidth={1.25}
               />
             </div>
           )}
 
           {/* Text content */}
-          <div className="relative h-full flex flex-col justify-end p-6 md:p-10 lg:p-14 text-white">
+          <div className="relative h-full flex flex-col justify-end p-6 md:p-10 lg:p-14 text-primary-foreground">
             <div className="flex items-center gap-3 mb-4">
               <Badge className="bg-accent text-accent-foreground border-0 uppercase tracking-wider text-[10px] font-bold">
                 Hoofdartikel
               </Badge>
               {media?.type === 'video' && (
-                <Badge className="bg-white/15 text-white border-0 backdrop-blur-xs uppercase tracking-wider text-[10px] font-bold gap-1">
+                <Badge className="bg-primary-foreground/15 text-primary-foreground border-0 backdrop-blur-xs uppercase tracking-wider text-[10px] font-bold gap-1">
                   <Icons.Play className="h-3 w-3" /> Video
                 </Badge>
               )}
-              <span className="text-sm text-white/80">
+              <span className="text-sm text-primary-foreground/80">
                 {formatDate(announcement.created_at)}
               </span>
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-[1.1] max-w-3xl drop-shadow-md">
               {announcement.title}
             </h2>
-            <p className="text-base md:text-lg text-white/90 leading-relaxed line-clamp-2 max-w-2xl mb-6">
+            <p className="text-base md:text-lg text-primary-foreground/90 leading-relaxed line-clamp-2 max-w-2xl mb-6">
               {excerptFromContent(announcement.content, media, 200)}
             </p>
             <span className="inline-flex items-center gap-2 font-medium group-hover:gap-3 transition-all w-fit">
@@ -145,7 +145,7 @@ const NewsCard = ({ announcement, index, eager }: { announcement: Announcement; 
                 />
                 <div
                   aria-hidden
-                  className="absolute inset-0 bg-black/20 mix-blend-multiply opacity-100 group-hover:opacity-0 transition-opacity duration-500"
+                  className="absolute inset-0 bg-foreground/20 mix-blend-multiply opacity-100 group-hover:opacity-0 transition-opacity duration-500"
                 />
                 <div
                   aria-hidden
@@ -155,11 +155,11 @@ const NewsCard = ({ announcement, index, eager }: { announcement: Announcement; 
                   <>
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                       <Icons.PlayCircle
-                        className="h-14 w-14 text-white/95 drop-shadow-[0_4px_16px_rgba(0,0,0,0.5)] group-hover:scale-110 transition-transform duration-500"
+                        className="h-14 w-14 text-primary-foreground/95 drop-shadow-[0_4px_16px_rgba(0,0,0,0.5)] group-hover:scale-110 transition-transform duration-500"
                         strokeWidth={1.25}
                       />
                     </div>
-                    <Badge className="absolute top-3 right-3 z-10 bg-black/60 text-white border-0 backdrop-blur-xs uppercase tracking-wider text-[10px] font-bold gap-1">
+                    <Badge className="absolute top-3 right-3 z-10 bg-foreground/60 text-primary-foreground border-0 backdrop-blur-xs uppercase tracking-wider text-[10px] font-bold gap-1">
                       <Icons.Play className="h-3 w-3" /> Video
                     </Badge>
                   </>
@@ -291,7 +291,7 @@ const Nieuws = () => {
             <Badge variant="secondary" className="mb-4 bg-primary-foreground/10 text-primary-foreground border-primary-foreground/20">
               Nieuws
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-tight">
+            <h1 className="hero-title mb-4">
               Laatste nieuws
             </h1>
             <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl">

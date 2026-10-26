@@ -26,7 +26,7 @@ const Privacy = () => {
             <div className="mb-6 inline-flex items-center rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-xs">
               Juridisch
             </div>
-            <h1 className="text-4xl md:text-6xl font-display font-bold mb-6 leading-tight">
+            <h1 className="hero-title mb-6">
               Privacyverklaring
             </h1>
             <p className="text-lg md:text-xl text-primary-foreground/85 mb-8 max-w-2xl">
@@ -39,7 +39,7 @@ const Privacy = () => {
               <Button
                 variant="outline"
                 size="lg"
-                className="bg-white/10 text-primary-foreground border-white/30 hover:bg-white/20 hover:text-primary-foreground"
+                className="bg-primary-foreground/10 text-primary-foreground border-primary-foreground/30 hover:bg-primary-foreground/20 hover:text-primary-foreground"
                 onClick={() => scrollToSection("contact")}
               >
                 Contact
@@ -252,7 +252,7 @@ const Privacy = () => {
               <p className="text-lg text-primary-foreground/85 mb-8">
                 Neem contact op om je rechten uit te oefenen of bij vragen over deze privacyverklaring.
               </p>
-              <div className="grid md:grid-cols-2 gap-6 text-left bg-white/10 rounded-xl p-6 mb-6">
+              <div className="grid md:grid-cols-2 gap-6 text-left bg-primary-foreground/10 rounded-xl p-6 mb-6">
                 <div>
                   <p className="font-display font-semibold mb-2">D-MON Hockey</p>
                   <p className="text-sm text-primary-foreground/85">Emanuel Hielstraat 94, 9200 Dendermonde</p>
