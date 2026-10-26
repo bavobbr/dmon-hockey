@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { supabase } from "@/integrations/supabase/client";
 import { HandHeart, ExternalLink, Mail } from "lucide-react";
 
@@ -71,9 +70,9 @@ const ClubSponsors = () => {
         <div className="hero-rule" aria-hidden />
         <div className="relative container mx-auto px-6 py-20 lg:py-28">
           <div className="max-w-3xl">
-            <Badge variant="secondary" className="mb-6 bg-white/15 text-primary-foreground border-white/20 hover:bg-white/20">
+            <div className="mb-6 inline-flex items-center rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-xs">
               Onze partners
-            </Badge>
+            </div>
             <h1 className="text-4xl md:text-6xl font-display font-bold mb-6 leading-tight">
               Sponsors
             </h1>
