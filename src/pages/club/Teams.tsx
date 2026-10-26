@@ -65,7 +65,7 @@ const ClubTeams = () => {
             <div className="inline-flex items-center rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-xs">
               Seizoen {teams?.[0]?.season ?? "2025–2026"}
             </div>
-            <h1 className="mt-6 font-display text-4xl font-bold leading-tight lg:text-6xl">
+            <h1 className="hero-title mt-6">
               Onze teams
             </h1>
             <p className="mt-4 max-w-2xl text-base lg:text-lg text-primary-foreground/85">

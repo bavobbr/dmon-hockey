@@ -291,7 +291,7 @@ const Nieuws = () => {
             <Badge variant="secondary" className="mb-4 bg-primary-foreground/10 text-primary-foreground border-primary-foreground/20">
               Nieuws
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-tight">
+            <h1 className="hero-title mb-4">
               Laatste nieuws
             </h1>
             <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl">

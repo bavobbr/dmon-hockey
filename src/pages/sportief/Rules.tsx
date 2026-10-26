@@ -70,7 +70,7 @@ const Rules = () => {
             <div className="mb-6 inline-flex items-center rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-xs">
               Word scheidsrechter
             </div>
-            <h1 className="mb-6 text-4xl font-bold tracking-tight md:text-6xl">
+            <h1 className="hero-title mb-6">
               Regels & Scheidsrechters
             </h1>
             <p className="mb-8 max-w-2xl text-lg text-primary-foreground/85 md:text-xl">

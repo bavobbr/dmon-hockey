@@ -65,7 +65,7 @@ const Vacatures = () => {
             <div className="inline-flex items-center rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-xs">
               Word vrijwilliger
             </div>
-            <h1 className="mt-6 font-display text-4xl font-bold leading-tight lg:text-6xl">
+            <h1 className="hero-title mt-6">
               Zonder vrijwilligers geen D{"\u2011"}mon
             </h1>
             <p className="mt-4 max-w-2xl text-base lg:text-lg text-primary-foreground/85">

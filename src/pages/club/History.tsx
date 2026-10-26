@@ -60,7 +60,7 @@ const History = () => {
             <span className="inline-flex items-center rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-xs">
               Onze club
             </span>
-            <h1 className="mt-6 text-4xl font-bold tracking-tight md:text-6xl">
+            <h1 className="hero-title mt-6">
               Geschiedenis
             </h1>
             <p className="mt-6 text-lg text-primary-foreground/85 md:text-xl max-w-2xl">

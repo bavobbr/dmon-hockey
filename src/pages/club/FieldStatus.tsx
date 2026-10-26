@@ -73,7 +73,7 @@ const FieldStatus = () => {
             <Badge className="mb-4 bg-primary-foreground/15 text-primary-foreground border-primary-foreground/20 hover:bg-primary-foreground/20">
               Bespeelbaarheid
             </Badge>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+            <h1 className="hero-title mb-4">
               Veld status
             </h1>
             <p className="text-lg md:text-xl text-primary-foreground/90 mb-8 leading-relaxed">

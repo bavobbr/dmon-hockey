@@ -26,7 +26,7 @@ const Privacy = () => {
             <div className="mb-6 inline-flex items-center rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-xs">
               Juridisch
             </div>
-            <h1 className="text-4xl md:text-6xl font-display font-bold mb-6 leading-tight">
+            <h1 className="hero-title mb-6">
               Privacyverklaring
             </h1>
             <p className="text-lg md:text-xl text-primary-foreground/85 mb-8 max-w-2xl">
