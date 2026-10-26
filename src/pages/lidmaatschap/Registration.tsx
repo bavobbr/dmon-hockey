@@ -63,7 +63,6 @@ const Registration = () => {
               </Button>
             </div>
           </div>
-          </div>
         </div>
       </section>
 
