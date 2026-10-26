@@ -159,7 +159,7 @@ const U9Rules = () => {
         </div>
       </div>
     </div>
-      <PageCta title="Twijfel je over een regel?" text="Vraag het aan onze regels assistent of bekijk het overzicht." actions={<Button asChild size="lg" variant="secondary" className="font-semibold"><Link to="/sportief/regels-agent">Naar de assistent</Link></Button>} />
+      <PageCta title="Twijfel je over een regel?" text="Vraag het aan onze regels assistent of bekijk het overzicht." actions={<Button asChild size="lg" variant="secondary" className="font-semibold"><Link to="/sportief/regels-assistent">Naar de assistent</Link></Button>} />
     </>
   );
 };
