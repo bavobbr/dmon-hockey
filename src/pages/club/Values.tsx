@@ -99,13 +99,20 @@ const ClubValues = () => {
               Sportief charter
             </div>
             <h1 className="mt-6 font-display text-4xl font-bold leading-tight lg:text-6xl">
-              Hier groei je, op en naast het veld.
+              Hier groei je, op en naast het veld
             </h1>
             <p className="mt-4 max-w-2xl text-base lg:text-lg text-primary-foreground/85">
               Hockey is een teamsport, en bij D-mon ook een familiesport. Wij stellen ontwikkeling
               boven resultaat: in lijn met Hockey 4 Life kiezen wij voor "willen winnen" in plaats
               van "moeten winnen".
             </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button asChild variant="secondary" size="lg">
+                <a href={CHARTER_PDF_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
+                  Lees het charter <FileText className="h-4 w-4" />
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
