@@ -52,20 +52,6 @@ const Insurance = () => {
                 </a>
               </Button>
             </div>
-            <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3">
-              <div className="rounded-xl bg-primary-foreground/10 p-4 backdrop-blur-xs">
-                <div className="text-2xl font-bold">2</div>
-                <div className="text-sm text-primary-foreground/75">Soorten dekking</div>
-              </div>
-              <div className="rounded-xl bg-primary-foreground/10 p-4 backdrop-blur-xs">
-                <div className="text-2xl font-bold">€25</div>
-                <div className="text-sm text-primary-foreground/75">Franchise per ongeval</div>
-              </div>
-              <div className="rounded-xl bg-primary-foreground/10 p-4 backdrop-blur-xs col-span-2 sm:col-span-1">
-                <div className="text-2xl font-bold">8 dgn</div>
-                <div className="text-sm text-primary-foreground/75">Aangifte-termijn</div>
-              </div>
-            </div>
           </div>
         </div>
       </section>

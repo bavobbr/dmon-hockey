@@ -70,11 +70,6 @@ const IndoorHockey = () => {
                 </a>
               </Button>
             </div>
-            <div className="mt-10 grid max-w-2xl grid-cols-3 gap-6">
-              <div><div className="text-2xl font-bold md:text-3xl">U9+</div><div className="text-xs uppercase tracking-wider text-primary-foreground/70">Indoor</div></div>
-              <div><div className="text-2xl font-bold md:text-3xl">10</div><div className="text-xs uppercase tracking-wider text-primary-foreground/70">Spelers per ploeg</div></div>
-              <div><div className="text-2xl font-bold md:text-3xl">U6-U8</div><div className="text-xs uppercase tracking-wider text-primary-foreground/70">Wintercriterium</div></div>
-            </div>
           </div>
         </div>
       </section>

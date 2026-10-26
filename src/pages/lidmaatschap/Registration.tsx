@@ -62,20 +62,6 @@ const Registration = () => {
                 </a>
               </Button>
             </div>
-            <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3">
-              <div className="rounded-xl bg-primary-foreground/10 p-4 backdrop-blur-xs">
-                <div className="text-2xl font-bold">3</div>
-                <div className="text-sm text-primary-foreground/75">Eenvoudige stappen</div>
-              </div>
-              <div className="rounded-xl bg-primary-foreground/10 p-4 backdrop-blur-xs">
-                <div className="text-2xl font-bold">~5 min</div>
-                <div className="text-sm text-primary-foreground/75">Invultijd</div>
-              </div>
-              <div className="rounded-xl bg-primary-foreground/10 p-4 backdrop-blur-xs col-span-2 sm:col-span-1">
-                <div className="text-2xl font-bold">VHL</div>
-                <div className="text-sm text-primary-foreground/75">Aansluiting inbegrepen</div>
-              </div>
-            </div>
           </div>
         </div>
       </section>

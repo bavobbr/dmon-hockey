@@ -93,16 +93,6 @@ const Rules = () => {
               </Button>
             </div>
 
-            <div className="mt-10 grid max-w-xl grid-cols-2 gap-6">
-              <div>
-                <div className="text-2xl font-bold md:text-3xl">Vanaf U9</div>
-                <div className="text-xs uppercase tracking-wider text-primary-foreground/70">Altijd met twee</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold md:text-3xl">U6+</div>
-                <div className="text-xs uppercase tracking-wider text-primary-foreground/70">Starten kan al</div>
-              </div>
-            </div>
 
           </div>
         </div>
