@@ -208,11 +208,11 @@ const IndoorHockey = () => {
                 <Button asChild variant="secondary"><a href="mailto:onderbouw@dmon.be" className="inline-flex items-center gap-2"><Mail className="h-4 w-4" />U6-U12</a></Button>
                 <Button asChild variant="secondary"><a href="mailto:bovenbouw@dmon.be" className="inline-flex items-center gap-2"><Mail className="h-4 w-4" />Vanaf U14</a></Button>
               </div>
-                  <PageCta title="Klaar voor de zaal?" text="Schrijf je in voor het indoorseizoen 2026-2027." actions={<Button asChild size="lg" variant="secondary" className="font-semibold"><Link to="/lidmaatschap/indoor-registratie">Schrijf je in voor indoor</Link></Button>} />
-</div>
+            </div>
           </section>
         </div>
       </div>
+      <PageCta title="Klaar voor de zaal?" text="Schrijf je in voor het indoorseizoen 2026-2027." actions={<Button asChild size="lg" variant="secondary" className="font-semibold"><Link to="/lidmaatschap/indoor-registratie">Schrijf je in voor indoor</Link></Button>} />
     </div>
   );
 };

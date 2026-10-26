@@ -220,14 +220,15 @@ const ClubTeams = () => {
         )}
       </section>
 
+      <PageCta title="Zin om mee te spelen?" text="Kom vrijblijvend een training meepikken of schrijf je meteen in." actions={<><Button asChild size="lg" variant="secondary" className="font-semibold"><Link to="/lidmaatschap/info">Word lid</Link></Button><Button asChild size="lg" variant="outline" className="border-primary-foreground/40 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"><Link to="/sportief/training">Kom eens proberen</Link></Button></>} />
+
       <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
         <DialogContent className="max-w-4xl">
           {selectedImage && (
             <img
               src={selectedImage}
               alt="Vergroot teamfoto van D-mon Hockey Club"
-              classN      <PageCta title="Zin om mee te spelen?" text="Kom vrijblijvend een training meepikken of schrijf je meteen in." actions={<><Button asChild size="lg" variant="secondary" className="font-semibold"><Link to="/lidmaatschap/info">Word lid</Link></Button><Button asChild size="lg" variant="outline" className="border-primary-foreground/40 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"><Link to="/sportief/training">Kom eens proberen</Link></Button></>} />
-ame="w-full h-auto rounded-lg"
+              className="w-full h-auto rounded-lg"
             />
           )}
         </DialogContent>
