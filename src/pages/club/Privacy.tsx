@@ -39,7 +39,7 @@ const Privacy = () => {
               <Button
                 variant="outline"
                 size="lg"
-                className="bg-white/10 text-primary-foreground border-white/30 hover:bg-white/20 hover:text-primary-foreground"
+                className="bg-primary-foreground/10 text-primary-foreground border-primary-foreground/30 hover:bg-primary-foreground/20 hover:text-primary-foreground"
                 onClick={() => scrollToSection("contact")}
               >
                 Contact
@@ -252,7 +252,7 @@ const Privacy = () => {
               <p className="text-lg text-primary-foreground/85 mb-8">
                 Neem contact op om je rechten uit te oefenen of bij vragen over deze privacyverklaring.
               </p>
-              <div className="grid md:grid-cols-2 gap-6 text-left bg-white/10 rounded-xl p-6 mb-6">
+              <div className="grid md:grid-cols-2 gap-6 text-left bg-primary-foreground/10 rounded-xl p-6 mb-6">
                 <div>
                   <p className="font-display font-semibold mb-2">D-MON Hockey</p>
                   <p className="text-sm text-primary-foreground/85">Emanuel Hielstraat 94, 9200 Dendermonde</p>

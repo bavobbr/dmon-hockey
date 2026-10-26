@@ -211,7 +211,7 @@ export default function RulesAgent() {
                       )}
                       {message.variant && (
                         <Badge 
-                          className={`mt-2 text-xs ${getVariantColor(message.variant)} text-white`}
+                          className={`mt-2 text-xs ${getVariantColor(message.variant)} text-primary-foreground`}
                         >
                           {getVariantLabel(message.variant)}
                         </Badge>

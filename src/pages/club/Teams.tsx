@@ -1,3 +1,5 @@
+import { PageCta } from "@/components/layout/PageHero";
+import { Link } from "@/lib/router-compat";
 import { useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
@@ -63,7 +65,7 @@ const ClubTeams = () => {
         <div className="container mx-auto px-4 py-16 lg:py-24 relative">
           <div className="max-w-3xl">
             <div className="inline-flex items-center rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-xs">
-              Seizoen {teams?.[0]?.season ?? "2025–2026"}
+              Seizoen 2026–2027
             </div>
             <h1 className="hero-title mt-6">
               Onze teams
@@ -224,7 +226,8 @@ const ClubTeams = () => {
             <img
               src={selectedImage}
               alt="Vergroot teamfoto van D-mon Hockey Club"
-              className="w-full h-auto rounded-lg"
+              classN      <PageCta title="Zin om mee te spelen?" text="Kom vrijblijvend een training meepikken of schrijf je meteen in." actions={<><Button asChild size="lg" variant="secondary" className="font-semibold"><Link to="/lidmaatschap/info">Word lid</Link></Button><Button asChild size="lg" variant="outline" className="border-primary-foreground/40 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"><Link to="/sportief/training">Kom eens proberen</Link></Button></>} />
+ame="w-full h-auto rounded-lg"
             />
           )}
         </DialogContent>
