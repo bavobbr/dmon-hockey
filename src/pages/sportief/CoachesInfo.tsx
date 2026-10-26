@@ -1,5 +1,4 @@
 import { PageHero, PageCta } from "@/components/layout/PageHero";
-import { Link } from "@tanstack/react-router";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Download, BookOpen, Users, Target, Zap, PlayCircle, ArrowRight } from "lucide-react";
