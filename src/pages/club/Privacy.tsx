@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Shield, Eye, Lock, Mail, Users, FileText, AlertTriangle, Sparkles } from "lucide-react";
+import { Shield, Eye, Lock, Mail, Users, FileText, AlertTriangle } from "lucide-react";
 
 const scrollToSection = (id: string) => {
   const el = document.getElementById(id);
@@ -25,7 +25,7 @@ const Privacy = () => {
         <div className="relative container mx-auto px-6 py-20 lg:py-28">
           <div className="max-w-3xl">
             <Badge variant="secondary" className="mb-6 bg-white/15 text-primary-foreground border-white/20 hover:bg-white/20">
-              <Sparkles className="h-3 w-3 mr-1" /> Juridisch
+              Juridisch
             </Badge>
             <h1 className="text-4xl md:text-6xl font-display font-bold mb-6 leading-tight">
               Privacyverklaring

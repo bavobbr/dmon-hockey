@@ -6,7 +6,6 @@ import {
   Users,
   Trophy,
   Mail,
-  Sparkles,
   ArrowRight,
   FileText,
   ExternalLink,
@@ -81,8 +80,7 @@ const Training = () => {
         <div className="hero-rule" aria-hidden />
         <div className="container mx-auto px-4 py-16 lg:py-24 relative">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-xs">
-              <Sparkles className="h-3.5 w-3.5" />
+            <div className="inline-flex items-center rounded-full bg-primary-foreground/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest backdrop-blur-xs">
               Seizoen 2026–2027
             </div>
             <h1 className="mt-6 font-display text-4xl font-bold leading-tight lg:text-6xl">

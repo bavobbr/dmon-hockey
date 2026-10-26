@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { supabase } from "@/integrations/supabase/client";
-import { HandHeart, ExternalLink, Mail, Sparkles } from "lucide-react";
+import { HandHeart, ExternalLink, Mail } from "lucide-react";
 
 const tierColors: Record<string, string> = {
   diamond: "border-[hsl(var(--sponsor-diamond))] bg-[hsl(var(--sponsor-diamond-bg))]",
@@ -72,7 +72,7 @@ const ClubSponsors = () => {
         <div className="relative container mx-auto px-6 py-20 lg:py-28">
           <div className="max-w-3xl">
             <Badge variant="secondary" className="mb-6 bg-white/15 text-primary-foreground border-white/20 hover:bg-white/20">
-              <Sparkles className="h-3 w-3 mr-1" /> Onze partners
+              Onze partners
             </Badge>
             <h1 className="text-4xl md:text-6xl font-display font-bold mb-6 leading-tight">
               Sponsors
