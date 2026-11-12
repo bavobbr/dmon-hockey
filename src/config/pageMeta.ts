@@ -79,7 +79,7 @@ export const PAGE_META: Record<string, { title: string; description: string }> =
   },
   "/lidmaatschap/indoor-registratie": {
     title: "Indoor inschrijven 2026-2027",
-    description: "Schrijf je via Twizzit in voor de indoorcompetitie 2026-2027 van D-mon Hockey.",
+    description: "Schrijf je via Twizzit in voor indoor 2026-2027 bij D-mon Hockey. Seniors kunnen nog tot 29 november 2026.",
   },
   "/lidmaatschap/verzekering": {
     title: "Verzekering",
@@ -136,7 +136,7 @@ export const PAGE_META: Record<string, { title: string; description: string }> =
   },
   "/sportief/indoor-hockey": {
     title: "Winterstop 2026-2027",
-    description: "Alle informatie over indoor vanaf U9 en het wintercriterium voor U6-U8 bij D-mon Hockey.",
+    description: "Alle informatie over indoor vanaf U9, indoortrainingen voor seniors en het wintercriterium voor U6-U8 bij D-mon Hockey.",
   },
   "/sportief/regels-assistent": {
     title: "Regels Assistent",

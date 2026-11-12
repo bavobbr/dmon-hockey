@@ -18,15 +18,14 @@ import {
   Users,
 } from "lucide-react";
 
-const INDOOR_FORM_URL = "https://twizzit.com/go/dmon-indoor-2026";
-const WINTERCRITERIUM_FORM_URL =
-  "https://app.twizzit.com/v2/form/TEJ5MkdWTnRHM1RyamhTMi83YUppUT09?isiframe=0";
+const SENIOR_FORM_URL = "https://twizzit.com/go/dmon-indoor-2026-senior";
 const SECOND_HAND_URL = "https://www.facebook.com/share/g/19e6icd1G4/";
 
 const subNavLinks = [
   { href: "#overzicht", label: "Overzicht" },
   { href: "#indoor", label: "Indoor" },
   { href: "#trainingen", label: "Trainingen" },
+  { href: "#senioren", label: "Senioren" },
   { href: "#inschrijven", label: "Inschrijven" },
   { href: "#wintercriterium", label: "U6-U8" },
   { href: "#contact", label: "Contact" },
@@ -43,6 +42,18 @@ const trainingSchedule = [
   { day: "Zaterdag", time: "11u30-12u30", location: "Hamme", teams: "U16G" },
 ];
 
+const seniorSchedule = [
+  { date: "29 november", location: "Sint-Gillis" },
+  { date: "6 december", location: "Sint-Gillis" },
+  { date: "13 december", location: "Hamme" },
+  { date: "20 december", location: "Hamme" },
+  { date: "10 januari", location: "Sint-Gillis" },
+  { date: "17 januari", location: "Sint-Gillis" },
+  { date: "31 januari", location: "Hamme" },
+  { date: "7 februari", location: "Hamme" },
+  { date: "14 februari", location: "Sint-Gillis" },
+];
+
 const IndoorHockey = () => {
   return (
     <div className="min-h-screen bg-background">
@@ -56,17 +67,17 @@ const IndoorHockey = () => {
             </div>
             <h1 className="hero-title mb-6">Hockey tijdens de winterstop</h1>
             <p className="mb-8 max-w-2xl text-lg text-primary-foreground/85 md:text-xl">
-              Van eind november tot eind februari schakelen de outdoortrainingen en officiële wedstrijden terug. Met indoor vanaf U9 en het wintercriterium voor U6-U8 blijven onze spelers actief.
+              Van eind november tot eind februari schakelen de outdoortrainingen en officiële wedstrijden terug. Met indoor vanaf U9, indoortrainingen voor seniors en het wintercriterium voor U6-U8 blijven onze spelers actief.
             </p>
             <div className="flex flex-wrap gap-3">
               <Button asChild variant="secondary" size="lg">
-                <a href={INDOOR_FORM_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
-                  Indoor inschrijven <ExternalLink className="h-4 w-4" />
+                <a href={SENIOR_FORM_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
+                  Indoor seniors inschrijven <ExternalLink className="h-4 w-4" />
                 </a>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-primary-foreground/40 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground">
-                <a href={WINTERCRITERIUM_FORM_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
-                  Wintercriterium U6-U8 <ExternalLink className="h-4 w-4" />
+                <a href="#senioren" className="inline-flex items-center gap-2">
+                  Bekijk het seniorenaanbod <ArrowRight className="h-4 w-4" />
                 </a>
               </Button>
             </div>
@@ -87,14 +98,21 @@ const IndoorHockey = () => {
           <section id="overzicht">
             <div className="mb-8 flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10"><Snowflake className="h-5 w-5 text-primary" /></div>
-              <div><h2 className="text-2xl font-bold tracking-tight">Twee opties tijdens de winterstop</h2><p className="text-muted-foreground">Voor elke jeugdcategorie een passend aanbod</p></div>
+              <div><h2 className="text-2xl font-bold tracking-tight">Drie opties tijdens de winterstop</h2><p className="text-muted-foreground">Voor elke categorie een passend aanbod</p></div>
             </div>
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="grid gap-4 md:grid-cols-3">
               <Card>
                 <CardHeader><CardTitle className="flex items-center gap-2"><ShieldCheck className="h-5 w-5 text-primary" />Indoor vanaf U9</CardTitle></CardHeader>
                 <CardContent className="space-y-3 text-sm text-muted-foreground">
                   <p>Indoorhockey is een snelle variant van outdoorhockey met eigen spelregels.</p>
                   <p>Door de beperkte zaalcapaciteit is er dit seizoen geen indoor voor U6-U8 of voor spelers die alleen willen trainen zonder wedstrijden te spelen.</p>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader><CardTitle className="flex items-center gap-2"><Users className="h-5 w-5 text-primary" />Indoor seniors</CardTitle></CardHeader>
+                <CardContent className="space-y-3 text-sm text-muted-foreground">
+                  <p>Negen indoortrainingen op zondagmiddag voor spelers van U19, Dames/Heren en Ladies/Gents.</p>
+                  <p>Er zijn 15 plaatsen. Inschrijven kan tot 29 november 2026.</p>
                 </CardContent>
               </Card>
               <Card>
@@ -119,7 +137,7 @@ const IndoorHockey = () => {
                   <div className="rounded-lg bg-muted p-4"><div className="text-2xl font-bold text-primary">20</div><p className="text-sm text-muted-foreground">plaatsen bij categorieën met twee ploegen</p></div>
                   <div className="rounded-lg bg-muted p-4"><div className="text-2xl font-bold text-primary">Wachtlijst</div><p className="text-sm text-muted-foreground">zodra een categorie volzet is</p></div>
                 </div>
-                <p className="leading-relaxed text-muted-foreground">De sportieve cel bepaalt na de inschrijvingen de definitieve teamindeling. Die komt niet noodzakelijk overeen met je outdoorploeg. De trainingsuren en wedstrijden verschijnen in november in Twizzit.</p>
+                <div className="rounded-lg border border-border bg-muted p-4 text-sm"><p className="font-semibold">De inschrijvingen voor de jeugd zijn afgelopen</p><p className="mt-1 text-muted-foreground">De deadline was 29 oktober 2026. De sportieve cel bepaalt nu de definitieve teamindeling. Die komt niet noodzakelijk overeen met je outdoorploeg. De trainingsuren en wedstrijden verschijnen in november in Twizzit.</p></div>
                 <Button asChild variant="outline"><Link to="/sportief/regels/indoor" className="inline-flex items-center gap-2"><BookOpen className="h-4 w-4" />Bekijk de indoor spelregels<ArrowRight className="h-4 w-4" /></Link></Button>
               </CardContent>
             </Card>
@@ -147,6 +165,32 @@ const IndoorHockey = () => {
             <div className="mt-4 rounded-lg border border-primary/20 bg-primary/5 p-4 text-sm text-foreground"><Clock3 className="mr-2 inline h-4 w-4 text-primary" />Kom 10 minuten voor de training en help mee met het klaarzetten en opruimen van de balken.</div>
           </section>
 
+          <section id="senioren">
+            <div className="mb-8 flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10"><Users className="h-5 w-5 text-primary" /></div>
+              <div><h2 className="text-2xl font-bold tracking-tight">Indoor voor seniors</h2><p className="text-muted-foreground">U19, Dames/Heren en Ladies/Gents</p></div>
+            </div>
+            <Card className="border-primary/20">
+              <CardContent className="space-y-6 p-6">
+                <p className="leading-relaxed text-muted-foreground">Ook voor de spelers van de U19G/B, Dames/Heren en Ladies/Gents is er dit seizoen een indoortraining. Die vindt plaats in Hamme of Sint-Gillis, telkens op zondag tussen 13u en 15u.</p>
+                <div className="grid gap-4 sm:grid-cols-3">
+                  <div className="rounded-lg bg-muted p-4"><div className="text-2xl font-bold text-primary">9</div><p className="text-sm text-muted-foreground">trainingen op zondagmiddag</p></div>
+                  <div className="rounded-lg bg-muted p-4"><div className="text-2xl font-bold text-primary">€45</div><p className="text-sm text-muted-foreground">voor de volledige reeks</p></div>
+                  <div className="rounded-lg bg-muted p-4"><div className="text-2xl font-bold text-primary">15</div><p className="text-sm text-muted-foreground">beschikbare plaatsen</p></div>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full min-w-[24rem] border-collapse text-sm">
+                    <thead className="bg-muted"><tr><th className="p-3 text-left font-semibold">Datum</th><th className="p-3 text-left font-semibold">Locatie</th></tr></thead>
+                    <tbody>{seniorSchedule.map((item, index) => <tr key={item.date} className={index < seniorSchedule.length - 1 ? "border-b border-border" : undefined}><td className="p-3 font-medium">Zondag {item.date}</td><td className="p-3 text-muted-foreground">{item.location}</td></tr>)}</tbody>
+                  </table>
+                </div>
+                <p className="text-sm text-muted-foreground">Alle trainingen lopen van 13u tot 15u. Op 20 december kan het uur afwijken.</p>
+                <div className="rounded-lg bg-primary/5 p-4"><p className="font-semibold text-primary">Inschrijven ten laatste op 29 november 2026</p></div>
+                <Button asChild size="lg"><a href={SENIOR_FORM_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">Schrijf in via Twizzit<ExternalLink className="h-4 w-4" /></a></Button>
+              </CardContent>
+            </Card>
+          </section>
+
           <section>
             <div className="mb-8 flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10"><ShieldCheck className="h-5 w-5 text-primary" /></div>
@@ -163,22 +207,35 @@ const IndoorHockey = () => {
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10"><Euro className="h-5 w-5 text-primary" /></div>
               <div><h2 className="text-2xl font-bold tracking-tight">Inschrijven voor indoor</h2><p className="text-muted-foreground">Verplicht voor deelname aan trainingen en competitie</p></div>
             </div>
-            <Card className="border-primary/20">
-              <CardContent className="space-y-6 p-6">
-                <div className="rounded-lg bg-primary/5 p-4"><p className="font-semibold text-primary">Inschrijven ten laatste op 29 oktober 2026</p></div>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>Schrijf in voor je eigen leeftijdscategorie en geslacht, bijvoorbeeld U11B of U14G.</li>
-                  <li>Je inschrijving geldt voor de indoorcompetitie met de bijbehorende trainingen en wedstrijden.</li>
-                  <li>Bij meerdere ploegen bepaalt de club na de inschrijvingen de definitieve verdeling.</li>
-                  <li>Bijkomende inschrijvingen komen op de wachtlijst zodra een categorie volzet is.</li>
-                </ul>
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="rounded-lg border border-border p-4"><p className="text-sm text-muted-foreground">U9 tot U12</p><p className="text-3xl font-bold">€130</p></div>
-                  <div className="rounded-lg border border-border p-4"><p className="text-sm text-muted-foreground">Vanaf U14</p><p className="text-3xl font-bold">€140</p></div>
-                </div>
-                <Button asChild size="lg"><a href={INDOOR_FORM_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">Schrijf in via Twizzit<ExternalLink className="h-4 w-4" /></a></Button>
-              </CardContent>
-            </Card>
+            <div className="grid gap-4 md:grid-cols-2">
+              <Card>
+                <CardHeader><CardTitle>Jeugd (U9 tot U18)</CardTitle></CardHeader>
+                <CardContent className="space-y-5">
+                  <div className="rounded-lg border border-border bg-muted p-4"><p className="font-semibold">Inschrijvingen afgelopen</p><p className="mt-1 text-sm text-muted-foreground">De deadline was 29 oktober 2026. Wie nog wilde inschrijven, kwam op de wachtlijst terecht.</p></div>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li>Je inschrijving geldt voor de indoorcompetitie met de bijbehorende trainingen en wedstrijden.</li>
+                    <li>Bij meerdere ploegen bepaalt de club na de inschrijvingen de definitieve verdeling.</li>
+                  </ul>
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div className="rounded-lg border border-border p-4"><p className="text-sm text-muted-foreground">U9 tot U12</p><p className="text-3xl font-bold">€130</p></div>
+                    <div className="rounded-lg border border-border p-4"><p className="text-sm text-muted-foreground">Vanaf U14</p><p className="text-3xl font-bold">€140</p></div>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card className="border-primary/20">
+                <CardHeader><CardTitle>Seniors (vanaf U19)</CardTitle></CardHeader>
+                <CardContent className="space-y-5">
+                  <div className="rounded-lg bg-primary/5 p-4"><p className="font-semibold text-primary">Inschrijven ten laatste op 29 november 2026</p></div>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li>Voor spelers van U19G/B, Dames/Heren en Ladies/Gents.</li>
+                    <li>Negen trainingen op zondag tussen 13u en 15u, in Hamme of Sint-Gillis.</li>
+                    <li>Er zijn 15 plaatsen. Vol is vol.</li>
+                  </ul>
+                  <div className="rounded-lg border border-border p-4"><p className="text-sm text-muted-foreground">Volledige reeks</p><p className="text-3xl font-bold">€45</p></div>
+                  <Button asChild size="lg"><a href={SENIOR_FORM_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">Schrijf in via Twizzit<ExternalLink className="h-4 w-4" /></a></Button>
+                </CardContent>
+              </Card>
+            </div>
           </section>
 
           <section id="wintercriterium">
@@ -189,9 +246,8 @@ const IndoorHockey = () => {
             <Card>
               <CardContent className="space-y-5 p-6">
                 <p className="leading-relaxed text-muted-foreground">Spelers van U6 tot U8 kunnen deelnemen aan twee à drie wedstrijden in december en nog eens twee à drie wedstrijden in januari of februari. De wedstrijden vinden plaats op zaterdagvoormiddag of zaterdagmiddag en dienen vooral om wedstrijdritme te behouden.</p>
-                <div className="grid gap-4 sm:grid-cols-2"><div className="rounded-lg bg-muted p-4"><p className="text-sm text-muted-foreground">Deelname</p><p className="text-xl font-bold">Gratis</p></div><div className="rounded-lg bg-primary/5 p-4"><p className="text-sm text-muted-foreground">Inschrijven ten laatste</p><p className="text-xl font-bold text-primary">16 oktober 2026</p></div></div>
-                <p className="text-sm text-muted-foreground">Bij de inschrijving mag je één vriendje of vriendinnetje vermelden voor de ploegindeling. In november volgt een infomoment over de indelingen.</p>
-                <Button asChild size="lg"><a href={WINTERCRITERIUM_FORM_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">Schrijf in voor het wintercriterium<ExternalLink className="h-4 w-4" /></a></Button>
+                <div className="grid gap-4 sm:grid-cols-2"><div className="rounded-lg bg-muted p-4"><p className="text-sm text-muted-foreground">Deelname</p><p className="text-xl font-bold">Gratis</p></div><div className="rounded-lg border border-border bg-muted p-4"><p className="text-sm text-muted-foreground">Inschrijven ten laatste</p><p className="text-xl font-bold">16 oktober 2026</p></div></div>
+                <div className="rounded-lg border border-border bg-muted p-4 text-sm"><p className="font-semibold">De inschrijvingen zijn afgelopen</p><p className="mt-1 text-muted-foreground">De deadline was 16 oktober 2026. In november volgt een infomoment over de indelingen.</p></div>
               </CardContent>
             </Card>
           </section>
@@ -207,7 +263,7 @@ const IndoorHockey = () => {
           </section>
         </div>
       </div>
-      <PageCta title="Klaar voor de zaal?" text="Schrijf je in voor het indoorseizoen 2026-2027." actions={<Button asChild size="lg" variant="secondary" className="font-semibold"><Link to="/lidmaatschap/indoor-registratie">Schrijf je in voor indoor</Link></Button>} />
+      <PageCta title="Klaar voor de zaal?" text="Seniors kunnen nog inschrijven tot 29 november 2026." actions={<Button asChild size="lg" variant="secondary" className="font-semibold"><a href={SENIOR_FORM_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">Schrijf je in voor indoor seniors<ExternalLink className="h-4 w-4" /></a></Button>} />
     </div>
   );
 };
