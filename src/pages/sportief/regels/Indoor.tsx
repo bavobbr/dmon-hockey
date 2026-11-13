@@ -485,19 +485,19 @@ const IndoorRules = () => {
             <CardContent>
               <div className="space-y-2">
                 <Button asChild variant="outline" className="w-full justify-start">
-                  <a href="https://hockey.be/nl/competitie/indoor-hockey/spelregels/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                  <a href="https://hockey.be/nl/officials-division/spelregels-indoor/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                     <ExternalLink className="h-4 w-4" />
                     BEL-Indoor-Rules-NL.pdf
                   </a>
                 </Button>
                 <Button asChild variant="outline" className="w-full justify-start">
-                  <a href="https://hockey.be/nl/competitie/indoor-hockey/spelregels/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                  <a href="https://hockey.be/nl/officials-division/spelregels-indoor/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                     <ExternalLink className="h-4 w-4" />
                     Indoor-Spelregels-U8-U12.pdf
                   </a>
                 </Button>
                 <Button asChild variant="outline" className="w-full justify-start">
-                  <a href="https://hockey.be/nl/competitie/indoor-hockey/spelregels/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                  <a href="https://hockey.be/nl/officials-division/spelregels-indoor/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                     <ExternalLink className="h-4 w-4" />
                     Indoor-Spelregels-U14-U19.pdf
                   </a>
