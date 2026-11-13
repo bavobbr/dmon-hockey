@@ -8,8 +8,9 @@ import {
   createRootRouteWithContext,
   redirect,
   useRouterState,
+  Link,
 } from "@tanstack/react-router";
-import { Menu, PanelLeft } from "lucide-react";
+import { Menu, PanelLeft, ThermometerSnowflake } from "lucide-react";
 import { Analytics } from "@vercel/analytics/react";
 
 import { Toaster } from "@/components/ui/toaster";
@@ -94,8 +95,8 @@ const AppHeader = () => {
   const toggleSidebar = sidebar?.toggleSidebar ?? (() => {});
 
   return (
-    <header className="h-14 flex items-center justify-between bg-background px-4 relative z-10 md:px-6">
-      <div className="flex items-center gap-3">
+    <header className="h-14 shrink-0 flex items-center justify-between gap-2 bg-background px-3 relative z-10 md:px-6">
+      <div className="flex min-w-0 items-center gap-2 md:gap-3">
         {/* Mobile-optimized menu button */}
         <Button
           variant="ghost"
@@ -120,18 +121,15 @@ const AppHeader = () => {
           </Button>
         </div>
 
-        <div className="text-lg font-semibold text-foreground">D-mon Hockey</div>
+        <div className="text-sm sm:text-lg whitespace-nowrap font-semibold text-foreground">D-mon Hockey</div>
       </div>
 
-      {/* Mobile hint text - clickable */}
-      <div className="lg:hidden">
-        <button
-          onClick={toggleSidebar}
-          className="text-xs text-muted-foreground hover:text-foreground transition-colors"
-        >
-          Tik op Menu
-        </button>
-      </div>
+      <Button asChild variant="outline" size="sm" className="shrink-0 gap-1.5 px-2 text-xs sm:px-3 sm:text-sm text-primary border-primary/20 bg-primary/5">
+        <Link to="/club/veld-status">
+          <ThermometerSnowflake aria-hidden="true" />
+          <span>Terreinstatus</span>
+        </Link>
+      </Button>
     </header>
   );
 };

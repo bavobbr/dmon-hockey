@@ -10,6 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 import { sanitizeRichHtml } from '@/lib/sanitizeHtml';
 import { extractMedia, excerptFromContent } from '@/lib/newsMedia';
 import UpcomingEvents from "@/components/UpcomingEvents";
+import HomeFieldStatus from "@/components/HomeFieldStatus";
 import { Target, Trophy, Users, Newspaper, Sparkles, ArrowRight, PlayCircle, Play, HandHeart } from "lucide-react";
 import { HomepageJsonLd } from "@/components/JsonLd";
 import sfeerPartyGroup from "@/assets/gallery/party-group.png";
@@ -309,6 +310,8 @@ const Index = ({ heroIndex = 0 }: IndexProps) => {
           <div className="absolute inset-x-0 bottom-0 h-1.5 bg-gradient-to-r from-accent to-secondary pointer-events-none" />
         </div>
       </section>
+
+      <HomeFieldStatus />
 
       {/* Quick Info — Compact pillars */}
       <section className="py-24 md:py-32 px-4 bg-gradient-subtle overflow-x-hidden">
