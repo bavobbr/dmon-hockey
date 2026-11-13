@@ -1,515 +1,205 @@
+import type { ReactNode } from "react";
 import { PageHero, PageCta } from "@/components/layout/PageHero";
 import { Link } from "@tanstack/react-router";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Users, Shield, Flag, AlertCircle, ExternalLink, UserCheck } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import indoorRulesTable1 from "@/assets/indoor-rules-table-1.png";
-import indoorRulesTable2 from "@/assets/indoor-rules-table-2.png";
-const IndoorRules = () => {
-  return (
-    <>
-      <PageHero label="Spelregels" title="Indoor hockey: een gids voor beginners" lead="De basis van zaalhockey, uitgelegd voor nieuwe spelers en ouders." />
-    <div className="container mx-auto px-4 py-12 lg:py-16">
-      <div className="max-w-4xl mx-auto">
-        
-        <div className="prose prose-gray dark:prose-invert max-w-none space-y-6">
-          {/* Introduction */}
-          <div className="mb-8 p-6 bg-primary/5 rounded-lg border border-primary/20">
-            <p className="text-lg">
-              Welkom in de snelle en spannende wereld van het indoor hockey! Als je dit leest, sta je op het punt een dynamische zaal variant van veldhockey te ontdekken. Het spel is razendsnel en technisch, maar geen zorgen: in deze gids leggen we je de basisbeginselen op een eenvoudige en duidelijke manier uit, zodat je snel klaar bent voor je eerste wedstrijd.
-            </p>
-          </div>
 
-          {/* Registration Card - Highlighted */}
-          <Card className="mb-6 border-primary bg-primary/5">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-primary">
-                <UserCheck className="h-6 w-6" />
-                Registreren
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-base mb-4">
-                Wil je jezelf als scheidsrechter registreren bij ons, zodat we je meteen toegang kunnen voorzien tot onder andere Drillster én je mee op het wedstrijdblad kunnen zetten?
-              </p>
-              <Button asChild size="lg" className="w-full sm:w-auto">
-                <a href="https://app.twizzit.com/v2/public/form/cea9e8831bead08352918535621cd399" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">Registreer als scheidrechter via Twizzit<ExternalLink className="h-4 w-4" />
-                  Registreer via Twizzit
-                </a>
-              </Button>
-            </CardContent>
-          </Card>
+const algemeneRegels = "/images/indoor/algemene-spelregels.webp";
+const jeugdRegels = "/images/indoor/jeugdregels.webp";
 
-          {/* Core of the Game */}
-          <Card className="mb-6">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Flag className="h-5 w-5" />
-                De kern van het spel
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p>
-                Net als bij veel sporten is het doel van indoorhockey simpel: meer doelpunten scoren dan de tegenstander. Het spel onderscheidt zich echter door een paar unieke kenmerken die het ongelooflijk dynamisch maken.
-              </p>
-              
-              <div className="space-y-3">
-                <div className="p-4 bg-muted rounded-lg">
-                  <h4 className="font-semibold mb-2">Klein speelveld</h4>
-                  <p className="text-sm text-muted-foreground">
-                    In de zaal is het veld een stuk kleiner dan buiten. Dit zorgt voor een razendsnel spel met veel actie, snelle passes en constante betrokkenheid van alle spelers.
-                  </p>
-                </div>
-                
-                <div className="p-4 bg-muted rounded-lg">
-                  <h4 className="font-semibold mb-2">Zijbalken</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Langs de zijkanten van het veld liggen balken. De bal blijft hierdoor bijna altijd in het spel, wat de snelheid erin houdt en tactische passes mogelijk maakt.
-                  </p>
-                  <p className="text-sm text-primary font-medium mt-2">
-                    💡 Coach's Tip: Zie de balken als een extra teamgenoot! Een slimme pass via de 'boarding' kan een verdediger compleet verrassen.
-                  </p>
-                </div>
-                
-                <div className="p-4 bg-muted rounded-lg">
-                  <h4 className="font-semibold mb-2">Techniek boven kracht</h4>
-                  <p className="text-sm text-muted-foreground">
-                    De regels zijn ontworpen om behendigheid en slim spel te belonen. Zo is het bijvoorbeeld niet toegestaan om de bal te 'slaan'. Deze regel voorkomt chaos en gevaar in de beperkte ruimte van de zaal en dwingt je om je stickvaardigheid te ontwikkelen. De nadruk ligt dus op een goede push-techniek en balcontrole.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+const sections = [
+  { id: "algemeen", label: "Algemene regels" },
+  { id: "verschillen", label: "Verschillen met outdoor" },
+  { id: "straffen", label: "Hervattingen en straffen" },
+  { id: "jeugd", label: "Jeugdregels" },
+  { id: "voorbeelden", label: "Praktijkvoorbeelden" },
+  { id: "fluiten", label: "Zelf fluiten" },
+  { id: "documenten", label: "Officiële documenten" },
+];
 
-          {/* Basic Rules Overview */}
-          <Card className="mb-6">
-            <CardHeader>
-              <CardTitle>Indoor Hockey Spelregels: De Essentie</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-center mb-4">
-                <img src={indoorRulesTable1} alt="Indoor hockey spelregels overzicht" loading="lazy" className="w-full max-w-3xl mx-auto rounded-lg shadow-md" />
-              </div>
-              
-              <div className="space-y-4 mt-6">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="p-4 bg-blue-50 dark:bg-blue-950/20 rounded-lg border border-blue-200 dark:border-blue-800">
-                    <h4 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">Standaard wedstrijd</h4>
-                    <p className="text-sm text-blue-800 dark:text-blue-200">
-                      4 periodes van 15 minuten (Ere divisie en U14-U19) of 4x10 min (U8-U12)
-                    </p>
-                  </div>
-                  
-                  <div className="p-4 bg-green-50 dark:bg-green-950/20 rounded-lg border border-green-200 dark:border-green-800">
-                    <h4 className="font-semibold text-green-900 dark:text-green-100 mb-2">Rechthoekig veld</h4>
-                    <p className="text-sm text-green-800 dark:text-green-200">
-                      36-44m lang, 19-22m breed. Maximaal 12 spelers per team, 6 op het veld.
-                    </p>
-                  </div>
-                  
-                  <div className="p-4 bg-amber-50 dark:bg-amber-950/20 rounded-lg border border-amber-200 dark:border-amber-800">
-                    <h4 className="font-semibold text-amber-900 dark:text-amber-100 mb-2">Speciale indoor stick</h4>
-                    <p className="text-sm text-amber-800 dark:text-amber-200">
-                      Slaan is verboden. Enkel pushen, flicken of scopen toegestaan.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+const Item = ({ title, children }: { title: string; children: ReactNode }) => (
+  <div className="rounded-lg bg-muted p-4">
+    <h3 className="mb-1 font-semibold">{title}</h3>
+    <div className="space-y-2 text-sm text-muted-foreground">{children}</div>
+  </div>
+);
 
-          {/* Team and Players */}
-          <Card className="mb-6">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Users className="h-5 w-5" />
-                Het team en de spelers
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p>
-                Een team bestaat op het veld uit maximaal zes spelers. Deze spelers hebben twee verschillende rollen: de veldspeler en de goalkeeper.
-              </p>
-              
-              <div className="overflow-x-auto">
-                <table className="w-full border-collapse">
-                  <thead>
-                    <tr className="bg-muted">
-                      <th className="border border-border p-3 text-left">Rol</th>
-                      <th className="border border-border p-3 text-left">Belangrijkste Kenmerken</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td className="border border-border p-3 font-semibold">Veldspeler</td>
-                      <td className="border border-border p-3 text-sm">
-                        De 'standaard' speler op het veld. Veldspelers mogen de bal alleen met de platte kant van hun stick spelen. Het is verboden de bal met de voeten of het lichaam te stoppen of voort te bewegen.
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="border border-border p-3 font-semibold">Keeper</td>
-                      <td className="border border-border p-3 text-sm">
-                        De keeper draagt beschermende uitrusting (o.a. helm, legguards, klompen). Binnen de eigen cirkel mag de keeper de bal met elk deel van het lichaam stoppen of wegspelen. Buiten de cirkel gelden voor de goalkeeper dezelfde regels als voor een veldspeler.
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              
-              <div className="p-4 bg-primary/5 rounded-lg border border-primary/20 mt-4">
-                <h4 className="font-semibold mb-2">Vliegend wisselen</h4>
-                <p className="text-sm">
-                  Een uniek aspect van indoorhockey is het 'vliegend wisselen'. Spelers mogen op elk moment van de wedstrijd (behalve tijdens de uitvoering van een strafcorner) gewisseld worden. Dit gebeurt binnen een wisselzone van 3 meter bij de middenlijn, zonder dat het spel wordt stilgelegd. Strategisch is dit cruciaal: het stelt teams in staat om een heel hoog tempo aan te houden, omdat vermoeide spelers snel vervangen kunnen worden.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
+const Section = ({ id, title, description, children }: { id: string; title: string; description?: string; children: ReactNode }) => (
+  <Card id={id} className="scroll-mt-20">
+    <CardHeader>
+      <CardTitle>{title}</CardTitle>
+      {description ? <CardDescription>{description}</CardDescription> : null}
+    </CardHeader>
+    <CardContent className="space-y-3">{children}</CardContent>
+  </Card>
+);
 
-          {/* Essential Equipment */}
-          <Card className="mb-6">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Shield className="h-5 w-5" />
-                De essentiële uitrusting
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="mb-4">
-                Als coach kunnen we het niet genoeg benadrukken: veiligheid is topprioriteit en in België is de volgende uitrusting voor alle jeugdspelers dan ook verplicht:
-              </p>
-              
-              <ul className="space-y-3">
-                <li className="flex items-start gap-3 p-3 bg-muted rounded-lg">
-                  <span className="font-bold text-primary text-lg">1.</span>
-                  <div>
-                    <strong>Indoorstick:</strong> Enkel indoorsticks zijn toegestaan. Deze zijn specifiek ontworpen voor het snelle en technische zaalspel en verschillen van een veldstick.
-                  </div>
-                </li>
-                <li className="flex items-start gap-3 p-3 bg-muted rounded-lg">
-                  <span className="font-bold text-primary text-lg">2.</span>
-                  <div>
-                    <strong>Scheenbeschermers:</strong> Onmisbaar om je onderbenen te beschermen tegen ballen en sticks.
-                  </div>
-                </li>
-                <li className="flex items-start gap-3 p-3 bg-muted rounded-lg">
-                  <span className="font-bold text-primary text-lg">3.</span>
-                  <div>
-                    <strong>Mondbeschermer (Bitje):</strong> Een absolute must om je gebit te beschermen.
-                  </div>
-                </li>
-                <li className="flex items-start gap-3 p-3 bg-muted rounded-lg">
-                  <span className="font-bold text-primary text-lg">4.</span>
-                  <div>
-                    <strong>Volledige handbescherming:</strong> Een speciale handschoen die de hand beschermt die laag bij de grond is tijdens het spelen, en zo blessures aan vingers en knokkels voorkomt.
-                  </div>
-                </li>
-                <li className="flex items-start gap-3 p-3 bg-muted rounded-lg">
-                  <span className="font-bold text-primary text-lg">5.</span>
-                  <div>
-                    <strong>Indoorschoenen:</strong> Schoenen met zolen die geen strepen achterlaten op de zaalvloer en goede grip bieden.
-                  </div>
-                </li>
-              </ul>
-            </CardContent>
-          </Card>
+const youth: [string, string][] = [
+  ["U7", "3 spelers, half veld, geen keeper"],
+  ["U8", "6 spelers, half veld, geen keeper"],
+  ["U9", "Verplichte keeper zonder stick; geen strafcorner, wel strafbal"],
+  ["U10", "Keeper met stick; strafcorners ingevoerd"],
+  ["U11/U12", "Keeper met stick; andere verdedigingsopstelling bij de strafcorner dan U10"],
+  ["U14-U19", "In grote lijnen de normale indoorregels"],
+];
 
-          {/* Playing Field */}
-          <Card className="mb-6">
-            <CardHeader>
-              <CardTitle>Het speelveld en zijn belangrijke zones</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p>
-                Het indoor hockeyveld is een rechthoekig veld met een harde ondergrond. Voor een beginner zijn er drie zones die je absoluut moet kennen:
-              </p>
-              
-              <div className="space-y-3">
-                <div className="p-4 bg-muted rounded-lg">
-                  <h4 className="font-semibold mb-2">De zijbalken</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Dit zijn de houten of kunststof balken langs de lange zijden van het veld. Ze houden de bal niet alleen in het spel, maar je kunt ze ook slim gebruiken om de bal naar een medespeler te passen (een pass 'via de balk' of 'via de boarding' genoemd).
-                  </p>
-                </div>
-                
-                <div className="p-4 bg-muted rounded-lg">
-                  <h4 className="font-semibold mb-2">De cirkel</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Dit is het halfronde gebied voor elk doel. De cirkel is cruciaal, want een aanvaller kan alleen een geldig doelpunt scoren als de bal vanuit de cirkel wordt gespeeld.
-                  </p>
-                  <p className="text-sm text-primary font-medium mt-2">
-                    💡 Coach's Tip: Onthoud dit goed: de cirkel is de 'gevarenzone' waar de magie gebeurt!
-                  </p>
-                </div>
-                
-                <div className="p-4 bg-muted rounded-lg">
-                  <h4 className="font-semibold mb-2">Het doel</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Het doel is 3 meter breed en 2 meter hoog. Hier moet de bal volledig over de doellijn om als doelpunt te tellen.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+const examples: [string, string][] = [
+  ["De bal raakt toevallig een voet. Fluiten of doorspelen?", "Doorspelen, tenzij de speler er voordeel uit haalt of de voet bewust gebruikt om de bal tegen te houden. Je beoordeelt de situatie, niet alleen het contact."],
+  ["Een aanvaller speelt een hoge bal richting een verdediger.", "Fluiten. De bal mag niet opzettelijk omhoog gespeeld worden, behalve bij een toegelaten schot op doel. Is het gevaarlijk, dan kan ook een kaart volgen."],
+  ["Een speler raakt met de knie de grond terwijl hij de bal speelt.", "Overtreding. Wie de bal speelt, mag niet met knie, arm of vrije hand de grond raken. De tegenpartij krijgt een vrije slag."],
+  ["Op de aanvallende helft wordt een vrije slag genomen en meteen de cirkel in gespeeld.", "Niet toegestaan. De bal moet eerst minstens 3 meter verplaatst zijn of door een verdediger aangeraakt. Uitzondering: bij U7-U9 mag de bal wel rechtstreeks de cirkel in."],
+  ["Een verdediger speelt de bal bewust over de eigen achterlijn.", "Strafcorner voor de aanvallers (niet bij U7-U9, daar worden geen strafcorners genomen)."],
+];
 
-          {/* Playing the Ball */}
-          <Card className="mb-6">
-            <CardHeader>
-              <CardTitle>De bal spelen: Wat mag en wat mag niet?</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="mb-4">
-                De manier waarop je de bal speelt, is strikt gereguleerd om het spel technisch en veilig te houden.
-              </p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="p-4 bg-green-50 dark:bg-green-950/20 rounded-lg border border-green-200 dark:border-green-800">
-                  <h4 className="font-semibold text-green-900 dark:text-green-100 mb-3 flex items-center gap-2">
-                    ✅ Toegestaan
-                  </h4>
-                  <ul className="space-y-2 text-sm text-green-800 dark:text-green-200">
-                    <li>• De bal pushen over de grond</li>
-                    <li>• Een schot op doel waarbij de bal omhoog gaat</li>
-                    <li>• De bal met de platte kant van de stick spelen</li>
-                  </ul>
-                </div>
-                
-                <div className="p-4 bg-red-50 dark:bg-red-950/20 rounded-lg border border-red-200 dark:border-red-800">
-                  <h4 className="font-semibold text-red-900 dark:text-red-100 mb-3 flex items-center gap-2">
-                    ❌ Niet Toegestaan
-                  </h4>
-                  <ul className="space-y-2 text-sm text-red-800 dark:text-red-200">
-                    <li>• De bal slaan (een zwaaiende beweging maken)</li>
-                    <li>• De bal opzettelijk omhoog spelen buiten een schot op doel</li>
-                    <li>• De bal met de bolle kant ('backstick') van de stick spelen</li>
-                  </ul>
-                </div>
-              </div>
-              
-              <p className="text-sm text-muted-foreground mt-4 p-3 bg-muted rounded-lg">
-                De reden voor deze regels is simpel: ze maken van indoorhockey een spel dat draait om precisie, controle en slim passen over de grond, in plaats van om harde, hoge ballen. Het dwingt spelers om hun techniek te verfijnen, wat de sport zo uitdagend en leuk maakt.
-              </p>
-            </CardContent>
-          </Card>
-
-          {/* Penalties */}
-          <Card className="mb-6">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <AlertCircle className="h-5 w-5" />
-                Straffen: Gevolgen van een overtreding
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p>
-                Wanneer een team nadeel ondervindt van een overtreding door de tegenstander, zal de scheidsrechter een straf toekennen. De belangrijkste straffen zijn:
-              </p>
-              
-              <div className="space-y-3">
-                <div className="p-4 bg-blue-50 dark:bg-blue-950/20 rounded-lg border border-blue-200 dark:border-blue-800">
-                  <h4 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">1. De Vrije Slag</h4>
-                  <p className="text-sm text-blue-800 dark:text-blue-200 mb-2">
-                    <strong>Wanneer?</strong> Dit is de meest voorkomende straf voor een standaard overtreding (bijv. 'voetje' of de bal slaan).
-                  </p>
-                  <p className="text-sm text-blue-800 dark:text-blue-200">
-                    <strong>Wat gebeurt er?</strong> Het niet-overtredende team mag het spel hervatten met een push vanaf de plek van de overtreding. Tegenstanders moeten minimaal 3 meter afstand houden.
-                  </p>
-                </div>
-                
-                <div className="p-4 bg-amber-50 dark:bg-amber-950/20 rounded-lg border border-amber-200 dark:border-amber-800">
-                  <h4 className="font-semibold text-amber-900 dark:text-amber-100 mb-2">2. De Strafcorner</h4>
-                  <p className="text-sm text-amber-800 dark:text-amber-200 mb-2">
-                    <strong>Wanneer?</strong> Voor een zwaardere overtreding van een verdediger in de eigen cirkel, of een opzettelijke overtreding op de eigen helft.
-                  </p>
-                  <p className="text-sm text-amber-800 dark:text-amber-200">
-                    <strong>Wat gebeurt er?</strong> Dit is een grote doelkans. Een aanvaller pusht de bal vanaf de achterlijn naar teamgenoten die buiten de cirkel wachten. De verdedigers (maximaal vijf veldspelers plus de keeper) starten achter de doellijn en mogen uitlopen zodra de bal is gespeeld.
-                  </p>
-                </div>
-                
-                <div className="p-4 bg-red-50 dark:bg-red-950/20 rounded-lg border border-red-200 dark:border-red-800">
-                  <h4 className="font-semibold text-red-900 dark:text-red-100 mb-2">3. De Strafbal (Penalty Stroke)</h4>
-                  <p className="text-sm text-red-800 dark:text-red-200 mb-2">
-                    <strong>Wanneer?</strong> De zwaarste straf, toegekend wanneer een verdediger een vrijwel zeker doelpunt voorkomt met een overtreding.
-                  </p>
-                  <p className="text-sm text-red-800 dark:text-red-200">
-                    <strong>Wat gebeurt er?</strong> Een een-tegen-één duel. Een aanvaller probeert vanaf de strafbalstip te scoren op de keeper, die op de doellijn moet blijven staan tot de bal gespeeld is.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Personal Penalties - Cards */}
-          <Card className="mb-6">
-            <CardHeader>
-              <CardTitle>Persoonlijke straffen: de kaarten</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="mb-4">
-                Voor wangedrag of ernstige overtredingen kan een scheidsrechter een speler een persoonlijke straf geven met een kaart.
-              </p>
-              
-              <div className="overflow-x-auto">
-                <table className="w-full border-collapse">
-                  <thead>
-                    <tr className="bg-muted">
-                      <th className="border border-border p-3 text-left">Kaart</th>
-                      <th className="border border-border p-3 text-left">Betekenis</th>
-                      <th className="border border-border p-3 text-left">Gevolg voor het Team</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td className="border border-border p-3">
-                        <span className="inline-block px-3 py-1 rounded-[0.25rem] bg-green-500 text-white font-semibold">Groene Kaart</span>
-                      </td>
-                      <td className="border border-border p-3 text-sm">Een waarschuwing voor een lichte overtreding.</td>
-                      <td className="border border-border p-3 text-sm">1 minuut tijdelijke uitsluiting. Het team speelt met een speler minder.</td>
-                    </tr>
-                    <tr>
-                      <td className="border border-border p-3">
-                        <span className="inline-block px-3 py-1 rounded-[0.25rem] bg-yellow-400 text-black font-semibold">Gele Kaart</span>
-                      </td>
-                      <td className="border border-border p-3 text-sm">Een zwaardere straf voor herhaalde of ernstigere overtredingen.</td>
-                      <td className="border border-border p-3 text-sm">Minimaal 2 minuten tijdelijke uitsluiting. Het team speelt met een speler minder.</td>
-                    </tr>
-                    <tr>
-                      <td className="border border-border p-3">
-                        <span className="inline-block px-3 py-1 rounded-[0.25rem] bg-red-600 text-white font-semibold">Rode Kaart</span>
-                      </td>
-                      <td className="border border-border p-3 text-sm">Voor een zeer ernstige overtreding.</td>
-                      <td className="border border-border p-3 text-sm">Permanente uitsluiting voor de rest van de wedstrijd. Het team speelt de rest van de wedstrijd met een speler minder.</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Youth Categories */}
-          <Card className="mb-6">
-            <CardHeader>
-              <CardTitle>Spelregels in de jeugdcategorieën</CardTitle>
-              <CardDescription>
-                De spelregels evolueren met de veiligheid en ontwikkeling, van U8 tot U14-U19
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="text-center mb-6">
-                <img src={indoorRulesTable2} alt="Indoor hockey verschillen per leeftijdscategorie" loading="lazy" className="w-full max-w-3xl mx-auto rounded-lg shadow-md" />
-              </div>
-              
-              <div className="space-y-4 mt-6">
-                {/* U8 */}
-                <div className="p-4 bg-muted rounded-lg">
-                  <h4 className="font-semibold text-lg mb-3">U8</h4>
-                  <ul className="space-y-2 text-sm">
-                    <li><strong>Keeper:</strong> Een keeper is niet toegestaan (verboden). Er wordt dus met zes veldspelers gespeeld.</li>
-                    <li><strong>Tijdsduur:</strong> 4 periodes van 10 minuten.</li>
-                    <li><strong>Strafcorners (PC) en Strafslagen (Stroke):</strong> Beide zijn niet toegestaan.</li>
-                    <li><strong>Vrije Slag:</strong> Bij een fout in de cirkel wordt een vrije slag toegekend aan de aanvallende ploeg, te nemen op 3 meter buiten de cirkel. De bal mag WEL rechtstreeks in de cirkel gespeeld worden.</li>
-                    <li><strong>Scheidsrechters:</strong> Theoretische scheidsrechter Indoor is niet verplicht.</li>
-                  </ul>
-                </div>
-
-                {/* U9 */}
-                <div className="p-4 bg-muted rounded-lg">
-                  <h4 className="font-semibold text-lg mb-3">U9</h4>
-                  <ul className="space-y-2 text-sm">
-                    <li><strong>Keeper:</strong> De keeper is verplicht in complete uitrusting op het veld gedurende de volledige wedstrijd.</li>
-                    <li><strong>Keeper met stick:</strong> De keeper speelt ZONDER stick.</li>
-                    <li><strong>Strafcorners (PC) en Strafslagen (Stroke):</strong> Beide zijn niet toegestaan.</li>
-                    <li><strong>Vrije Slag:</strong> Bij een fout in de cirkel wordt een vrije slag toegekend op 3 meter buiten de cirkel, en de bal mag WEL rechtstreeks in de cirkel gespeeld worden.</li>
-                    <li><strong>Scheidsrechters:</strong> Theoretische scheidsrechter Indoor is verplicht.</li>
-                  </ul>
-                </div>
-
-                {/* U10 */}
-                <div className="p-4 bg-muted rounded-lg">
-                  <h4 className="font-semibold text-lg mb-3">U10</h4>
-                  <ul className="space-y-2 text-sm">
-                    <li><strong>Keeper:</strong> De keeper is verplicht in complete uitrusting op het veld gedurende de volledige wedstrijd.</li>
-                    <li><strong>Strafcorners (PC):</strong> Ja. Het verdedigende team verdedigt met drie spelers naast de goal en de keeper in de goal. Alle verdedigers moeten op PC een masker dragen. De overige twee spelers staan op maximaal 9,10 meter van de achterlijn van de tegenstanders.</li>
-                    <li><strong>Strafslagen (Stroke):</strong> Ja.</li>
-                    <li><strong>Vrije Slag:</strong> De bal mag NIET rechtstreeks in de cirkel gespeeld worden.</li>
-                    <li><strong>Scheidsrechters:</strong> Theoretische scheidsrechter Indoor is verplicht.</li>
-                  </ul>
-                </div>
-
-                {/* U11 en U12 */}
-                <div className="p-4 bg-muted rounded-lg">
-                  <h4 className="font-semibold text-lg mb-3">U11 en U12</h4>
-                  <ul className="space-y-2 text-sm">
-                    <li><strong>Keeper:</strong> De keeper is verplicht in complete uitrusting op het veld gedurende de volledige wedstrijd.</li>
-                    <li><strong>Strafcorners (PC):</strong> Ja. Het verdedigende team verdedigt met vier spelers naast de goal en de keeper in de goal. Alle verdedigers moeten op PC een masker dragen. De andere speler (de vijfde veldspeler) moet op maximaal 9,10 meter van de achterlijn van de tegenstanders staan.</li>
-                    <li><strong>Strafslagen (Stroke):</strong> Ja.</li>
-                    <li><strong>Vrije Slag:</strong> De bal mag NIET rechtstreeks in de cirkel gespeeld worden.</li>
-                    <li><strong>Scheidsrechters:</strong> Theoretische scheidsrechter Indoor is verplicht.</li>
-                  </ul>
-                </div>
-
-                {/* U14 tot U19 */}
-                <div className="p-4 bg-muted rounded-lg">
-                  <h4 className="font-semibold text-lg mb-3">U14 tot U19</h4>
-                  <ul className="space-y-2 text-sm">
-                    <li><strong>Samenstelling:</strong> Teams spelen met 5 veldspelers en een volledig uitgeruste keeper, óf met 6 veldspelers (waarbij niemand de rechten van een keeper heeft).</li>
-                    <li><strong>Tijdsduur:</strong> 4 periodes van 15 minuten.</li>
-                    <li><strong>Strafcorners (PC) en Strafslagen (Stroke):</strong> Ja. Alle verdedigers achter de achterlijn moeten op PC een masker dragen.</li>
-                    <li><strong>Shoot-out:</strong> Nee, behalve in de halve finale van de Play-Offs bij een gelijke score.</li>
-                  </ul>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Conclusion */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Conclusie: veel plezier op het veld!</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="mb-4">
-                Oké, team! Dat was een hoop informatie, we weten het. De regels van indoorhockey lijken in het begin misschien wat overweldigend, maar je zult zien dat je de basis snel onder de knie hebt zodra je begint te spelen. Het is een fantastische sport die draait om snelheid, techniek en teamspel.
-              </p>
-              <p className="font-semibold text-primary">
-                Het belangrijkste is niet dat je elke regel meteen perfect kent, maar dat je het veld op gaat en durft te proberen. Nu, hup, het veld op en maak plezier!
-              </p>
-            </CardContent>
-          </Card>
-
-          {/* Official Rules */}
-          <Card className="mt-6">
-            <CardHeader>
-              <CardTitle>Officiële regels</CardTitle>
-              <CardDescription>Spelregels - indoor - Hockey Belgium</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-2">
-                <Button asChild variant="outline" className="w-full justify-start">
-                  <a href="https://hockey.be/nl/officials-division/spelregels-indoor/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                    <ExternalLink className="h-4 w-4" />
-                    BEL-Indoor-Rules-NL.pdf
-                  </a>
-                </Button>
-                <Button asChild variant="outline" className="w-full justify-start">
-                  <a href="https://hockey.be/nl/officials-division/spelregels-indoor/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                    <ExternalLink className="h-4 w-4" />
-                    Indoor-Spelregels-U8-U12.pdf
-                  </a>
-                </Button>
-                <Button asChild variant="outline" className="w-full justify-start">
-                  <a href="https://hockey.be/nl/officials-division/spelregels-indoor/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                    <ExternalLink className="h-4 w-4" />
-                    Indoor-Spelregels-U14-U19.pdf
-                  </a>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+const IndoorRules = () => (
+  <>
+    <PageHero label="Spelregels" title="Indoor hockey: een gids voor beginners" lead="De belangrijkste zaalregels voor spelers, ouders en beginnende scheidsrechters." />
+    <div className="subnav-bar relative z-30 border-b bg-background">
+      <div className="container mx-auto px-4">
+        <div className="flex gap-2 overflow-x-auto py-3">
+          {sections.map((s) => (
+            <a key={s.id} href={`#${s.id}`} className="whitespace-nowrap rounded-full border px-3 py-1 text-sm font-medium hover:bg-muted">{s.label}</a>
+          ))}
         </div>
       </div>
     </div>
-      <PageCta title="Twijfel je over een regel?" text="Vraag het aan onze regels assistent of bekijk het overzicht." actions={<Button asChild size="lg" variant="secondary" className="font-semibold"><Link to="/sportief/regels-assistent">Naar de assistent</Link></Button>} />
-    </>
-  );
-};
+
+    <div className="container mx-auto px-4 py-12 lg:py-16">
+      <div className="mx-auto max-w-4xl space-y-6">
+        <p className="text-lg">
+          Indoorhockey is de snelle zaalvariant van veldhockey. We spelen op een kleiner veld met zijbalken, maximaal zes spelers per ploeg en aangepaste spelregels. In deze gids ontdek je de belangrijkste regels, de verschillen per leeftijd en wat je als beginnende scheidsrechter zeker moet weten.
+        </p>
+
+        <Section id="algemeen" title="Algemene indoorregels">
+          <img src={algemeneRegels} alt="Infographic met de algemene indoorspelregels" loading="lazy" className="mx-auto w-full max-w-xl rounded-lg shadow-md" />
+          <Item title="Veld">
+            <p>Standaard 44 x 22 meter, met zijbalken langs de lange zijden. Kleinere velden zijn toegelaten, met een minimum van 36 x 18 meter.</p>
+          </Item>
+          <Item title="Wedstrijdduur">
+            <ul className="list-disc space-y-1 pl-5">
+              <li>U7-U12: 4 x 10 minuten</li>
+              <li>U14-U19: 4 x 15 minuten</li>
+              <li>Eredivisie dames en heren: 4 x 10 minuten</li>
+              <li>Overige reguliere competities: doorgaans 4 x 15 minuten</li>
+              <li>Gents, Ladies en Fun League: 30 minuten</li>
+            </ul>
+            <p>Pauzes: 1 minuut tussen kwart 1 en 2 en tussen kwart 3 en 4, 3 minuten bij de rust.</p>
+          </Item>
+          <Item title="Spelers en wissels">
+            <p>Maximaal 6 spelers op het veld en 12 op het wedstrijdblad. Wisselen mag op elk moment, behalve tijdens een strafcorner, via de wisselzone bij de middenlijn zonder het spel stil te leggen.</p>
+          </Item>
+          <Item title="Uitrusting">
+            <p>Indoorstick, scheenbeschermers, mondbescherming, volledig beschermende handschoen en indoorschoenen die geen strepen achterlaten.</p>
+            <p>Voor U7 en U8 gelden bijzondere bepalingen. Een indoorstick en volledig beschermende handschoen zijn voor deze categorieën aanbevolen; indoorschoenen en mondbescherming zijn verplicht. Raadpleeg de jeugdregels voor de precieze verplichtingen.</p>
+          </Item>
+        </Section>
+
+        <Section id="verschillen" title="De vijf grootste verschillen met outdoor">
+          <Item title="1. Pushen, niet slaan">
+            <p>In indoorhockey wordt de bal met een push gespeeld. Slaan, flatsen en slapshots zijn verboden. De bal mag niet opzettelijk omhoog gespeeld worden, behalve bij een toegelaten schot op doel. Een hoge pass met een flick of scoop is dus niet toegestaan. Bij U7-U9 zijn hoge ballen helemaal niet toegestaan.</p>
+          </Item>
+          <Item title="2. De zijbalk, maar niet afhouden">
+            <p>De zijbalk mag gebruikt worden om te passen. Je mag echter je lichaam of stick niet gebruiken om een tegenstander die de bal reglementair kan spelen af te houden. Dat geldt ook wanneer de bal bij de zijbalk wordt vastgezet.</p>
+          </Item>
+          <Item title="3. Niet liggend spelen">
+            <p>Je mag de bal niet spelen wanneer je op de grond ligt of met een knie, arm of vrije hand de grond raakt. Tijdens het spelen van de bal zijn dus maximaal twee steunpunten toegestaan.</p>
+          </Item>
+          <Item title="4. Bal tegen de voet">
+            <p>Niet ieder balcontact met een voet is een fout. Een veldspeler wordt bestraft wanneer hij er voordeel uit haalt of zijn lichaam bewust gebruikt om de bal tegen te houden.</p>
+          </Item>
+          <Item title="5. Forcing">
+            <p>Forcing ontstaat bijvoorbeeld wanneer een aanvaller de bal opzettelijk hard richting een laag verdedigende speler speelt, met gevaar voor blessures. De scheidsrechter beoordeelt het gevaar en de bedoeling van de actie. Er geldt geen vaste 3-meterregel.</p>
+          </Item>
+        </Section>
+
+        <Section id="straffen" title="Spelhervattingen en straffen">
+          <Item title="Vrije slag">
+            <p>De meest voorkomende straf. De bal wordt gepusht vanaf de plek van de overtreding; tegenstanders houden 3 meter afstand.</p>
+            <p>Op de aanvallende helft mag een vrije slag niet rechtstreeks de cirkel in. De bal moet eerst minstens 3 meter verplaatst zijn of door een verdediger zijn aangeraakt. Ook bij een pass via de zijbalk gelden specifieke voorwaarden. Bij U7-U9 mag de bal bij de voorgeschreven vrije slag wel rechtstreeks de scoorzone of cirkel in.</p>
+          </Item>
+          <Item title="Bal over de zijbalk">
+            <p>Gaat de bal over de zijbalk, dan hervat de tegenpartij het spel binnen 1 meter van de plaats waar de bal over de balk ging. Vlak bij de cirkel geldt een aangepaste plaats voor de hervatting.</p>
+          </Item>
+          <Item title="Strafcorner (PC)">
+            <p>Wordt onder andere toegekend bij een overtreding van een verdediger in de eigen cirkel wanneer daardoor geen waarschijnlijk doelpunt wordt voorkomen, bij een opzettelijke overtreding door een verdediger buiten de cirkel op de eigen helft, of wanneer een verdediger de bal opzettelijk over de achterlijn speelt.</p>
+            <p>Er kan pas gescoord worden nadat de bal eerst buiten de cirkel is geweest. Bij U7-U9 worden geen strafcorners genomen; U10 en U11/U12 hebben een aangepaste opstelling.</p>
+          </Item>
+          <Item title="Strafbal (stroke)">
+            <p>Toegekend wanneer een verdediger met een overtreding een waarschijnlijk doelpunt voorkomt. Een aanvaller neemt het vanaf de strafbalstip tegen de keeper.</p>
+          </Item>
+          <Item title="Keeper">
+            <p>Binnen de eigen cirkel heeft een volledig uitgeruste keeper bijzondere rechten om de bal te stoppen en weg te spelen. Buiten de cirkel mag de keeper de bal uitsluitend met de stick spelen. Een volledig uitgeruste keeper mag niet deelnemen aan het spel op de helft van de tegenstander, behalve om zelf een strafbal te nemen. Bij U9 speelt de keeper zonder stick.</p>
+          </Item>
+          <Item title="Kaarten">
+            <ul className="list-disc space-y-1 pl-5">
+              <li><strong>Groen:</strong> 1 minuut tijdelijke uitsluiting.</li>
+              <li><strong>Geel:</strong> minstens 2 minuten tijdelijke uitsluiting.</li>
+              <li><strong>Rood:</strong> definitieve uitsluiting voor de rest van de wedstrijd.</li>
+            </ul>
+            <p>In al die gevallen speelt het team met een speler minder.</p>
+          </Item>
+        </Section>
+
+        <Section id="jeugd" title="Jeugdregels per leeftijd" description="Het overzicht staat in de infographic; hieronder enkel wat je vooral moet onthouden.">
+          <img src={jeugdRegels} alt="Infographic met de indoor jeugdregels per leeftijd, inclusief strafcorners" loading="lazy" className="mx-auto w-full max-w-xl rounded-lg shadow-md" />
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse text-sm">
+              <thead>
+                <tr className="bg-muted">
+                  <th className="border border-border p-3 text-left">Leeftijd</th>
+                  <th className="border border-border p-3 text-left">Wat vooral onthouden?</th>
+                </tr>
+              </thead>
+              <tbody>
+                {youth.map(([age, note]) => (
+                  <tr key={age}>
+                    <td className="border border-border p-3 font-semibold">{age}</td>
+                    <td className="border border-border p-3">{note}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <Item title="Theoretisch indoor-examen">
+            <p>Vanaf U9 is het theoretische indoor-examen voor scheidsrechters verplicht. Voor U7 en U8 is dit niet verplicht.</p>
+          </Item>
+        </Section>
+
+        <Section id="voorbeelden" title="Praktijkvoorbeelden voor beginnende scheidsrechters">
+          {examples.map(([q, a]) => (
+            <Item key={q} title={q}><p>{a}</p></Item>
+          ))}
+        </Section>
+
+        <Section id="fluiten" title="Zelf indoorwedstrijden fluiten bij D-mon">
+          <p className="text-sm">Registreer je als scheidsrechter. Dan krijg je toegang tot onder andere Drillster voor het theoretisch examen en zetten we je mee op het wedstrijdblad.</p>
+          <Button asChild size="lg" className="w-full sm:w-auto">
+            <a href="https://app.twizzit.com/v2/public/form/cea9e8831bead08352918535621cd399" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+              Registreer via Twizzit <ExternalLink className="h-4 w-4" />
+            </a>
+          </Button>
+        </Section>
+
+        <Section id="documenten" title="Officiële reglementen" description="Voor wie verder wil lezen, bij Hockey Belgium.">
+          <div className="space-y-2">
+            <Button asChild variant="outline" className="w-full justify-start">
+              <a href="https://hockey.be/nl/officials-division/spelregels-indoor/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                <ExternalLink className="h-4 w-4" /> Spelregels indoor (algemeen, U7-U12 en U14-U19)
+              </a>
+            </Button>
+            <Button asChild variant="outline" className="w-full justify-start">
+              <a href="https://hockey.be/nl/hockey-vlaanderen/hockey-academy/umpire-academy/start-to-umpire-indoor/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                <ExternalLink className="h-4 w-4" /> Start to Umpire: Indoor
+              </a>
+            </Button>
+          </div>
+        </Section>
+      </div>
+    </div>
+
+    <PageCta title="Twijfel je over een regel?" text="Vraag het aan onze regels assistent of bekijk het overzicht." actions={<Button asChild size="lg" variant="secondary" className="font-semibold"><Link to="/sportief/regels-assistent">Naar de assistent</Link></Button>} />
+  </>
+);
+
 export default IndoorRules;

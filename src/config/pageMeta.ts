@@ -119,7 +119,7 @@ export const PAGE_META: Record<string, { title: string; description: string }> =
   },
   "/sportief/regels/indoor": {
     title: "Indoor Regels",
-    description: "Specifieke regels voor indoor hockey. Verschil met outdoor hockey.",
+    description: "Indoor hockey spelregels voor spelers, ouders en beginnende scheidsrechters: verschillen met outdoor, straffen en jeugdregels per leeftijd.",
   },
   "/sportief/stick-gids": {
     title: "Stick Gids",
