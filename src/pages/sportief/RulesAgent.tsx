@@ -1,11 +1,12 @@
-import { PageHero, PageCta } from "@/components/layout/PageHero";
+import { PageHero } from "@/components/layout/PageHero";
 import { useState, useRef, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Bot, Send, User, ExternalLink, Loader2 } from "lucide-react";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { Bot, Send, User, ExternalLink, Loader2, MessageSquarePlus, ChevronDown, FileText } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import ReactMarkdown from "react-markdown";
 
@@ -16,6 +17,11 @@ interface Message {
   role: "user" | "assistant";
   content: string;
   variant?: string;
+  sourceNames?: string[];
+}
+
+interface SourceDoc {
+  metadata?: { source_file?: string };
 }
 
 interface ChatHistory {
@@ -84,7 +90,12 @@ export default function RulesAgent() {
       const assistantMessage: Message = {
         role: "assistant",
         content: data.answer,
-        variant: data.variant
+        variant: data.variant,
+        sourceNames: [...new Set<string>(
+          (Array.isArray(data.source_docs) ? data.source_docs : [])
+            .map((doc: SourceDoc) => doc.metadata?.source_file)
+            .filter((name: unknown): name is string => typeof name === "string" && name.trim().length > 0)
+        )]
       };
       setMessages(prev => [...prev, assistantMessage]);
 
@@ -142,18 +153,32 @@ export default function RulesAgent() {
     <div className="container mx-auto px-4 py-12 lg:py-16 max-w-4xl">
       <Card className="h-[calc(100vh-12rem)] flex flex-col">
         <CardHeader className="border-b">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div className="flex min-w-0 items-center gap-3">
               <div className="p-2 rounded-full bg-primary/10">
                 <Bot className="h-6 w-6 text-primary" />
               </div>
               <div>
                 <CardTitle className="text-xl">Regels Assistent</CardTitle>
                 <p className="text-sm text-muted-foreground">
-                  Stel vragen over officiële FIH hockeyregels
+                  Jurisdictie: <span className="font-semibold text-foreground">België (BEL)</span>
                 </p>
+                <p className="text-xs text-muted-foreground">FIH-spelregels met Belgische aanvullingen</p>
               </div>
             </div>
+            <div className="flex flex-wrap items-center gap-3">
+              <Button
+                variant="outline"
+                size="sm"
+                disabled={isLoading || (messages.length === 0 && inputValue.length === 0)}
+                onClick={() => {
+                  setMessages([]);
+                  setInputValue("");
+                }}
+              >
+                <MessageSquarePlus className="mr-2 h-4 w-4" />
+                Nieuwe vraag
+              </Button>
             <a
               href="https://fieldhockeyrules.app/"
               target="_blank"
@@ -163,6 +188,7 @@ export default function RulesAgent() {
               Meer functies
               <ExternalLink className="h-3 w-3" />
             </a>
+            </div>
           </div>
         </CardHeader>
 
@@ -216,6 +242,22 @@ export default function RulesAgent() {
                           {getVariantLabel(message.variant)}
                         </Badge>
                       )}
+                      {message.role === "assistant" && (message.sourceNames?.length ?? 0) > 0 && (
+                        <Collapsible className="mt-3 border-t border-border pt-2">
+                          <CollapsibleTrigger asChild>
+                            <Button variant="ghost" size="sm" className="group h-auto max-w-full gap-2 px-0 py-1 text-primary hover:bg-transparent">
+                              <FileText className="h-3.5 w-3.5 shrink-0" />
+                              Bronnen ({message.sourceNames?.length})
+                              <ChevronDown className="h-3.5 w-3.5 shrink-0 transition-transform group-data-[state=open]:rotate-180" />
+                            </Button>
+                          </CollapsibleTrigger>
+                          <CollapsibleContent>
+                            <ul className="mt-2 space-y-1 text-xs text-muted-foreground">
+                              {message.sourceNames?.map(name => <li key={name} className="break-all">{name}</li>)}
+                            </ul>
+                          </CollapsibleContent>
+                        </Collapsible>
+                      )}
                     </div>
                     {message.role === "user" && (
                       <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary flex items-center justify-center">
@@ -253,6 +295,7 @@ export default function RulesAgent() {
                 onClick={sendMessage} 
                 disabled={!inputValue.trim() || isLoading}
                 size="icon"
+                aria-label="Vraag versturen"
               >
                 {isLoading ? (
                   <Loader2 className="h-4 w-4 animate-spin" />
@@ -262,14 +305,14 @@ export default function RulesAgent() {
               </Button>
             </div>
             <p className="text-xs text-muted-foreground mt-2 text-center">
-              Antwoorden zijn gebaseerd op officiële FIH regelgeving. 
+              Antwoorden zijn gebaseerd op FIH-spelregels met Belgische aanvullingen. 
               <a
                 href="https://fieldhockeyrules.app/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary hover:underline ml-1"
               >
-                Bezoek fieldhockeyrules.app voor bronvermeldingen en meer functies.
+                Meer functies op fieldhockeyrules.app.
               </a>
             </p>
           </div>
