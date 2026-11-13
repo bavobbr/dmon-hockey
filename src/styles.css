@@ -41,6 +41,8 @@
   --color-accent-foreground: hsl(var(--accent-foreground));
   --color-accent-light: hsl(var(--accent-light));
   --color-destructive: hsl(var(--destructive));
+  --color-card-green: hsl(var(--card-green));
+  --color-card-yellow: hsl(var(--card-yellow));
   --color-destructive-foreground: hsl(var(--destructive-foreground));
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
@@ -127,6 +129,8 @@
   --accent-light: 43 37% 65%;
 
   --destructive: 9 74% 41%; /* Club Red for destructive actions */
+  --card-green: 142 60% 40%;
+  --card-yellow: 45 95% 52%;
   --destructive-foreground: 0 0% 99%;
 
   --border: 210 20% 90%;
