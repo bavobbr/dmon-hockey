@@ -67,9 +67,9 @@ const youth: [string, string][] = [
 const examples: [string, string][] = [
   ["De bal raakt toevallig een voet. Fluiten of doorspelen?", "Doorspelen, tenzij de speler er voordeel uit haalt of de voet bewust gebruikt om de bal tegen te houden. Je beoordeelt de situatie, niet alleen het contact."],
   ["Een aanvaller speelt een hoge bal richting een verdediger.", "Fluiten. De bal mag niet opzettelijk omhoog gespeeld worden, behalve bij een toegelaten schot op doel. Is het gevaarlijk, dan kan ook een kaart volgen."],
-  ["Een speler raakt met de knie de grond terwijl hij de bal speelt.", "Overtreding. Wie de bal speelt, mag niet met knie, arm of vrije hand de grond raken. De tegenpartij krijgt een vrije slag."],
+  ["Een speler raakt met de knie de grond terwijl hij de bal speelt.", "Overtreding. Wie de bal speelt, mag niet met knie, arm of vrije hand de grond raken. De scheidsrechter fluit een overtreding. Afhankelijk van de plaats en de spelsituatie volgt een vrije slag of strafcorner."],
   ["Op de aanvallende helft wordt een vrije slag genomen en meteen de cirkel in gespeeld.", "Niet toegestaan. De bal moet eerst minstens 3 meter verplaatst zijn of door een verdediger aangeraakt. Uitzondering: bij U7-U9 mag de bal wel rechtstreeks de cirkel in."],
-  ["Een verdediger speelt de bal bewust over de eigen achterlijn.", "Strafcorner voor de aanvallers (niet bij U7-U9, daar worden geen strafcorners genomen)."],
+  ["Een veldspeler speelt de bal opzettelijk over de eigen achterlijn.", "Strafcorner voor de aanvallers (niet bij U7-U9, daar worden geen strafcorners genomen). Uitzondering: een keeper mag de bal met zijn uitrusting of lichaam over de eigen achterlijn laten afkaatsen."],
 ];
 
 const differences: { title: string; text: string; icon: LucideIcon }[] = [
@@ -158,7 +158,7 @@ const IndoorRules = () => (
       <Section id="straffen" kicker="Hervattingen en straffen" icon={Gavel} title="Wat volgt na een fout?">
         <div className="grid gap-4 md:grid-cols-2">
           <Item title="Vrije slag" icon={ArrowRight}>
-            <p>De meest voorkomende straf. De bal wordt gepusht vanaf de plek van de overtreding; tegenstanders houden 3 meter afstand.</p>
+            <p>De meest voorkomende straf. De bal wordt gepusht vanaf de plek van de overtreding; tegenstanders houden 3 meter afstand. Op de aanvallende helft geldt die 3 meter ook voor de medespelers van de nemer.</p>
             <p>Op de aanvallende helft mag een vrije slag niet rechtstreeks de cirkel in: de bal moet eerst minstens 3 meter verplaatst zijn of door een verdediger aangeraakt. Ook bij een pass via de zijbalk gelden specifieke voorwaarden. Bij U7-U9 mag de bal wel rechtstreeks de scoorzone of cirkel in.</p>
           </Item>
           <Item title="Bal over de zijbalk" icon={MoveHorizontal}>
