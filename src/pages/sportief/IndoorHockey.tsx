@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "@/lib/router-compat";
 import {
+  AlertTriangle,
   ArrowRight,
   BookOpen,
   CalendarDays,
@@ -13,6 +14,8 @@ import {
   ExternalLink,
   Mail,
   MapPin,
+  Navigation,
+  Phone,
   ShieldCheck,
   Snowflake,
   Users,
@@ -25,6 +28,7 @@ const subNavLinks = [
   { href: "#overzicht", label: "Overzicht" },
   { href: "#indoor", label: "Indoor" },
   { href: "#trainingen", label: "Trainingen" },
+  { href: "#locaties", label: "Zalen" },
   { href: "#senioren", label: "Senioren" },
   { href: "#inschrijven", label: "Inschrijven" },
   { href: "#wintercriterium", label: "U6-U8" },
@@ -158,11 +162,43 @@ const IndoorHockey = () => {
                 </div>
               </CardContent>
             </Card>
-            <div className="mt-4 grid gap-4 md:grid-cols-2">
-              <Card><CardContent className="flex gap-3 p-5"><MapPin className="mt-0.5 h-5 w-5 shrink-0 text-primary" /><div><h3 className="font-semibold">GO! Mira, Hamme</h3><p className="text-sm text-muted-foreground">Loystraat 70, 9220 Hamme</p></div></CardContent></Card>
-              <Card><CardContent className="flex gap-3 p-5"><MapPin className="mt-0.5 h-5 w-5 shrink-0 text-primary" /><div><h3 className="font-semibold">Sporthal Sint-Gillis</h3><p className="text-sm text-muted-foreground">Van Langenhovestraat 203, 9200 Dendermonde</p></div></CardContent></Card>
+            <div className="mt-4 rounded-lg border border-border bg-muted p-4 text-sm text-muted-foreground">
+              <MapPin className="mr-2 inline h-4 w-4 text-primary" />De trainingen gaan door in twee zalen: GO! MIRA in Hamme en Sporthal Sint-Gillis in Dendermonde. <a href="#locaties" className="font-medium text-primary underline underline-offset-4">Bekijk adressen en route-info</a>
             </div>
             <div className="mt-4 rounded-lg border border-primary/20 bg-primary/5 p-4 text-sm text-foreground"><Clock3 className="mr-2 inline h-4 w-4 text-primary" />Kom 10 minuten voor de training en help mee met het klaarzetten en opruimen van de balken.</div>
+          </section>
+
+          <section id="locaties">
+            <div className="mb-8 flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10"><MapPin className="h-5 w-5 text-primary" /></div>
+              <div><h2 className="text-2xl font-bold tracking-tight">Zalen en route</h2><p className="text-muted-foreground">Indoor speelt en traint op twee locaties</p></div>
+            </div>
+            <div className="grid gap-4 md:grid-cols-2">
+              <Card>
+                <CardHeader><CardTitle className="flex items-center gap-2"><MapPin className="h-5 w-5 text-primary" />GO! MIRA, Hamme</CardTitle></CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="space-y-1 text-sm text-muted-foreground">
+                    <p>Loystraat 70, 9220 Hamme</p>
+                    <p className="flex items-center gap-2"><Phone className="h-4 w-4 shrink-0 text-primary" /><a href="tel:+3252499970" className="font-medium text-primary underline underline-offset-4">052 49 99 70</a></p>
+                  </div>
+                  <div className="rounded-lg border border-destructive/30 bg-destructive/5 p-4 text-sm">
+                    <p className="flex items-center gap-2 font-semibold text-destructive"><AlertTriangle className="h-4 w-4 shrink-0" />Opgelet met je navigatie</p>
+                    <p className="mt-1 text-muted-foreground">Tik <span className="font-semibold text-foreground">niet</span> &quot;GO MIRA&quot; in je navigatietool, dan kom je op de verkeerde plaats uit. Voer het adres in: <span className="font-semibold text-foreground">Loystraat 70, Hamme</span>.</p>
+                  </div>
+                  <Button asChild variant="outline" size="sm"><a href="https://www.google.com/maps/search/?api=1&query=Loystraat+70%2C+9220+Hamme" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2"><Navigation className="h-4 w-4" />Route via Google Maps<ExternalLink className="h-3.5 w-3.5" /></a></Button>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader><CardTitle className="flex items-center gap-2"><MapPin className="h-5 w-5 text-primary" />Sporthal Sint-Gillis, Dendermonde</CardTitle></CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="space-y-1 text-sm text-muted-foreground">
+                    <p>Van Langenhovestraat 203, 9200 Dendermonde</p>
+                    <p className="flex items-center gap-2"><Phone className="h-4 w-4 shrink-0 text-primary" /><a href="tel:+3252210612" className="font-medium text-primary underline underline-offset-4">052 21 06 12</a></p>
+                  </div>
+                  <Button asChild variant="outline" size="sm"><a href="https://www.google.com/maps/search/?api=1&query=Van+Langenhovestraat+203%2C+9200+Dendermonde" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2"><Navigation className="h-4 w-4" />Route via Google Maps<ExternalLink className="h-3.5 w-3.5" /></a></Button>
+                </CardContent>
+              </Card>
+            </div>
           </section>
 
           <section id="senioren">
