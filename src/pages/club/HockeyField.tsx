@@ -117,7 +117,7 @@ const HockeyField = () => {
               </p>
               <Alert className="border-warning/30 bg-warning/5">
                 <AlertTriangle className="h-4 w-4 text-warning" />
-                <AlertDescription className="text-sm text-foreground">
+                <AlertDescription className="text-sm text-foreground [overflow-wrap:anywhere]">
                   <strong>Opgelet:</strong> herinrichting kruispunt Mechelsesteenweg/
                   Martelarenlaan/Noordlaan/Leopoldlaan is gestart.{" "}
                   <a
