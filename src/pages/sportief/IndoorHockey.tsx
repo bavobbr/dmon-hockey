@@ -12,8 +12,11 @@ import {
   Clock3,
   Euro,
   ExternalLink,
+  Footprints,
+  Hand,
   Mail,
   MapPin,
+  MoveHorizontal,
   Navigation,
   Phone,
   ShieldCheck,
@@ -23,10 +26,31 @@ import {
 
 const SENIOR_FORM_URL = "https://twizzit.com/go/dmon-indoor-2026-senior";
 const SECOND_HAND_URL = "https://www.facebook.com/share/g/19e6icd1G4/";
+const R2 = "https://pub-5b8aee7e2e414ce7b4916802c52b86f6.r2.dev";
+
+const indoorDocs = [
+  { href: `${R2}/BRIEFING%20INDOOR%20NL.pdf`, title: "Briefing indoor 2026-2027", text: "Verduidelijkingen voor scheidsrechters" },
+  { href: `${R2}/Lunch%20meetin%20indoor%202026_Hockey%20vlaanderen.pdf`, title: "Lunchmeeting indoor 2026", text: "Kalender en arbitrage voor clubs" },
+];
+
+const ruleTiles = [
+  { icon: Hand, title: "Pushen, niet slaan", text: "De bal wordt gepusht. Slaan, flatsen en slapshots zijn verboden, en een hoge pass mag je niet spelen." },
+  { icon: MoveHorizontal, title: "De zijbalk mag", text: "Je mag de zijbalk gebruiken om te passen. Je lichaam of stick om een tegenstander af te houden, mag niet." },
+  { icon: AlertTriangle, title: "Niet liggend spelen", text: "Wie de bal speelt, mag met knie, arm of vrije hand de grond niet raken. Maximaal twee steunpunten." },
+  { icon: Footprints, title: "Bal tegen de voet", text: "Niet elk voetcontact is fout. Je wordt pas bestraft als je voordeel haalt of de bal bewust tegenhoudt." },
+];
+
+const ageRules = [
+  { age: "U7-U8", text: "3 tegen 3 op half veld, geen keeper" },
+  { age: "U9", text: "Keeper zonder stick; geen strafcorner, wel strafbal" },
+  { age: "U10-U12", text: "Keeper met stick; strafcorners ingevoerd" },
+  { age: "U14-U19", text: "In grote lijnen de normale indoorregels" },
+];
 
 const subNavLinks = [
   { href: "#overzicht", label: "Overzicht" },
   { href: "#indoor", label: "Indoor" },
+  { href: "#spelregels", label: "Spelregels" },
   { href: "#trainingen", label: "Trainingen" },
   { href: "#locaties", label: "Zalen" },
   { href: "#senioren", label: "Senioren" },
@@ -148,6 +172,35 @@ const IndoorHockey = () => {
                 </div>
                 <div className="rounded-lg border border-border bg-muted p-4 text-sm"><p className="font-semibold">De inschrijvingen voor de jeugd zijn afgelopen</p><p className="mt-1 text-muted-foreground">De deadline was 29 oktober 2026. De sportieve cel bepaalt nu de definitieve teamindeling. Die komt niet noodzakelijk overeen met je outdoorploeg. De trainingsuren en wedstrijden verschijnen in november in Twizzit.</p></div>
                 <Button asChild variant="outline"><Link to="/sportief/regels/indoor" className="inline-flex items-center gap-2"><BookOpen className="h-4 w-4" />Bekijk de indoor spelregels<ArrowRight className="h-4 w-4" /></Link></Button>
+              </CardContent>
+            </Card>
+          </section>
+
+          <section id="spelregels">
+            <div className="mb-8 flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10"><BookOpen className="h-5 w-5 text-primary" /></div>
+              <div><h2 className="text-2xl font-bold tracking-tight">Indoor spelregels in het kort</h2><p className="text-muted-foreground">Wie van outdoor komt, merkt het snelst aan deze punten</p></div>
+            </div>
+            <Card className="border-primary/20">
+              <CardContent className="space-y-6 p-6">
+                <p className="leading-relaxed text-muted-foreground">Indoor speel je op een kleiner veld met zijbalken, met maximaal zes spelers per ploeg en een eigen regelboek. De vier grootste valkuilen voor nieuwe spelers:</p>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {ruleTiles.map((tile) => <div key={tile.title} className="rounded-lg border border-border bg-muted p-4">
+                    <div className="mb-2 flex items-center gap-2"><div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary"><tile.icon className="h-4 w-4" /></div><p className="font-semibold">{tile.title}</p></div>
+                    <p className="text-sm text-muted-foreground">{tile.text}</p>
+                  </div>)}
+                </div>
+                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                  {ageRules.map((item) => <div key={item.age} className="rounded-lg border border-border p-4">
+                    <Badge variant="secondary" className="mb-2 bg-primary/10 text-primary">{item.age}</Badge>
+                    <p className="text-sm text-muted-foreground">{item.text}</p>
+                  </div>)}
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  <Button asChild><Link to="/sportief/regels/indoor" className="inline-flex items-center gap-2">Alle indoor spelregels<ArrowRight className="h-4 w-4" /></Link></Button>
+                  {indoorDocs.map((doc) => <Button key={doc.href} asChild variant="outline" size="lg" title={doc.text}><a href={doc.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">{doc.title}<ExternalLink className="h-3.5 w-3.5" /></a></Button>)}
+                </div>
+                <p className="text-sm text-muted-foreground">De briefing en de lunchmeeting komen van Hockey Vlaanderen en geven de verduidelijkingen voor het seizoen 2026-2027.</p>
               </CardContent>
             </Card>
           </section>
