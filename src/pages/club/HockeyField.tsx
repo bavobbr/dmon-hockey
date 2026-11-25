@@ -11,6 +11,9 @@ import {
   FileText,
   ClipboardList,
   Navigation,
+  Phone,
+  Snowflake,
+  ExternalLink,
 } from "lucide-react";
 import mobilityMap from "@/assets/mobility-map.png";
 import ClubLocationMap from "@/components/ClubLocationMap";
@@ -66,6 +69,7 @@ const HockeyField = () => {
           <div className="flex gap-1 overflow-x-auto py-3">
             {[
               { id: "locatie", label: "Locatie" },
+              { id: "indoorzalen", label: "Indoorzalen" },
               { id: "mobiliteit", label: "Parkeren & mobiliteit" },
               { id: "vervoer", label: "Duurzaam vervoer" },
               { id: "afspraken", label: "Afspraken" },
@@ -128,6 +132,90 @@ const HockeyField = () => {
                   — vertrek op tijd.
                 </AlertDescription>
               </Alert>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Indoorzalen */}
+      <section id="indoorzalen" className="container mx-auto px-4 py-12 lg:py-16 scroll-mt-20">
+        <div className="mb-8">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">
+            Indoorzalen
+          </h2>
+          <p className="text-muted-foreground max-w-2xl">
+            Tijdens de winterstop spelen en trainen we indoor op twee locaties: in Hamme en in Dendermonde.
+          </p>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2">
+          <Card>
+            <CardContent className="p-6 space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="h-10 w-10 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+                  <Snowflake className="h-5 w-5" />
+                </div>
+                <h3 className="font-display text-xl font-semibold">GO! MIRA, Hamme</h3>
+              </div>
+              <p className="text-muted-foreground">
+                Loystraat 70
+                <br />
+                9220 Hamme
+              </p>
+              <p className="flex items-center gap-2 text-sm text-muted-foreground">
+                <Phone className="h-4 w-4 shrink-0 text-primary" />
+                <a href="tel:+3252499970" className="font-medium text-primary underline underline-offset-4">052 49 99 70</a>
+              </p>
+              <Alert className="border-destructive/30 bg-destructive/5">
+                <AlertTriangle className="h-4 w-4 text-destructive" />
+                <AlertDescription className="text-sm text-foreground">
+                  <strong className="text-destructive">Opgelet met je navigatie:</strong> tik{" "}
+                  <strong>niet</strong> &quot;GO MIRA&quot; in je navigatietool, dan kom je op de
+                  verkeerde plaats uit. Voer het adres in: <strong>Loystraat 70, Hamme</strong>.
+                </AlertDescription>
+              </Alert>
+              <Button variant="outline" size="sm" asChild>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Loystraat+70%2C+9220+Hamme"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Navigation className="h-4 w-4" />
+                  Route via Google Maps
+                  <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+              </Button>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardContent className="p-6 space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="h-10 w-10 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+                  <Snowflake className="h-5 w-5" />
+                </div>
+                <h3 className="font-display text-xl font-semibold">Sporthal Sint-Gillis, Dendermonde</h3>
+              </div>
+              <p className="text-muted-foreground">
+                Van Langenhovestraat 203
+                <br />
+                9200 Dendermonde
+              </p>
+              <p className="flex items-center gap-2 text-sm text-muted-foreground">
+                <Phone className="h-4 w-4 shrink-0 text-primary" />
+                <a href="tel:+3252210612" className="font-medium text-primary underline underline-offset-4">052 21 06 12</a>
+              </p>
+              <Button variant="outline" size="sm" asChild>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Van+Langenhovestraat+203%2C+9200+Dendermonde"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Navigation className="h-4 w-4" />
+                  Route via Google Maps
+                  <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+              </Button>
             </CardContent>
           </Card>
         </div>
