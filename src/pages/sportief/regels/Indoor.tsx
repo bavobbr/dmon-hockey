@@ -11,6 +11,7 @@ const sections = [
   { id: "algemeen", label: "Algemene regels" },
   { id: "verschillen", label: "Verschillen met outdoor" },
   { id: "straffen", label: "Hervattingen en straffen" },
+  { id: "verduidelijkingen", label: "Nieuw in 2026-2027" },
   { id: "jeugd", label: "Jeugdregels" },
   { id: "voorbeelden", label: "Praktijkvoorbeelden" },
   { id: "fluiten", label: "Zelf fluiten" },
@@ -84,6 +85,23 @@ const cards = [
   { label: "Groen", time: "1 min", cls: "bg-card-green" },
   { label: "Geel", time: "min. 2 min", cls: "bg-card-yellow" },
   { label: "Rood", time: "definitief", cls: "bg-destructive" },
+];
+
+const R2 = "https://pub-5b8aee7e2e414ce7b4916802c52b86f6.r2.dev";
+const clarifications: { title: string; text: string; icon: LucideIcon }[] = [
+  { title: "Kaart voor de bank", icon: Users, text: "Een kaart voor een staflid of iemand anders op de bank: die persoon zit op de strafbank en het team speelt zolang met een speler minder. Alleen de T1 mag rechtstaan en coachen." },
+  { title: "Kaart na het eindsignaal", icon: Flag, text: "Een kaart kan ook nog na het eindsignaal, voor incidenten op het veld voor het wedstrijdblad is afgesloten. Wat later gebeurt, komt in een disciplinair verslag." },
+  { title: "Push: maximaal 40 cm", icon: Hand, text: "Bij een push liggen bal en stickkop op de grond en is de stick maximaal 40 cm van de bal. Verder weg is een slag en dus fout. De sweep is verboden." },
+  { title: "Omhooggaande bal", icon: CircleDot, text: "Tolerantie 5 tot 10 cm, overal op het veld. Fluiten als een speler in de passlijn staat, bij een slechte stop binnen 3 meter, of bij een PC-stop die ook maar 5 cm omhoog gaat." },
+  { title: "De zijbalk is een ploegmaat", icon: MoveHorizontal, text: "Gaat de bal via de zijbalk omhoog, dan mag alleen de tegenpartij hem in de lucht controleren. Een stuitende bal mag je eerst platleggen (regel 9.9)." },
+  { title: "Schorsing loopt af tijdens een PC", icon: Timer, text: "De speler mag terug het veld op en de strafcorner verdedigen als hij klaarstaat binnen de 30 seconden voorbereiding. Hij mag niet vervangen worden; de tijd wordt niet stilgezet." },
+  { title: "Vrije slag met PC-masker", icon: Shield, text: "Spelers mogen een vrije slag of uitbal nemen met hun PC-bescherming aan, zolang ze geen self-pass spelen (regel 13.3.m)." },
+  { title: "Vrije slag aan de cirkelrand", icon: ArrowRight, text: "Een verdediger in de cirkel mag dichter dan 3 meter staan, maar wacht tot de bal 3 meter heeft afgelegd. Via de zijbalk de cirkel in: eerst 3 meter voor de bal de balk raakt." },
+  { title: "Te veel spelers", icon: AlertTriangle, text: "Maximaal 6 spelers op het veld (keeper + 5 of 6 veldspelers). Te veel spelers met invloed op het spel: strafcorner, en bij grote impact eventueel een kaart voor de kapitein." },
+];
+const briefingDocs = [
+  { href: `${R2}/BRIEFING%20INDOOR%20NL.pdf`, title: "Briefing indoor 2026-2027", text: "Verduidelijkingen voor scheidsrechters (Hockey Vlaanderen)" },
+  { href: `${R2}/Lunch%20meetin%20indoor%202026_Hockey%20vlaanderen.pdf`, title: "Lunchmeeting indoor 2026", text: "Kalender, kwalificaties en arbitrage voor clubs" },
 ];
 
 const docs = [
@@ -186,6 +204,26 @@ const IndoorRules = () => (
             </div>
             <p>Het team speelt telkens met een speler minder.</p>
           </Item>
+        </div>
+      </Section>
+
+      <Section id="verduidelijkingen" kicker="Nieuw in 2026-2027" icon={Megaphone} title="Verduidelijkingen van Hockey Vlaanderen" description="Hoe de scheidsrechters de regels dit seizoen toepassen, uit de officiële indoorbriefing.">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {clarifications.map((c) => (
+            <Item key={c.title} title={c.title} icon={c.icon}><p>{c.text}</p></Item>
+          ))}
+        </div>
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
+          {briefingDocs.map((d) => (
+            <a key={d.href} href={d.href} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 rounded-2xl border border-border/60 bg-card p-5 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground"><FileText className="h-6 w-6" /></div>
+              <div className="flex-1">
+                <p className="font-semibold text-foreground">{d.title}</p>
+                <p className="text-sm text-muted-foreground">{d.text}</p>
+              </div>
+              <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary" />
+            </a>
+          ))}
         </div>
       </Section>
 
