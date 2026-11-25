@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { MapPin } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
 import { supabase } from '@/integrations/supabase/client';
 const ClubLocationMap = () => {
   const mapContainer = useRef<HTMLDivElement>(null);
@@ -69,16 +68,7 @@ const ClubLocationMap = () => {
     };
   }, []);
   return <Card className="w-full">
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <MapPin className="h-5 w-5" />
-          Vind Onze Club
-        </CardTitle>
-        <CardDescription>
-          Gelegen in het hart van Dendermonde, België
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
+      <CardContent className="pt-6">
         {error ? <div className="w-full h-64 md:h-96 rounded-lg border flex items-center justify-center bg-muted">
             <div className="text-center">
               <p className="text-muted-foreground">Fout bij laden van kaart</p>
