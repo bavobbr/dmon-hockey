@@ -43,6 +43,21 @@ if (typeof (DOMPurify as { addHook?: unknown }).addHook === "function") {
   });
 }
 
+// Links keep the site's own link colour: inline colour overrides from the
+// editor would otherwise make a link look like ordinary text.
+if (typeof (DOMPurify as { addHook?: unknown }).addHook === "function") {
+  DOMPurify.addHook('afterSanitizeAttributes', (node) => {
+    if (node.nodeName !== 'A') return;
+    const el = node as HTMLElement;
+    el.style.removeProperty('color');
+    el.style.removeProperty('background');
+    el.style.removeProperty('background-color');
+    el.style.removeProperty('text-decoration');
+    el.style.removeProperty('text-decoration-line');
+    if (!el.getAttribute('style')) el.removeAttribute('style');
+  });
+}
+
 // Allow safe YouTube/Vimeo embeds inserted via the rich text editor.
 export const sanitizeRichHtml = (html: string): string =>
   DOMPurify.sanitize(html, {

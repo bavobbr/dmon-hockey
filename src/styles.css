@@ -601,6 +601,21 @@
   margin: 1.25rem 0;
 }
 
+/* Hyperlinks in artikeltekst (nieuws, home, vacatures) zijn altijd herkenbaar:
+   clubblauw met een subtiele onderstreping, nooit als gewone tekst. */
+.prose a {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+  text-decoration-color: color-mix(in srgb, var(--color-primary) 45%, transparent);
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+.prose a:hover {
+  text-decoration-color: var(--color-primary);
+}
+
 /* Gedeelde titelstijl voor elke pagina-hero (homepage uitgezonderd) */
 @utility hero-title {
   font-family: var(--font-display);
