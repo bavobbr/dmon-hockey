@@ -1,5 +1,5 @@
+import { PageCta, PageHero } from "@/components/layout/PageHero";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import {
@@ -14,97 +14,96 @@ import {
   Phone,
   Snowflake,
   ExternalLink,
+  Mail,
 } from "lucide-react";
 import mobilityMap from "@/assets/mobility-map.png";
 import ClubLocationMap from "@/components/ClubLocationMap";
 import { HockeyFieldJsonLd } from "@/components/JsonLd";
 
-const scrollToSection = (id: string) => {
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
-};
+const subNavLinks = [
+  { href: "#locatie", label: "Locatie" },
+  { href: "#indoorzalen", label: "Indoorzalen" },
+  { href: "#mobiliteit", label: "Parkeren & mobiliteit" },
+  { href: "#vervoer", label: "Duurzaam vervoer" },
+  { href: "#afspraken", label: "Afspraken" },
+];
+
+const SectionHeader = ({ icon: Icon, title, subtitle }: { icon: typeof MapPin; title: string; subtitle: string }) => (
+  <div className="mb-8 flex items-center gap-3">
+    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+      <Icon className="h-5 w-5 text-primary" />
+    </div>
+    <div>
+      <h2 className="text-2xl font-bold tracking-tight">{title}</h2>
+      <p className="text-muted-foreground">{subtitle}</p>
+    </div>
+  </div>
+);
 
 const HockeyField = () => {
   return (
     <div className="min-h-screen bg-background">
       <HockeyFieldJsonLd />
 
-      {/* Hero */}
-      <section className="overflow-hidden relative bg-gradient-hero text-primary-foreground">
-        <div className="hero-decor" aria-hidden />
-        <div className="hero-rule" aria-hidden />
-        <div className="relative container mx-auto px-4 py-16 lg:py-24">
-          <div className="max-w-3xl">
-            <Badge className="mb-4 bg-primary-foreground/15 text-primary-foreground border-primary-foreground/20 hover:bg-primary-foreground/20">
-              Onze thuisbasis
-            </Badge>
-            <h1 className="hero-title mb-4">
-              Hockeyterrein & mobiliteit
-            </h1>
-            <p className="text-lg md:text-xl text-primary-foreground/90 mb-8 leading-relaxed">
-              Vind ons terrein in Grembergen, ontdek hoe je er duurzaam geraakt en
-              lees de afspraken voor verantwoord gebruik.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Button size="lg" variant="secondary" onClick={() => scrollToSection("locatie")}>
+      <PageHero
+        label="Onze thuisbasis"
+        title="Hockeyterrein & mobiliteit"
+        lead="Vind ons terrein in Grembergen, ontdek hoe je er duurzaam geraakt en lees de afspraken voor verantwoord gebruik."
+        actions={
+          <>
+            <Button asChild size="lg" variant="secondary">
+              <a href="#locatie" className="inline-flex items-center gap-2">
                 <MapPin className="h-4 w-4" />
                 Bekijk locatie
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="bg-transparent text-primary-foreground border-primary-foreground/30 hover:bg-primary-foreground/10 hover:text-primary-foreground"
-                onClick={() => scrollToSection("mobiliteit")}
-              >
+              </a>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="border-primary-foreground/40 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+            >
+              <a href="#mobiliteit" className="inline-flex items-center gap-2">
                 <Navigation className="h-4 w-4" />
                 Mobiliteit
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+              </a>
+            </Button>
+          </>
+        }
+      />
 
-      {/* Sticky sub-nav */}
-      <nav className="subnav-bar z-30 bg-background/95 backdrop-blur border-b border-border/60">
+      <div className="subnav-bar z-30 border-b border-border/60 bg-background/80 backdrop-blur-md">
         <div className="container mx-auto px-4">
-          <div className="flex gap-1 overflow-x-auto py-3">
-            {[
-              { id: "locatie", label: "Locatie" },
-              { id: "indoorzalen", label: "Indoorzalen" },
-              { id: "mobiliteit", label: "Parkeren & mobiliteit" },
-              { id: "vervoer", label: "Duurzaam vervoer" },
-              { id: "afspraken", label: "Afspraken" },
-            ].map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className="px-4 py-2 text-sm font-medium rounded-lg hover:bg-primary/5 hover:text-primary transition-colors whitespace-nowrap"
+          <nav className="flex gap-1 overflow-x-auto py-3 text-sm" aria-label="Snelle links">
+            {subNavLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="whitespace-nowrap rounded-md px-3 py-1.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
               >
-                {item.label}
-              </button>
+                {link.label}
+              </a>
             ))}
-          </div>
+          </nav>
         </div>
-      </nav>
+      </div>
 
       {/* Locatie */}
-      <section id="locatie" className="container mx-auto px-4 py-12 lg:py-16 scroll-mt-20">
-        <div className="mb-8">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">
-            Locatie terrein
-          </h2>
-          <p className="text-muted-foreground max-w-2xl">
-            Vind ons hockeyterrein in Grembergen, vlak bij het centrum van Dendermonde.
-          </p>
-        </div>
+      <section id="locatie" className="container mx-auto scroll-mt-20 px-4 py-12 lg:py-16">
+        <SectionHeader
+          icon={MapPin}
+          title="Locatie terrein"
+          subtitle="Vind ons hockeyterrein in Grembergen, vlak bij het centrum van Dendermonde"
+        />
 
         <div className="grid gap-6 lg:grid-cols-3">
           <div className="lg:col-span-2">
             <ClubLocationMap />
           </div>
           <Card>
-            <CardContent className="p-6 space-y-4">
+            <CardContent className="space-y-4 p-6">
               <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
                   <MapPin className="h-5 w-5" />
                 </div>
                 <h3 className="font-display text-xl font-semibold">Adres</h3>
@@ -116,16 +115,16 @@ const HockeyField = () => {
                 <br />
                 België
               </p>
-              <Alert className="border-amber-200 bg-amber-50 dark:bg-amber-950/20">
-                <AlertTriangle className="h-4 w-4 text-amber-600" />
-                <AlertDescription className="text-amber-800 dark:text-amber-200 text-sm">
+              <Alert className="border-warning/30 bg-warning/5">
+                <AlertTriangle className="h-4 w-4 text-warning" />
+                <AlertDescription className="text-sm text-foreground">
                   <strong>Opgelet:</strong> herinrichting kruispunt Mechelsesteenweg/
                   Martelarenlaan/Noordlaan/Leopoldlaan is gestart.{" "}
                   <a
                     href="https://www.dendermonde.be/werkenmechelsepoort"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary underline hover:no-underline"
+                    className="font-medium text-primary underline underline-offset-4"
                   >
                     Meer info
                   </a>{" "}
@@ -138,21 +137,18 @@ const HockeyField = () => {
       </section>
 
       {/* Indoorzalen */}
-      <section id="indoorzalen" className="container mx-auto px-4 py-12 lg:py-16 scroll-mt-20">
-        <div className="mb-8">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">
-            Indoorzalen
-          </h2>
-          <p className="text-muted-foreground max-w-2xl">
-            Tijdens de winterstop spelen en trainen we indoor op twee locaties: in Hamme en in Dendermonde.
-          </p>
-        </div>
+      <section id="indoorzalen" className="container mx-auto scroll-mt-20 px-4 py-12 lg:py-16">
+        <SectionHeader
+          icon={Snowflake}
+          title="Indoorzalen"
+          subtitle="Tijdens de winterstop spelen en trainen we indoor op twee locaties"
+        />
 
         <div className="grid gap-6 md:grid-cols-2">
           <Card>
-            <CardContent className="p-6 space-y-4">
+            <CardContent className="space-y-4 p-6">
               <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
                   <Snowflake className="h-5 w-5" />
                 </div>
                 <h3 className="font-display text-xl font-semibold">GO! MIRA, Hamme</h3>
@@ -164,7 +160,9 @@ const HockeyField = () => {
               </p>
               <p className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Phone className="h-4 w-4 shrink-0 text-primary" />
-                <a href="tel:+3252499970" className="font-medium text-primary underline underline-offset-4">052 49 99 70</a>
+                <a href="tel:+3252499970" className="font-medium text-primary underline underline-offset-4">
+                  052 49 99 70
+                </a>
               </p>
               <Alert className="border-destructive/30 bg-destructive/5">
                 <AlertTriangle className="h-4 w-4 text-destructive" />
@@ -189,9 +187,9 @@ const HockeyField = () => {
           </Card>
 
           <Card>
-            <CardContent className="p-6 space-y-4">
+            <CardContent className="space-y-4 p-6">
               <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
                   <Snowflake className="h-5 w-5" />
                 </div>
                 <h3 className="font-display text-xl font-semibold">Sporthal Sint-Gillis, Dendermonde</h3>
@@ -203,7 +201,9 @@ const HockeyField = () => {
               </p>
               <p className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Phone className="h-4 w-4 shrink-0 text-primary" />
-                <a href="tel:+3252210612" className="font-medium text-primary underline underline-offset-4">052 21 06 12</a>
+                <a href="tel:+3252210612" className="font-medium text-primary underline underline-offset-4">
+                  052 21 06 12
+                </a>
               </p>
               <Button variant="outline" size="sm" asChild>
                 <a
@@ -222,30 +222,26 @@ const HockeyField = () => {
       </section>
 
       {/* Mobiliteit */}
-      <section id="mobiliteit" className="container mx-auto px-4 py-12 lg:py-16 scroll-mt-20">
-        <div className="mb-8">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">
-            Parkeren & mobiliteit
-          </h2>
-          <p className="text-muted-foreground max-w-2xl">
-            Het aantal parkeerplaatsen is beperkt. Kies waar mogelijk de fiets,
-            carpool of gebruik de aangeduide parkings.
-          </p>
-        </div>
+      <section id="mobiliteit" className="container mx-auto scroll-mt-20 px-4 py-12 lg:py-16">
+        <SectionHeader
+          icon={Car}
+          title="Parkeren & mobiliteit"
+          subtitle="Het aantal parkeerplaatsen is beperkt — kies waar mogelijk de fiets of carpool"
+        />
 
         <Card className="overflow-hidden">
-          <CardContent className="p-6 md:p-8 space-y-6">
+          <CardContent className="space-y-6 p-6 md:p-8">
             <p className="text-muted-foreground">
               Om de rust in de buurt te bewaren vragen we om zo veel mogelijk
               gebruik te maken van duurzame alternatieven. Kom je met de wagen,
               tracht dan te carpoolen en gebruik de parkeerlocaties op de kaart.
             </p>
-            <div className="border border-border/60 rounded-xl overflow-hidden">
+            <div className="overflow-hidden rounded-xl border border-border/60">
               <img
                 src={mobilityMap}
                 alt="Mobiliteits- en parkeerkaart voor D-mon Hockey Club"
                 loading="lazy"
-                className="w-full h-auto"
+                className="h-auto w-full"
               />
             </div>
             <div>
@@ -265,15 +261,12 @@ const HockeyField = () => {
       </section>
 
       {/* Vervoer */}
-      <section id="vervoer" className="container mx-auto px-4 py-12 lg:py-16 scroll-mt-20">
-        <div className="mb-8">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">
-            Duurzame vervoersopties
-          </h2>
-          <p className="text-muted-foreground max-w-2xl">
-            Milieuvriendelijke manieren om ons terrein te bereiken.
-          </p>
-        </div>
+      <section id="vervoer" className="container mx-auto scroll-mt-20 px-4 py-12 lg:py-16">
+        <SectionHeader
+          icon={Bike}
+          title="Duurzame vervoersopties"
+          subtitle="Milieuvriendelijke manieren om ons terrein te bereiken"
+        />
 
         <div className="grid gap-4 md:grid-cols-3">
           {[
@@ -294,12 +287,12 @@ const HockeyField = () => {
             },
           ].map((opt) => (
             <Card key={opt.title}>
-              <CardContent className="p-6 space-y-3">
-                <div className="h-10 w-10 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+              <CardContent className="space-y-3 p-6">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
                   <opt.icon className="h-5 w-5" />
                 </div>
                 <h3 className="font-display text-lg font-semibold">{opt.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{opt.text}</p>
+                <p className="text-sm leading-relaxed text-muted-foreground">{opt.text}</p>
               </CardContent>
             </Card>
           ))}
@@ -307,18 +300,15 @@ const HockeyField = () => {
       </section>
 
       {/* Afspraken */}
-      <section id="afspraken" className="container mx-auto px-4 py-12 lg:py-16 scroll-mt-20">
-        <div className="mb-8">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">
-            Afspraken gebruik hockeyterrein
-          </h2>
-          <p className="text-muted-foreground max-w-2xl">
-            Samen zorgen we ervoor dat we lang kunnen genieten van ons terrein.
-          </p>
-        </div>
+      <section id="afspraken" className="container mx-auto scroll-mt-20 px-4 py-12 lg:py-16">
+        <SectionHeader
+          icon={ClipboardList}
+          title="Afspraken gebruik hockeyterrein"
+          subtitle="Samen zorgen we ervoor dat we lang kunnen genieten van ons terrein"
+        />
 
         <Card>
-          <CardContent className="p-6 md:p-8 space-y-6">
+          <CardContent className="space-y-6 p-6 md:p-8">
             <ul className="space-y-3">
               {[
                 "Respecteer het terreinoppervlak — juiste hockeyschoenen verplicht.",
@@ -327,7 +317,7 @@ const HockeyField = () => {
                 "Meld onderhoudsproblemen onmiddellijk aan het terreinbeheer.",
               ].map((rule) => (
                 <li key={rule} className="flex items-start gap-3">
-                  <span className="mt-2 h-2 w-2 rounded-full bg-primary flex-shrink-0" />
+                  <span className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary" />
                   <span className="text-sm text-foreground/90">{rule}</span>
                 </li>
               ))}
@@ -348,30 +338,18 @@ const HockeyField = () => {
         </Card>
       </section>
 
-      {/* CTA */}
-      <section className="container mx-auto px-4 py-12 lg:py-16">
-        <Card className="bg-gradient-to-br from-primary to-primary-light text-primary-foreground border-0 overflow-hidden">
-          <CardContent className="p-8 md:p-12">
-            <div className="max-w-3xl">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="h-12 w-12 rounded-full bg-primary-foreground/15 flex items-center justify-center">
-                  <MapPin className="h-6 w-6" />
-                </div>
-              </div>
-              <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-                Vragen over het terrein?
-              </h2>
-              <p className="text-lg text-primary-foreground/90 mb-8 leading-relaxed">
-                Neem contact op met onze terreinverantwoordelijke voor specifieke
-                vragen over gebruik, reservaties of onderhoud.
-              </p>
-              <Button size="lg" variant="secondary" asChild>
-                <a href="/lidmaatschap/contact">Contacteer ons</a>
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
-      </section>
+      <PageCta
+        title="Vragen over het terrein?"
+        text="Neem contact op met onze terreinverantwoordelijke voor specifieke vragen over gebruik, reservaties of onderhoud."
+        actions={
+          <Button asChild size="lg" variant="secondary" className="font-semibold">
+            <a href="/lidmaatschap/contact" className="inline-flex items-center gap-2">
+              <Mail className="h-4 w-4" />
+              Contacteer ons
+            </a>
+          </Button>
+        }
+      />
     </div>
   );
 };
