@@ -91,6 +91,17 @@ const Rules = () => {
               >
                 <a href="#startplan">Bekijk startplan</a>
               </Button>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="border-primary-foreground/40 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+              >
+                <Link to="/sportief/regels/indoor" className="inline-flex items-center gap-2">
+                  <BookOpen className="h-4 w-4" />
+                  Indoor spelregels
+                </Link>
+              </Button>
             </div>
 
 
