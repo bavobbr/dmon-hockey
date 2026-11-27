@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { PageHero, PageCta } from "@/components/layout/PageHero";
 import { Link } from "@tanstack/react-router";
-import { ExternalLink, ZoomIn, Ruler, Timer, Users, Shield, BookOpen, Repeat, Gavel, Baby, MessageCircleQuestion, Megaphone, FileText, ArrowRight, Hand, Footprints, AlertTriangle, MoveHorizontal, CircleDot, Flag, Square, type LucideIcon } from "lucide-react";
+import { ExternalLink, ZoomIn, Ruler, Timer, Users, Shield, BookOpen, Repeat, Gavel, Baby, MessageCircleQuestion, Megaphone, FileText, ArrowRight, Hand, Footprints, AlertTriangle, MoveHorizontal, CircleDot, Flag, Square, CirclePlay, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const algemeneRegels = "/images/indoor/algemene-spelregels.webp";
@@ -105,8 +105,8 @@ const briefingDocs = [
 ];
 
 const docs = [
-  { href: "https://hockey.be/nl/officials-division/spelregels-indoor/", title: "Spelregels indoor", text: "Algemeen, U7-U12 en U14-U19" },
-  { href: "https://hockey.be/nl/hockey-vlaanderen/hockey-academy/umpire-academy/start-to-umpire-indoor/", title: "Start to Umpire: Indoor", text: "Opleiding voor nieuwe scheidsrechters" },
+  { href: "https://hockey.be/nl/officials-division/spelregels-indoor/", title: "Spelregels indoor", text: "Algemeen, U7-U12 en U14-U19", icon: <BookOpen className="h-6 w-6" /> },
+  { href: "https://www.hockeyvlaanderen.be/hockeyacademy/indoor-start-to-umpire/", title: "Start to Umpire: Indoor", text: "Video's met de belangrijkste fasen voor umpires (Hockey Vlaanderen)", icon: <CirclePlay className="h-6 w-6" /> },
 ];
 
 const IndoorRules = () => (
@@ -266,6 +266,9 @@ const IndoorRules = () => (
               <span className="text-xs font-semibold uppercase tracking-widest text-primary">Zelf fluiten</span>
               <h2 className="mt-1 font-display text-2xl font-bold lg:text-3xl">Fluit indoorwedstrijden bij D-mon</h2>
               <p className="mt-2 max-w-2xl text-foreground/80">Registreer je als scheidsrechter. Dan krijg je toegang tot Drillster voor het theoretisch examen en zetten we je mee op het wedstrijdblad.</p>
+              <a href="https://www.hockeyvlaanderen.be/hockeyacademy/indoor-start-to-umpire/" target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline">
+                <CirclePlay className="h-4 w-4" /> Oefen vooraf met de video's van Start to Umpire: Indoor <ExternalLink className="h-3.5 w-3.5" />
+              </a>
             </div>
             <Button asChild size="lg">
               <a href="https://app.twizzit.com/v2/public/form/cea9e8831bead08352918535621cd399" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
@@ -276,11 +279,11 @@ const IndoorRules = () => (
         </div>
       </section>
 
-      <Section id="documenten" kicker="Officiële documenten" icon={FileText} title="Verder lezen" description="De volledige reglementen bij Hockey Belgium.">
+      <Section id="documenten" kicker="Officiële documenten" icon={FileText} title="Verder lezen" description="De volledige reglementen en extra uitleg van Hockey Belgium en Hockey Vlaanderen.">
         <div className="grid gap-4 md:grid-cols-2">
           {docs.map((d) => (
             <a key={d.href} href={d.href} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 rounded-2xl border border-border/60 bg-card p-5 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground"><FileText className="h-6 w-6" /></div>
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground">{d.icon}</div>
               <div className="flex-1">
                 <p className="font-semibold text-foreground">{d.title}</p>
                 <p className="text-sm text-muted-foreground">{d.text}</p>
